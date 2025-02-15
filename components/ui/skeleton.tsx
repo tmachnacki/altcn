@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 
+// credit: https://daisyui.com/components/skeleton/
 export function Skeleton({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div

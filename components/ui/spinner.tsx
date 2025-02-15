@@ -5,6 +5,8 @@ export function Spinner({ className, ...props }: LucideProps) {
   return <Loader2Icon className={cn("animate-spin", className)} {...props} />;
 }
 
+// TODO: maybe use custom spinner? Will have to adjust spacing on a lot of components to match svg
+// credit: https://www.heroui.com/docs/components/spinner
 // export function Spinner({ className, ...props }: React.ComponentProps<"div">) {
 //   return (
 //     <div
