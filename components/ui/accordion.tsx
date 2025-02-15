@@ -17,7 +17,7 @@ const accordionItemVariants = cva("", {
   variants: {
     variant: {
       default: "border-b last:border-b-0",
-      split: "mb-2 rounded-md border bg-muted px-3 last:mb-0",
+      split: "mb-2 rounded-md bg-muted px-3 last:mb-0",
     },
   },
   defaultVariants: {
@@ -56,7 +56,7 @@ function AccordionTrigger({
         {...props}
       >
         {children}
-        <ChevronLeftIcon className="pointer-events-none size-4 shrink-0 translate-y-0.5 text-muted-foreground transition-transform duration-200" />
+        <ChevronLeftIcon className="pointer-events-none size-4 shrink-0 translate-y-0.5 text-current transition-transform duration-200" />
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>
   );
