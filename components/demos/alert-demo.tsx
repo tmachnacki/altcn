@@ -89,6 +89,7 @@ export function AlertDemo() {
       <Alert>
         <CheckCircle2Icon />
         <AlertTitle>The selected emails have been marked as spam.</AlertTitle>
+        <AlertDescription>But what if we put a description here too?</AlertDescription>
         <Button
           size="sm"
           variant="outline"
