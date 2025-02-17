@@ -49,8 +49,10 @@ const buttonVariants = cva(
           "relative border border-warning/30 bg-transparent text-warning-muted-foreground shadow-xs before:via-warning after:via-warning hover:border-warning/40 hover:from-warning/20 hover:to-warning/5 focus-visible:outline-warning",
         "warning-shadow":
           "bg-warning text-warning-foreground shadow-lg shadow-warning/40 hover:bg-warning/90 focus-visible:outline-warning",
+        gradient: "bg-gradient-to-br from-primary to-secondary text-white hover:bg-gradient-to-br hover:from-primary/90 hover:to-secondary/90",
         outline:
-          "border border-input bg-background shadow-xs hover:bg-accent hover:text-accent-foreground",
+          "border border-border hover:border-border-hover bg-background shadow-xs hover:bg-accent hover:text-accent-foreground",
+          input: "border border-input px-3 py-1",
         accent: "bg-accent text-accent-foreground hover:bg-accent/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",

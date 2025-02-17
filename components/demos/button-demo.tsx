@@ -25,6 +25,7 @@ export function ButtonDemo() {
         <Button variant="destructive-shadow">Destructive Shadow</Button>
       </div>
       <div className="flex flex-wrap gap-4">
+        <Button variant="gradient">Gradient</Button>
         <Button variant="accent">Accent</Button>
         <Button variant="outline">Outline</Button>
         <Button variant="ghost">Ghost</Button>

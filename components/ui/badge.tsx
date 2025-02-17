@@ -5,14 +5,14 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const badgeVariants = cva(
-  "inline-flex h-6 w-fit shrink-0 items-center justify-center gap-1 rounded-lg border px-2 py-0.5 text-xs leading-none font-semibold whitespace-nowrap focus-visible:outline-1 focus-visible:outline-offset-2 aria-invalid:focus-visible:ring-0 [&>svg]:pointer-events-none [&>svg]:size-3.5",
+  "inline-flex h-6 w-fit shrink-0 items-center justify-center gap-1 rounded-lg border px-2 py-0.5 text-xs leading-none font-semibold whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary [&>svg]:pointer-events-none [&>svg]:size-3.5",
   {
     variants: {
       variant: {
         primary:
-          "border-transparent bg-primary text-primary-foreground shadow-sm focus-visible:outline-primary [a&]:hover:bg-primary/90",
+          "border-transparent bg-primary text-primary-foreground shadow-sm [a&]:hover:bg-primary/90",
         "primary-muted":
-          "border-transparent bg-primary-muted text-primary-muted-foreground focus-visible:outline-primary [a&]:hover:bg-primary-muted/80",
+          "border-transparent bg-primary-muted text-primary-muted-foreground [a&]:hover:bg-primary-muted/80",
         secondary:
           "border-transparent bg-secondary text-secondary-foreground shadow-sm focus-visible:outline-secondary [a&]:hover:bg-secondary/90",
         "secondary-muted":
