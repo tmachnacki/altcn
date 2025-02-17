@@ -25,32 +25,30 @@
   --secondary-muted: var(--color-teal-100);
   --secondary-muted-foreground: var(--color-teal-700);
 
-  --destructive: var(--color-red-500);
-  --destructive-foreground: var(--color-red-50);
-  --destructive-muted: var(--color-red-100);
-  --destructive-muted-foreground: var(--color-red-700);
+  --destructive: var(--color-rose-600);
+  --destructive-foreground: var(--color-rose-50);
+  --destructive-muted: var(--color-rose-100);
+  --destructive-muted-foreground: var(--color-rose-700);
 
   --success: var(--color-emerald-600);
   --success-foreground: var(--color-white);
   --success-muted: var(--color-emerald-100);
   --success-muted-foreground: var(--color-emerald-700);
 
-  --warning: var(--color-yellow-500);
-  --warning-foreground: var(--color-yellow-950);
-  --warning-muted: var(--color-yellow-100);
-  --warning-muted-foreground: var(--color-yellow-700);
+  --warning: var(--color-amber-500);
+  --warning-foreground: var(--color-amber-950);
+  --warning-muted: var(--color-amber-100);
+  --warning-muted-foreground: var(--color-amber-700);
 
   --accent: var(--color-zinc-100);
   --accent-foreground: var(--color-zinc-950);
 
   --muted: var(--color-zinc-100);
-  --muted-foreground: var(--color-zinc-500);
+  --muted-foreground: var(--color-zinc-600);
 
   --border: var(--color-zinc-200);
   --input: var(--color-zinc-200);
-  --outline: var(--color-zinc-950);
-  --ring: var(--color-zinc-300);
-  --ring-input-error: var(--color-red-300);
+
   --skeleton: var(--color-zinc-300);
   --skeleton-shimmer: var(--color-zinc-200);
 
@@ -92,20 +90,20 @@
   --secondary-muted: var(--color-teal-950);
   --secondary-muted-foreground: var(--color-teal-200);
 
-  --destructive: var(--color-red-600);
-  --destructive-foreground: var(--color-red-50);
-  --destructive-muted: var(--color-red-950);
-  --destructive-muted-foreground: var(--color-red-200);
+  --destructive: var(--color-rose-600);
+  --destructive-foreground: var(--color-rose-50);
+  --destructive-muted: var(--color-rose-950);
+  --destructive-muted-foreground: var(--color-rose-200);
 
   --success: var(--color-emerald-600);
   --success-foreground: var(--color-white);
   --success-muted: var(--color-emerald-950);
   --success-muted-foreground: var(--color-emerald-200);
 
-  --warning: var(--color-yellow-500);
-  --warning-foreground: var(--color-yellow-950);
-  --warning-muted: var(--color-yellow-950);
-  --warning-muted-foreground: var(--color-yellow-200);
+  --warning: var(--color-amber-500);
+  --warning-foreground: var(--color-amber-950);
+  --warning-muted: var(--color-amber-950);
+  --warning-muted-foreground: var(--color-amber-200);
 
   --accent: var(--color-zinc-900);
   --accent-foreground: var(--color-zinc-50);
@@ -115,9 +113,7 @@
 
   --border: var(--color-zinc-800);
   --input: var(--color-zinc-800);
-  --outline: var(--color-zinc-200);
-  --ring: var(--color-zinc-700);
-  --ring-input-error: var(--color-red-700);
+
   --skeleton: var(--color-zinc-800);
   --skeleton-shimmer: var(--color-zinc-700);
 
@@ -252,9 +248,7 @@
 
   --color-border: var(--border);
   --color-input: var(--input);
-  --color-outline: var(--outline);
-  --color-ring: var(--ring);
-  --color-ring-input-error: var(--ring-input-error);
+
   --color-skeleton: var(--skeleton);
   --color-skeleton-shimmer: var(--skeleton-shimmer);
 
@@ -278,8 +272,8 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 
-  --animate-accordion-down: accordion-down 0.2s ease-out;
-  --animate-accordion-up: accordion-up 0.2s ease-out;
+  --animate-accordion-down: accordion-down 0.25s ease-out;
+  --animate-accordion-up: accordion-up 0.25s ease-in;
   --animate-caret-blink: caret-blink 1s ease-out infinite;
   --animate-skeleton-shimmer: skeleton-shimmer 1.5s ease-in-out infinite;
   --animate-spinner-ease: spinner 0.8s ease infinite;
@@ -287,18 +281,22 @@
 
   @keyframes accordion-down {
     from {
+      opacity: 0;
       height: 0;
     }
     to {
+      opacity: 1;
       height: var(--radix-accordion-content-height);
     }
   }
 
   @keyframes accordion-up {
     from {
+      opacity: 1;
       height: var(--radix-accordion-content-height);
     }
     to {
+      opacity: 0;
       height: 0;
     }
   }
@@ -340,7 +338,7 @@
 
 @layer base {
   * {
-    @apply border-border outline-outline;
+    @apply border-border outline-foreground;
   }
   body {
     @apply bg-background text-sm text-foreground antialiased;

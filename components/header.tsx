@@ -4,10 +4,12 @@ import { Container } from "./container";
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-50 flex h-12 items-center border-b border-border bg-background/90 py-2 backdrop-blur-sm">
+    <header className="sticky top-0 z-40 flex h-12 items-center border-b border-border bg-background py-2">
       <Container className="flex items-center gap-12">
         <Link href="/" className="inline-block leading-none">
-          <span className="text-lg font-bold text-foreground">altcn</span>
+          <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-lg font-bold text-transparent">
+            altcn
+          </span>
         </Link>
 
         <nav className="block flex-1">

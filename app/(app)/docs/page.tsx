@@ -1,10 +1,12 @@
 import { Container } from "@/components/container";
 import { ComponentDemoWrapper } from "./component-demo-wrapper";
 
-import { ButtonDemo } from "@/components/demos/button-demo";
 import { AccordionDemo } from "@/components/demos/accordion-demo";
-import { SkeletonDemo } from "@/components/demos/skeleton-demo";
 import { AlertDemo } from "@/components/demos/alert-demo";
+import { AlertDialogDemo } from "@/components/demos/alert-dialog-demo";
+import { BadgeDemo } from "@/components/demos/badge-demo";
+import { ButtonDemo } from "@/components/demos/button-demo";
+import { SkeletonDemo } from "@/components/demos/skeleton-demo";
 
 const COMPONENTS = [
   {
@@ -16,6 +18,16 @@ const COMPONENTS = [
     title: "Alert",
     id: "alert",
     component: <AlertDemo />,
+  },
+  {
+    title: "Alert Dialog",
+    id: "alert-dialog",
+    component: <AlertDialogDemo />,
+  },
+  {
+    title: "Badge",
+    id: "badge",
+    component: <BadgeDemo />,
   },
   {
     title: "Button",
