@@ -1,9 +1,11 @@
 @import "tailwindcss";
 
 @plugin "tailwindcss-animate";
-@plugin "tailwindcss-spring";
+/* TODO: use motion plugin animations when tailwind releases flattenColorPalette patch */
+/* @plugin "tailwindcss-motion"; */
 
 @custom-variant dark (&:is(.dark *));
+/* for better intellisense DX */
 @custom-variant aria-invalid (&[aria-invalid="true"]);
 
 :root {
@@ -279,7 +281,7 @@
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-in;
   --animate-caret-blink: caret-blink 1s ease-out infinite;
-  --animate-skeleton-shimmer: skeleton-shimmer 1.5s ease-in-out infinite;
+  --animate-skeleton-shimmer: skeleton-shimmer 1.5s ease infinite;
   --animate-spinner-ease: spinner 0.8s ease infinite;
   --animate-spinner-linear: spinner 0.8s linear infinite;
 
@@ -347,6 +349,15 @@
   body {
     @apply bg-background text-sm text-foreground antialiased;
     text-rendering: optimizeLegibility;
+  }
+
+  /* preserve v3 default border color configuration */
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-border, currentColor);
   }
 
   ::-webkit-scrollbar {

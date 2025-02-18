@@ -4,58 +4,36 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
 
+// If this code lived in a bubble, I would opt for 'tailwind-variants' with slots and compound variants
+// I wanted to minimize the amount of work needed to use variants in existing shadcn/ui apps
+
+const tronClassNames =
+  "shadow-xs before:absolute before:-top-px before:left-[10%] before:h-[2px] before:w-[80%] before:bg-gradient-to-r before:from-transparent before:to-transparent before:opacity-0 before:transition-opacity before:duration-300 before:content-[''] after:absolute after:-bottom-px after:left-[10%] after:h-[2px] after:w-[80%] after:bg-gradient-to-r after:from-transparent after:to-transparent after:opacity-100 after:transition-opacity after:duration-300 after:content-[''] hover:bg-gradient-to-b hover:before:opacity-100 hover:after:opacity-0";
+
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[variant*='-tron']:before:absolute data-[variant*='-tron']:before:-top-px data-[variant*='-tron']:before:left-[10%] data-[variant*='-tron']:before:h-[2px] data-[variant*='-tron']:before:w-[80%] data-[variant*='-tron']:before:bg-gradient-to-r data-[variant*='-tron']:before:from-transparent data-[variant*='-tron']:before:to-transparent data-[variant*='-tron']:before:opacity-0 data-[variant*='-tron']:before:transition-opacity data-[variant*='-tron']:before:duration-300 data-[variant*='-tron']:before:content-[''] data-[variant*='-tron']:after:absolute data-[variant*='-tron']:after:-bottom-px data-[variant*='-tron']:after:left-[10%] data-[variant*='-tron']:after:h-[2px] data-[variant*='-tron']:after:w-[80%] data-[variant*='-tron']:after:bg-gradient-to-r data-[variant*='-tron']:after:from-transparent data-[variant*='-tron']:after:to-transparent data-[variant*='-tron']:after:opacity-100 data-[variant*='-tron']:after:transition-opacity data-[variant*='-tron']:after:duration-300 data-[variant*='-tron']:after:content-[''] data-[variant*='-tron']:hover:bg-gradient-to-b data-[variant*='-tron']:hover:before:opacity-100 data-[variant*='-tron']:hover:after:opacity-0 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+  "relative inline-flex items-center justify-center gap-2 rounded-md text-sm font-semibold whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
   {
     variants: {
+      color: {
+        base: "",
+        primary: "focus-visible:outline-primary",
+        secondary: "focus-visible:outline-secondary",
+        destructive: "focus-visible:outline-destructive",
+        success: "focus-visible:outline-success",
+        warning: "focus-visible:outline-warning",
+      },
       variant: {
-        primary:
-          "bg-primary text-primary-foreground shadow hover:bg-primary/90 focus-visible:outline-primary",
-        "primary-muted":
-          "bg-primary-muted text-primary-muted-foreground hover:bg-primary-muted/80 focus-visible:outline-primary",
-        "primary-tron":
-          "relative border border-primary/30 bg-transparent text-primary-muted-foreground shadow-xs before:via-primary after:via-primary hover:border-primary/40 hover:from-primary/20 hover:to-primary/5 focus-visible:outline-primary",
-        "primary-shadow":
-          "bg-primary text-primary-foreground shadow-lg shadow-primary/40 hover:bg-primary/90 focus-visible:outline-primary",
-        secondary:
-          "bg-secondary text-secondary-foreground shadow hover:bg-secondary/90 focus-visible:outline-secondary",
-        "secondary-muted":
-          "bg-secondary-muted text-secondary-muted-foreground hover:bg-secondary-muted/80 focus-visible:outline-secondary",
-        "secondary-tron":
-          "relative border border-secondary/30 bg-transparent text-secondary-muted-foreground shadow-xs before:via-secondary after:via-secondary hover:border-secondary/40 hover:from-secondary/20 hover:to-secondary/5 focus-visible:outline-secondary",
-        "secondary-shadow":
-          "bg-secondary text-secondary-foreground shadow-lg shadow-secondary/40 hover:bg-secondary/90 focus-visible:outline-secondary",
-        destructive:
-          "bg-destructive text-destructive-foreground shadow hover:bg-destructive/80 focus-visible:outline-destructive",
-        "destructive-muted":
-          "bg-destructive-muted text-destructive-muted-foreground hover:bg-destructive-muted/80 focus-visible:outline-destructive",
-        "destructive-tron":
-          "relative border border-destructive/30 bg-transparent text-destructive-muted-foreground shadow-xs before:via-destructive after:via-destructive hover:border-destructive/40 hover:from-destructive/20 hover:to-destructive/5 focus-visible:outline-destructive",
-        "destructive-shadow":
-          "bg-destructive text-destructive-foreground shadow-lg shadow-destructive/40 hover:bg-destructive/90 focus-visible:outline-destructive",
-        success:
-          "bg-success text-success-foreground shadow hover:bg-success/80 focus-visible:outline-success",
-        "success-muted":
-          "bg-success-muted text-success-muted-foreground hover:bg-success-muted/80 focus-visible:outline-success",
-        "success-tron":
-          "relative border border-success/30 bg-transparent text-success-muted-foreground shadow-xs before:via-success after:via-success hover:border-success/40 hover:from-success/20 hover:to-success/5 focus-visible:outline-success",
-        "success-shadow":
-          "bg-success text-success-foreground shadow-lg shadow-success/40 hover:bg-success/90 focus-visible:outline-success",
-        warning:
-          "bg-warning text-warning-foreground shadow hover:bg-warning/80 focus-visible:outline-warning",
-        "warning-muted":
-          "bg-warning-muted text-warning-muted-foreground hover:bg-warning-muted/80 focus-visible:outline-warning",
-        "warning-tron":
-          "relative border border-warning/30 bg-transparent text-warning-muted-foreground shadow-xs before:via-warning after:via-warning hover:border-warning/40 hover:from-warning/20 hover:to-warning/5 focus-visible:outline-warning",
-        "warning-shadow":
-          "bg-warning text-warning-foreground shadow-lg shadow-warning/40 hover:bg-warning/90 focus-visible:outline-warning",
-        gradient: "bg-gradient-to-br from-primary to-secondary text-white hover:bg-gradient-to-br hover:from-primary/90 hover:to-secondary/90",
+        solid: "shadow",
+        muted: "",
         outline:
-          "border border-border hover:border-border-hover bg-background shadow-xs hover:bg-accent hover:text-accent-foreground",
-          input: "border border-input px-3 py-1",
-        accent: "bg-accent text-accent-foreground hover:bg-accent/80",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
+          "border bg-background shadow-xs hover:border-border-hover hover:bg-accent/80",
+        tron: tronClassNames,
+        shadow: "shadow-lg",
+        gradient: "bg-gradient-to-br",
+        ghost: "",
+        link: "underline-offset-4 hover:underline",
+        input:
+          "border bg-base-50 font-normal text-foreground shadow-xs hover:border-border-hover focus-visible:outline-offset-0 focus-visible:outline-primary data-[empty=true]:text-muted-foreground dark:bg-accent aria-invalid:border-destructive aria-invalid:focus-visible:outline-destructive",
       },
       size: {
         default:
@@ -66,11 +44,202 @@ const buttonVariants = cva(
         icon: "size-9 [&_svg:not([class*='size-'])]:size-4",
         "icon-lg": "size-10 [&_svg:not([class*='size-'])]:size-5",
         "icon-sm": "size-8 [&_svg:not([class*='size-'])]:size-4",
-        "icon-xs": "size-6 [&_svg:not([class*='size-'])]:size-3.5",
+        "icon-xs": "size-6 rounded-sm [&_svg:not([class*='size-'])]:size-3.5",
       },
     },
+    compoundVariants: [
+      // base
+      {
+        color: "base",
+        variant: "solid",
+        className: "bg-base-600 text-base-50 hover:bg-base-600/90",
+      },
+      {
+        color: "base",
+        variant: "outline",
+        className:
+          "border-border bg-background hover:border-border-hover hover:bg-accent/80 hover:text-accent-foreground",
+      },
+      {
+        color: "base",
+        variant: "muted",
+        className: "bg-accent text-accent-foreground hover:bg-accent/80",
+      },
+      {
+        color: "base",
+        variant: "shadow",
+        className:
+          "bg-base-600 text-base-50 shadow-base-600/40 hover:bg-base-600/90",
+      },
+      {
+        color: "base",
+        variant: "gradient",
+        className:
+          "bg-gradient-to-br from-base-700 to-base-500 text-base-50 hover:bg-gradient-to-br hover:from-base-700/90 hover:to-base-500/90",
+      },
+      {
+        color: "base",
+        variant: "ghost",
+        className: "hover:bg-accent hover:text-accent-foreground",
+      },
+      {
+        color: "base",
+        variant: "link",
+        className: "text-foreground",
+      },
+
+      // primary
+      {
+        color: "primary",
+        variant: "solid",
+        className:
+          "bg-primary text-primary-foreground shadow hover:bg-primary/90",
+      },
+      {
+        color: "primary",
+        variant: "outline",
+        className: "text-primary-muted-foreground",
+      },
+      {
+        color: "primary",
+        variant: "muted",
+        className:
+          "overflow-hidden bg-primary-muted text-primary-muted-foreground hover:bg-primary-muted/80",
+      },
+      {
+        color: "primary",
+        variant: "tron",
+        className:
+          "border border-primary/60 bg-background text-primary-muted-foreground before:via-primary after:via-primary hover:border-primary/70 hover:from-primary/20 hover:to-primary/5",
+      },
+      {
+        color: "primary",
+        variant: "shadow",
+        className:
+          "bg-primary text-primary-foreground shadow-primary/50 hover:bg-primary/90",
+      },
+      {
+        color: "primary",
+        variant: "gradient",
+        className:
+          "from-primary-600 to-primary-400 text-primary-foreground hover:from-primary-600/90 hover:to-primary-400/90",
+      },
+      {
+        color: "primary",
+        variant: "ghost",
+        className: "text-primary-muted-foreground hover:bg-primary-muted",
+      },
+      {
+        color: "primary",
+        variant: "link",
+        className: "text-primary",
+      },
+
+      // secondary
+      {
+        color: "secondary",
+        variant: "solid",
+        className:
+          "bg-secondary text-secondary-foreground shadow hover:bg-secondary/90",
+      },
+      {
+        color: "secondary",
+        variant: "outline",
+        className: "text-secondary-muted-foreground",
+      },
+      {
+        color: "secondary",
+        variant: "muted",
+        className:
+          "overflow-hidden bg-secondary-muted text-secondary-muted-foreground hover:bg-secondary-muted/80",
+      },
+      {
+        color: "secondary",
+        variant: "tron",
+        className:
+          "border border-secondary/60 bg-background text-secondary-muted-foreground before:via-secondary after:via-secondary hover:border-secondary/70 hover:from-secondary/20 hover:to-secondary/5",
+      },
+      {
+        color: "secondary",
+        variant: "shadow",
+        className:
+          "bg-secondary text-secondary-foreground shadow-secondary/50 hover:bg-secondary/90",
+      },
+      {
+        color: "secondary",
+        variant: "gradient",
+        className:
+          "from-secondary-500 to-secondary-300 text-secondary-foreground hover:from-secondary-500/90 hover:to-secondary-300/90",
+      },
+      {
+        color: "secondary",
+        variant: "ghost",
+        className: "text-secondary-muted-foreground hover:bg-secondary-muted",
+      },
+      {
+        color: "secondary",
+        variant: "link",
+        className: "text-secondary",
+      },
+
+      // destructive
+      {
+        color: "destructive",
+        variant: "solid",
+        className:
+          "bg-destructive text-destructive-foreground shadow hover:bg-destructive/90",
+      },
+      {
+        color: "destructive",
+        variant: "outline",
+        className: "text-destructive-muted-foreground",
+      },
+      {
+        color: "destructive",
+        variant: "muted",
+        className:
+          "overflow-hidden bg-destructive-muted text-destructive-muted-foreground hover:bg-destructive-muted/80",
+      },
+      {
+        color: "destructive",
+        variant: "tron",
+        className:
+          "border border-destructive/60 bg-background text-destructive-muted-foreground before:via-destructive after:via-destructive hover:border-destructive/70 hover:from-destructive/20 hover:to-destructive/5",
+      },
+      {
+        color: "destructive",
+        variant: "shadow",
+        className:
+          "bg-destructive text-destructive-foreground shadow-destructive/50 hover:bg-destructive/90",
+      },
+      {
+        color: "destructive",
+        variant: "gradient",
+        className:
+          "from-destructive-600 to-destructive-400 text-destructive-foreground hover:from-destructive-600/90 hover:to-destructive-400/90",
+      },
+      {
+        color: "destructive",
+        variant: "ghost",
+        className:
+          "text-destructive-muted-foreground hover:bg-destructive-muted",
+      },
+      {
+        color: "destructive",
+        variant: "link",
+        className: "text-destructive",
+      },
+
+      // input
+      {
+        variant: "input",
+        size: "default",
+        className: "px-3 py-1",
+      },
+    ],
     defaultVariants: {
-      variant: "primary",
+      color: "base",
+      variant: "solid",
       size: "default",
     },
   },
@@ -78,13 +247,16 @@ const buttonVariants = cva(
 
 function Button({
   className,
+  color,
   variant,
   size,
   asChild = false,
+  empty = false,
   ...props
 }: React.ComponentProps<"button"> &
   VariantProps<typeof buttonVariants> & {
     asChild?: boolean;
+    empty?: boolean;
   }) {
   const Comp = asChild ? Slot : "button";
 
@@ -92,7 +264,8 @@ function Button({
     <Comp
       data-slot="button"
       data-variant={variant}
-      className={cn(buttonVariants({ variant, size, className }))}
+      data-empty={empty}
+      className={cn(buttonVariants({ color, variant, size, className }))}
       {...props}
     />
   );
