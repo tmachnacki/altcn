@@ -31,7 +31,7 @@
   --destructive-muted: var(--color-destructive-100);
   --destructive-muted-foreground: var(--color-destructive-700);
 
-  --success: var(--color-success-500);
+  --success: var(--color-success-600);
   --success-foreground: var(--color-white);
   --success-muted: var(--color-success-100);
   --success-muted-foreground: var(--color-success-700);
@@ -97,7 +97,7 @@
   --destructive-muted: var(--color-destructive-950);
   --destructive-muted-foreground: var(--color-destructive-200);
 
-  --success: var(--color-success-500);
+  --success: var(--color-success-600);
   --success-foreground: var(--color-white);
   --success-muted: var(--color-success-950);
   --success-muted-foreground: var(--color-success-200);
