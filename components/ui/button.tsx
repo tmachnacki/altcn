@@ -3,22 +3,22 @@ import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
+import { tronClassNames } from "@/lib/variants";
 
 // If this code lived in a bubble, I would opt for 'tailwind-variants' with slots and compound variants
 // I wanted to minimize the amount of work needed to use variants in existing shadcn/ui apps
 
-const tronClassNames =
-  "border bg-background shadow-xs before:absolute before:-top-px before:left-[10%] before:h-[2px] before:w-[80%] before:bg-gradient-to-r before:from-transparent before:to-transparent before:opacity-0 before:transition-opacity before:duration-300 before:content-[''] after:absolute after:-bottom-px after:left-[10%] after:h-[2px] after:w-[80%] after:bg-gradient-to-r after:from-transparent after:to-transparent after:opacity-100 after:transition-opacity after:duration-300 after:content-[''] hover:bg-gradient-to-b hover:before:opacity-100 hover:after:opacity-0";
-
 const buttonVariants = cva(
-  "relative inline-flex items-center justify-center gap-2 rounded-md text-sm font-semibold whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+  "relative inline-flex items-center justify-center gap-2 rounded-md text-sm font-semibold whitespace-nowrap select-none focus-visible:outline-2 focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
   {
     variants: {
       variant: {
         // base
-        accent: "bg-accent text-accent-foreground hover:bg-accent/80",
+        accent: "bg-accent text-accent-foreground hover:bg-base-200/60 dark:hover:bg-base-800/70",
+        muted: "bg-muted text-muted-foreground hover:bg-base-200/60 dark:hover:bg-base-800/70",
         outline:
-          "border bg-background shadow-xs hover:border-border-hover hover:bg-accent/80 hover:text-accent-foreground",
+          "border bg-background shadow-xs hover:border-border-hover hover:bg-accent hover:text-accent-foreground",
+        faded: "",
         ghost:
           "bg-transparent text-foreground hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
@@ -28,61 +28,55 @@ const buttonVariants = cva(
         // primary
         primary:
           "bg-primary text-primary-foreground shadow hover:bg-primary/90 focus-visible:outline-primary",
-        "primary-muted":
+        primaryMuted:
           "bg-primary-muted text-primary-muted-foreground hover:bg-primary-muted/80 focus-visible:outline-primary",
-        "primary-outline":
-          "border border-primary/40 bg-background text-primary-muted-foreground shadow-xs hover:bg-primary-muted/50 focus-visible:outline-primary",
-        "primary-muted-outline":
-          "border border-primary/40 bg-primary-muted text-primary-muted-foreground shadow-xs hover:bg-primary-muted/80 focus-visible:outline-primary",
-        "primary-tron": [
+        primaryFaded:
+          "border border-border-primary-faded bg-primary-faded text-primary-muted-foreground shadow-xs hover:bg-primary-muted/80 focus-visible:outline-primary",
+        primaryTron: [
           tronClassNames,
           "text-primary-muted-foreground before:via-primary after:via-primary hover:border-primary/50 hover:from-primary/20 hover:to-primary/5 focus-visible:outline-primary",
         ],
-        "primary-shadow":
+        primaryShadow:
           "bg-primary text-primary-foreground shadow-lg shadow-primary/50 hover:bg-primary/90 focus-visible:outline-primary",
-        "primary-gradient":
+        primaryGradient:
           "bg-gradient-to-br from-primary-600 to-primary-400 text-primary-foreground hover:from-primary-600/90 hover:to-primary-400/90 focus-visible:outline-primary",
-        "primary-ghost":
+        primaryGhost:
           "text-primary-muted-foreground hover:bg-primary-muted focus-visible:outline-primary",
 
         // secondary
         secondary:
           "bg-secondary text-secondary-foreground shadow hover:bg-secondary/90 focus-visible:outline-secondary",
-        "secondary-muted":
+        secondaryMuted:
           "bg-secondary-muted text-secondary-muted-foreground hover:bg-secondary-muted/80 focus-visible:outline-secondary",
-        "secondary-outline":
-          "border border-secondary/40 bg-background text-secondary-muted-foreground shadow-xs hover:bg-secondary-muted/50 focus-visible:outline-secondary",
-        "secondary-muted-outline":
-          "border border-secondary/40 bg-secondary-muted text-secondary-muted-foreground shadow-xs hover:bg-secondary-muted/80 focus-visible:outline-secondary",
-        "secondary-tron": [
+        secondaryFaded:
+          "border border-border-secondary-faded bg-secondary-faded text-secondary-muted-foreground shadow-xs hover:bg-secondary-muted/80 focus-visible:outline-secondary",
+        secondaryTron: [
           tronClassNames,
           "text-secondary-muted-foreground before:via-secondary after:via-secondary hover:border-secondary/50 hover:from-secondary/20 hover:to-secondary/5 focus-visible:outline-secondary",
         ],
-        "secondary-shadow":
+        secondaryShadow:
           "bg-secondary text-secondary-foreground shadow-lg shadow-secondary/50 hover:bg-secondary/90 focus-visible:outline-secondary",
-        "secondary-gradient":
+        secondaryGradient:
           "bg-gradient-to-br from-secondary-500 to-secondary-300 text-secondary-foreground hover:from-secondary-500/90 hover:to-secondary-300/90 focus-visible:outline-secondary",
-        "secondary-ghost":
+        secondaryGhost:
           "text-secondary-muted-foreground hover:bg-secondary-muted focus-visible:outline-secondary",
 
         // destructive
         destructive:
           "bg-destructive text-destructive-foreground shadow hover:bg-destructive/90 focus-visible:outline-destructive",
-        "destructive-muted":
+        destructiveMuted:
           "bg-destructive-muted text-destructive-muted-foreground hover:bg-destructive-muted/80 focus-visible:outline-destructive",
-        "destructive-outline":
-          "border border-destructive/40 bg-background text-destructive-muted-foreground shadow-xs hover:bg-destructive-muted/50 focus-visible:outline-destructive",
-        "destructive-muted-outline":
-          "border border-destructive/40 bg-destructive-muted text-destructive-muted-foreground shadow-xs hover:bg-destructive-muted/80 focus-visible:outline-destructive",
-        "destructive-tron": [
+        destructiveFaded:
+          "border border-border-destructive-faded bg-destructive-faded text-destructive-muted-foreground shadow-xs hover:bg-destructive-muted/80 focus-visible:outline-destructive",
+        destructiveTron: [
           tronClassNames,
           "text-destructive-muted-foreground before:via-destructive after:via-destructive hover:border-destructive/50 hover:from-destructive/20 hover:to-destructive/5 focus-visible:outline-destructive",
         ],
-        "destructive-shadow":
+        destructiveShadow:
           "bg-destructive text-destructive-foreground shadow-lg shadow-destructive/50 hover:bg-destructive/90 focus-visible:outline-destructive",
-        "destructive-gradient":
-          "bg-gradient-to-br from-destructive-600 to-destructive-400 text-destructive-foreground hover:from-destructive-600/90 hover:to-destructive-400/90 focus-visible:outline-destructive",
-        "destructive-ghost":
+        destructiveGradient:
+          "bg-gradient-to-br from-destructive-600 to-destructive-400 text-destructive-foreground hover:from-destructive-600/90 hover:to-destructive-400/90 focus-visible:outline-destructive dark:from-destructive-700 dark:to-destructive-500 dark:hover:from-destructive-700/90 dark:hover:to-destructive-500/90",
+        destructiveGhost:
           "text-destructive-muted-foreground hover:bg-destructive-muted focus-visible:outline-destructive",
       },
       size: {
@@ -92,11 +86,11 @@ const buttonVariants = cva(
         sm: "h-8 rounded-md px-3 py-1.5 has-[[data-slot='spinner']]:gap-2.5 has-[[data-slot='spinner']]:px-2.5 has-[>svg]:px-2.5 [&_[data-slot='spinner']:not([class*='size-'])]:size-4 [&_svg:not([class*='size-'])]:size-4",
         xs: "h-6 rounded-sm px-2 py-1 text-xs font-normal has-[[data-slot='spinner']]:gap-2.5 has-[[data-slot='spinner']]:px-2 has-[>svg]:px-2 [&_[data-slot='spinner']:not([class*='size-'])]:size-3.5 [&_svg:not([class*='size-'])]:size-3.5",
         icon: "size-9 has-[[data-slot='spinner']:not([class*='size-'])]:size-4 [&_svg:not([class*='size-'])]:size-4",
-        "icon-lg":
+        iconLg:
           "size-10 has-[[data-slot='spinner']:not([class*='size-'])]:size-5 [&_svg:not([class*='size-'])]:size-5",
-        "icon-sm":
+        iconSm:
           "size-8 has-[[data-slot='spinner']:not([class*='size-'])]:size-4 [&_svg:not([class*='size-'])]:size-4",
-        "icon-xs":
+        iconXs:
           "size-6 rounded-sm has-[[data-slot='spinner']:not([class*='size-'])]:size-3.5 [&_svg:not([class*='size-'])]:size-3.5",
       },
     },

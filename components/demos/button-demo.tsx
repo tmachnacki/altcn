@@ -20,37 +20,30 @@ export function ButtonDemo() {
       </div>
       <div className="flex flex-wrap gap-4">
         <Button variant="primary">Primary</Button>
-        <Button variant="primary-muted">Primary Muted</Button>
-        <Button variant="primary-outline">Primary Outline</Button>
-        <Button variant="primary-muted-outline">Primary Muted Outline</Button>
-        <Button variant="primary-tron">Primary Tron</Button>
-        <Button variant="primary-shadow">Primary Shadow</Button>
-        <Button variant="primary-gradient">Primary Gradient</Button>
-        <Button variant="primary-ghost">Primary Ghost</Button>
+        <Button variant="primaryMuted">Primary Muted</Button>
+        <Button variant="primaryFaded">Primary Faded</Button>
+        <Button variant="primaryTron">Primary Tron</Button>
+        <Button variant="primaryShadow">Primary Shadow</Button>
+        <Button variant="primaryGradient">Primary Gradient</Button>
+        <Button variant="primaryGhost">Primary Ghost</Button>
       </div>
       <div className="flex flex-wrap gap-4">
         <Button variant="secondary">Secondary</Button>
-        <Button variant="secondary-muted">Secondary Muted</Button>
-        <Button variant="secondary-outline">Secondary Outline</Button>
-        <Button variant="secondary-muted-outline">
-          Secondary Muted Outline
-        </Button>
-        <Button variant="secondary-tron">Secondary Tron</Button>
-        <Button variant="secondary-shadow">Secondary Shadow</Button>
-        <Button variant="secondary-gradient">Secondary Gradient</Button>
-        <Button variant="secondary-ghost">Secondary Ghost</Button>
+        <Button variant="secondaryMuted">Secondary Muted</Button>
+        <Button variant="secondaryFaded">Secondary Faded</Button>
+        <Button variant="secondaryTron">Secondary Tron</Button>
+        <Button variant="secondaryShadow">Secondary Shadow</Button>
+        <Button variant="secondaryGradient">Secondary Gradient</Button>
+        <Button variant="secondaryGhost">Secondary Ghost</Button>
       </div>
       <div className="flex flex-wrap gap-4">
         <Button variant="destructive">Destructive</Button>
-        <Button variant="destructive-muted">Destructive Muted</Button>
-        <Button variant="destructive-outline">Destructive Outline</Button>
-        <Button variant="destructive-muted-outline">
-          Destructive Muted Outline
-        </Button>
-        <Button variant="destructive-tron">Destructive Tron</Button>
-        <Button variant="destructive-shadow">Destructive Shadow</Button>
-        <Button variant="destructive-gradient">Destructive Gradient</Button>
-        <Button variant="destructive-ghost">Destructive Ghost</Button>
+        <Button variant="destructiveMuted">Destructive Muted</Button>
+        <Button variant="destructiveFaded">Destructive Faded</Button>
+        <Button variant="destructiveTron">Destructive Tron</Button>
+        <Button variant="destructiveShadow">Destructive Shadow</Button>
+        <Button variant="destructiveGradient">Destructive Gradient</Button>
+        <Button variant="destructiveGhost">Destructive Ghost</Button>
       </div>
       <div className="flex flex-wrap gap-4">
         <Button disabled>
@@ -73,16 +66,16 @@ export function ButtonDemo() {
         <Button size="xs">Extra small</Button>
       </div>
       <div className="flex flex-wrap gap-4">
-        <Button variant={"outline"} size={"icon-lg"}>
+        <Button variant={"outline"} size={"iconLg"}>
           <SettingsIcon />
         </Button>
         <Button variant="outline" size="icon">
           <SettingsIcon />
         </Button>
-        <Button variant="outline" size="icon-sm">
+        <Button variant="outline" size="iconSm">
           <SettingsIcon />
         </Button>
-        <Button variant="outline" size="icon-xs">
+        <Button variant="outline" size="iconXs">
           <SettingsIcon />
         </Button>
       </div>

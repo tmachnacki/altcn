@@ -6,18 +6,23 @@ export function BadgeDemo() {
   return (
     <div className="space-y-8">
       <div className="flex flex-wrap gap-4">
-        <Badge>Primary</Badge>
-        <Badge variant="primary-muted">Primary Muted</Badge>
-        <Badge variant="secondary">Secondary</Badge>
-        <Badge variant="secondary-muted">Secondary Muted</Badge>
-        <Badge variant="destructive">Destructive</Badge>
-        <Badge variant="destructive-muted">Destructive Muted</Badge>
-        <Badge variant="success">Success</Badge>
-        <Badge variant="success-muted">Success Muted</Badge>
-        <Badge variant="warning">Warning</Badge>
-        <Badge variant="warning-muted">Warning Muted</Badge>
         <Badge variant="outline">Outline</Badge>
         <Badge variant="accent">Accent</Badge>
+        <Badge>Primary</Badge>
+        <Badge variant="primaryMuted">Primary Muted</Badge>
+        <Badge variant="primaryFaded">Primary Faded</Badge>
+        <Badge variant="secondary">Secondary</Badge>
+        <Badge variant="secondaryMuted">Secondary Muted</Badge>
+        <Badge variant="secondaryFaded">Secondary Faded</Badge>
+        <Badge variant="destructive">Destructive</Badge>
+        <Badge variant="destructiveMuted">Destructive Muted</Badge>
+        <Badge variant="destructiveFaded">Destructive Faded</Badge>
+        <Badge variant="success">Success</Badge>
+        <Badge variant="successMuted">Success Muted</Badge>
+        <Badge variant="successFaded">Success Faded</Badge>
+        <Badge variant="warning">Warning</Badge>
+        <Badge variant="warningMuted">Warning Muted</Badge>
+        <Badge variant="warningFaded">Warning Faded</Badge>
         <Badge variant="outline">
           <CheckIcon />
           Badge

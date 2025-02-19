@@ -18,31 +18,6 @@
   --popover: var(--color-white);
   --popover-foreground: var(--color-base-950);
 
-  --primary: var(--color-primary-500);
-  --primary-foreground: var(--color-primary-50);
-  --primary-muted: var(--color-primary-100);
-  --primary-muted-foreground: var(--color-primary-700);
-
-  --secondary: var(--color-secondary-400);
-  --secondary-foreground: var(--color-secondary-950);
-  --secondary-muted: var(--color-secondary-100);
-  --secondary-muted-foreground: var(--color-secondary-700);
-
-  --destructive: var(--color-destructive-500);
-  --destructive-foreground: var(--color-destructive-50);
-  --destructive-muted: var(--color-destructive-100);
-  --destructive-muted-foreground: var(--color-destructive-700);
-
-  --success: var(--color-success-600);
-  --success-foreground: var(--color-white);
-  --success-muted: var(--color-success-100);
-  --success-muted-foreground: var(--color-success-700);
-
-  --warning: var(--color-warning-500);
-  --warning-foreground: var(--color-warning-950);
-  --warning-muted: var(--color-warning-100);
-  --warning-muted-foreground: var(--color-warning-700);
-
   --accent: var(--color-base-100);
   --accent-foreground: var(--color-base-950);
 
@@ -52,6 +27,41 @@
   --border: var(--color-base-200);
   --border-hover: var(--color-base-300);
   --input: var(--color-base-200);
+
+  --primary: var(--color-primary-500);
+  --primary-foreground: var(--color-primary-50);
+  --primary-muted: var(--color-primary-100);
+  --primary-muted-foreground: var(--color-primary-600);
+  --primary-faded: var(--color-primary-50);
+  --border-primary-faded: color-mix(in oklab, var(--color-primary-600) 20%, transparent);
+
+  --secondary: var(--color-secondary-400);
+  --secondary-foreground: var(--color-secondary-950);
+  --secondary-muted: var(--color-secondary-100);
+  --secondary-muted-foreground: var(--color-secondary-700);
+  --secondary-faded: var(--color-secondary-50);
+  --border-secondary-faded: color-mix(in oklab, var(--color-secondary-600) 20%, transparent);
+
+  --destructive: var(--color-destructive-500);
+  --destructive-foreground: var(--color-destructive-50);
+  --destructive-muted: var(--color-destructive-100);
+  --destructive-muted-foreground: var(--color-destructive-600);
+  --destructive-faded: var(--color-destructive-50);
+  --border-destructive-faded: color-mix(in oklab, var(--color-destructive-600) 20%, transparent);
+
+  --success: var(--color-success-600);
+  --success-foreground: var(--color-white);
+  --success-muted: var(--color-success-100);
+  --success-muted-foreground: var(--color-success-700);
+  --success-faded: var(--color-success-50);
+  --border-success-faded: color-mix(in oklab, var(--color-success-600) 20%, transparent);
+
+  --warning: var(--color-warning-400);
+  --warning-foreground: var(--color-warning-950);
+  --warning-muted: var(--color-warning-100);
+  --warning-muted-foreground: var(--color-warning-700);
+  --warning-faded: var(--color-warning-50);
+  --border-warning-faded: color-mix(in oklab, var(--color-warning-600) 20%, transparent);
 
   --skeleton: var(--color-base-300);
   --skeleton-shimmer: var(--color-base-200);
@@ -84,40 +94,50 @@
   --popover: var(--color-base-950);
   --popover-foreground: var(--color-base-50);
 
-  --primary: var(--color-primary-500);
-  --primary-foreground: var(--color-primary-50);
-  --primary-muted: var(--color-primary-950);
-  --primary-muted-foreground: var(--color-primary-300);
-
-  --secondary: var(--color-secondary-400);
-  --secondary-foreground: var(--color-secondary-950);
-  --secondary-muted: var(--color-secondary-950);
-  --secondary-muted-foreground: var(--color-secondary-200);
-
-  --destructive: var(--color-destructive-500);
-  --destructive-foreground: var(--color-destructive-50);
-  --destructive-muted: var(--color-destructive-950);
-  --destructive-muted-foreground: var(--color-destructive-200);
-
-  --success: var(--color-success-600);
-  --success-foreground: var(--color-white);
-  --success-muted: var(--color-success-950);
-  --success-muted-foreground: var(--color-success-200);
-
-  --warning: var(--color-warning-500);
-  --warning-foreground: var(--color-warning-950);
-  --warning-muted: var(--color-warning-950);
-  --warning-muted-foreground: var(--color-warning-200);
-
   --accent: var(--color-base-900);
   --accent-foreground: var(--color-base-50);
 
   --muted: var(--color-base-900);
   --muted-foreground: var(--color-base-400);
 
-  --border: var(--color-zinc-800);
-  --border-hover: var(--color-zinc-700);
+  --border: var(--color-base-800);
+  --border-hover: var(--color-base-700);
   --input: var(--color-zinc-800);
+
+  --primary: var(--color-primary-500);
+  --primary-foreground: var(--color-primary-50);
+  --primary-muted: var(--color-primary-950);
+  --primary-muted-foreground: var(--color-primary-200);
+  --primary-faded: color-mix(in oklab, var(--color-primary-muted) 50%, transparent);
+  --border-primary-faded: color-mix(in oklab, var(--color-primary-400) 30%, transparent);
+
+  --secondary: var(--color-secondary-400);
+  --secondary-foreground: var(--color-secondary-950);
+  --secondary-muted: var(--color-secondary-950);
+  --secondary-muted-foreground: var(--color-secondary-300);
+  --secondary-faded: color-mix(in oklab, var(--color-secondary-muted) 50%, transparent);
+  --border-secondary-faded: color-mix(in oklab, var(--color-secondary-400) 20%, transparent);
+
+  --destructive: var(--color-destructive-600);
+  --destructive-foreground: var(--color-destructive-50);
+  --destructive-muted: var(--color-destructive-950);
+  --destructive-muted-foreground: var(--color-destructive-200);
+  --destructive-faded: color-mix(in oklab, var(--color-destructive-muted) 50%, transparent);
+  --border-destructive-faded: color-mix(in oklab, var(--color-destructive-400) 20%, transparent);
+
+  --success: var(--color-success-600);
+  --success-foreground: var(--color-white);
+  --success-muted: var(--color-success-950);
+  --success-muted-foreground: var(--color-success-300);
+  --success-faded: color-mix(in oklab, var(--color-success-muted) 50%, transparent);
+  --border-success-faded: color-mix(in oklab, var(--color-success-500) 20%, transparent);
+
+  --warning: var(--color-warning-500);
+  --warning-foreground: var(--color-warning-950);
+  --warning-muted: var(--color-warning-950);
+  --warning-muted-foreground: var(--color-warning-400);
+  --warning-faded: color-mix(in oklab, var(--color-warning-muted) 50%, transparent);
+  --border-warning-faded: color-mix(in oklab, var(--color-warning-400) 20%, transparent);
 
   --skeleton: var(--color-base-800);
   --skeleton-shimmer: var(--color-base-700);
@@ -220,40 +240,50 @@
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
 
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-primary-muted: var(--primary-muted);
-  --color-primary-muted-foreground: var(--primary-muted-foreground);
-
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary-muted: var(--secondary-muted);
-  --color-secondary-muted-foreground: var(--secondary-muted-foreground);
-
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
 
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
 
+  --color-border: var(--border);
+  --color-border-hover: var(--border-hover);
+  --color-input: var(--input);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-muted: var(--primary-muted);
+  --color-primary-muted-foreground: var(--primary-muted-foreground);
+  --color-primary-faded: var(--primary-faded);
+  --color-border-primary-faded: var(--border-primary-faded);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary-muted: var(--secondary-muted);
+  --color-secondary-muted-foreground: var(--secondary-muted-foreground);
+  --color-secondary-faded: var(--secondary-faded);
+  --color-border-secondary-faded: var(--border-secondary-faded);
+
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
   --color-destructive-muted: var(--destructive-muted);
   --color-destructive-muted-foreground: var(--destructive-muted-foreground);
+  --color-destructive-faded: var(--destructive-faded);
+  --color-border-destructive-faded: var(--border-destructive-faded);
 
   --color-success: var(--success);
   --color-success-foreground: var(--success-foreground);
   --color-success-muted: var(--success-muted);
   --color-success-muted-foreground: var(--success-muted-foreground);
+  --color-success-faded: var(--success-faded);
+  --color-border-success-faded: var(--border-success-faded);
 
   --color-warning: var(--warning);
   --color-warning-foreground: var(--warning-foreground);
   --color-warning-muted: var(--warning-muted);
   --color-warning-muted-foreground: var(--warning-muted-foreground);
-
-  --color-border: var(--border);
-  --color-border-hover: var(--border-hover);
-  --color-input: var(--input);
+  --color-warning-faded: var(--warning-faded);
+  --color-border-warning-faded: var(--border-warning-faded);
 
   --color-skeleton: var(--skeleton);
   --color-skeleton-shimmer: var(--skeleton-shimmer);
@@ -353,7 +383,6 @@
 
   /* preserve v3 default border color configuration */
 
-  /* 
   *,
   ::after,
   ::before,
@@ -361,7 +390,6 @@
   ::file-selector-button {
     border-color: var(--color-border, currentColor);
   }
-   */
 
   ::-webkit-scrollbar {
     width: 5px;
