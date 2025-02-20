@@ -4,8 +4,10 @@ import { ComponentDemoWrapper } from "./component-demo-wrapper";
 import { AccordionDemo } from "@/components/demos/accordion-demo";
 import { AlertDemo } from "@/components/demos/alert-demo";
 import { AlertDialogDemo } from "@/components/demos/alert-dialog-demo";
+import { AvatarDemo } from "@/components/demos/avatar-demo";
 import { BadgeDemo } from "@/components/demos/badge-demo";
 import { ButtonDemo } from "@/components/demos/button-demo";
+import { DropdownMenuDemo } from "@/components/demos/dropdown-menu-demo";
 import { SkeletonDemo } from "@/components/demos/skeleton-demo";
 
 const COMPONENTS = [
@@ -25,6 +27,11 @@ const COMPONENTS = [
     component: <AlertDialogDemo />,
   },
   {
+    title: "Avatar",
+    id: "avatar",
+    component: <AvatarDemo />,
+  },
+  {
     title: "Badge",
     id: "badge",
     component: <BadgeDemo />,
@@ -33,6 +40,11 @@ const COMPONENTS = [
     title: "Button",
     id: "button",
     component: <ButtonDemo />,
+  },
+  {
+    title: "Dropdown Menu",
+    id: "dropdown-menu",
+    component: <DropdownMenuDemo />,
   },
   {
     title: "Skeleton",

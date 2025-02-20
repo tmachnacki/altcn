@@ -14,8 +14,10 @@ const buttonVariants = cva(
     variants: {
       variant: {
         // base
-        accent: "bg-accent text-accent-foreground hover:bg-base-200/60 dark:hover:bg-base-800/70",
-        muted: "bg-muted text-muted-foreground hover:bg-base-200/60 dark:hover:bg-base-800/70",
+        accent:
+          "bg-accent text-accent-foreground hover:bg-base-200/60 dark:hover:bg-base-800/70",
+        muted:
+          "bg-muted text-muted-foreground hover:bg-base-200/60 dark:hover:bg-base-800/70",
         outline:
           "border bg-background shadow-xs hover:border-border-hover hover:bg-accent hover:text-accent-foreground",
         faded: "",
@@ -31,7 +33,7 @@ const buttonVariants = cva(
         primaryMuted:
           "bg-primary-muted text-primary-muted-foreground hover:bg-primary-muted/80 focus-visible:outline-primary",
         primaryFaded:
-          "border border-border-primary-faded bg-primary-faded text-primary-muted-foreground shadow-xs hover:bg-primary-muted/80 focus-visible:outline-primary",
+          "border border-border-primary-faded bg-primary-faded text-primary-muted-foreground shadow-xs hover:bg-primary-muted/70 focus-visible:outline-primary",
         primaryTron: [
           tronClassNames,
           "text-primary-muted-foreground before:via-primary after:via-primary hover:border-primary/50 hover:from-primary/20 hover:to-primary/5 focus-visible:outline-primary",
@@ -49,7 +51,7 @@ const buttonVariants = cva(
         secondaryMuted:
           "bg-secondary-muted text-secondary-muted-foreground hover:bg-secondary-muted/80 focus-visible:outline-secondary",
         secondaryFaded:
-          "border border-border-secondary-faded bg-secondary-faded text-secondary-muted-foreground shadow-xs hover:bg-secondary-muted/80 focus-visible:outline-secondary",
+          "border border-border-secondary-faded bg-secondary-faded text-secondary-muted-foreground shadow-xs hover:bg-secondary-muted/70 focus-visible:outline-secondary",
         secondaryTron: [
           tronClassNames,
           "text-secondary-muted-foreground before:via-secondary after:via-secondary hover:border-secondary/50 hover:from-secondary/20 hover:to-secondary/5 focus-visible:outline-secondary",
@@ -67,7 +69,7 @@ const buttonVariants = cva(
         destructiveMuted:
           "bg-destructive-muted text-destructive-muted-foreground hover:bg-destructive-muted/80 focus-visible:outline-destructive",
         destructiveFaded:
-          "border border-border-destructive-faded bg-destructive-faded text-destructive-muted-foreground shadow-xs hover:bg-destructive-muted/80 focus-visible:outline-destructive",
+          "border border-border-destructive-faded bg-destructive-faded text-destructive-muted-foreground shadow-xs hover:bg-destructive-muted/70 focus-visible:outline-destructive",
         destructiveTron: [
           tronClassNames,
           "text-destructive-muted-foreground before:via-destructive after:via-destructive hover:border-destructive/50 hover:from-destructive/20 hover:to-destructive/5 focus-visible:outline-destructive",

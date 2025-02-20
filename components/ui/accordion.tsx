@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
 
 const accordionItemVariants = cva(
-  "group-hover/accordion:opacity-70 hover:!opacity-100 has-focus-visible:outline-2 group/accordion-item",
+  "group/accordion-item group-hover/accordion:opacity-70 hover:!opacity-100 has-focus-visible:outline-2",
   {
     variants: {
       variant: {
