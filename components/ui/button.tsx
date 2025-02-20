@@ -13,7 +13,7 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        // base
+        // --- base ---
         accent:
           "bg-accent text-accent-foreground hover:bg-base-200/60 dark:hover:bg-base-800/70",
         muted:
@@ -27,59 +27,79 @@ const buttonVariants = cva(
         input:
           "border border-border bg-base-50 font-normal text-foreground shadow-xs hover:border-border-hover focus-visible:outline-offset-0 focus-visible:outline-primary data-[empty=true]:text-muted-foreground dark:bg-accent dark:hover:border-border-hover aria-invalid:border-destructive aria-invalid:focus-visible:outline-destructive",
 
-        // primary
+        // --- primary ---
         primary:
           "bg-primary text-primary-foreground shadow hover:bg-primary/90 focus-visible:outline-primary",
-        primaryMuted:
+
+        "primary-muted":
           "bg-primary-muted text-primary-muted-foreground hover:bg-primary-muted/80 focus-visible:outline-primary",
-        primaryFaded:
+
+        "primary-flat": "bg-transparent text-primary-950 dark:text-primary-50 hover:bg-primary-muted",
+
+        "primary-faded":
           "border border-border-primary-faded bg-primary-faded text-primary-muted-foreground shadow-xs hover:bg-primary-muted/70 focus-visible:outline-primary",
-        primaryTron: [
+
+        "primary-tron": [
           tronClassNames,
-          "text-primary-muted-foreground before:via-primary after:via-primary hover:border-primary/50 hover:from-primary/20 hover:to-primary/5 focus-visible:outline-primary",
+          "text-primary-ghost-foreground before:via-primary after:via-primary hover:border-primary/50 hover:from-primary/20 hover:to-primary/5 focus-visible:outline-primary",
         ],
-        primaryShadow:
+
+        "primary-shadow":
           "bg-primary text-primary-foreground shadow-lg shadow-primary/50 hover:bg-primary/90 focus-visible:outline-primary",
-        primaryGradient:
+
+        "primary-gradient":
           "bg-gradient-to-br from-primary-600 to-primary-400 text-primary-foreground hover:from-primary-600/90 hover:to-primary-400/90 focus-visible:outline-primary",
-        primaryGhost:
-          "text-primary-muted-foreground hover:bg-primary-muted focus-visible:outline-primary",
+
+        "primary-ghost":
+          "text-primary-ghost-foreground hover:bg-primary-muted focus-visible:outline-primary",
 
         // secondary
         secondary:
           "bg-secondary text-secondary-foreground shadow hover:bg-secondary/90 focus-visible:outline-secondary",
-        secondaryMuted:
-          "bg-secondary-muted text-secondary-muted-foreground hover:bg-secondary-muted/80 focus-visible:outline-secondary",
-        secondaryFaded:
-          "border border-border-secondary-faded bg-secondary-faded text-secondary-muted-foreground shadow-xs hover:bg-secondary-muted/70 focus-visible:outline-secondary",
-        secondaryTron: [
-          tronClassNames,
-          "text-secondary-muted-foreground before:via-secondary after:via-secondary hover:border-secondary/50 hover:from-secondary/20 hover:to-secondary/5 focus-visible:outline-secondary",
-        ],
-        secondaryShadow:
-          "bg-secondary text-secondary-foreground shadow-lg shadow-secondary/50 hover:bg-secondary/90 focus-visible:outline-secondary",
-        secondaryGradient:
-          "bg-gradient-to-br from-secondary-500 to-secondary-300 text-secondary-foreground hover:from-secondary-500/90 hover:to-secondary-300/90 focus-visible:outline-secondary",
-        secondaryGhost:
-          "text-secondary-muted-foreground hover:bg-secondary-muted focus-visible:outline-secondary",
 
-        // destructive
+        "secondary-muted":
+          "bg-secondary-muted text-secondary-muted-foreground hover:bg-secondary-muted/80 focus-visible:outline-secondary",
+
+        "secondary-faded":
+          "border border-border-secondary-faded bg-secondary-faded text-secondary-muted-foreground shadow-xs hover:bg-secondary-muted/70 focus-visible:outline-secondary",
+
+        "secondary-tron": [
+          tronClassNames,
+          "text-secondary-ghost-foreground before:via-secondary after:via-secondary hover:border-secondary/50 hover:from-secondary/20 hover:to-secondary/5 focus-visible:outline-secondary",
+        ],
+
+        "secondary-shadow":
+          "bg-secondary text-secondary-foreground shadow-lg shadow-secondary/50 hover:bg-secondary/90 focus-visible:outline-secondary",
+
+        "secondary-gradient":
+          "bg-gradient-to-br from-secondary-500 to-secondary-300 text-secondary-foreground hover:from-secondary-500/90 hover:to-secondary-300/90 focus-visible:outline-secondary",
+
+        "secondary-ghost":
+          "text-secondary-ghost-foreground hover:bg-secondary-muted focus-visible:outline-secondary",
+
+        // --- destructive ---
         destructive:
           "bg-destructive text-destructive-foreground shadow hover:bg-destructive/90 focus-visible:outline-destructive",
-        destructiveMuted:
+
+        "destructive-muted":
           "bg-destructive-muted text-destructive-muted-foreground hover:bg-destructive-muted/80 focus-visible:outline-destructive",
-        destructiveFaded:
+
+        "destructive-faded":
           "border border-border-destructive-faded bg-destructive-faded text-destructive-muted-foreground shadow-xs hover:bg-destructive-muted/70 focus-visible:outline-destructive",
-        destructiveTron: [
+
+        "destructive-tron": [
           tronClassNames,
-          "text-destructive-muted-foreground before:via-destructive after:via-destructive hover:border-destructive/50 hover:from-destructive/20 hover:to-destructive/5 focus-visible:outline-destructive",
+          "text-destructive-ghost-foreground before:via-destructive after:via-destructive hover:border-destructive/50 hover:from-destructive/20 hover:to-destructive/5 focus-visible:outline-destructive",
         ],
-        destructiveShadow:
+
+        "destructive-shadow":
           "bg-destructive text-destructive-foreground shadow-lg shadow-destructive/50 hover:bg-destructive/90 focus-visible:outline-destructive",
-        destructiveGradient:
+
+        "destructive-gradient":
           "bg-gradient-to-br from-destructive-600 to-destructive-400 text-destructive-foreground hover:from-destructive-600/90 hover:to-destructive-400/90 focus-visible:outline-destructive dark:from-destructive-700 dark:to-destructive-500 dark:hover:from-destructive-700/90 dark:hover:to-destructive-500/90",
-        destructiveGhost:
-          "text-destructive-muted-foreground hover:bg-destructive-muted focus-visible:outline-destructive",
+          
+        "destructive-ghost":
+          "text-destructive-ghost-foreground hover:bg-destructive-muted focus-visible:outline-destructive",
       },
       size: {
         default:

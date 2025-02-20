@@ -6,7 +6,6 @@ import {
   BellIcon,
   ChevronsUpDownIcon,
   CreditCardIcon,
-  LogOut,
   LogOutIcon,
   MoreHorizontalIcon,
   PencilIcon,
@@ -40,6 +39,7 @@ import {
 export function DropdownMenuDemo() {
   return (
     <div className="flex flex-col items-center gap-4 md:flex-row">
+      <DropdownMenuVariants />
       <DropdownMenuSimple />
       <DropdownMenuCheckboxes />
       <DropdownMenuRadioGroupDemo />
@@ -47,6 +47,88 @@ export function DropdownMenuDemo() {
       <DropdownMenuAvatarOnly />
       <DropdownMenuIconColor />
     </div>
+  );
+}
+
+function DropdownMenuVariants() {
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline">Base Variants</Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="start" className="w-56">
+        <DropdownMenuGroup>
+          <DropdownMenuItem>
+            <LogOutIcon />
+            Accent (Default)
+          </DropdownMenuItem>
+          <DropdownMenuItem wide>
+            <LogOutIcon />
+            Accent Wide
+          </DropdownMenuItem>
+          <DropdownMenuItem variant="faded">
+            <LogOutIcon />
+            Faded
+          </DropdownMenuItem>
+          <DropdownMenuItem variant="faded" wide>
+            <LogOutIcon />
+            Faded Wide
+          </DropdownMenuItem>
+          <DropdownMenuItem variant="primary">
+            <LogOutIcon />
+            Primary
+          </DropdownMenuItem>
+          <DropdownMenuItem variant="primary" wide>
+            <LogOutIcon />
+            Primary Wide
+          </DropdownMenuItem>
+          <DropdownMenuItem variant="primary-muted">
+            <LogOutIcon />
+            Primary Muted
+          </DropdownMenuItem>
+          <DropdownMenuItem variant="primary-muted" wide>
+            <LogOutIcon />
+            Primary Muted Wide
+          </DropdownMenuItem>
+          <DropdownMenuItem variant="primary-faded">
+            <LogOutIcon />
+            Primary Faded
+          </DropdownMenuItem>
+          <DropdownMenuItem variant="primary-faded" wide>
+            <LogOutIcon />
+            Primary Faded Wide
+          </DropdownMenuItem>
+        </DropdownMenuGroup>
+        <DropdownMenuSeparator />
+        <DropdownMenuGroup>
+          <DropdownMenuItem>Team</DropdownMenuItem>
+          <DropdownMenuSub>
+            <DropdownMenuSubTrigger>Invite users</DropdownMenuSubTrigger>
+            <DropdownMenuPortal>
+              <DropdownMenuSubContent>
+                <DropdownMenuItem>Email</DropdownMenuItem>
+                <DropdownMenuItem>Message</DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>More...</DropdownMenuItem>
+              </DropdownMenuSubContent>
+            </DropdownMenuPortal>
+          </DropdownMenuSub>
+          <DropdownMenuItem>
+            New Team
+            <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
+          </DropdownMenuItem>
+        </DropdownMenuGroup>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem>GitHub</DropdownMenuItem>
+        <DropdownMenuItem>Support</DropdownMenuItem>
+        <DropdownMenuItem disabled>API</DropdownMenuItem>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem>
+          Log out
+          <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 }
 
@@ -253,7 +335,7 @@ function DropdownMenuWithAvatar() {
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
-          <LogOut />
+          <LogOutIcon />
           Sign Out
         </DropdownMenuItem>
       </DropdownMenuContent>
@@ -317,7 +399,7 @@ function DropdownMenuAvatarOnly() {
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
-          <LogOut />
+          <LogOutIcon />
           Sign Out
         </DropdownMenuItem>
       </DropdownMenuContent>
@@ -345,7 +427,7 @@ function DropdownMenuIconColor() {
             Share
           </DropdownMenuItem>
           <DropdownMenuSeparator />
-          <DropdownMenuItem variant="destructive">
+          <DropdownMenuItem>
             <TrashIcon />
             Delete
           </DropdownMenuItem>

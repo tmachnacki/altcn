@@ -1,164 +1,346 @@
-import { AlertCircleIcon, ArrowRightIcon, CheckIcon } from "lucide-react";
-
 import { Badge, BadgeClose, BadgeDot } from "@/components/ui/badge";
+import { ArrowRightIcon, CheckIcon } from "lucide-react";
+import { Separator } from "@/components/ui/separator";
 
 export function BadgeDemo() {
   return (
     <div className="space-y-8">
       <div className="flex flex-wrap gap-4">
-        <Badge variant="outline">Outline</Badge>
         <Badge variant="accent">Accent</Badge>
-        <Badge variant="muted">Muted</Badge>
-        <Badge variant="faded">Faded</Badge>
-        <Badge>Primary</Badge>
-        <Badge variant="primaryMuted">Primary Muted</Badge>
-        <Badge variant="primaryFaded">Primary Faded</Badge>
-        <Badge variant="secondary">Secondary</Badge>
-        <Badge variant="secondaryMuted">Secondary Muted</Badge>
-        <Badge variant="secondaryFaded">Secondary Faded</Badge>
-        <Badge variant="destructive">Destructive</Badge>
-        <Badge variant="destructiveMuted">Destructive Muted</Badge>
-        <Badge variant="destructiveFaded">Destructive Faded</Badge>
-        <Badge variant="success">Success</Badge>
-        <Badge variant="successMuted">Success Muted</Badge>
-        <Badge variant="successFaded">Success Faded</Badge>
-        <Badge variant="warning">Warning</Badge>
-        <Badge variant="warningMuted">Warning Muted</Badge>
-        <Badge variant="warningFaded">Warning Faded</Badge>
+        <Badge variant="accent">
+          <CheckIcon />
+          Icon
+        </Badge>
+        <Badge asChild variant="accent">
+          <a href="#">
+            Link
+            <ArrowRightIcon />
+          </a>
+        </Badge>
+        <Badge variant="accent">
+          Close
+          <BadgeClose />
+        </Badge>
+        <Badge variant="outline">Outline</Badge>
         <Badge variant="outline">
           <CheckIcon />
-          Badge
-        </Badge>
-        <Badge variant="destructive">
-          <AlertCircleIcon />
-          Alert
-        </Badge>
-        <Badge className="size-5 rounded-full p-0 font-mono tabular-nums">
-          8
-        </Badge>
-      </div>
-      <div className="flex flex-wrap gap-4">
-        <Badge asChild variant="accent">
-          <a href="#badge">
-            Accent <ArrowRightIcon />
-          </a>
+          Icon
         </Badge>
         <Badge asChild variant="outline">
-          <a href="#badge">
-            Outline <ArrowRightIcon />
+          <a href="#">
+            Link
+            <ArrowRightIcon />
           </a>
+        </Badge>
+        <Badge variant="outline">
+          Close
+          <BadgeClose />
+        </Badge>
+
+        <Badge variant="muted">Muted</Badge>
+        <Badge variant="muted">
+          <CheckIcon />
+          Icon
+        </Badge>
+        <Badge asChild variant="muted">
+          <a href="#">
+            Link
+            <ArrowRightIcon />
+          </a>
+        </Badge>
+        <Badge variant="muted">
+          Close
+          <BadgeClose />
+        </Badge>
+        <Badge variant="faded">Faded</Badge>
+        <Badge variant="faded">
+          <CheckIcon />
+          Icon
         </Badge>
         <Badge asChild variant="faded">
-          <a href="#badge">
-            Faded <ArrowRightIcon />
+          <a href="#">
+            Link
+            <ArrowRightIcon />
           </a>
         </Badge>
-        <Badge asChild>
-          <a href="#badge">
-            Primary <ArrowRightIcon />
+        <Badge variant="faded">
+          Close
+          <BadgeClose />
+        </Badge>
+        <Badge variant="outline">
+          <BadgeDot className="fill-muted-foreground stroke-muted-foreground" />
+          Dotted
+        </Badge>
+      </div>
+
+      <Separator />
+
+      <div className="flex flex-wrap gap-4">
+        <Badge variant="primary">Primary</Badge>
+        <Badge variant="primary">
+          <CheckIcon />
+          Icon
+        </Badge>
+        <Badge asChild variant="primary">
+          <a href="#">
+            Link
+            <ArrowRightIcon />
           </a>
         </Badge>
-        <Badge asChild variant="primaryMuted">
-          <a href="#badge">
-            Muted <ArrowRightIcon />
+        <Badge variant="primary">
+          Close
+          <BadgeClose />
+        </Badge>
+        <Badge variant="primary-muted">Muted</Badge>
+        <Badge variant="primary-muted">
+          <CheckIcon />
+          Icon
+        </Badge>
+        <Badge asChild variant="primary-muted">
+          <a href="#">
+            Link
+            <ArrowRightIcon />
           </a>
         </Badge>
-        <Badge asChild variant="primaryFaded">
-          <a href="#badge">
-            Faded <ArrowRightIcon />
+        <Badge variant="primary-muted">
+          Close
+          <BadgeClose />
+        </Badge>
+        <Badge variant="primary-faded">Faded</Badge>
+        <Badge variant="primary-faded">
+          <CheckIcon />
+          Icon
+        </Badge>
+        <Badge asChild variant="primary-faded">
+          <a href="#">
+            Link
+            <ArrowRightIcon />
           </a>
+        </Badge>
+        <Badge variant="primary-faded">
+          Close
+          <BadgeClose />
+        </Badge>
+        <Badge variant="outline">
+          <BadgeDot className="fill-primary stroke-primary" />
+          Dotted
+        </Badge>
+      </div>
+
+      <Separator />
+
+      <div className="flex flex-wrap gap-4">
+        <Badge variant="secondary">Secondary</Badge>
+        <Badge variant="secondary">
+          <CheckIcon />
+          Icon
         </Badge>
         <Badge asChild variant="secondary">
-          <a href="#badge">
-            Secondary <ArrowRightIcon />
+          <a href="#">
+            Link
+            <ArrowRightIcon />
           </a>
         </Badge>
-        <Badge asChild variant="secondaryMuted">
-          <a href="#badge">
-            Muted <ArrowRightIcon />
+        <Badge variant="secondary">
+          Close
+          <BadgeClose />
+        </Badge>
+        <Badge variant="secondary-muted">Muted</Badge>
+        <Badge variant="secondary-muted">
+          <CheckIcon />
+          Icon
+        </Badge>
+        <Badge asChild variant="secondary-muted">
+          <a href="#">
+            Link
+            <ArrowRightIcon />
           </a>
         </Badge>
-        <Badge asChild variant="secondaryFaded">
-          <a href="#badge">
-            Faded <ArrowRightIcon />
+        <Badge variant="secondary-muted">
+          Close
+          <BadgeClose />
+        </Badge>
+        <Badge variant="secondary-faded">Faded</Badge>
+        <Badge variant="secondary-faded">
+          <CheckIcon />
+          Icon
+        </Badge>
+        <Badge asChild variant="secondary-faded">
+          <a href="#">
+            Link
+            <ArrowRightIcon />
           </a>
+        </Badge>
+        <Badge variant="secondary-faded">
+          Close
+          <BadgeClose />
+        </Badge>
+
+        <Badge variant="outline">
+          <BadgeDot className="fill-secondary stroke-secondary" />
+          Dotted
+        </Badge>
+      </div>
+
+      <Separator />
+
+      <div className="flex flex-wrap gap-4">
+        <Badge variant="destructive">Destructive</Badge>
+        <Badge variant="destructive">
+          <CheckIcon />
+          Icon
         </Badge>
         <Badge asChild variant="destructive">
-          <a href="#badge">
-            Destructive <ArrowRightIcon />
+          <a href="#">
+            Link
+            <ArrowRightIcon />
           </a>
         </Badge>
-        <Badge asChild variant="destructiveMuted">
-          <a href="#badge">
-            Muted <ArrowRightIcon />
+        <Badge variant="destructive">
+          Close
+          <BadgeClose />
+        </Badge>
+        <Badge variant="destructive-muted">Muted</Badge>
+        <Badge variant="destructive-muted">
+          <CheckIcon />
+          Icon
+        </Badge>
+        <Badge asChild variant="destructive-muted">
+          <a href="#">
+            Link
+            <ArrowRightIcon />
           </a>
         </Badge>
-        <Badge asChild variant="destructiveFaded">
-          <a href="#badge">
-            Faded <ArrowRightIcon />
+        <Badge variant="destructive-muted">
+          Close
+          <BadgeClose />
+        </Badge>
+        <Badge variant="destructive-faded">Faded</Badge>
+        <Badge variant="destructive-faded">
+          <CheckIcon />
+          Icon
+        </Badge>
+        <Badge asChild variant="destructive-faded">
+          <a href="#">
+            Link
+            <ArrowRightIcon />
           </a>
+        </Badge>
+        <Badge variant="destructive-faded">
+          Close
+          <BadgeClose />
+        </Badge>
+        <Badge variant="outline">
+          <BadgeDot className="fill-destructive stroke-destructive" />
+          Dotted
+        </Badge>
+      </div>
+
+      <Separator />
+
+      <div className="flex flex-wrap gap-4">
+        <Badge variant="success">Success</Badge>
+        <Badge variant="success">
+          <CheckIcon />
+          Icon
         </Badge>
         <Badge asChild variant="success">
-          <a href="#badge">
-            Success <ArrowRightIcon />
+          <a href="#">
+            Link
+            <ArrowRightIcon />
           </a>
         </Badge>
-        <Badge asChild variant="successMuted">
-          <a href="#badge">
-            Muted <ArrowRightIcon />
+        <Badge variant="success">
+          Close
+          <BadgeClose />
+        </Badge>
+        <Badge variant="success-muted">Muted</Badge>
+        <Badge variant="success-muted">
+          <CheckIcon />
+          Icon
+        </Badge>
+        <Badge asChild variant="success-muted">
+          <a href="#">
+            Link
+            <ArrowRightIcon />
           </a>
         </Badge>
-        <Badge asChild variant="successFaded">
-          <a href="#badge">
-            Faded <ArrowRightIcon />
+        <Badge variant="success-muted">
+          Close
+          <BadgeClose />
+        </Badge>
+        <Badge variant="success-faded">Faded</Badge>
+        <Badge variant="success-faded">
+          <CheckIcon />
+          Icon
+        </Badge>
+        <Badge asChild variant="success-faded">
+          <a href="#">
+            Link
+            <ArrowRightIcon />
           </a>
+        </Badge>
+        <Badge variant="success-faded">
+          Close
+          <BadgeClose />
+        </Badge>
+        <Badge variant="outline">
+          <BadgeDot className="fill-success stroke-success" />
+          Dotted
+        </Badge>
+      </div>
+
+      <Separator />
+
+      <div className="flex flex-wrap gap-4">
+        <Badge variant="warning">Warning</Badge>
+        <Badge variant="warning">
+          <CheckIcon />
+          Icon
         </Badge>
         <Badge asChild variant="warning">
-          <a href="#badge">
-            Warning <ArrowRightIcon />
+          <a href="#">
+            Link
+            <ArrowRightIcon />
           </a>
         </Badge>
-        <Badge asChild variant="warningMuted">
-          <a href="#badge">
-            Muted <ArrowRightIcon />
-          </a>
-        </Badge>
-        <Badge asChild variant="warningFaded">
-          <a href="#badge">
-            Faded <ArrowRightIcon />
-          </a>
-        </Badge>
-      </div>
-      <div className="flex flex-wrap gap-4">
-        <Badge variant="outline">
-          <BadgeDot className="fill-muted-foreground" />
-          Badge
-        </Badge>
-        <Badge variant="outline">
-          <BadgeDot className="fill-primary" />
-          Badge
-        </Badge>
-        <Badge variant="outline">
-          <BadgeDot className="fill-secondary" />
-          Badge
-        </Badge>
-        <Badge variant="outline">
-          <BadgeDot className="fill-destructive" />
-          Badge
-        </Badge>
-        <Badge variant="outline">
-          <BadgeDot className="fill-success" />
-          Badge
-        </Badge>
-        <Badge variant="outline">
-          <BadgeDot className="fill-warning" />
-          Badge
-        </Badge>
-      </div>
-      <div className="flex flex-wrap gap-4">
-        <Badge variant="outline">
-          Badge
+        <Badge variant="warning">
+          Close
           <BadgeClose />
+        </Badge>
+        <Badge variant="warning-muted">Muted</Badge>
+        <Badge variant="warning-muted">
+          <CheckIcon />
+          Icon
+        </Badge>
+        <Badge asChild variant="warning-muted">
+          <a href="#">
+            Link
+            <ArrowRightIcon />
+          </a>
+        </Badge>
+        <Badge variant="warning-muted">
+          Close
+          <BadgeClose />
+        </Badge>
+        <Badge variant="warning-faded">Faded</Badge>
+        <Badge variant="warning-faded">
+          <CheckIcon />
+          Icon
+        </Badge>
+        <Badge asChild variant="warning-faded">
+          <a href="#">
+            Link
+            <ArrowRightIcon />
+          </a>
+        </Badge>
+        <Badge variant="warning-faded">
+          Close
+          <BadgeClose />
+        </Badge>
+        <Badge variant="outline">
+          <BadgeDot className="fill-warning stroke-warning" />
+          Dotted
         </Badge>
       </div>
     </div>
