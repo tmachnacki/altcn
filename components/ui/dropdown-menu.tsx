@@ -8,18 +8,24 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const menuItemVariants = cva(
-  "relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[inset]:pl-8 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground",
+  "relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[inset]:pl-8 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
   {
     variants: {
       variant: {
-        accent: "focus:bg-accent focus:text-accent-foreground",
-        faded: "focus:bg-faded focus:inset-ring focus:inset-ring-border-faded",
-        primary: "focus:bg-primary focus:text-primary-foreground focus:[&_svg:not([class*='text-'])]:text-primary-200",
+        accent:
+          "focus:bg-accent focus:text-accent-foreground [&_svg:not([class*='text-'])]:text-muted-foreground",
+        faded:
+          "focus:bg-faded focus:inset-ring focus:inset-ring-border-faded [&_svg:not([class*='text-'])]:text-muted-foreground",
+        primary:
+          "focus:bg-primary focus:text-primary-foreground [&_svg:not([class*='text-'])]:text-primary-muted-foreground focus:[&_svg:not([class*='text-'])]:text-primary-200",
         "primary-muted":
-          "focus:bg-primary-muted focus:text-primary-muted-foreground focus:[&_svg:not([class*='text-'])]:text-primary-400 dark:focus:[&_svg:not([class*='text-'])]:text-primary-500/80",
+          "focus:bg-primary-muted focus:text-primary-950 dark:focus:text-primary-50 [&_svg:not([class*='text-'])]:text-primary-muted-foreground focus:[&_svg:not([class*='text-'])]:text-primary-muted-foreground",
         "primary-faded":
-          "focus:bg-primary-faded focus:text-primary-muted-foreground focus:inset-ring focus:inset-ring-border-primary-faded",
-        secondary: "focus:bg-secondary focus:text-secondary-foreground",
+          "focus:bg-primary-faded focus:text-primary-950 focus:inset-ring focus:inset-ring-border-primary-faded dark:focus:text-primary-50 [&_svg:not([class*='text-'])]:text-primary-muted-foreground",
+        secondary:
+          "focus:bg-secondary focus:text-secondary-foreground focus:[&_svg:not([class*='text-'])]:text-secondary-600",
+        destructive:
+          "text-destructive focus:text-destructive-foreground focus:bg-destructive [&_svg:not([class*='text-'])]:text-destructive-400 dark:[&_svg:not([class*='text-'])]:text-destructive-700",
       },
       wide: {
         false: null,
@@ -75,7 +81,7 @@ function DropdownMenuContent({
         data-slot="dropdown-menu-content"
         sideOffset={sideOffset}
         className={cn(
-          "z-50 min-w-[8rem] overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:duration-200 data-[state=open]:ease-out data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:data-[side=bottom]:slide-in-from-top-1 data-[state=open]:data-[side=left]:slide-in-from-right-1 data-[state=open]:data-[side=right]:slide-in-from-left-1 data-[state=open]:data-[side=top]:slide-in-from-bottom-1",
+          "z-50 min-w-[8rem] overflow-hidden rounded-md border bg-popover p-1 backdrop-blur-lg text-popover-foreground shadow-md data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:duration-200 data-[state=open]:ease-out data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:data-[side=bottom]:slide-in-from-top-1 data-[state=open]:data-[side=left]:slide-in-from-right-1 data-[state=open]:data-[side=right]:slide-in-from-left-1 data-[state=open]:data-[side=top]:slide-in-from-bottom-1",
           className,
         )}
         {...props}

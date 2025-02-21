@@ -39,7 +39,8 @@ import {
 export function DropdownMenuDemo() {
   return (
     <div className="flex flex-col items-center gap-4 md:flex-row">
-      <DropdownMenuVariants />
+      <DropdownMenuBaseVariants />
+      <DropdownMenuPrimaryVariants />
       <DropdownMenuSimple />
       <DropdownMenuCheckboxes />
       <DropdownMenuRadioGroupDemo />
@@ -50,14 +51,13 @@ export function DropdownMenuDemo() {
   );
 }
 
-function DropdownMenuVariants() {
+function DropdownMenuBaseVariants() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="outline">Base Variants</Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="start" className="w-56">
-        <DropdownMenuGroup>
           <DropdownMenuItem>
             <LogOutIcon />
             Accent (Default)
@@ -74,6 +74,27 @@ function DropdownMenuVariants() {
             <LogOutIcon />
             Faded Wide
           </DropdownMenuItem>
+          <DropdownMenuItem disabled>
+            <LogOutIcon />
+            Disabled
+          </DropdownMenuItem>
+          <DropdownMenuItem variant="destructive">
+            <TrashIcon />
+            Destructive
+          </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
+
+function DropdownMenuPrimaryVariants() {
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="primary-faded">Primary Variants</Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="start" className="w-56">
+        <DropdownMenuGroup>
           <DropdownMenuItem variant="primary">
             <LogOutIcon />
             Primary
@@ -81,6 +102,10 @@ function DropdownMenuVariants() {
           <DropdownMenuItem variant="primary" wide>
             <LogOutIcon />
             Primary Wide
+          </DropdownMenuItem>
+          <DropdownMenuItem variant="primary">
+            New Team
+            <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
           </DropdownMenuItem>
           <DropdownMenuItem variant="primary-muted">
             <LogOutIcon />
@@ -94,12 +119,7 @@ function DropdownMenuVariants() {
             <LogOutIcon />
             Primary Faded
           </DropdownMenuItem>
-          <DropdownMenuItem variant="primary-faded" wide>
-            <LogOutIcon />
-            Primary Faded Wide
-          </DropdownMenuItem>
         </DropdownMenuGroup>
-        <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem>Team</DropdownMenuItem>
           <DropdownMenuSub>

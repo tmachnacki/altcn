@@ -9,6 +9,8 @@ export function ButtonDemo() {
       <div className="flex flex-wrap gap-4">
         <Button variant="accent">Accent</Button>
         <Button variant={"outline"}>Outline</Button>
+        <Button variant={"muted"}>Muted</Button>
+        <Button variant={"faded"}>Faded</Button>
         <Button variant={"ghost"}>Ghost</Button>
         <Button variant={"link"}>Link</Button>
       </div>
@@ -16,6 +18,9 @@ export function ButtonDemo() {
         <Button variant="input">Input</Button>
         <Button variant="input" empty>
           Placeholder
+        </Button>
+        <Button variant="input" aria-invalid>
+          Invalid
         </Button>
       </div>
       <div className="flex flex-wrap gap-4">

@@ -9,23 +9,22 @@ import { tronClassNames } from "@/lib/variants";
 // I wanted to minimize the amount of work needed to use variants in existing shadcn/ui apps
 
 const buttonVariants = cva(
-  "relative inline-flex items-center justify-center gap-2 rounded-md text-sm font-semibold whitespace-nowrap select-none focus-visible:outline-2 focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+  "group/button relative isolate inline-flex items-center justify-center gap-2 rounded-md text-sm font-semibold whitespace-nowrap select-none focus-visible:outline-2 focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
   {
     variants: {
       variant: {
         // --- base ---
         accent:
-          "bg-accent text-accent-foreground hover:bg-base-200/60 dark:hover:bg-base-800/70",
-        muted:
-          "bg-muted text-muted-foreground hover:bg-base-200/60 dark:hover:bg-base-800/70",
+          "bg-accent text-accent-foreground hover:bg-base-200 dark:hover:bg-base-800",
         outline:
-          "border bg-background shadow-xs hover:border-border-hover hover:bg-accent hover:text-accent-foreground",
-        faded: "",
+          "border border-border bg-background shadow-xs hover:border-border-hover hover:bg-muted hover:text-accent-foreground",
+        muted: "bg-muted text-muted-foreground hover:bg-accent",
+        faded: "bg-faded text-muted-foreground border border-border-faded hover:bg-accent",
         ghost:
           "bg-transparent text-foreground hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
         input:
-          "border border-border bg-base-50 font-normal text-foreground shadow-xs hover:border-border-hover focus-visible:outline-offset-0 focus-visible:outline-primary data-[empty=true]:text-muted-foreground dark:bg-accent dark:hover:border-border-hover aria-invalid:border-destructive aria-invalid:focus-visible:outline-destructive",
+          "border border-border font-normal text-foreground shadow-xs hover:border-border-hover focus-visible:border-primary focus-visible:ring-1 focus-visible:ring-primary focus-visible:outline-none data-[empty=true]:text-muted-foreground dark:bg-faded aria-invalid:border-destructive aria-invalid:focus-visible:ring-destructive",
 
         // --- primary ---
         primary:
@@ -34,14 +33,15 @@ const buttonVariants = cva(
         "primary-muted":
           "bg-primary-muted text-primary-muted-foreground hover:bg-primary-muted/80 focus-visible:outline-primary",
 
-        "primary-flat": "bg-transparent text-primary-950 dark:text-primary-50 hover:bg-primary-muted",
+        "primary-flat":
+          "bg-transparent text-primary-950 hover:bg-primary-muted dark:text-primary-50",
 
         "primary-faded":
           "border border-border-primary-faded bg-primary-faded text-primary-muted-foreground shadow-xs hover:bg-primary-muted/70 focus-visible:outline-primary",
 
         "primary-tron": [
           tronClassNames,
-          "text-primary-ghost-foreground before:via-primary after:via-primary hover:border-primary/50 hover:from-primary/20 hover:to-primary/5 focus-visible:outline-primary",
+          "text-primary-ghost-foreground before:via-primary after:via-primary hover:border-primary/50 hover:from-primary/20 hover:to-primary/[7%] focus-visible:outline-primary",
         ],
 
         "primary-shadow":
@@ -65,7 +65,7 @@ const buttonVariants = cva(
 
         "secondary-tron": [
           tronClassNames,
-          "text-secondary-ghost-foreground before:via-secondary after:via-secondary hover:border-secondary/50 hover:from-secondary/20 hover:to-secondary/5 focus-visible:outline-secondary",
+          "text-secondary-ghost-foreground before:via-secondary after:via-secondary hover:border-secondary/50 hover:from-secondary/20 hover:to-secondary/[7%] focus-visible:outline-secondary",
         ],
 
         "secondary-shadow":
@@ -89,7 +89,7 @@ const buttonVariants = cva(
 
         "destructive-tron": [
           tronClassNames,
-          "text-destructive-ghost-foreground before:via-destructive after:via-destructive hover:border-destructive/50 hover:from-destructive/20 hover:to-destructive/5 focus-visible:outline-destructive",
+          "text-destructive-ghost-foreground before:via-destructive after:via-destructive hover:border-destructive/50 hover:from-destructive/20 hover:to-destructive/[7%] focus-visible:outline-destructive",
         ],
 
         "destructive-shadow":
@@ -97,7 +97,7 @@ const buttonVariants = cva(
 
         "destructive-gradient":
           "bg-gradient-to-br from-destructive-600 to-destructive-400 text-destructive-foreground hover:from-destructive-600/90 hover:to-destructive-400/90 focus-visible:outline-destructive dark:from-destructive-700 dark:to-destructive-500 dark:hover:from-destructive-700/90 dark:hover:to-destructive-500/90",
-          
+
         "destructive-ghost":
           "text-destructive-ghost-foreground hover:bg-destructive-muted focus-visible:outline-destructive",
       },

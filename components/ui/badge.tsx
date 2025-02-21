@@ -12,13 +12,12 @@ const badgeVariants = cva(
       variant: {
         // base
         accent:
-          "bg-accent text-accent-foreground [a&]:hover:bg-base-200/60 dark:[a&]:hover:bg-base-800/70",
-        outline:
-          "bg-background text-foreground inset-ring inset-ring-border [a&]:hover:bg-accent [a&]:hover:text-accent-foreground",
-        muted:
-          "bg-muted text-muted-foreground [a&]:hover:bg-base-200/60 dark:[a&]:hover:bg-base-800/70",
+          "bg-accent text-accent-foreground [a&]:hover:bg-base-200 dark:[a&]:hover:bg-base-800",
+        outline: "",
+        muted: "bg-muted text-muted-foreground [a&]:hover:bg-accent",
         faded:
-          "bg-faded text-muted-foreground inset-ring inset-ring-border-faded [a&]:hover:bg-muted dark:[a&]:hover:bg-base-400/15",
+          "bg-faded text-muted-foreground inset-ring inset-ring-border-faded [a&]:hover:bg-accent",
+        dotted: "",
 
         // primary
         primary:
@@ -27,6 +26,7 @@ const badgeVariants = cva(
           "bg-primary-muted text-primary-muted-foreground focus-visible:outline-primary [a&]:hover:bg-primary-muted/80",
         "primary-faded":
           "bg-primary-faded text-primary-muted-foreground inset-ring inset-ring-border-primary-faded focus-visible:outline-primary [a&]:hover:bg-primary-muted/70",
+        "primary-dotted": "",
 
         // secondary
         secondary:
@@ -35,7 +35,9 @@ const badgeVariants = cva(
           "bg-secondary-muted text-secondary-muted-foreground focus-visible:outline-secondary [a&]:hover:bg-secondary-muted/80",
         "secondary-faded":
           "bg-secondary-faded text-secondary-muted-foreground inset-ring inset-ring-border-secondary-faded focus-visible:outline-secondary [a&]:hover:bg-secondary-muted/70",
+        "secondary-dotted": "",
 
+        // destructive
         // destructive
         destructive:
           "bg-destructive text-destructive-foreground focus-visible:outline-destructive [a&]:hover:bg-destructive/90",
@@ -43,6 +45,7 @@ const badgeVariants = cva(
           "bg-destructive-muted text-destructive-muted-foreground focus-visible:outline-destructive [a&]:hover:bg-destructive-muted/80",
         "destructive-faded":
           "bg-destructive-faded text-destructive-muted-foreground inset-ring inset-ring-border-destructive-faded focus-visible:outline-destructive [a&]:hover:bg-destructive-muted/70",
+        "destructive-dotted": "",
 
         // success
         success:
@@ -51,6 +54,7 @@ const badgeVariants = cva(
           "bg-success-muted text-success-muted-foreground focus-visible:outline-success [a&]:hover:bg-success-muted/80",
         "success-faded":
           "bg-success-faded text-success-muted-foreground inset-ring inset-ring-border-success-faded focus-visible:outline-success [a&]:hover:bg-success-muted/70",
+        "success-dotted": "",
 
         // warning
         warning:
@@ -59,8 +63,24 @@ const badgeVariants = cva(
           "bg-warning-muted text-warning-muted-foreground focus-visible:outline-warning [a&]:hover:bg-warning-muted/80",
         "warning-faded":
           "bg-warning-faded text-warning-muted-foreground inset-ring inset-ring-border-warning-faded focus-visible:outline-warning [a&]:hover:bg-warning-muted/70",
+        "warning-dotted": "",
       },
     },
+    compoundVariants: [
+      {
+        variant: [
+          "outline",
+          "dotted",
+          "primary-dotted",
+          "secondary-dotted",
+          "destructive-dotted",
+          "success-dotted",
+          "warning-dotted",
+        ],
+        className:
+          "bg-transparent text-foreground inset-ring inset-ring-border [a&]:hover:bg-muted [a&]:hover:text-accent-foreground [a&]:hover:inset-ring-border-hover",
+      },
+    ],
     defaultVariants: {
       variant: "primary",
     },
@@ -86,12 +106,21 @@ function Badge({
   );
 }
 
+const badgeDotVariants = [
+  "group-data-[variant=dotted]/badge:fill-muted-foreground group-data-[variant=dotted]/badge:stroke-muted-foreground",
+  "group-data-[variant=primary-dotted]/badge:fill-primary group-data-[variant=primary-dotted]/badge:stroke-primary",
+  "group-data-[variant=secondary-dotted]/badge:fill-secondary group-data-[variant=secondary-dotted]/badge:stroke-secondary",
+  "group-data-[variant=destructive-dotted]/badge:fill-destructive group-data-[variant=destructive-dotted]/badge:stroke-destructive",
+  "group-data-[variant=success-dotted]/badge:fill-success group-data-[variant=success-dotted]/badge:stroke-success",
+  "group-data-[variant=warning-dotted]/badge:fill-warning group-data-[variant=warning-dotted]/badge:stroke-warning",
+];
+
 function BadgeDot({ className, ...props }: LucideProps) {
   return (
     <CircleIcon
       data-slot="badge-dot"
       aria-hidden="true"
-      className={cn("size-1.5", className)}
+      className={cn(badgeDotVariants, "size-1.5", className)}
       {...props}
     />
   );
@@ -108,7 +137,7 @@ const badgeCloseVariants = [
   "group-data-[variant=secondary]/badge:hover:bg-secondary-700/20",
   "group-data-[variant=secondary-muted]/badge:hover:bg-secondary-600/20 dark:group-data-[variant=secondary-muted]/badge:hover:bg-secondary-400/20",
   "group-data-[variant=secondary-faded]/badge:hover:bg-secondary-600/20 dark:group-data-[variant=secondary-faded]/badge:hover:bg-secondary-400/20",
-  "group-data-[variant=destructive]/badge:hover:bg-destructive-100/20",
+  "group-data-[variant=destructive]/badge:hover:bg-destructive-50/20",
   "group-data-[variant=destructive-muted]/badge:hover:bg-destructive-600/20 dark:group-data-[variant=destructive-muted]/badge:hover:bg-destructive-400/20",
   "group-data-[variant=destructive-faded]/badge:hover:bg-destructive-600/20 dark:group-data-[variant=destructive-faded]/badge:hover:bg-destructive-400/20",
   "group-data-[variant=success]/badge:hover:bg-success-300/20",
@@ -124,14 +153,14 @@ function BadgeClose({ className, ...props }: React.ComponentProps<"button">) {
     <button
       data-slot="badge-close"
       type="button"
+      aria-label={props["aria-label"] || "Remove"}
       className={cn(
         badgeCloseVariants,
-        "group/badge-close relative inline-flex size-4 items-center justify-center rounded-xs text-current/70 hover:text-current focus-visible:outline-1 focus-visible:outline-offset-1",
+        "group/badge-close relative inline-flex size-4 items-center justify-center rounded-xs text-current/70 hover:text-current focus-visible:outline-2 focus-visible:outline-current outline-offset-0",
         className,
       )}
       {...props}
     >
-      <span className="sr-only">Remove</span>
       <XIcon className="size-3 text-inherit" />
     </button>
   );

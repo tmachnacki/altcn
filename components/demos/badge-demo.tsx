@@ -67,8 +67,8 @@ export function BadgeDemo() {
           Close
           <BadgeClose />
         </Badge>
-        <Badge variant="outline">
-          <BadgeDot className="fill-muted-foreground stroke-muted-foreground" />
+        <Badge variant="dotted">
+          <BadgeDot />
           Dotted
         </Badge>
       </div>
@@ -121,8 +121,8 @@ export function BadgeDemo() {
           Close
           <BadgeClose />
         </Badge>
-        <Badge variant="outline">
-          <BadgeDot className="fill-primary stroke-primary" />
+        <Badge variant="primary-dotted">
+          <BadgeDot />
           Dotted
         </Badge>
       </div>
@@ -176,8 +176,8 @@ export function BadgeDemo() {
           <BadgeClose />
         </Badge>
 
-        <Badge variant="outline">
-          <BadgeDot className="fill-secondary stroke-secondary" />
+        <Badge variant="secondary-dotted">
+          <BadgeDot />
           Dotted
         </Badge>
       </div>
@@ -230,8 +230,8 @@ export function BadgeDemo() {
           Close
           <BadgeClose />
         </Badge>
-        <Badge variant="outline">
-          <BadgeDot className="fill-destructive stroke-destructive" />
+        <Badge variant="destructive-dotted">
+          <BadgeDot />
           Dotted
         </Badge>
       </div>
@@ -284,8 +284,8 @@ export function BadgeDemo() {
           Close
           <BadgeClose />
         </Badge>
-        <Badge variant="outline">
-          <BadgeDot className="fill-success stroke-success" />
+        <Badge variant="success-dotted">
+          <BadgeDot />
           Dotted
         </Badge>
       </div>
@@ -338,8 +338,8 @@ export function BadgeDemo() {
           Close
           <BadgeClose />
         </Badge>
-        <Badge variant="outline">
-          <BadgeDot className="fill-warning stroke-warning" />
+        <Badge variant="warning-dotted">
+          <BadgeDot />
           Dotted
         </Badge>
       </div>
