@@ -25,7 +25,11 @@ const menuItemVariants = cva(
         secondary:
           "focus:bg-secondary focus:text-secondary-foreground focus:[&_svg:not([class*='text-'])]:text-secondary-600",
         destructive:
-          "text-destructive focus:text-destructive-foreground focus:bg-destructive [&_svg:not([class*='text-'])]:text-destructive-400 dark:[&_svg:not([class*='text-'])]:text-destructive-700",
+          "text-destructive focus:bg-destructive focus:text-destructive-foreground",
+        "destructive-muted":
+          "text-destructive focus:bg-destructive-muted focus:text-destructive-muted-foreground",
+        "destructive-faded":
+          "text-destructive focus:bg-destructive-faded focus:text-destructive-muted-foreground focus:inset-ring focus:inset-ring-border-destructive-faded",
       },
       wide: {
         false: null,
@@ -34,7 +38,7 @@ const menuItemVariants = cva(
     },
     compoundVariants: [
       {
-        variant: ["faded", "primary-faded"],
+        variant: ["faded", "primary-faded", "destructive-faded"],
         wide: true,
         className: "-mx-1.5 px-3.5",
       },
@@ -81,7 +85,7 @@ function DropdownMenuContent({
         data-slot="dropdown-menu-content"
         sideOffset={sideOffset}
         className={cn(
-          "z-50 min-w-[8rem] overflow-hidden rounded-md border bg-popover p-1 backdrop-blur-lg text-popover-foreground shadow-md data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:duration-200 data-[state=open]:ease-out data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:data-[side=bottom]:slide-in-from-top-1 data-[state=open]:data-[side=left]:slide-in-from-right-1 data-[state=open]:data-[side=right]:slide-in-from-left-1 data-[state=open]:data-[side=top]:slide-in-from-bottom-1",
+          "z-50 min-w-[8rem] overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md backdrop-blur-lg data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:duration-200 data-[state=open]:ease-out data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:data-[side=bottom]:slide-in-from-top-1 data-[state=open]:data-[side=left]:slide-in-from-right-1 data-[state=open]:data-[side=right]:slide-in-from-left-1 data-[state=open]:data-[side=top]:slide-in-from-bottom-1",
           className,
         )}
         {...props}

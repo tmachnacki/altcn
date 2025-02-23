@@ -58,30 +58,38 @@ function DropdownMenuBaseVariants() {
         <Button variant="outline">Base Variants</Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="start" className="w-56">
-          <DropdownMenuItem>
-            <LogOutIcon />
-            Accent (Default)
-          </DropdownMenuItem>
-          <DropdownMenuItem wide>
-            <LogOutIcon />
-            Accent Wide
-          </DropdownMenuItem>
-          <DropdownMenuItem variant="faded">
-            <LogOutIcon />
-            Faded
-          </DropdownMenuItem>
-          <DropdownMenuItem variant="faded" wide>
-            <LogOutIcon />
-            Faded Wide
-          </DropdownMenuItem>
-          <DropdownMenuItem disabled>
-            <LogOutIcon />
-            Disabled
-          </DropdownMenuItem>
-          <DropdownMenuItem variant="destructive">
-            <TrashIcon />
-            Destructive
-          </DropdownMenuItem>
+        <DropdownMenuItem>
+          <LogOutIcon />
+          Accent (Default)
+        </DropdownMenuItem>
+        <DropdownMenuItem wide>
+          <LogOutIcon />
+          Accent Wide
+        </DropdownMenuItem>
+        <DropdownMenuItem variant="faded">
+          <LogOutIcon />
+          Faded
+        </DropdownMenuItem>
+        <DropdownMenuItem variant="faded" wide>
+          <LogOutIcon />
+          Faded Wide
+        </DropdownMenuItem>
+        <DropdownMenuItem disabled>
+          <LogOutIcon />
+          Disabled
+        </DropdownMenuItem>
+        <DropdownMenuItem variant="destructive">
+          <TrashIcon />
+          Destructive
+        </DropdownMenuItem>
+        <DropdownMenuItem variant="destructive-muted">
+          <TrashIcon />
+          Destructive Muted
+        </DropdownMenuItem>
+        <DropdownMenuItem variant="destructive-faded">
+          <TrashIcon />
+          Destructive Faded
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );

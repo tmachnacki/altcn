@@ -14,7 +14,7 @@ import {
   AlertContent,
   AlertDescription,
   AlertTitle,
-  AlertAction,
+  AlertFooter,
 } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 
@@ -98,21 +98,19 @@ export function AlertDemo() {
           </AlertDescription>
         </AlertContent>
       </Alert>
-      <Alert variant="destructive">
-        <AlertIcon filled>
+      <Alert variant="destructive-muted" centered>
+        <AlertIcon>
           <AlertCircleIcon />
         </AlertIcon>
         <AlertContent>
           <AlertTitle>Something went wrong!</AlertTitle>
         </AlertContent>
-        <AlertAction className="">
-          <Button variant={"destructive-muted"} size="sm" className="h-6">
-            Undo
-          </Button>
-        </AlertAction>
+        <Button variant={"destructive-faded"} size="sm" className="h-6">
+          Undo
+        </Button>
       </Alert>
-      <Alert variant="destructive">
-        <AlertIcon filled>
+      <Alert variant="destructive-muted">
+        <AlertIcon>
           <AlertCircleIcon />
         </AlertIcon>
         <AlertContent>
@@ -121,14 +119,9 @@ export function AlertDemo() {
             Your session has expired. Please log in again.
           </AlertDescription>
         </AlertContent>
-        <AlertAction className=" ">
-          <Button variant={"destructive-muted"} size="sm" className="h-6">
-            Undo
-          </Button>
-        </AlertAction>
       </Alert>
-      <Alert variant="destructive">
-        <AlertIcon filled>
+      <Alert variant="destructive-muted">
+        <AlertIcon>
           <AlertCircleIcon />
         </AlertIcon>
         <AlertContent>
@@ -142,14 +135,9 @@ export function AlertDemo() {
             </ul>
           </AlertDescription>
         </AlertContent>
-        <AlertAction>
-          <Button variant={"destructive-muted"} size="sm" className="h-6">
-            Undo
-          </Button>
-        </AlertAction>
       </Alert>
-      <Alert variant="destructive">
-        <AlertIcon filled>
+      <Alert variant="destructive-muted">
+        <AlertIcon>
           <AlertCircleIcon />
         </AlertIcon>
         <AlertContent>
@@ -162,18 +150,18 @@ export function AlertDemo() {
               <li>Verify billing address</li>
             </ul>
           </AlertDescription>
+          <AlertFooter>
+            <Button variant={"destructive-muted"} size="sm">
+              Undo
+            </Button>
+            <Button variant={"link"} size="sm" className="p-0 text-inherit">
+              View details
+              <ArrowRightIcon className="size-4" />
+            </Button>
+          </AlertFooter>
         </AlertContent>
-        <AlertAction position="bottom">
-          <Button variant={"destructive-muted"} size="sm">
-            Undo
-          </Button>
-          <Button variant={"link"} size="sm" className="p-0 text-inherit">
-            View details
-            <ArrowRightIcon className="size-4" />
-          </Button>
-        </AlertAction>
       </Alert>
-      <Alert variant="destructive">
+      <Alert variant="destructive-muted">
         <AlertCircleIcon />
         <AlertContent>
           <AlertTitle>Unable to process your payment.</AlertTitle>

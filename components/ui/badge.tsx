@@ -38,7 +38,6 @@ const badgeVariants = cva(
         "secondary-dotted": "",
 
         // destructive
-        // destructive
         destructive:
           "bg-destructive text-destructive-foreground focus-visible:outline-destructive [a&]:hover:bg-destructive/90",
         "destructive-muted":
@@ -87,6 +86,7 @@ const badgeVariants = cva(
   },
 );
 
+// Use role="status" when badge is used to reflect such an application state (i.e., an invoice that is paid, pending, rejected)
 function Badge({
   className,
   variant,
@@ -100,7 +100,7 @@ function Badge({
     <Comp
       data-slot="badge"
       data-variant={variant}
-      className={cn(badgeVariants({ variant, className }))}
+      className={cn(badgeVariants({ variant }), className)}
       {...props}
     />
   );
@@ -156,7 +156,7 @@ function BadgeClose({ className, ...props }: React.ComponentProps<"button">) {
       aria-label={props["aria-label"] || "Remove"}
       className={cn(
         badgeCloseVariants,
-        "group/badge-close relative inline-flex size-4 items-center justify-center rounded-xs text-current/70 hover:text-current focus-visible:outline-2 focus-visible:outline-current outline-offset-0",
+        "group/badge-close relative inline-flex size-4 items-center justify-center rounded-xs text-current/70 outline-offset-0 hover:text-current focus-visible:outline-2 focus-visible:outline-current",
         className,
       )}
       {...props}

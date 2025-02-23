@@ -19,7 +19,8 @@ const buttonVariants = cva(
         outline:
           "border border-border bg-background shadow-xs hover:border-border-hover hover:bg-muted hover:text-accent-foreground",
         muted: "bg-muted text-muted-foreground hover:bg-accent",
-        faded: "bg-faded text-muted-foreground border border-border-faded hover:bg-accent",
+        faded:
+          "border border-border-faded bg-faded text-muted-foreground hover:bg-accent",
         ghost:
           "bg-transparent text-foreground hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
@@ -142,7 +143,7 @@ function Button({
       data-slot="button"
       data-variant={variant}
       data-empty={empty}
-      className={cn(buttonVariants({ variant, size, className }))}
+      className={cn(buttonVariants({ variant, size }), className)}
       {...props}
     />
   );
