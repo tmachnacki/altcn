@@ -14,16 +14,18 @@ const buttonVariants = cva(
     variants: {
       variant: {
         // --- base ---
-        accent:
-          "bg-accent text-accent-foreground hover:bg-base-200 dark:hover:bg-base-800",
-
         outline:
           "border border-border bg-background text-foreground shadow-xs hover:border-border-hover hover:bg-muted hover:text-accent-foreground",
 
+        accent:
+          "bg-accent text-accent-foreground hover:bg-base-200 dark:hover:bg-base-800",
+
         muted: "bg-muted text-muted-foreground hover:bg-accent",
 
+        surface: "border border-border-faded bg-faded text-accent-foreground shadow-xs hover:bg-muted",
+
         faded:
-          "border border-border-faded bg-faded text-muted-foreground hover:bg-muted",
+          "border border-border-faded bg-faded shadow-xs text-muted-foreground hover:bg-muted",
 
         ghost:
           "bg-transparent text-foreground hover:bg-accent hover:text-accent-foreground",
@@ -37,11 +39,14 @@ const buttonVariants = cva(
         primary:
           "bg-primary text-primary-foreground shadow hover:bg-primary/90 focus-visible:outline-primary",
 
+        "primary-accent":
+          "bg-primary-muted text-primary-accent-foreground hover:bg-primary-muted/80 focus-visible:outline-primary",
+
         "primary-muted":
           "bg-primary-muted text-primary-muted-foreground hover:bg-primary-muted/80 focus-visible:outline-primary",
 
-        "primary-flat":
-          "bg-transparent text-primary-950 hover:bg-primary-muted dark:text-primary-50",
+        "primary-surface":
+          "border border-border-primary-faded bg-primary-faded text-primary-accent-foreground shadow-xs hover:bg-primary-muted/70 focus-visible:outline-primary",
 
         "primary-faded":
           "border border-border-primary-faded bg-primary-faded text-primary-muted-foreground shadow-xs hover:bg-primary-muted/70 focus-visible:outline-primary",
@@ -64,8 +69,14 @@ const buttonVariants = cva(
         secondary:
           "bg-secondary text-secondary-foreground shadow hover:bg-secondary/90 focus-visible:outline-secondary",
 
+        "secondary-accent":
+          "bg-secondary-muted text-secondary-accent-foreground hover:bg-secondary-muted/80 focus-visible:outline-secondary",
+
         "secondary-muted":
           "bg-secondary-muted text-secondary-muted-foreground hover:bg-secondary-muted/80 focus-visible:outline-secondary",
+
+        "secondary-surface":
+          "border border-border-secondary-faded bg-secondary-faded text-secondary-accent-foreground shadow-xs hover:bg-secondary-muted/70 focus-visible:outline-secondary",
 
         "secondary-faded":
           "border border-border-secondary-faded bg-secondary-faded text-secondary-muted-foreground shadow-xs hover:bg-secondary-muted/70 focus-visible:outline-secondary",
@@ -79,7 +90,7 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground shadow-lg shadow-secondary/50 hover:bg-secondary/90 focus-visible:outline-secondary",
 
         "secondary-gradient":
-          "bg-gradient-to-br from-secondary-500 to-secondary-300 text-secondary-foreground hover:from-secondary-500/90 hover:to-secondary-300/90 focus-visible:outline-secondary",
+          "bg-gradient-to-br from-secondary-500 to-secondary-300 text-secondary-foreground hover:from-secondary-500/90 hover:to-secondary-300/90 focus-visible:outline-secondary dark:from-secondary-600 dark:to-secondary-400 dark:hover:from-secondary-600/90 dark:hover:to-secondary-400/90",
 
         "secondary-ghost":
           "text-secondary-muted-foreground hover:bg-secondary-muted focus-visible:outline-secondary",
@@ -88,8 +99,14 @@ const buttonVariants = cva(
         destructive:
           "bg-destructive text-destructive-foreground shadow hover:bg-destructive/90 focus-visible:outline-destructive",
 
+        "destructive-accent":
+          "bg-destructive-muted text-destructive-accent-foreground hover:bg-destructive-muted/80 focus-visible:outline-destructive",
+
         "destructive-muted":
           "bg-destructive-muted text-destructive-muted-foreground hover:bg-destructive-muted/80 focus-visible:outline-destructive",
+
+        "destructive-surface":
+          "border border-border-destructive-faded bg-destructive-faded text-destructive-accent-foreground shadow-xs hover:bg-destructive-muted/70 focus-visible:outline-destructive",
 
         "destructive-faded":
           "border border-border-destructive-faded bg-destructive-faded text-destructive-muted-foreground shadow-xs hover:bg-destructive-muted/70 focus-visible:outline-destructive",

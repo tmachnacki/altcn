@@ -6,21 +6,6 @@ export function BadgeDemo() {
   return (
     <div className="space-y-8">
       <div className="flex flex-wrap gap-4">
-        <Badge variant="accent">Accent</Badge>
-        <Badge variant="accent">
-          <CheckIcon />
-          Icon
-        </Badge>
-        <Badge asChild variant="accent">
-          <a href="#">
-            Link
-            <ArrowRightIcon />
-          </a>
-        </Badge>
-        <Badge variant="accent">
-          Close
-          <BadgeClose />
-        </Badge>
         <Badge variant="outline">Outline</Badge>
         <Badge variant="outline">
           <CheckIcon />
@@ -33,6 +18,22 @@ export function BadgeDemo() {
           </a>
         </Badge>
         <Badge variant="outline">
+          Close
+          <BadgeClose />
+        </Badge>
+
+        <Badge variant="accent">Accent</Badge>
+        <Badge variant="accent">
+          <CheckIcon />
+          Icon
+        </Badge>
+        <Badge asChild variant="accent">
+          <a href="#">
+            Link
+            <ArrowRightIcon />
+          </a>
+        </Badge>
+        <Badge variant="accent">
           Close
           <BadgeClose />
         </Badge>
@@ -52,6 +53,23 @@ export function BadgeDemo() {
           Close
           <BadgeClose />
         </Badge>
+
+        <Badge variant="surface">Surface</Badge>
+        <Badge variant="surface">
+          <CheckIcon />
+          Icon
+        </Badge>
+        <Badge asChild variant="surface">
+          <a href="#">
+            Link
+            <ArrowRightIcon />
+          </a>
+        </Badge>
+        <Badge variant="surface">
+          Close
+          <BadgeClose />
+        </Badge>
+
         <Badge variant="faded">Faded</Badge>
         <Badge variant="faded">
           <CheckIcon />
@@ -67,6 +85,7 @@ export function BadgeDemo() {
           Close
           <BadgeClose />
         </Badge>
+
         <Badge variant="dotted">
           <BadgeDot />
           Dotted
@@ -89,8 +108,25 @@ export function BadgeDemo() {
         </Badge>
         <Badge variant="primary">
           Close
+          <BadgeClose className="hover:bg-red-500" />
+        </Badge>
+
+        <Badge variant="primary-accent">Accent</Badge>
+        <Badge variant="primary-accent">
+          <CheckIcon />
+          Icon
+        </Badge>
+        <Badge asChild variant="primary-accent">
+          <a href="#">
+            Link
+            <ArrowRightIcon />
+          </a>
+        </Badge>
+        <Badge variant="primary-accent">
+          Close
           <BadgeClose />
         </Badge>
+
         <Badge variant="primary-muted">Muted</Badge>
         <Badge variant="primary-muted">
           <CheckIcon />
@@ -106,6 +142,23 @@ export function BadgeDemo() {
           Close
           <BadgeClose />
         </Badge>
+
+        <Badge variant="primary-surface">Surface</Badge>
+        <Badge variant="primary-surface">
+          <CheckIcon />
+          Icon
+        </Badge>
+        <Badge asChild variant="primary-surface">
+          <a href="#">
+            Link
+            <ArrowRightIcon />
+          </a>
+        </Badge>
+        <Badge variant="primary-surface">
+          Close
+          <BadgeClose />
+        </Badge>
+
         <Badge variant="primary-faded">Faded</Badge>
         <Badge variant="primary-faded">
           <CheckIcon />
@@ -121,6 +174,7 @@ export function BadgeDemo() {
           Close
           <BadgeClose />
         </Badge>
+
         <Badge variant="primary-dotted">
           <BadgeDot />
           Dotted

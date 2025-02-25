@@ -7,9 +7,10 @@ export function ButtonDemo() {
   return (
     <div className="space-y-8">
       <div className="flex flex-wrap gap-4">
-        <Button variant="accent">Accent</Button>
         <Button variant={"outline"}>Outline</Button>
+        <Button variant="accent">Accent</Button>
         <Button variant={"muted"}>Muted</Button>
+        <Button variant={"surface"}>Surface</Button>
         <Button variant={"faded"}>Faded</Button>
         <Button variant={"ghost"}>Ghost</Button>
         <Button variant={"link"}>Link</Button>
@@ -25,7 +26,9 @@ export function ButtonDemo() {
       </div>
       <div className="flex flex-wrap gap-4">
         <Button variant="primary">Primary</Button>
+        <Button variant="primary-accent">Primary Accent</Button>
         <Button variant="primary-muted">Primary Muted</Button>
+        <Button variant="primary-surface">Primary Surface</Button>
         <Button variant="primary-faded">Primary Faded</Button>
         <Button variant="primary-tron">Primary Tron</Button>
         <Button variant="primary-shadow">Primary Shadow</Button>
@@ -34,7 +37,9 @@ export function ButtonDemo() {
       </div>
       <div className="flex flex-wrap gap-4">
         <Button variant="secondary">Secondary</Button>
+        <Button variant="secondary-accent">Secondary Accent</Button>
         <Button variant="secondary-muted">Secondary Muted</Button>
+        <Button variant="secondary-surface">Secondary Surface</Button>
         <Button variant="secondary-faded">Secondary Faded</Button>
         <Button variant="secondary-tron">Secondary Tron</Button>
         <Button variant="secondary-shadow">Secondary Shadow</Button>
@@ -43,7 +48,9 @@ export function ButtonDemo() {
       </div>
       <div className="flex flex-wrap gap-4">
         <Button variant="destructive">Destructive</Button>
+        <Button variant="destructive-accent">Destructive Accent</Button>
         <Button variant="destructive-muted">Destructive Muted</Button>
+        <Button variant="destructive-surface">Destructive Surface</Button>
         <Button variant="destructive-faded">Destructive Faded</Button>
         <Button variant="destructive-tron">Destructive Tron</Button>
         <Button variant="destructive-shadow">Destructive Shadow</Button>

@@ -22,7 +22,7 @@ const alertVariants = cva(
         "primary-muted":
           "bg-primary-muted text-primary-muted-foreground data-[inset-color]:before:bg-primary-500",
         "primary-faded":
-          "border border-border-primary-faded bg-primary-faded text-primary-muted-foreground data-[inset-color]:before:bg-primary-500",
+          "border border-border-primary-faded bg-primary-faded text-primary-700 dark:text-primary-200 data-[inset-color]:before:bg-primary-500",
 
         "secondary-muted":
           "bg-secondary-muted text-secondary-muted-foreground data-[inset-color]:before:bg-secondary-500",
@@ -177,7 +177,7 @@ const alertDescriptionVariants = [
   // primary muted
   "group-data-[variant=primary-muted]/alert:text-primary-muted-content",
   // primary faded
-  "group-data-[variant=primary-faded]/alert:text-primary-muted-content",
+  "group-data-[variant=primary-faded]/alert:text-primary-muted-foreground",
 
   // secondary muted
   "group-data-[variant=secondary-muted]/alert:text-secondary-muted-content",
