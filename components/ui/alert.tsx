@@ -4,34 +4,49 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const alertVariants = cva(
-  "group/alert relative flex w-full items-start gap-x-3 rounded-lg px-4 py-3 text-sm data-[centered]:items-center [&>svg]:size-4 [&>svg]:flex-none [&>svg]:text-current not-data-[centered]:[&>svg]:translate-y-0.5",
+  "group/alert relative flex w-full items-start gap-x-3 overflow-hidden rounded-lg px-4 py-3 text-sm data-[centered]:items-center [&>svg]:size-4 [&>svg]:flex-none [&>svg]:text-current not-data-[centered]:[&>svg]:translate-y-0.5",
   {
     variants: {
       variant: {
-        accent: "bg-accent text-accent-foreground",
-        outline: "border border-border bg-background text-foreground",
-        muted: "bg-muted text-accent-foreground",
-        faded: "bg-faded text-accent-foreground",
+        accent:
+          "bg-accent text-accent-foreground data-[inset-color]:before:bg-muted-foreground",
+        outline:
+          "border border-border bg-background text-foreground data-[inset-color]:before:bg-muted-foreground",
+        muted:
+          "bg-muted text-accent-foreground data-[inset-color]:before:bg-muted-foreground",
+        faded:
+          "border border-border-faded bg-faded text-accent-foreground data-[inset-color]:before:bg-muted-foreground",
+
+        primary:
+          "bg-primary text-primary-foreground data-[inset-color]:before:bg-primary-200",
         "primary-muted":
-          "bg-primary-muted text-primary-800 dark:text-primary-200",
+          "bg-primary-muted text-primary-muted-foreground data-[inset-color]:before:bg-primary-500",
         "primary-faded":
-          "bg-primary-faded text-primary-800 dark:text-primary-200",
+          "border border-border-primary-faded bg-primary-faded text-primary-muted-foreground data-[inset-color]:before:bg-primary-500",
+
         "secondary-muted":
-          "bg-secondary-muted text-secondary-800 dark:text-secondary-200",
+          "bg-secondary-muted text-secondary-muted-foreground data-[inset-color]:before:bg-secondary-500",
         "secondary-faded":
-          "bg-secondary-faded text-secondary-800 dark:text-secondary-200",
+          "bg-secondary-faded text-secondary-muted-foreground data-[inset-color]:before:bg-secondary-500",
+
         "destructive-muted":
-          "bg-destructive-muted text-destructive-600 dark:text-destructive-200",
+          "bg-destructive-muted text-destructive-muted-foreground data-[inset-color]:before:bg-destructive-500",
         "destructive-faded":
-          "bg-destructive-faded text-destructive-700 dark:text-destructive-200",
+          "bg-destructive-faded text-destructive-muted-foreground data-[inset-color]:before:bg-destructive-500",
+
         "success-muted":
-          "bg-success-muted text-success-800 dark:text-success-200",
+          "bg-success-muted text-success-muted-foreground data-[inset-color]:before:bg-success-500",
         "success-faded":
-          "bg-success-faded text-success-800 dark:text-success-200",
+          "bg-success-faded text-success-muted-foreground data-[inset-color]:before:bg-success-500",
+
         "warning-muted":
-          "bg-warning-muted text-warning-800 dark:text-warning-200",
+          "bg-warning-muted text-warning-muted-foreground data-[inset-color]:before:bg-warning-500",
         "warning-faded":
-          "bg-warning-faded text-warning-800 dark:text-warning-200",
+          "bg-warning-faded text-warning-muted-foreground data-[inset-color]:before:bg-warning-500",
+      },
+      insetColor: {
+        false: null,
+        true: "before:absolute before:top-0 before:left-0 before:inline-block before:h-full before:w-1.5 before:content-['']",
       },
     },
     defaultVariants: {
@@ -42,7 +57,7 @@ const alertVariants = cva(
 
 function Alert({
   className,
-  variant,
+  variant = "outline",
   insetColor,
   centered,
   ...props
@@ -58,7 +73,7 @@ function Alert({
       data-variant={variant}
       data-inset-color={insetColor}
       data-centered={centered}
-      className={cn(alertVariants({ variant }), className)}
+      className={cn(alertVariants({ variant, insetColor }), className)}
       {...props}
     />
   );
@@ -66,33 +81,40 @@ function Alert({
 
 const alertIconVariants = [
   // accent
-  "group-data-[variant=accent]/alert:border-border group-data-[variant=accent]/alert:data-[filled=true]:[&>svg]:fill-accent-foreground group-data-[variant=accent]/alert:data-[filled=true]:[&>svg]:stroke-accent",
+  "group-data-[variant=accent]/alert:[&>svg]:fill-muted-foreground group-data-[variant=accent]/alert:[&>svg]:text-accent",
   // outline
-  "",
+  "group-data-[variant=outline]/alert:[&>svg]:fill-muted-foreground group-data-[variant=outline]/alert:[&>svg]:text-background",
   // muted
-  "",
+  "group-data-[variant=muted]/alert:[&>svg]:fill-muted-foreground group-data-[variant=muted]/alert:[&>svg]:text-muted",
   // faded
-  "",
+  "group-data-[variant=faded]/alert:bg-accent group-data-[variant=faded]/alert:inset-ring-border-faded group-data-[variant=faded]/alert:[&>svg]:fill-muted-foreground group-data-[variant=faded]/alert:[&>svg]:text-accent",
+
+  // primary
+  "group-data-[variant=primary]/alert:[&>svg]:fill-primary-200 group-data-[variant=primary]/alert:[&>svg]:text-primary",
   // primary muted
-  "",
+  "group-data-[variant=primary-muted]/alert:[&>svg]:fill-primary-300 group-data-[variant=primary-muted]/alert:[&>svg]:text-primary-muted",
   // primary faded
-  "",
+  "group-data-[variant=primary-faded]/alert:bg-primary-muted group-data-[variant=primary-faded]/alert:inset-ring-border-primary-faded group-data-[variant=primary-faded]/alert:[&>svg]:fill-primary-500 group-data-[variant=primary-faded]/alert:[&>svg]:text-primary-muted dark:group-data-[variant=primary-faded]/alert:[&>svg]:fill-primary-400",
+
   // secondary muted
-  "",
+  "group-data-[variant=secondary-muted]/alert:[&>svg]:fill-secondary-500 group-data-[variant=secondary-muted]/alert:[&>svg]:text-secondary-muted",
   // secondary faded
-  "",
+  "group-data-[variant=secondary-faded]/alert:[&>svg]:fill-secondary-500 group-data-[variant=secondary-faded]/alert:[&>svg]:text-secondary-muted",
+
   // destructive muted
   "group-data-[variant=destructive-muted]/alert:[&>svg]:fill-destructive-500 group-data-[variant=destructive-muted]/alert:[&>svg]:text-destructive-muted",
   // destructive faded
-  "",
+  "group-data-[variant=destructive-faded]/alert:[&>svg]:fill-destructive-500 group-data-[variant=destructive-faded]/alert:[&>svg]:text-destructive-faded",
+
   // success muted
-  "",
+  "group-data-[variant=success-muted]/alert:[&>svg]:fill-success-500 group-data-[variant=success-muted]/alert:[&>svg]:text-success-muted",
   // success faded
-  "",
+  "group-data-[variant=success-faded]/alert:[&>svg]:fill-success-500 group-data-[variant=success-faded]/alert:[&>svg]:text-success-faded",
+
   // warning muted
-  "",
+  "group-data-[variant=warning-muted]/alert:[&>svg]:fill-warning-500 group-data-[variant=warning-muted]/alert:[&>svg]:text-warning-muted",
   // warning faded
-  "",
+  "group-data-[variant=warning-faded]/alert:[&>svg]:fill-warning-500 group-data-[variant=warning-faded]/alert:[&>svg]:text-warning-faded",
 ];
 
 function AlertIcon({ className, ...props }: React.ComponentProps<"div">) {
@@ -100,7 +122,7 @@ function AlertIcon({ className, ...props }: React.ComponentProps<"div">) {
     <span
       data-slot="alert-icon"
       className={cn(
-        "inline-flex size-4 flex-none translate-y-0.5 items-center justify-center rounded-full bg-transparent group-data-[centered]/alert:translate-y-0 [&_svg]:shrink-0 [&>svg]:size-[18px]",
+        "inline-flex size-7 flex-none translate-y-0.5 items-center justify-center rounded-full inset-ring shadow-xs group-data-[centered]/alert:translate-y-0 [&_svg]:shrink-0 [&>svg]:size-5",
         alertIconVariants,
         className,
       )}
@@ -113,7 +135,7 @@ function AlertContent({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="alert-content"
-      className={cn("flex flex-1 flex-col", className)}
+      className={cn("flex flex-1 flex-col gap-0.5", className)}
       {...props}
     />
   );
@@ -149,26 +171,30 @@ const alertDescriptionVariants = [
   "group-data-[variant=muted]/alert:text-muted-foreground",
   // faded
   "group-data-[variant=faded]/alert:text-muted-foreground",
+
+  // primary
+  "group-data-[variant=primary]/alert:text-primary-200",
   // primary muted
-  "group-data-[variant=primary-muted]/alert:text-primary-300 group-data-[variant=primary-muted]/alert:dark:text-primary-700",
+  "group-data-[variant=primary-muted]/alert:text-primary-muted-content",
   // primary faded
-  "group-data-[variant=primary-faded]/alert:text-primary-300 group-data-[variant=primary-faded]/alert:dark:text-primary-700",
+  "group-data-[variant=primary-faded]/alert:text-primary-muted-content",
+
   // secondary muted
-  "group-data-[variant=secondary-muted]/alert:text-secondary-300 group-data-[variant=secondary-muted]/alert:dark:text-secondary-700",
+  "group-data-[variant=secondary-muted]/alert:text-secondary-muted-content",
   // secondary faded
-  "group-data-[variant=secondary-faded]/alert:text-secondary-300 group-data-[variant=secondary-faded]/alert:dark:text-secondary-700",
+  "group-data-[variant=secondary-faded]/alert:text-secondary-muted-content",
   // destructive muted
-  "group-data-[variant=destructive-muted]/alert:text-destructive-400 dark:group-data-[variant=destructive-muted]/alert:text-destructive-300",
+  "group-data-[variant=destructive-muted]/alert:text-destructive-muted-content",
   // destructive faded
-  "group-data-[variant=destructive-faded]/alert:text-destructive-400 group-data-[variant=destructive-faded]/alert:dark:text-destructive-300",
+  "group-data-[variant=destructive-faded]/alert:text-destructive-muted-content",
   // success muted
-  "group-data-[variant=success-muted]/alert:text-success-300 group-data-[variant=success-muted]/alert:dark:text-success-700",
+  "group-data-[variant=success-muted]/alert:text-success-muted-content",
   // success faded
-  "group-data-[variant=success-faded]/alert:text-success-300 group-data-[variant=success-faded]/alert:dark:text-success-700",
+  "group-data-[variant=success-faded]/alert:text-success-muted-content",
   // warning muted
-  "group-data-[variant=warning-muted]/alert:text-warning-300 group-data-[variant=warning-muted]/alert:dark:text-warning-700",
+  "group-data-[variant=warning-muted]/alert:text-warning-muted-content",
   // warning faded
-  "group-data-[variant=warning-faded]/alert:text-warning-300 group-data-[variant=warning-faded]/alert:dark:text-warning-700",
+  "group-data-[variant=warning-faded]/alert:text-warning-muted-content",
 ];
 
 function AlertDescription({

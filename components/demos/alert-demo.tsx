@@ -1,12 +1,4 @@
-import {
-  AlertCircleIcon,
-  ArrowRightIcon,
-  BookmarkCheckIcon,
-  CheckCircle2Icon,
-  GiftIcon,
-  PopcornIcon,
-  ShieldAlertIcon,
-} from "lucide-react";
+import { AlertCircleIcon, CheckCircle2Icon } from "lucide-react";
 
 import {
   Alert,
@@ -21,122 +13,51 @@ import { Button } from "@/components/ui/button";
 export function AlertDemo() {
   return (
     <div className="grid max-w-xl items-start gap-4">
+      <OutlineAlertDemo />
+      {/* <AccentAlertDemo /> */}
+      {/* <MutedAlertDemo /> */}
+      <FadedAlertDemo />
+      {/* <PrimaryAlertDemo /> */}
+      {/* <PrimaryMutedAlertDemo /> */}
+      <PrimaryFadedAlertDemo />
+    </div>
+  );
+}
+
+function OutlineAlertDemo() {
+  return (
+    <>
+      {/* outline (default) */}
       <Alert>
         <CheckCircle2Icon />
         <AlertContent>
           <AlertTitle>Success! Your changes have been saved</AlertTitle>
           <AlertDescription>
-            This is an alert with icon, title and description.
+            This is a default alert with icon, title and description.
           </AlertDescription>
         </AlertContent>
       </Alert>
-      <Alert variant="accent">
+      <Alert insetColor>
         <CheckCircle2Icon />
         <AlertContent>
-          <AlertTitle>Success! Your changes have been saved</AlertTitle>
+          <AlertTitle>Success! This one has insetColor</AlertTitle>
           <AlertDescription>
-            This is an alert with icon, title and description.
+            This is a default alert with icon, title and description.
           </AlertDescription>
         </AlertContent>
       </Alert>
-      <Alert>
-        <BookmarkCheckIcon />
-        <AlertContent>
-          <AlertDescription>
-            This one has an icon and a description only. No title.
-          </AlertDescription>
-        </AlertContent>
-      </Alert>
-      <Alert>
-        <AlertContent>
-          <AlertDescription>
-            This one has a description only. No title. No icon.
-          </AlertDescription>
-        </AlertContent>
-      </Alert>
-      <Alert>
-        <PopcornIcon />
-        <AlertContent>
-          <AlertTitle>Let&apos;s try one with icon and title.</AlertTitle>
-        </AlertContent>
-      </Alert>
-      <Alert>
-        <ShieldAlertIcon />
-        <AlertContent>
-          <AlertTitle>
-            This is a very long alert title that demonstrates how the component
-            handles extended text content and potentially wraps across multiple
-            lines
-          </AlertTitle>
-        </AlertContent>
-      </Alert>
-      <Alert>
-        <GiftIcon />
-        <AlertContent>
-          <AlertDescription>
-            This is a very long alert description that demonstrates how the
-            component handles extended text content and potentially wraps across
-            multiple lines
-          </AlertDescription>
-        </AlertContent>
-      </Alert>
-      <Alert>
-        <AlertCircleIcon />
-        <AlertContent>
-          <AlertTitle>
-            This is an extremely long alert title that spans multiple lines to
-            demonstrate how the component handles very lengthy headings while
-            maintaining readability and proper text wrapping behavior
-          </AlertTitle>
-          <AlertDescription>
-            This is an equally long description that contains detailed
-            information about the alert. It shows how the component can
-            accommodate extensive content while preserving proper spacing,
-            alignment, and readability across different screen sizes and
-            viewport widths. This helps ensure the user experience remains
-            consistent regardless of the content length.
-          </AlertDescription>
-        </AlertContent>
-      </Alert>
-      <Alert variant="destructive-muted" centered>
+      <Alert centered>
         <AlertIcon>
-          <AlertCircleIcon />
+          <CheckCircle2Icon />
         </AlertIcon>
         <AlertContent>
-          <AlertTitle>Something went wrong!</AlertTitle>
+          <AlertTitle>Success! This one is centered</AlertTitle>
         </AlertContent>
-        <Button variant={"destructive-faded"} size="sm" className="h-6">
+        <Button variant={"outline"} size="sm" className="h-6">
           Undo
         </Button>
       </Alert>
-      <Alert variant="destructive-muted">
-        <AlertIcon>
-          <AlertCircleIcon />
-        </AlertIcon>
-        <AlertContent>
-          <AlertTitle>Something went wrong!</AlertTitle>
-          <AlertDescription>
-            Your session has expired. Please log in again.
-          </AlertDescription>
-        </AlertContent>
-      </Alert>
-      <Alert variant="destructive-muted">
-        <AlertIcon>
-          <AlertCircleIcon />
-        </AlertIcon>
-        <AlertContent>
-          <AlertTitle>Something went wrong!</AlertTitle>
-          <AlertDescription>
-            <p>Please verify your billing information and try again.</p>
-            <ul className="list-inside list-disc text-sm">
-              <li>Check your card details</li>
-              <li>Ensure sufficient funds</li>
-              <li>Verify billing address</li>
-            </ul>
-          </AlertDescription>
-        </AlertContent>
-      </Alert>
-      <Alert variant="destructive-muted">
+      <Alert>
         <AlertIcon>
           <AlertCircleIcon />
         </AlertIcon>
@@ -151,20 +72,57 @@ export function AlertDemo() {
             </ul>
           </AlertDescription>
           <AlertFooter>
-            <Button variant={"destructive-muted"} size="sm">
+            <Button variant={"outline"} size="sm">
               Undo
-            </Button>
-            <Button variant={"link"} size="sm" className="p-0 text-inherit">
-              View details
-              <ArrowRightIcon className="size-4" />
             </Button>
           </AlertFooter>
         </AlertContent>
       </Alert>
-      <Alert variant="destructive-muted">
-        <AlertCircleIcon />
+    </>
+  );
+}
+
+function AccentAlertDemo() {
+  return (
+    <>
+      {/* accent */}
+      <Alert variant="accent">
+        <AlertIcon>
+          <CheckCircle2Icon />
+        </AlertIcon>
         <AlertContent>
-          <AlertTitle>Unable to process your payment.</AlertTitle>
+          <AlertTitle>Success! Your changes have been saved</AlertTitle>
+          <AlertDescription>
+            This is an accent alert with icon, title and description.
+          </AlertDescription>
+        </AlertContent>
+      </Alert>
+      <Alert insetColor variant="accent">
+        <CheckCircle2Icon />
+        <AlertContent>
+          <AlertTitle>Success! This one has insetColor</AlertTitle>
+          <AlertDescription>
+            This is an accent alert with icon, title and description.
+          </AlertDescription>
+        </AlertContent>
+      </Alert>
+      <Alert centered variant="accent">
+        <AlertIcon>
+          <CheckCircle2Icon />
+        </AlertIcon>
+        <AlertContent>
+          <AlertTitle>Success! This one is centered</AlertTitle>
+        </AlertContent>
+        <Button variant={"outline"} size="sm" className="h-6">
+          Undo
+        </Button>
+      </Alert>
+      <Alert variant="accent">
+        <AlertIcon>
+          <AlertCircleIcon />
+        </AlertIcon>
+        <AlertContent>
+          <AlertTitle>Something went wrong!</AlertTitle>
           <AlertDescription>
             <p>Please verify your billing information and try again.</p>
             <ul className="list-inside list-disc text-sm">
@@ -173,36 +131,313 @@ export function AlertDemo() {
               <li>Verify billing address</li>
             </ul>
           </AlertDescription>
+          <AlertFooter>
+            <Button variant={"outline"} size="sm">
+              Undo
+            </Button>
+          </AlertFooter>
         </AlertContent>
       </Alert>
-      <Alert>
-        <CheckCircle2Icon />
+    </>
+  );
+}
+
+function MutedAlertDemo() {
+  return (
+    <>
+      {/* muted */}
+      <Alert variant="muted">
+        <AlertIcon>
+          <CheckCircle2Icon />
+        </AlertIcon>
         <AlertContent>
-          <AlertTitle>
-            The selected emails have been marked as spam. But what happens if
-            this title is like really really really long?
-          </AlertTitle>
+          <AlertTitle>Success! Your changes have been saved</AlertTitle>
           <AlertDescription>
-            But what if we put a description here too?
+            This is a muted alert with icon, title and description.
           </AlertDescription>
         </AlertContent>
-        <Button
-          size="sm"
-          variant="outline"
-          className="absolute top-2.5 right-3 h-6 shadow-none"
-        >
+      </Alert>
+      <Alert insetColor variant="muted">
+        <CheckCircle2Icon />
+        <AlertContent>
+          <AlertTitle>Success! This one has insetColor</AlertTitle>
+          <AlertDescription>
+            This is a muted alert with icon, title and description.
+          </AlertDescription>
+        </AlertContent>
+      </Alert>
+      <Alert centered variant="muted">
+        <AlertIcon>
+          <CheckCircle2Icon />
+        </AlertIcon>
+        <AlertContent>
+          <AlertTitle>Success! This one is centered</AlertTitle>
+        </AlertContent>
+        <Button variant={"outline"} size="sm" className="h-6">
           Undo
         </Button>
       </Alert>
-      <Alert className="border-amber-50 bg-amber-50 text-amber-900 dark:border-amber-950 dark:bg-amber-950 dark:text-amber-100">
-        <CheckCircle2Icon />
+      <Alert variant="muted">
+        <AlertIcon>
+          <AlertCircleIcon />
+        </AlertIcon>
         <AlertContent>
-          <AlertTitle>Plot Twist: This Alert is Actually Amber!</AlertTitle>
+          <AlertTitle>Something went wrong!</AlertTitle>
           <AlertDescription>
-            This one has custom colors for light and dark mode.
+            <p>Please verify your billing information and try again.</p>
+            <ul className="list-inside list-disc text-sm">
+              <li>Check your card details</li>
+              <li>Ensure sufficient funds</li>
+              <li>Verify billing address</li>
+            </ul>
+          </AlertDescription>
+          <AlertFooter>
+            <Button variant={"outline"} size="sm">
+              Undo
+            </Button>
+          </AlertFooter>
+        </AlertContent>
+      </Alert>
+    </>
+  );
+}
+
+function FadedAlertDemo() {
+  return (
+    <>
+      {/* faded */}
+      <Alert variant="faded">
+        <AlertIcon>
+          <CheckCircle2Icon />
+        </AlertIcon>
+        <AlertContent>
+          <AlertTitle>Success! Your changes have been saved</AlertTitle>
+          <AlertDescription>
+            This is a faded alert with icon, title and description.
           </AlertDescription>
         </AlertContent>
       </Alert>
-    </div>
+      <Alert insetColor variant="faded">
+        <CheckCircle2Icon />
+        <AlertContent>
+          <AlertTitle>Success! This one has insetColor</AlertTitle>
+          <AlertDescription>
+            This is a faded alert with icon, title and description.
+          </AlertDescription>
+        </AlertContent>
+      </Alert>
+      <Alert centered variant="faded">
+        <AlertIcon>
+          <CheckCircle2Icon />
+        </AlertIcon>
+        <AlertContent>
+          <AlertTitle>Success! This one is centered</AlertTitle>
+        </AlertContent>
+        <Button variant={"outline"} size="sm" className="h-6">
+          Undo
+        </Button>
+      </Alert>
+      <Alert variant="faded">
+        <AlertIcon>
+          <AlertCircleIcon />
+        </AlertIcon>
+        <AlertContent>
+          <AlertTitle>Something went wrong!</AlertTitle>
+          <AlertDescription>
+            <p>Please verify your billing information and try again.</p>
+            <ul className="list-inside list-disc text-sm">
+              <li>Check your card details</li>
+              <li>Ensure sufficient funds</li>
+              <li>Verify billing address</li>
+            </ul>
+          </AlertDescription>
+          <AlertFooter>
+            <Button variant={"outline"} size="sm">
+              Undo
+            </Button>
+          </AlertFooter>
+        </AlertContent>
+      </Alert>
+    </>
+  );
+}
+
+function PrimaryAlertDemo() {
+  return (
+    <>
+      {/* primary */}
+      <Alert variant="primary">
+        <AlertIcon>
+          <CheckCircle2Icon />
+        </AlertIcon>
+        <AlertContent>
+          <AlertTitle>Success! Your changes have been saved</AlertTitle>
+          <AlertDescription>
+            This is a primary alert with icon, title and description.
+          </AlertDescription>
+        </AlertContent>
+      </Alert>
+      <Alert insetColor variant="primary">
+        <CheckCircle2Icon />
+        <AlertContent>
+          <AlertTitle>Success! This one has insetColor</AlertTitle>
+          <AlertDescription>
+            This is a primary alert with icon, title and description.
+          </AlertDescription>
+        </AlertContent>
+      </Alert>
+      <Alert centered variant="primary">
+        <AlertIcon>
+          <CheckCircle2Icon />
+        </AlertIcon>
+        <AlertContent>
+          <AlertTitle>Success! This one is centered</AlertTitle>
+        </AlertContent>
+        <Button variant={"outline"} size="sm" className="h-6">
+          Undo
+        </Button>
+      </Alert>
+      <Alert variant="primary">
+        <AlertIcon>
+          <AlertCircleIcon />
+        </AlertIcon>
+        <AlertContent>
+          <AlertTitle>Something went wrong!</AlertTitle>
+          <AlertDescription>
+            <p>Please verify your billing information and try again.</p>
+            <ul className="list-inside list-disc text-sm">
+              <li>Check your card details</li>
+              <li>Ensure sufficient funds</li>
+              <li>Verify billing address</li>
+            </ul>
+          </AlertDescription>
+          <AlertFooter>
+            <Button variant={"outline"} size="sm">
+              Undo
+            </Button>
+          </AlertFooter>
+        </AlertContent>
+      </Alert>
+    </>
+  );
+}
+
+function PrimaryMutedAlertDemo() {
+  return (
+    <>
+      {/* primary muted*/}
+      <Alert variant="primary-muted">
+        <AlertIcon>
+          <CheckCircle2Icon />
+        </AlertIcon>
+        <AlertContent>
+          <AlertTitle>Success! Your changes have been saved</AlertTitle>
+          <AlertDescription>
+            This is a primary muted alert with icon, title and description.
+          </AlertDescription>
+        </AlertContent>
+      </Alert>
+      <Alert insetColor variant="primary-muted">
+        <CheckCircle2Icon />
+        <AlertContent>
+          <AlertTitle>Success! This one has insetColor</AlertTitle>
+          <AlertDescription>
+            This is a primary muted alert with icon, title and description.
+          </AlertDescription>
+        </AlertContent>
+      </Alert>
+      <Alert centered variant="primary-muted">
+        <AlertIcon>
+          <CheckCircle2Icon />
+        </AlertIcon>
+        <AlertContent>
+          <AlertTitle>Success! This one is centered</AlertTitle>
+        </AlertContent>
+        <Button variant={"outline"} size="sm" className="h-6">
+          Undo
+        </Button>
+      </Alert>
+      <Alert variant="primary-muted">
+        <AlertIcon>
+          <AlertCircleIcon />
+        </AlertIcon>
+        <AlertContent>
+          <AlertTitle>Something went wrong!</AlertTitle>
+          <AlertDescription>
+            <p>Please verify your billing information and try again.</p>
+            <ul className="list-inside list-disc text-sm">
+              <li>Check your card details</li>
+              <li>Ensure sufficient funds</li>
+              <li>Verify billing address</li>
+            </ul>
+          </AlertDescription>
+          <AlertFooter>
+            <Button variant={"outline"} size="sm">
+              Undo
+            </Button>
+          </AlertFooter>
+        </AlertContent>
+      </Alert>
+    </>
+  );
+}
+
+function PrimaryFadedAlertDemo() {
+  return (
+    <>
+      {/* primary faded */}
+      <Alert variant="primary-faded">
+        <AlertIcon>
+          <CheckCircle2Icon />
+        </AlertIcon>
+        <AlertContent>
+          <AlertTitle>Success! Your changes have been saved</AlertTitle>
+          <AlertDescription>
+            This is a primary faded alert with icon, title and description.
+          </AlertDescription>
+        </AlertContent>
+      </Alert>
+      <Alert insetColor variant="primary-faded">
+        <CheckCircle2Icon />
+        <AlertContent>
+          <AlertTitle>Success! This one has insetColor</AlertTitle>
+          <AlertDescription>
+            This is a primary faded alert with icon, title and description.
+          </AlertDescription>
+        </AlertContent>
+      </Alert>
+      <Alert centered variant="primary-faded">
+        <AlertIcon>
+          <CheckCircle2Icon />
+        </AlertIcon>
+        <AlertContent>
+          <AlertTitle>Success! This one is centered</AlertTitle>
+        </AlertContent>
+        <Button variant={"outline"} size="sm" className="h-6">
+          Undo
+        </Button>
+      </Alert>
+      <Alert variant="primary-faded">
+        <AlertIcon>
+          <AlertCircleIcon />
+        </AlertIcon>
+        <AlertContent>
+          <AlertTitle>Something went wrong!</AlertTitle>
+          <AlertDescription>
+            <p>Please verify your billing information and try again.</p>
+            <ul className="list-inside list-disc text-sm">
+              <li>Check your card details</li>
+              <li>Ensure sufficient funds</li>
+              <li>Verify billing address</li>
+            </ul>
+          </AlertDescription>
+          <AlertFooter>
+            <Button variant={"outline"} size="sm">
+              Undo
+            </Button>
+          </AlertFooter>
+        </AlertContent>
+      </Alert>
+    </>
   );
 }

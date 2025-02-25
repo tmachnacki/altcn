@@ -6,7 +6,7 @@ import { XIcon, CircleIcon, LucideProps } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const badgeVariants = cva(
-  "group/badge inline-flex h-6 w-fit shrink-0 items-center justify-center gap-1.5 rounded-md px-2 py-1 text-xs leading-none font-medium whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-2 has-[[data-slot='badge-close']]:pr-1 [&_svg:not([class*='size-'])]:size-3.5 [&>svg]:pointer-events-none",
+  "group/badge inline-flex h-6 w-fit shrink-0 items-center justify-center gap-1.5 rounded-md px-2 py-1 text-xs leading-none font-medium whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-2 has-[[data-slot='badge-close']]:pr-1 [&_svg:not([class*='size-'])]:size-3 [&>svg]:pointer-events-none",
   {
     variants: {
       variant: {
@@ -16,7 +16,7 @@ const badgeVariants = cva(
         outline: "",
         muted: "bg-muted text-muted-foreground [a&]:hover:bg-accent",
         faded:
-          "bg-faded text-muted-foreground inset-ring inset-ring-border-faded [a&]:hover:bg-accent",
+          "bg-faded text-muted-foreground inset-ring inset-ring-border-faded [a&]:hover:bg-muted",
         dotted: "",
 
         // primary
@@ -156,7 +156,7 @@ function BadgeClose({ className, ...props }: React.ComponentProps<"button">) {
       aria-label={props["aria-label"] || "Remove"}
       className={cn(
         badgeCloseVariants,
-        "group/badge-close relative inline-flex size-4 items-center justify-center rounded-xs text-current/70 outline-offset-0 hover:text-current focus-visible:outline-2 focus-visible:outline-current",
+        "group/badge-close relative inline-flex size-4 items-center justify-center rounded-xs opacity-70 outline-offset-0 hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-2 focus-visible:outline-current",
         className,
       )}
       {...props}
