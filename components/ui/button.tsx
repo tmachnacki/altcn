@@ -3,11 +3,8 @@ import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
-import { tronClassNames } from "@/lib/variants";
 
-// If this code lived in a bubble, I would opt for 'tailwind-variants' with slots and compound variants
-// I wanted to minimize the amount of work needed to use variants in existing shadcn/ui apps
-
+// TODO: edit hover colors - probably want to avoid using opacity values where possible
 const buttonVariants = cva(
   "group/button relative isolate inline-flex items-center justify-center gap-2 rounded-md text-sm font-semibold whitespace-nowrap select-none focus-visible:outline-2 focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
   {
@@ -22,10 +19,11 @@ const buttonVariants = cva(
 
         muted: "bg-muted text-muted-foreground hover:bg-accent",
 
-        surface: "border border-border-faded bg-faded text-accent-foreground shadow-xs hover:bg-muted",
+        surface:
+          "border border-border-faded bg-faded text-accent-foreground shadow-xs hover:bg-muted",
 
         faded:
-          "border border-border-faded bg-faded shadow-xs text-muted-foreground hover:bg-muted",
+          "border border-border-faded bg-faded text-muted-foreground shadow-xs hover:bg-muted",
 
         ghost:
           "bg-transparent text-foreground hover:bg-accent hover:text-accent-foreground",
@@ -51,10 +49,8 @@ const buttonVariants = cva(
         "primary-faded":
           "border border-border-primary-faded bg-primary-faded text-primary-muted-foreground shadow-xs hover:bg-primary-muted/70 focus-visible:outline-primary",
 
-        "primary-tron": [
-          tronClassNames,
-          "text-primary-muted-foreground before:via-primary after:via-primary hover:border-primary/50 hover:from-primary/20 hover:to-primary/[7%] focus-visible:outline-primary",
-        ],
+        "primary-tron":
+          "border border-border bg-background bg-gradient-to-t from-primary/15 to-transparent text-primary-muted-foreground hover:border-primary/50 hover:bg-gradient-to-b hover:from-primary/20 hover:to-primary/[7%] focus-visible:outline-primary [&_[data-slot='tron-blur']]:via-purple-400 [&_[data-slot='tron-wide']]:via-primary",
 
         "primary-shadow":
           "bg-primary text-primary-foreground shadow-lg shadow-primary/50 hover:bg-primary/90 focus-visible:outline-primary",
@@ -81,10 +77,8 @@ const buttonVariants = cva(
         "secondary-faded":
           "border border-border-secondary-faded bg-secondary-faded text-secondary-muted-foreground shadow-xs hover:bg-secondary-muted/70 focus-visible:outline-secondary",
 
-        "secondary-tron": [
-          tronClassNames,
-          "text-secondary-muted-foreground before:via-secondary after:via-secondary hover:border-secondary/50 hover:from-secondary/20 hover:to-secondary/[7%] focus-visible:outline-secondary",
-        ],
+        "secondary-tron":
+          "border border-border bg-background bg-gradient-to-t from-secondary/10 to-transparent text-secondary-muted-foreground hover:border-secondary/50 hover:bg-gradient-to-b hover:from-secondary/20 hover:to-secondary/[7%] focus-visible:outline-secondary [&_[data-slot='tron-blur']]:via-secondary [&_[data-slot='tron-wide']]:via-secondary",
 
         "secondary-shadow":
           "bg-secondary text-secondary-foreground shadow-lg shadow-secondary/50 hover:bg-secondary/90 focus-visible:outline-secondary",
@@ -111,16 +105,14 @@ const buttonVariants = cva(
         "destructive-faded":
           "border border-border-destructive-faded bg-destructive-faded text-destructive-muted-foreground shadow-xs hover:bg-destructive-muted/70 focus-visible:outline-destructive",
 
-        "destructive-tron": [
-          tronClassNames,
-          "text-destructive-muted-foreground before:via-destructive after:via-destructive hover:border-destructive/50 hover:from-destructive/20 hover:to-destructive/[7%] focus-visible:outline-destructive",
-        ],
+        "destructive-tron":
+          "border border-border bg-gradient-to-t from-destructive/10 to-transparent text-destructive-muted-foreground hover:border-destructive/50 hover:bg-gradient-to-b hover:from-destructive/20 hover:to-destructive/[7%] focus-visible:outline-destructive [&_[data-slot='tron-blur']]:via-rose-400 [&_[data-slot='tron-wide']]:via-destructive",
 
         "destructive-shadow":
           "bg-destructive text-destructive-foreground shadow-lg shadow-destructive/50 hover:bg-destructive/90 focus-visible:outline-destructive",
 
         "destructive-gradient":
-          "bg-gradient-to-br from-destructive-600 to-destructive-400 text-destructive-foreground hover:from-destructive-600/90 hover:to-destructive-400/90 focus-visible:outline-destructive dark:from-destructive-700 dark:to-destructive-500 dark:hover:from-destructive-700/90 dark:hover:to-destructive-500/90",
+          "bg-gradient-to-br from-destructive-700 to-destructive-400 text-destructive-foreground hover:from-destructive-700/90 hover:to-destructive-400/90 focus-visible:outline-destructive dark:from-destructive-900 dark:to-destructive-700 dark:hover:from-destructive-900/90 dark:hover:to-destructive-700/90",
 
         "destructive-ghost":
           "text-destructive-muted-foreground hover:bg-destructive-muted focus-visible:outline-destructive",
@@ -160,6 +152,7 @@ function Button({
   size,
   asChild = false,
   empty = false,
+  children,
   ...props
 }: React.ComponentProps<"button"> &
   VariantProps<typeof buttonVariants> & {
@@ -175,7 +168,33 @@ function Button({
       data-empty={empty}
       className={cn(buttonVariants({ variant, size }), className)}
       {...props}
-    />
+    >
+      {variant?.includes("tron") && (
+        <>
+          <span
+            aria-hidden="true"
+            data-slot="tron-wide"
+            className="absolute inset-x-0 -top-px block h-[2px] w-full bg-gradient-to-r from-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover/button:opacity-100 motion-reduce:transition-none"
+          />
+          <span
+            aria-hidden="true"
+            data-slot="tron-blur"
+            className="absolute -top-px left-[20%] block h-[2px] w-[60%] bg-gradient-to-r from-transparent to-transparent opacity-0 blur-sm transition-opacity duration-300 group-hover/button:opacity-100 motion-reduce:transition-none"
+          />
+          <span
+            aria-hidden="true"
+            data-slot="tron-wide"
+            className="absolute inset-x-0 -bottom-px block h-[2px] w-full bg-gradient-to-r from-transparent to-transparent opacity-100 transition-opacity duration-300 group-hover/button:opacity-0 motion-reduce:transition-none"
+          />
+          <span
+            aria-hidden="true"
+            data-slot="tron-blur"
+            className="absolute -bottom-px left-[20%] block h-[2px] w-[60%] bg-gradient-to-r from-transparent to-transparent opacity-100 blur-sm transition-opacity duration-300 group-hover/button:opacity-0 motion-reduce:transition-none"
+          />
+        </>
+      )}
+      {children}
+    </Comp>
   );
 }
 

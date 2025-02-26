@@ -108,7 +108,7 @@ export function BadgeDemo() {
         </Badge>
         <Badge variant="primary">
           Close
-          <BadgeClose className="hover:bg-red-500" />
+          <BadgeClose />
         </Badge>
 
         <Badge variant="primary-accent">Accent</Badge>
@@ -199,6 +199,23 @@ export function BadgeDemo() {
           Close
           <BadgeClose />
         </Badge>
+
+        <Badge variant="secondary-accent">Accent</Badge>
+        <Badge variant="secondary-accent">
+          <CheckIcon />
+          Icon
+        </Badge>
+        <Badge asChild variant="secondary-accent">
+          <a href="#">
+            Link
+            <ArrowRightIcon />
+          </a>
+        </Badge>
+        <Badge variant="secondary-accent">
+          Close
+          <BadgeClose />
+        </Badge>
+
         <Badge variant="secondary-muted">Muted</Badge>
         <Badge variant="secondary-muted">
           <CheckIcon />
@@ -214,6 +231,23 @@ export function BadgeDemo() {
           Close
           <BadgeClose />
         </Badge>
+
+        <Badge variant="secondary-surface">Surface</Badge>
+        <Badge variant="secondary-surface">
+          <CheckIcon />
+          Icon
+        </Badge>
+        <Badge asChild variant="secondary-surface">
+          <a href="#">
+            Link
+            <ArrowRightIcon />
+          </a>
+        </Badge>
+        <Badge variant="secondary-surface">
+          Close
+          <BadgeClose />
+        </Badge>
+
         <Badge variant="secondary-faded">Faded</Badge>
         <Badge variant="secondary-faded">
           <CheckIcon />
@@ -254,6 +288,23 @@ export function BadgeDemo() {
           Close
           <BadgeClose />
         </Badge>
+
+        <Badge variant="destructive-accent">Accent</Badge>
+        <Badge variant="destructive-accent">
+          <CheckIcon />
+          Icon
+        </Badge>
+        <Badge asChild variant="destructive-accent">
+          <a href="#">
+            Link
+            <ArrowRightIcon />
+          </a>
+        </Badge>
+        <Badge variant="destructive-accent">
+          Close
+          <BadgeClose />
+        </Badge>
+
         <Badge variant="destructive-muted">Muted</Badge>
         <Badge variant="destructive-muted">
           <CheckIcon />
@@ -269,6 +320,23 @@ export function BadgeDemo() {
           Close
           <BadgeClose />
         </Badge>
+
+        <Badge variant="destructive-surface">Surface</Badge>
+        <Badge variant="destructive-surface">
+          <CheckIcon />
+          Icon
+        </Badge>
+        <Badge asChild variant="destructive-surface">
+          <a href="#">
+            Link
+            <ArrowRightIcon />
+          </a>
+        </Badge>
+        <Badge variant="destructive-surface">
+          Close
+          <BadgeClose />
+        </Badge>
+
         <Badge variant="destructive-faded">Faded</Badge>
         <Badge variant="destructive-faded">
           <CheckIcon />
@@ -308,6 +376,23 @@ export function BadgeDemo() {
           Close
           <BadgeClose />
         </Badge>
+
+        <Badge variant="success-accent">Accent</Badge>
+        <Badge variant="success-accent">
+          <CheckIcon />
+          Icon
+        </Badge>
+        <Badge asChild variant="success-accent">
+          <a href="#">
+            Link
+            <ArrowRightIcon />
+          </a>
+        </Badge>
+        <Badge variant="success-accent">
+          Close
+          <BadgeClose />
+        </Badge>
+
         <Badge variant="success-muted">Muted</Badge>
         <Badge variant="success-muted">
           <CheckIcon />
@@ -323,6 +408,23 @@ export function BadgeDemo() {
           Close
           <BadgeClose />
         </Badge>
+
+        <Badge variant="success-surface">Surface</Badge>
+        <Badge variant="success-surface">
+          <CheckIcon />
+          Icon
+        </Badge>
+        <Badge asChild variant="success-surface">
+          <a href="#">
+            Link
+            <ArrowRightIcon />
+          </a>
+        </Badge>
+        <Badge variant="success-surface">
+          Close
+          <BadgeClose />
+        </Badge>
+
         <Badge variant="success-faded">Faded</Badge>
         <Badge variant="success-faded">
           <CheckIcon />
@@ -362,6 +464,23 @@ export function BadgeDemo() {
           Close
           <BadgeClose />
         </Badge>
+
+        <Badge variant="warning-accent">Accent</Badge>
+        <Badge variant="warning-accent">
+          <CheckIcon />
+          Icon
+        </Badge>
+        <Badge asChild variant="warning-accent">
+          <a href="#">
+            Link
+            <ArrowRightIcon />
+          </a>
+        </Badge>
+        <Badge variant="warning-accent">
+          Close
+          <BadgeClose />
+        </Badge>
+
         <Badge variant="warning-muted">Muted</Badge>
         <Badge variant="warning-muted">
           <CheckIcon />
@@ -377,6 +496,23 @@ export function BadgeDemo() {
           Close
           <BadgeClose />
         </Badge>
+
+        <Badge variant="warning-surface">Surface</Badge>
+        <Badge variant="warning-surface">
+          <CheckIcon />
+          Icon
+        </Badge>
+        <Badge asChild variant="warning-surface">
+          <a href="#">
+            Link
+            <ArrowRightIcon />
+          </a>
+        </Badge>
+        <Badge variant="warning-surface">
+          Close
+          <BadgeClose />
+        </Badge>
+
         <Badge variant="warning-faded">Faded</Badge>
         <Badge variant="warning-faded">
           <CheckIcon />

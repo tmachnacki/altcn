@@ -39,7 +39,7 @@
   --primary-foreground: var(--color-white);
   --primary-accent-foreground: var(--color-primary-900);
   --primary-muted: var(--color-primary-100);
-  --primary-muted-foreground: var(--color-primary-700);
+  --primary-muted-foreground: var(--color-primary-600);
   --primary-muted-content: var(--color-primary-500);
   --primary-faded: var(--color-primary-50);
   --border-primary-faded: color-mix(
@@ -52,7 +52,11 @@
   --secondary-foreground: var(--color-secondary-950);
   --secondary-accent-foreground: var(--color-secondary-900);
   --secondary-muted: var(--color-secondary-100);
-  --secondary-muted-foreground: var(--color-secondary-700);
+  --secondary-muted-foreground: color-mix(
+    in oklab,
+    var(--color-secondary-600) 50%,
+    var(--color-secondary-700)
+  );
   --secondary-muted-content: var(--color-secondary-500);
   --secondary-faded: var(--color-secondary-50);
   --border-secondary-faded: color-mix(
@@ -66,7 +70,7 @@
   --destructive-accent-foreground: var(--color-destructive-900);
   --destructive-muted: var(--color-destructive-100);
   --destructive-muted-foreground: var(--color-destructive-700);
-  --destructive-muted-content: var(--color-destructive-500);
+  --destructive-muted-content: var(--color-destructive-600);
   --destructive-faded: var(--color-destructive-50);
   --border-destructive-faded: color-mix(
     in oklab,
@@ -91,11 +95,12 @@
   --warning-foreground: var(--color-warning-950);
   --warning-accent-foreground: var(--color-warning-900);
   --warning-muted: var(--color-warning-100);
-  --warning-muted-foreground: color-mix(
+  /* --warning-muted-foreground: color-mix(
     in oklab,
     var(--color-warning-600) 50%,
     var(--color-warning-700)
-  );
+  ); */
+  --warning-muted-foreground: var(--color-warning-700);
   --warning-muted-content: color-mix(
     in oklab,
     var(--color-warning-500) 80%,
@@ -138,7 +143,7 @@
 
   --popover: color-mix(
     in oklab,
-    var(--color-base-900) 50%,
+    var(--color-base-900) 40%,
     var(--color-base-950)
   );
   --popover-foreground: var(--color-base-50);
@@ -195,14 +200,10 @@
     transparent
   );
 
-  --destructive: var(--color-destructive-600);
+  --destructive: var(--color-destructive-700);
   --destructive-foreground: var(--color-white);
   --destructive-accent-foreground: var(--color-destructive-100);
-  --destructive-muted: color-mix(
-    in oklab,
-    var(--color-destructive-950) 90%,
-    var(--color-destructive-900)
-  );
+  --destructive-muted: var(--color-destructive-950);
   --destructive-muted-foreground: var(--color-destructive-300);
   --destructive-muted-content: color-mix(
     in oklab,

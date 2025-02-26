@@ -8,47 +8,81 @@ const alertVariants = cva(
   {
     variants: {
       variant: {
-        accent:
-          "bg-accent text-accent-foreground data-[inset-color]:before:bg-muted-foreground",
-        outline:
-          "border border-border bg-background text-foreground data-[inset-color]:before:bg-muted-foreground",
-        muted:
-          "bg-muted text-accent-foreground data-[inset-color]:before:bg-muted-foreground",
-        faded:
-          "border border-border-faded bg-faded text-accent-foreground data-[inset-color]:before:bg-muted-foreground",
+        // base
+        outline: "border border-border bg-background",
+        muted: "bg-muted",
+        faded: "border border-border-faded bg-faded",
 
+        // primary
         primary:
-          "bg-primary text-primary-foreground data-[inset-color]:before:bg-primary-200",
-        "primary-muted":
-          "bg-primary-muted text-primary-muted-foreground data-[inset-color]:before:bg-primary-500",
-        "primary-faded":
-          "border border-border-primary-faded bg-primary-faded text-primary-700 dark:text-primary-200 data-[inset-color]:before:bg-primary-500",
+          "bg-primary text-primary-foreground data-[inset-color]:before:bg-primary-200 [&_[data-slot='alert-description']]:text-primary-200",
+        "primary-muted": "bg-primary-muted",
+        "primary-faded": "border border-border-primary-faded bg-primary-faded",
 
-        "secondary-muted":
-          "bg-secondary-muted text-secondary-muted-foreground data-[inset-color]:before:bg-secondary-500",
+        // secondary
+        secondary:
+          "bg-secondary text-secondary-foreground data-[inset-color]:before:bg-secondary-200 [&_[data-slot='alert-description']]:text-secondary-900",
+        "secondary-muted": "bg-secondary-muted",
         "secondary-faded":
-          "bg-secondary-faded text-secondary-muted-foreground data-[inset-color]:before:bg-secondary-500",
+          "border border-border-secondary-faded bg-secondary-faded",
 
-        "destructive-muted":
-          "bg-destructive-muted text-destructive-muted-foreground data-[inset-color]:before:bg-destructive-500",
+        // destructive
+        destructive:
+          "bg-destructive text-destructive-foreground data-[inset-color]:before:bg-destructive-200 [&_[data-slot='alert-description']]:text-destructive-200",
+        "destructive-muted": "bg-destructive-muted",
         "destructive-faded":
-          "bg-destructive-faded text-destructive-muted-foreground data-[inset-color]:before:bg-destructive-500",
+          "border border-border-destructive-faded bg-destructive-faded",
 
-        "success-muted":
-          "bg-success-muted text-success-muted-foreground data-[inset-color]:before:bg-success-500",
-        "success-faded":
-          "bg-success-faded text-success-muted-foreground data-[inset-color]:before:bg-success-500",
+        // success
+        success:
+          "bg-success text-success-foreground data-[inset-color]:before:bg-success-200 [&_[data-slot='alert-description']]:text-success-50",
+        "success-muted": "bg-success-muted",
+        "success-faded": "border border-border-success-faded bg-success-faded",
 
-        "warning-muted":
-          "bg-warning-muted text-warning-muted-foreground data-[inset-color]:before:bg-warning-500",
-        "warning-faded":
-          "bg-warning-faded text-warning-muted-foreground data-[inset-color]:before:bg-warning-500",
+        // warning
+        warning:
+          "bg-warning text-warning-foreground data-[inset-color]:before:bg-warning-200 [&_[data-slot='alert-description']]:text-warning-900",
+        "warning-muted": "bg-warning-muted",
+        "warning-faded": "border border-border-warning-faded bg-warning-faded",
       },
       insetColor: {
         false: null,
         true: "before:absolute before:top-0 before:left-0 before:inline-block before:h-full before:w-1.5 before:content-['']",
       },
     },
+    compoundVariants: [
+      {
+        variant: ["outline", "muted", "faded"],
+        className:
+          "text-accent-foreground data-[inset-color]:before:bg-muted-foreground [&_[data-slot='alert-description']]:text-muted-foreground",
+      },
+      {
+        variant: ["primary-muted", "primary-faded"],
+        className:
+          "text-primary-accent-foreground data-[inset-color]:before:bg-primary [&_[data-slot='alert-description']]:text-primary-muted-foreground",
+      },
+      {
+        variant: ["secondary-muted", "secondary-faded"],
+        className:
+          "text-secondary-accent-foreground data-[inset-color]:before:bg-secondary [&_[data-slot='alert-description']]:text-secondary-muted-foreground",
+      },
+      {
+        variant: ["destructive-muted", "destructive-faded"],
+        className:
+          "text-destructive-accent-foreground data-[inset-color]:before:bg-destructive [&_[data-slot='alert-description']]:text-destructive-muted-foreground",
+      },
+      {
+        variant: ["success-muted", "success-faded"],
+        className:
+          "text-success-accent-foreground data-[inset-color]:before:bg-success [&_[data-slot='alert-description']]:text-success-muted-foreground",
+      },
+      {
+        variant: ["warning-muted", "warning-faded"],
+        className:
+          "text-warning-accent-foreground data-[inset-color]:before:bg-warning [&_[data-slot='alert-description']]:text-warning-muted-foreground",
+      },
+    ],
+
     defaultVariants: {
       variant: "outline",
     },
@@ -79,51 +113,12 @@ function Alert({
   );
 }
 
-const alertIconVariants = [
-  // accent
-  "group-data-[variant=accent]/alert:[&>svg]:fill-muted-foreground group-data-[variant=accent]/alert:[&>svg]:text-accent",
-  // outline
-  "group-data-[variant=outline]/alert:[&>svg]:fill-muted-foreground group-data-[variant=outline]/alert:[&>svg]:text-background",
-  // muted
-  "group-data-[variant=muted]/alert:[&>svg]:fill-muted-foreground group-data-[variant=muted]/alert:[&>svg]:text-muted",
-  // faded
-  "group-data-[variant=faded]/alert:bg-accent group-data-[variant=faded]/alert:inset-ring-border-faded group-data-[variant=faded]/alert:[&>svg]:fill-muted-foreground group-data-[variant=faded]/alert:[&>svg]:text-accent",
-
-  // primary
-  "group-data-[variant=primary]/alert:[&>svg]:fill-primary-200 group-data-[variant=primary]/alert:[&>svg]:text-primary",
-  // primary muted
-  "group-data-[variant=primary-muted]/alert:[&>svg]:fill-primary-300 group-data-[variant=primary-muted]/alert:[&>svg]:text-primary-muted",
-  // primary faded
-  "group-data-[variant=primary-faded]/alert:bg-primary-muted group-data-[variant=primary-faded]/alert:inset-ring-border-primary-faded group-data-[variant=primary-faded]/alert:[&>svg]:fill-primary-500 group-data-[variant=primary-faded]/alert:[&>svg]:text-primary-muted dark:group-data-[variant=primary-faded]/alert:[&>svg]:fill-primary-400",
-
-  // secondary muted
-  "group-data-[variant=secondary-muted]/alert:[&>svg]:fill-secondary-500 group-data-[variant=secondary-muted]/alert:[&>svg]:text-secondary-muted",
-  // secondary faded
-  "group-data-[variant=secondary-faded]/alert:[&>svg]:fill-secondary-500 group-data-[variant=secondary-faded]/alert:[&>svg]:text-secondary-muted",
-
-  // destructive muted
-  "group-data-[variant=destructive-muted]/alert:[&>svg]:fill-destructive-500 group-data-[variant=destructive-muted]/alert:[&>svg]:text-destructive-muted",
-  // destructive faded
-  "group-data-[variant=destructive-faded]/alert:[&>svg]:fill-destructive-500 group-data-[variant=destructive-faded]/alert:[&>svg]:text-destructive-faded",
-
-  // success muted
-  "group-data-[variant=success-muted]/alert:[&>svg]:fill-success-500 group-data-[variant=success-muted]/alert:[&>svg]:text-success-muted",
-  // success faded
-  "group-data-[variant=success-faded]/alert:[&>svg]:fill-success-500 group-data-[variant=success-faded]/alert:[&>svg]:text-success-faded",
-
-  // warning muted
-  "group-data-[variant=warning-muted]/alert:[&>svg]:fill-warning-500 group-data-[variant=warning-muted]/alert:[&>svg]:text-warning-muted",
-  // warning faded
-  "group-data-[variant=warning-faded]/alert:[&>svg]:fill-warning-500 group-data-[variant=warning-faded]/alert:[&>svg]:text-warning-faded",
-];
-
 function AlertIcon({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <span
       data-slot="alert-icon"
       className={cn(
         "inline-flex size-7 flex-none translate-y-0.5 items-center justify-center rounded-full inset-ring shadow-xs group-data-[centered]/alert:translate-y-0 [&_svg]:shrink-0 [&>svg]:size-5",
-        alertIconVariants,
         className,
       )}
       {...props}
@@ -162,41 +157,6 @@ function AlertTitle({
   );
 }
 
-const alertDescriptionVariants = [
-  // accent
-  "group-data-[variant=accent]/alert:text-muted-foreground",
-  // outline
-  "group-data-[variant=outline]/alert:text-muted-foreground",
-  // muted
-  "group-data-[variant=muted]/alert:text-muted-foreground",
-  // faded
-  "group-data-[variant=faded]/alert:text-muted-foreground",
-
-  // primary
-  "group-data-[variant=primary]/alert:text-primary-200",
-  // primary muted
-  "group-data-[variant=primary-muted]/alert:text-primary-muted-content",
-  // primary faded
-  "group-data-[variant=primary-faded]/alert:text-primary-muted-foreground",
-
-  // secondary muted
-  "group-data-[variant=secondary-muted]/alert:text-secondary-muted-content",
-  // secondary faded
-  "group-data-[variant=secondary-faded]/alert:text-secondary-muted-content",
-  // destructive muted
-  "group-data-[variant=destructive-muted]/alert:text-destructive-muted-content",
-  // destructive faded
-  "group-data-[variant=destructive-faded]/alert:text-destructive-muted-content",
-  // success muted
-  "group-data-[variant=success-muted]/alert:text-success-muted-content",
-  // success faded
-  "group-data-[variant=success-faded]/alert:text-success-muted-content",
-  // warning muted
-  "group-data-[variant=warning-muted]/alert:text-warning-muted-content",
-  // warning faded
-  "group-data-[variant=warning-faded]/alert:text-warning-muted-content",
-];
-
 function AlertDescription({
   className,
   ...props
@@ -205,8 +165,7 @@ function AlertDescription({
     <div
       data-slot="alert-description"
       className={cn(
-        "grid justify-items-start gap-1 text-sm text-muted-foreground [&_p]:leading-relaxed",
-        alertDescriptionVariants,
+        "grid justify-items-start gap-1 text-sm [&_p]:leading-relaxed",
         className,
       )}
       {...props}
