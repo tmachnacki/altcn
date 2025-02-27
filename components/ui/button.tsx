@@ -112,7 +112,7 @@ const buttonVariants = cva(
           "bg-destructive text-destructive-foreground shadow-lg shadow-destructive/50 hover:bg-destructive/90 focus-visible:outline-destructive",
 
         "destructive-gradient":
-          "bg-gradient-to-br from-destructive-700 to-destructive-400 text-destructive-foreground hover:from-destructive-700/90 hover:to-destructive-400/90 focus-visible:outline-destructive dark:from-destructive-900 dark:to-destructive-700 dark:hover:from-destructive-900/90 dark:hover:to-destructive-700/90",
+          "bg-gradient-to-br from-destructive-600 to-destructive-400 text-destructive-foreground hover:from-destructive-600/90 hover:to-destructive-400/90 focus-visible:outline-destructive dark:from-destructive-900 dark:to-destructive-700 dark:hover:from-destructive-900/90 dark:hover:to-destructive-700/90",
 
         "destructive-ghost":
           "text-destructive-muted-foreground hover:bg-destructive-muted focus-visible:outline-destructive",
