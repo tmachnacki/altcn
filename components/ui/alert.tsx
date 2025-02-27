@@ -9,26 +9,35 @@ const alertVariants = cva(
     variants: {
       variant: {
         // base
-        outline: "border border-border bg-background",
-        muted: "bg-muted",
-        faded: "border border-border-faded bg-faded",
+        outline:
+          "border border-border bg-background [&_[data-slot='alert-icon']]:bg-muted [&_[data-slot='alert-icon']]:[&>svg]:fill-muted-foreground [&_[data-slot='alert-icon']]:[&>svg]:stroke-muted",
+
+        muted:
+          "bg-muted [&_[data-slot='alert-icon']]:bg-base-200 dark:[&_[data-slot='alert-icon']]:bg-base-800 [&_[data-slot='alert-icon']]:[&>svg]:fill-muted-foreground [&_[data-slot='alert-icon']]:[&>svg]:stroke-base-200 dark:[&_[data-slot='alert-icon']]:[&>svg]:stroke-base-800",
+
+        faded:
+          "border border-border-faded bg-faded [&_[data-slot='alert-icon']]:bg-accent [&_[data-slot='alert-icon']]:[&>svg]:fill-muted-foreground [&_[data-slot='alert-icon']]:[&>svg]:stroke-accent",
 
         // primary
         primary:
-          "bg-primary text-primary-foreground data-[inset-color]:before:bg-primary-200 [&_[data-slot='alert-description']]:text-primary-200",
-        "primary-muted": "bg-primary-muted",
-        "primary-faded": "border border-border-primary-faded bg-primary-faded",
+          "bg-primary text-primary-foreground data-[inset-color]:before:bg-primary-200 [&_[data-slot='alert-description']]:text-primary-200 [&_[data-slot='alert-icon']]:bg-primary-400/80 [&_[data-slot='alert-icon']]:[&>svg]:fill-primary-50 [&_[data-slot='alert-icon']]:[&>svg]:stroke-primary-400",
+
+        "primary-muted":
+          "bg-primary-muted [&_[data-slot='alert-icon']]:bg-primary-200 dark:[&_[data-slot='alert-icon']]:bg-primary-900 [&_[data-slot='alert-icon']]:[&>svg]:fill-primary-600 [&_[data-slot='alert-icon']]:[&>svg]:stroke-primary-200 dark:[&_[data-slot='alert-icon']]:[&>svg]:fill-primary-300 dark:[&_[data-slot='alert-icon']]:[&>svg]:stroke-primary-900",
+
+        "primary-faded":
+          "border border-border-primary-faded bg-primary-faded [&_[data-slot='alert-icon']]:bg-primary-200/80 dark:[&_[data-slot='alert-icon']]:bg-primary-900/80 [&_[data-slot='alert-icon']]:[&>svg]:fill-primary-500 [&_[data-slot='alert-icon']]:[&>svg]:stroke-primary-200/80 dark:[&_[data-slot='alert-icon']]:[&>svg]:fill-primary-300 dark:[&_[data-slot='alert-icon']]:[&>svg]:stroke-primary-900/80",
 
         // secondary
         secondary:
-          "bg-secondary text-secondary-foreground data-[inset-color]:before:bg-secondary-200 [&_[data-slot='alert-description']]:text-secondary-900",
+          "bg-secondary text-secondary-foreground data-[inset-color]:before:bg-secondary-600 dark:data-[inset-color]:before:bg-secondary-700 [&_[data-slot='alert-description']]:text-secondary-900 [&_[data-slot='alert-icon']]:bg-secondary-200 [&_[data-slot='alert-icon']]:[&>svg]:fill-secondary-700/90 [&_[data-slot='alert-icon']]:[&>svg]:stroke-secondary-200",
         "secondary-muted": "bg-secondary-muted",
         "secondary-faded":
           "border border-border-secondary-faded bg-secondary-faded",
 
         // destructive
         destructive:
-          "bg-destructive text-destructive-foreground data-[inset-color]:before:bg-destructive-200 [&_[data-slot='alert-description']]:text-destructive-200",
+          "bg-destructive text-destructive-foreground data-[inset-color]:before:bg-destructive-200 [&_[data-slot='alert-description']]:text-destructive-100",
         "destructive-muted": "bg-destructive-muted",
         "destructive-faded":
           "border border-border-destructive-faded bg-destructive-faded",
@@ -118,7 +127,7 @@ function AlertIcon({ className, ...props }: React.ComponentProps<"div">) {
     <span
       data-slot="alert-icon"
       className={cn(
-        "inline-flex size-7 flex-none translate-y-0.5 items-center justify-center rounded-full inset-ring shadow-xs group-data-[centered]/alert:translate-y-0 [&_svg]:shrink-0 [&>svg]:size-5",
+        "inline-flex size-7 flex-none translate-y-0.5 items-center justify-center rounded-full shadow-xs group-data-[centered]/alert:translate-y-0 [&_svg]:shrink-0 [&>svg]:size-5",
         className,
       )}
       {...props}
@@ -176,7 +185,7 @@ function AlertDescription({
 function AlertFooter({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
-      data-slot="alert-action"
+      data-slot="alert-footer"
       className={cn("mt-6 flex items-center gap-2", className)}
       {...props}
     />
