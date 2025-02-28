@@ -24,8 +24,8 @@ export function Spinner({ className, ...props }: React.ComponentProps<"div">) {
       aria-label={props["aria-label"] || "Loading"}
       {...props}
     >
-      <i className="absolute size-full animate-spinner-ease rounded-full border-2 border-solid border-t-transparent border-r-transparent border-b-current border-l-transparent"></i>
-      <i className="absolute size-full animate-spinner-linear rounded-full border-2 border-dotted border-t-transparent border-r-transparent border-b-current border-l-transparent opacity-60"></i>
+      <i data-slot="spinner-solid" className="absolute size-full animate-spinner-ease rounded-full border-2 border-solid border-t-transparent border-r-transparent border-b-current border-l-transparent"></i>
+      <i data-slot="spinner-dotted" className="absolute size-full animate-spinner-linear rounded-full border-2 border-dotted border-t-transparent border-r-transparent border-b-current border-l-transparent opacity-70"></i>
     </span>
   );
 }

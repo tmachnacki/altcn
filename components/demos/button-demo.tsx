@@ -58,37 +58,89 @@ export function ButtonDemo() {
         <Button variant="destructive-ghost">Destructive Ghost</Button>
       </div>
       <div className="flex flex-wrap gap-4">
-        <Button disabled>
+        <Button size="lg">Large</Button>
+        <Button disabled size="lg">
           <Spinner />
           Loading
         </Button>
-        <Button color="primary">
+        <Button size="lg">
           Get Started
           <ArrowRightIcon />
         </Button>
-        <Button color="primary">
+        <Button size="lg">
           <MailIcon />
           Send Invite
         </Button>
+        <Button size={"icon-lg"}>
+          <SettingsIcon />
+        </Button>
+        <Button size={"icon-lg"} disabled>
+          <Spinner />
+        </Button>
       </div>
       <div className="flex flex-wrap gap-4">
-        <Button size="lg">Large</Button>
         <Button>Default</Button>
-        <Button size="sm">Small</Button>
-        <Button size="xs">Extra small</Button>
+        <Button disabled size="default">
+          <Spinner />
+          Loading
+        </Button>
+        <Button size="default">
+          Get Started
+          <ArrowRightIcon />
+        </Button>
+        <Button size="default">
+          <MailIcon />
+          Send Invite
+        </Button>
+        <Button size={"icon"}>
+          <SettingsIcon />
+        </Button>
+        <Button size={"icon"} disabled>
+          <Spinner />
+        </Button>
       </div>
+
       <div className="flex flex-wrap gap-4">
-        <Button variant={"outline"} size={"iconLg"}>
+        <Button size="sm">Small</Button>
+        <Button disabled size="sm">
+          <Spinner />
+          Loading
+        </Button>
+        <Button size="sm">
+          Get Started
+          <ArrowRightIcon />
+        </Button>
+        <Button size="sm">
+          <MailIcon />
+          Send Invite
+        </Button>
+        <Button size={"icon-sm"}>
           <SettingsIcon />
         </Button>
-        <Button variant="outline" size="icon">
+        <Button size={"icon-sm"} disabled>
+          <Spinner />
+        </Button>
+      </div>
+
+      <div className="flex flex-wrap gap-4">
+        <Button size="xs">Extra small</Button>
+        <Button disabled size="xs">
+          <Spinner />
+          Loading
+        </Button>
+        <Button size="xs">
+          Get Started
+          <ArrowRightIcon />
+        </Button>
+        <Button size="xs">
+          <MailIcon />
+          Send Invite
+        </Button>
+        <Button size={"icon-xs"}>
           <SettingsIcon />
         </Button>
-        <Button variant="outline" size="iconSm">
-          <SettingsIcon />
-        </Button>
-        <Button variant="outline" size="iconXs">
-          <SettingsIcon />
+        <Button size={"icon-xs"} disabled>
+          <Spinner />
         </Button>
       </div>
     </div>
