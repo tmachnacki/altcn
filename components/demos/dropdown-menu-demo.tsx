@@ -220,9 +220,10 @@ function DropdownMenuSimple() {
 }
 
 function DropdownMenuCheckboxes() {
-  const [showStatusBar, setShowStatusBar] = React.useState(true);
-  const [showActivityBar, setShowActivityBar] = React.useState(false);
-  const [showPanel, setShowPanel] = React.useState(false);
+  const [showDefault, setShowDefault] = React.useState(true);
+  const [showPrimary, setShowPrimary] = React.useState(false);
+  const [showSecondary, setShowSecondary] = React.useState(false);
+  const [showDisabled, setShowDisabled] = React.useState(false);
 
   return (
     <DropdownMenu>
@@ -246,23 +247,31 @@ function DropdownMenuCheckboxes() {
         <DropdownMenuGroup>
           <DropdownMenuLabel>Appearance</DropdownMenuLabel>
           <DropdownMenuCheckboxItem
-            checked={showStatusBar}
-            onCheckedChange={setShowStatusBar}
+            checked={showDefault}
+            onCheckedChange={setShowDefault}
           >
-            Status Bar
+            Default Indicator
           </DropdownMenuCheckboxItem>
           <DropdownMenuCheckboxItem
-            checked={showActivityBar}
-            onCheckedChange={setShowActivityBar}
+            checked={showPrimary}
+            onCheckedChange={setShowPrimary}
+            indicatorVariant="primary"
+          >
+            Primary Indicator
+          </DropdownMenuCheckboxItem>
+          <DropdownMenuCheckboxItem
+            checked={showSecondary}
+            onCheckedChange={setShowSecondary}
+            indicatorVariant="secondary"
+          >
+            Secondary Indicator
+          </DropdownMenuCheckboxItem>
+          <DropdownMenuCheckboxItem
+            checked={showDisabled}
+            onCheckedChange={setShowDisabled}
             disabled
           >
-            Activity Bar
-          </DropdownMenuCheckboxItem>
-          <DropdownMenuCheckboxItem
-            checked={showPanel}
-            onCheckedChange={setShowPanel}
-          >
-            Panel
+            Disabled
           </DropdownMenuCheckboxItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
