@@ -13,14 +13,14 @@ const menuItemVariants = cva(
     variants: {
       variant: {
         accent:
-          "focus:bg-accent focus:text-accent-foreground focus:[&_svg:not([class*='focus:text-'])]:text-accent-foreground",
-        faded: "focus:bg-faded focus:inset-ring focus:inset-ring-border-faded",
+          "focus:bg-accent focus:text-accent-foreground focus:[&_svg:not([class*='text-'])]:text-accent-foreground",
+        faded: "focus:bg-faded focus:inset-ring focus:inset-ring-border-faded focus:[&_svg:not([class*='text-'])]:text-accent-foreground",
         primary:
-          "focus:bg-primary focus:text-primary-foreground focus:[&_svg:not([class*='text-'])]:text-primary-200",
+          "focus:bg-primary focus:text-primary-foreground focus:[&_svg:not([class*='text-'])]:text-primary-foreground",
         "primary-muted":
-          "focus:bg-primary-muted focus:text-primary-950 dark:focus:text-primary-50 [&_svg:not([class*='text-'])]:text-primary-muted-foreground focus:[&_svg:not([class*='text-'])]:text-primary-muted-foreground",
+          "focus:bg-primary-muted focus:text-primary-muted-foreground focus:[&_svg:not([class*='text-'])]:text-primary-muted-foreground",
         "primary-faded":
-          "focus:bg-primary-faded focus:text-primary-950 focus:inset-ring focus:inset-ring-border-primary-faded dark:focus:text-primary-50 [&_svg:not([class*='text-'])]:text-primary-muted-foreground",
+          "focus:bg-primary-faded focus:text-primary-accent-foreground focus:inset-ring focus:inset-ring-border-primary-faded [&_svg:not([class*='text-'])]:text-primary-muted-foreground",
         secondary:
           "focus:bg-secondary focus:text-secondary-foreground focus:[&_svg:not([class*='text-'])]:text-secondary-600",
         destructive:

@@ -38,7 +38,7 @@ const badgeVariants = cva(
           "bg-primary-muted text-primary-muted-foreground focus-visible:outline-primary [a&]:hover:bg-primary-muted/80",
 
         "primary-surface":
-          "border border-border-primary-faded bg-primary-faded text-primary-accent-foreground hover:bg-primary-muted/70 focus-visible:outline-primary",
+          "border border-border-primary-faded bg-primary-faded text-primary-accent-foreground [a&]:hover:bg-primary-muted/70 focus-visible:outline-primary",
 
         "primary-faded":
           "bg-primary-faded text-primary-muted-foreground inset-ring inset-ring-border-primary-faded focus-visible:outline-primary [a&]:hover:bg-primary-muted/70",
@@ -57,7 +57,7 @@ const badgeVariants = cva(
           "bg-secondary-muted text-secondary-muted-foreground focus-visible:outline-secondary [a&]:hover:bg-secondary-muted/80",
 
         "secondary-surface":
-          "border border-border-secondary-faded bg-secondary-faded text-secondary-accent-foreground hover:bg-secondary-muted/70 focus-visible:outline-secondary",
+          "border border-border-secondary-faded bg-secondary-faded text-secondary-accent-foreground [a&]:hover:bg-secondary-muted/70 focus-visible:outline-secondary",
 
         "secondary-faded":
           "bg-secondary-faded text-secondary-muted-foreground inset-ring inset-ring-border-secondary-faded focus-visible:outline-secondary [a&]:hover:bg-secondary-muted/70",
@@ -76,7 +76,7 @@ const badgeVariants = cva(
           "bg-destructive-muted text-destructive-muted-foreground focus-visible:outline-destructive [a&]:hover:bg-destructive-muted/80",
 
         "destructive-surface":
-          "border border-border-destructive-faded bg-destructive-faded text-destructive-accent-foreground hover:bg-destructive-muted/70 focus-visible:outline-destructive",
+          "border border-border-destructive-faded bg-destructive-faded text-destructive-accent-foreground [a&]:hover:bg-destructive-muted/70 focus-visible:outline-destructive",
 
         "destructive-faded":
           "bg-destructive-faded text-destructive-muted-foreground inset-ring inset-ring-border-destructive-faded focus-visible:outline-destructive [a&]:hover:bg-destructive-muted/70",
@@ -95,7 +95,7 @@ const badgeVariants = cva(
           "bg-success-muted text-success-muted-foreground focus-visible:outline-success [a&]:hover:bg-success-muted/80",
 
         "success-surface":
-          "border border-border-success-faded bg-success-faded text-success-accent-foreground hover:bg-success-muted/70 focus-visible:outline-success",
+          "border border-border-success-faded bg-success-faded text-success-accent-foreground [a&]:hover:bg-success-muted/70 focus-visible:outline-success",
 
         "success-faded":
           "bg-success-faded text-success-muted-foreground inset-ring inset-ring-border-success-faded focus-visible:outline-success [a&]:hover:bg-success-muted/70",
@@ -114,7 +114,7 @@ const badgeVariants = cva(
           "bg-warning-muted text-warning-muted-foreground focus-visible:outline-warning [a&]:hover:bg-warning-muted/80",
 
         "warning-surface":
-          "border border-border-warning-faded bg-warning-faded text-warning-accent-foreground hover:bg-warning-muted/70 focus-visible:outline-warning",
+          "border border-border-warning-faded bg-warning-faded text-warning-accent-foreground [a&]:hover:bg-warning-muted/70 focus-visible:outline-warning",
 
         "warning-faded":
           "bg-warning-faded text-warning-muted-foreground inset-ring inset-ring-border-warning-faded focus-visible:outline-warning [a&]:hover:bg-warning-muted/70",

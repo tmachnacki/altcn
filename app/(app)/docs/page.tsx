@@ -1,5 +1,4 @@
 import { Container } from "@/components/container";
-import { ComponentDemoWrapper } from "./component-demo-wrapper";
 
 import { AccordionDemo } from "@/components/demos/accordion-demo";
 import { AlertDemo } from "@/components/demos/alert-demo";
@@ -7,7 +6,9 @@ import { AlertDialogDemo } from "@/components/demos/alert-dialog-demo";
 import { AvatarDemo } from "@/components/demos/avatar-demo";
 import { BadgeDemo } from "@/components/demos/badge-demo";
 import { ButtonDemo } from "@/components/demos/button-demo";
+import { CheckboxDemo } from "@/components/demos/checkbox-demo";
 import { DropdownMenuDemo } from "@/components/demos/dropdown-menu-demo";
+import { RadioGroupDemo } from "@/components/demos/radio-group-demo";
 import { SkeletonDemo } from "@/components/demos/skeleton-demo";
 
 const COMPONENTS = [
@@ -42,9 +43,19 @@ const COMPONENTS = [
     component: <ButtonDemo />,
   },
   {
+    title: "Checkbox",
+    id: "checkbox",
+    component: <CheckboxDemo />,
+  },
+  {
     title: "Dropdown Menu",
     id: "dropdown-menu",
     component: <DropdownMenuDemo />,
+  },
+  {
+    title: "Radio Group",
+    id: "radio-group",
+    component: <RadioGroupDemo />,
   },
   {
     title: "Skeleton",
@@ -52,6 +63,19 @@ const COMPONENTS = [
     component: <SkeletonDemo />,
   },
 ];
+
+function ComponentDemoWrapper({
+  title,
+  id,
+  children,
+}: React.ComponentProps<"div"> & { title: string }) {
+  return (
+    <div className="scroll-mt-24 flex flex-col gap-3" id={id}>
+      <h2 className="text-lg font-medium">{title}</h2>
+      <div className="flex-1 min-h-48 rounded-md border p-8">{children}</div>
+    </div>
+  );
+}
 
 export default function Components() {
   return (
