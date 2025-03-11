@@ -45,17 +45,47 @@ export function CheckboxDemo() {
         <Checkbox id="destructive" variant="destructive" />
         <Label htmlFor="destructive">Destructive checkbox</Label>
       </div>
-      <Label className="flex items-start gap-3 rounded-lg border p-3 hover:bg-accent/50 has-[[aria-checked=true]]:border-blue-600 has-[[aria-checked=true]]:bg-blue-50 dark:has-[[aria-checked=true]]:border-blue-900 dark:has-[[aria-checked=true]]:bg-blue-950">
+      <Label className="flex items-start gap-3 rounded-lg border p-3 hover:bg-faded has-[[aria-checked=true]]:border-primary/50 has-[[aria-checked=true]]:bg-primary-faded group">
         <Checkbox
-          id="toggle-2"
+          id="primary-card"
           defaultChecked
-          className="data-[state=checked]:border-blue-600 data-[state=checked]:bg-blue-600 data-[state=checked]:text-white dark:data-[state=checked]:border-blue-700 dark:data-[state=checked]:bg-blue-700"
+          variant="primary"
         />
         <div className="grid gap-1.5 font-normal">
-          <p className="text-sm leading-none font-medium">
+          <p className="text-sm leading-none font-medium group-has-[[aria-checked=true]]:text-primary-accent-foreground">
             Enable notifications
           </p>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-sm text-muted-foreground group-has-[[aria-checked=true]]:text-primary-muted-foreground">
+            You can enable or disable notifications at any time.
+          </p>
+        </div>
+      </Label>
+      <Label className="flex items-start gap-3 rounded-lg border p-3 hover:bg-faded has-[[aria-checked=true]]:border-secondary/50 has-[[aria-checked=true]]:bg-secondary-faded group">
+        <Checkbox
+          id="secondary-card"
+          defaultChecked
+          variant="secondary"
+        />
+        <div className="grid gap-1.5 font-normal">
+          <p className="text-sm leading-none font-medium group-has-[[aria-checked=true]]:text-secondary-accent-foreground">
+            Enable notifications
+          </p>
+          <p className="text-sm text-muted-foreground group-has-[[aria-checked=true]]:text-secondary-muted-foreground">
+            You can enable or disable notifications at any time.
+          </p>
+        </div>
+      </Label>
+      <Label className="flex items-start gap-3 rounded-lg border p-3 hover:bg-faded has-[[aria-checked=true]]:border-destructive/50 has-[[aria-checked=true]]:bg-destructive-faded group">
+        <Checkbox
+          id="destructive-card"
+          defaultChecked
+          variant="destructive"
+        />
+        <div className="grid gap-1.5 font-normal">
+          <p className="text-sm leading-none font-medium group-has-[[aria-checked=true]]:text-destructive-accent-foreground">
+            Enable notifications
+          </p>
+          <p className="text-sm text-muted-foreground group-has-[[aria-checked=true]]:text-destructive-muted-foreground">
             You can enable or disable notifications at any time.
           </p>
         </div>

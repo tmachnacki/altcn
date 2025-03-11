@@ -8,6 +8,8 @@ import { BadgeDemo } from "@/components/demos/badge-demo";
 import { ButtonDemo } from "@/components/demos/button-demo";
 import { CheckboxDemo } from "@/components/demos/checkbox-demo";
 import { DropdownMenuDemo } from "@/components/demos/dropdown-menu-demo";
+import { InputDemo } from "@/components/demos/input-demo";
+import { MenubarDemo } from "@/components/demos/menubar-demo";
 import { RadioGroupDemo } from "@/components/demos/radio-group-demo";
 import { SkeletonDemo } from "@/components/demos/skeleton-demo";
 
@@ -53,6 +55,16 @@ const COMPONENTS = [
     component: <DropdownMenuDemo />,
   },
   {
+    title: "Input",
+    id: "input",
+    component: <InputDemo />,
+  },
+  {
+    title: "Menubar",
+    id: "menubar",
+    component: <MenubarDemo />,
+  },
+  {
     title: "Radio Group",
     id: "radio-group",
     component: <RadioGroupDemo />,
@@ -70,9 +82,11 @@ function ComponentDemoWrapper({
   children,
 }: React.ComponentProps<"div"> & { title: string }) {
   return (
-    <div className="scroll-mt-24 flex flex-col gap-3" id={id}>
+    <div className="flex scroll-mt-24 flex-col gap-3" id={id}>
       <h2 className="text-lg font-medium">{title}</h2>
-      <div className="flex-1 min-h-48 rounded-md border p-8">{children}</div>
+      <div className="flex min-h-48 flex-1 rounded-md border p-8">
+        {children}
+      </div>
     </div>
   );
 }

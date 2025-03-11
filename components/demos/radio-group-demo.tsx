@@ -89,17 +89,63 @@ export function RadioGroupDemo() {
       <RadioGroup defaultValue="starter" className="max-w-sm">
         {plans.map((plan) => (
           <Label
-            className="flex items-start gap-3 rounded-lg border p-4 hover:bg-accent/50 has-[[data-state=checked]]:border-green-600 has-[[data-state=checked]]:bg-green-50 dark:has-[[data-state=checked]]:border-green-900 dark:has-[[data-state=checked]]:bg-green-950"
-            key={plan.id}
+            className="group flex items-start gap-3 rounded-lg border p-4 hover:bg-faded has-[[data-state=checked]]:border-primary/50 has-[[data-state=checked]]:bg-primary-faded"
+            key={`${plan.id}-primary`}
           >
             <RadioGroupItem
               value={plan.id}
-              id={plan.name}
-              className="shadow-none data-[state=checked]:border-green-600 data-[state=checked]:bg-green-600 *:data-[slot=radio-group-indicator]:[&>svg]:fill-white *:data-[slot=radio-group-indicator]:[&>svg]:stroke-white"
+              id={`${plan.name}-primary`}
+              variant="primary"
             />
             <div className="grid gap-1 font-normal">
-              <div className="font-medium">{plan.name}</div>
-              <div className="leading-snug text-muted-foreground">
+              <div className="font-medium group-has-[[data-state=checked]]:text-primary-accent-foreground">
+                {plan.name}
+              </div>
+              <div className="leading-snug text-muted-foreground group-has-[[data-state=checked]]:text-primary-muted-foreground">
+                {plan.description}
+              </div>
+            </div>
+          </Label>
+        ))}
+      </RadioGroup>
+      <RadioGroup defaultValue="starter" className="max-w-sm">
+        {plans.map((plan) => (
+          <Label
+            className="group flex items-start gap-3 rounded-lg border p-4 hover:bg-faded has-[[data-state=checked]]:border-secondary/50 has-[[data-state=checked]]:bg-secondary-faded"
+            key={`${plan.id}-secondary`}
+          >
+            <RadioGroupItem
+              value={plan.id}
+              id={`${plan.name}-secondary`}
+              variant="secondary"
+            />
+            <div className="grid gap-1 font-normal">
+              <div className="font-medium group-has-[[data-state=checked]]:text-secondary-accent-foreground">
+                {plan.name}
+              </div>
+              <div className="leading-snug text-muted-foreground group-has-[[data-state=checked]]:text-secondary-muted-foreground">
+                {plan.description}
+              </div>
+            </div>
+          </Label>
+        ))}
+      </RadioGroup>
+      <RadioGroup defaultValue="starter" className="max-w-sm">
+        {plans.map((plan) => (
+          <Label
+            className="group flex items-start gap-3 rounded-lg border p-4 hover:bg-faded has-[[data-state=checked]]:border-destructive/50 has-[[data-state=checked]]:bg-destructive-faded"
+            key={`${plan.id}-destructive`}
+          >
+            <RadioGroupItem
+              value={plan.id}
+              id={`${plan.name}-destructive`}
+              variant="destructive"
+            />
+            <div className="grid gap-1 font-normal">
+              <div className="font-medium group-has-[[data-state=checked]]:text-destructive-accent-foreground">
+                {plan.name}
+              </div>
+              <div className="leading-snug text-muted-foreground group-has-[[data-state=checked]]:text-destructive-muted-foreground">
                 {plan.description}
               </div>
             </div>

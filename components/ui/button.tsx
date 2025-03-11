@@ -125,7 +125,7 @@ const buttonVariants = cva(
 
         sm: "h-8 rounded-md px-3 py-1.5 has-[[data-slot='spinner']]:px-2.5 has-[>svg]:px-2.5 [&_[data-slot='spinner']:not([class*='size-'])]:size-4 [&_svg:not([class*='size-'])]:size-4",
 
-        xs: "h-6 gap-1.5 rounded-sm px-2 py-1 text-xs font-normal has-[[data-slot='spinner']]:px-2 has-[>svg]:px-2 [&_[data-slot*='spinner-']]:border-1 [&_[data-slot='spinner']:not([class*='size-'])]:size-3.5 [&_svg:not([class*='size-'])]:size-3.5",
+        xs: "h-6 gap-1.5 rounded-sm px-2 py-1 text-xs font-normal has-[[data-slot='spinner']]:px-2 has-[>svg]:px-2 [&_[data-slot*='spinner-']]:border-1 [&_[data-slot='spinner']:not([class*='size-'])]:size-3 [&_svg:not([class*='size-'])]:size-3.5",
 
         icon: "size-9 [&_[data-slot='spinner']:not([class*='size-'])]:size-4 [&_svg:not([class*='size-'])]:size-4",
 
@@ -136,7 +136,7 @@ const buttonVariants = cva(
           "size-8 [&_[data-slot='spinner']:not([class*='size-'])]:size-4 [&_svg:not([class*='size-'])]:size-4",
 
         "icon-xs":
-          "size-6 rounded-sm [&_[data-slot*='spinner-']]:border-1 [&_[data-slot='spinner']:not([class*='size-'])]:size-3.5 [&_svg:not([class*='size-'])]:size-3.5",
+          "size-6 rounded-sm [&_[data-slot*='spinner-']]:border-1 [&_[data-slot='spinner']:not([class*='size-'])]:size-3 [&_svg:not([class*='size-'])]:size-3.5",
       },
     },
     defaultVariants: {

@@ -37,7 +37,7 @@
 
   --primary: var(--color-primary-500);
   --primary-foreground: var(--color-white);
-  --primary-accent-foreground: var(--color-primary-900);
+  --primary-accent-foreground: var(--color-primary-950);
   --primary-muted: var(--color-primary-100);
   --primary-muted-foreground: var(--color-primary-600);
   --primary-muted-content: var(--color-primary-500);
@@ -50,7 +50,7 @@
 
   --secondary: var(--color-secondary-400);
   --secondary-foreground: var(--color-secondary-950);
-  --secondary-accent-foreground: var(--color-secondary-900);
+  --secondary-accent-foreground: var(--color-secondary-950);
   --secondary-muted: var(--color-secondary-100);
   --secondary-muted-foreground: color-mix(
     in oklab,
@@ -67,7 +67,7 @@
 
   --destructive: var(--color-destructive-500);
   --destructive-foreground: var(--color-white);
-  --destructive-accent-foreground: var(--color-destructive-900);
+  --destructive-accent-foreground: var(--color-destructive-950);
   --destructive-muted: var(--color-destructive-100);
   --destructive-muted-foreground: var(--color-destructive-700);
   --destructive-muted-content: var(--color-destructive-600);
@@ -80,7 +80,7 @@
 
   --success: var(--color-success-600);
   --success-foreground: var(--color-white);
-  --success-accent-foreground: var(--color-success-900);
+  --success-accent-foreground: var(--color-success-950);
   --success-muted: var(--color-success-100);
   --success-muted-foreground: var(--color-success-700);
   --success-muted-content: var(--color-success-500);
@@ -93,7 +93,7 @@
 
   --warning: var(--color-warning-400);
   --warning-foreground: var(--color-warning-950);
-  --warning-accent-foreground: var(--color-warning-900);
+  --warning-accent-foreground: var(--color-warning-950);
   --warning-muted: var(--color-warning-100);
   /* --warning-muted-foreground: color-mix(
     in oklab,
@@ -168,7 +168,7 @@
 
   --primary: var(--color-primary-500);
   --primary-foreground: var(--color-white);
-  --primary-accent-foreground: var(--color-primary-100);
+  --primary-accent-foreground: var(--color-primary-50);
   --primary-muted: var(--color-primary-950);
   --primary-muted-foreground: var(--color-primary-300);
   --primary-muted-content: var(--color-primary-400);
@@ -185,7 +185,7 @@
 
   --secondary: var(--color-secondary-400);
   --secondary-foreground: var(--color-secondary-950);
-  --secondary-accent-foreground: var(--color-secondary-100);
+  --secondary-accent-foreground: var(--color-secondary-50);
   --secondary-muted: var(--color-secondary-950);
   --secondary-muted-foreground: var(--color-secondary-400);
   --secondary-muted-content: var(--color-secondary-500);
@@ -202,7 +202,7 @@
 
   --destructive: var(--color-destructive-700);
   --destructive-foreground: var(--color-white);
-  --destructive-accent-foreground: var(--color-destructive-100);
+  --destructive-accent-foreground: var(--color-destructive-50);
   --destructive-muted: var(--color-destructive-950);
   --destructive-muted-foreground: var(--color-destructive-300);
   --destructive-muted-content: color-mix(
@@ -223,7 +223,7 @@
 
   --success: var(--color-success-600);
   --success-foreground: var(--color-white);
-  --success-accent-foreground: var(--color-success-100);
+  --success-accent-foreground: var(--color-success-50);
   --success-muted: var(--color-success-950);
   --success-muted-foreground: var(--color-success-400);
   --success-muted-content: var(--color-success-500);
@@ -240,7 +240,7 @@
 
   --warning: var(--color-warning-400);
   --warning-foreground: var(--color-warning-950);
-  --warning-accent-foreground: var(--color-warning-100);
+  --warning-accent-foreground: var(--color-warning-50);
   --warning-muted: var(--color-warning-950);
   --warning-muted-foreground: var(--color-warning-500);
   --warning-muted-content: var(--color-warning-500);
