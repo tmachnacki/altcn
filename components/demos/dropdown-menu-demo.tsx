@@ -19,6 +19,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
+  menuItemVariants,
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
@@ -35,128 +36,213 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { VariantProps } from "class-variance-authority";
+
+type TDropdownMenuDemo = {
+  label: string;
+  variant: VariantProps<typeof menuItemVariants>["variant"];
+  wide?: boolean;
+};
+
+const dropdownMenuDemos: TDropdownMenuDemo[] = [
+  {
+    label: "Accent",
+    variant: "accent",
+  },
+  {
+    label: "Accent Wide",
+    variant: "accent",
+    wide: true,
+  },
+  {
+    label: "Faded",
+    variant: "faded",
+  },
+  {
+    label: "Faded Wide",
+    variant: "faded",
+    wide: true,
+  },
+  {
+    label: "Primary",
+    variant: "primary",
+  },
+  {
+    label: "Primary Wide",
+    variant: "primary",
+    wide: true,
+  },
+  {
+    label: "Primary Accent",
+    variant: "primary-accent",
+  },
+  {
+    label: "Primary Accent Wide",
+    variant: "primary-accent",
+    wide: true,
+  },
+  {
+    label: "Primary Muted",
+    variant: "primary-muted",
+  },
+  {
+    label: "Primary Muted Wide",
+    variant: "primary-muted",
+    wide: true,
+  },
+  {
+    label: "Primary Surface",
+    variant: "primary-surface",
+  },
+  {
+    label: "Primary Surface Wide",
+    variant: "primary-surface",
+    wide: true,
+  },
+  {
+    label: "Primary Faded",
+    variant: "primary-faded",
+  },
+  {
+    label: "Primary Faded Wide",
+    variant: "primary-faded",
+    wide: true,
+  },
+];
 
 export function DropdownMenuDemo() {
+  const [showDefault, setShowDefault] = React.useState(true);
+  const [showPrimary, setShowPrimary] = React.useState(false);
+  const [showSecondary, setShowSecondary] = React.useState(false);
+  const [showDisabled, setShowDisabled] = React.useState(false);
+
+  const [radioIndicator, setRadioIndicator] = React.useState("default");
+
   return (
-    <div className="flex flex-col items-center gap-4 md:flex-row">
-      <DropdownMenuBaseVariants />
-      <DropdownMenuPrimaryVariants />
-      <DropdownMenuSimple />
-      <DropdownMenuCheckboxes />
-      <DropdownMenuRadioGroupDemo />
-      <DropdownMenuWithAvatar />
-      <DropdownMenuAvatarOnly />
-      <DropdownMenuIconColor />
+    <div className="flex flex-col gap-8">
+      <div className="flex flex-wrap items-center gap-4">
+        {dropdownMenuDemos.map((demo) => (
+          <DropdownMenu key={demo.label}>
+            <DropdownMenuTrigger asChild>
+              <Button variant={demo.variant}>{demo.label}</Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent
+              align="start"
+              className="w-56"
+              variant={demo.variant}
+              wide={demo.wide}
+            >
+              <DropdownMenuGroup>
+                <DropdownMenuLabel>Account</DropdownMenuLabel>
+                <DropdownMenuItem>
+                  <BadgeCheckIcon />
+                  Account
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <CreditCardIcon />
+                  Billing
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <BellIcon />
+                  Notifications
+                </DropdownMenuItem>
+              </DropdownMenuGroup>
+              <DropdownMenuSeparator />
+              <DropdownMenuGroup>
+                <DropdownMenuLabel>Team</DropdownMenuLabel>
+                <DropdownMenuSub>
+                  <DropdownMenuSubTrigger>Invite users</DropdownMenuSubTrigger>
+                  <DropdownMenuPortal>
+                    <DropdownMenuSubContent>
+                      <DropdownMenuItem>Email</DropdownMenuItem>
+                      <DropdownMenuItem>Message</DropdownMenuItem>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem>More...</DropdownMenuItem>
+                    </DropdownMenuSubContent>
+                  </DropdownMenuPortal>
+                </DropdownMenuSub>
+                <DropdownMenuItem>
+                  New Team
+                  <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
+                </DropdownMenuItem>
+              </DropdownMenuGroup>
+              <DropdownMenuSeparator />
+              <DropdownMenuGroup>
+                <DropdownMenuLabel inset>Checkboxes</DropdownMenuLabel>
+                <DropdownMenuCheckboxItem
+                  checked={showDefault}
+                  onCheckedChange={setShowDefault}
+                >
+                  Default Indicator
+                </DropdownMenuCheckboxItem>
+                <DropdownMenuCheckboxItem
+                  checked={showPrimary}
+                  onCheckedChange={setShowPrimary}
+                  indicatorVariant="primary"
+                >
+                  Primary Indicator
+                </DropdownMenuCheckboxItem>
+                <DropdownMenuCheckboxItem
+                  checked={showSecondary}
+                  onCheckedChange={setShowSecondary}
+                  indicatorVariant="secondary"
+                >
+                  Secondary Indicator
+                </DropdownMenuCheckboxItem>
+                <DropdownMenuCheckboxItem
+                  checked={showDisabled}
+                  onCheckedChange={setShowDisabled}
+                  disabled
+                >
+                  Disabled
+                </DropdownMenuCheckboxItem>
+              </DropdownMenuGroup>
+              <DropdownMenuSeparator />
+              <DropdownMenuGroup>
+                <DropdownMenuLabel inset>Radio Group</DropdownMenuLabel>
+                <DropdownMenuRadioGroup
+                  value={radioIndicator}
+                  onValueChange={setRadioIndicator}
+                >
+                  <DropdownMenuRadioItem value="default">
+                    Default
+                  </DropdownMenuRadioItem>
+                  <DropdownMenuRadioItem
+                    value="primary"
+                    indicatorVariant="primary"
+                  >
+                    Primary
+                  </DropdownMenuRadioItem>
+                  <DropdownMenuRadioItem
+                    value="secondary"
+                    indicatorVariant="secondary"
+                  >
+                    Secondary
+                  </DropdownMenuRadioItem>
+                  <DropdownMenuRadioItem value="disabled" disabled>
+                    Disabled
+                  </DropdownMenuRadioItem>
+                </DropdownMenuRadioGroup>
+              </DropdownMenuGroup>
+              <DropdownMenuSeparator />
+              <DropdownMenuGroup>
+                <DropdownMenuItem variant={"destructive"}>
+                  <TrashIcon />
+                  Delete
+                </DropdownMenuItem>
+              </DropdownMenuGroup>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        ))}
+      </div>
+
+      <div className="flex items-center gap-4">
+        <DropdownMenuSimple />
+        <DropdownMenuWithAvatar />
+        <DropdownMenuAvatarOnly />
+        <DropdownMenuIconColor />
+      </div>
     </div>
-  );
-}
-
-function DropdownMenuBaseVariants() {
-  return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="outline">Base Variants</Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="start" className="w-56">
-        <DropdownMenuItem>
-          <LogOutIcon />
-          Accent (Default)
-        </DropdownMenuItem>
-        <DropdownMenuItem wide>
-          <LogOutIcon />
-          Accent Wide
-        </DropdownMenuItem>
-        <DropdownMenuItem variant="faded">
-          <LogOutIcon />
-          Faded
-        </DropdownMenuItem>
-        <DropdownMenuItem variant="faded" wide>
-          <LogOutIcon />
-          Faded Wide
-        </DropdownMenuItem>
-        <DropdownMenuItem disabled>
-          <LogOutIcon />
-          Disabled
-        </DropdownMenuItem>
-        <DropdownMenuItem variant="destructive">
-          <TrashIcon />
-          Destructive
-        </DropdownMenuItem>
-        <DropdownMenuItem variant="destructive-muted">
-          <TrashIcon />
-          Destructive Muted
-        </DropdownMenuItem>
-        <DropdownMenuItem variant="destructive-faded">
-          <TrashIcon />
-          Destructive Faded
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
-  );
-}
-
-function DropdownMenuPrimaryVariants() {
-  return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="primary-faded">Primary Variants</Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="start" className="w-56">
-        <DropdownMenuGroup>
-          <DropdownMenuItem variant="primary">
-            <LogOutIcon />
-            Primary
-          </DropdownMenuItem>
-          <DropdownMenuItem variant="primary" wide>
-            <LogOutIcon />
-            Primary Wide
-          </DropdownMenuItem>
-          <DropdownMenuItem variant="primary">
-            New Team
-            <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
-          </DropdownMenuItem>
-          <DropdownMenuItem variant="primary-muted">
-            <LogOutIcon />
-            Primary Muted
-          </DropdownMenuItem>
-          <DropdownMenuItem variant="primary-muted" wide>
-            <LogOutIcon />
-            Primary Muted Wide
-          </DropdownMenuItem>
-          <DropdownMenuItem variant="primary-faded">
-            <LogOutIcon />
-            Primary Faded
-          </DropdownMenuItem>
-        </DropdownMenuGroup>
-        <DropdownMenuGroup>
-          <DropdownMenuItem>Team</DropdownMenuItem>
-          <DropdownMenuSub>
-            <DropdownMenuSubTrigger>Invite users</DropdownMenuSubTrigger>
-            <DropdownMenuPortal>
-              <DropdownMenuSubContent>
-                <DropdownMenuItem>Email</DropdownMenuItem>
-                <DropdownMenuItem>Message</DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem>More...</DropdownMenuItem>
-              </DropdownMenuSubContent>
-            </DropdownMenuPortal>
-          </DropdownMenuSub>
-          <DropdownMenuItem>
-            New Team
-            <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
-          </DropdownMenuItem>
-        </DropdownMenuGroup>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem>GitHub</DropdownMenuItem>
-        <DropdownMenuItem>Support</DropdownMenuItem>
-        <DropdownMenuItem disabled>API</DropdownMenuItem>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem>
-          Log out
-          <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
   );
 }
 
@@ -214,96 +300,6 @@ function DropdownMenuSimple() {
           Log out
           <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
         </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
-  );
-}
-
-function DropdownMenuCheckboxes() {
-  const [showDefault, setShowDefault] = React.useState(true);
-  const [showPrimary, setShowPrimary] = React.useState(false);
-  const [showSecondary, setShowSecondary] = React.useState(false);
-  const [showDisabled, setShowDisabled] = React.useState(false);
-
-  return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="outline">Checkboxes</Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="start" className="w-56">
-        <DropdownMenuGroup>
-          <DropdownMenuLabel>Account</DropdownMenuLabel>
-          <DropdownMenuItem>
-            <UserIcon /> Profile
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <CreditCardIcon /> Billing
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <Settings2Icon /> Settings
-          </DropdownMenuItem>
-        </DropdownMenuGroup>
-        <DropdownMenuSeparator />
-        <DropdownMenuGroup>
-          <DropdownMenuLabel>Appearance</DropdownMenuLabel>
-          <DropdownMenuCheckboxItem
-            checked={showDefault}
-            onCheckedChange={setShowDefault}
-          >
-            Default Indicator
-          </DropdownMenuCheckboxItem>
-          <DropdownMenuCheckboxItem
-            checked={showPrimary}
-            onCheckedChange={setShowPrimary}
-            indicatorVariant="primary"
-          >
-            Primary Indicator
-          </DropdownMenuCheckboxItem>
-          <DropdownMenuCheckboxItem
-            checked={showSecondary}
-            onCheckedChange={setShowSecondary}
-            indicatorVariant="secondary"
-          >
-            Secondary Indicator
-          </DropdownMenuCheckboxItem>
-          <DropdownMenuCheckboxItem
-            checked={showDisabled}
-            onCheckedChange={setShowDisabled}
-            disabled
-          >
-            Disabled
-          </DropdownMenuCheckboxItem>
-        </DropdownMenuGroup>
-        <DropdownMenuSeparator />
-        <DropdownMenuGroup>
-          <DropdownMenuItem>
-            <LogOutIcon /> Sign Out
-          </DropdownMenuItem>
-        </DropdownMenuGroup>
-      </DropdownMenuContent>
-    </DropdownMenu>
-  );
-}
-
-function DropdownMenuRadioGroupDemo() {
-  const [position, setPosition] = React.useState("bottom");
-
-  return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="outline">Radio Group</Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="start" className="w-56">
-        <DropdownMenuLabel inset>Panel Position</DropdownMenuLabel>
-        <DropdownMenuGroup>
-          <DropdownMenuRadioGroup value={position} onValueChange={setPosition}>
-            <DropdownMenuRadioItem value="top">Top</DropdownMenuRadioItem>
-            <DropdownMenuRadioItem value="bottom">Bottom</DropdownMenuRadioItem>
-            <DropdownMenuRadioItem value="right" disabled>
-              Right
-            </DropdownMenuRadioItem>
-          </DropdownMenuRadioGroup>
-        </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>
   );
