@@ -9,11 +9,9 @@ import {
   LogOutIcon,
   MoreHorizontalIcon,
   PencilIcon,
-  Settings2Icon,
   ShareIcon,
   SparklesIcon,
   TrashIcon,
-  UserIcon,
 } from "lucide-react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
