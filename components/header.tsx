@@ -17,12 +17,6 @@ export function Header() {
             <li>
               <Link href="/docs">Docs</Link>
             </li>
-            <li>
-              <Link href="/">Link 2</Link>
-            </li>
-            <li>
-              <Link href="/">Link 3</Link>
-            </li>
           </ul>
         </nav>
 

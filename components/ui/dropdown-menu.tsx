@@ -18,7 +18,7 @@ const menuItemVariants = cva(
           "focus:bg-faded focus:inset-ring focus:inset-ring-border-faded focus:[&_[data-slot='dropdown-menu-shortcut']]:text-accent-foreground focus:[&_svg:not([class*='text-'])]:text-accent-foreground",
 
         primary:
-          "focus:bg-primary focus:text-primary-foreground focus:[&_[data-slot='dropdown-menu-shortcut']]:text-primary-foreground focus:[&_svg:not([class*='text-'])]:text-primary-foreground",
+          "focus: focus:bg-primary focus:text-primary-foreground focus:[&_[data-slot='dropdown-menu-shortcut']]:text-primary-foreground focus:[&_svg:not([class*='text-'])]:text-primary-foreground focus:[&_[data-slot='dropdown-menu-checkbox-item-indicator']]:text-primary-foreground focus:[&_[data-slot='dropdown-menu-radio-item-indicator']]:text-primary-foreground",
         "primary-accent":
           "focus:bg-primary-muted focus:text-primary-accent-foreground focus:[&_[data-slot='dropdown-menu-shortcut']]:text-primary-accent-foreground focus:[&_svg:not([class*='text-'])]:text-primary-accent-foreground",
         "primary-muted":
@@ -120,16 +120,20 @@ function DropdownMenuGroup({
   );
 }
 
+type DropdownMenuItemProps = React.ComponentProps<
+  typeof DropdownMenuPrimitive.Item
+> &
+  VariantProps<typeof menuItemVariants> & {
+    inset?: boolean;
+  };
+
 function DropdownMenuItem({
   className,
   inset,
   variant: variantOverride,
   wide: wideOverride,
   ...props
-}: React.ComponentProps<typeof DropdownMenuPrimitive.Item> &
-  VariantProps<typeof menuItemVariants> & {
-    inset?: boolean;
-  }) {
+}: DropdownMenuItemProps) {
   const { variant: variantFromContext, wide: wideFromContext } =
     React.useContext(DropDownMenuContentVariantsContext);
   const variant = variantOverride ?? variantFromContext;
@@ -141,8 +145,8 @@ function DropdownMenuItem({
       data-inset={inset}
       data-variant={variant}
       className={cn(
-        "group/dropdown-menu-item",
         menuItemVariants({ variant, wide }),
+        "group/dropdown-menu-item",
         className,
       )}
       {...props}
@@ -153,12 +157,9 @@ function DropdownMenuItem({
 const indicatorVariants = cva("", {
   variants: {
     indicatorVariant: {
-      default:
-        "text-accent-foreground group-data-[slot=dropdown-menu-radio-item]/dropdown-menu-radio-item:fill-accent-foreground",
-      primary:
-        "text-primary group-data-[slot=dropdown-menu-radio-item]/dropdown-menu-radio-item:fill-primary",
-      secondary:
-        "text-secondary group-data-[slot=dropdown-menu-radio-item]/dropdown-menu-radio-item:fill-secondary",
+      default: "text-accent-foreground",
+      primary: "text-primary",
+      secondary: "text-secondary",
     },
     defaultVariants: {
       indicatorVariant: "default",
@@ -169,6 +170,7 @@ const indicatorVariants = cva("", {
 type DropdownMenuCheckboxItemProps = React.ComponentProps<
   typeof DropdownMenuPrimitive.CheckboxItem
 > &
+  VariantProps<typeof menuItemVariants> &
   VariantProps<typeof indicatorVariants> & {
     indicatorClassName?: string;
   };
@@ -177,29 +179,39 @@ function DropdownMenuCheckboxItem({
   className,
   children,
   checked,
+  variant: variantOverride,
+  wide: wideOverride,
   indicatorVariant = "default",
   indicatorClassName,
   ...props
 }: DropdownMenuCheckboxItemProps) {
+  const { variant: variantFromContext, wide: wideFromContext } =
+    React.useContext(DropDownMenuContentVariantsContext);
+  const variant = variantOverride ?? variantFromContext;
+  const wide = wideOverride ?? wideFromContext;
   return (
     <DropdownMenuPrimitive.CheckboxItem
       data-slot="dropdown-menu-checkbox-item"
+      data-wide={wide}
+      data-variant={variant}
       className={cn(
-        "group/dropdown-menu-checkbox-item relative flex cursor-default items-center gap-2 rounded-sm py-1.5 pr-2 pl-8 text-sm outline-hidden select-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        menuItemVariants({ variant, wide }),
+        "group/dropdown-menu-checkbox-item pr-2 pl-8",
         className,
       )}
       checked={checked}
       {...props}
     >
       <span className="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
-        <DropdownMenuPrimitive.ItemIndicator>
-          <CheckIcon
-            className={cn(
-              "size-4",
-              indicatorVariants({ indicatorVariant }),
-              indicatorClassName,
-            )}
-          />
+        <DropdownMenuPrimitive.ItemIndicator
+          data-slot="dropdown-menu-checkbox-item-indicator"
+          data-variant={indicatorVariant}
+          className={cn(
+            indicatorVariants({ indicatorVariant }),
+            indicatorClassName,
+          )}
+        >
+          <CheckIcon className="size-4 text-current" />
         </DropdownMenuPrimitive.ItemIndicator>
       </span>
       {children}
@@ -242,14 +254,15 @@ function DropdownMenuRadioItem({
       {...props}
     >
       <span className="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
-        <DropdownMenuPrimitive.ItemIndicator>
-          <CircleIcon
-            className={cn(
-              "size-2",
-              indicatorVariants({ indicatorVariant }),
-              indicatorClassName,
-            )}
-          />
+        <DropdownMenuPrimitive.ItemIndicator
+          data-slot="dropdown-menu-radio-item-indicator"
+          data-variant={indicatorVariant}
+          className={cn(
+            indicatorVariants({ indicatorVariant }),
+            indicatorClassName,
+          )}
+        >
+          <CircleIcon className="size-2 fill-current text-current" />
         </DropdownMenuPrimitive.ItemIndicator>
       </span>
       {children}

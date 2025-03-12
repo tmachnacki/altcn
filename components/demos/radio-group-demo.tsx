@@ -38,7 +38,7 @@ export function RadioGroupDemo() {
           <Label htmlFor="p4">Disabled</Label>
         </div>
         <div className="flex items-center gap-3">
-          <RadioGroupItem value="invalid" id="p5" />
+          <RadioGroupItem value="invalid" id="p5" aria-invalid />
           <Label htmlFor="p5">Invalid</Label>
         </div>
       </RadioGroup>
