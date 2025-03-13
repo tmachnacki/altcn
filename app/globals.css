@@ -69,7 +69,7 @@
   --destructive-foreground: var(--color-white);
   --destructive-accent-foreground: var(--color-destructive-950);
   --destructive-muted: var(--color-destructive-100);
-  --destructive-muted-foreground: var(--color-destructive-700);
+  --destructive-muted-foreground: var(--color-destructive-600);
   --destructive-muted-content: var(--color-destructive-600);
   --destructive-faded: var(--color-destructive-50);
   --border-destructive-faded: color-mix(

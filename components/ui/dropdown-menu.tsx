@@ -7,35 +7,48 @@ import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
+// TODO: better className overrides
 const menuItemVariants = cva(
-  "relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[inset]:pl-8 [&_[data-slot='dropdown-menu-shortcut']]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground",
+  "relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[inset]:pl-8 [&_[data-slot*='-shortcut']]:text-muted-foreground focus:[&_[data-slot*='-shortcut']]:text-current [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground focus:[&_svg:not([class*='text-'])]:text-current",
   {
     variants: {
       variant: {
-        accent:
-          "focus:bg-accent focus:text-accent-foreground focus:[&_[data-slot='dropdown-menu-shortcut']]:text-accent-foreground focus:[&_svg:not([class*='text-'])]:text-accent-foreground",
-        faded:
-          "focus:bg-faded focus:inset-ring focus:inset-ring-border-faded focus:[&_[data-slot='dropdown-menu-shortcut']]:text-accent-foreground focus:[&_svg:not([class*='text-'])]:text-accent-foreground",
+        accent: "focus:bg-accent focus:text-accent-foreground",
+        surface:
+          "focus:bg-faded focus:inset-ring focus:inset-ring-border-faded",
 
         primary:
-          "focus: focus:bg-primary focus:text-primary-foreground focus:[&_[data-slot='dropdown-menu-shortcut']]:text-primary-foreground focus:[&_svg:not([class*='text-'])]:text-primary-foreground focus:[&_[data-slot='dropdown-menu-checkbox-item-indicator']]:text-primary-foreground focus:[&_[data-slot='dropdown-menu-radio-item-indicator']]:text-primary-foreground",
+          "focus:bg-primary focus:text-primary-foreground focus:[&_[data-slot*='-indicator']]:text-current",
         "primary-accent":
-          "focus:bg-primary-muted focus:text-primary-accent-foreground focus:[&_[data-slot='dropdown-menu-shortcut']]:text-primary-accent-foreground focus:[&_svg:not([class*='text-'])]:text-primary-accent-foreground",
+          "focus:bg-primary-muted focus:text-primary-accent-foreground",
         "primary-muted":
-          "focus:bg-primary-muted focus:text-primary-muted-foreground focus:[&_[data-slot='dropdown-menu-shortcut']]:text-primary-muted-foreground focus:[&_svg:not([class*='text-'])]:text-primary-muted-foreground",
+          "focus:bg-primary-muted focus:text-primary-muted-foreground",
         "primary-surface":
-          "focus:bg-primary-faded focus:text-primary-accent-foreground focus:inset-ring focus:inset-ring-border-primary-faded focus:[&_[data-slot='dropdown-menu-shortcut']]:text-primary-accent-foreground focus:[&_svg:not([class*='text-'])]:text-primary-accent-foreground",
+          "focus:bg-primary-faded focus:text-primary-accent-foreground focus:inset-ring focus:inset-ring-border-primary-faded",
         "primary-faded":
-          "focus:bg-primary-faded focus:text-primary-muted-foreground focus:inset-ring focus:inset-ring-border-primary-faded focus:[&_[data-slot='dropdown-menu-shortcut']]:text-primary-muted-foreground focus:[&_svg:not([class*='text-'])]:text-primary-muted-foreground",
+          "focus:bg-primary-faded focus:text-primary-muted-foreground focus:inset-ring focus:inset-ring-border-primary-faded",
 
         secondary:
-          "focus:bg-secondary focus:text-secondary-foreground focus:[&_svg:not([class*='text-'])]:text-secondary-600",
+          "focus:bg-secondary focus:text-secondary-foreground focus:[&_[data-slot*='-indicator']]:text-current",
+        "secondary-accent":
+          "focus:bg-secondary-muted focus:text-secondary-accent-foreground",
+        "secondary-muted":
+          "focus:bg-secondary-muted focus:text-secondary-muted-foreground",
+        "secondary-surface":
+          "focus:bg-secondary-faded focus:text-secondary-accent-foreground focus:inset-ring focus:inset-ring-border-secondary-faded",
+        "secondary-faded":
+          "focus:bg-secondary-faded focus:text-secondary-muted-foreground focus:inset-ring focus:inset-ring-border-secondary-faded",
+
         destructive:
-          "text-destructive focus:bg-destructive focus:text-destructive-foreground",
+          "text-destructive-muted-foreground focus:bg-destructive focus:text-destructive-foreground focus:[&_[data-slot*='-indicator']]:text-current",
+        "destructive-accent":
+          "text-destructive-muted-foreground focus:bg-destructive-muted focus:text-destructive-accent-foreground",
         "destructive-muted":
-          "text-destructive focus:bg-destructive-muted focus:text-destructive-muted-foreground",
+          "text-destructive-muted-foreground focus:bg-destructive-muted focus:text-destructive-muted-foreground",
+        "destructive-surface":
+          "text-destructive-muted-foreground focus:bg-destructive-faded focus:text-destructive-accent-foreground focus:inset-ring focus:inset-ring-border-destructive-faded",
         "destructive-faded":
-          "text-destructive focus:bg-destructive-faded focus:text-destructive-muted-foreground focus:inset-ring focus:inset-ring-border-destructive-faded",
+          "text-destructive-muted-foreground focus:bg-destructive-faded focus:text-destructive-muted-foreground focus:inset-ring focus:inset-ring-border-destructive-faded",
       },
       wide: {
         false: null,
@@ -44,7 +57,15 @@ const menuItemVariants = cva(
     },
     compoundVariants: [
       {
-        variant: ["faded", "primary-faded", "destructive-faded"],
+        variant: [
+          "surface",
+          "primary-surface",
+          "primary-faded",
+          "secondary-surface",
+          "secondary-faded",
+          "destructive-surface",
+          "destructive-faded",
+        ],
         wide: true,
         className: "-mx-1.5 px-3.5",
       },
@@ -171,9 +192,7 @@ type DropdownMenuCheckboxItemProps = React.ComponentProps<
   typeof DropdownMenuPrimitive.CheckboxItem
 > &
   VariantProps<typeof menuItemVariants> &
-  VariantProps<typeof indicatorVariants> & {
-    indicatorClassName?: string;
-  };
+  VariantProps<typeof indicatorVariants>;
 
 function DropdownMenuCheckboxItem({
   className,
@@ -182,7 +201,6 @@ function DropdownMenuCheckboxItem({
   variant: variantOverride,
   wide: wideOverride,
   indicatorVariant = "default",
-  indicatorClassName,
   ...props
 }: DropdownMenuCheckboxItemProps) {
   const { variant: variantFromContext, wide: wideFromContext } =
@@ -206,10 +224,7 @@ function DropdownMenuCheckboxItem({
         <DropdownMenuPrimitive.ItemIndicator
           data-slot="dropdown-menu-checkbox-item-indicator"
           data-variant={indicatorVariant}
-          className={cn(
-            indicatorVariants({ indicatorVariant }),
-            indicatorClassName,
-          )}
+          className={indicatorVariants({ indicatorVariant })}
         >
           <CheckIcon className="size-4 text-current" />
         </DropdownMenuPrimitive.ItemIndicator>
@@ -233,22 +248,27 @@ function DropdownMenuRadioGroup({
 type DropdownMenuRadioItemProps = React.ComponentProps<
   typeof DropdownMenuPrimitive.RadioItem
 > &
-  VariantProps<typeof indicatorVariants> & {
-    indicatorClassName?: string;
-  };
+  VariantProps<typeof menuItemVariants> &
+  VariantProps<typeof indicatorVariants>;
 
 function DropdownMenuRadioItem({
   className,
+  variant: variantOverride,
+  wide: wideOverride,
   indicatorVariant = "default",
-  indicatorClassName,
   children,
   ...props
 }: DropdownMenuRadioItemProps) {
+  const { variant: variantFromContext, wide: wideFromContext } =
+    React.useContext(DropDownMenuContentVariantsContext);
+  const variant = variantOverride ?? variantFromContext;
+  const wide = wideOverride ?? wideFromContext;
   return (
     <DropdownMenuPrimitive.RadioItem
       data-slot="dropdown-menu-radio-item"
       className={cn(
-        "group/dropdown-menu-radio-item relative flex cursor-default items-center gap-2 rounded-sm py-1.5 pr-2 pl-8 text-sm outline-hidden select-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        menuItemVariants({ variant, wide }),
+        "group/dropdown-menu-radio-item pr-2 pl-8",
         className,
       )}
       {...props}
@@ -257,10 +277,7 @@ function DropdownMenuRadioItem({
         <DropdownMenuPrimitive.ItemIndicator
           data-slot="dropdown-menu-radio-item-indicator"
           data-variant={indicatorVariant}
-          className={cn(
-            indicatorVariants({ indicatorVariant }),
-            indicatorClassName,
-          )}
+          className={indicatorVariants({ indicatorVariant })}
         >
           <CircleIcon className="size-2 fill-current text-current" />
         </DropdownMenuPrimitive.ItemIndicator>
@@ -341,7 +358,7 @@ function DropdownMenuSubTrigger({
       {...props}
     >
       {children}
-      <ChevronRightIcon className="ml-auto size-4" />
+      <ChevronRightIcon className="ml-auto size-4 text-current" />
     </DropdownMenuPrimitive.SubTrigger>
   );
 }

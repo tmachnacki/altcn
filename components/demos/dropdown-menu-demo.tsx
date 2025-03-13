@@ -53,12 +53,12 @@ const dropdownMenuDemos: TDropdownMenuDemo[] = [
     wide: true,
   },
   {
-    label: "Faded",
-    variant: "faded",
+    label: "Surface",
+    variant: "surface",
   },
   {
-    label: "Faded Wide",
-    variant: "faded",
+    label: "Surface Wide",
+    variant: "surface",
     wide: true,
   },
   {
@@ -106,13 +106,58 @@ const dropdownMenuDemos: TDropdownMenuDemo[] = [
     variant: "primary-faded",
     wide: true,
   },
+  {
+    label: "Secondary",
+    variant: "secondary",
+  },
+  {
+    label: "Secondary Wide",
+    variant: "secondary",
+    wide: true,
+  },
+  {
+    label: "Secondary Accent",
+    variant: "secondary-accent",
+  },
+  {
+    label: "Secondary Accent Wide",
+    variant: "secondary-accent",
+    wide: true,
+  },
+  {
+    label: "Secondary Muted",
+    variant: "secondary-muted",
+  },
+  {
+    label: "Secondary Muted Wide",
+    variant: "secondary-muted",
+    wide: true,
+  },
+  {
+    label: "Secondary Surface",
+    variant: "secondary-surface",
+  },
+  {
+    label: "Secondary Surface Wide",
+    variant: "secondary-surface",
+    wide: true,
+  },
+  {
+    label: "Secondary Faded",
+    variant: "secondary-faded",
+  },
+  {
+    label: "Secondary Faded Wide",
+    variant: "secondary-faded",
+    wide: true,
+  },
 ];
 
 export function DropdownMenuDemo() {
-  const [showDefault, setShowDefault] = React.useState(true);
-  const [showPrimary, setShowPrimary] = React.useState(false);
-  const [showSecondary, setShowSecondary] = React.useState(false);
-  const [showDisabled, setShowDisabled] = React.useState(false);
+  const [defaultChecked, setDefaultChecked] = React.useState(true);
+  const [primaryChecked, setPrimaryChecked] = React.useState(true);
+  const [secondaryChecked, setSecondaryChecked] = React.useState(true);
+  const [disabledChecked, setDisabledChecked] = React.useState(true);
 
   const [radioIndicator, setRadioIndicator] = React.useState("default");
 
@@ -168,28 +213,28 @@ export function DropdownMenuDemo() {
               <DropdownMenuGroup>
                 <DropdownMenuLabel inset>Checkboxes</DropdownMenuLabel>
                 <DropdownMenuCheckboxItem
-                  checked={showDefault}
-                  onCheckedChange={setShowDefault}
+                  checked={defaultChecked}
+                  onCheckedChange={setDefaultChecked}
                 >
                   Default Indicator
                 </DropdownMenuCheckboxItem>
                 <DropdownMenuCheckboxItem
-                  checked={showPrimary}
-                  onCheckedChange={setShowPrimary}
+                  checked={primaryChecked}
+                  onCheckedChange={setPrimaryChecked}
                   indicatorVariant="primary"
                 >
                   Primary Indicator
                 </DropdownMenuCheckboxItem>
                 <DropdownMenuCheckboxItem
-                  checked={showSecondary}
-                  onCheckedChange={setShowSecondary}
+                  checked={secondaryChecked}
+                  onCheckedChange={setSecondaryChecked}
                   indicatorVariant="secondary"
                 >
                   Secondary Indicator
                 </DropdownMenuCheckboxItem>
                 <DropdownMenuCheckboxItem
-                  checked={showDisabled}
-                  onCheckedChange={setShowDisabled}
+                  checked={disabledChecked}
+                  onCheckedChange={setDisabledChecked}
                   disabled
                 >
                   Disabled
@@ -224,9 +269,10 @@ export function DropdownMenuDemo() {
               </DropdownMenuGroup>
               <DropdownMenuSeparator />
               <DropdownMenuGroup>
-                <DropdownMenuItem variant={"destructive"}>
+                <DropdownMenuItem variant="destructive">
                   <TrashIcon />
                   Delete
+                  <DropdownMenuShortcut>⌘+D</DropdownMenuShortcut>
                 </DropdownMenuItem>
               </DropdownMenuGroup>
             </DropdownMenuContent>

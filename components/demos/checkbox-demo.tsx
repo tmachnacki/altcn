@@ -8,7 +8,7 @@ export function CheckboxDemo() {
   const [invalidChecked, setInvalidChecked] = useState(false);
 
   return (
-    <div className="flex flex-col gap-8 w-ful max-w-lg">
+    <div className="w-ful flex max-w-lg flex-col gap-8">
       <div className="flex items-center gap-3">
         <Checkbox id="terms" />
         <Label htmlFor="terms">Accept terms and conditions</Label>
@@ -45,7 +45,7 @@ export function CheckboxDemo() {
         <Checkbox id="destructive" variant="destructive" />
         <Label htmlFor="destructive">Destructive checkbox</Label>
       </div>
-      <Label className="flex items-start gap-3 rounded-lg border p-3 hover:bg-faded has-[[aria-checked=true]]:border-primary/50 has-[[aria-checked=true]]:bg-primary-faded group">
+      <Label className="group flex items-start gap-3 rounded-lg border p-3 hover:bg-faded has-[[aria-checked=true]]:border-primary/50 has-[[aria-checked=true]]:bg-primary-faded">
         <Checkbox
           id="primary-card"
           defaultChecked
@@ -60,7 +60,7 @@ export function CheckboxDemo() {
           </p>
         </div>
       </Label>
-      <Label className="flex items-start gap-3 rounded-lg border p-3 hover:bg-faded has-[[aria-checked=true]]:border-secondary/50 has-[[aria-checked=true]]:bg-secondary-faded group">
+      <Label className="group flex items-start gap-3 rounded-lg border p-3 hover:bg-faded has-[[aria-checked=true]]:border-secondary/50 has-[[aria-checked=true]]:bg-secondary-faded">
         <Checkbox
           id="secondary-card"
           defaultChecked
@@ -75,7 +75,7 @@ export function CheckboxDemo() {
           </p>
         </div>
       </Label>
-      <Label className="flex items-start gap-3 rounded-lg border p-3 hover:bg-faded has-[[aria-checked=true]]:border-destructive/50 has-[[aria-checked=true]]:bg-destructive-faded group">
+      <Label className="group flex items-start gap-3 rounded-lg border p-3 hover:bg-faded has-[[aria-checked=true]]:border-destructive/50 has-[[aria-checked=true]]:bg-destructive-faded">
         <Checkbox
           id="destructive-card"
           defaultChecked
