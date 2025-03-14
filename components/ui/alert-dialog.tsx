@@ -37,7 +37,8 @@ function AlertDialogOverlay({
     <AlertDialogPrimitive.Overlay
       data-slot="alert-dialog-overlay"
       className={cn(
-        "fixed inset-0 z-50 bg-white/50 backdrop-blur-xs data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:fade-in-0 dark:bg-black/50",
+        "fixed inset-0 z-50 bg-white/40 backdrop-blur-xs dark:bg-black/40",
+        "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:fade-in-0",
         className,
       )}
       {...props}
@@ -48,21 +49,18 @@ function AlertDialogOverlay({
 function AlertDialogContent({
   className,
   overlayClassName,
-  translucent = false,
   ...props
 }: React.ComponentProps<typeof AlertDialogPrimitive.Content> & {
   overlayClassName?: string;
-  translucent?: boolean;
 }) {
   return (
     <AlertDialogPortal>
       <AlertDialogOverlay className={overlayClassName} />
       <AlertDialogPrimitive.Content
         data-slot="alert-dialog-content"
-        data-translucent={translucent}
         className={cn(
-          "fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border bg-popover p-6 shadow-2xl backdrop-blur-2xl data-[state=open]:duration-300 data-[state=open]:ease-out data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 sm:max-w-lg",
-          "data-[translucent=true]:bg-base-950/[2.5%] dark:data-[translucent=true]:bg-base-50/5 data-[translucent=true]:backdrop-blur-2xl",
+          "fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border bg-popover p-6 shadow-2xl sm:max-w-lg",
+          "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:duration-300 data-[state=open]:ease-out data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95",
           className,
         )}
         {...props}

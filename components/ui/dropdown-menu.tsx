@@ -13,46 +13,47 @@ const menuItemVariants = cva(
   {
     variants: {
       variant: {
-        accent: "focus:bg-accent focus:text-accent-foreground",
+        accent:
+          "focus:bg-accent focus:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground",
         surface:
-          "focus:bg-faded focus:inset-ring focus:inset-ring-border-faded",
+          "focus:bg-faded focus:text-accent-foreground focus:inset-ring focus:inset-ring-border-faded data-[state=open]:bg-faded data-[state=open]:text-accent-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-border-faded",
 
         primary:
-          "focus:bg-primary focus:text-primary-foreground focus:[&_[data-slot*='-indicator']]:text-current",
+          "focus:bg-primary focus:text-primary-foreground data-[state=open]:bg-primary data-[state=open]:text-primary-foreground focus:[&_[data-slot*='-indicator']]:text-current",
         "primary-accent":
-          "focus:bg-primary-muted focus:text-primary-accent-foreground",
+          "focus:bg-primary-muted focus:text-primary-accent-foreground data-[state=open]:bg-primary-muted data-[state=open]:text-primary-accent-foreground",
         "primary-muted":
-          "focus:bg-primary-muted focus:text-primary-muted-foreground",
+          "focus:bg-primary-muted focus:text-primary-muted-foreground data-[state=open]:bg-primary-muted data-[state=open]:text-primary-muted-foreground",
         "primary-surface":
-          "focus:bg-primary-faded focus:text-primary-accent-foreground focus:inset-ring focus:inset-ring-border-primary-faded",
+          "focus:bg-primary-faded focus:text-primary-accent-foreground focus:inset-ring focus:inset-ring-border-primary-faded data-[state=open]:bg-primary-faded data-[state=open]:text-primary-accent-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-border-primary-faded",
         "primary-faded":
-          "focus:bg-primary-faded focus:text-primary-muted-foreground focus:inset-ring focus:inset-ring-border-primary-faded",
+          "focus:bg-primary-faded focus:text-primary-muted-foreground focus:inset-ring focus:inset-ring-border-primary-faded data-[state=open]:bg-primary-faded data-[state=open]:text-primary-muted-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-border-primary-faded",
 
         secondary:
-          "focus:bg-secondary focus:text-secondary-foreground focus:[&_[data-slot*='-indicator']]:text-current",
+          "focus:bg-secondary focus:text-secondary-foreground data-[state=open]:bg-secondary data-[state=open]:text-secondary-foreground focus:[&_[data-slot*='-indicator']]:text-current",
         "secondary-accent":
-          "focus:bg-secondary-muted focus:text-secondary-accent-foreground",
+          "focus:bg-secondary-muted focus:text-secondary-accent-foreground data-[state=open]:bg-secondary-muted data-[state=open]:text-secondary-accent-foreground",
         "secondary-muted":
-          "focus:bg-secondary-muted focus:text-secondary-muted-foreground",
+          "focus:bg-secondary-muted focus:text-secondary-muted-foreground data-[state=open]:bg-secondary-muted data-[state=open]:text-secondary-muted-foreground",
         "secondary-surface":
-          "focus:bg-secondary-faded focus:text-secondary-accent-foreground focus:inset-ring focus:inset-ring-border-secondary-faded",
+          "focus:bg-secondary-faded focus:text-secondary-accent-foreground focus:inset-ring focus:inset-ring-border-secondary-faded data-[state=open]:bg-secondary-faded data-[state=open]:text-secondary-accent-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-border-secondary-faded",
         "secondary-faded":
-          "focus:bg-secondary-faded focus:text-secondary-muted-foreground focus:inset-ring focus:inset-ring-border-secondary-faded",
+          "focus:bg-secondary-faded focus:text-secondary-muted-foreground focus:inset-ring focus:inset-ring-border-secondary-faded data-[state=open]:bg-secondary-faded data-[state=open]:text-secondary-muted-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-border-secondary-faded",
 
         destructive:
-          "text-destructive-muted-foreground focus:bg-destructive focus:text-destructive-foreground focus:[&_[data-slot*='-indicator']]:text-current",
+          "focus:bg-destructive focus:text-destructive-foreground data-[state=open]:bg-destructive data-[state=open]:text-destructive-foreground focus:[&_[data-slot*='-indicator']]:text-current",
         "destructive-accent":
-          "text-destructive-muted-foreground focus:bg-destructive-muted focus:text-destructive-accent-foreground",
+          "focus:bg-destructive-muted focus:text-destructive-accent-foreground data-[state=open]:bg-destructive-muted data-[state=open]:text-destructive-accent-foreground",
         "destructive-muted":
-          "text-destructive-muted-foreground focus:bg-destructive-muted focus:text-destructive-muted-foreground",
+          "focus:bg-destructive-muted focus:text-destructive-muted-foreground data-[state=open]:bg-destructive-muted data-[state=open]:text-destructive-muted-foreground",
         "destructive-surface":
-          "text-destructive-muted-foreground focus:bg-destructive-faded focus:text-destructive-accent-foreground focus:inset-ring focus:inset-ring-border-destructive-faded",
+          "focus:bg-destructive-faded focus:text-destructive-accent-foreground focus:inset-ring focus:inset-ring-border-destructive-faded data-[state=open]:bg-destructive-faded data-[state=open]:text-destructive-accent-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-border-destructive-faded",
         "destructive-faded":
-          "text-destructive-muted-foreground focus:bg-destructive-faded focus:text-destructive-muted-foreground focus:inset-ring focus:inset-ring-border-destructive-faded",
+          "focus:bg-destructive-faded focus:text-destructive-muted-foreground focus:inset-ring focus:inset-ring-border-destructive-faded data-[state=open]:bg-destructive-faded data-[state=open]:text-destructive-muted-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-border-destructive-faded",
       },
       wide: {
         false: null,
-        true: "-mx-1 rounded-none px-3",
+        true: "-mx-1 rounded-none px-3 data-[inset]:pr-3 data-[inset]:pl-9",
       },
     },
     compoundVariants: [
@@ -67,7 +68,19 @@ const menuItemVariants = cva(
           "destructive-faded",
         ],
         wide: true,
-        className: "-mx-1.5 px-3.5",
+        className:
+          "-mx-[calc(--spacing(1)+1px)] px-[calc(--spacing(3)+1px)] data-[inset]:pl-[calc(--spacing(9)+1px)]",
+      },
+      {
+        variant: [
+          "destructive",
+          "destructive-accent",
+          "destructive-muted",
+          "destructive-surface",
+          "destructive-faded",
+        ],
+        className:
+          "text-destructive-muted-foreground [&_svg:not([class*='text-'])]:text-current",
       },
     ],
     defaultVariants: {
@@ -122,8 +135,11 @@ function DropdownMenuContent({
         <DropdownMenuPrimitive.Content
           data-slot="dropdown-menu-content"
           sideOffset={sideOffset}
+          data-variant={variant}
+          data-wide={wide}
           className={cn(
-            "z-50 min-w-[8rem] overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:duration-200 data-[state=open]:ease-out data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:data-[side=bottom]:slide-in-from-top-1 data-[state=open]:data-[side=left]:slide-in-from-right-1 data-[state=open]:data-[side=right]:slide-in-from-left-1 data-[state=open]:data-[side=top]:slide-in-from-bottom-1",
+            "z-50 min-w-[8rem] overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md",
+            "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:duration-200 data-[state=open]:ease-out data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:data-[side=bottom]:slide-in-from-top-1 data-[state=open]:data-[side=left]:slide-in-from-right-1 data-[state=open]:data-[side=right]:slide-in-from-left-1 data-[state=open]:data-[side=top]:slide-in-from-bottom-1",
             className,
           )}
           {...props}
@@ -175,32 +191,38 @@ function DropdownMenuItem({
   );
 }
 
-const indicatorVariants = cva("", {
-  variants: {
-    indicatorVariant: {
-      default: "text-accent-foreground",
-      primary: "text-primary",
-      secondary: "text-secondary",
-    },
-    defaultVariants: {
-      indicatorVariant: "default",
+const indicatorVariants = cva(
+  "pointer-events-none absolute left-2 flex size-3.5 items-center justify-center",
+  {
+    variants: {
+      indicatorVariant: {
+        default: "text-accent-foreground",
+        primary: "text-primary",
+        secondary: "text-secondary",
+      },
+      defaultVariants: {
+        indicatorVariant: "default",
+      },
     },
   },
-});
+);
 
 type DropdownMenuCheckboxItemProps = React.ComponentProps<
   typeof DropdownMenuPrimitive.CheckboxItem
 > &
   VariantProps<typeof menuItemVariants> &
-  VariantProps<typeof indicatorVariants>;
+  VariantProps<typeof indicatorVariants> & {
+    indicatorClassName?: string;
+  };
 
 function DropdownMenuCheckboxItem({
   className,
-  children,
   checked,
   variant: variantOverride,
   wide: wideOverride,
   indicatorVariant = "default",
+  indicatorClassName,
+  children,
   ...props
 }: DropdownMenuCheckboxItemProps) {
   const { variant: variantFromContext, wide: wideFromContext } =
@@ -210,25 +232,30 @@ function DropdownMenuCheckboxItem({
   return (
     <DropdownMenuPrimitive.CheckboxItem
       data-slot="dropdown-menu-checkbox-item"
-      data-wide={wide}
       data-variant={variant}
+      data-wide={wide}
+      data-inset={true}
       className={cn(
         menuItemVariants({ variant, wide }),
-        "group/dropdown-menu-checkbox-item pr-2 pl-8",
+        "group/dropdown-menu-checkbox-item",
         className,
       )}
       checked={checked}
       {...props}
     >
-      <span className="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
-        <DropdownMenuPrimitive.ItemIndicator
-          data-slot="dropdown-menu-checkbox-item-indicator"
-          data-variant={indicatorVariant}
-          className={indicatorVariants({ indicatorVariant })}
-        >
-          <CheckIcon className="size-4 text-current" />
-        </DropdownMenuPrimitive.ItemIndicator>
-      </span>
+      <DropdownMenuPrimitive.ItemIndicator
+        data-slot="dropdown-menu-checkbox-item-indicator"
+        data-variant={indicatorVariant}
+        data-wide={wide}
+        data-item-variant={variant}
+        className={cn(
+          indicatorVariants({ indicatorVariant }),
+          "data-[wide=true]:left-3 data-[wide=true]:[data-item-variant*='faded']:left-[calc(--spacing(3)+1px)] data-[wide=true]:[data-item-variant*='surface']:left-[calc(--spacing(3)+1px)]",
+          indicatorClassName,
+        )}
+      >
+        <CheckIcon className="size-4 text-current" />
+      </DropdownMenuPrimitive.ItemIndicator>
       {children}
     </DropdownMenuPrimitive.CheckboxItem>
   );
@@ -249,13 +276,16 @@ type DropdownMenuRadioItemProps = React.ComponentProps<
   typeof DropdownMenuPrimitive.RadioItem
 > &
   VariantProps<typeof menuItemVariants> &
-  VariantProps<typeof indicatorVariants>;
+  VariantProps<typeof indicatorVariants> & {
+    indicatorClassName?: string;
+  };
 
 function DropdownMenuRadioItem({
   className,
   variant: variantOverride,
   wide: wideOverride,
   indicatorVariant = "default",
+  indicatorClassName,
   children,
   ...props
 }: DropdownMenuRadioItemProps) {
@@ -266,22 +296,29 @@ function DropdownMenuRadioItem({
   return (
     <DropdownMenuPrimitive.RadioItem
       data-slot="dropdown-menu-radio-item"
+      data-variant={variant}
+      data-wide={wide}
+      data-inset={true}
       className={cn(
         menuItemVariants({ variant, wide }),
-        "group/dropdown-menu-radio-item pr-2 pl-8",
+        "group/dropdown-menu-radio-item",
         className,
       )}
       {...props}
     >
-      <span className="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
-        <DropdownMenuPrimitive.ItemIndicator
-          data-slot="dropdown-menu-radio-item-indicator"
-          data-variant={indicatorVariant}
-          className={indicatorVariants({ indicatorVariant })}
-        >
-          <CircleIcon className="size-2 fill-current text-current" />
-        </DropdownMenuPrimitive.ItemIndicator>
-      </span>
+      <DropdownMenuPrimitive.ItemIndicator
+        data-slot="dropdown-menu-radio-item-indicator"
+        data-variant={indicatorVariant}
+        data-wide={wide}
+        data-item-variant={variant}
+        className={cn(
+          indicatorVariants({ indicatorVariant }),
+          "data-[wide=true]:left-3 data-[wide=true]:[data-item-variant*='faded']:left-[calc(--spacing(3)+1px)] data-[wide=true]:[data-item-variant*='surface']:left-[calc(--spacing(3)+1px)]",
+          indicatorClassName,
+        )}
+      >
+        <CircleIcon className="size-2 fill-current text-current" />
+      </DropdownMenuPrimitive.ItemIndicator>
       {children}
     </DropdownMenuPrimitive.RadioItem>
   );
@@ -339,20 +376,34 @@ function DropdownMenuSub({
   return <DropdownMenuPrimitive.Sub data-slot="dropdown-menu-sub" {...props} />;
 }
 
+type DropdownMenuSubTriggerProps = React.ComponentProps<
+  typeof DropdownMenuPrimitive.SubTrigger
+> &
+  VariantProps<typeof menuItemVariants> & {
+    inset?: boolean;
+  };
+
 function DropdownMenuSubTrigger({
   className,
   inset,
+  variant: variantOverride,
+  wide: wideOverride,
   children,
   ...props
-}: React.ComponentProps<typeof DropdownMenuPrimitive.SubTrigger> & {
-  inset?: boolean;
-}) {
+}: DropdownMenuSubTriggerProps) {
+  const { variant: variantFromContext, wide: wideFromContext } =
+    React.useContext(DropDownMenuContentVariantsContext);
+  const variant = variantOverride ?? variantFromContext;
+  const wide = wideOverride ?? wideFromContext;
   return (
     <DropdownMenuPrimitive.SubTrigger
       data-slot="dropdown-menu-sub-trigger"
       data-inset={inset}
+      data-variant={variant}
+      data-wide={wide}
       className={cn(
-        "flex cursor-default items-center rounded-sm px-2 py-1.5 text-sm outline-hidden select-none focus:bg-accent focus:text-accent-foreground data-[inset]:pl-8 data-[state=open]:bg-accent data-[state=open]:text-accent-foreground",
+        menuItemVariants({ variant, wide }),
+        "group/dropdown-menu-sub-trigger",
         className,
       )}
       {...props}
@@ -371,7 +422,8 @@ function DropdownMenuSubContent({
     <DropdownMenuPrimitive.SubContent
       data-slot="dropdown-menu-sub-content"
       className={cn(
-        "z-50 min-w-[8rem] overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-lg data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:duration-200 data-[state=open]:ease-out data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:data-[side=bottom]:slide-in-from-top-1 data-[state=open]:data-[side=left]:slide-in-from-right-1 data-[state=open]:data-[side=right]:slide-in-from-left-1 data-[state=open]:data-[side=top]:slide-in-from-bottom-1",
+        "z-50 min-w-[8rem] overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-lg",
+        "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:duration-200 data-[state=open]:ease-out data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:data-[side=bottom]:slide-in-from-top-1 data-[state=open]:data-[side=left]:slide-in-from-right-1 data-[state=open]:data-[side=right]:slide-in-from-left-1 data-[state=open]:data-[side=top]:slide-in-from-bottom-1",
         className,
       )}
       {...props}

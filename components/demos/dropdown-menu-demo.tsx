@@ -12,6 +12,9 @@ import {
   ShareIcon,
   SparklesIcon,
   TrashIcon,
+  CircleEllipsisIcon,
+  MailIcon,
+  SendIcon,
 } from "lucide-react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -197,10 +200,21 @@ export function DropdownMenuDemo() {
                   <DropdownMenuSubTrigger>Invite users</DropdownMenuSubTrigger>
                   <DropdownMenuPortal>
                     <DropdownMenuSubContent>
-                      <DropdownMenuItem>Email</DropdownMenuItem>
-                      <DropdownMenuItem>Message</DropdownMenuItem>
+                      <DropdownMenuItem>
+                        <MailIcon />
+                        Email
+                        <DropdownMenuShortcut>⌘+E</DropdownMenuShortcut>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem>
+                        <SendIcon />
+                        Message
+                        <DropdownMenuShortcut>⌘+M</DropdownMenuShortcut>
+                      </DropdownMenuItem>
                       <DropdownMenuSeparator />
-                      <DropdownMenuItem>More...</DropdownMenuItem>
+                      <DropdownMenuItem>
+                        <CircleEllipsisIcon />
+                        More
+                      </DropdownMenuItem>
                     </DropdownMenuSubContent>
                   </DropdownMenuPortal>
                 </DropdownMenuSub>
@@ -271,7 +285,32 @@ export function DropdownMenuDemo() {
               <DropdownMenuGroup>
                 <DropdownMenuItem variant="destructive">
                   <TrashIcon />
-                  Delete
+                  Destructive
+                  <DropdownMenuShortcut>⌘+D</DropdownMenuShortcut>
+                </DropdownMenuItem>
+                <DropdownMenuItem variant="destructive-accent">
+                  <TrashIcon />
+                  Destructive Accent
+                  <DropdownMenuShortcut>⌘+D</DropdownMenuShortcut>
+                </DropdownMenuItem>
+                <DropdownMenuItem variant="destructive-muted">
+                  <TrashIcon />
+                  Destructive Muted
+                  <DropdownMenuShortcut>⌘+D</DropdownMenuShortcut>
+                </DropdownMenuItem>
+                <DropdownMenuItem variant="destructive-surface">
+                  <TrashIcon />
+                  Destructive Surface
+                  <DropdownMenuShortcut>⌘+D</DropdownMenuShortcut>
+                </DropdownMenuItem>
+                <DropdownMenuItem variant="destructive-faded">
+                  <TrashIcon />
+                  Destructive Faded
+                  <DropdownMenuShortcut>⌘+D</DropdownMenuShortcut>
+                </DropdownMenuItem>
+                <DropdownMenuItem variant="destructive" disabled>
+                  <TrashIcon />
+                  Destructive Disabled
                   <DropdownMenuShortcut>⌘+D</DropdownMenuShortcut>
                 </DropdownMenuItem>
               </DropdownMenuGroup>
