@@ -175,6 +175,22 @@ export function BadgeDemo() {
           <BadgeClose />
         </Badge>
 
+        <Badge variant="primary-tron">Tron</Badge>
+        <Badge variant="primary-tron">
+          <CheckIcon />
+          Icon
+        </Badge>
+        <Badge asChild variant="primary-tron">
+          <a href="#">
+            Link
+            <ArrowRightIcon />
+          </a>
+        </Badge>
+        <Badge variant="primary-tron">
+          Close
+          <BadgeClose />
+        </Badge>
+
         <Badge variant="primary-dotted">
           <BadgeDot />
           Dotted

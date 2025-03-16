@@ -58,7 +58,11 @@
     var(--color-secondary-700)
   );
   --secondary-muted-content: var(--color-secondary-500);
-  --secondary-faded: var(--color-secondary-50);
+  --secondary-faded: color-mix(
+    in oklab,
+    var(--color-secondary-50) 80%,
+    var(--color-secondary-100)
+  );
   --border-secondary-faded: color-mix(
     in oklab,
     var(--color-secondary-600) 20%,
@@ -212,7 +216,7 @@
   );
   --destructive-faded: color-mix(
     in oklab,
-    var(--color-destructive-muted) 40%,
+    var(--color-destructive-muted) 50%,
     transparent
   );
   --border-destructive-faded: color-mix(

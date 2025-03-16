@@ -1,12 +1,9 @@
 import { Input } from "@/components/ui/input";
 
 export function InputDemo() {
-  const variants: Array<"default" | "muted" | "underline" | "primary-muted"> = [
-    "default",
-    "muted",
-    "underline",
-    "primary-muted",
-  ];
+  const variants: Array<
+    "default" | "muted" | "underline" | "primary" | "secondary"
+  > = ["default", "muted", "underline", "primary", "secondary"];
 
   return (
     <div className="flex flex-col gap-8">

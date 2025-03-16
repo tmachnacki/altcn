@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Slot } from "@radix-ui/react-slot";
+import { Slot, Slottable } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
@@ -44,13 +44,13 @@ const buttonVariants = cva(
           "bg-primary-muted text-primary-muted-foreground hover:bg-primary-muted/80 focus-visible:outline-primary",
 
         "primary-surface":
-          "border border-border-primary-faded bg-primary-faded text-primary-accent-foreground shadow-xs hover:bg-primary-muted/70 focus-visible:outline-primary",
+          "border border-border-primary-faded bg-primary-faded text-primary-accent-foreground shadow-xs hover:bg-primary-muted/80 focus-visible:outline-primary",
 
         "primary-faded":
-          "border border-border-primary-faded bg-primary-faded text-primary-muted-foreground shadow-xs hover:bg-primary-muted/70 focus-visible:outline-primary",
+          "border border-border-primary-faded bg-primary-faded text-primary-muted-foreground shadow-xs hover:bg-primary-muted/80 focus-visible:outline-primary",
 
         "primary-tron":
-          "border border-border bg-background bg-gradient-to-t from-primary/15 to-transparent text-primary-muted-foreground hover:border-primary/50 hover:bg-gradient-to-b hover:from-primary/20 hover:to-primary/[7%] focus-visible:outline-primary [&_[data-slot='tron-blur']]:via-purple-400 [&_[data-slot='tron-wide']]:via-primary",
+          "border border-border bg-background bg-gradient-to-t from-primary/15 to-transparent text-primary-muted-foreground hover:border-primary/50 hover:bg-gradient-to-b hover:from-primary/20 hover:to-primary/[7%] focus-visible:outline-primary [&>[data-slot='tron-blur']]:via-purple-400 [&>[data-slot='tron-wide']]:via-primary",
 
         "primary-shadow":
           "bg-primary text-primary-foreground shadow-lg shadow-primary/50 hover:bg-primary/90 focus-visible:outline-primary",
@@ -78,7 +78,7 @@ const buttonVariants = cva(
           "border border-border-secondary-faded bg-secondary-faded text-secondary-muted-foreground shadow-xs hover:bg-secondary-muted/70 focus-visible:outline-secondary",
 
         "secondary-tron":
-          "border border-border bg-background bg-gradient-to-t from-secondary/10 to-transparent text-secondary-muted-foreground hover:border-secondary/50 hover:bg-gradient-to-b hover:from-secondary/20 hover:to-secondary/[7%] focus-visible:outline-secondary [&_[data-slot='tron-blur']]:via-secondary [&_[data-slot='tron-wide']]:via-secondary",
+          "border border-border bg-background bg-gradient-to-t from-secondary/10 to-transparent text-secondary-muted-foreground hover:border-secondary/50 hover:bg-gradient-to-b hover:from-secondary/20 hover:to-secondary/[7%] focus-visible:outline-secondary [&>[data-slot='tron-blur']]:via-secondary [&>[data-slot='tron-wide']]:via-secondary",
 
         "secondary-shadow":
           "bg-secondary text-secondary-foreground shadow-lg shadow-secondary/50 hover:bg-secondary/90 focus-visible:outline-secondary",
@@ -106,7 +106,7 @@ const buttonVariants = cva(
           "border border-border-destructive-faded bg-destructive-faded text-destructive-muted-foreground shadow-xs hover:bg-destructive-muted/70 focus-visible:outline-destructive",
 
         "destructive-tron":
-          "border border-border bg-gradient-to-t from-destructive/10 to-transparent text-destructive-muted-foreground hover:border-destructive/50 hover:bg-gradient-to-b hover:from-destructive/20 hover:to-destructive/[7%] focus-visible:outline-destructive [&_[data-slot='tron-blur']]:via-rose-400 [&_[data-slot='tron-wide']]:via-destructive",
+          "border border-border bg-gradient-to-t from-destructive/10 to-transparent text-destructive-muted-foreground hover:border-destructive/50 hover:bg-gradient-to-b hover:from-destructive/20 hover:to-destructive/[7%] focus-visible:outline-destructive [&>[data-slot='tron-blur']]:via-rose-400 [&>[data-slot='tron-wide']]:via-destructive",
 
         "destructive-shadow":
           "bg-destructive text-destructive-foreground shadow-lg shadow-destructive/50 hover:bg-destructive/90 focus-visible:outline-destructive",
@@ -193,7 +193,7 @@ function Button({
           />
         </>
       )}
-      {children}
+      <Slottable>{children}</Slottable>
     </Comp>
   );
 }

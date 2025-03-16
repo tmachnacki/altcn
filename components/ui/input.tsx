@@ -11,12 +11,12 @@ const inputVariants = cva(
         default: [
           "border border-input bg-transparent shadow-xs file:text-accent-foreground placeholder:text-muted-foreground hover:border-border-hover dark:bg-faded",
           "focus-visible:border-primary focus-visible:ring-1 focus-visible:ring-primary",
-          "aria-invalid:border-destructive aria-invalid:focus-visible:ring-destructive",
+          "aria-invalid:border-destructive aria-invalid:focus-visible:ring-destructive dark:aria-invalid:bg-destructive-faded",
         ],
         muted: [
-          "bg-muted",
+          "bg-muted hover:not-focus-visible:bg-accent",
           "file:text-accent-foreground placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-primary",
-          "aria-invalid:bg-destructive-muted aria-invalid:focus-visible:ring-destructive",
+          "aria-invalid:bg-destructive-muted/70 aria-invalid:hover:not-focus-visible:bg-destructive-muted aria-invalid:focus-visible:ring-destructive",
         ],
         underline: [
           "rounded-none bg-transparent px-0 shadow-[inset_0_-1px_0_0_var(--color-border)] file:text-accent-foreground placeholder:text-muted-foreground hover:shadow-[inset_0_-1px_0_0_var(--color-border-hover)]",
@@ -24,10 +24,16 @@ const inputVariants = cva(
           "aria-invalid:shadow-[inset_0_-1px_0_0_var(--color-destructive)] aria-invalid:focus-visible:shadow-[inset_0_-2px_0_0_var(--color-destructive)]",
         ],
 
-        "primary-muted": [
-          "bg-primary-muted text-primary-accent-foreground file:text-primary-accent-foreground placeholder:text-primary-muted-foreground",
+        primary: [
+          "bg-primary-faded text-primary-accent-foreground file:text-primary-accent-foreground placeholder:text-primary-muted-foreground hover:not-focus-visible:bg-primary-muted/80",
           "focus-visible:ring-2 focus-visible:ring-primary",
-          "aria-invalid:bg-destructive-muted aria-invalid:focus-visible:ring-destructive",
+          "aria-invalid:bg-destructive-faded aria-invalid:not-focus-visible:hover:bg-destructive-muted/70 aria-invalid:focus-visible:ring-destructive",
+        ],
+
+        secondary: [
+          "bg-secondary-faded text-secondary-accent-foreground selection:bg-secondary selection:text-secondary-foreground file:text-secondary-accent-foreground placeholder:text-secondary-muted-foreground hover:not-focus-visible:bg-secondary-muted/70",
+          "focus-visible:ring-2 focus-visible:ring-secondary",
+          "aria-invalid:bg-destructive-faded aria-invalid:not-focus-visible:hover:bg-destructive-muted/70 aria-invalid:focus-visible:ring-destructive",
         ],
       },
     },
