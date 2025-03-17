@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 
-export function DestructiveFilledIcon({
+export function ErrorFilledIcon({
   className,
   ...props
 }: React.ComponentProps<"svg">) {

@@ -65,7 +65,7 @@ export function AlertDemo() {
             </Button>
           </Alert>
           <Alert variant={variant}>
-            <AlertIcon intent="destructive" />
+            <AlertIcon intent="error" />
             <AlertContent>
               <AlertTitle>Something went wrong!</AlertTitle>
               <AlertDescription>

@@ -4,7 +4,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const inputVariants = cva(
-  "flex h-9 w-full min-w-0 rounded-md px-3 py-1 text-base selection:bg-primary selection:text-primary-foreground file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 md:text-sm aria-invalid:text-destructive-accent-foreground aria-invalid:selection:bg-destructive aria-invalid:selection:text-destructive-foreground aria-invalid:placeholder:text-destructive-muted-foreground",
+  "appearance-none flex h-9 w-full min-w-0 rounded-md px-3 py-1 text-base selection:bg-primary selection:text-primary-foreground file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 md:text-sm aria-invalid:text-destructive-accent-foreground aria-invalid:selection:bg-destructive aria-invalid:selection:text-destructive-foreground aria-invalid:placeholder:text-destructive-muted-foreground",
   {
     variants: {
       variant: {

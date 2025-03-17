@@ -7,7 +7,7 @@ import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
-// TODO: better className overrides
+// TODO: better className overrides, maybe adjust subcontent offset for wide+border variants
 const menuItemVariants = cva(
   "relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[inset]:pl-8 [&_[data-slot*='-shortcut']]:text-muted-foreground focus:[&_[data-slot*='-shortcut']]:text-current [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground focus:[&_svg:not([class*='text-'])]:text-current",
   {

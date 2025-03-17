@@ -2,7 +2,7 @@ import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 
 import { InfoFilledIcon } from "@/components/icons/info-filled";
-import { DestructiveFilledIcon } from "@/components/icons/destructive-filled";
+import { ErrorFilledIcon } from "@/components/icons/error-filled";
 import { SuccessFilledIcon } from "@/components/icons/success-filled";
 import { WarningFilledIcon } from "@/components/icons/warning-filled";
 
@@ -10,69 +10,69 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const alertVariants = cva(
-  "group/alert relative flex w-full items-start gap-x-3 overflow-hidden rounded-lg px-4 py-3 text-sm data-[centered]:items-center [&>svg]:flex-none [&>svg]:text-current not-data-[centered]:[&>svg]:translate-y-0.5 [&>svg:not([class*='size-'])]:size-4",
+  "relative flex w-full items-start gap-x-3 overflow-hidden rounded-lg px-4 py-3 text-sm data-[centered]:items-center [&>svg]:flex-none [&>svg]:text-current not-data-[centered]:[&>svg]:translate-y-0.5 [&>svg:not([class*='size-'])]:size-4",
   {
     variants: {
       variant: {
         // base
         outline:
-          "border border-border bg-background [&_[data-slot='alert-icon']]:bg-muted",
+          "border border-border bg-background **:data-[slot=alert-icon]:bg-muted",
 
         muted:
-          "bg-muted [&_[data-slot='alert-icon']]:bg-faded dark:[&_[data-slot='alert-icon']]:bg-base-800",
+          "bg-muted **:data-[slot=alert-icon]:bg-faded dark:**:data-[slot=alert-icon]:bg-base-800",
 
         faded:
-          "border border-border-faded bg-faded [&_[data-slot='alert-icon']]:bg-accent",
+          "border border-border-faded bg-faded **:data-[slot=alert-icon]:bg-accent",
 
         // primary
         primary:
-          "bg-primary text-primary-foreground data-[inset-color]:before:bg-primary-200 [&_[data-slot='alert-description']]:text-primary-100 [&_[data-slot='alert-icon']]:bg-primary-400/70 [&_[data-slot='alert-icon']]:text-primary-50 [&_[data-slot='alert-icon']]:inset-ring-primary-200/25",
+          "bg-primary text-primary-foreground data-[inset-color]:before:bg-primary-200 **:data-[slot=alert-description]:text-primary-100 **:data-[slot=alert-icon]:bg-primary-400/70 **:data-[slot=alert-icon]:text-primary-50 **:data-[slot=alert-icon]:inset-ring-primary-200/25",
 
         "primary-muted":
-          "bg-primary-muted [&_[data-slot='alert-icon']]:bg-primary-faded [&_[data-slot='alert-icon']]:text-primary-500 dark:[&_[data-slot='alert-icon']]:bg-primary-900 dark:[&_[data-slot='alert-icon']]:text-primary-300",
+          "bg-primary-muted **:data-[slot=alert-icon]:bg-primary-faded **:data-[slot=alert-icon]:text-primary-500 dark:**:data-[slot=alert-icon]:bg-primary-900 dark:**:data-[slot=alert-icon]:text-primary-300",
 
         "primary-faded":
-          "border border-border-primary-faded bg-primary-faded [&_[data-slot='alert-icon']]:bg-primary-200/50 [&_[data-slot='alert-icon']]:text-primary-500 dark:[&_[data-slot='alert-icon']]:bg-primary-900/60 dark:[&_[data-slot='alert-icon']]:text-primary-300",
+          "border border-border-primary-faded bg-primary-faded **:data-[slot=alert-icon]:bg-primary-200/50 **:data-[slot=alert-icon]:text-primary-500 dark:**:data-[slot=alert-icon]:bg-primary-900/60 dark:**:data-[slot=alert-icon]:text-primary-300",
 
         // secondary
         secondary:
-          "bg-secondary text-secondary-foreground data-[inset-color]:before:bg-secondary-600 [&_[data-slot='alert-description']]:text-secondary-900 [&_[data-slot='alert-icon']]:bg-secondary-200/80 [&_[data-slot='alert-icon']]:text-secondary-700 [&_[data-slot='alert-icon']]:inset-ring-secondary-700/25",
+          "bg-secondary text-secondary-foreground data-[inset-color]:before:bg-secondary-600 **:data-[slot=alert-description]:text-secondary-900 **:data-[slot=alert-icon]:bg-secondary-200/80 **:data-[slot=alert-icon]:text-secondary-700 **:data-[slot=alert-icon]:inset-ring-secondary-700/25",
 
         "secondary-muted":
-          "bg-secondary-muted [&_[data-slot='alert-icon']]:bg-secondary-faded/70 [&_[data-slot='alert-icon']]:text-secondary-600 dark:[&_[data-slot='alert-icon']]:bg-secondary-900 dark:[&_[data-slot='alert-icon']]:text-secondary-400",
+          "bg-secondary-muted **:data-[slot=alert-icon]:bg-secondary-faded/70 **:data-[slot=alert-icon]:text-secondary-600 dark:**:data-[slot=alert-icon]:bg-secondary-900 dark:**:data-[slot=alert-icon]:text-secondary-400",
 
         "secondary-faded":
-          "border border-border-secondary-faded bg-secondary-faded [&_[data-slot='alert-icon']]:bg-secondary-200/40 [&_[data-slot='alert-icon']]:text-secondary-600 dark:[&_[data-slot='alert-icon']]:bg-secondary-900/50 dark:[&_[data-slot='alert-icon']]:text-secondary-400",
+          "border border-border-secondary-faded bg-secondary-faded **:data-[slot=alert-icon]:bg-secondary-200/40 **:data-[slot=alert-icon]:text-secondary-600 dark:**:data-[slot=alert-icon]:bg-secondary-900/50 dark:**:data-[slot=alert-icon]:text-secondary-400",
 
         // destructive
         destructive:
-          "bg-destructive text-destructive-foreground data-[inset-color]:before:bg-destructive-200 dark:data-[inset-color]:before:bg-destructive-300 [&_[data-slot='alert-description']]:text-destructive-100 dark:[&_[data-slot='alert-description']]:text-destructive-200 [&_[data-slot='alert-icon']]:bg-destructive-200/30 [&_[data-slot='alert-icon']]:text-destructive-50 [&_[data-slot='alert-icon']]:inset-ring-destructive-200/25",
+          "bg-destructive text-destructive-foreground data-[inset-color]:before:bg-destructive-200 dark:data-[inset-color]:before:bg-destructive-300 **:data-[slot=alert-description]:text-destructive-100 dark:**:data-[slot=alert-description]:text-destructive-200 **:data-[slot=alert-icon]:bg-destructive-200/30 **:data-[slot=alert-icon]:text-destructive-50 **:data-[slot=alert-icon]:inset-ring-destructive-200/25",
 
         "destructive-muted":
-          "bg-destructive-muted [&_[data-slot='alert-icon']]:bg-destructive-faded/80 [&_[data-slot='alert-icon']]:text-destructive-500 dark:[&_[data-slot='alert-icon']]:bg-destructive-900/80 dark:[&_[data-slot='alert-icon']]:text-destructive-200/80",
+          "bg-destructive-muted **:data-[slot=alert-icon]:bg-destructive-faded/80 **:data-[slot=alert-icon]:text-destructive-500 dark:**:data-[slot=alert-icon]:bg-destructive-900/80 dark:**:data-[slot=alert-icon]:text-destructive-200/80",
 
         "destructive-faded":
-          "border border-border-destructive-faded bg-destructive-faded [&_[data-slot='alert-icon']]:bg-destructive-200/50 [&_[data-slot='alert-icon']]:text-destructive-600 dark:[&_[data-slot='alert-icon']]:bg-destructive-900/50 dark:[&_[data-slot='alert-icon']]:text-destructive-300",
+          "border border-border-destructive-faded bg-destructive-faded **:data-[slot=alert-icon]:bg-destructive-200/50 **:data-[slot=alert-icon]:text-destructive-600 dark:**:data-[slot=alert-icon]:bg-destructive-900/50 dark:**:data-[slot=alert-icon]:text-destructive-300",
 
         // success
         success:
-          "bg-success text-success-foreground data-[inset-color]:before:bg-success-200 [&_[data-slot='alert-description']]:text-success-100 [&_[data-slot='alert-icon']]:bg-success-400/50 [&_[data-slot='alert-icon']]:text-success-50 [&_[data-slot='alert-icon']]:inset-ring-success-200/25",
+          "bg-success text-success-foreground data-[inset-color]:before:bg-success-200 **:data-[slot=alert-description]:text-success-100 **:data-[slot=alert-icon]:bg-success-400/50 **:data-[slot=alert-icon]:text-success-50 **:data-[slot=alert-icon]:inset-ring-success-200/25",
 
         "success-muted":
-          "bg-success-muted [&_[data-slot='alert-icon']]:bg-success-faded [&_[data-slot='alert-icon']]:text-success-500 dark:[&_[data-slot='alert-icon']]:bg-success-900 dark:[&_[data-slot='alert-icon']]:text-success-300",
+          "bg-success-muted **:data-[slot=alert-icon]:bg-success-faded **:data-[slot=alert-icon]:text-success-500 dark:**:data-[slot=alert-icon]:bg-success-900 dark:**:data-[slot=alert-icon]:text-success-300",
 
         "success-faded":
-          "border border-border-success-faded bg-success-faded [&_[data-slot='alert-icon']]:bg-success-200/50 [&_[data-slot='alert-icon']]:text-success-600 dark:[&_[data-slot='alert-icon']]:bg-success-900/60 dark:[&_[data-slot='alert-icon']]:text-success-300",
+          "border border-border-success-faded bg-success-faded **:data-[slot=alert-icon]:bg-success-200/50 **:data-[slot=alert-icon]:text-success-600 dark:**:data-[slot=alert-icon]:bg-success-900/60 dark:**:data-[slot=alert-icon]:text-success-300",
 
         // warning
         warning:
-          "bg-warning text-warning-foreground data-[inset-color]:before:bg-warning-600 [&_[data-slot='alert-description']]:text-warning-900 [&_[data-slot='alert-icon']]:bg-warning-200/70 [&_[data-slot='alert-icon']]:text-warning-700 [&_[data-slot='alert-icon']]:inset-ring-warning-700/25",
+          "bg-warning text-warning-foreground data-[inset-color]:before:bg-warning-600 **:data-[slot=alert-description]:text-warning-900 **:data-[slot=alert-icon]:bg-warning-200/70 **:data-[slot=alert-icon]:text-warning-700 **:data-[slot=alert-icon]:inset-ring-warning-700/25",
 
         "warning-muted":
-          "bg-warning-muted [&_[data-slot='alert-icon']]:bg-warning-faded/80 [&_[data-slot='alert-icon']]:text-warning-600 dark:[&_[data-slot='alert-icon']]:bg-warning-900 dark:[&_[data-slot='alert-icon']]:text-warning-400",
+          "bg-warning-muted **:data-[slot=alert-icon]:bg-warning-faded/80 **:data-[slot=alert-icon]:text-warning-600 dark:**:data-[slot=alert-icon]:bg-warning-900 dark:**:data-[slot=alert-icon]:text-warning-400",
 
         "warning-faded":
-          "border border-border-warning-faded bg-warning-faded [&_[data-slot='alert-icon']]:bg-warning-200/40 [&_[data-slot='alert-icon']]:text-warning-600 dark:[&_[data-slot='alert-icon']]:bg-warning-900/50 dark:[&_[data-slot='alert-icon']]:text-warning-400",
+          "border border-border-warning-faded bg-warning-faded **:data-[slot=alert-icon]:bg-warning-200/40 **:data-[slot=alert-icon]:text-warning-600 dark:**:data-[slot=alert-icon]:bg-warning-900/50 dark:**:data-[slot=alert-icon]:text-warning-400",
       },
       insetColor: {
         false: null,
@@ -83,32 +83,32 @@ const alertVariants = cva(
       {
         variant: ["outline", "muted", "faded"],
         className:
-          "text-accent-foreground data-[inset-color]:before:bg-muted-foreground [&_[data-slot='alert-description']]:text-muted-foreground [&_[data-slot='alert-icon']]:text-muted-foreground [&_[data-slot='alert-icon']]:inset-ring-border-faded",
+          "text-accent-foreground data-[inset-color]:before:bg-muted-foreground **:data-[slot=alert-description]:text-muted-foreground **:data-[slot=alert-icon]:text-muted-foreground **:data-[slot=alert-icon]:inset-ring-border-faded",
       },
       {
         variant: ["primary-muted", "primary-faded"],
         className:
-          "text-primary-accent-foreground data-[inset-color]:before:bg-primary [&_[data-slot='alert-description']]:text-primary-muted-foreground [&_[data-slot='alert-icon']]:inset-ring-border-primary-faded",
+          "text-primary-accent-foreground data-[inset-color]:before:bg-primary **:data-[slot=alert-description]:text-primary-muted-foreground **:data-[slot=alert-icon]:inset-ring-border-primary-faded",
       },
       {
         variant: ["secondary-muted", "secondary-faded"],
         className:
-          "text-secondary-accent-foreground data-[inset-color]:before:bg-secondary [&_[data-slot='alert-description']]:text-secondary-muted-foreground [&_[data-slot='alert-icon']]:inset-ring-border-secondary-faded",
+          "text-secondary-accent-foreground data-[inset-color]:before:bg-secondary **:data-[slot=alert-description]:text-secondary-muted-foreground **:data-[slot=alert-icon]:inset-ring-border-secondary-faded",
       },
       {
         variant: ["destructive-muted", "destructive-faded"],
         className:
-          "text-destructive-accent-foreground data-[inset-color]:before:bg-destructive [&_[data-slot='alert-description']]:text-destructive-muted-foreground [&_[data-slot='alert-icon']]:inset-ring-border-destructive-faded",
+          "text-destructive-accent-foreground data-[inset-color]:before:bg-destructive **:data-[slot=alert-description]:text-destructive-muted-foreground **:data-[slot=alert-icon]:inset-ring-border-destructive-faded",
       },
       {
         variant: ["success-muted", "success-faded"],
         className:
-          "text-success-accent-foreground data-[inset-color]:before:bg-success [&_[data-slot='alert-description']]:text-success-muted-foreground [&_[data-slot='alert-icon']]:inset-ring-border-success-faded",
+          "text-success-accent-foreground data-[inset-color]:before:bg-success **:data-[slot=alert-description]:text-success-muted-foreground **:data-[slot=alert-icon]:inset-ring-border-success-faded",
       },
       {
         variant: ["warning-muted", "warning-faded"],
         className:
-          "text-warning-accent-foreground data-[inset-color]:before:bg-warning [&_[data-slot='alert-description']]:text-warning-muted-foreground [&_[data-slot='alert-icon']]:inset-ring-border-warning-faded",
+          "text-warning-accent-foreground data-[inset-color]:before:bg-warning **:data-[slot=alert-description]:text-warning-muted-foreground **:data-[slot=alert-icon]:inset-ring-border-warning-faded",
       },
     ],
 
@@ -136,18 +136,22 @@ function Alert({
       data-variant={variant}
       data-inset-color={insetColor}
       data-centered={centered}
-      className={cn(alertVariants({ variant, insetColor }), className)}
+      className={cn(
+        alertVariants({ variant, insetColor }),
+        "group/alert",
+        className,
+      )}
       {...props}
     />
   );
 }
 
-function getIcon(intent?: "info" | "destructive" | "success" | "warning") {
+function getIcon(intent?: "info" | "error" | "success" | "warning") {
   switch (intent) {
     case "info":
       return <InfoFilledIcon />;
-    case "destructive":
-      return <DestructiveFilledIcon />;
+    case "error":
+      return <ErrorFilledIcon />;
     case "success":
       return <SuccessFilledIcon />;
     case "warning":
@@ -165,7 +169,7 @@ function AlertIcon({
 }: React.ComponentProps<"div"> &
   (
     | {
-        intent: "info" | "destructive" | "success" | "warning";
+        intent: "info" | "error" | "success" | "warning";
         children?: never;
       }
     | {
@@ -206,7 +210,7 @@ function AlertTitle({
 }: React.ComponentProps<"div"> & {
   asChild?: boolean;
 }) {
-  // use to render as accessible heading element (h2, h3, h4, h5, h6)
+  // use to render as semantic heading element (h2, h3, h4, h5, h6)
   const Comp = asChild ? Slot : "div";
   return (
     <Comp

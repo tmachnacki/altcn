@@ -8,16 +8,16 @@ import { cn } from "@/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
 
 const accordionItemVariants = cva(
-  "group/accordion-item border-b first:rounded-t-md last:rounded-b-md last:border-b-0 has-focus-visible:outline-2 [&_[data-slot='accordion-content']]:px-3 [&_[data-slot='accordion-trigger']]:px-3",
+  "border-b first:rounded-t-md last:rounded-b-md last:border-b-0 has-focus-visible:outline-2 **:data-[slot=accordion-content]:px-3 **:data-[slot=accordion-trigger]:px-3",
   {
     variants: {
       variant: {
         default:
-          "border-border data-[split]:border [&_[data-slot='accordion-content']]:px-0 data-[split]:[&_[data-slot='accordion-content']]:px-3 [&_[data-slot='accordion-trigger']]:px-0 [&_[data-slot='accordion-trigger']]:text-foreground data-[split]:[&_[data-slot='accordion-trigger']]:px-3",
+          "border-border data-[split]:border not-data-[split]:**:data-[slot=accordion-content]:px-0 not-data-[split]:**:data-[slot=accordion-trigger]:px-0",
         muted:
-          "border-border bg-muted data-[split]:border-0 [&_[data-slot='accordion-trigger']]:text-accent-foreground",
+          "border-border bg-muted data-[split]:border-0 **:data-[slot=accordion-trigger]:text-accent-foreground",
         faded:
-          "border-border-faded bg-faded data-[split]:border [&_[data-slot='accordion-trigger']]:text-accent-foreground",
+          "border-border-faded bg-faded data-[split]:border **:data-[slot=accordion-trigger]:text-accent-foreground",
         "primary-muted":
           "border-border-primary-faded bg-primary-muted data-[split]:border-0",
         "primary-faded":
@@ -35,17 +35,17 @@ const accordionItemVariants = cva(
     compoundVariants: [
       {
         variant: ["default", "muted", "faded"],
-        className: "[&_[data-slot='accordion-content']]:text-muted-foreground",
+        className: "**:data-[slot=accordion-content]:text-muted-foreground",
       },
       {
         variant: ["primary-muted", "primary-faded"],
         className:
-          "[&_[data-slot='accordion-content']]:text-primary-muted-foreground [&_[data-slot='accordion-trigger']]:text-primary-accent-foreground has-focus-visible:outline-primary",
+          "has-focus-visible:outline-primary **:data-[slot=accordion-content]:text-primary-muted-foreground **:data-[slot=accordion-trigger]:text-primary-accent-foreground",
       },
       {
         variant: ["secondary-muted", "secondary-faded"],
         className:
-          "[&_[data-slot='accordion-content']]:text-secondary-muted-foreground [&_[data-slot='accordion-trigger']]:text-secondary-accent-foreground has-focus-visible:outline-secondary",
+          "has-focus-visible:outline-secondary **:data-[slot=accordion-content]:text-secondary-muted-foreground **:data-[slot=accordion-trigger]:text-secondary-accent-foreground",
       },
     ],
 
@@ -90,7 +90,11 @@ function AccordionItem({
       data-slot="accordion-item"
       data-variant={variant}
       data-split={split}
-      className={cn(accordionItemVariants({ variant, split }), className)}
+      className={cn(
+        accordionItemVariants({ variant, split }),
+        "group/accordion-item",
+        className,
+      )}
       {...props}
     />
   );
@@ -106,7 +110,7 @@ function AccordionTrigger({
       <AccordionPrimitive.Trigger
         data-slot="accordion-trigger"
         className={cn(
-          "group/accordion-trigger hover:underline flex flex-1 items-start justify-between gap-4 rounded-md py-4 text-left text-sm font-medium transition-all focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 motion-reduce:transition-none",
+          "group/accordion-trigger flex flex-1 items-start justify-between gap-4 rounded-md py-4 text-left text-sm font-medium transition-all hover:underline focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 motion-reduce:transition-none",
           className,
         )}
         {...props}
