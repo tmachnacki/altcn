@@ -17,6 +17,9 @@ export function Header() {
             <li>
               <Link href="/docs">Docs</Link>
             </li>
+            <li>
+              <Link href="/colors">Colors</Link>
+            </li>
           </ul>
         </nav>
 

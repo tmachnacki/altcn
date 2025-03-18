@@ -174,7 +174,6 @@ export function DropdownMenuDemo() {
             </DropdownMenuTrigger>
             <DropdownMenuContent
               align="start"
-              className="w-56"
               variant={demo.variant}
               wide={demo.wide}
             >

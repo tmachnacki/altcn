@@ -237,7 +237,7 @@ function Badge({
           <span
             aria-hidden="true"
             data-slot="tron-wide"
-            className="absolute inset-x-0 -top-px block h-[2px] w-full bg-gradient-to-r from-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover/badge:opacity-100 motion-reduce:transition-none"
+            className="absolute left-[5%] -top-px block h-[2px] w-[90%] bg-gradient-to-r from-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover/badge:opacity-100 motion-reduce:transition-none"
           />
           <span
             aria-hidden="true"
@@ -247,7 +247,7 @@ function Badge({
           <span
             aria-hidden="true"
             data-slot="tron-wide"
-            className="absolute inset-x-0 -bottom-px block h-[2px] w-full bg-gradient-to-r from-transparent to-transparent opacity-100 transition-opacity duration-300 group-hover/badge:opacity-0 motion-reduce:transition-none"
+            className="absolute left-[5%] -bottom-px block h-[2px] w-[90%] bg-gradient-to-r from-transparent to-transparent opacity-100 transition-opacity duration-300 group-hover/badge:opacity-0 motion-reduce:transition-none"
           />
           <span
             aria-hidden="true"

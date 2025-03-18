@@ -1,8 +1,10 @@
 @import "tailwindcss";
 
-@plugin "tailwindcss-animate";
-/* TODO: use motion plugin animations when tailwind releases flattenColorPalette patch */
-/* @plugin "tailwindcss-motion"; */
+/* FIXME: using temporary patch until tailwindcss-animate is updated for v4 support */
+/* https://github.com/Wombosvideo/tw-animate-css */
+@import "tw-animate-css";
+
+/* @plugin "tailwindcss-animate"; */
 
 @custom-variant dark (&:is(.dark *));
 /* for better intellisense DX */
@@ -20,7 +22,7 @@
 
   --accent: color-mix(
     in oklab,
-    var(--color-base-200) 60%,
+    var(--color-base-200) 40%,
     var(--color-base-100)
   );
   --accent-foreground: var(--color-base-950);
@@ -118,7 +120,7 @@
   );
 
   --skeleton: var(--color-base-300);
-  --skeleton-shimmer: var(--color-base-200);
+  --skeleton-shimmer: var(--color-base-100);
 
   --chart-1: hsl(12 76% 61%);
   --chart-2: hsl(173 58% 39%);
@@ -147,7 +149,7 @@
 
   --popover: color-mix(
     in oklab,
-    var(--color-base-900) 40%,
+    var(--color-base-900) 50%,
     var(--color-base-950)
   );
   --popover-foreground: var(--color-base-50);
@@ -260,7 +262,7 @@
   );
 
   --skeleton: var(--color-base-800);
-  --skeleton-shimmer: var(--color-base-700);
+  --skeleton-shimmer: color-mix(in oklab, var(--color-white) 15%, transparent);
 
   --chart-1: hsl(220 70% 50%);
   --chart-2: hsl(160 60% 45%);
@@ -279,17 +281,53 @@
 }
 
 @theme inline {
-  --color-base-50: var(--color-zinc-50);
-  --color-base-100: var(--color-zinc-100);
-  --color-base-200: var(--color-zinc-200);
-  --color-base-300: var(--color-zinc-300);
-  --color-base-400: var(--color-zinc-400);
-  --color-base-500: var(--color-zinc-500);
-  --color-base-600: var(--color-zinc-600);
-  --color-base-700: var(--color-zinc-700);
-  --color-base-800: var(--color-zinc-800);
-  --color-base-900: var(--color-zinc-900);
-  --color-base-950: var(--color-zinc-950);
+  --color-mauve-50: oklch(0.984 0.002 290);
+  --color-mauve-100: oklch(0.968 0.006 292);
+  --color-mauve-200: oklch(0.929 0.01 294);
+  --color-mauve-300: oklch(0.869 0.015 296);
+  --color-mauve-400: oklch(0.704 0.024 298);
+  --color-mauve-500: oklch(0.554 0.03 300);
+  --color-mauve-600: oklch(0.446 0.028 302);
+  --color-mauve-700: oklch(0.372 0.026 304);
+  --color-mauve-800: oklch(0.279 0.024 306);
+  --color-mauve-900: oklch(0.208 0.022 308);
+  --color-mauve-950: oklch(0.129 0.02 310);
+
+  --color-sage-50: oklch(0.984 0.0005 157);
+  --color-sage-100: oklch(0.968 0.002 158);
+  --color-sage-200: oklch(0.929 0.004 159);
+  --color-sage-300: oklch(0.869 0.006 160);
+  --color-sage-400: oklch(0.704 0.01 161);
+  --color-sage-500: oklch(0.554 0.012 162);
+  --color-sage-600: oklch(0.446 0.011 163);
+  --color-sage-700: oklch(0.372 0.01 164);
+  --color-sage-800: oklch(0.279 0.009 165);
+  --color-sage-900: oklch(0.208 0.008 166);
+  --color-sage-950: oklch(0.129 0.007 167);
+
+  --color-rust-50: oklch(0.984 0.002 60);
+  --color-rust-100: oklch(0.968 0.006 58);
+  --color-rust-200: oklch(0.929 0.012 56);
+  --color-rust-300: oklch(0.869 0.02 54);
+  --color-rust-400: oklch(0.704 0.035 52);
+  --color-rust-500: oklch(0.554 0.045 50);
+  --color-rust-600: oklch(0.446 0.04 48);
+  --color-rust-700: oklch(0.372 0.035 46);
+  --color-rust-800: oklch(0.279 0.03 44);
+  --color-rust-900: oklch(0.208 0.025 42);
+  --color-rust-950: oklch(0.129 0.02 40);
+
+  --color-base-50: var(--color-rust-50);
+  --color-base-100: var(--color-rust-100);
+  --color-base-200: var(--color-rust-200);
+  --color-base-300: var(--color-rust-300);
+  --color-base-400: var(--color-rust-400);
+  --color-base-500: var(--color-rust-500);
+  --color-base-600: var(--color-rust-600);
+  --color-base-700: var(--color-rust-700);
+  --color-base-800: var(--color-rust-800);
+  --color-base-900: var(--color-rust-900);
+  --color-base-950: var(--color-rust-950);
 
   --color-primary-50: var(--color-indigo-50);
   --color-primary-100: var(--color-indigo-100);

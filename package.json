@@ -41,8 +41,8 @@
     "postcss": "^8",
     "prettier": "^3.5.0",
     "prettier-plugin-tailwindcss": "^0.6.11",
-    "tailwindcss": "^4.0.6",
-    "tailwindcss-motion": "^1.1.0",
+    "tailwindcss": "^4.0.14",
+    "tw-animate-css": "^1.2.3",
     "typescript": "^5"
   }
 }

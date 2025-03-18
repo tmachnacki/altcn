@@ -59,7 +59,7 @@ export function ButtonDemo() {
       </div>
       <div className="flex flex-wrap gap-4">
         <Button size="lg">Large</Button>
-        <Button disabled size="lg">
+        <Button size="lg" disabled>
           <Spinner />
           Loading
         </Button>
