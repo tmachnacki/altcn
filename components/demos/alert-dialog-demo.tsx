@@ -13,7 +13,7 @@ import { Button } from "@/components/ui/button";
 
 export function AlertDialogDemo() {
   return (
-    <div className="flex flex-wrap gap-4">
+    <div className="flex flex-1 w-full h-full flex-wrap gap-4">
       <AlertDialog>
         <AlertDialogTrigger asChild>
           <Button variant="outline">Show Dialog</Button>
@@ -27,7 +27,7 @@ export function AlertDialogDemo() {
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel variant={"surface"}>Cancel</AlertDialogCancel>
+            <AlertDialogCancel variant={"accent"}>Cancel</AlertDialogCancel>
             <AlertDialogAction variant={"destructive"}>
               Continue
             </AlertDialogAction>

@@ -284,7 +284,7 @@ function BadgeClose({ className, ...props }: React.ComponentProps<"button">) {
       )}
       {...props}
     >
-      <XIcon className="size-3 text-inherit" />
+      <XIcon className="size-3 text-current" />
     </button>
   );
 }

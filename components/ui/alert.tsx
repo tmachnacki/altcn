@@ -46,7 +46,7 @@ const alertVariants = cva(
 
         // destructive
         destructive:
-          "bg-destructive text-destructive-foreground data-[inset-color]:before:bg-destructive-200 dark:data-[inset-color]:before:bg-destructive-300 **:data-[slot=alert-description]:text-destructive-100 dark:**:data-[slot=alert-description]:text-destructive-200 **:data-[slot=alert-icon]:bg-destructive-200/30 **:data-[slot=alert-icon]:text-destructive-50 **:data-[slot=alert-icon]:inset-ring-destructive-200/25",
+          "bg-destructive text-destructive-foreground data-[inset-color]:before:bg-destructive-200 **:data-[slot=alert-description]:text-destructive-100 **:data-[slot=alert-icon]:bg-destructive-200/30 **:data-[slot=alert-icon]:text-destructive-50 **:data-[slot=alert-icon]:inset-ring-destructive-200/25 dark:data-[inset-color]:before:bg-destructive-300 dark:**:data-[slot=alert-description]:text-destructive-200",
 
         "destructive-muted":
           "bg-destructive-muted **:data-[slot=alert-icon]:bg-destructive-faded/80 **:data-[slot=alert-icon]:text-destructive-500 dark:**:data-[slot=alert-icon]:bg-destructive-900/80 dark:**:data-[slot=alert-icon]:text-destructive-200/80",
@@ -83,32 +83,32 @@ const alertVariants = cva(
       {
         variant: ["outline", "muted", "faded"],
         className:
-          "text-accent-foreground data-[inset-color]:before:bg-muted-foreground **:data-[slot=alert-description]:text-muted-foreground **:data-[slot=alert-icon]:text-muted-foreground **:data-[slot=alert-icon]:inset-ring-border-faded",
+          "text-accent-foreground data-[inset-color]:before:bg-muted-foreground **:data-[slot=alert-description]:not-[[class*='text-']]:text-muted-foreground **:data-[slot=alert-icon]:text-muted-foreground **:data-[slot=alert-icon]:inset-ring-border-faded",
       },
       {
         variant: ["primary-muted", "primary-faded"],
         className:
-          "text-primary-accent-foreground data-[inset-color]:before:bg-primary **:data-[slot=alert-description]:text-primary-muted-foreground **:data-[slot=alert-icon]:inset-ring-border-primary-faded",
+          "text-primary-accent-foreground data-[inset-color]:before:bg-primary **:data-[slot=alert-description]:not-[[class*='text-']]:text-primary-muted-foreground **:data-[slot=alert-icon]:inset-ring-border-primary-faded",
       },
       {
         variant: ["secondary-muted", "secondary-faded"],
         className:
-          "text-secondary-accent-foreground data-[inset-color]:before:bg-secondary **:data-[slot=alert-description]:text-secondary-muted-foreground **:data-[slot=alert-icon]:inset-ring-border-secondary-faded",
+          "text-secondary-accent-foreground data-[inset-color]:before:bg-secondary **:data-[slot=alert-description]:not-[[class*='text-']]:text-secondary-muted-foreground **:data-[slot=alert-icon]:inset-ring-border-secondary-faded",
       },
       {
         variant: ["destructive-muted", "destructive-faded"],
         className:
-          "text-destructive-accent-foreground data-[inset-color]:before:bg-destructive **:data-[slot=alert-description]:text-destructive-muted-foreground **:data-[slot=alert-icon]:inset-ring-border-destructive-faded",
+          "text-destructive-accent-foreground data-[inset-color]:before:bg-destructive **:data-[slot=alert-description]:not-[[class*='text-']]:text-destructive-muted-foreground **:data-[slot=alert-icon]:inset-ring-border-destructive-faded",
       },
       {
         variant: ["success-muted", "success-faded"],
         className:
-          "text-success-accent-foreground data-[inset-color]:before:bg-success **:data-[slot=alert-description]:text-success-muted-foreground **:data-[slot=alert-icon]:inset-ring-border-success-faded",
+          "text-success-accent-foreground data-[inset-color]:before:bg-success **:data-[slot=alert-description]:not-[[class*='text-']]:text-success-muted-foreground **:data-[slot=alert-icon]:inset-ring-border-success-faded",
       },
       {
         variant: ["warning-muted", "warning-faded"],
         className:
-          "text-warning-accent-foreground data-[inset-color]:before:bg-warning **:data-[slot=alert-description]:text-warning-muted-foreground **:data-[slot=alert-icon]:inset-ring-border-warning-faded",
+          "text-warning-accent-foreground data-[inset-color]:before:bg-warning **:data-[slot=alert-description]:not-[[class*='text-']]:text-warning-muted-foreground **:data-[slot=alert-icon]:inset-ring-border-warning-faded",
       },
     ],
 
@@ -182,8 +182,8 @@ function AlertIcon({
       data-slot="alert-icon"
       data-intent={intent}
       className={cn(
-        "inline-flex size-8 flex-none items-center justify-center rounded-full inset-ring shadow-sm [&>svg]:size-5 [&>svg]:shrink-0",
-        !intent && "[&>svg]:size-4 [&>svg]:stroke-current",
+        "inline-flex size-8 flex-none items-center justify-center rounded-full shadow-sm inset-ring [&>svg]:size-5 [&>svg]:shrink-0",
+        !intent && "[&>svg]:size-4 [&>svg]:text-current",
         className,
       )}
       {...props}
@@ -197,7 +197,7 @@ function AlertContent({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="alert-content"
-      className={cn("flex flex-1 flex-col gap-0.5", className)}
+      className={cn("flex flex-1 flex-col gap-0.5 text-sm", className)}
       {...props}
     />
   );
@@ -232,7 +232,7 @@ function AlertDescription({
     <div
       data-slot="alert-description"
       className={cn(
-        "grid justify-items-start gap-1 text-sm [&_p]:leading-relaxed",
+        "grid justify-items-start gap-1 [&_p]:leading-relaxed",
         className,
       )}
       {...props}

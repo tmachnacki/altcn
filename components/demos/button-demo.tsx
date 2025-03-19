@@ -5,7 +5,7 @@ import { Spinner } from "@/components/ui/spinner";
 
 export function ButtonDemo() {
   return (
-    <div className="space-y-8">
+    <div className="flex h-full w-full flex-1 flex-col gap-8">
       <div className="flex flex-wrap gap-4">
         <Button variant={"outline"}>Outline</Button>
         <Button variant="accent">Accent</Button>

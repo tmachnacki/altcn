@@ -33,7 +33,7 @@ export function AlertDemo() {
   ] as const;
 
   return (
-    <div className="space-y-8">
+    <div className="flex h-full w-full flex-1 flex-col gap-8">
       {variants.map((variant) => (
         <div className="grid max-w-xl items-start gap-4" key={variant}>
           <Alert variant={variant}>
@@ -70,7 +70,7 @@ export function AlertDemo() {
               <AlertTitle>Something went wrong!</AlertTitle>
               <AlertDescription>
                 <p>Please verify your billing information and try again.</p>
-                <ul className="list-inside list-disc text-sm">
+                <ul className="list-inside list-disc">
                   <li>Check your card details</li>
                   <li>Ensure sufficient funds</li>
                   <li>Verify billing address</li>

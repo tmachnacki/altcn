@@ -54,7 +54,7 @@ const menuItemVariants = cva(
       },
       wide: {
         false: null,
-        true: "-mx-1 rounded-none px-3 data-[inset]:pr-3 data-[inset]:pl-9",
+        true: "-mx-1 rounded-none px-3 data-[inset]:pl-9",
       },
     },
     compoundVariants: [
@@ -115,7 +115,7 @@ function DropdownMenuTrigger({
   );
 }
 
-const DropDownMenuContentVariantsContext = React.createContext<
+const DropdownMenuVariantsContext = React.createContext<
   VariantProps<typeof menuItemVariants>
 >({
   variant: "accent",
@@ -131,22 +131,22 @@ function DropdownMenuContent({
 }: React.ComponentProps<typeof DropdownMenuPrimitive.Content> &
   VariantProps<typeof menuItemVariants>) {
   return (
-    <DropDownMenuContentVariantsContext.Provider value={{ variant, wide }}>
-      <DropdownMenuPortal>
+    <DropdownMenuVariantsContext.Provider value={{ variant, wide }}>
+      <DropdownMenuPrimitive.Portal>
         <DropdownMenuPrimitive.Content
           data-slot="dropdown-menu-content"
           sideOffset={sideOffset}
           data-variant={variant}
           data-wide={wide}
           className={cn(
-            "z-50 max-h-(--radix-dropdown-menu-content-available-height) min-w-(--radix-dropdown-menu-trigger-width) origin-(--radix-dropdown-menu-content-transform-origin) overflow-x-hidden overflow-y-auto rounded-md border bg-popover p-1 text-popover-foreground shadow-md",
+            "z-50 max-h-(--radix-dropdown-menu-content-available-height) min-w-[8rem] origin-(--radix-dropdown-menu-content-transform-origin) overflow-x-hidden overflow-y-auto rounded-md border bg-popover p-1 text-popover-foreground shadow-md",
             "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:ease-out data-[state=open]:fade-in-0",
             className,
           )}
           {...props}
         />
-      </DropdownMenuPortal>
-    </DropDownMenuContentVariantsContext.Provider>
+      </DropdownMenuPrimitive.Portal>
+    </DropdownMenuVariantsContext.Provider>
   );
 }
 
@@ -173,7 +173,7 @@ function DropdownMenuItem({
   ...props
 }: DropdownMenuItemProps) {
   const { variant: variantFromContext, wide: wideFromContext } =
-    React.useContext(DropDownMenuContentVariantsContext);
+    React.useContext(DropdownMenuVariantsContext);
   const variant = variantOverride ?? variantFromContext;
   const wide = wideOverride ?? wideFromContext;
   return (
@@ -192,8 +192,8 @@ function DropdownMenuItem({
   );
 }
 
-const indicatorVariants = cva(
-  "pointer-events-none absolute left-2 flex size-3.5 items-center justify-center",
+const menuItemIndicatorVariants = cva(
+  "pointer-events-none absolute left-2 flex size-3.5 items-center justify-center data-[wide=true]:left-3 data-[wide=true]:[data-item-variant*='faded']:left-[calc(--spacing(3)+1px)] data-[wide=true]:[data-item-variant*='surface']:left-[calc(--spacing(3)+1px)]",
   {
     variants: {
       indicatorVariant: {
@@ -212,7 +212,7 @@ type DropdownMenuCheckboxItemProps = React.ComponentProps<
   typeof DropdownMenuPrimitive.CheckboxItem
 > &
   VariantProps<typeof menuItemVariants> &
-  VariantProps<typeof indicatorVariants> & {
+  VariantProps<typeof menuItemIndicatorVariants> & {
     indicatorClassName?: string;
   };
 
@@ -227,7 +227,7 @@ function DropdownMenuCheckboxItem({
   ...props
 }: DropdownMenuCheckboxItemProps) {
   const { variant: variantFromContext, wide: wideFromContext } =
-    React.useContext(DropDownMenuContentVariantsContext);
+    React.useContext(DropdownMenuVariantsContext);
   const variant = variantOverride ?? variantFromContext;
   const wide = wideOverride ?? wideFromContext;
   return (
@@ -250,8 +250,7 @@ function DropdownMenuCheckboxItem({
         data-wide={wide}
         data-item-variant={variant}
         className={cn(
-          indicatorVariants({ indicatorVariant }),
-          "data-[wide=true]:left-3 data-[wide=true]:[data-item-variant*='faded']:left-[calc(--spacing(3)+1px)] data-[wide=true]:[data-item-variant*='surface']:left-[calc(--spacing(3)+1px)]",
+          menuItemIndicatorVariants({ indicatorVariant }),
           indicatorClassName,
         )}
       >
@@ -277,7 +276,7 @@ type DropdownMenuRadioItemProps = React.ComponentProps<
   typeof DropdownMenuPrimitive.RadioItem
 > &
   VariantProps<typeof menuItemVariants> &
-  VariantProps<typeof indicatorVariants> & {
+  VariantProps<typeof menuItemIndicatorVariants> & {
     indicatorClassName?: string;
   };
 
@@ -291,7 +290,7 @@ function DropdownMenuRadioItem({
   ...props
 }: DropdownMenuRadioItemProps) {
   const { variant: variantFromContext, wide: wideFromContext } =
-    React.useContext(DropDownMenuContentVariantsContext);
+    React.useContext(DropdownMenuVariantsContext);
   const variant = variantOverride ?? variantFromContext;
   const wide = wideOverride ?? wideFromContext;
   return (
@@ -313,8 +312,7 @@ function DropdownMenuRadioItem({
         data-wide={wide}
         data-item-variant={variant}
         className={cn(
-          indicatorVariants({ indicatorVariant }),
-          "data-[wide=true]:left-3 data-[wide=true]:[data-item-variant*='faded']:left-[calc(--spacing(3)+1px)] data-[wide=true]:[data-item-variant*='surface']:left-[calc(--spacing(3)+1px)]",
+          menuItemIndicatorVariants({ indicatorVariant }),
           indicatorClassName,
         )}
       >
@@ -337,7 +335,7 @@ function DropdownMenuLabel({
       data-slot="dropdown-menu-label"
       data-inset={inset}
       className={cn(
-        "px-2 py-1.5 text-sm font-semibold data-[inset]:pl-8",
+        "px-2 py-1.5 text-sm font-medium text-foreground data-[inset]:pl-8",
         className,
       )}
       {...props}
@@ -393,7 +391,7 @@ function DropdownMenuSubTrigger({
   ...props
 }: DropdownMenuSubTriggerProps) {
   const { variant: variantFromContext, wide: wideFromContext } =
-    React.useContext(DropDownMenuContentVariantsContext);
+    React.useContext(DropdownMenuVariantsContext);
   const variant = variantOverride ?? variantFromContext;
   const wide = wideOverride ?? wideFromContext;
   return (
@@ -420,22 +418,23 @@ function DropdownMenuSubContent({
   ...props
 }: React.ComponentProps<typeof DropdownMenuPrimitive.SubContent>) {
   return (
-    <DropdownMenuPortal>
+    <DropdownMenuPrimitive.Portal>
       <DropdownMenuPrimitive.SubContent
         data-slot="dropdown-menu-sub-content"
         className={cn(
-          "z-50 max-h-(--radix-dropdown-menu-content-available-height) min-w-[8rem] origin-(--radix-dropdown-menu-content-transform-origin) overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-lg",
+          "z-50 max-h-(--radix-dropdown-menu-content-available-height) min-w-[8rem] origin-(--radix-dropdown-menu-content-transform-origin) overflow-x-hidden overflow-y-auto rounded-md border bg-popover p-1 text-popover-foreground shadow-lg",
           "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:ease-out data-[state=open]:fade-in-0",
           className,
         )}
         {...props}
       />
-    </DropdownMenuPortal>
+    </DropdownMenuPrimitive.Portal>
   );
 }
 
 export {
   menuItemVariants,
+  menuItemIndicatorVariants,
   DropdownMenu,
   DropdownMenuPortal,
   DropdownMenuTrigger,

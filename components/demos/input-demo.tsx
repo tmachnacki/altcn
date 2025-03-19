@@ -1,14 +1,18 @@
 import { Input } from "@/components/ui/input";
 
 export function InputDemo() {
-  const variants: Array<
-    "default" | "muted" | "underline" | "primary" | "secondary"
-  > = ["default", "muted", "underline", "primary", "secondary"];
+  const variants = [
+    "default",
+    "muted",
+    "underline",
+    "primary",
+    "secondary",
+  ] as const;
 
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex h-full w-full flex-1 flex-col gap-8">
       {variants.map((variant) => (
-        <div className="flex w-full max-w-lg flex-col gap-4" key={variant}>
+        <div className="flex w-full max-w-sm flex-col gap-4" key={variant}>
           <Input type="email" placeholder="Email" variant={variant} />
           <Input type="password" placeholder="Password" variant={variant} />
           <Input type="number" placeholder="Number" variant={variant} />

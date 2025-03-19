@@ -1,13 +1,22 @@
 import * as React from "react";
+import { Slot } from "@radix-ui/react-slot";
 
 import { cn } from "@/lib/utils";
 
-function Card({ className, ...props }: React.ComponentProps<"div">) {
+function Card({
+  className,
+  asChild,
+  translucent,
+  ...props
+}: React.ComponentProps<"div"> & { asChild?: boolean; translucent?: boolean }) {
+  const Comp = asChild ? Slot : "div";
   return (
-    <div
+    <Comp
       data-slot="card"
+      data-translucent={translucent}
       className={cn(
-        "rounded-lg border bg-card text-card-foreground shadow-sm",
+        "group/card rounded-lg border border-border bg-card text-card-foreground shadow-sm",
+        "data-[translucent]:bg-card/50 data-[translucent]:backdrop-blur-3xl",
         className,
       )}
       {...props}
@@ -29,7 +38,10 @@ function CardTitle({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="card-title"
-      className={cn("leading-none font-semibold tracking-tight", className)}
+      className={cn(
+        "text-base leading-none font-semibold tracking-tight",
+        className,
+      )}
       {...props}
     />
   );
@@ -68,8 +80,8 @@ function CardFooter({ className, ...props }: React.ComponentProps<"div">) {
 export {
   Card,
   CardHeader,
-  CardFooter,
   CardTitle,
   CardDescription,
   CardContent,
+  CardFooter,
 };

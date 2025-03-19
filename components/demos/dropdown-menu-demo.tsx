@@ -12,7 +12,6 @@ import {
   ShareIcon,
   SparklesIcon,
   TrashIcon,
-  CircleEllipsisIcon,
   MailIcon,
   SendIcon,
 } from "lucide-react";
@@ -20,14 +19,12 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
-  menuItemVariants,
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuPortal,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
   DropdownMenuSeparator,
@@ -37,135 +34,139 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { VariantProps } from "class-variance-authority";
-
-type TDropdownMenuDemo = {
-  label: string;
-  variant: VariantProps<typeof menuItemVariants>["variant"];
-  wide?: boolean;
-};
-
-const dropdownMenuDemos: TDropdownMenuDemo[] = [
-  {
-    label: "Accent",
-    variant: "accent",
-  },
-  {
-    label: "Accent Wide",
-    variant: "accent",
-    wide: true,
-  },
-  {
-    label: "Surface",
-    variant: "surface",
-  },
-  {
-    label: "Surface Wide",
-    variant: "surface",
-    wide: true,
-  },
-  {
-    label: "Primary",
-    variant: "primary",
-  },
-  {
-    label: "Primary Wide",
-    variant: "primary",
-    wide: true,
-  },
-  {
-    label: "Primary Accent",
-    variant: "primary-accent",
-  },
-  {
-    label: "Primary Accent Wide",
-    variant: "primary-accent",
-    wide: true,
-  },
-  {
-    label: "Primary Muted",
-    variant: "primary-muted",
-  },
-  {
-    label: "Primary Muted Wide",
-    variant: "primary-muted",
-    wide: true,
-  },
-  {
-    label: "Primary Surface",
-    variant: "primary-surface",
-  },
-  {
-    label: "Primary Surface Wide",
-    variant: "primary-surface",
-    wide: true,
-  },
-  {
-    label: "Primary Faded",
-    variant: "primary-faded",
-  },
-  {
-    label: "Primary Faded Wide",
-    variant: "primary-faded",
-    wide: true,
-  },
-  {
-    label: "Secondary",
-    variant: "secondary",
-  },
-  {
-    label: "Secondary Wide",
-    variant: "secondary",
-    wide: true,
-  },
-  {
-    label: "Secondary Accent",
-    variant: "secondary-accent",
-  },
-  {
-    label: "Secondary Accent Wide",
-    variant: "secondary-accent",
-    wide: true,
-  },
-  {
-    label: "Secondary Muted",
-    variant: "secondary-muted",
-  },
-  {
-    label: "Secondary Muted Wide",
-    variant: "secondary-muted",
-    wide: true,
-  },
-  {
-    label: "Secondary Surface",
-    variant: "secondary-surface",
-  },
-  {
-    label: "Secondary Surface Wide",
-    variant: "secondary-surface",
-    wide: true,
-  },
-  {
-    label: "Secondary Faded",
-    variant: "secondary-faded",
-  },
-  {
-    label: "Secondary Faded Wide",
-    variant: "secondary-faded",
-    wide: true,
-  },
-];
 
 export function DropdownMenuDemo() {
   const [defaultChecked, setDefaultChecked] = React.useState(true);
   const [primaryChecked, setPrimaryChecked] = React.useState(true);
   const [secondaryChecked, setSecondaryChecked] = React.useState(true);
-  const [disabledChecked, setDisabledChecked] = React.useState(true);
 
   const [radioIndicator, setRadioIndicator] = React.useState("default");
 
+  const dropdownMenuDemos = [
+    {
+      label: "Accent",
+      variant: "accent",
+      wide: false,
+    },
+    {
+      label: "Accent Wide",
+      variant: "accent",
+      wide: true,
+    },
+    {
+      label: "Surface",
+      variant: "surface",
+      wide: false,
+    },
+    {
+      label: "Surface Wide",
+      variant: "surface",
+      wide: true,
+    },
+    {
+      label: "Primary",
+      variant: "primary",
+      wide: false,
+    },
+    {
+      label: "Primary Wide",
+      variant: "primary",
+      wide: true,
+    },
+    {
+      label: "Primary Accent",
+      variant: "primary-accent",
+      wide: false,
+    },
+    {
+      label: "Primary Accent Wide",
+      variant: "primary-accent",
+      wide: true,
+    },
+    {
+      label: "Primary Muted",
+      variant: "primary-muted",
+      wide: false,
+    },
+    {
+      label: "Primary Muted Wide",
+      variant: "primary-muted",
+      wide: true,
+    },
+    {
+      label: "Primary Surface",
+      variant: "primary-surface",
+      wide: false,
+    },
+    {
+      label: "Primary Surface Wide",
+      variant: "primary-surface",
+      wide: true,
+    },
+    {
+      label: "Primary Faded",
+      variant: "primary-faded",
+      wide: false,
+    },
+    {
+      label: "Primary Faded Wide",
+      variant: "primary-faded",
+      wide: true,
+    },
+    {
+      label: "Secondary",
+      variant: "secondary",
+      wide: false,
+    },
+    {
+      label: "Secondary Wide",
+      variant: "secondary",
+      wide: true,
+    },
+    {
+      label: "Secondary Accent",
+      variant: "secondary-accent",
+      wide: false,
+    },
+    {
+      label: "Secondary Accent Wide",
+      variant: "secondary-accent",
+      wide: true,
+    },
+    {
+      label: "Secondary Muted",
+      variant: "secondary-muted",
+      wide: false,
+    },
+    {
+      label: "Secondary Muted Wide",
+      variant: "secondary-muted",
+      wide: true,
+    },
+    {
+      label: "Secondary Surface",
+      variant: "secondary-surface",
+      wide: false,
+    },
+    {
+      label: "Secondary Surface Wide",
+      variant: "secondary-surface",
+      wide: true,
+    },
+    {
+      label: "Secondary Faded",
+      variant: "secondary-faded",
+      wide: false,
+    },
+    {
+      label: "Secondary Faded Wide",
+      variant: "secondary-faded",
+      wide: true,
+    },
+  ] as const;
+
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex h-full w-full flex-1 flex-col gap-8">
       <div className="flex flex-wrap items-center gap-4">
         {dropdownMenuDemos.map((demo) => (
           <DropdownMenu key={demo.label}>
@@ -197,25 +198,20 @@ export function DropdownMenuDemo() {
                 <DropdownMenuLabel>Team</DropdownMenuLabel>
                 <DropdownMenuSub>
                   <DropdownMenuSubTrigger>Invite users</DropdownMenuSubTrigger>
-                  <DropdownMenuPortal>
-                    <DropdownMenuSubContent>
-                      <DropdownMenuItem>
-                        <MailIcon />
-                        Email
-                        <DropdownMenuShortcut>⌘+E</DropdownMenuShortcut>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem>
-                        <SendIcon />
-                        Message
-                        <DropdownMenuShortcut>⌘+M</DropdownMenuShortcut>
-                      </DropdownMenuItem>
-                      <DropdownMenuSeparator />
-                      <DropdownMenuItem>
-                        <CircleEllipsisIcon />
-                        More
-                      </DropdownMenuItem>
-                    </DropdownMenuSubContent>
-                  </DropdownMenuPortal>
+                  <DropdownMenuSubContent>
+                    <DropdownMenuItem>
+                      <MailIcon />
+                      Email
+                      <DropdownMenuShortcut>⌘+E</DropdownMenuShortcut>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
+                      <SendIcon />
+                      Message
+                      <DropdownMenuShortcut>⌘+M</DropdownMenuShortcut>
+                    </DropdownMenuItem>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem inset>More</DropdownMenuItem>
+                  </DropdownMenuSubContent>
                 </DropdownMenuSub>
                 <DropdownMenuItem>
                   New Team
@@ -245,11 +241,7 @@ export function DropdownMenuDemo() {
                 >
                   Secondary Indicator
                 </DropdownMenuCheckboxItem>
-                <DropdownMenuCheckboxItem
-                  checked={disabledChecked}
-                  onCheckedChange={setDisabledChecked}
-                  disabled
-                >
+                <DropdownMenuCheckboxItem checked disabled>
                   Disabled
                 </DropdownMenuCheckboxItem>
               </DropdownMenuGroup>
@@ -359,14 +351,12 @@ function DropdownMenuSimple() {
           <DropdownMenuItem>Team</DropdownMenuItem>
           <DropdownMenuSub>
             <DropdownMenuSubTrigger>Invite users</DropdownMenuSubTrigger>
-            <DropdownMenuPortal>
-              <DropdownMenuSubContent>
-                <DropdownMenuItem>Email</DropdownMenuItem>
-                <DropdownMenuItem>Message</DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem>More...</DropdownMenuItem>
-              </DropdownMenuSubContent>
-            </DropdownMenuPortal>
+            <DropdownMenuSubContent>
+              <DropdownMenuItem>Email</DropdownMenuItem>
+              <DropdownMenuItem>Message</DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem>More...</DropdownMenuItem>
+            </DropdownMenuSubContent>
           </DropdownMenuSub>
           <DropdownMenuItem>
             New Team
@@ -525,14 +515,14 @@ function DropdownMenuAvatarOnly() {
 function DropdownMenuIconColor() {
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
+      <DropdownMenuTrigger asChild className="data-[state=open]:bg-accent">
         <Button variant="ghost" size="icon">
           <MoreHorizontalIcon />
           <span className="sr-only">Toggle menu</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="start">
-        <DropdownMenuGroup className="*:data-[slot=dropdown-menu-item]:[&>svg]:text-muted-foreground">
+        <DropdownMenuGroup>
           <DropdownMenuItem>
             <PencilIcon />
             Edit
@@ -542,7 +532,7 @@ function DropdownMenuIconColor() {
             Share
           </DropdownMenuItem>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>
+          <DropdownMenuItem variant="destructive-muted">
             <TrashIcon />
             Delete
           </DropdownMenuItem>

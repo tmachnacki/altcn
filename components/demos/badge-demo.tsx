@@ -4,7 +4,7 @@ import { Separator } from "@/components/ui/separator";
 
 export function BadgeDemo() {
   return (
-    <div className="space-y-8">
+    <div className="flex h-full w-full flex-1 flex-col gap-8">
       <div className="flex flex-wrap gap-4">
         <Badge variant="outline">Outline</Badge>
         <Badge variant="outline">

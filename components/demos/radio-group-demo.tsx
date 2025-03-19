@@ -19,7 +19,7 @@ const plans = [
 
 export function RadioGroupDemo() {
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex h-full w-full flex-1 flex-col gap-8">
       <RadioGroup defaultValue="comfortable">
         <div className="flex items-center gap-3">
           <RadioGroupItem value="default" id="p1" />

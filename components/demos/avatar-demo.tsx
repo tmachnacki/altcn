@@ -2,7 +2,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export function AvatarDemo() {
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex h-full w-full flex-1 flex-col gap-8">
       <div className="flex flex-wrap items-center gap-4">
         <Avatar>
           <AvatarImage

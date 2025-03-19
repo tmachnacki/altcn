@@ -17,9 +17,9 @@ export function AccordionDemo() {
   ] as const;
 
   return (
-    <div className="space-y-8 w-full">
+    <div className="flex h-full w-full flex-1 flex-col gap-8">
       {variants.map((variant) => (
-        <div className="flex flex-col w-full max-w-xl gap-4" key={variant}>
+        <div className="flex w-full max-w-xl flex-col gap-4" key={variant}>
           <Accordion
             type="single"
             collapsible
