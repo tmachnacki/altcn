@@ -294,67 +294,67 @@ export const colors = [
       {
         label: "rust-50",
         token: "var(--color-rust-50)",
-        value: "oklch(0.984 0.002 60.0)",
+        value: "oklch(0.984 0.001 40.0)",
         background: "bg-rust-50",
       },
       {
         label: "rust-100",
         token: "var(--color-rust-100)",
-        value: "oklch(0.968 0.006 58.0)",
+        value: "oklch(0.968 0.003 42.0)",
         background: "bg-rust-100",
       },
       {
         label: "rust-200",
         token: "var(--color-rust-200)",
-        value: "oklch(0.929 0.012 56.0)",
+        value: "oklch(0.929 0.006 44.0)",
         background: "bg-rust-200",
       },
       {
         label: "rust-300",
         token: "var(--color-rust-300)",
-        value: "oklch(0.869 0.020 54.0)",
+        value: "oklch(0.869 0.010 46.0)",
         background: "bg-rust-300",
       },
       {
         label: "rust-400",
         token: "var(--color-rust-400)",
-        value: "oklch(0.704 0.035 52.0)",
+        value: "oklch(0.704 0.018 48.0)",
         background: "bg-rust-400",
       },
       {
         label: "rust-500",
         token: "var(--color-rust-500)",
-        value: "oklch(0.554 0.045 50.0)",
+        value: "oklch(0.554 0.025 50.0)",
         background: "bg-rust-500",
       },
       {
         label: "rust-600",
         token: "var(--color-rust-600)",
-        value: "oklch(0.446 0.040 48.0)",
+        value: "oklch(0.446 0.022 52.0)",
         background: "bg-rust-600",
       },
       {
         label: "rust-700",
         token: "var(--color-rust-700)",
-        value: "oklch(0.372 0.035 46.0)",
+        value: "oklch(0.372 0.020 54.0)",
         background: "bg-rust-700",
       },
       {
         label: "rust-800",
         token: "var(--color-rust-800)",
-        value: "oklch(0.279 0.030 44.0)",
+        value: "oklch(0.279 0.018 56.0)",
         background: "bg-rust-800",
       },
       {
         label: "rust-900",
         token: "var(--color-rust-900)",
-        value: "oklch(0.208 0.025 42.0)",
+        value: "oklch(0.208 0.015 58.0)",
         background: "bg-rust-900",
       },
       {
         label: "rust-950",
         token: "var(--color-rust-950)",
-        value: "oklch(0.129 0.020 40.0)",
+        value: "oklch(0.129 0.012 60.0)",
         background: "bg-rust-950",
       },
     ],
@@ -409,14 +409,14 @@ export const colors = [
 // --color-sage-900: oklch(0.208 0.008 166.0);
 // --color-sage-950: oklch(0.129 0.007 167.0);
 
-// --color-rust-50: oklch(0.984 0.002 60.0);
-// --color-rust-100: oklch(0.968 0.006 58.0);
-// --color-rust-200: oklch(0.929 0.012 56.0);
-// --color-rust-300: oklch(0.869 0.020 54.0);
-// --color-rust-400: oklch(0.704 0.035 52.0);
-// --color-rust-500: oklch(0.554 0.045 50.0);
-// --color-rust-600: oklch(0.446 0.040 48.0);
-// --color-rust-700: oklch(0.372 0.035 46.0);
-// --color-rust-800: oklch(0.279 0.030 44.0);
-// --color-rust-900: oklch(0.208 0.025 42.0);
-// --color-rust-950: oklch(0.129 0.020 40.0);
+// --color-rust-50: oklch(0.984 0.001 40.0);
+// --color-rust-100: oklch(0.968 0.003 42.0);
+// --color-rust-200: oklch(0.929 0.006 44.0);
+// --color-rust-300: oklch(0.869 0.010 46.0);
+// --color-rust-400: oklch(0.704 0.018 48.0);
+// --color-rust-500: oklch(0.554 0.025 50.0);
+// --color-rust-600: oklch(0.446 0.022 52.0);
+// --color-rust-700: oklch(0.372 0.020 54.0);
+// --color-rust-800: oklch(0.279 0.018 56.0);
+// --color-rust-900: oklch(0.208 0.015 58.0);
+// --color-rust-950: oklch(0.129 0.012 60.0);

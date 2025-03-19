@@ -58,6 +58,28 @@ const menubarTriggerVariants = cva(
           "data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground",
         surface:
           "data-[highlighted]:bg-faded data-[highlighted]:text-accent-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-faded data-[state=open]:bg-faded data-[state=open]:text-accent-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-border-faded",
+
+        primary:
+          "data-[highlighted]:bg-primary data-[highlighted]:text-primary-foreground data-[state=open]:bg-primary data-[state=open]:text-primary-foreground",
+        "primary-accent":
+          "data-[highlighted]:bg-primary-muted data-[highlighted]:text-primary-accent-foreground data-[state=open]:bg-primary-muted data-[state=open]:text-primary-accent-foreground",
+        "primary-muted":
+          "data-[highlighted]:bg-primary-muted data-[highlighted]:text-primary-muted-foreground data-[state=open]:bg-primary-muted data-[state=open]:text-primary-muted-foreground",
+        "primary-surface":
+          "data-[highlighted]:bg-primary-faded data-[highlighted]:text-primary-accent-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-primary-faded data-[state=open]:bg-primary-faded data-[state=open]:text-primary-accent-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-border-primary-faded",
+        "primary-faded":
+          "data-[highlighted]:bg-primary-faded data-[highlighted]:text-primary-muted-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-primary-faded data-[state=open]:bg-primary-faded data-[state=open]:text-primary-muted-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-border-primary-faded",
+
+        secondary:
+          "data-[highlighted]:bg-secondary data-[highlighted]:text-secondary-foreground data-[state=open]:bg-secondary data-[state=open]:text-secondary-foreground",
+        "secondary-accent":
+          "data-[highlighted]:bg-secondary-muted data-[highlighted]:text-secondary-accent-foreground data-[state=open]:bg-secondary-muted data-[state=open]:text-secondary-accent-foreground",
+        "secondary-muted":
+          "data-[highlighted]:bg-secondary-muted data-[highlighted]:text-secondary-muted-foreground data-[state=open]:bg-secondary-muted data-[state=open]:text-secondary-muted-foreground",
+        "secondary-surface":
+          "data-[highlighted]:bg-secondary-faded data-[highlighted]:text-secondary-accent-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-secondary-faded data-[state=open]:bg-secondary-faded data-[state=open]:text-secondary-accent-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-border-secondary-faded",
+        "secondary-faded":
+          "data-[highlighted]:bg-secondary-faded data-[highlighted]:text-secondary-muted-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-secondary-faded data-[state=open]:bg-secondary-faded data-[state=open]:text-secondary-muted-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-border-secondary-faded",
       },
     },
     defaultVariants: {
