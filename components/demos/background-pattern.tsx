@@ -1,5 +1,7 @@
+import { cn } from "@/lib/utils";
+
 // credit: https://www.radix-ui.com/themes/playground
-export function BackgroundPattern() {
+export function BackgroundPattern({ className }: { className?: string }) {
   return (
     <svg
       width="1000px"
@@ -7,7 +9,7 @@ export function BackgroundPattern() {
       viewBox="0 0 2560 1920"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      style={{ opacity: 0.6, pointerEvents: "none" }}
+      className={cn("pointer-events-none opacity-60", className)}
     >
       <g>
         <path
@@ -65,10 +67,7 @@ export function BackgroundPattern() {
           gradientTransform="translate(201.6 -1080.02) rotate(64.9401) scale(6436.87 6304.81)"
         >
           <stop stopColor="var(--color-background)"></stop>
-          <stop
-            offset="0.0833333"
-            stopColor="var(--color-background)"
-          ></stop>
+          <stop offset="0.0833333" stopColor="var(--color-background)"></stop>
           <stop offset="0.333803" stopColor="var(--color-background)"></stop>
           <stop offset="0.658041" stopColor="var(--color-background)"></stop>
           <stop
@@ -109,16 +108,10 @@ export function BackgroundPattern() {
           gradientTransform="translate(1711.41 -1639.11) rotate(64.9401) scale(6436.87 6304.81)"
         >
           <stop stopColor="var(--color-background)"></stop>
-          <stop
-            offset="0.0833333"
-            stopColor="var(--color-background)"
-          ></stop>
+          <stop offset="0.0833333" stopColor="var(--color-background)"></stop>
           <stop offset="0.333803" stopColor="var(--color-background)"></stop>
           <stop offset="0.658041" stopColor="var(--color-background)"></stop>
-          <stop
-            offset="0.798521"
-            stopColor="var(--color-background)"
-          ></stop>
+          <stop offset="0.798521" stopColor="var(--color-background)"></stop>
           <stop offset="0.942708" stopColor="var(--color-background)"></stop>
           <stop offset="1" stopColor="var(--color-background)"></stop>
         </radialGradient>

@@ -15,7 +15,7 @@ import { BackgroundPattern } from "@/components/demos/background-pattern";
 
 export function CardDemo() {
   return (
-    <div className="flex flex-1 h-full w-full flex-col gap-8">
+    <div className="flex h-full w-full flex-1 flex-col gap-8">
       <Card className="w-full max-w-lg">
         <CardHeader>
           <CardTitle>Sign in to your account</CardTitle>
@@ -65,9 +65,9 @@ export function CardDemo() {
         </CardFooter>
       </Card>
 
-      <div className="relative flex w-full flex-col items-center justify-center bg-transparent p-24">
+      <div className="relative flex w-full max-w-[1000px] flex-col items-center justify-center overflow-hidden rounded-lg border border-border-primary-faded bg-transparent p-24">
         <div className="absolute inset-0 flex shrink-0 items-center justify-center overflow-hidden">
-          <BackgroundPattern />
+          <BackgroundPattern className="shrink-0" />
         </div>
 
         <Card className="w-full max-w-lg" translucent>
@@ -81,9 +81,9 @@ export function CardDemo() {
             <form>
               <div className="flex flex-col gap-6">
                 <div className="grid gap-2">
-                  <Label htmlFor="email">Email</Label>
+                  <Label htmlFor="email2">Email</Label>
                   <Input
-                    id="email"
+                    id="email2"
                     type="email"
                     placeholder="someone@example.com"
                     required
@@ -91,7 +91,7 @@ export function CardDemo() {
                 </div>
                 <div className="grid gap-2">
                   <div className="flex items-center">
-                    <Label htmlFor="password">Password</Label>
+                    <Label htmlFor="password2">Password</Label>
                     <a
                       href="#card"
                       className="ml-auto inline-block text-sm text-primary-muted-foreground underline-offset-4 hover:underline"
@@ -100,7 +100,7 @@ export function CardDemo() {
                     </a>
                   </div>
                   <Input
-                    id="password"
+                    id="password2"
                     type="password"
                     placeholder="********"
                     required

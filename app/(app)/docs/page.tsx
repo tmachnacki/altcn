@@ -9,6 +9,7 @@ import { ButtonDemo } from "@/components/demos/button-demo";
 import { CardDemo } from "@/components/demos/card-demo";
 import { CheckboxDemo } from "@/components/demos/checkbox-demo";
 import { ContextMenuDemo } from "@/components/demos/context-menu-demo";
+import { DialogDemo } from "@/components/demos/dialog-demo";
 import { DropdownMenuDemo } from "@/components/demos/dropdown-menu-demo";
 import { InputDemo } from "@/components/demos/input-demo";
 import { MenubarDemo } from "@/components/demos/menubar-demo";
@@ -60,6 +61,11 @@ const COMPONENTS = [
     title: "Context Menu",
     id: "context-menu",
     component: <ContextMenuDemo />,
+  },
+  {
+    title: "Dialog",
+    id: "dialog",
+    component: <DialogDemo />,
   },
   {
     title: "Dropdown Menu",
