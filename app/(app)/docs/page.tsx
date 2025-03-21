@@ -12,6 +12,7 @@ import { ContextMenuDemo } from "@/components/demos/context-menu-demo";
 import { DialogDemo } from "@/components/demos/dialog-demo";
 import { DropdownMenuDemo } from "@/components/demos/dropdown-menu-demo";
 import { InputDemo } from "@/components/demos/input-demo";
+import { InputOTPDemo } from "@/components/demos/input-otp-demo";
 import { MenubarDemo } from "@/components/demos/menubar-demo";
 import { RadioGroupDemo } from "@/components/demos/radio-group-demo";
 import { SkeletonDemo } from "@/components/demos/skeleton-demo";
@@ -76,6 +77,11 @@ const COMPONENTS = [
     title: "Input",
     id: "input",
     component: <InputDemo />,
+  },
+  {
+    title: "Input OTP",
+    id: "input-otp",
+    component: <InputOTPDemo />,
   },
   {
     title: "Menubar",

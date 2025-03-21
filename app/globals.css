@@ -164,11 +164,7 @@
   --muted: var(--color-base-900);
   --muted-foreground: var(--color-base-400);
 
-  --faded: color-mix(
-    in oklab,
-    var(--color-base-500) 8%,
-    transparent
-  );
+  --faded: color-mix(in oklab, var(--color-base-500) 8%, transparent);
   --border-faded: color-mix(in oklab, var(--color-base-500) 20%, transparent);
 
   /* --border: var(--color-base-800); */
