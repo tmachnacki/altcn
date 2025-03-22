@@ -14,8 +14,8 @@ const inputOTPSlotVariants = cva(
       variant: {
         default: [
           "border-y border-r border-border bg-background text-foreground shadow-xs not-aria-invalid:group-not-focus-within/input-otp:group-hover/input-otp:border-border-hover first:rounded-l-md first:border-l last:rounded-r-md dark:bg-faded",
-          "aria-invalid:border-destructive aria-invalid:text-destructive-accent-foreground aria-invalid:outline-destructive dark:aria-invalid:data-[active=true]:border-destructive-faded aria-invalid:data-[active=true]:outline-2 dark:aria-invalid:bg-destructive-faded",
-          "outline-primary data-[active=true]:border-background dark:data-[active=true]:border-faded data-[active=true]:outline-2",
+          "aria-invalid:border-destructive aria-invalid:text-destructive-accent-foreground aria-invalid:outline-destructive aria-invalid:data-[active=true]:outline-2 dark:aria-invalid:bg-destructive-faded",
+          "ring-primary data-[active=true]:border-primary data-[active=true]:ring-1",
           "data-[split=true]:rounded-md data-[split=true]:border",
         ],
         muted: [

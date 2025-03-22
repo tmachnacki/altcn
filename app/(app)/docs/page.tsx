@@ -16,6 +16,7 @@ import { InputOTPDemo } from "@/components/demos/input-otp-demo";
 import { MenubarDemo } from "@/components/demos/menubar-demo";
 import { RadioGroupDemo } from "@/components/demos/radio-group-demo";
 import { SkeletonDemo } from "@/components/demos/skeleton-demo";
+import { SliderDemo } from "@/components/demos/slider-demo";
 
 const COMPONENTS = [
   {
@@ -97,6 +98,11 @@ const COMPONENTS = [
     title: "Skeleton",
     id: "skeleton",
     component: <SkeletonDemo />,
+  },
+  {
+    title: "Slider",
+    id: "slider",
+    component: <SliderDemo />,
   },
 ];
 
