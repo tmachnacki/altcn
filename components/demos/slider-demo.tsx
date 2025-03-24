@@ -71,11 +71,20 @@ function SliderControlled({
 }) {
   const [value, setValue] = React.useState([0.3, 0.7]);
 
+  const textVariants = {
+    primary: "text-primary-muted-foreground",
+    "primary-muted": "text-primary-muted-foreground",
+    "primary-faded": "text-primary-muted-foreground",
+    secondary: "text-secondary-muted-foreground",
+    "secondary-muted": "text-secondary-muted-foreground",
+    "secondary-faded": "text-secondary-muted-foreground",
+  };
+
   return (
     <div className="grid w-full gap-3">
       <div className="flex items-center justify-between gap-2">
         <Label htmlFor="slider-demo-temperature">Temperature</Label>
-        <span className="text-sm text-muted-foreground">
+        <span className={`text-sm ${textVariants[variant]}`}>
           {value.join(", ")}
         </span>
       </div>

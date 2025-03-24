@@ -14,7 +14,9 @@ import { DropdownMenuDemo } from "@/components/demos/dropdown-menu-demo";
 import { InputDemo } from "@/components/demos/input-demo";
 import { InputOTPDemo } from "@/components/demos/input-otp-demo";
 import { MenubarDemo } from "@/components/demos/menubar-demo";
+import { ProgressDemo } from "@/components/demos/progress-demo";
 import { RadioGroupDemo } from "@/components/demos/radio-group-demo";
+import { SelectDemo } from "@/components/demos/select-demo";
 import { SkeletonDemo } from "@/components/demos/skeleton-demo";
 import { SliderDemo } from "@/components/demos/slider-demo";
 
@@ -90,9 +92,19 @@ const COMPONENTS = [
     component: <MenubarDemo />,
   },
   {
+    title: "Progress",
+    id: "progress",
+    component: <ProgressDemo />,
+  },
+  {
     title: "Radio Group",
     id: "radio-group",
     component: <RadioGroupDemo />,
+  },
+  {
+    title: "Select",
+    id: "select",
+    component: <SelectDemo />,
   },
   {
     title: "Skeleton",

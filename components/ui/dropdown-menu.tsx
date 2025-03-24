@@ -86,6 +86,7 @@ const menuItemVariants = cva(
     ],
     defaultVariants: {
       variant: "accent",
+      wide: false,
     },
   },
 );

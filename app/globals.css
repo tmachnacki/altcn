@@ -26,6 +26,7 @@
     var(--color-base-100)
   );
   --accent-foreground: var(--color-base-950);
+  --subtle-foreground: var(--color-base-600);
 
   --muted: var(--color-base-100);
   --muted-foreground: var(--color-base-500);
@@ -160,7 +161,11 @@
     var(--color-base-900)
   );
   --accent-foreground: var(--color-base-50);
-
+  --subtle-foreground: color-mix(
+    in oklab,
+    var(--color-base-300) 75%,
+    var(--color-base-400)
+  );
   --muted: var(--color-base-900);
   --muted-foreground: var(--color-base-400);
 
@@ -398,13 +403,13 @@
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
 
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-subtle-foreground: var(--subtle-foreground);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
   --color-faded: var(--faded);
   --color-border-faded: var(--border-faded);
-
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
 
   --color-border: var(--border);
   --color-border-hover: var(--border-hover);
