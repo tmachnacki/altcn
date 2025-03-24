@@ -19,7 +19,7 @@ function Menubar({
     <MenubarPrimitive.Root
       data-slot="menubar"
       className={cn(
-        "group/menubar flex h-9 items-center gap-1 rounded-md border bg-background p-1 shadow-xs",
+        "flex h-9 items-center gap-1 rounded-md border bg-background p-1 shadow-xs",
         className,
       )}
       {...props}
@@ -50,32 +50,59 @@ const menubarTriggerVariants = cva(
   {
     variants: {
       variant: {
-        accent:
-          "data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground",
-        surface:
-          "data-[highlighted]:bg-faded data-[highlighted]:text-accent-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-faded data-[state=open]:bg-faded data-[state=open]:text-accent-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-border-faded",
+        // -- base --
+        accent: [
+          "data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground",
+          "data-[state=open]:bg-accent data-[state=open]:text-accent-foreground",
+        ],
+        surface: [
+          "data-[highlighted]:bg-faded data-[highlighted]:text-accent-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-faded",
+          "data-[state=open]:bg-faded data-[state=open]:text-accent-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-border-faded",
+        ],
 
-        primary:
-          "data-[highlighted]:bg-primary data-[highlighted]:text-primary-foreground data-[state=open]:bg-primary data-[state=open]:text-primary-foreground",
-        "primary-accent":
-          "data-[highlighted]:bg-primary-muted data-[highlighted]:text-primary-accent-foreground data-[state=open]:bg-primary-muted data-[state=open]:text-primary-accent-foreground",
-        "primary-muted":
-          "data-[highlighted]:bg-primary-muted data-[highlighted]:text-primary-muted-foreground data-[state=open]:bg-primary-muted data-[state=open]:text-primary-muted-foreground",
-        "primary-surface":
-          "data-[highlighted]:bg-primary-faded data-[highlighted]:text-primary-accent-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-primary-faded data-[state=open]:bg-primary-faded data-[state=open]:text-primary-accent-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-border-primary-faded",
-        "primary-faded":
-          "data-[highlighted]:bg-primary-faded data-[highlighted]:text-primary-muted-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-primary-faded data-[state=open]:bg-primary-faded data-[state=open]:text-primary-muted-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-border-primary-faded",
+        // -- primary --
+        primary: [
+          "data-[highlighted]:bg-primary data-[highlighted]:text-primary-foreground",
+          "data-[state=open]:bg-primary data-[state=open]:text-primary-foreground",
+        ],
+        "primary-accent": [
+          "data-[highlighted]:bg-primary-muted data-[highlighted]:text-primary-accent-foreground",
+          "data-[state=open]:bg-primary-muted data-[state=open]:text-primary-accent-foreground",
+        ],
+        "primary-muted": [
+          "data-[highlighted]:bg-primary-muted data-[highlighted]:text-primary-muted-foreground",
+          "data-[state=open]:bg-primary-muted data-[state=open]:text-primary-muted-foreground",
+        ],
+        "primary-surface": [
+          "data-[highlighted]:bg-primary-faded data-[highlighted]:text-primary-accent-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-primary-faded",
+          "data-[state=open]:bg-primary-faded data-[state=open]:text-primary-accent-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-border-primary-faded",
+        ],
+        "primary-faded": [
+          "data-[highlighted]:bg-primary-faded data-[highlighted]:text-primary-muted-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-primary-faded",
+          "data-[state=open]:bg-primary-faded data-[state=open]:text-primary-muted-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-border-primary-faded",
+        ],
 
-        secondary:
-          "data-[highlighted]:bg-secondary data-[highlighted]:text-secondary-foreground data-[state=open]:bg-secondary data-[state=open]:text-secondary-foreground",
-        "secondary-accent":
-          "data-[highlighted]:bg-secondary-muted data-[highlighted]:text-secondary-accent-foreground data-[state=open]:bg-secondary-muted data-[state=open]:text-secondary-accent-foreground",
-        "secondary-muted":
-          "data-[highlighted]:bg-secondary-muted data-[highlighted]:text-secondary-muted-foreground data-[state=open]:bg-secondary-muted data-[state=open]:text-secondary-muted-foreground",
-        "secondary-surface":
-          "data-[highlighted]:bg-secondary-faded data-[highlighted]:text-secondary-accent-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-secondary-faded data-[state=open]:bg-secondary-faded data-[state=open]:text-secondary-accent-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-border-secondary-faded",
-        "secondary-faded":
-          "data-[highlighted]:bg-secondary-faded data-[highlighted]:text-secondary-muted-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-secondary-faded data-[state=open]:bg-secondary-faded data-[state=open]:text-secondary-muted-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-border-secondary-faded",
+        // -- secondary --
+        secondary: [
+          "data-[highlighted]:bg-secondary data-[highlighted]:text-secondary-foreground",
+          "data-[state=open]:bg-secondary data-[state=open]:text-secondary-foreground",
+        ],
+        "secondary-accent": [
+          "data-[highlighted]:bg-secondary-muted data-[highlighted]:text-secondary-accent-foreground",
+          "data-[state=open]:bg-secondary-muted data-[state=open]:text-secondary-accent-foreground",
+        ],
+        "secondary-muted": [
+          "data-[highlighted]:bg-secondary-muted data-[highlighted]:text-secondary-muted-foreground",
+          "data-[state=open]:bg-secondary-muted data-[state=open]:text-secondary-muted-foreground",
+        ],
+        "secondary-surface": [
+          "data-[highlighted]:bg-secondary-faded data-[highlighted]:text-secondary-accent-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-secondary-faded",
+          "data-[state=open]:bg-secondary-faded data-[state=open]:text-secondary-accent-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-border-secondary-faded",
+        ],
+        "secondary-faded": [
+          "data-[highlighted]:bg-secondary-faded data-[highlighted]:text-secondary-muted-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-secondary-faded",
+          "data-[state=open]:bg-secondary-faded data-[state=open]:text-secondary-muted-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-border-secondary-faded",
+        ],
       },
     },
     defaultVariants: {
@@ -93,21 +120,19 @@ function MenubarTrigger({
   return (
     <MenubarPrimitive.Trigger
       data-slot="menubar-trigger"
-      className={cn(
-        menubarTriggerVariants({ variant }),
-        "group/menubar-trigger",
-        className,
-      )}
+      className={cn(menubarTriggerVariants({ variant }), className)}
       {...props}
     />
   );
 }
 
 const MenubarVariantsContext = React.createContext<
-  VariantProps<typeof menuItemVariants>
+  VariantProps<typeof menuItemVariants> &
+    VariantProps<typeof menuItemIndicatorVariants>
 >({
   variant: "accent",
   wide: false,
+  indicatorVariant: "default",
 });
 
 function MenubarContent({
@@ -116,11 +141,15 @@ function MenubarContent({
   sideOffset = 8,
   variant = "accent",
   wide = false,
+  indicatorVariant = "default",
   ...props
 }: React.ComponentProps<typeof MenubarPrimitive.Content> &
-  VariantProps<typeof menuItemVariants>) {
+  VariantProps<typeof menuItemVariants> &
+  VariantProps<typeof menuItemIndicatorVariants>) {
   return (
-    <MenubarVariantsContext.Provider value={{ variant, wide }}>
+    <MenubarVariantsContext.Provider
+      value={{ variant, wide, indicatorVariant }}
+    >
       <MenubarPortal>
         <MenubarPrimitive.Content
           data-slot="menubar-content"
@@ -129,7 +158,7 @@ function MenubarContent({
           data-variant={variant}
           data-wide={wide}
           className={cn(
-            "group/menubar-content z-50 max-h-(--radix-menubar-content-available-height) min-w-[12rem] origin-(--radix-menubar-content-transform-origin) overflow-x-hidden overflow-y-auto rounded-md border bg-popover p-1 text-popover-foreground shadow-md",
+            "z-50 max-h-(--radix-menubar-content-available-height) min-w-[12rem] origin-(--radix-menubar-content-transform-origin) overflow-x-hidden overflow-y-auto rounded-md border bg-popover p-1 text-popover-foreground shadow-md",
             // FIXME: exit animations be breaking shit
             "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=open]:animate-in data-[state=open]:ease-out data-[state=open]:fade-in-0",
             className,
@@ -157,17 +186,14 @@ function MenubarItem({
     React.useContext(MenubarVariantsContext);
   const variant = variantOverride ?? variantFromContext;
   const wide = wideOverride ?? wideFromContext;
+
   return (
     <MenubarPrimitive.Item
       data-slot="menubar-item"
       data-inset={inset}
       data-variant={variant}
       data-wide={wide}
-      className={cn(
-        menuItemVariants({ variant, wide }),
-        "group/menubar-item",
-        className,
-      )}
+      className={cn(menuItemVariants({ variant, wide }), className)}
       {...props}
     />
   );
@@ -186,26 +212,28 @@ function MenubarCheckboxItem({
   checked,
   variant: variantOverride,
   wide: wideOverride,
-  indicatorVariant = "default",
+  indicatorVariant: indicatorVariantOverride,
   indicatorClassName,
   children,
   ...props
 }: MenubarCheckboxItemProps) {
-  const { variant: variantFromContext, wide: wideFromContext } =
-    React.useContext(MenubarVariantsContext);
+  const {
+    variant: variantFromContext,
+    wide: wideFromContext,
+    indicatorVariant: indicatorVariantFromContext,
+  } = React.useContext(MenubarVariantsContext);
   const variant = variantOverride ?? variantFromContext;
   const wide = wideOverride ?? wideFromContext;
+  const indicatorVariant =
+    indicatorVariantOverride ?? indicatorVariantFromContext;
+
   return (
     <MenubarPrimitive.CheckboxItem
       data-slot="menubar-checkbox-item"
       data-variant={variant}
       data-wide={wide}
       data-inset={true}
-      className={cn(
-        menuItemVariants({ variant, wide }),
-        "group/menubar-checkbox-item",
-        className,
-      )}
+      className={cn(menuItemVariants({ variant, wide }), className)}
       checked={checked}
       {...props}
     >
@@ -246,26 +274,28 @@ function MenubarRadioItem({
   className,
   variant: variantOverride,
   wide: wideOverride,
-  indicatorVariant = "default",
+  indicatorVariant: indicatorVariantOverride,
   indicatorClassName,
   children,
   ...props
 }: MenubarRadioItemProps) {
-  const { variant: variantFromContext, wide: wideFromContext } =
-    React.useContext(MenubarVariantsContext);
+  const {
+    variant: variantFromContext,
+    wide: wideFromContext,
+    indicatorVariant: indicatorVariantFromContext,
+  } = React.useContext(MenubarVariantsContext);
   const variant = variantOverride ?? variantFromContext;
   const wide = wideOverride ?? wideFromContext;
+  const indicatorVariant =
+    indicatorVariantOverride ?? indicatorVariantFromContext;
+
   return (
     <MenubarPrimitive.RadioItem
       data-slot="menubar-radio-item"
       data-variant={variant}
       data-wide={wide}
       data-inset={true}
-      className={cn(
-        menuItemVariants({ variant, wide }),
-        "group/dropdown-menu-radio-item",
-        className,
-      )}
+      className={cn(menuItemVariants({ variant, wide }), className)}
       {...props}
     >
       <MenubarPrimitive.ItemIndicator
@@ -297,7 +327,7 @@ function MenubarLabel({
       data-slot="menubar-label"
       data-inset={inset}
       className={cn(
-        "px-2 py-1.5 text-sm font-medium text-foreground data-[inset]:pl-8",
+        "px-2 py-1.5 text-sm font-medium text-foreground data-[inset=true]:pl-8",
         className,
       )}
       {...props}
@@ -362,11 +392,7 @@ function MenubarSubTrigger({
       data-inset={inset}
       data-variant={variant}
       data-wide={wide}
-      className={cn(
-        menuItemVariants({ variant, wide }),
-        "group/menubar-sub-trigger",
-        className,
-      )}
+      className={cn(menuItemVariants({ variant, wide }), className)}
       {...props}
     >
       {children}

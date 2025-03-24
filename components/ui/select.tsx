@@ -25,22 +25,51 @@ function SelectValue({
   return <SelectPrimitive.Value data-slot="select-value" {...props} />;
 }
 
+const selectTriggerVariants = cva(
+  [
+    "flex w-fit items-center justify-between gap-2 rounded-md text-sm whitespace-nowrap",
+    "disabled:cursor-not-allowed disabled:opacity-50",
+    "*:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2",
+    "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+  ],
+  {
+    variants: {
+      variant: {
+        default: [
+          "border border-border bg-background text-accent-foreground hover:not-disabled:not-aria-invalid:not-focus-visible:border-border-hover data-[placeholder]:text-muted-foreground *:data-[slot=select-trigger-icon]:text-accent-foreground dark:bg-faded [&_svg:not([class*='text-'])]:text-muted-foreground",
+          "focus-visible:border-primary focus-visible:outline-1 focus-visible:outline-primary",
+          "aria-invalid:border-destructive aria-invalid:text-destructive-accent-foreground aria-invalid:focus-visible:outline-1 aria-invalid:focus-visible:outline-destructive aria-invalid:data-[placeholder]:text-destructive-muted-foreground aria-invalid:*:data-[slot=select-trigger-icon]:text-destructive-accent-foreground dark:aria-invalid:bg-destructive-faded aria-invalid:[&_svg:not([class*='text-'])]:text-destructive-muted-foreground",
+        ],
+        muted: "",
+        primary: "",
+        secondary: "",
+      },
+      size: {
+        default: "h-9 px-3 py-2",
+        sm: "h-8 px-2.5 py-1.5",
+        lg: "h-10 px-4 py-2.5 text-base *:data-[slot=select-trigger-icon]:size-5",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+      size: "default",
+    },
+  },
+);
+
 function SelectTrigger({
   className,
+  variant = "default",
   size = "default",
   children,
   ...props
-}: React.ComponentProps<typeof SelectPrimitive.Trigger> & {
-  size?: "sm" | "default";
-}) {
+}: React.ComponentProps<typeof SelectPrimitive.Trigger> &
+  VariantProps<typeof selectTriggerVariants>) {
   return (
     <SelectPrimitive.Trigger
       data-slot="select-trigger"
       data-size={size}
-      className={cn(
-        "focus-visible:border-ring focus-visible:ring-ring/50 flex w-fit items-center justify-between gap-2 rounded-md border border-input bg-transparent px-3 py-2 text-sm whitespace-nowrap shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50 data-[placeholder]:text-muted-foreground data-[size=default]:h-9 data-[size=sm]:h-8 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2 dark:bg-input/30 dark:hover:bg-input/50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground",
-        className,
-      )}
+      className={cn(selectTriggerVariants({ variant, size }), className)}
       {...props}
     >
       {children}
@@ -63,7 +92,6 @@ const SelectVariantsContext = React.createContext<
 function SelectContent({
   className,
   position = "popper",
-  sideOffset = 4,
   variant = "accent",
   wide = false,
   indicatorVariant = "default",
@@ -78,9 +106,10 @@ function SelectContent({
         <SelectPrimitive.Content
           data-slot="select-content"
           position={position}
-          sideOffset={sideOffset}
+          sideOffset={position === "popper" ? 4 : 0}
           className={cn(
             "relative z-50 max-h-(--radix-select-content-available-height) min-w-[max(var(--radix-select-trigger-width),8rem)] origin-(--radix-select-content-transform-origin) overflow-x-hidden overflow-y-auto rounded-md border border-border bg-popover text-popover-foreground shadow-md",
+            // FIXME: exit animations ain't working
             "data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
             position === "popper" && [
               // "data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1",
@@ -120,45 +149,67 @@ function SelectLabel({
 }
 
 const selectItemVariants = cva(
-  "relative flex w-full flex-1 cursor-default items-center gap-2 rounded-sm py-1.5 pr-8 pl-2 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground data-[highlighted]:[&_svg:not([class*='text-'])]:text-current *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2",
+  [
+    "relative flex w-full flex-1 cursor-default items-center gap-2 rounded-sm py-1.5 pr-8 pl-2 text-sm outline-hidden select-none",
+    "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+    "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground data-[highlighted]:[&_svg:not([class*='text-'])]:text-current",
+    "*:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2",
+  ],
   {
     variants: {
       variant: {
+        // -- base --
         accent:
           "data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground",
+
         surface:
           "data-[highlighted]:bg-faded data-[highlighted]:text-accent-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-faded",
 
+        // -- primary --
         primary:
           "data-[highlighted]:bg-primary data-[highlighted]:text-primary-foreground data-[highlighted]:[&_[data-slot*='-indicator']]:text-current",
+
         "primary-accent":
           "data-[highlighted]:bg-primary-muted data-[highlighted]:text-primary-accent-foreground",
+
         "primary-muted":
           "data-[highlighted]:bg-primary-muted data-[highlighted]:text-primary-muted-foreground",
+
         "primary-surface":
           "data-[highlighted]:bg-primary-faded data-[highlighted]:text-primary-accent-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-primary-faded",
+
         "primary-faded":
           "data-[highlighted]:bg-primary-faded data-[highlighted]:text-primary-muted-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-primary-faded",
 
+        // -- secondary --
         secondary:
           "data-[highlighted]:bg-secondary data-[highlighted]:text-secondary-foreground data-[highlighted]:[&_[data-slot*='-indicator']]:text-current",
+
         "secondary-accent":
           "data-[highlighted]:bg-secondary-muted data-[highlighted]:text-secondary-accent-foreground",
+
         "secondary-muted":
           "data-[highlighted]:bg-secondary-muted data-[highlighted]:text-secondary-muted-foreground",
+
         "secondary-surface":
           "data-[highlighted]:bg-secondary-faded data-[highlighted]:text-secondary-accent-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-secondary-faded",
+
         "secondary-faded":
           "data-[highlighted]:bg-secondary-faded data-[highlighted]:text-secondary-muted-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-secondary-faded",
 
+        // -- destructive --
         destructive:
           "data-[highlighted]:bg-destructive data-[highlighted]:text-destructive-foreground data-[highlighted]:[&_[data-slot*='-indicator']]:text-current",
+
         "destructive-accent":
           "data-[highlighted]:bg-destructive-muted data-[highlighted]:text-destructive-accent-foreground",
+
         "destructive-muted":
           "data-[highlighted]:bg-destructive-muted data-[highlighted]:text-destructive-muted-foreground",
+
         "destructive-surface":
           "data-[highlighted]:bg-destructive-faded data-[highlighted]:text-destructive-accent-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-destructive-faded",
+
         "destructive-faded":
           "data-[highlighted]:bg-destructive-faded data-[highlighted]:text-destructive-muted-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-destructive-faded",
       },
@@ -202,7 +253,10 @@ const selectItemVariants = cva(
 );
 
 const selectItemIndicatorVariants = cva(
-  "pointer-events-none absolute right-2 flex size-3.5 items-center justify-center data-[wide=true]:right-3 data-[wide=true]:[data-item-variant*='faded']:right-[calc(--spacing(3)+1px)] data-[wide=true]:[data-item-variant*='surface']:right-[calc(--spacing(3)+1px)]",
+  [
+    "pointer-events-none absolute right-2 flex size-3.5 items-center justify-center",
+    "data-[wide=true]:right-3 data-[wide=true]:[data-item-variant*='faded']:right-[calc(--spacing(3)+1px)] data-[wide=true]:[data-item-variant*='surface']:right-[calc(--spacing(3)+1px)]",
+  ],
   {
     variants: {
       indicatorVariant: {
@@ -319,6 +373,9 @@ function SelectScrollDownButton({
 }
 
 export {
+  selectTriggerVariants,
+  selectItemVariants,
+  selectItemIndicatorVariants,
   Select,
   SelectContent,
   SelectGroup,

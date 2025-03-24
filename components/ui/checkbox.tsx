@@ -8,16 +8,28 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const checkBoxVariants = cva(
-  "peer size-4 shrink-0 rounded-[4px] border border-input shadow-xs hover:border-border-hover focus-visible:outline-2 focus-visible:outline-offset-2 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:border-input dark:data-[state=unchecked]:bg-faded aria-invalid:border-destructive aria-invalid:outline-destructive disabled:bg-muted dark:aria-invalid:bg-destructive-faded",
+  [
+    "peer size-4 shrink-0 rounded-[4px] border border-border shadow-xs dark:not-data-[state=checked]:bg-faded",
+    "hover:border-border-hover",
+    "focus-visible:outline-2 focus-visible:outline-offset-2",
+    "disabled:cursor-not-allowed disabled:bg-muted disabled:opacity-50 disabled:hover:border-border",
+    "aria-invalid:border-destructive aria-invalid:outline-destructive dark:aria-invalid:bg-destructive-faded",
+  ],
   {
     variants: {
       variant: {
-        primary:
-          "outline-primary data-[state=checked]:border-primary data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground",
-        secondary:
-          "outline-secondary data-[state=checked]:border-secondary data-[state=checked]:bg-secondary data-[state=checked]:text-secondary-foreground",
-        destructive:
-          "outline-destructive data-[state=checked]:border-destructive data-[state=checked]:bg-destructive data-[state=checked]:text-destructive-foreground",
+        primary: [
+          "outline-primary",
+          "data-[state=checked]:border-primary data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground",
+        ],
+        secondary: [
+          "outline-secondary",
+          "data-[state=checked]:border-secondary data-[state=checked]:bg-secondary data-[state=checked]:text-secondary-foreground",
+        ],
+        destructive: [
+          "outline-destructive",
+          "data-[state=checked]:border-destructive data-[state=checked]:bg-destructive data-[state=checked]:text-destructive-foreground",
+        ],
       },
     },
     defaultVariants: {
@@ -40,7 +52,7 @@ function Checkbox({
     >
       <CheckboxPrimitive.Indicator
         data-slot="checkbox-indicator"
-        className="flex items-center justify-center text-current transition-none"
+        className="flex items-center justify-center text-current"
       >
         <CheckIcon className="size-3.5" />
       </CheckboxPrimitive.Indicator>

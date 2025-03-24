@@ -118,7 +118,7 @@ const COMPONENTS = [
   },
 ];
 
-function ComponentDemoWrapper({
+function ComponentSection({
   title,
   id,
   children,
@@ -126,7 +126,7 @@ function ComponentDemoWrapper({
   return (
     <div className="flex scroll-mt-24 flex-col gap-3" id={id}>
       <h2 className="text-lg font-medium">{title}</h2>
-      <div className="flex max-h-[56rem] min-h-48 flex-1 overflow-y-auto rounded-md border p-8">
+      <div className="flex flex-1 rounded-md border">
         {children}
       </div>
     </div>
@@ -154,13 +154,13 @@ export default function Components() {
           <h1 className="text-2xl font-bold">Components</h1>
           <div className="flex flex-col gap-12">
             {COMPONENTS.map((component) => (
-              <ComponentDemoWrapper
+              <ComponentSection
                 key={component.id}
                 title={component.title}
                 id={component.id}
               >
                 {component.component}
-              </ComponentDemoWrapper>
+              </ComponentSection>
             ))}
           </div>
         </div>

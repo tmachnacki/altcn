@@ -12,20 +12,29 @@ const accordionItemVariants = cva(
   {
     variants: {
       variant: {
+        // -- base --
         default:
-          "border-border data-[split]:border not-data-[split]:**:data-[slot=accordion-content]:px-0 not-data-[split]:**:data-[slot=accordion-trigger]:px-0",
+          "border-border not-data-[split=true]:**:data-[slot=accordion-content]:px-0 not-data-[split=true]:**:data-[slot=accordion-trigger]:px-0 data-[split=true]:border",
+
         muted:
-          "border-border bg-muted data-[split]:border-0 **:data-[slot=accordion-trigger]:text-accent-foreground",
+          "border-border bg-muted **:data-[slot=accordion-trigger]:text-accent-foreground data-[split=true]:border-0",
+
         faded:
-          "border-border-faded bg-faded data-[split]:border **:data-[slot=accordion-trigger]:text-accent-foreground",
+          "border-border-faded bg-faded **:data-[slot=accordion-trigger]:text-accent-foreground data-[split=true]:border",
+
+        // -- primary --
         "primary-muted":
-          "border-border-primary-faded bg-primary-muted data-[split]:border-0",
+          "border-border-primary-faded bg-primary-muted data-[split=true]:border-0",
+
         "primary-faded":
-          "border-border-primary-faded bg-primary-faded data-[split]:border",
+          "border-border-primary-faded bg-primary-faded data-[split=true]:border",
+
+        // -- secondary --
         "secondary-muted":
-          "border-border-secondary-faded bg-secondary-muted data-[split]:border-0",
+          "border-border-secondary-faded bg-secondary-muted data-[split=true]:border-0",
+
         "secondary-faded":
-          "border-border-secondary-faded bg-secondary-faded data-[split]:border",
+          "border-border-secondary-faded bg-secondary-faded data-[split=true]:border",
       },
       split: {
         false: null,
@@ -63,19 +72,14 @@ const AccordionVariantsContext = React.createContext<
 });
 
 function Accordion({
-  variant,
-  split,
-  className,
+  variant = "default",
+  split = false,
   ...props
 }: React.ComponentProps<typeof AccordionPrimitive.Root> &
   VariantProps<typeof accordionItemVariants>) {
   return (
     <AccordionVariantsContext.Provider value={{ variant, split }}>
-      <AccordionPrimitive.Root
-        data-slot="accordion"
-        className={cn("group/accordion", className)}
-        {...props}
-      />
+      <AccordionPrimitive.Root data-slot="accordion" {...props} />
     </AccordionVariantsContext.Provider>
   );
 }

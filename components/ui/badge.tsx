@@ -6,122 +6,192 @@ import { XIcon, CircleIcon, LucideProps } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const badgeVariants = cva(
-  "relative isolate inline-flex h-6 w-fit shrink-0 items-center justify-center gap-1.5 rounded-md border px-2 py-1 text-xs leading-none font-medium whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-2 has-[[data-slot='badge-close']]:pr-1 [&_svg:not([class*='size-'])]:size-3 [&>svg]:pointer-events-none",
+  [
+    "relative isolate inline-flex h-6 w-fit shrink-0 items-center justify-center gap-1.5 rounded-md border px-2 py-1 text-xs leading-none font-medium whitespace-nowrap has-[[data-slot='badge-close']]:pr-1",
+    "focus-visible:outline-2 focus-visible:outline-offset-2",
+    "[&_svg:not([class*='size-'])]:size-3 [&>svg]:pointer-events-none",
+  ],
   {
     variants: {
       variant: {
         // base
         outline: "",
 
-        accent:
-          "border-transparent bg-accent text-accent-foreground [a&]:hover:bg-base-200 dark:[a&]:hover:bg-base-800",
+        accent: [
+          "border-transparent bg-accent text-accent-foreground",
+          "[a&]:hover:bg-base-200 dark:[a&]:hover:bg-base-800",
+        ],
 
-        muted:
-          "border-transparent bg-muted text-muted-foreground [a&]:hover:bg-accent",
+        muted: [
+          "border-transparent bg-muted text-muted-foreground",
+          "[a&]:hover:bg-accent",
+        ],
 
-        surface:
-          "border-border-faded bg-faded text-accent-foreground hover:bg-muted",
+        surface: [
+          "border-border-faded bg-faded text-accent-foreground",
+          "[a&]:hover:bg-muted",
+        ],
 
-        faded:
-          "border-border-faded bg-faded text-muted-foreground [a&]:hover:bg-muted",
+        faded: [
+          "border-border-faded bg-faded text-muted-foreground",
+          "[a&]:hover:bg-muted",
+        ],
 
         dotted:
           "**:data-[slot=badge-dot]:not-[[class*='text-']]:text-muted-foreground",
 
         // primary
-        primary:
-          "border-transparent bg-primary text-primary-foreground focus-visible:outline-primary **:data-[slot=badge-close]:not-[[class*='hover:bg-']]:hover:bg-primary-200/20 [a&]:hover:bg-primary/90",
+        primary: [
+          "border-transparent bg-primary text-primary-foreground",
+          "**:data-[slot=badge-close]:not-[[class*='hover:bg-']]:hover:bg-primary-200/20",
+          "[a&]:hover:bg-primary/90",
+        ],
 
-        "primary-accent":
-          "border-transparent bg-primary-muted text-primary-accent-foreground focus-visible:outline-primary [a&]:hover:bg-primary-muted/80",
+        "primary-accent": [
+          "border-transparent bg-primary-muted text-primary-accent-foreground",
+          "[a&]:hover:bg-primary-muted/80",
+        ],
 
-        "primary-muted":
-          "border-transparent bg-primary-muted text-primary-muted-foreground focus-visible:outline-primary [a&]:hover:bg-primary-muted/80",
+        "primary-muted": [
+          "border-transparent bg-primary-muted text-primary-muted-foreground",
+          "[a&]:hover:bg-primary-muted/80",
+        ],
 
-        "primary-surface":
-          "border-border-primary-faded bg-primary-faded text-primary-accent-foreground focus-visible:outline-primary [a&]:hover:bg-primary-muted/80",
+        "primary-surface": [
+          "border-border-primary-faded bg-primary-faded text-primary-accent-foreground",
+          "[a&]:hover:bg-primary-muted/80",
+        ],
 
-        "primary-faded":
-          "border-border-primary-faded bg-primary-faded text-primary-muted-foreground focus-visible:outline-primary [a&]:hover:bg-primary-muted/80",
+        "primary-faded": [
+          "border-border-primary-faded bg-primary-faded text-primary-muted-foreground",
+          "[a&]:hover:bg-primary-muted/80",
+        ],
 
-        "primary-tron":
-          "border-none bg-background bg-gradient-to-t from-primary/15 to-transparent text-primary-muted-foreground inset-ring inset-ring-border hover:bg-gradient-to-b hover:from-primary/20 hover:to-primary/[7%] hover:inset-ring-primary/50 focus-visible:outline-primary **:data-[slot=tron-blur]:via-purple-400 **:data-[slot=tron-wide]:via-primary",
+        "primary-tron": [
+          "border-none bg-background bg-gradient-to-t from-primary/15 to-transparent text-primary-muted-foreground inset-ring inset-ring-border",
+          "**:data-[slot=tron-blur]:via-purple-400 **:data-[slot=tron-wide]:via-primary",
+          "[a&]:hover:bg-gradient-to-b [a&]:hover:from-primary/20 [a&]:hover:to-primary/[7%] [a&]:hover:inset-ring-primary/50 [a&]:hover:*:data-[slot=tron-blur]:data-[side=bottom]:opacity-0 [a&]:hover:*:data-[slot=tron-blur]:data-[side=top]:opacity-100 [a&]:hover:*:data-[slot=tron-wide]:data-[side=bottom]:opacity-0 [a&]:hover:*:data-[slot=tron-wide]:data-[side=top]:opacity-100",
+        ],
 
         "primary-dotted":
           "**:data-[slot=badge-dot]:not-[[class*='text-']]:text-primary",
 
         // secondary
-        secondary:
-          "border-transparent bg-secondary text-secondary-foreground focus-visible:outline-secondary **:data-[slot=badge-close]:not-[[class*='hover:bg-']]:hover:bg-secondary-700/30 dark:**:data-[slot=badge-close]:not-[[class*='hover:bg-']]:hover:bg-secondary-800/30 [a&]:hover:bg-secondary/90",
+        secondary: [
+          "border-transparent bg-secondary text-secondary-foreground",
+          "**:data-[slot=badge-close]:not-[[class*='hover:bg-']]:hover:bg-secondary-700/30 dark:**:data-[slot=badge-close]:not-[[class*='hover:bg-']]:hover:bg-secondary-800/30",
+          "[a&]:hover:bg-secondary/90",
+        ],
 
-        "secondary-accent":
-          "border-transparent bg-secondary-muted text-secondary-accent-foreground focus-visible:outline-secondary [a&]:hover:bg-secondary-muted/80",
+        "secondary-accent": [
+          "border-transparent bg-secondary-muted text-secondary-accent-foreground",
+          "[a&]:hover:bg-secondary-muted/80",
+        ],
 
-        "secondary-muted":
-          "border-transparent bg-secondary-muted text-secondary-muted-foreground focus-visible:outline-secondary [a&]:hover:bg-secondary-muted/80",
+        "secondary-muted": [
+          "border-transparent bg-secondary-muted text-secondary-muted-foreground",
+          "[a&]:hover:bg-secondary-muted/80",
+        ],
 
-        "secondary-surface":
-          "border-border-secondary-faded bg-secondary-faded text-secondary-accent-foreground focus-visible:outline-secondary [a&]:hover:bg-secondary-muted/70",
+        "secondary-surface": [
+          "border-border-secondary-faded bg-secondary-faded text-secondary-accent-foreground",
+          "[a&]:hover:bg-secondary-muted/70",
+        ],
 
-        "secondary-faded":
-          "border-border-secondary-faded bg-secondary-faded text-secondary-muted-foreground focus-visible:outline-secondary [a&]:hover:bg-secondary-muted/70",
+        "secondary-faded": [
+          "border-border-secondary-faded bg-secondary-faded text-secondary-muted-foreground",
+          "[a&]:hover:bg-secondary-muted/70",
+        ],
 
         "secondary-dotted":
           "**:data-[slot=badge-dot]:not-[[class*='text-']]:text-secondary",
 
         // destructive
-        destructive:
-          "border-transparent bg-destructive text-destructive-foreground focus-visible:outline-destructive **:data-[slot=badge-close]:not-[[class*='hover:bg-']]:hover:bg-destructive-100/30 dark:**:data-[slot=badge-close]:not-[[class*='hover:bg-']]:hover:bg-destructive-100/40 [a&]:hover:bg-destructive/90",
+        destructive: [
+          "border-transparent bg-destructive text-destructive-foreground",
+          "**:data-[slot=badge-close]:not-[[class*='hover:bg-']]:hover:bg-destructive-100/30 dark:**:data-[slot=badge-close]:not-[[class*='hover:bg-']]:hover:bg-destructive-100/40",
+          "[a&]:hover:bg-destructive/90",
+        ],
 
-        "destructive-accent":
-          "border-transparent bg-destructive-muted text-destructive-accent-foreground focus-visible:outline-destructive [a&]:hover:bg-destructive-muted/80",
+        "destructive-accent": [
+          "border-transparent bg-destructive-muted text-destructive-accent-foreground",
+          "[a&]:hover:bg-destructive-muted/80",
+        ],
 
-        "destructive-muted":
-          "border-transparent bg-destructive-muted text-destructive-muted-foreground focus-visible:outline-destructive [a&]:hover:bg-destructive-muted/80",
+        "destructive-muted": [
+          "border-transparent bg-destructive-muted text-destructive-muted-foreground",
+          "[a&]:hover:bg-destructive-muted/80",
+        ],
 
-        "destructive-surface":
-          "border-border-destructive-faded bg-destructive-faded text-destructive-accent-foreground focus-visible:outline-destructive [a&]:hover:bg-destructive-muted/70",
+        "destructive-surface": [
+          "border-border-destructive-faded bg-destructive-faded text-destructive-accent-foreground",
+          "[a&]:hover:bg-destructive-muted/70",
+        ],
 
-        "destructive-faded":
-          "border-border-destructive-faded bg-destructive-faded text-destructive-muted-foreground focus-visible:outline-destructive [a&]:hover:bg-destructive-muted/70",
+        "destructive-faded": [
+          "border-border-destructive-faded bg-destructive-faded text-destructive-muted-foreground",
+          "[a&]:hover:bg-destructive-muted/70",
+        ],
 
         "destructive-dotted":
           "**:data-[slot=badge-dot]:not-[[class*='text-']]:text-destructive",
 
         // success
-        success:
-          "border-transparent bg-success text-success-foreground focus-visible:outline-success **:data-[slot=badge-close]:not-[[class*='hover:bg-']]:hover:bg-success-300/20 [a&]:hover:bg-success/90",
+        success: [
+          "border-transparent bg-success text-success-foreground",
+          "**:data-[slot=badge-close]:not-[[class*='hover:bg-']]:hover:bg-success-300/20",
+          "[a&]:hover:bg-success/90",
+        ],
 
-        "success-accent":
-          "border-transparent bg-success-muted text-success-accent-foreground focus-visible:outline-success [a&]:hover:bg-success-muted/80",
+        "success-accent": [
+          "border-transparent bg-success-muted text-success-accent-foreground",
+          "[a&]:hover:bg-success-muted/80",
+        ],
 
-        "success-muted":
-          "border-transparent bg-success-muted text-success-muted-foreground focus-visible:outline-success [a&]:hover:bg-success-muted/80",
+        "success-muted": [
+          "border-transparent bg-success-muted text-success-muted-foreground",
+          "[a&]:hover:bg-success-muted/80",
+        ],
 
-        "success-surface":
-          "border-border-success-faded bg-success-faded text-success-accent-foreground focus-visible:outline-success [a&]:hover:bg-success-muted/70",
+        "success-surface": [
+          "border-border-success-faded bg-success-faded text-success-accent-foreground",
+          "[a&]:hover:bg-success-muted/70",
+        ],
 
-        "success-faded":
-          "border-border-success-faded bg-success-faded text-success-muted-foreground focus-visible:outline-success [a&]:hover:bg-success-muted/70",
+        "success-faded": [
+          "border-border-success-faded bg-success-faded text-success-muted-foreground",
+          "[a&]:hover:bg-success-muted/70",
+        ],
 
         "success-dotted":
           "**:data-[slot=badge-dot]:not-[[class*='text-']]:text-success",
 
         // warning
-        warning:
-          "border-transparent bg-warning text-warning-foreground focus-visible:outline-warning **:data-[slot=badge-close]:not-[[class*='hover:bg-']]:hover:bg-warning-700/30 [a&]:hover:bg-warning/90",
+        warning: [
+          "border-transparent bg-warning text-warning-foreground",
+          "**:data-[slot=badge-close]:not-[[class*='hover:bg-']]:hover:bg-warning-700/30",
+          "[a&]:hover:bg-warning/90",
+        ],
 
-        "warning-accent":
-          "border-transparent bg-warning-muted text-warning-accent-foreground focus-visible:outline-warning [a&]:hover:bg-warning-muted/80",
+        "warning-accent": [
+          "border-transparent bg-warning-muted text-warning-accent-foreground",
+          "[a&]:hover:bg-warning-muted/80",
+        ],
 
-        "warning-muted":
-          "border-transparent bg-warning-muted text-warning-muted-foreground focus-visible:outline-warning [a&]:hover:bg-warning-muted/80",
+        "warning-muted": [
+          "border-transparent bg-warning-muted text-warning-muted-foreground",
+          "[a&]:hover:bg-warning-muted/80",
+        ],
 
-        "warning-surface":
-          "border-border-warning-faded bg-warning-faded text-warning-accent-foreground focus-visible:outline-warning [a&]:hover:bg-warning-muted/70",
+        "warning-surface": [
+          "border-border-warning-faded bg-warning-faded text-warning-accent-foreground",
+          "[a&]:hover:bg-warning-muted/70",
+        ],
 
-        "warning-faded":
-          "border-border-warning-faded bg-warning-faded text-warning-muted-foreground focus-visible:outline-warning [a&]:hover:bg-warning-muted/70",
+        "warning-faded": [
+          "border-border-warning-faded bg-warning-faded text-warning-muted-foreground",
+          "[a&]:hover:bg-warning-muted/70",
+        ],
 
         "warning-dotted":
           "**:data-[slot=badge-dot]:not-[[class*='text-']]:text-warning",
@@ -138,8 +208,10 @@ const badgeVariants = cva(
           "success-dotted",
           "warning-dotted",
         ],
-        className:
-          "border-border bg-transparent text-foreground [a&]:hover:border-border-hover [a&]:hover:bg-muted [a&]:hover:text-accent-foreground",
+        className: [
+          "border-border bg-transparent text-foreground",
+          "[a&]:hover:border-border-hover [a&]:hover:bg-muted [a&]:hover:text-accent-foreground",
+        ],
       },
       {
         variant: [
@@ -159,13 +231,35 @@ const badgeVariants = cva(
       },
       {
         variant: [
+          "primary",
           "primary-accent",
           "primary-muted",
           "primary-surface",
           "primary-faded",
+          "primary-tron",
+        ],
+        className: "focus-visible:outline-primary",
+      },
+      {
+        variant: [
+          "primary-accent",
+          "primary-muted",
+          "primary-surface",
+          "primary-faded",
+          "primary-tron",
         ],
         className:
           "**:data-[slot=badge-close]:not-[[class*='hover:bg-']]:hover:bg-primary-600/20 dark:**:data-[slot=badge-close]:not-[[class*='hover:bg-']]:hover:bg-primary-400/20",
+      },
+      {
+        variant: [
+          "secondary",
+          "secondary-accent",
+          "secondary-muted",
+          "secondary-surface",
+          "secondary-faded",
+        ],
+        className: "focus-visible:outline-secondary",
       },
       {
         variant: [
@@ -179,6 +273,16 @@ const badgeVariants = cva(
       },
       {
         variant: [
+          "destructive",
+          "destructive-accent",
+          "destructive-muted",
+          "destructive-surface",
+          "destructive-faded",
+        ],
+        className: "focus-visible:outline-destructive",
+      },
+      {
+        variant: [
           "destructive-accent",
           "destructive-muted",
           "destructive-surface",
@@ -189,6 +293,16 @@ const badgeVariants = cva(
       },
       {
         variant: [
+          "success",
+          "success-accent",
+          "success-muted",
+          "success-surface",
+          "success-faded",
+        ],
+        className: "focus-visible:outline-success",
+      },
+      {
+        variant: [
           "success-accent",
           "success-muted",
           "success-surface",
@@ -196,6 +310,16 @@ const badgeVariants = cva(
         ],
         className:
           "**:data-[slot=badge-close]:not-[[class*='hover:bg-']]:hover:bg-success-600/20 dark:**:data-[slot=badge-close]:not-[[class*='hover:bg-']]:hover:bg-success-400/20",
+      },
+      {
+        variant: [
+          "warning",
+          "warning-accent",
+          "warning-muted",
+          "warning-surface",
+          "warning-faded",
+        ],
+        className: "focus-visible:outline-warning",
       },
       {
         variant: [
@@ -229,7 +353,7 @@ function Badge({
     <Comp
       data-slot="badge"
       data-variant={variant}
-      className={cn(badgeVariants({ variant }), "group/badge", className)}
+      className={cn(badgeVariants({ variant }), className)}
       {...props}
     >
       {variant?.includes("tron") && (
@@ -237,22 +361,26 @@ function Badge({
           <span
             aria-hidden="true"
             data-slot="tron-wide"
-            className="absolute left-[5%] -top-px block h-[2px] w-[90%] bg-gradient-to-r from-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover/badge:opacity-100 motion-reduce:transition-none"
+            data-side="top"
+            className="absolute -top-px left-[5%] block h-[2px] w-[90%] bg-gradient-to-r from-transparent to-transparent opacity-0 transition-opacity duration-300 motion-reduce:transition-none"
           />
           <span
             aria-hidden="true"
             data-slot="tron-blur"
-            className="absolute -top-px left-[20%] block h-[2px] w-[60%] bg-gradient-to-r from-transparent to-transparent opacity-0 blur-sm transition-opacity duration-300 group-hover/badge:opacity-100 motion-reduce:transition-none"
+            data-side="top"
+            className="absolute -top-px left-[20%] block h-[2px] w-[60%] bg-gradient-to-r from-transparent to-transparent opacity-0 blur-sm transition-opacity duration-300 motion-reduce:transition-none"
           />
           <span
             aria-hidden="true"
             data-slot="tron-wide"
-            className="absolute left-[5%] -bottom-px block h-[2px] w-[90%] bg-gradient-to-r from-transparent to-transparent opacity-100 transition-opacity duration-300 group-hover/badge:opacity-0 motion-reduce:transition-none"
+            data-side="bottom"
+            className="absolute -bottom-px left-[5%] block h-[2px] w-[90%] bg-gradient-to-r from-transparent to-transparent opacity-100 transition-opacity duration-300 motion-reduce:transition-none"
           />
           <span
             aria-hidden="true"
             data-slot="tron-blur"
-            className="absolute -bottom-px left-[20%] block h-[2px] w-[60%] bg-gradient-to-r from-transparent to-transparent opacity-100 blur-sm transition-opacity duration-300 group-hover/badge:opacity-0 motion-reduce:transition-none"
+            data-side="bottom"
+            className="absolute -bottom-px left-[20%] block h-[2px] w-[60%] bg-gradient-to-r from-transparent to-transparent opacity-100 blur-sm transition-opacity duration-300 motion-reduce:transition-none"
           />
         </>
       )}

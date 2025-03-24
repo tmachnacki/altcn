@@ -1,3 +1,9 @@
+"use client";
+
+import * as React from "react";
+import { ComponentContainer } from "@/components/demos/component-container";
+import { Button } from "@/components/ui/button";
+
 import {
   AlertDialog,
   AlertDialogAction,
@@ -9,11 +15,10 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { Button } from "@/components/ui/button";
 
 export function AlertDialogDemo() {
   return (
-    <div className="flex h-full w-full flex-1 flex-wrap gap-4">
+    <ComponentContainer>
       <AlertDialog>
         <AlertDialogTrigger asChild>
           <Button variant="outline">Show Dialog</Button>
@@ -34,6 +39,6 @@ export function AlertDialogDemo() {
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
-    </div>
+    </ComponentContainer>
   );
 }

@@ -1,4 +1,18 @@
+"use client";
+
+import * as React from "react";
 import { CheckCircle2Icon } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { ComponentContainer } from "@/components/demos/component-container";
+import { ComponentPlayground } from "@/components/demos/component-playground";
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 import {
   Alert,
@@ -8,10 +22,11 @@ import {
   AlertTitle,
   AlertFooter,
 } from "@/components/ui/alert";
-import { Button } from "@/components/ui/button";
 
 export function AlertDemo() {
-  const variants = [
+  const [alertVariant, setAlertVariant] = React.useState("outline");
+
+  const alertVariants = [
     "outline",
     "muted",
     "faded",
@@ -33,29 +48,29 @@ export function AlertDemo() {
   ] as const;
 
   return (
-    <div className="flex h-full w-full flex-1 flex-col gap-8">
-      {variants.map((variant) => (
-        <div className="grid max-w-xl items-start gap-4" key={variant}>
-          <Alert variant={variant}>
+    <>
+      <ComponentContainer>
+        <div className="flex w-full max-w-xl flex-col gap-4">
+          <Alert variant={alertVariant as (typeof alertVariants)[number]}>
             <AlertIcon intent="success" />
             <AlertContent>
               <AlertTitle>Success! Your changes have been saved</AlertTitle>
               <AlertDescription>
-                This is a {variant} alert with alert icon, title and
+                This is a {alertVariant} alert with alert icon, title and
                 description.
               </AlertDescription>
             </AlertContent>
           </Alert>
-          <Alert insetColor variant={variant}>
+          <Alert insetColor variant={alertVariant as (typeof alertVariants)[number]}>
             <CheckCircle2Icon />
             <AlertContent>
               <AlertTitle>Success! This one has insetColor</AlertTitle>
               <AlertDescription>
-                This is a {variant} alert with insetColor and default icon.
+                This is a {alertVariant} alert with insetColor and default icon.
               </AlertDescription>
             </AlertContent>
           </Alert>
-          <Alert centered variant={variant}>
+          <Alert centered variant={alertVariant as (typeof alertVariants)[number]}>
             <AlertIcon intent="info" />
             <AlertContent>
               <AlertTitle>FYI This one is centered</AlertTitle>
@@ -64,7 +79,7 @@ export function AlertDemo() {
               Undo
             </Button>
           </Alert>
-          <Alert variant={variant}>
+          <Alert variant={alertVariant as (typeof alertVariants)[number]}>
             <AlertIcon intent="error" />
             <AlertContent>
               <AlertTitle>Something went wrong!</AlertTitle>
@@ -84,7 +99,28 @@ export function AlertDemo() {
             </AlertContent>
           </Alert>
         </div>
-      ))}
-    </div>
+      </ComponentContainer>
+      <ComponentPlayground>
+        <div className="flex flex-col gap-2">
+          <Label htmlFor="alert-variant">Alert Variant</Label>
+          <Select
+            value={alertVariant}
+            onValueChange={setAlertVariant}
+            defaultValue="outline"
+          >
+            <SelectTrigger id="alert-variant" className="w-full">
+              <SelectValue>{alertVariant}</SelectValue>
+            </SelectTrigger>
+            <SelectContent>
+              {alertVariants.map((alertVariant) => (
+                <SelectItem key={alertVariant} value={alertVariant}>
+                  {alertVariant}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+      </ComponentPlayground>
+    </>
   );
 }

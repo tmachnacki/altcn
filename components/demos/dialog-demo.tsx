@@ -49,7 +49,7 @@ function DialogWithForm() {
           </div>
           <DialogFooter>
             <DialogClose asChild>
-              <Button variant="outline">Cancel</Button>
+              <Button variant="primary-faded">Cancel</Button>
             </DialogClose>
             <Button type="submit">Save changes</Button>
           </DialogFooter>
@@ -120,7 +120,7 @@ function DialogWithStickyFooter() {
         </div>
         <DialogFooter>
           <DialogClose asChild>
-            <Button variant="outline">Close</Button>
+            <Button variant="accent">Close</Button>
           </DialogClose>
         </DialogFooter>
       </DialogContent>

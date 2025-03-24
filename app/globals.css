@@ -26,7 +26,7 @@
     var(--color-base-100)
   );
   --accent-foreground: var(--color-base-950);
-  --subtle-foreground: var(--color-base-600);
+  --subtle-foreground: var(--color-base-700);
 
   --muted: var(--color-base-100);
   --muted-foreground: var(--color-base-500);
@@ -161,11 +161,7 @@
     var(--color-base-900)
   );
   --accent-foreground: var(--color-base-50);
-  --subtle-foreground: color-mix(
-    in oklab,
-    var(--color-base-300) 75%,
-    var(--color-base-400)
-  );
+  --subtle-foreground: var(--color-base-300);
   --muted: var(--color-base-900);
   --muted-foreground: var(--color-base-400);
 

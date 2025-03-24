@@ -2,12 +2,11 @@
 
 import * as React from "react";
 import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
-import { CircleIcon } from "lucide-react";
 
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
-const radioGroupItemVariants = cva(
+const radioButtonGroupItemVariants = cva(
   [
     "peer size-4 shrink-0 rounded-full border border-input shadow-xs hover:border-border-hover dark:not-data-[state=checked]:bg-faded",
     "focus-visible:outline-2 focus-visible:outline-offset-2",
@@ -31,35 +30,35 @@ const radioGroupItemVariants = cva(
   },
 );
 
-const RadioGroupVariantsContext = React.createContext<
-  VariantProps<typeof radioGroupItemVariants>
+const RadioButtonGroupVariantsContext = React.createContext<
+  VariantProps<typeof radioButtonGroupItemVariants>
 >({ variant: "primary" });
 
-function RadioGroup({
+function RadioButtonGroup({
   className,
   variant = "primary",
   ...props
 }: React.ComponentProps<typeof RadioGroupPrimitive.Root> &
-  VariantProps<typeof radioGroupItemVariants>) {
+  VariantProps<typeof radioButtonGroupItemVariants>) {
   return (
-    <RadioGroupVariantsContext.Provider value={{ variant }}>
+    <RadioButtonGroupVariantsContext.Provider value={{ variant }}>
       <RadioGroupPrimitive.Root
         data-slot="radio-group"
         className={cn("grid gap-3", className)}
         {...props}
       />
-    </RadioGroupVariantsContext.Provider>
+    </RadioButtonGroupVariantsContext.Provider>
   );
 }
 
-function RadioGroupItem({
+function RadioButtonGroupItem({
   variant: variantOverride,
   className,
   ...props
 }: React.ComponentProps<typeof RadioGroupPrimitive.Item> &
-  VariantProps<typeof radioGroupItemVariants>) {
+  VariantProps<typeof radioButtonGroupItemVariants>) {
   const { variant: variantFromContext } = React.useContext(
-    RadioGroupVariantsContext,
+    RadioButtonGroupVariantsContext,
   );
   const variant = variantOverride ?? variantFromContext;
 
@@ -67,17 +66,10 @@ function RadioGroupItem({
     <RadioGroupPrimitive.Item
       data-slot="radio-group-item"
       data-variant={variant}
-      className={cn(radioGroupItemVariants({ variant }), className)}
+      className={cn(radioButtonGroupItemVariants({ variant }), className)}
       {...props}
-    >
-      <RadioGroupPrimitive.Indicator
-        data-slot="radio-group-indicator"
-        className="relative flex items-center justify-center"
-      >
-        <CircleIcon className="absolute top-1/2 left-1/2 size-2 -translate-x-1/2 -translate-y-1/2 fill-current stroke-none" />
-      </RadioGroupPrimitive.Indicator>
-    </RadioGroupPrimitive.Item>
+    />
   );
 }
 
-export { RadioGroup, RadioGroupItem };
+export { RadioButtonGroup, RadioButtonGroupItem };

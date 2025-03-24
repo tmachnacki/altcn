@@ -15,7 +15,7 @@ function Card({
       data-slot="card"
       data-translucent={translucent}
       className={cn(
-        "group/card rounded-lg border border-border bg-card text-card-foreground shadow-md",
+        "rounded-lg border border-border bg-card text-card-foreground shadow-md",
         "data-[translucent]:bg-card/50 data-[translucent]:backdrop-blur-3xl",
         className,
       )}

@@ -122,7 +122,7 @@ export function CardDemo() {
 
       <Card
         asChild
-        className="w-fit hover:border-border-primary-faded hover:bg-primary-muted"
+        className="group/card w-full max-w-sm hover:border-border-primary-faded hover:bg-primary-muted transition-colors"
       >
         <a href="#card">
           <CardContent className="flex items-center gap-3 px-4 py-3">
@@ -142,6 +142,13 @@ export function CardDemo() {
                 Frontend Engineer
               </p>
             </div>
+
+            <Button
+              variant="primary"
+              className="ml-auto opacity-0 transition-opacity group-hover/card:opacity-100 focus-visible:opacity-100"
+            >
+              Message
+            </Button>
           </CardContent>
         </a>
       </Card>
