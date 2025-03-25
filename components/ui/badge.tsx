@@ -220,6 +220,7 @@ const badgeVariants = cva(
           "muted",
           "surface",
           "faded",
+          "dotted",
           "primary-dotted",
           "secondary-dotted",
           "destructive-dotted",
@@ -362,25 +363,25 @@ function Badge({
             aria-hidden="true"
             data-slot="tron-wide"
             data-side="top"
-            className="absolute -top-px left-[5%] block h-[2px] w-[90%] bg-gradient-to-r from-transparent to-transparent opacity-0 transition-opacity duration-300 motion-reduce:transition-none"
+            className="absolute top-0 left-[5%] block h-px w-[90%] bg-gradient-to-r from-transparent to-transparent opacity-0 transition-opacity duration-300 motion-reduce:transition-none"
           />
           <span
             aria-hidden="true"
             data-slot="tron-blur"
             data-side="top"
-            className="absolute -top-px left-[20%] block h-[2px] w-[60%] bg-gradient-to-r from-transparent to-transparent opacity-0 blur-sm transition-opacity duration-300 motion-reduce:transition-none"
+            className="absolute top-0 left-[20%] block h-px w-[60%] bg-gradient-to-r from-transparent to-transparent opacity-0 blur-sm transition-opacity duration-300 motion-reduce:transition-none"
           />
           <span
             aria-hidden="true"
             data-slot="tron-wide"
             data-side="bottom"
-            className="absolute -bottom-px left-[5%] block h-[2px] w-[90%] bg-gradient-to-r from-transparent to-transparent opacity-100 transition-opacity duration-300 motion-reduce:transition-none"
+            className="absolute bottom-0 left-[5%] block h-px w-[90%] bg-gradient-to-r from-transparent to-transparent opacity-100 transition-opacity duration-300 motion-reduce:transition-none"
           />
           <span
             aria-hidden="true"
             data-slot="tron-blur"
             data-side="bottom"
-            className="absolute -bottom-px left-[20%] block h-[2px] w-[60%] bg-gradient-to-r from-transparent to-transparent opacity-100 blur-sm transition-opacity duration-300 motion-reduce:transition-none"
+            className="absolute bottom-0 left-[20%] block h-px w-[60%] bg-gradient-to-r from-transparent to-transparent opacity-100 blur-sm transition-opacity duration-300 motion-reduce:transition-none"
           />
         </>
       )}

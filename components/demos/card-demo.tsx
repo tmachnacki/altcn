@@ -135,17 +135,17 @@ export function CardDemo() {
             </Avatar>
 
             <div className="flex flex-col">
-              <p className="text-base font-medium group-hover/card:text-primary-accent-foreground">
+              <p className="text-base font-medium group-hover/card:text-primary-accent-foreground transition-colors">
                 Tim Machnacki
               </p>
-              <p className="text-sm text-muted-foreground group-hover/card:text-primary-muted-foreground">
+              <p className="text-sm text-muted-foreground group-hover/card:text-primary-muted-foreground transition-colors">
                 Frontend Engineer
               </p>
             </div>
 
             <Button
               variant="primary"
-              className="ml-auto opacity-0 transition-opacity group-hover/card:opacity-100 focus-visible:opacity-100"
+              className="ml-auto transition-colors"
             >
               Message
             </Button>

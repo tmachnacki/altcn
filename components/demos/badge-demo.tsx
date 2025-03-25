@@ -90,6 +90,18 @@ export function BadgeDemo() {
           <BadgeDot />
           Dotted
         </Badge>
+        <Badge asChild variant="dotted">
+          <a href="#">
+            <BadgeDot />
+            Link
+            <ArrowRightIcon />
+          </a>
+        </Badge>
+        <Badge variant="dotted">
+          <BadgeDot />
+          Close
+          <BadgeClose />
+        </Badge>
       </div>
 
       <Separator />
@@ -194,6 +206,18 @@ export function BadgeDemo() {
         <Badge variant="primary-dotted">
           <BadgeDot />
           Dotted
+        </Badge>
+        <Badge asChild variant="primary-dotted">
+          <a href="#">
+            <BadgeDot />
+            Link
+            <ArrowRightIcon />
+          </a>
+        </Badge>
+        <Badge variant="primary-dotted">
+          <BadgeDot />
+          Close
+          <BadgeClose />
         </Badge>
       </div>
 

@@ -52,31 +52,62 @@ export function AlertDemo() {
       <ComponentContainer>
         <div className="flex w-full max-w-xl flex-col gap-4">
           <Alert variant={alertVariant as (typeof alertVariants)[number]}>
-            <AlertIcon intent="success" />
+            <CheckCircle2Icon />
             <AlertContent>
-              <AlertTitle>Success! Your changes have been saved</AlertTitle>
+              <AlertTitle>Success! This is a standard alert</AlertTitle>
               <AlertDescription>
-                This is a {alertVariant} alert with alert icon, title and
+                This is a {alertVariant} alert with default icon, title, and
                 description.
               </AlertDescription>
             </AlertContent>
           </Alert>
-          <Alert insetColor variant={alertVariant as (typeof alertVariants)[number]}>
+          <Alert
+            insetColor
+            variant={alertVariant as (typeof alertVariants)[number]}
+          >
             <CheckCircle2Icon />
             <AlertContent>
               <AlertTitle>Success! This one has insetColor</AlertTitle>
               <AlertDescription>
-                This is a {alertVariant} alert with insetColor and default icon.
+                This is a {alertVariant} alert with insetColor.
               </AlertDescription>
             </AlertContent>
           </Alert>
-          <Alert centered variant={alertVariant as (typeof alertVariants)[number]}>
+          <Alert variant={alertVariant as (typeof alertVariants)[number]}>
+            <AlertIcon intent="success" />
+            <AlertContent>
+              <AlertTitle>Success! Your changes have been saved</AlertTitle>
+              <AlertDescription>
+                This is a {alertVariant} alert with success intent icon, title
+                and description.
+              </AlertDescription>
+            </AlertContent>
+          </Alert>
+
+          <Alert
+            centered
+            variant={alertVariant as (typeof alertVariants)[number]}
+          >
             <AlertIcon intent="info" />
             <AlertContent>
-              <AlertTitle>FYI This one is centered</AlertTitle>
+              <AlertTitle>FYI This one is centered with info intent icon</AlertTitle>
             </AlertContent>
             <Button variant={"outline"} size="sm" className="h-6">
-              Undo
+              Dismiss
+            </Button>
+          </Alert>
+          <Alert
+            centered
+            variant={alertVariant as (typeof alertVariants)[number]}
+          >
+            <AlertIcon intent="warning" />
+            <AlertContent>
+              <AlertDescription>
+                Warning! This one has a description and warning intent icon.
+              </AlertDescription>
+            </AlertContent>
+            <Button variant={"outline"} size="sm" className="h-6">
+              Dismiss
             </Button>
           </Alert>
           <Alert variant={alertVariant as (typeof alertVariants)[number]}>
@@ -93,7 +124,7 @@ export function AlertDemo() {
               </AlertDescription>
               <AlertFooter>
                 <Button variant={"outline"} size="sm">
-                  Undo
+                  Details
                 </Button>
               </AlertFooter>
             </AlertContent>
