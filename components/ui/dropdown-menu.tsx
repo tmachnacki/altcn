@@ -249,6 +249,7 @@ const menuItemIndicatorVariants = cva(
         default: "text-accent-foreground",
         primary: "text-primary",
         secondary: "text-secondary",
+        destructive: "text-destructive",
       },
       defaultVariants: {
         indicatorVariant: "default",

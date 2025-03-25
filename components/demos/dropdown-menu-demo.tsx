@@ -39,6 +39,7 @@ export function DropdownMenuDemo() {
   const [defaultChecked, setDefaultChecked] = React.useState(true);
   const [primaryChecked, setPrimaryChecked] = React.useState(true);
   const [secondaryChecked, setSecondaryChecked] = React.useState(true);
+  const [destructiveChecked, setDestructiveChecked] = React.useState(true);
 
   const [radioIndicator, setRadioIndicator] = React.useState("default");
 
@@ -241,6 +242,13 @@ export function DropdownMenuDemo() {
                 >
                   Secondary Indicator
                 </DropdownMenuCheckboxItem>
+                <DropdownMenuCheckboxItem
+                  checked={destructiveChecked}
+                  onCheckedChange={setDestructiveChecked}
+                  indicatorVariant="destructive"
+                >
+                  Destructive Indicator
+                </DropdownMenuCheckboxItem>
                 <DropdownMenuCheckboxItem checked disabled>
                   Disabled
                 </DropdownMenuCheckboxItem>
@@ -266,6 +274,12 @@ export function DropdownMenuDemo() {
                     indicatorVariant="secondary"
                   >
                     Secondary
+                  </DropdownMenuRadioItem>
+                  <DropdownMenuRadioItem
+                    value="destructive"
+                    indicatorVariant="destructive"
+                  >
+                    Destructive
                   </DropdownMenuRadioItem>
                   <DropdownMenuRadioItem value="disabled" disabled>
                     Disabled

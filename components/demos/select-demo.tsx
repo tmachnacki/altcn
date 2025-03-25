@@ -29,7 +29,13 @@ export function SelectDemo() {
   const [wide, setWide] = React.useState(false);
   const [indicatorVariant, setIndicatorVariant] = React.useState("default");
 
-  const triggerVariants = ["default"] as const;
+  const triggerVariants = [
+    "default",
+    "muted",
+    "underline",
+    "primary",
+    "secondary",
+  ] as const;
 
   const triggerSizes = ["default"] as const;
 
@@ -53,7 +59,12 @@ export function SelectDemo() {
     "destructive-faded",
   ] as const;
 
-  const indicatorVariants = ["default", "primary", "secondary"] as const;
+  const indicatorVariants = [
+    "default",
+    "primary",
+    "secondary",
+    "destructive",
+  ] as const;
 
   return (
     <>
@@ -165,6 +176,12 @@ export function SelectDemo() {
                 </SelectItem>
                 <SelectItem value="secondary" indicatorVariant={"secondary"}>
                   Secondary
+                </SelectItem>
+                <SelectItem
+                  value="destructive"
+                  indicatorVariant={"destructive"}
+                >
+                  Destructive
                 </SelectItem>
               </SelectGroup>
             </SelectContent>

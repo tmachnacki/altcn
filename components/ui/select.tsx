@@ -27,7 +27,7 @@ function SelectValue({
 
 const selectTriggerVariants = cva(
   [
-    "flex w-fit items-center justify-between gap-2 rounded-md text-sm whitespace-nowrap",
+    "flex w-fit items-center justify-between gap-2 rounded-md text-sm whitespace-nowrap outline-none",
     "disabled:cursor-not-allowed disabled:opacity-50",
     "*:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2",
     "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
@@ -35,19 +35,41 @@ const selectTriggerVariants = cva(
   {
     variants: {
       variant: {
+        // -- base --
         default: [
           "border border-border bg-background text-accent-foreground hover:not-disabled:not-aria-invalid:not-focus-visible:border-border-hover data-[placeholder]:text-muted-foreground *:data-[slot=select-trigger-icon]:text-accent-foreground dark:bg-faded [&_svg:not([class*='text-'])]:text-muted-foreground",
-          "focus-visible:border-primary focus-visible:outline-1 focus-visible:outline-primary",
-          "aria-invalid:border-destructive aria-invalid:text-destructive-accent-foreground aria-invalid:focus-visible:outline-1 aria-invalid:focus-visible:outline-destructive aria-invalid:data-[placeholder]:text-destructive-muted-foreground aria-invalid:*:data-[slot=select-trigger-icon]:text-destructive-accent-foreground dark:aria-invalid:bg-destructive-faded aria-invalid:[&_svg:not([class*='text-'])]:text-destructive-muted-foreground",
+          "focus-visible:border-primary focus-visible:ring-1 focus-visible:ring-primary",
+          "aria-invalid:border-destructive aria-invalid:text-destructive-accent-foreground aria-invalid:focus-visible:ring-1 aria-invalid:focus-visible:ring-destructive aria-invalid:data-[placeholder]:text-destructive-muted-foreground aria-invalid:*:data-[slot=select-trigger-icon]:text-destructive-accent-foreground dark:aria-invalid:bg-destructive-faded aria-invalid:[&_svg:not([class*='text-'])]:text-destructive-muted-foreground",
         ],
-        muted: "",
-        primary: "",
-        secondary: "",
+        muted: [
+          "bg-muted text-accent-foreground hover:not-disabled:not-aria-invalid:not-focus-visible:bg-accent data-[placeholder]:text-muted-foreground *:data-[slot=select-trigger-icon]:text-accent-foreground [&_svg:not([class*='text-'])]:text-muted-foreground",
+          "focus-visible:ring-2 focus-visible:ring-primary",
+          "aria-invalid:bg-destructive-muted aria-invalid:text-destructive-accent-foreground aria-invalid:hover:not-disabled:not-focus-visible:bg-destructive-muted/70 aria-invalid:focus-visible:ring-destructive aria-invalid:data-[placeholder]:text-destructive-muted-foreground aria-invalid:*:data-[slot=select-trigger-icon]:text-destructive-accent-foreground aria-invalid:[&_svg:not([class*='text-'])]:text-destructive-muted-foreground",
+        ],
+        underline: [
+          "rounded-none bg-transparent shadow-[inset_0_-1px_0_0_var(--color-border)] hover:not-disabled:not-aria-invalid:not-focus-visible:shadow-[inset_0_-1px_0_0_var(--color-border-hover)] data-[placeholder]:text-muted-foreground *:data-[slot=select-trigger-icon]:text-accent-foreground [&_svg:not([class*='text-'])]:text-muted-foreground",
+          "focus-visible:shadow-[inset_0_-2px_0_0_var(--color-primary)]",
+          "aria-invalid:text-destructive-accent-foreground aria-invalid:shadow-[inset_0_-1px_0_0_var(--color-destructive)] aria-invalid:focus-visible:shadow-[inset_0_-2px_0_0_var(--color-destructive)] aria-invalid:data-[placeholder]:text-destructive-muted-foreground aria-invalid:*:data-[slot=select-trigger-icon]:text-destructive-accent-foreground aria-invalid:[&_svg:not([class*='text-'])]:text-destructive-muted-foreground",
+        ],
+
+        // -- primary --
+        primary: [
+          "bg-primary-faded text-primary-accent-foreground hover:not-disabled:not-aria-invalid:not-focus-visible:bg-primary-muted/80 data-[placeholder]:text-primary-muted-foreground *:data-[slot=select-trigger-icon]:text-primary-accent-foreground [&_svg:not([class*='text-'])]:text-primary-muted-foreground",
+          "focus-visible:ring-2 focus-visible:ring-primary",
+          "aria-invalid:bg-destructive-faded aria-invalid:text-destructive-accent-foreground aria-invalid:hover:not-disabled:not-focus-visible:bg-destructive-muted/70 aria-invalid:focus-visible:ring-destructive aria-invalid:data-[placeholder]:text-destructive-muted-foreground aria-invalid:*:data-[slot=select-trigger-icon]:text-destructive-accent-foreground aria-invalid:[&_svg:not([class*='text-'])]:text-destructive-muted-foreground",
+        ],
+
+        // -- secondary --
+        secondary: [
+          "bg-secondary-faded text-secondary-accent-foreground hover:not-disabled:not-aria-invalid:not-focus-visible:bg-secondary-muted/70 data-[placeholder]:text-secondary-muted-foreground *:data-[slot=select-trigger-icon]:text-secondary-accent-foreground [&_svg:not([class*='text-'])]:text-secondary-muted-foreground",
+          "focus-visible:ring-2 focus-visible:ring-primary",
+          "aria-invalid:bg-destructive-faded aria-invalid:text-destructive-accent-foreground aria-invalid:hover:not-disabled:not-focus-visible:bg-destructive-muted/70 aria-invalid:focus-visible:ring-destructive aria-invalid:data-[placeholder]:text-destructive-muted-foreground aria-invalid:*:data-[slot=select-trigger-icon]:text-destructive-accent-foreground aria-invalid:[&_svg:not([class*='text-'])]:text-destructive-muted-foreground",
+        ],
       },
       size: {
-        default: "h-9 px-3 py-2",
-        sm: "h-8 px-2.5 py-1.5",
-        lg: "h-10 px-4 py-2.5 text-base *:data-[slot=select-trigger-icon]:size-5",
+        default: "h-9 px-3 py-2 data-[variant=underline]:px-0.5",
+        sm: "h-8 px-2.5 py-1.5 data-[variant=underline]:px-0.5",
+        lg: "h-10 px-4 py-2.5 text-base *:data-[slot=select-trigger-icon]:size-5 data-[variant=underline]:px-0.5",
       },
     },
     defaultVariants: {
@@ -68,6 +90,7 @@ function SelectTrigger({
   return (
     <SelectPrimitive.Trigger
       data-slot="select-trigger"
+      data-variant={variant}
       data-size={size}
       className={cn(selectTriggerVariants({ variant, size }), className)}
       {...props}
@@ -263,6 +286,7 @@ const selectItemIndicatorVariants = cva(
         default: "text-accent-foreground",
         primary: "text-primary",
         secondary: "text-secondary",
+        destructive: "text-destructive",
       },
       defaultVariants: {
         indicatorVariant: "default",

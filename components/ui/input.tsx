@@ -31,7 +31,7 @@ const inputVariants = cva(
           "aria-invalid:bg-destructive-muted aria-invalid:hover:not-focus-visible:bg-destructive-muted/70 aria-invalid:focus-visible:ring-destructive",
         ],
         underline: [
-          "rounded-none bg-transparent px-0 shadow-[inset_0_-1px_0_0_var(--color-border)] hover:shadow-[inset_0_-1px_0_0_var(--color-border-hover)]",
+          "rounded-none bg-transparent px-0.5 shadow-[inset_0_-1px_0_0_var(--color-border)] hover:shadow-[inset_0_-1px_0_0_var(--color-border-hover)]",
           "file:text-accent-foreground",
           "placeholder:text-muted-foreground",
           "focus-visible:shadow-[inset_0_-2px_0_0_var(--color-primary)]",

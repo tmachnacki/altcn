@@ -19,7 +19,7 @@ import { RadioGroupDemo } from "@/components/demos/radio-group-demo";
 import { SelectDemo } from "@/components/demos/select-demo";
 import { SkeletonDemo } from "@/components/demos/skeleton-demo";
 import { SliderDemo } from "@/components/demos/slider-demo";
-
+import { SwitchDemo } from "@/components/demos/switch-demo";
 const COMPONENTS = [
   {
     title: "Accordion",
@@ -116,6 +116,11 @@ const COMPONENTS = [
     id: "slider",
     component: <SliderDemo />,
   },
+  {
+    title: "Switch",
+    id: "switch",
+    component: <SwitchDemo />,
+  },
 ];
 
 function ComponentSection({
@@ -126,9 +131,7 @@ function ComponentSection({
   return (
     <div className="flex scroll-mt-24 flex-col gap-3" id={id}>
       <h2 className="text-lg font-medium">{title}</h2>
-      <div className="flex flex-1 rounded-md border">
-        {children}
-      </div>
+      <div className="flex flex-1 rounded-md border">{children}</div>
     </div>
   );
 }
