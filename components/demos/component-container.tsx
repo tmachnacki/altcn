@@ -9,7 +9,7 @@ export function ComponentContainer({
   return (
     <div
       className={cn(
-        "flex h-full w-full flex-1 flex-col items-center justify-center p-8 min-h-40",
+        "flex h-full w-full flex-1 flex-col items-center justify-center px-8 py-16 min-h-48",
         className,
       )}
       {...props}
