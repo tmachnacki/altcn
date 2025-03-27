@@ -2,33 +2,29 @@
 
 import * as React from "react";
 import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
-import { CheckIcon } from "lucide-react";
+import { CheckIcon, MinusIcon } from "lucide-react";
 
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const checkBoxVariants = cva(
   [
-    "peer size-4 shrink-0 rounded-[4px] border border-border shadow-xs dark:not-data-[state=checked]:bg-faded",
-    "hover:border-border-hover",
+    "peer size-4 shrink-0 rounded-[4px] border border-border shadow-xs dark:data-[state=unchecked]:bg-faded",
+    "hover:not-aria-invalid:not-disabled:data-[state=unchecked]:border-border-hover",
     "focus-visible:outline-2 focus-visible:outline-offset-2",
-    "disabled:cursor-not-allowed disabled:bg-muted disabled:opacity-50 disabled:hover:border-border",
-    "aria-invalid:border-destructive aria-invalid:outline-destructive dark:aria-invalid:bg-destructive-faded",
+    "disabled:cursor-not-allowed disabled:bg-muted disabled:opacity-50 disabled:border-border disabled:not-data-[state=unchecked]:text-muted-foreground",
+    "aria-invalid:border-destructive aria-invalid:outline-destructive aria-invalid:not-data-[state=unchecked]:bg-destructive aria-invalid:not-data-[state=unchecked]:text-destructive-foreground aria-invalid:disabled:bg-destructive-muted dark:aria-invalid:data-[state=unchecked]:bg-destructive-faded",
   ],
   {
     variants: {
       variant: {
         primary: [
           "outline-primary",
-          "data-[state=checked]:border-primary data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground",
+          "not-data-[state=unchecked]:border-primary not-data-[state=unchecked]:bg-primary not-data-[state=unchecked]:text-primary-foreground",
         ],
         secondary: [
           "outline-secondary",
-          "data-[state=checked]:border-secondary data-[state=checked]:bg-secondary data-[state=checked]:text-secondary-foreground",
-        ],
-        destructive: [
-          "outline-destructive",
-          "data-[state=checked]:border-destructive data-[state=checked]:bg-destructive data-[state=checked]:text-destructive-foreground",
+          "not-data-[state=unchecked]:border-secondary not-data-[state=unchecked]:bg-secondary not-data-[state=unchecked]:text-secondary-foreground",
         ],
       },
     },
@@ -47,14 +43,15 @@ function Checkbox({
   return (
     <CheckboxPrimitive.Root
       data-slot="checkbox"
-      className={cn(checkBoxVariants({ variant }), className)}
+      className={cn(checkBoxVariants({ variant }), "group/checkbox", className)}
       {...props}
     >
       <CheckboxPrimitive.Indicator
         data-slot="checkbox-indicator"
         className="flex items-center justify-center text-current"
       >
-        <CheckIcon className="size-3.5" />
+        <CheckIcon className="block size-3.5 group-data-[state=indeterminate]/checkbox:hidden" />
+        <MinusIcon className="hidden size-3 group-data-[state=indeterminate]/checkbox:block" />
       </CheckboxPrimitive.Indicator>
     </CheckboxPrimitive.Root>
   );

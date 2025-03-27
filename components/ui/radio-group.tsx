@@ -9,10 +9,11 @@ import { cn } from "@/lib/utils";
 
 const radioGroupItemVariants = cva(
   [
-    "peer size-4 shrink-0 rounded-full border border-input shadow-xs hover:border-border-hover dark:not-data-[state=checked]:bg-faded",
+    "peer size-4 shrink-0 rounded-full border border-border shadow-xs dark:not-data-[state=checked]:bg-faded",
+    "hover:not-aria-invalid:not-disabled:data-[state=unchecked]:border-border-hover",
     "focus-visible:outline-2 focus-visible:outline-offset-2",
-    "disabled:cursor-not-allowed disabled:bg-muted disabled:opacity-50 disabled:hover:border-input",
-    "aria-invalid:border-destructive aria-invalid:outline-destructive",
+    "disabled:cursor-not-allowed disabled:bg-muted disabled:opacity-50 disabled:hover:border-border disabled:data-[state=checked]:text-muted-foreground",
+    "aria-invalid:border-destructive aria-invalid:outline-destructive aria-invalid:disabled:bg-destructive-muted aria-invalid:data-[state=checked]:bg-destructive aria-invalid:data-[state=checked]:text-destructive-foreground dark:aria-invalid:data-[state=unchecked]:bg-destructive-faded",
   ],
   {
     variants: {
@@ -21,8 +22,6 @@ const radioGroupItemVariants = cva(
           "outline-primary data-[state=checked]:border-primary data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground",
         secondary:
           "outline-secondary data-[state=checked]:border-secondary data-[state=checked]:bg-secondary data-[state=checked]:text-secondary-foreground",
-        destructive:
-          "outline-destructive data-[state=checked]:border-destructive data-[state=checked]:bg-destructive data-[state=checked]:text-destructive-foreground",
       },
     },
     defaultVariants: {

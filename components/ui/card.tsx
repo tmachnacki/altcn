@@ -15,8 +15,10 @@ function Card({
       data-slot="card"
       data-translucent={translucent}
       className={cn(
-        "rounded-lg border border-border bg-card text-card-foreground shadow-md",
-        "data-[translucent]:bg-card/50 data-[translucent]:backdrop-blur-3xl",
+        "rounded-lg text-card-foreground border border-border",
+        translucent
+          ? "bg-card/50 backdrop-blur-3xl"
+          : "bg-card shadow-md",
         className,
       )}
       {...props}

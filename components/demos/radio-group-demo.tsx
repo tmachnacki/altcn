@@ -64,28 +64,6 @@ export function RadioGroupDemo() {
           <Label htmlFor="s5">Invalid</Label>
         </div>
       </RadioGroup>
-      <RadioGroup defaultValue="comfortable" variant="destructive">
-        <div className="flex items-center gap-3">
-          <RadioGroupItem value="default" id="d1" />
-          <Label htmlFor="d1">Default</Label>
-        </div>
-        <div className="flex items-center gap-3">
-          <RadioGroupItem value="comfortable" id="d2" />
-          <Label htmlFor="d2">Comfortable</Label>
-        </div>
-        <div className="flex items-center gap-3">
-          <RadioGroupItem value="compact" id="d3" />
-          <Label htmlFor="d3">Compact</Label>
-        </div>{" "}
-        <div className="flex items-center gap-3">
-          <RadioGroupItem value="disabled" id="d4" disabled />
-          <Label htmlFor="d4">Disabled</Label>
-        </div>
-        <div className="flex items-center gap-3">
-          <RadioGroupItem value="invalid" id="d5" aria-invalid />
-          <Label htmlFor="d5">Invalid</Label>
-        </div>
-      </RadioGroup>
       <RadioGroup defaultValue="starter" className="max-w-sm">
         {plans.map((plan) => (
           <Label
@@ -134,12 +112,12 @@ export function RadioGroupDemo() {
         {plans.map((plan) => (
           <Label
             className="group flex items-start gap-3 rounded-lg border p-4 hover:bg-faded has-[[data-state=checked]]:border-destructive/50 has-[[data-state=checked]]:bg-destructive-faded"
-            key={`${plan.id}-destructive`}
+            key={`${plan.id}-invalid`}
           >
             <RadioGroupItem
               value={plan.id}
-              id={`${plan.name}-destructive`}
-              variant="destructive"
+              id={`${plan.name}-invalid`}
+              aria-invalid
             />
             <div className="grid gap-1 font-normal">
               <div className="font-medium group-has-[[data-state=checked]]:text-destructive-accent-foreground">

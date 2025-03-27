@@ -4,10 +4,11 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
 
-// TODO: edit hover colors - probably want to avoid using opacity values where possible
 const buttonVariants = cva(
   [
-    "relative isolate inline-flex items-center justify-center gap-2 rounded-md text-sm font-semibold whitespace-nowrap select-none disabled:pointer-events-none disabled:opacity-50",
+    "relative isolate inline-flex items-center justify-center gap-2 rounded-md text-sm font-semibold whitespace-nowrap select-none",
+    "active:opacity-80",
+    "disabled:pointer-events-none disabled:opacity-50",
     "focus-visible:outline-2 focus-visible:outline-offset-2",
     "[&_svg]:pointer-events-none [&_svg]:shrink-0",
   ],
@@ -132,8 +133,8 @@ const buttonVariants = cva(
         ],
 
         "secondary-gradient": [
-          "bg-gradient-to-br from-secondary-500 to-secondary-300 text-secondary-foreground dark:from-secondary-600 dark:to-secondary-400",
-          "hover:from-secondary-500/90 hover:to-secondary-300/90 dark:hover:from-secondary-600/90 dark:hover:to-secondary-400/90",
+          "bg-gradient-to-br from-secondary-500 to-secondary-300 text-secondary-foreground",
+          "hover:from-secondary-500/90 hover:to-secondary-300/90",
         ],
 
         "secondary-ghost": [

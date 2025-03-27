@@ -19,7 +19,9 @@ import { RadioGroupDemo } from "@/components/demos/radio-group-demo";
 import { SelectDemo } from "@/components/demos/select-demo";
 import { SkeletonDemo } from "@/components/demos/skeleton-demo";
 import { SliderDemo } from "@/components/demos/slider-demo";
+import { SonnerDemo } from "@/components/demos/sonner-demo";
 import { SwitchDemo } from "@/components/demos/switch-demo";
+
 const COMPONENTS = [
   {
     title: "Accordion",
@@ -115,6 +117,11 @@ const COMPONENTS = [
     title: "Slider",
     id: "slider",
     component: <SliderDemo />,
+  },
+  {
+    title: "Sonner",
+    id: "sonner",
+    component: <SonnerDemo />,
   },
   {
     title: "Switch",
