@@ -304,9 +304,37 @@ export function BadgeDemo() {
           <BadgeClose />
         </Badge>
 
+        <Badge variant="secondary-tron">Tron</Badge>
+        <Badge variant="secondary-tron">
+          <CheckIcon />
+          Icon
+        </Badge>
+        <Badge asChild variant="secondary-tron">
+          <a href="#">
+            Link
+            <ArrowRightIcon />
+          </a>
+        </Badge>
+        <Badge variant="secondary-tron">
+          Close
+          <BadgeClose />
+        </Badge>
+
         <Badge variant="secondary-dotted">
           <BadgeDot />
           Dotted
+        </Badge>
+        <Badge asChild variant="secondary-dotted">
+          <a href="#">
+            <BadgeDot />
+            Link
+            <ArrowRightIcon />
+          </a>
+        </Badge>
+        <Badge variant="secondary-dotted">
+          <BadgeDot />
+          Close
+          <BadgeClose />
         </Badge>
       </div>
 
@@ -392,9 +420,38 @@ export function BadgeDemo() {
           Close
           <BadgeClose />
         </Badge>
+
+        <Badge variant="destructive-tron">Tron</Badge>
+        <Badge variant="destructive-tron">
+          <CheckIcon />
+          Icon
+        </Badge>
+        <Badge asChild variant="destructive-tron">
+          <a href="#">
+            Link
+            <ArrowRightIcon />
+          </a>
+        </Badge>
+        <Badge variant="destructive-tron">
+          Close
+          <BadgeClose />
+        </Badge>
+
         <Badge variant="destructive-dotted">
           <BadgeDot />
           Dotted
+        </Badge>
+        <Badge asChild variant="destructive-dotted">
+          <a href="#">
+            <BadgeDot />
+            Link
+            <ArrowRightIcon />
+          </a>
+        </Badge>
+        <Badge variant="destructive-dotted">
+          <BadgeDot />
+          Close
+          <BadgeClose />
         </Badge>
       </div>
 
@@ -480,9 +537,38 @@ export function BadgeDemo() {
           Close
           <BadgeClose />
         </Badge>
+
+        <Badge variant="success-tron">Tron</Badge>
+        <Badge variant="success-tron">
+          <CheckIcon />
+          Icon
+        </Badge>
+        <Badge asChild variant="success-tron">
+          <a href="#">
+            Link
+            <ArrowRightIcon />
+          </a>
+        </Badge>
+        <Badge variant="success-tron">
+          Close
+          <BadgeClose />
+        </Badge>
+
         <Badge variant="success-dotted">
           <BadgeDot />
           Dotted
+        </Badge>
+        <Badge asChild variant="success-dotted">
+          <a href="#">
+            <BadgeDot />
+            Link
+            <ArrowRightIcon />
+          </a>
+        </Badge>
+        <Badge variant="success-dotted">
+          <BadgeDot />
+          Close
+          <BadgeClose />
         </Badge>
       </div>
 
@@ -568,9 +654,38 @@ export function BadgeDemo() {
           Close
           <BadgeClose />
         </Badge>
+
+        <Badge variant="warning-tron">Tron</Badge>
+        <Badge variant="warning-tron">
+          <CheckIcon />
+          Icon
+        </Badge>
+        <Badge asChild variant="warning-tron">
+          <a href="#">
+            Link
+            <ArrowRightIcon />
+          </a>
+        </Badge>
+        <Badge variant="warning-tron">
+          Close
+          <BadgeClose />
+        </Badge>
+
         <Badge variant="warning-dotted">
           <BadgeDot />
           Dotted
+        </Badge>
+        <Badge asChild variant="warning-dotted">
+          <a href="#">
+            <BadgeDot />
+            Link
+            <ArrowRightIcon />
+          </a>
+        </Badge>
+        <Badge variant="warning-dotted">
+          <BadgeDot />
+          Close
+          <BadgeClose />
         </Badge>
       </div>
     </div>

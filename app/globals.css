@@ -50,6 +50,7 @@
     var(--color-primary-600) 15%,
     transparent
   );
+  --primary-tron-blur: var(--color-purple-400);
 
   --secondary: var(--color-secondary-400);
   --secondary-foreground: var(--color-secondary-950);
@@ -71,6 +72,7 @@
     var(--color-secondary-600) 20%,
     transparent
   );
+  --secondary-tron-blur: var(--color-cyan-400);
 
   --destructive: var(--color-destructive-500);
   --destructive-foreground: var(--color-white);
@@ -84,6 +86,7 @@
     var(--color-destructive-600) 10%,
     transparent
   );
+  --destructive-tron-blur: var(--color-rose-400);
 
   --success: var(--color-success-600);
   --success-foreground: var(--color-white);
@@ -97,6 +100,7 @@
     var(--color-success-600) 20%,
     transparent
   );
+  --success-tron-blur: var(--color-green-400);
 
   --warning: var(--color-warning-400);
   --warning-foreground: var(--color-warning-950);
@@ -119,6 +123,7 @@
     var(--color-warning-700) 20%,
     transparent
   );
+  --warning-tron-blur: var(--color-yellow-300);
 
   --skeleton: var(--color-base-300);
   --skeleton-shimmer: var(--color-base-100);
@@ -189,6 +194,7 @@
     var(--color-primary-500) 25%,
     transparent
   );
+  --primary-tron-blur: var(--color-purple-400);
 
   --secondary: var(--color-secondary-400);
   --secondary-foreground: var(--color-secondary-950);
@@ -206,6 +212,7 @@
     var(--color-secondary-500) 20%,
     transparent
   );
+  --secondary-tron-blur: var(--color-cyan-400);
 
   --destructive: var(--color-destructive-700);
   --destructive-foreground: var(--color-white);
@@ -227,6 +234,7 @@
     var(--color-destructive-400) 20%,
     transparent
   );
+  --destructive-tron-blur: var(--color-rose-400);
 
   --success: var(--color-success-600);
   --success-foreground: var(--color-white);
@@ -244,6 +252,7 @@
     var(--color-success-500) 20%,
     transparent
   );
+  --success-tron-blur: var(--color-green-400);
 
   --warning: var(--color-warning-400);
   --warning-foreground: var(--color-warning-950);
@@ -261,6 +270,7 @@
     var(--color-warning-400) 20%,
     transparent
   );
+  --warning-tron-blur: var(--color-yellow-400);
 
   --skeleton: var(--color-base-800);
   --skeleton-shimmer: color-mix(in oklab, var(--color-white) 15%, transparent);
@@ -413,48 +423,53 @@
 
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
+  --color-primary-accent-foreground: var(--primary-accent-foreground);
   --color-primary-muted: var(--primary-muted);
   --color-primary-muted-foreground: var(--primary-muted-foreground);
   --color-primary-muted-content: var(--primary-muted-content);
   --color-primary-faded: var(--primary-faded);
   --color-border-primary-faded: var(--border-primary-faded);
-  --color-primary-accent-foreground: var(--primary-accent-foreground);
+  --color-primary-tron-blur: var(--primary-tron-blur);
 
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary-accent-foreground: var(--secondary-accent-foreground);
   --color-secondary-muted: var(--secondary-muted);
   --color-secondary-muted-foreground: var(--secondary-muted-foreground);
   --color-secondary-muted-content: var(--secondary-muted-content);
   --color-secondary-faded: var(--secondary-faded);
   --color-border-secondary-faded: var(--border-secondary-faded);
-  --color-secondary-accent-foreground: var(--secondary-accent-foreground);
+  --color-secondary-tron-blur: var(--secondary-tron-blur);
 
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
+  --color-destructive-accent-foreground: var(--destructive-accent-foreground);
   --color-destructive-muted: var(--destructive-muted);
   --color-destructive-muted-foreground: var(--destructive-muted-foreground);
   --color-destructive-muted-content: var(--destructive-muted-content);
   --color-destructive-faded: var(--destructive-faded);
   --color-border-destructive-faded: var(--border-destructive-faded);
-  --color-destructive-accent-foreground: var(--destructive-accent-foreground);
+  --color-destructive-tron-blur: var(--destructive-tron-blur);
 
   --color-success: var(--success);
   --color-success-foreground: var(--success-foreground);
+  --color-success-accent-foreground: var(--success-accent-foreground);
   --color-success-muted: var(--success-muted);
   --color-success-muted-foreground: var(--success-muted-foreground);
   --color-success-muted-content: var(--success-muted-content);
   --color-success-faded: var(--success-faded);
   --color-border-success-faded: var(--border-success-faded);
-  --color-success-accent-foreground: var(--success-accent-foreground);
+  --color-success-tron-blur: var(--success-tron-blur);
 
   --color-warning: var(--warning);
   --color-warning-foreground: var(--warning-foreground);
+  --color-warning-accent-foreground: var(--warning-accent-foreground);
   --color-warning-muted: var(--warning-muted);
   --color-warning-muted-foreground: var(--warning-muted-foreground);
   --color-warning-muted-content: var(--warning-muted-content);
   --color-warning-faded: var(--warning-faded);
   --color-border-warning-faded: var(--border-warning-faded);
-  --color-warning-accent-foreground: var(--warning-accent-foreground);
+  --color-warning-tron-blur: var(--warning-tron-blur);
 
   --color-skeleton: var(--skeleton);
   --color-skeleton-shimmer: var(--skeleton-shimmer);

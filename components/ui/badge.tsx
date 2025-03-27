@@ -14,7 +14,7 @@ const badgeVariants = cva(
   {
     variants: {
       variant: {
-        // base
+        // -- base --
         outline: "",
 
         accent: [
@@ -40,7 +40,7 @@ const badgeVariants = cva(
         dotted:
           "**:data-[slot=badge-dot]:not-[[class*='text-']]:text-muted-foreground",
 
-        // primary
+        // -- primary --
         primary: [
           "border-transparent bg-primary text-primary-foreground",
           "**:data-[slot=badge-close]:not-[[class*='hover:bg-']]:hover:bg-primary-200/20",
@@ -69,14 +69,14 @@ const badgeVariants = cva(
 
         "primary-tron": [
           "border-none bg-background bg-gradient-to-t from-primary/15 to-transparent text-primary-muted-foreground inset-ring inset-ring-border",
-          "**:data-[slot=tron-blur]:via-purple-400 **:data-[slot=tron-wide]:via-primary",
+          "**:data-[slot=tron-blur]:via-primary-tron-blur **:data-[slot=tron-wide]:via-primary",
           "[a&]:hover:bg-gradient-to-b [a&]:hover:from-primary/20 [a&]:hover:to-primary/[7%] [a&]:hover:inset-ring-primary/50 [a&]:hover:*:data-[slot=tron-blur]:data-[side=bottom]:opacity-0 [a&]:hover:*:data-[slot=tron-blur]:data-[side=top]:opacity-100 [a&]:hover:*:data-[slot=tron-wide]:data-[side=bottom]:opacity-0 [a&]:hover:*:data-[slot=tron-wide]:data-[side=top]:opacity-100",
         ],
 
         "primary-dotted":
           "**:data-[slot=badge-dot]:not-[[class*='text-']]:text-primary",
 
-        // secondary
+        // -- secondary --
         secondary: [
           "border-transparent bg-secondary text-secondary-foreground",
           "**:data-[slot=badge-close]:not-[[class*='hover:bg-']]:hover:bg-secondary-700/30 dark:**:data-[slot=badge-close]:not-[[class*='hover:bg-']]:hover:bg-secondary-800/30",
@@ -101,6 +101,12 @@ const badgeVariants = cva(
         "secondary-faded": [
           "border-border-secondary-faded bg-secondary-faded text-secondary-muted-foreground",
           "[a&]:hover:bg-secondary-muted/70",
+        ],
+
+        "secondary-tron": [
+          "border-none bg-background bg-gradient-to-t from-secondary/10 to-transparent text-secondary-muted-foreground inset-ring inset-ring-border",
+          "**:data-[slot=tron-blur]:via-secondary-tron-blur **:data-[slot=tron-wide]:via-secondary",
+          "[a&]:hover:bg-gradient-to-b [a&]:hover:from-secondary/20 [a&]:hover:to-secondary/[7%] [a&]:hover:inset-ring-secondary/50 [a&]:hover:*:data-[slot=tron-blur]:data-[side=bottom]:opacity-0 [a&]:hover:*:data-[slot=tron-blur]:data-[side=top]:opacity-100 [a&]:hover:*:data-[slot=tron-wide]:data-[side=bottom]:opacity-0 [a&]:hover:*:data-[slot=tron-wide]:data-[side=top]:opacity-100",
         ],
 
         "secondary-dotted":
@@ -133,6 +139,12 @@ const badgeVariants = cva(
           "[a&]:hover:bg-destructive-muted/70",
         ],
 
+        "destructive-tron": [
+          "border-none bg-background bg-gradient-to-t from-destructive/10 to-transparent text-destructive-muted-foreground inset-ring inset-ring-border",
+          "**:data-[slot=tron-blur]:via-destructive-tron-blur **:data-[slot=tron-wide]:via-destructive",
+          "[a&]:hover:bg-gradient-to-b [a&]:hover:from-destructive/20 [a&]:hover:to-destructive/[7%] [a&]:hover:inset-ring-destructive/50 [a&]:hover:*:data-[slot=tron-blur]:data-[side=bottom]:opacity-0 [a&]:hover:*:data-[slot=tron-blur]:data-[side=top]:opacity-100 [a&]:hover:*:data-[slot=tron-wide]:data-[side=bottom]:opacity-0 [a&]:hover:*:data-[slot=tron-wide]:data-[side=top]:opacity-100",
+        ],
+
         "destructive-dotted":
           "**:data-[slot=badge-dot]:not-[[class*='text-']]:text-destructive",
 
@@ -163,6 +175,12 @@ const badgeVariants = cva(
           "[a&]:hover:bg-success-muted/70",
         ],
 
+        "success-tron": [
+          "border-none bg-background bg-gradient-to-t from-success/10 to-transparent text-success-muted-foreground inset-ring inset-ring-border",
+          "**:data-[slot=tron-blur]:via-success-tron-blur **:data-[slot=tron-wide]:via-success",
+          "[a&]:hover:bg-gradient-to-b [a&]:hover:from-success/20 [a&]:hover:to-success/[7%] [a&]:hover:inset-ring-success/50 [a&]:hover:*:data-[slot=tron-blur]:data-[side=bottom]:opacity-0 [a&]:hover:*:data-[slot=tron-blur]:data-[side=top]:opacity-100 [a&]:hover:*:data-[slot=tron-wide]:data-[side=bottom]:opacity-0 [a&]:hover:*:data-[slot=tron-wide]:data-[side=top]:opacity-100",
+        ],
+
         "success-dotted":
           "**:data-[slot=badge-dot]:not-[[class*='text-']]:text-success",
 
@@ -191,6 +209,12 @@ const badgeVariants = cva(
         "warning-faded": [
           "border-border-warning-faded bg-warning-faded text-warning-muted-foreground",
           "[a&]:hover:bg-warning-muted/70",
+        ],
+
+        "warning-tron": [
+          "border-none bg-background bg-gradient-to-t from-warning/10 to-transparent text-warning-muted-foreground inset-ring inset-ring-border",
+          "**:data-[slot=tron-blur]:via-warning-tron-blur **:data-[slot=tron-wide]:via-warning",
+          "[a&]:hover:bg-gradient-to-b [a&]:hover:from-warning/20 [a&]:hover:to-warning/[7%] [a&]:hover:inset-ring-warning/50 [a&]:hover:*:data-[slot=tron-blur]:data-[side=bottom]:opacity-0 [a&]:hover:*:data-[slot=tron-blur]:data-[side=top]:opacity-100 [a&]:hover:*:data-[slot=tron-wide]:data-[side=bottom]:opacity-0 [a&]:hover:*:data-[slot=tron-wide]:data-[side=top]:opacity-100",
         ],
 
         "warning-dotted":
@@ -259,6 +283,7 @@ const badgeVariants = cva(
           "secondary-muted",
           "secondary-surface",
           "secondary-faded",
+          "secondary-tron",
         ],
         className: "focus-visible:outline-secondary",
       },
@@ -268,6 +293,7 @@ const badgeVariants = cva(
           "secondary-muted",
           "secondary-surface",
           "secondary-faded",
+          "secondary-tron",
         ],
         className:
           "**:data-[slot=badge-close]:not-[[class*='hover:bg-']]:hover:bg-secondary-600/20 dark:**:data-[slot=badge-close]:not-[[class*='hover:bg-']]:hover:bg-secondary-400/20",
@@ -279,6 +305,7 @@ const badgeVariants = cva(
           "destructive-muted",
           "destructive-surface",
           "destructive-faded",
+          "destructive-tron",
         ],
         className: "focus-visible:outline-destructive",
       },
@@ -288,6 +315,7 @@ const badgeVariants = cva(
           "destructive-muted",
           "destructive-surface",
           "destructive-faded",
+          "destructive-tron",
         ],
         className:
           "**:data-[slot=badge-close]:not-[[class*='hover:bg-']]:hover:bg-destructive-600/20 dark:**:data-[slot=badge-close]:not-[[class*='hover:bg-']]:hover:bg-destructive-400/20",
@@ -299,6 +327,7 @@ const badgeVariants = cva(
           "success-muted",
           "success-surface",
           "success-faded",
+          "success-tron",
         ],
         className: "focus-visible:outline-success",
       },
@@ -308,6 +337,7 @@ const badgeVariants = cva(
           "success-muted",
           "success-surface",
           "success-faded",
+          "success-tron",
         ],
         className:
           "**:data-[slot=badge-close]:not-[[class*='hover:bg-']]:hover:bg-success-600/20 dark:**:data-[slot=badge-close]:not-[[class*='hover:bg-']]:hover:bg-success-400/20",
@@ -319,6 +349,7 @@ const badgeVariants = cva(
           "warning-muted",
           "warning-surface",
           "warning-faded",
+          "warning-tron",
         ],
         className: "focus-visible:outline-warning",
       },
@@ -328,6 +359,7 @@ const badgeVariants = cva(
           "warning-muted",
           "warning-surface",
           "warning-faded",
+          "warning-tron",
         ],
         className:
           "**:data-[slot=badge-close]:not-[[class*='hover:bg-']]:hover:bg-warning-600/20 dark:**:data-[slot=badge-close]:not-[[class*='hover:bg-']]:hover:bg-warning-400/20",

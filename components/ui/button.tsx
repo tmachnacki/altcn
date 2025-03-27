@@ -76,7 +76,7 @@ const buttonVariants = cva(
         "primary-tron": [
           "border border-border bg-background bg-gradient-to-t from-primary/15 to-transparent text-primary-muted-foreground",
           "hover:border-primary/50 hover:bg-gradient-to-b hover:from-primary/20 hover:to-primary/[7%]",
-          "**:data-[slot=tron-blur]:via-purple-400 **:data-[slot=tron-wide]:via-primary",
+          "**:data-[slot=tron-blur]:via-primary-tron-blur **:data-[slot=tron-wide]:via-primary",
         ],
 
         "primary-shadow": [
@@ -123,7 +123,7 @@ const buttonVariants = cva(
         "secondary-tron": [
           "border border-border bg-background bg-gradient-to-t from-secondary/10 to-transparent text-secondary-muted-foreground",
           "hover:border-secondary/50 hover:bg-gradient-to-b hover:from-secondary/20 hover:to-secondary/[7%]",
-          "**:data-[slot=tron-blur]:via-secondary **:data-[slot=tron-wide]:via-secondary",
+          "**:data-[slot=tron-blur]:via-secondary-tron-blur **:data-[slot=tron-wide]:via-secondary",
         ],
 
         "secondary-shadow": [
@@ -170,7 +170,7 @@ const buttonVariants = cva(
         "destructive-tron": [
           "border border-border bg-gradient-to-t from-destructive/10 to-transparent text-destructive-muted-foreground",
           "hover:border-destructive/50 hover:bg-gradient-to-b hover:from-destructive/20 hover:to-destructive/[7%]",
-          "**:data-[slot=tron-blur]:via-rose-400 **:data-[slot=tron-wide]:via-destructive",
+          "**:data-[slot=tron-blur]:via-destructive-tron-blur **:data-[slot=tron-wide]:via-destructive",
         ],
 
         "destructive-shadow": [
