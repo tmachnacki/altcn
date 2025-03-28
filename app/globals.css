@@ -204,8 +204,8 @@
   --primary-tron-blur: var(--color-purple-400);
   --primary-popover: color-mix(
     in oklab,
-    var(--color-primary-950) 40%,
-    var(--color-popover)
+    var(--color-primary-950) 50%,
+    var(--color-base-950)
   );
 
   --secondary: var(--color-secondary-400);
@@ -227,8 +227,8 @@
   --secondary-tron-blur: var(--color-cyan-400);
   --secondary-popover: color-mix(
     in oklab,
-    var(--color-secondary-950) 40%,
-    var(--color-popover)
+    var(--color-secondary-950) 50%,
+    var(--color-base-950)
   );
 
   --destructive: var(--color-destructive-700);
@@ -254,8 +254,8 @@
   --destructive-tron-blur: var(--color-rose-400);
   --destructive-popover: color-mix(
     in oklab,
-    var(--color-destructive-950) 40%,
-    var(--color-popover)
+    var(--color-destructive-950) 50%,
+    var(--color-base-950)
   );
 
   --success: var(--color-success-600);
@@ -277,8 +277,8 @@
   --success-tron-blur: var(--color-green-400);
   --success-popover: color-mix(
     in oklab,
-    var(--color-success-950) 40%,
-    var(--color-popover)
+    var(--color-success-950) 50%,
+    var(--color-base-950)
   );
 
   --warning: var(--color-warning-400);
@@ -300,8 +300,8 @@
   --warning-tron-blur: var(--color-yellow-300);
   --warning-popover: color-mix(
     in oklab,
-    var(--color-warning-950) 40%,
-    var(--color-popover)
+    var(--color-warning-950) 50%,
+    var(--color-base-950)
   );
 
   --skeleton: var(--color-base-800);
@@ -324,18 +324,6 @@
 }
 
 @theme inline {
-  --color-sky-50: oklch(0.977 0.013 236.62);
-  --color-sky-100: oklch(0.951 0.026 236.824);
-  --color-sky-200: oklch(0.901 0.058 230.902);
-  --color-sky-300: oklch(0.828 0.111 230.318);
-  --color-sky-400: oklch(0.746 0.16 232.661);
-  --color-sky-500: oklch(0.685 0.169 237.323);
-  --color-sky-600: oklch(0.588 0.158 241.966);
-  --color-sky-700: oklch(0.5 0.134 242.749);
-  --color-sky-800: oklch(0.443 0.11 240.79);
-  --color-sky-900: oklch(0.391 0.09 240.876);
-  --color-sky-950: oklch(0.293 0.066 243.157);
-
   --color-corporate-blue-50: oklch(0.974 0.014 245.612);
   --color-corporate-blue-100: oklch(0.942 0.029 246.205);
   --color-corporate-blue-200: oklch(0.892 0.059 242.515);
@@ -347,18 +335,6 @@
   --color-corporate-blue-800: oklch(0.434 0.155 253.214);
   --color-corporate-blue-900: oklch(0.385 0.118 253.199);
   --color-corporate-blue-950: oklch(0.288 0.079 255.546);
-
-  --color-blue-50: oklch(0.97 0.014 254.604);
-  --color-blue-100: oklch(0.932 0.032 255.585);
-  --color-blue-200: oklch(0.882 0.059 254.128);
-  --color-blue-300: oklch(0.809 0.105 251.813);
-  --color-blue-400: oklch(0.707 0.165 254.624);
-  --color-blue-500: oklch(0.623 0.214 259.815);
-  --color-blue-600: oklch(0.546 0.245 262.881);
-  --color-blue-700: oklch(0.488 0.243 264.376);
-  --color-blue-800: oklch(0.424 0.199 265.638);
-  --color-blue-900: oklch(0.379 0.146 265.522);
-  --color-blue-950: oklch(0.282 0.091 267.935);
 
   --color-mauve-50: oklch(0.984 0.002 290);
   --color-mauve-100: oklch(0.968 0.006 292);
@@ -396,17 +372,17 @@
   --color-rust-900: oklch(0.208 0.015 58);
   --color-rust-950: oklch(0.129 0.012 60);
 
-  --color-base-50: var(--color-zinc-50);
-  --color-base-100: var(--color-zinc-100);
-  --color-base-200: var(--color-zinc-200);
-  --color-base-300: var(--color-zinc-300);
-  --color-base-400: var(--color-zinc-400);
-  --color-base-500: var(--color-zinc-500);
-  --color-base-600: var(--color-zinc-600);
-  --color-base-700: var(--color-zinc-700);
-  --color-base-800: var(--color-zinc-800);
-  --color-base-900: var(--color-zinc-900);
-  --color-base-950: var(--color-zinc-950);
+  --color-base-50: var(--color-gray-50);
+  --color-base-100: var(--color-gray-100);
+  --color-base-200: var(--color-gray-200);
+  --color-base-300: var(--color-gray-300);
+  --color-base-400: var(--color-gray-400);
+  --color-base-500: var(--color-gray-500);
+  --color-base-600: var(--color-gray-600);
+  --color-base-700: var(--color-gray-700);
+  --color-base-800: var(--color-gray-800);
+  --color-base-900: var(--color-gray-900);
+  --color-base-950: var(--color-gray-950);
 
   --color-primary-50: var(--color-indigo-50);
   --color-primary-100: var(--color-indigo-100);

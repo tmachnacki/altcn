@@ -22,14 +22,19 @@ const Toaster = ({ ...props }: ToasterProps) => {
       closeButton
       duration={Infinity}
       position="bottom-right"
-      className=""
       richColors
       toastOptions={{
         classNames: {
           toast:
             "group/toast !shadow-lg focus-visible:!outline-2 focus-visible:!outline-offset-2 focus-visible:!outline-outline",
+          
+          loader: cx([
+            "!h-6 !w-5 !items-center !justify-center",
+          ]),
 
           icon: cx([
+            "!h-6 !w-5 !items-center !justify-center",
+
             "!text-muted-foreground",
 
             "group-data-[type=success]/toast:!text-success-600 dark:group-data-[type=success]/toast:!text-success-500",
@@ -39,6 +44,20 @@ const Toaster = ({ ...props }: ToasterProps) => {
             "group-data-[type=warning]/toast:!text-warning-600 dark:group-data-[type=warning]/toast:!text-warning-500",
 
             "group-data-[type=error]/toast:!text-destructive-600 dark:group-data-[type=error]/toast:!text-destructive-500",
+          ]),
+
+          closeButton: cx([
+            "!text-current/80 hover:!text-current/100",
+
+            "!border-border !bg-popover hover:!border-border-hover hover:!bg-muted",
+
+            "group-data-[type=success]/toast:!border-border-success-faded group-data-[type=success]/toast:!bg-success-popover group-data-[type=success]/toast:hover:!border-success-600/40 group-data-[type=success]/toast:hover:!bg-success-muted dark:group-data-[type=success]/toast:hover:!border-success-400/40",
+
+            "group-data-[type=info]/toast:!border-border-primary-faded group-data-[type=info]/toast:!bg-primary-popover group-data-[type=info]/toast:hover:!border-primary-600/40 group-data-[type=info]/toast:hover:!bg-primary-muted dark:group-data-[type=info]/toast:hover:!border-primary-400/40",
+
+            "group-data-[type=warning]/toast:!border-border-warning-faded group-data-[type=warning]/toast:!bg-warning-popover group-data-[type=warning]/toast:hover:!border-warning-600/40 group-data-[type=warning]/toast:hover:!bg-warning-muted dark:group-data-[type=warning]/toast:hover:!border-warning-400/40",
+
+            "group-data-[type=error]/toast:!border-border-destructive-faded group-data-[type=error]/toast:!bg-destructive-popover group-data-[type=error]/toast:hover:!border-destructive-600/40 group-data-[type=error]/toast:hover:!bg-destructive-muted dark:group-data-[type=error]/toast:hover:!border-destructive-400/40",
           ]),
 
           actionButton: cx([
@@ -81,8 +100,6 @@ const Toaster = ({ ...props }: ToasterProps) => {
             "group-data-[type=error]/toast:!text-destructive-muted-foreground",
           ]),
 
-          closeButton: "!text-current hover:!bg-popover",
-
           default: "dark:!shadow-base-300/10",
 
           success: "dark:!shadow-success-300/10",
@@ -94,7 +111,10 @@ const Toaster = ({ ...props }: ToasterProps) => {
           error: "dark:!shadow-destructive-300/10",
         },
       }}
-      /* some classNames are not overriding properly on richColors types --> overriding sonner's css vars seems to work */
+      /*
+       ** some classNames are not overriding properly on richColors types...
+       ** overriding sonner's css vars seems to work and does some of the variant styling for us
+       */
       style={
         {
           "--normal-bg": "var(--popover)",
