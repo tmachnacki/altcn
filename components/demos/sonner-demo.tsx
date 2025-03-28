@@ -7,19 +7,63 @@ import { Button } from "@/components/ui/button";
 
 const allTypes = [
   {
-    name: "Default",
+    name: "Default Basic",
     action: () => toast("Event has been created"),
   },
   {
-    name: "Description",
+    name: "Default Description",
     action: () =>
       toast("Event has been created", {
         description: "Monday, January 3rd at 6:00pm",
       }),
   },
   {
+    name: "Default Action",
+    action: () =>
+      toast.message("Event has been created", {
+        action: {
+          label: "Undo",
+          onClick: () => console.log("Undo"),
+        },
+      }),
+  },
+  {
+    name: "Default Cancel",
+    action: () =>
+      toast.message("Event has been created", {
+        cancel: {
+          label: "Cancel",
+          onClick: () => console.log("Cancel"),
+        },
+      }),
+  },
+  {
+    name: "Promise",
+    action: () =>
+      toast.promise<{ name: string }>(
+        () =>
+          new Promise((resolve) => {
+            setTimeout(() => {
+              resolve({ name: "Sonner" });
+            }, 2000);
+          }),
+        {
+          loading: "Loading...",
+          success: (data) => {
+            return `${data.name} toast has been added`;
+          },
+          error: "Error",
+        },
+      ),
+  },
+
+  // success
+  {
     name: "Success Basic",
-    action: () => toast.success("Event has been created. However, this is a really long title, so let's see how it wraps"),
+    action: () =>
+      toast.success(
+        "Event has been created. However, this is a really long title, so let's see how it wraps",
+      ),
   },
   {
     name: "Success Description",
@@ -60,21 +104,36 @@ const allTypes = [
       }),
   },
   {
-    name: "Info",
-    action: () => toast.info("Be at the area 10 minutes before the event time"),
-  },
-  {
-    name: "Warning",
-    action: () => toast.warning("Event start time cannot be earlier than 8am"),
-  },
-  {
-    name: "Error",
-    action: () => toast.error("Event has not been created"),
-  },
-  {
-    name: "Action",
+    name: "Success Description & Cancel",
     action: () =>
-      toast.message("Event has been created", {
+      toast.success("Event has been created", {
+        description: "Sunday, December 03, 2023 at 9:00 AM",
+        cancel: {
+          label: "Cancel",
+          onClick: () => console.log("Cancel"),
+        },
+      }),
+  },
+
+  // info
+  {
+    name: "Info Basic",
+    action: () =>
+      toast.info(
+        "Event has been created. However, this is a really long title, so let's see how it wraps",
+      ),
+  },
+  {
+    name: "Info Description",
+    action: () =>
+      toast.info("Event has been created", {
+        description: "Monday, January 3rd at 6:00pm",
+      }),
+  },
+  {
+    name: "Info Action",
+    action: () =>
+      toast.info("Event has been created", {
         action: {
           label: "Undo",
           onClick: () => console.log("Undo"),
@@ -82,9 +141,9 @@ const allTypes = [
       }),
   },
   {
-    name: "Cancel",
+    name: "Info Cancel",
     action: () =>
-      toast.message("Event has been created", {
+      toast.info("Event has been created", {
         cancel: {
           label: "Cancel",
           onClick: () => console.log("Cancel"),
@@ -92,23 +151,142 @@ const allTypes = [
       }),
   },
   {
-    name: "Promise",
+    name: "Info Description & Action",
     action: () =>
-      toast.promise<{ name: string }>(
-        () =>
-          new Promise((resolve) => {
-            setTimeout(() => {
-              resolve({ name: "Sonner" });
-            }, 2000);
-          }),
-        {
-          loading: "Loading...",
-          success: (data) => {
-            return `${data.name} toast has been added`;
-          },
-          error: "Error",
+      toast.info("Event has been created", {
+        description: "Sunday, December 03, 2023 at 9:00 AM",
+        action: {
+          label: "Undo",
+          onClick: () => console.log("Undo"),
         },
+      }),
+  },
+  {
+    name: "Info Description & Cancel",
+    action: () =>
+      toast.info("Event has been created", {
+        description: "Sunday, December 03, 2023 at 9:00 AM",
+        cancel: {
+          label: "Cancel",
+          onClick: () => console.log("Cancel"),
+        },
+      }),
+  },
+
+  // warning
+  {
+    name: "Warning Basic",
+    action: () =>
+      toast.warning(
+        "Event has been created. However, this is a really long title, so let's see how it wraps",
       ),
+  },
+  {
+    name: "Warning Description",
+    action: () =>
+      toast.warning("Event has been created", {
+        description: "Monday, January 3rd at 6:00pm",
+      }),
+  },
+  {
+    name: "Warning Action",
+    action: () =>
+      toast.warning("Event has been created", {
+        action: {
+          label: "Undo",
+          onClick: () => console.log("Undo"),
+        },
+      }),
+  },
+  {
+    name: "Warning Cancel",
+    action: () =>
+      toast.warning("Event has been created", {
+        cancel: {
+          label: "Cancel",
+          onClick: () => console.log("Cancel"),
+        },
+      }),
+  },
+  {
+    name: "Warning Description & Action",
+    action: () =>
+      toast.warning("Event has been created", {
+        description: "Sunday, December 03, 2023 at 9:00 AM",
+        action: {
+          label: "Undo",
+          onClick: () => console.log("Undo"),
+        },
+      }),
+  },
+  {
+    name: "Warning Description & Cancel",
+    action: () =>
+      toast.warning("Event has been created", {
+        description: "Sunday, December 03, 2023 at 9:00 AM",
+        cancel: {
+          label: "Cancel",
+          onClick: () => console.log("Cancel"),
+        },
+      }),
+  },
+
+  // error
+  {
+    name: "Error Basic",
+    action: () =>
+      toast.error(
+        "Event has been created. However, this is a really long title, so let's see how it wraps",
+      ),
+  },
+  {
+    name: "Error Description",
+    action: () =>
+      toast.error("Event has been created", {
+        description: "Monday, January 3rd at 6:00pm",
+      }),
+  },
+  {
+    name: "Error Action",
+    action: () =>
+      toast.error("Event has been created", {
+        action: {
+          label: "Undo",
+          onClick: () => console.log("Undo"),
+        },
+      }),
+  },
+  {
+    name: "Error Cancel",
+    action: () =>
+      toast.error("Event has been created", {
+        cancel: {
+          label: "Cancel",
+          onClick: () => console.log("Cancel"),
+        },
+      }),
+  },
+  {
+    name: "Error Description & Action",
+    action: () =>
+      toast.error("Event has been created", {
+        description: "Sunday, December 03, 2023 at 9:00 AM",
+        action: {
+          label: "Undo",
+          onClick: () => console.log("Undo"),
+        },
+      }),
+  },
+  {
+    name: "Error Description & Cancel",
+    action: () =>
+      toast.error("Event has been created", {
+        description: "Sunday, December 03, 2023 at 9:00 AM",
+        cancel: {
+          label: "Cancel",
+          onClick: () => console.log("Cancel"),
+        },
+      }),
   },
 ];
 

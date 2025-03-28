@@ -7,6 +7,7 @@ export function ButtonDemo() {
   return (
     <div className="flex h-full w-full flex-1 flex-col gap-8">
       <div className="flex flex-wrap gap-4">
+        <Button variant={"base"}>Base</Button>
         <Button variant={"outline"}>Outline</Button>
         <Button variant="accent">Accent</Button>
         <Button variant={"muted"}>Muted</Button>

@@ -16,6 +16,8 @@ const buttonVariants = cva(
     variants: {
       variant: {
         // --- base ---
+        base: ["bg-base-600 text-white shadow", "hover:bg-base-600/90"],
+
         outline: [
           "border border-border bg-background text-foreground shadow-xs",
           "hover:border-border-hover hover:bg-muted hover:text-accent-foreground",

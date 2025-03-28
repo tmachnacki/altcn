@@ -8,14 +8,14 @@ import { cn } from "@/lib/utils";
 
 const switchVariants = cva(
   [
-    "group/switch peer relative isolate inline-flex w-8 shrink-0 items-center rounded-full transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+    "group/switch peer relative isolate inline-flex w-9 shrink-0 items-center rounded-full transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
   ],
   {
     variants: {
       variant: {
         // -- primary --
         primary: [
-          "outline-primary data-[state=checked]:bg-primary data-[state=unchecked]:bg-accent",
+          "outline-primary data-[state=checked]:bg-primary data-[state=unchecked]:bg-base-200 dark:data-[state=unchecked]:bg-base-800",
         ],
         "primary-muted": [
           "outline-primary data-[state=checked]:bg-primary data-[state=unchecked]:bg-primary-muted",
@@ -31,8 +31,8 @@ const switchVariants = cva(
       },
       thin: {
         false:
-          "h-[calc(var(--spacing)*4.5)] border border-transparent data-[state=unchecked]:inset-shadow-sm",
-        true: "h-3",
+          "h-5 p-[2px] data-[state=unchecked]:inset-shadow-sm",
+        true: "h-2.5 focus-visible:outline-offset-[3px]",
       },
     },
     defaultVariants: {
@@ -59,10 +59,10 @@ function Switch({
       <SwitchPrimitive.Thumb
         data-slot="switch-thumb"
         className={cn(
-          "pointer-events-none absolute left-0 z-10 inline-block size-4 rounded-full bg-background shadow-sm ring-0 transition-transform data-[state=unchecked]:translate-x-0 dark:bg-foreground",
+          "pointer-events-none block size-4 rounded-full bg-background shadow-sm ring-0 transition-transform data-[state=unchecked]:translate-x-0 dark:bg-foreground",
           thin
-            ? "border border-border data-[state=checked]:translate-x-[calc(100%+1px)]"
-            : "data-[state=checked]:translate-x-[calc(100%-2px)]",
+            ? "border border-border data-[state=checked]:translate-x-5"
+            : "data-[state=checked]:translate-x-4",
         )}
       />
     </SwitchPrimitive.Root>
