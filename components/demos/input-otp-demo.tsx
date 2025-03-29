@@ -17,6 +17,9 @@ export function InputOTPDemo() {
   return (
     <div className="flex flex-col gap-8">
       <InputOTPSimple />
+      <InputOTPSimple split={true} />
+      <InputOTPSimple variant="underlined" />
+      <InputOTPSimple variant="underlined" split={true} />
       <InputOTPPattern />
       <InputOTPWithSeparator />
       <InputOTPWithSpacing />
@@ -26,7 +29,8 @@ export function InputOTPDemo() {
 
 function InputOTPSimple({
   variant,
-}: VariantProps<typeof inputOTPSlotVariants>) {
+  split,
+}: VariantProps<typeof inputOTPSlotVariants> & { split?: boolean }) {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex w-fit flex-col gap-2">
@@ -34,8 +38,9 @@ function InputOTPSimple({
         <InputOTP
           id="simple"
           maxLength={6}
-          variant={variant}
           placeholder="000000"
+          variant={variant}
+          split={split}
         >
           <InputOTPGroup>
             <InputOTPSlot index={0} />
@@ -52,7 +57,13 @@ function InputOTPSimple({
       </div>
       <div className="flex w-fit flex-col gap-2">
         <Label htmlFor="simple-error">Simple Error</Label>
-        <InputOTP id="simple-error" maxLength={6} variant={variant}>
+        <InputOTP
+          id="simple-error"
+          maxLength={6}
+          placeholder="000000"
+          variant={variant}
+          split={split}
+        >
           <InputOTPGroup>
             <InputOTPSlot index={0} aria-invalid="true" />
             <InputOTPSlot index={1} aria-invalid="true" />

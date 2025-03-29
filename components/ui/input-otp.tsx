@@ -8,13 +8,18 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const inputOTPSlotVariants = cva(
-  "relative flex h-9 w-9 items-center justify-center text-sm data-[active=true]:z-10",
+  [
+    "relative flex h-9 w-9 items-center justify-center text-sm data-[active=true]:z-10",
+    "aria-invalid:text-destructive-accent-foreground aria-invalid:data-[placeholder=true]:text-destructive-muted-foreground",
+    "data-[split=true]:mr-2 data-[split=true]:last:mr-0",
+  ],
   {
     variants: {
       variant: {
         default: [
-          "-ml-px bg-background text-foreground shadow-xs outline-1 -outline-offset-1 outline-border not-aria-invalid:group-not-focus-within/input-otp:group-hover/input-otp:outline-border-hover first:-ml-0 first:rounded-l-md last:rounded-r-md data-[placeholder=true]:text-muted-foreground dark:bg-faded",
-          "aria-invalid:text-destructive-accent-foreground aria-invalid:outline-destructive aria-invalid:data-[placeholder=true]:text-destructive-muted-foreground dark:aria-invalid:bg-destructive-faded",
+          "-ml-px bg-background text-foreground shadow-xs outline-1 -outline-offset-1 outline-border not-aria-invalid:group-not-focus-within/input-otp:group-hover/input-otp:outline-border-hover first:-ml-0 first:rounded-l-md last:rounded-r-md dark:bg-faded",
+          "data-[placeholder=true]:text-muted-foreground",
+          "aria-invalid:outline-destructive dark:aria-invalid:bg-destructive-faded",
           "data-[active=true]:outline-2 data-[active=true]:-outline-offset-2 data-[active=true]:outline-primary",
           "data-[split=true]:-ml-0 data-[split=true]:rounded-md",
         ],
@@ -25,13 +30,14 @@ const inputOTPSlotVariants = cva(
           "aria-invalid:border-destructive-faded aria-invalid:bg-destructive-muted/70 aria-invalid:text-destructive-accent-foreground aria-invalid:group-not-focus-within/input-otp:group-hover/input-otp:bg-destructive-muted aria-invalid:data-[active=true]:ring-destructive",
           "data-[split=true]:rounded-md data-[split=true]:border-none",
         ],
-        underlined: "",
+        underlined: [
+          "mr-0.5 last:mr-0 rounded-none bg-transparent shadow-[inset_0_-1px_0_0_var(--color-border)] outline-none not-aria-invalid:group-not-focus-within/input-otp:group-hover/input-otp:shadow-[inset_0_-1px_0_0_var(--color-border-hover)]",
+          "data-[placeholder=true]:text-muted-foreground",
+          "data-[active=true]:shadow-[inset_0_-2px_0_0_var(--color-primary)]",
+          "aria-invalid:shadow-[inset_0_-1px_0_0_var(--color-destructive)] aria-invalid:data-[active=true]:shadow-[inset_0_-2px_0_0_var(--color-destructive)]",
+        ],
         primary: "",
         secondary: "",
-      },
-      split: {
-        false: null,
-        true: "",
       },
     },
     defaultVariants: {
@@ -41,14 +47,12 @@ const inputOTPSlotVariants = cva(
 );
 
 const InputOTPVariantsContext = React.createContext<
-  VariantProps<typeof inputOTPSlotVariants>
->({
-  variant: "default",
-  split: false,
-});
+  VariantProps<typeof inputOTPSlotVariants> & { split?: boolean }
+>({});
 
 type InputOTPProps = React.ComponentProps<typeof OTPInput> &
   VariantProps<typeof inputOTPSlotVariants> & {
+    split?: boolean;
     containerClassName?: string;
   };
 
@@ -78,12 +82,10 @@ function InputOTP({
 }
 
 function InputOTPGroup({ className, ...props }: React.ComponentProps<"div">) {
-  const { split } = React.useContext(InputOTPVariantsContext);
   return (
     <div
       data-slot="input-otp-group"
-      data-split={split}
-      className={cn("flex items-center data-[split=true]:gap-2", className)}
+      className={cn("flex items-center", className)}
       {...props}
     />
   );
@@ -108,7 +110,7 @@ function InputOTPSlot({
       data-variant={variant}
       data-split={split}
       data-placeholder={!!placeholderChar}
-      className={cn(inputOTPSlotVariants({ variant, split }), className)}
+      className={cn(inputOTPSlotVariants({ variant }), className)}
       {...props}
     >
       {placeholderChar || char}
@@ -124,7 +126,7 @@ function InputOTPSlot({
 function InputOTPSeparator({ ...props }: React.ComponentProps<"div">) {
   return (
     <div data-slot="input-otp-separator" role="separator" {...props}>
-      <MinusIcon />
+      <MinusIcon className="text-muted-foreground" />
     </div>
   );
 }
