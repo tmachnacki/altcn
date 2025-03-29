@@ -13,11 +13,12 @@ const inputOTPSlotVariants = cva(
     variants: {
       variant: {
         default: [
-          "border-y border-r border-border bg-background text-foreground shadow-xs not-aria-invalid:group-not-focus-within/input-otp:group-hover/input-otp:border-border-hover first:rounded-l-md first:border-l last:rounded-r-md dark:bg-faded",
-          "aria-invalid:border-destructive aria-invalid:text-destructive-accent-foreground aria-invalid:outline-destructive aria-invalid:data-[active=true]:outline-2 dark:aria-invalid:bg-destructive-faded",
-          "ring-primary data-[active=true]:border-primary data-[active=true]:ring-1",
-          "data-[split=true]:rounded-md data-[split=true]:border",
+          "-ml-px bg-background text-foreground shadow-xs outline-1 -outline-offset-1 outline-border not-aria-invalid:group-not-focus-within/input-otp:group-hover/input-otp:outline-border-hover first:-ml-0 first:rounded-l-md last:rounded-r-md data-[placeholder=true]:text-muted-foreground dark:bg-faded",
+          "aria-invalid:text-destructive-accent-foreground aria-invalid:outline-destructive aria-invalid:data-[placeholder=true]:text-destructive-muted-foreground dark:aria-invalid:bg-destructive-faded",
+          "data-[active=true]:outline-2 data-[active=true]:-outline-offset-2 data-[active=true]:outline-primary",
+          "data-[split=true]:-ml-0 data-[split=true]:rounded-md",
         ],
+
         muted: [
           "border-r border-border bg-muted text-accent-foreground not-aria-invalid:group-not-focus-within/input-otp:group-hover/input-otp:bg-accent first:rounded-l-md last:rounded-r-md last:border-r-0",
           "data-[active=true]:border-transparent data-[active=true]:outline-2 data-[active=true]:outline-primary",
@@ -96,7 +97,8 @@ function InputOTPSlot({
   index: number;
 }) {
   const inputOTPContext = React.useContext(OTPInputContext);
-  const { char, hasFakeCaret, isActive } = inputOTPContext?.slots[index] ?? {};
+  const { char, hasFakeCaret, isActive, placeholderChar } =
+    inputOTPContext?.slots[index] ?? {};
   const { variant, split } = React.useContext(InputOTPVariantsContext);
 
   return (
@@ -105,10 +107,11 @@ function InputOTPSlot({
       data-active={isActive}
       data-variant={variant}
       data-split={split}
+      data-placeholder={!!placeholderChar}
       className={cn(inputOTPSlotVariants({ variant, split }), className)}
       {...props}
     >
-      {char}
+      {placeholderChar || char}
       {hasFakeCaret && (
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
           <div className="h-4 w-px animate-caret-blink bg-foreground duration-1000" />

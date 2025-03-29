@@ -12,7 +12,7 @@ import { cn } from "@/lib/utils";
 const menuItemVariants = cva(
   [
     "relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-[inset=true]:pl-8",
-    "data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[disabled]:text-muted-foreground",
+    "data-[disabled]:pointer-events-none data-[disabled]:text-muted-foreground data-[disabled]:opacity-50",
     "[&_[data-slot*='-shortcut']]:text-muted-foreground data-[highlighted]:[&_[data-slot*='-shortcut']]:text-current",
     "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground data-[highlighted]:[&_svg:not([class*='text-'])]:text-current",
   ],
@@ -31,7 +31,7 @@ const menuItemVariants = cva(
 
         // -- primary --
         primary: [
-          "data-[highlighted]:bg-primary data-[highlighted]:text-primary-foreground data-[highlighted]:[&_[data-slot*='-indicator']]:text-current",
+          "data-[highlighted]:bg-primary data-[highlighted]:text-primary-foreground data-[highlighted]:[&_[data-slot*='-indicator'][data-variant='primary']]:text-current",
           "data-[state=open]:bg-primary data-[state=open]:text-primary-foreground",
         ],
         "primary-accent": [

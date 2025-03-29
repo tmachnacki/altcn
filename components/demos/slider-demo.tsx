@@ -71,6 +71,9 @@ function SliderControlled({
 }) {
   const [value, setValue] = React.useState([0.3, 0.7]);
 
+  const hasError = Math.abs(value[1] - value[0]) < 0.5;
+  const errorMessage = "Range must be at least 0.5";
+
   const textVariants = {
     primary: "text-primary-muted-foreground",
     "primary-muted": "text-primary-muted-foreground",
@@ -84,7 +87,9 @@ function SliderControlled({
     <div className="grid w-full gap-3">
       <div className="flex items-center justify-between gap-2">
         <Label htmlFor="slider-demo-temperature">Temperature</Label>
-        <span className={`text-sm ${textVariants[variant]}`}>
+        <span
+          className={`text-sm ${hasError ? "text-destructive-muted-foreground" : textVariants[variant]}`}
+        >
           {value.join(", ")}
         </span>
       </div>
@@ -96,7 +101,14 @@ function SliderControlled({
         max={1}
         step={0.1}
         variant={variant}
+        aria-invalid={hasError}
+        aria-errormessage={hasError ? errorMessage : undefined}
       />
+      {hasError && (
+        <span className="text-sm text-destructive-muted-foreground">
+          {errorMessage}
+        </span>
+      )}
     </div>
   );
 }

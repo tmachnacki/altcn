@@ -27,10 +27,8 @@ const Toaster = ({ ...props }: ToasterProps) => {
         classNames: {
           toast:
             "group/toast !shadow-lg focus-visible:!outline-2 focus-visible:!outline-offset-2 focus-visible:!outline-outline",
-          
-          loader: cx([
-            "!h-6 !w-5 !items-center !justify-center",
-          ]),
+
+          loader: cx(["!h-6 !w-5 !items-center !justify-center"]),
 
           icon: cx([
             "!h-6 !w-5 !items-center !justify-center",
@@ -47,7 +45,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
           ]),
 
           closeButton: cx([
-            "!text-current/80 hover:!text-current/100",
+            "!cursor-default !text-current/80 hover:!text-current/100",
 
             "!border-border !bg-popover hover:!border-border-hover hover:!bg-muted",
 

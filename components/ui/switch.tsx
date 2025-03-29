@@ -30,8 +30,7 @@ const switchVariants = cva(
         ],
       },
       thin: {
-        false:
-          "h-5 p-[2px] data-[state=unchecked]:inset-shadow-sm",
+        false: "h-5 p-[2px] data-[state=unchecked]:inset-shadow-sm",
         true: "h-2.5 focus-visible:outline-offset-[3px]",
       },
     },
@@ -61,7 +60,7 @@ function Switch({
         className={cn(
           "pointer-events-none block size-4 rounded-full bg-background shadow-sm ring-0 transition-transform data-[state=unchecked]:translate-x-0 dark:bg-foreground",
           thin
-            ? "border border-border data-[state=checked]:translate-x-5"
+            ? "border border-border data-[state=checked]:translate-x-[calc(--spacing(5)+1px)]"
             : "data-[state=checked]:translate-x-4",
         )}
       />

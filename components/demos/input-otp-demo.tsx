@@ -31,7 +31,12 @@ function InputOTPSimple({
     <div className="flex flex-col gap-4">
       <div className="flex w-fit flex-col gap-2">
         <Label htmlFor="simple">Simple</Label>
-        <InputOTP id="simple" maxLength={6} variant={variant}>
+        <InputOTP
+          id="simple"
+          maxLength={6}
+          variant={variant}
+          placeholder="000000"
+        >
           <InputOTPGroup>
             <InputOTPSlot index={0} />
             <InputOTPSlot index={1} />
