@@ -12,18 +12,26 @@ import {
 } from "@/components/ui/input-otp";
 import { Label } from "@/components/ui/label";
 import { VariantProps } from "class-variance-authority";
+import { ComponentContainer } from "@/components/demos/component-container";
 
 export function InputOTPDemo() {
   return (
-    <div className="flex flex-col gap-8">
-      <InputOTPSimple />
-      <InputOTPSimple split={true} />
-      <InputOTPSimple variant="underlined" />
-      <InputOTPSimple variant="underlined" split={true} />
-      <InputOTPPattern />
-      <InputOTPWithSeparator />
-      <InputOTPWithSpacing />
-    </div>
+    <ComponentContainer>
+      <div className="flex flex-col gap-8">
+        <InputOTPSimple />
+        <InputOTPSimple split={true} />
+        <InputOTPSimple variant="muted" />
+        <InputOTPSimple variant="muted" split={true} />
+        <InputOTPSimple variant="underlined" />
+        <InputOTPSimple variant="underlined" split={true} />
+        <InputOTPSimple variant="primary" />
+        <InputOTPSimple variant="primary" split={true} />
+        <InputOTPSimple variant="secondary" />
+        <InputOTPSimple variant="secondary" split={true} />
+        <InputOTPPattern />
+        <InputOTPWithSeparator />
+      </div>
+    </ComponentContainer>
   );
 }
 
@@ -34,9 +42,9 @@ function InputOTPSimple({
   return (
     <div className="flex flex-col gap-4">
       <div className="flex w-fit flex-col gap-2">
-        <Label htmlFor="simple">Simple</Label>
+        <Label htmlFor={`simple-${variant}`}>Simple</Label>
         <InputOTP
-          id="simple"
+          id={`simple-${variant}`}
           maxLength={6}
           placeholder="000000"
           variant={variant}
@@ -56,9 +64,32 @@ function InputOTPSimple({
         </InputOTP>
       </div>
       <div className="flex w-fit flex-col gap-2">
-        <Label htmlFor="simple-error">Simple Error</Label>
+        <Label htmlFor={`simple-disabled-${variant}`}>Simple Disabled</Label>
         <InputOTP
-          id="simple-error"
+          id={`simple-disabled-${variant}`}
+          maxLength={6}
+          placeholder="000000"
+          variant={variant}
+          split={split}
+          disabled
+        >
+          <InputOTPGroup>
+            <InputOTPSlot index={0} />
+            <InputOTPSlot index={1} />
+            <InputOTPSlot index={2} />
+          </InputOTPGroup>
+          <InputOTPSeparator />
+          <InputOTPGroup>
+            <InputOTPSlot index={3} />
+            <InputOTPSlot index={4} />
+            <InputOTPSlot index={5} />
+          </InputOTPGroup>
+        </InputOTP>
+      </div>
+      <div className="flex w-fit flex-col gap-2">
+        <Label htmlFor={`simple-error-${variant}`}>Simple Error</Label>
+        <InputOTP
+          id={`simple-error-${variant}`}
           maxLength={6}
           placeholder="000000"
           variant={variant}
@@ -124,22 +155,6 @@ function InputOTPWithSeparator() {
         <InputOTPGroup>
           <InputOTPSlot index={4} />
           <InputOTPSlot index={5} />
-        </InputOTPGroup>
-      </InputOTP>
-    </div>
-  );
-}
-
-function InputOTPWithSpacing() {
-  return (
-    <div className="flex w-fit flex-col gap-2">
-      <Label htmlFor="with-spacing">With Spacing</Label>
-      <InputOTP id="with-spacing" maxLength={6}>
-        <InputOTPGroup className="gap-2 *:data-[slot=input-otp-slot]:rounded-md *:data-[slot=input-otp-slot]:border">
-          <InputOTPSlot index={0} aria-invalid="true" />
-          <InputOTPSlot index={1} aria-invalid="true" />
-          <InputOTPSlot index={2} aria-invalid="true" />
-          <InputOTPSlot index={3} aria-invalid="true" />
         </InputOTPGroup>
       </InputOTP>
     </div>

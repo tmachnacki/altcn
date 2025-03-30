@@ -3,6 +3,7 @@ import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
+// TODO: better file input, sizes
 const inputVariants = cva(
   [
     "flex h-9 w-full min-w-0 appearance-none rounded-md px-3 py-1 text-base outline-none md:text-sm",
