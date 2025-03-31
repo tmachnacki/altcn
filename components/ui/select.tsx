@@ -131,7 +131,7 @@ function SelectContent({
           position={position}
           sideOffset={position === "popper" ? 4 : 0}
           className={cn(
-            "relative z-50 max-h-(--radix-select-content-available-height) min-w-[max(var(--radix-select-trigger-width),8rem)] origin-(--radix-select-content-transform-origin) overflow-x-hidden overflow-y-auto rounded-md border border-border bg-popover text-popover-foreground shadow-md",
+            "relative z-50 max-h-(--radix-select-content-available-height) min-w-[max(var(--radix-select-trigger-width),--spacing(32))] origin-(--radix-select-content-transform-origin) overflow-x-hidden overflow-y-auto rounded-md border border-border bg-popover text-popover-foreground shadow-md",
             // FIXME: exit animations ain't working
             "data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
             position === "popper" && [

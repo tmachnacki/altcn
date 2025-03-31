@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { XIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -69,15 +69,14 @@ function DialogContent({
         {...props}
       >
         {children}
-        <DialogPrimitive.Close asChild>
-          <Button
-            variant="ghost"
-            size="icon-xs"
-            className="absolute top-2 right-2"
-          >
-            <XIcon className="size-4" />
-            <span className="sr-only">Close</span>
-          </Button>
+        <DialogPrimitive.Close
+          className={cn(
+            buttonVariants({ variant: "ghost", size: "icon-xs" }),
+            "absolute top-2 right-2",
+          )}
+          aria-label="Close"
+        >
+          <XIcon className="size-4" />
         </DialogPrimitive.Close>
       </DialogPrimitive.Content>
     </DialogPortal>

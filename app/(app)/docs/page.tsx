@@ -15,6 +15,7 @@ import { InputDemo } from "@/components/demos/input.demo";
 import { InputOTPDemo } from "@/components/demos/input.otp.demo";
 import { MenubarDemo } from "@/components/demos/menubar.demo";
 import { PaginationDemo } from "@/components/demos/pagination.demo";
+import { PopoverDemo } from "@/components/demos/popover.demo";
 import { ProgressDemo } from "@/components/demos/progress.demo";
 import { RadioGroupDemo } from "@/components/demos/radio.group.demo";
 import { SelectDemo } from "@/components/demos/select.demo";
@@ -98,6 +99,11 @@ const COMPONENTS = [
     title: "Pagination",
     id: "pagination",
     component: <PaginationDemo />,
+  },
+  {
+    title: "Popover",
+    id: "popover",
+    component: <PopoverDemo />,
   },
   {
     title: "Progress",

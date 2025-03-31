@@ -340,7 +340,7 @@ function DropdownMenuSimple() {
       <DropdownMenuTrigger asChild>
         <Button variant="outline">Open</Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="start" className="w-56">
+      <DropdownMenuContent align="start">
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuGroup>
           <DropdownMenuItem wide>
@@ -413,7 +413,6 @@ function DropdownMenuWithAvatar() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent
-        className="w-(--radix-dropdown-menu-trigger-width) min-w-56"
         align="start"
       >
         <DropdownMenuLabel className="p-0 font-normal">
