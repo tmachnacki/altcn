@@ -19,6 +19,7 @@ import { PopoverDemo } from "@/components/demos/popover.demo";
 import { ProgressDemo } from "@/components/demos/progress.demo";
 import { RadioGroupDemo } from "@/components/demos/radio.group.demo";
 import { SelectDemo } from "@/components/demos/select.demo";
+import { SheetDemo } from "@/components/demos/sheet.demo";
 import { SkeletonDemo } from "@/components/demos/skeleton.demo";
 import { SliderDemo } from "@/components/demos/slider.demo";
 import { SonnerDemo } from "@/components/demos/sonner.demo";
@@ -119,6 +120,11 @@ const COMPONENTS = [
     title: "Select",
     id: "select",
     component: <SelectDemo />,
+  },
+  {
+    title: "Sheet",
+    id: "sheet",
+    component: <SheetDemo />,
   },
   {
     title: "Skeleton",
