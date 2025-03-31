@@ -4,15 +4,16 @@ import {
   ChevronRightIcon,
   MoreHorizontalIcon,
 } from "lucide-react";
-
-import { cn } from "@/lib/utils";
 import { Button, buttonVariants } from "@/components/ui/button";
+
+import { VariantProps } from "class-variance-authority";
+import { cn } from "@/lib/utils";
 
 function Pagination({ className, ...props }: React.ComponentProps<"nav">) {
   return (
     <nav
       role="navigation"
-      aria-label="pagination"
+      aria-label={props["aria-label"] || "pagination"}
       data-slot="pagination"
       className={cn("mx-auto flex w-full justify-center", className)}
       {...props}
@@ -38,14 +39,16 @@ function PaginationItem({ ...props }: React.ComponentProps<"li">) {
 }
 
 type PaginationLinkProps = {
+  disabled?: boolean;
   isActive?: boolean;
-  activeVariant?: React.ComponentProps<typeof Button>["variant"];
-  inactiveVariant?: React.ComponentProps<typeof Button>["variant"];
+  activeVariant?: VariantProps<typeof buttonVariants>["variant"];
+  inactiveVariant?: VariantProps<typeof buttonVariants>["variant"];
 } & Pick<React.ComponentProps<typeof Button>, "size"> &
   React.ComponentProps<"a">;
 
 function PaginationLink({
   className,
+  disabled,
   isActive,
   size = "icon",
   activeVariant = "outline",
@@ -53,19 +56,22 @@ function PaginationLink({
   ...props
 }: PaginationLinkProps) {
   return (
-    <a
-      aria-current={isActive ? "page" : undefined}
-      data-slot="pagination-link"
-      data-active={isActive}
-      className={cn(
-        buttonVariants({
-          variant: isActive ? activeVariant : inactiveVariant,
-          size,
-        }),
-        className,
-      )}
-      {...props}
-    />
+    <Button
+      asChild
+      disabled={disabled}
+      size={size}
+      variant={isActive ? activeVariant : inactiveVariant}
+      className={className}
+    >
+      <a
+        aria-current={isActive ? "page" : undefined}
+        aria-disabled={disabled}
+        tabIndex={disabled ? -1 : 0}
+        data-slot="pagination-link"
+        data-active={isActive}
+        {...props}
+      />
+    </Button>
   );
 }
 

@@ -1,27 +1,27 @@
 import { Container } from "@/components/container";
 
-import { AccordionDemo } from "@/components/demos/accordion-demo";
-import { AlertDemo } from "@/components/demos/alert-demo";
-import { AlertDialogDemo } from "@/components/demos/alert-dialog-demo";
-import { AvatarDemo } from "@/components/demos/avatar-demo";
-import { BadgeDemo } from "@/components/demos/badge-demo";
-import { ButtonDemo } from "@/components/demos/button-demo";
-import { CardDemo } from "@/components/demos/card-demo";
-import { CheckboxDemo } from "@/components/demos/checkbox-demo";
-import { ContextMenuDemo } from "@/components/demos/context-menu-demo";
-import { DialogDemo } from "@/components/demos/dialog-demo";
-import { DropdownMenuDemo } from "@/components/demos/dropdown-menu-demo";
-import { InputDemo } from "@/components/demos/input-demo";
-import { InputOTPDemo } from "@/components/demos/input-otp-demo";
-import { MenubarDemo } from "@/components/demos/menubar-demo";
-import { PaginationDemo } from "@/components/demos/pagination-demo";
-import { ProgressDemo } from "@/components/demos/progress-demo";
-import { RadioGroupDemo } from "@/components/demos/radio-group-demo";
-import { SelectDemo } from "@/components/demos/select-demo";
-import { SkeletonDemo } from "@/components/demos/skeleton-demo";
-import { SliderDemo } from "@/components/demos/slider-demo";
-import { SonnerDemo } from "@/components/demos/sonner-demo";
-import { SwitchDemo } from "@/components/demos/switch-demo";
+import { AccordionDemo } from "@/components/demos/accordion.demo";
+import { AlertDemo } from "@/components/demos/alert.demo";
+import { AlertDialogDemo } from "@/components/demos/alert-dialog.demo";
+import { AvatarDemo } from "@/components/demos/avatar.demo";
+import { BadgeDemo } from "@/components/demos/badge.demo";
+import { ButtonDemo } from "@/components/demos/button.demo";
+import { CardDemo } from "@/components/demos/card.demo";
+import { CheckboxDemo } from "@/components/demos/checkbox.demo";
+import { ContextMenuDemo } from "@/components/demos/context.menu.demo";
+import { DialogDemo } from "@/components/demos/dialog.demo";
+import { DropdownMenuDemo } from "@/components/demos/dropdown.menu.demo";
+import { InputDemo } from "@/components/demos/input.demo";
+import { InputOTPDemo } from "@/components/demos/input.otp.demo";
+import { MenubarDemo } from "@/components/demos/menubar.demo";
+import { PaginationDemo } from "@/components/demos/pagination.demo";
+import { ProgressDemo } from "@/components/demos/progress.demo";
+import { RadioGroupDemo } from "@/components/demos/radio.group.demo";
+import { SelectDemo } from "@/components/demos/select.demo";
+import { SkeletonDemo } from "@/components/demos/skeleton.demo";
+import { SliderDemo } from "@/components/demos/slider.demo";
+import { SonnerDemo } from "@/components/demos/sonner.demo";
+import { SwitchDemo } from "@/components/demos/switch.demo";
 
 const COMPONENTS = [
   {
@@ -143,7 +143,7 @@ function ComponentSection({
 }: React.ComponentProps<"div"> & { title: string }) {
   return (
     <div className="flex scroll-mt-24 flex-col gap-3" id={id}>
-      <h2 className="text-lg font-medium">{title}</h2>
+      <h2 className="text-lg font-medium capitalize">{title}</h2>
       <div className="flex flex-1 rounded-md border">{children}</div>
     </div>
   );
