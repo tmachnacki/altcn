@@ -12,7 +12,8 @@ const sliderVariants = cva(
     variants: {
       variant: {
         primary:
-          "**:data-[slot=slider-range]:bg-primary **:data-[slot=slider-thumb]:border-primary **:data-[slot=slider-thumb]:ring-border-primary-faded **:data-[slot=slider-track]:bg-muted aria-invalid:**:data-[slot=slider-track]:bg-destructive-muted",
+          "**:data-[slot=slider-range]:bg-primary **:data-[slot=slider-thumb]:border-primary **:data-[slot=slider-thumb]:ring-border-primary-faded **:data-[slot=slider-track]:bg-accent aria-invalid:**:data-[slot=slider-track]:bg-destructive-muted",
+
         "primary-muted":
           "**:data-[slot=slider-range]:bg-primary **:data-[slot=slider-thumb]:border-primary **:data-[slot=slider-thumb]:ring-border-primary-faded **:data-[slot=slider-track]:bg-primary-muted aria-invalid:**:data-[slot=slider-track]:bg-destructive-muted",
 
@@ -20,7 +21,7 @@ const sliderVariants = cva(
           "**:data-[slot=slider-range]:bg-primary **:data-[slot=slider-thumb]:border-primary **:data-[slot=slider-thumb]:ring-border-primary-faded **:data-[slot=slider-track]:bg-primary-faded **:data-[slot=slider-track]:inset-ring-1 **:data-[slot=slider-track]:inset-ring-border-primary-faded aria-invalid:**:data-[slot=slider-track]:bg-destructive-faded aria-invalid:**:data-[slot=slider-track]:inset-ring-border-destructive-faded",
 
         secondary:
-          "**:data-[slot=slider-range]:bg-secondary **:data-[slot=slider-thumb]:border-secondary **:data-[slot=slider-thumb]:ring-border-secondary-faded **:data-[slot=slider-track]:bg-muted aria-invalid:**:data-[slot=slider-track]:bg-destructive-muted",
+          "**:data-[slot=slider-range]:bg-secondary **:data-[slot=slider-thumb]:border-secondary **:data-[slot=slider-thumb]:ring-border-secondary-faded **:data-[slot=slider-track]:bg-accent aria-invalid:**:data-[slot=slider-track]:bg-destructive-muted",
 
         "secondary-muted":
           "**:data-[slot=slider-range]:bg-secondary **:data-[slot=slider-thumb]:border-secondary **:data-[slot=slider-thumb]:ring-border-secondary-faded **:data-[slot=slider-track]:bg-secondary-muted aria-invalid:**:data-[slot=slider-track]:bg-destructive-muted",

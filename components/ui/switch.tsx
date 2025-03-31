@@ -15,7 +15,7 @@ const switchVariants = cva(
       variant: {
         // -- primary --
         primary: [
-          "outline-primary data-[state=checked]:bg-primary data-[state=unchecked]:bg-base-200 dark:data-[state=unchecked]:bg-base-800",
+          "outline-primary data-[state=checked]:bg-primary data-[state=unchecked]:bg-accent",
         ],
         "primary-muted": [
           "outline-primary data-[state=checked]:bg-primary data-[state=unchecked]:bg-primary-muted",

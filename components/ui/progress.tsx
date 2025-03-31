@@ -11,12 +11,12 @@ const progressVariants = cva(
   {
     variants: {
       variant: {
-        primary: "bg-muted **:data-[slot=progress-indicator]:bg-primary",
+        primary: "bg-accent **:data-[slot=progress-indicator]:bg-primary",
         "primary-muted":
           "bg-primary-muted **:data-[slot=progress-indicator]:bg-primary",
         "primary-faded":
           "bg-primary-faded inset-ring inset-ring-border-primary-faded **:data-[slot=progress-indicator]:bg-primary",
-        secondary: "bg-muted **:data-[slot=progress-indicator]:bg-secondary",
+        secondary: "bg-accent **:data-[slot=progress-indicator]:bg-secondary",
         "secondary-muted":
           "bg-secondary-muted **:data-[slot=progress-indicator]:bg-secondary",
         "secondary-faded":

@@ -39,7 +39,7 @@ function DialogOverlay({
     <DialogPrimitive.Overlay
       data-slot="dialog-overlay"
       className={cn(
-        "fixed inset-0 z-50 bg-white/40 backdrop-blur-xs dark:bg-black/40",
+        "fixed inset-0 z-50 bg-white/40 backdrop-blur-[2px] dark:bg-black/40",
         "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:fade-in-0",
         className,
       )}
@@ -73,7 +73,7 @@ function DialogContent({
           <Button
             variant="ghost"
             size="icon-xs"
-            className="absolute top-3 right-3"
+            className="absolute top-2 right-2"
           >
             <XIcon className="size-4" />
             <span className="sr-only">Close</span>

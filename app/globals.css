@@ -176,7 +176,7 @@
   --muted: var(--color-base-900);
   --muted-foreground: var(--color-base-400);
 
-  --faded: color-mix(in oklab, var(--color-base-500) 10%, transparent);
+  --faded: color-mix(in oklab, var(--color-base-500) 12%, transparent);
   --border-faded: color-mix(in oklab, var(--color-base-500) 20%, transparent);
 
   /* --border: var(--color-base-800); */
@@ -193,7 +193,7 @@
   --primary-muted-content: var(--color-primary-400);
   --primary-faded: color-mix(
     in oklab,
-    var(--color-primary-muted) 40%,
+    var(--color-primary-muted) 50%,
     transparent
   );
   --border-primary-faded: color-mix(
@@ -216,7 +216,7 @@
   --secondary-muted-content: var(--color-secondary-500);
   --secondary-faded: color-mix(
     in oklab,
-    var(--color-secondary-muted) 40%,
+    var(--color-secondary-muted) 50%,
     transparent
   );
   --border-secondary-faded: color-mix(
@@ -266,7 +266,7 @@
   --success-muted-content: var(--color-success-500);
   --success-faded: color-mix(
     in oklab,
-    var(--color-success-muted) 40%,
+    var(--color-success-muted) 50%,
     transparent
   );
   --border-success-faded: color-mix(
@@ -289,7 +289,7 @@
   --warning-muted-content: var(--color-warning-500);
   --warning-faded: color-mix(
     in oklab,
-    var(--color-warning-muted) 40%,
+    var(--color-warning-muted) 50%,
     transparent
   );
   --border-warning-faded: color-mix(
