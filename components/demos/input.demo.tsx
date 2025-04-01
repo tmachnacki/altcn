@@ -5,7 +5,7 @@ export function InputDemo() {
   const variants = [
     "default",
     "muted",
-    "underline",
+    "underlined",
     "primary",
     "secondary",
   ] as const;

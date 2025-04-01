@@ -95,12 +95,12 @@ const badgeVariants = cva(
 
         "secondary-surface": [
           "border-border-secondary-faded bg-secondary-faded text-secondary-accent-foreground",
-          "[a&]:hover:bg-secondary-muted/70",
+          "[a&]:hover:bg-secondary-muted/80",
         ],
 
         "secondary-faded": [
           "border-border-secondary-faded bg-secondary-faded text-secondary-muted-foreground",
-          "[a&]:hover:bg-secondary-muted/70",
+          "[a&]:hover:bg-secondary-muted/80",
         ],
 
         "secondary-tron": [
@@ -131,12 +131,12 @@ const badgeVariants = cva(
 
         "destructive-surface": [
           "border-border-destructive-faded bg-destructive-faded text-destructive-accent-foreground",
-          "[a&]:hover:bg-destructive-muted/70",
+          "[a&]:hover:bg-destructive-muted/80",
         ],
 
         "destructive-faded": [
           "border-border-destructive-faded bg-destructive-faded text-destructive-muted-foreground",
-          "[a&]:hover:bg-destructive-muted/70",
+          "[a&]:hover:bg-destructive-muted/80",
         ],
 
         "destructive-tron": [
@@ -167,12 +167,12 @@ const badgeVariants = cva(
 
         "success-surface": [
           "border-border-success-faded bg-success-faded text-success-accent-foreground",
-          "[a&]:hover:bg-success-muted/70",
+          "[a&]:hover:bg-success-muted/80",
         ],
 
         "success-faded": [
           "border-border-success-faded bg-success-faded text-success-muted-foreground",
-          "[a&]:hover:bg-success-muted/70",
+          "[a&]:hover:bg-success-muted/80",
         ],
 
         "success-tron": [
@@ -203,12 +203,12 @@ const badgeVariants = cva(
 
         "warning-surface": [
           "border-border-warning-faded bg-warning-faded text-warning-accent-foreground",
-          "[a&]:hover:bg-warning-muted/70",
+          "[a&]:hover:bg-warning-muted/80",
         ],
 
         "warning-faded": [
           "border-border-warning-faded bg-warning-faded text-warning-muted-foreground",
-          "[a&]:hover:bg-warning-muted/70",
+          "[a&]:hover:bg-warning-muted/80",
         ],
 
         "warning-tron": [

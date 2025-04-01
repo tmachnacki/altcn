@@ -17,7 +17,7 @@ const inputOTPSlotVariants = cva(
     variants: {
       variant: {
         default: [
-          "-ml-px bg-background text-foreground shadow-xs inset-ring-1 inset-ring-border not-aria-invalid:group-not-has-disabled/input-otp:group-not-focus-within/input-otp:group-hover/input-otp:inset-ring-border-hover first:-ml-0 first:rounded-l-md last:rounded-r-md dark:bg-faded",
+          "-ml-px bg-background text-foreground shadow-xs inset-ring inset-ring-border not-aria-invalid:group-not-has-disabled/input-otp:group-not-focus-within/input-otp:group-hover/input-otp:inset-ring-border-hover first:-ml-0 first:rounded-l-md last:rounded-r-md dark:bg-faded",
           "data-[placeholder=true]:text-muted-foreground",
           "aria-invalid:inset-ring-destructive aria-invalid:outline-destructive dark:aria-invalid:bg-destructive-faded",
           "data-[active=true]:outline-2 data-[active=true]:-outline-offset-2 data-[active=true]:outline-primary",
@@ -25,11 +25,15 @@ const inputOTPSlotVariants = cva(
         ],
 
         muted: [
-          "border-r border-border bg-muted text-accent-foreground not-aria-invalid:group-not-has-disabled/input-otp:group-not-focus-within/input-otp:group-hover/input-otp:bg-accent first:rounded-l-md last:rounded-r-md last:border-r-0",
+          "-ml-px bg-muted text-accent-foreground not-aria-invalid:group-not-has-disabled/input-otp:group-not-focus-within/input-otp:group-hover/input-otp:bg-accent first:ml-0 first:rounded-l-md last:rounded-r-md",
+
+          "[--shadow-border:var(--color-border)] aria-invalid:[--shadow-border:var(--color-border-destructive-faded)]",
+          "shadow-[inset_1px_0_0_0_var(--shadow-border),inset_-1px_0_0_0_var(--shadow-border)] first:shadow-[inset_-1px_0_0_0_var(--shadow-border)] last:shadow-[inset_1px_0_0_0_var(--shadow-border)]",
+
           "data-[placeholder=true]:text-muted-foreground",
-          "data-[active=true]:border-transparent data-[active=true]:outline-2 data-[active=true]:-outline-offset-2 data-[active=true]:outline-primary",
-          "aria-invalid:border-border-destructive-faded aria-invalid:bg-destructive-muted/70 aria-invalid:text-destructive-accent-foreground aria-invalid:group-not-focus-within/input-otp:group-hover/input-otp:bg-destructive-muted aria-invalid:data-[active=true]:outline-destructive",
-          "data-[split=true]:rounded-md data-[split=true]:border-none",
+          "data-[active=true]:outline-2 data-[active=true]:-outline-offset-2 data-[active=true]:outline-primary",
+          "aria-invalid:bg-destructive-muted/80 aria-invalid:text-destructive-accent-foreground aria-invalid:group-not-focus-within/input-otp:group-hover/input-otp:bg-destructive-muted aria-invalid:data-[active=true]:outline-destructive",
+          "data-[split=true]:ml-0 data-[split=true]:rounded-md data-[split=true]:shadow-none",
         ],
 
         underlined: [
@@ -40,19 +44,27 @@ const inputOTPSlotVariants = cva(
         ],
 
         primary: [
-          "border-r border-border-primary-faded bg-primary-faded text-accent-foreground not-aria-invalid:group-not-has-disabled/input-otp:group-not-focus-within/input-otp:group-hover/input-otp:bg-primary-muted first:rounded-l-md last:rounded-r-md last:border-r-0",
+          "-ml-px bg-primary-faded text-primary-accent-foreground not-aria-invalid:group-not-has-disabled/input-otp:group-not-focus-within/input-otp:group-hover/input-otp:bg-primary-muted/80 first:ml-0 first:rounded-l-md last:rounded-r-md",
+
+          "[--shadow-border:var(--color-border-primary-faded)] aria-invalid:[--shadow-border:var(--color-border-destructive-faded)]",
+          "shadow-[inset_1px_0_0_0_var(--shadow-border),inset_-1px_0_0_0_var(--shadow-border)] first:shadow-[inset_-1px_0_0_0_var(--shadow-border)] last:shadow-[inset_1px_0_0_0_var(--shadow-border)]",
+
           "data-[placeholder=true]:text-primary-muted-foreground",
-          "data-[active=true]:border-transparent data-[active=true]:outline-2 data-[active=true]:-outline-offset-2 data-[active=true]:outline-primary",
-          "aria-invalid:border-border-destructive-faded aria-invalid:bg-destructive-muted/70 aria-invalid:text-destructive-accent-foreground aria-invalid:group-not-focus-within/input-otp:group-hover/input-otp:bg-destructive-muted aria-invalid:data-[active=true]:outline-destructive",
-          "data-[split=true]:rounded-md data-[split=true]:border-none",
+          "data-[active=true]:outline-2 data-[active=true]:-outline-offset-2 data-[active=true]:outline-primary",
+          "aria-invalid:bg-destructive-faded aria-invalid:text-destructive-accent-foreground aria-invalid:group-not-focus-within/input-otp:group-hover/input-otp:bg-destructive-muted/80 aria-invalid:data-[active=true]:outline-destructive",
+          "data-[split=true]:ml-0 data-[split=true]:rounded-md data-[split=true]:shadow-none",
         ],
 
         secondary: [
-          "border-r border-border-secondary-faded bg-secondary-faded text-accent-foreground not-aria-invalid:group-not-has-disabled/input-otp:group-not-focus-within/input-otp:group-hover/input-otp:bg-secondary-muted first:rounded-l-md last:rounded-r-md last:border-r-0",
+          "-ml-px bg-secondary-faded text-secondary-accent-foreground not-aria-invalid:group-not-has-disabled/input-otp:group-not-focus-within/input-otp:group-hover/input-otp:bg-secondary-muted/80 first:ml-0 first:rounded-l-md last:rounded-r-md",
+
+          "[--shadow-border:var(--color-border-secondary-faded)] aria-invalid:[--shadow-border:var(--color-border-destructive-faded)]",
+          "shadow-[inset_1px_0_0_0_var(--shadow-border),inset_-1px_0_0_0_var(--shadow-border)] first:shadow-[inset_-1px_0_0_0_var(--shadow-border)] last:shadow-[inset_1px_0_0_0_var(--shadow-border)]",
+
           "data-[placeholder=true]:text-secondary-muted-foreground",
-          "data-[active=true]:border-transparent data-[active=true]:outline-2 data-[active=true]:-outline-offset-2 data-[active=true]:outline-secondary",
-          "aria-invalid:border-border-destructive-faded aria-invalid:bg-destructive-muted/70 aria-invalid:text-destructive-accent-foreground aria-invalid:group-not-focus-within/input-otp:group-hover/input-otp:bg-destructive-muted aria-invalid:data-[active=true]:outline-destructive",
-          "data-[split=true]:rounded-md data-[split=true]:border-none",
+          "data-[active=true]:outline-2 data-[active=true]:-outline-offset-2 data-[active=true]:outline-secondary",
+          "aria-invalid:bg-destructive-faded aria-invalid:text-destructive-accent-foreground aria-invalid:group-not-focus-within/input-otp:group-hover/input-otp:bg-destructive-muted/80 aria-invalid:data-[active=true]:outline-destructive",
+          "data-[split=true]:ml-0 data-[split=true]:rounded-md data-[split=true]:shadow-none",
         ],
       },
     },
@@ -129,7 +141,7 @@ function InputOTPSlot({
       className={cn(inputOTPSlotVariants({ variant }), className)}
       {...props}
     >
-      {placeholderChar || char}
+      {(!isActive && placeholderChar) || char}
       {hasFakeCaret && (
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
           <div className="h-4 w-px animate-caret-blink bg-foreground duration-1000" />

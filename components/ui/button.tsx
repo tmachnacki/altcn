@@ -115,12 +115,12 @@ const buttonVariants = cva(
 
         "secondary-surface": [
           "border border-border-secondary-faded bg-secondary-faded text-secondary-accent-foreground shadow-xs",
-          "hover:bg-secondary-muted/70",
+          "hover:bg-secondary-muted/80",
         ],
 
         "secondary-faded": [
           "border border-border-secondary-faded bg-secondary-faded text-secondary-muted-foreground shadow-xs",
-          "hover:bg-secondary-muted/70",
+          "hover:bg-secondary-muted/80",
         ],
 
         "secondary-tron": [
@@ -162,12 +162,12 @@ const buttonVariants = cva(
 
         "destructive-surface": [
           "border border-border-destructive-faded bg-destructive-faded text-destructive-accent-foreground shadow-xs",
-          "hover:bg-destructive-muted/70",
+          "hover:bg-destructive-muted/80",
         ],
 
         "destructive-faded": [
           "border border-border-destructive-faded bg-destructive-faded text-destructive-muted-foreground shadow-xs",
-          "hover:bg-destructive-muted/70",
+          "hover:bg-destructive-muted/80",
         ],
 
         "destructive-tron": [
