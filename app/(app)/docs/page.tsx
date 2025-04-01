@@ -24,6 +24,7 @@ import { SkeletonDemo } from "@/components/demos/skeleton.demo";
 import { SliderDemo } from "@/components/demos/slider.demo";
 import { SonnerDemo } from "@/components/demos/sonner.demo";
 import { SwitchDemo } from "@/components/demos/switch.demo";
+import { TabsDemo } from "@/components/demos/tabs.demo";
 
 const COMPONENTS = [
   {
@@ -145,6 +146,11 @@ const COMPONENTS = [
     title: "Switch",
     id: "switch",
     component: <SwitchDemo />,
+  },
+  {
+    title: "Tabs",
+    id: "tabs",
+    component: <TabsDemo />,
   },
 ];
 

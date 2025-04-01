@@ -32,7 +32,7 @@ export function SelectDemo() {
   const triggerVariants = [
     "default",
     "muted",
-    "underline",
+    "underlined",
     "primary",
     "secondary",
   ] as const;
