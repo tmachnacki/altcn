@@ -6,6 +6,72 @@ import * as TabsPrimitive from "@radix-ui/react-tabs";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
+const tabsListVariants = cva(
+  "inline-flex h-fit w-fit flex-nowrap items-center justify-center p-[var(--tabs-list-padding)] text-muted-foreground [--tabs-list-padding:--spacing(1)]",
+  {
+    variants: {
+      variant: {
+        default: "rounded-lg bg-muted dark:bg-accent",
+        underlined: "rounded-none border-b border-border bg-transparent px-0",
+        ghost: "rounded-lg bg-transparent",
+        bordered: "rounded-lg border border-border bg-transparent",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+    },
+  },
+);
+
+const tabsTriggerVariants = cva(
+  [
+    "relative isolate inline-flex h-8 flex-1 items-center justify-center gap-1.5 rounded-md px-2.5 py-1 text-sm font-medium whitespace-nowrap text-muted-foreground select-none not-disabled:data-[state=inactive]:hover:text-subtle-foreground",
+    "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+    "disabled:cursor-not-allowed disabled:opacity-50",
+    "outline-0 outline-offset-2 focus-visible:z-10 focus-visible:outline-2",
+  ],
+  {
+    variants: {
+      variant: {
+        default:
+          "data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm dark:data-[state=active]:bg-base-700",
+
+        base: "data-[state=active]:bg-base-600 data-[state=active]:text-white data-[state=active]:shadow-sm",
+
+        accent:
+          "data-[state=active]:bg-accent data-[state=active]:text-accent-foreground",
+
+        underlined:
+          "rounded-none before:absolute before:inset-x-0 before:-bottom-[var(--tabs-list-padding)] before:h-[2px] before:w-full before:bg-transparent before:content-[''] data-[state=active]:text-foreground data-[state=active]:before:bg-foreground not-disabled:data-[state=inactive]:hover:before:bg-base-200 dark:not-disabled:data-[state=inactive]:hover:before:bg-base-800",
+
+        ghost: "data-[state=active]:text-foreground",
+
+        primary:
+          "focus-visible:outline-primary data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-sm",
+
+        "primary-muted":
+          "focus-visible:outline-primary data-[state=active]:bg-primary-muted data-[state=active]:text-primary-muted-foreground",
+
+        "primary-underlined":
+          "rounded-none before:absolute before:inset-x-0 before:-bottom-[var(--tabs-list-padding)] before:h-[2px] before:w-full before:bg-transparent before:content-[''] focus-visible:outline-primary data-[state=active]:text-primary data-[state=active]:before:bg-primary not-disabled:data-[state=inactive]:hover:before:bg-base-200 dark:not-disabled:data-[state=inactive]:hover:before:bg-base-800",
+
+        "primary-ghost":
+          "focus-visible:outline-primary data-[state=active]:text-primary",
+
+        secondary:
+          "data-[state=active]:bg-secondary data-[state=active]:text-secondary-foreground data-[state=active]:shadow-sm",
+
+        "secondary-muted": "",
+        "secondary-underlined": "",
+        "secondary-ghost": "",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+    },
+  },
+);
+
 function Tabs({
   className,
   ...props
@@ -21,15 +87,14 @@ function Tabs({
 
 function TabsList({
   className,
+  variant = "default",
   ...props
-}: React.ComponentProps<typeof TabsPrimitive.List>) {
+}: React.ComponentProps<typeof TabsPrimitive.List> &
+  VariantProps<typeof tabsListVariants>) {
   return (
     <TabsPrimitive.List
       data-slot="tabs-list"
-      className={cn(
-        "inline-flex h-9 w-fit items-center justify-center rounded-lg bg-muted dark:bg-accent p-[3px] text-muted-foreground",
-        className,
-      )}
+      className={cn(tabsListVariants({ variant }), className)}
       {...props}
     />
   );
@@ -37,15 +102,14 @@ function TabsList({
 
 function TabsTrigger({
   className,
+  variant = "default",
   ...props
-}: React.ComponentProps<typeof TabsPrimitive.Trigger>) {
+}: React.ComponentProps<typeof TabsPrimitive.Trigger> &
+  VariantProps<typeof tabsTriggerVariants>) {
   return (
     <TabsPrimitive.Trigger
       data-slot="tabs-trigger"
-      className={cn(
-        "inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center gap-1.5 rounded-md px-2 py-1 text-sm font-medium whitespace-nowrap text-subtle-foreground outline-offset-2 select-none focus-visible:outline-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:shadow-sm dark:data-[state=active]:bg-base-700 data-[state=active]:text-accent-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
-        className,
-      )}
+      className={cn(tabsTriggerVariants({ variant }), className)}
       {...props}
     />
   );

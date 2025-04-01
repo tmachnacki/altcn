@@ -1,5 +1,11 @@
 import { ComponentContainer } from "@/components/demos/component-container";
-import { AppWindowIcon, CodeIcon } from "lucide-react";
+import {
+  ImageIcon,
+  MusicIcon,
+  PodcastIcon,
+  FilmIcon,
+  BanIcon,
+} from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -33,17 +39,18 @@ export function TabsDemo() {
                 </CardDescription>
               </CardHeader>
               <CardContent className="grid gap-6">
-                <div className="grid gap-3">
+                <div className="grid gap-2">
                   <Label htmlFor="tabs-demo-name">Name</Label>
-                  <Input id="tabs-demo-name" defaultValue="Pedro Duarte" variant={"primary"} />
+                  <Input id="tabs-demo-name" defaultValue="Pedro Duarte" />
                 </div>
-                <div className="grid gap-3">
+                <div className="grid gap-2">
                   <Label htmlFor="tabs-demo-username">Username</Label>
-                  <Input id="tabs-demo-username" defaultValue="@peduarte" variant={"primary"} />
+                  <Input id="tabs-demo-username" defaultValue="@peduarte" />
                 </div>
               </CardContent>
-              <CardFooter>
-                <Button>Save changes</Button>
+              <CardFooter className="justify-end gap-2">
+                <Button variant={"primary-faded"}>Cancel</Button>
+                <Button variant={"primary-shadow"}>Save changes</Button>
               </CardFooter>
             </Card>
           </TabsContent>
@@ -57,17 +64,18 @@ export function TabsDemo() {
                 </CardDescription>
               </CardHeader>
               <CardContent className="grid gap-6">
-                <div className="grid gap-3">
+                <div className="grid gap-2">
                   <Label htmlFor="tabs-demo-current">Current password</Label>
-                  <Input id="tabs-demo-current" type="password" variant={"primary"} />
+                  <Input id="tabs-demo-current" type="password" />
                 </div>
-                <div className="grid gap-3">
+                <div className="grid gap-2">
                   <Label htmlFor="tabs-demo-new">New password</Label>
-                  <Input id="tabs-demo-new" type="password" variant={"primary"} />
+                  <Input id="tabs-demo-new" type="password" />
                 </div>
               </CardContent>
-              <CardFooter>
-                <Button>Save password</Button>
+              <CardFooter className="justify-end gap-2">
+                <Button variant={"primary-faded"}>Cancel</Button>
+                <Button variant={"primary-shadow"}>Save password</Button>
               </CardFooter>
             </Card>
           </TabsContent>
@@ -86,15 +94,28 @@ export function TabsDemo() {
             </TabsTrigger>
           </TabsList>
         </Tabs>
-        <Tabs defaultValue="preview">
-          <TabsList>
-            <TabsTrigger value="preview">
-              <AppWindowIcon />
-              Preview
+
+        <Tabs defaultValue="music" className="w-full max-w-xl">
+          <TabsList variant={"underlined"} className="grid w-full grid-cols-5">
+            <TabsTrigger value="music" variant="primary-underlined">
+              <MusicIcon />
+              Music
             </TabsTrigger>
-            <TabsTrigger value="code">
-              <CodeIcon />
-              Code
+            <TabsTrigger value="podcasts" variant="primary-underlined">
+              <PodcastIcon />
+              Podcasts
+            </TabsTrigger>
+            <TabsTrigger value="photos" variant="primary-underlined">
+              <ImageIcon />
+              Photos
+            </TabsTrigger>
+            <TabsTrigger value="videos" variant="primary-underlined">
+              <FilmIcon />
+              Videos
+            </TabsTrigger>
+            <TabsTrigger value="onlyfans" variant="primary-underlined" disabled>
+              <BanIcon />
+              OnlyFans
             </TabsTrigger>
           </TabsList>
         </Tabs>

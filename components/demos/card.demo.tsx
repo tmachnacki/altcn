@@ -33,6 +33,7 @@ export function CardDemo() {
                   type="email"
                   placeholder="someone@example.com"
                   required
+                  variant={"primary"}
                 />
               </div>
               <div className="grid gap-2">
@@ -40,7 +41,7 @@ export function CardDemo() {
                   <Label htmlFor="password">Password</Label>
                   <a
                     href="#card"
-                    className="ml-auto inline-block text-sm text-primary-muted-foreground underline-offset-4 hover:text-primary-accent-foreground hover:underline"
+                    className="ml-auto inline-block text-sm text-primary-muted-foreground underline-offset-4 hover:underline"
                   >
                     Forgot password?
                   </a>
@@ -50,13 +51,14 @@ export function CardDemo() {
                   type="password"
                   placeholder="********"
                   required
+                  variant={"primary"}
                 />
               </div>
             </div>
           </form>
         </CardContent>
         <CardFooter className="flex items-center justify-end gap-2">
-          <Button variant="primary-muted" type="button">
+          <Button variant="accent" type="button">
             Create an account
           </Button>
           <Button variant="primary" type="submit">
@@ -122,7 +124,7 @@ export function CardDemo() {
 
       <Card
         asChild
-        className="group/card w-full max-w-sm hover:border-border-primary-faded hover:bg-primary-muted transition-colors"
+        className="group/card w-full max-w-sm transition-colors hover:border-border-primary-faded hover:bg-primary-muted"
       >
         <a href="#card">
           <CardContent className="flex items-center gap-3 px-4 py-3">
@@ -135,18 +137,15 @@ export function CardDemo() {
             </Avatar>
 
             <div className="flex flex-col">
-              <p className="text-base font-medium group-hover/card:text-primary-accent-foreground transition-colors">
+              <p className="text-base font-medium transition-colors group-hover/card:text-primary-accent-foreground">
                 Tim Machnacki
               </p>
-              <p className="text-sm text-muted-foreground group-hover/card:text-primary-muted-foreground transition-colors">
+              <p className="text-sm text-muted-foreground transition-colors group-hover/card:text-primary-muted-foreground">
                 Frontend Engineer
               </p>
             </div>
 
-            <Button
-              variant="primary"
-              className="ml-auto transition-colors"
-            >
+            <Button variant="primary" className="ml-auto transition-colors">
               Message
             </Button>
           </CardContent>
