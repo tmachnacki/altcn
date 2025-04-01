@@ -54,16 +54,16 @@ const selectTriggerVariants = cva(
 
         // -- primary --
         primary: [
-          "bg-primary-faded text-primary-accent-foreground -outline-offset-1 hover:not-disabled:not-aria-invalid:not-focus-visible:bg-primary-muted/80 data-[placeholder]:text-primary-muted-foreground *:data-[slot=select-trigger-icon]:text-primary-accent-foreground [&_svg:not([class*='text-'])]:text-primary-muted-foreground",
+          "bg-primary-muted/80 text-primary-accent-foreground -outline-offset-1 hover:not-disabled:not-aria-invalid:not-focus-visible:bg-primary-muted data-[placeholder]:text-primary-muted-foreground *:data-[slot=select-trigger-icon]:text-primary-accent-foreground [&_svg:not([class*='text-'])]:text-primary-muted-foreground",
           "focus-visible:outline-2 focus-visible:outline-primary",
-          "aria-invalid:bg-destructive-faded aria-invalid:text-destructive-accent-foreground aria-invalid:outline-destructive aria-invalid:hover:not-disabled:not-focus-visible:bg-destructive-muted/80 aria-invalid:data-[placeholder]:text-destructive-muted-foreground aria-invalid:*:data-[slot=select-trigger-icon]:text-destructive-accent-foreground aria-invalid:[&_svg:not([class*='text-'])]:text-destructive-muted-foreground",
+          "aria-invalid:bg-destructive-muted/80 aria-invalid:text-destructive-accent-foreground aria-invalid:outline-destructive aria-invalid:hover:not-disabled:not-focus-visible:bg-destructive-muted aria-invalid:data-[placeholder]:text-destructive-muted-foreground aria-invalid:*:data-[slot=select-trigger-icon]:text-destructive-accent-foreground aria-invalid:[&_svg:not([class*='text-'])]:text-destructive-muted-foreground",
         ],
 
         // -- secondary --
         secondary: [
-          "bg-secondary-faded text-secondary-accent-foreground -outline-offset-1 hover:not-disabled:not-aria-invalid:not-focus-visible:bg-secondary-muted/80 data-[placeholder]:text-secondary-muted-foreground *:data-[slot=select-trigger-icon]:text-secondary-accent-foreground [&_svg:not([class*='text-'])]:text-secondary-muted-foreground",
+          "bg-secondary-muted/80 text-secondary-accent-foreground -outline-offset-1 hover:not-disabled:not-aria-invalid:not-focus-visible:bg-secondary-muted data-[placeholder]:text-secondary-muted-foreground *:data-[slot=select-trigger-icon]:text-secondary-accent-foreground [&_svg:not([class*='text-'])]:text-secondary-muted-foreground",
           "focus-visible:outline-2 focus-visible:outline-secondary",
-          "aria-invalid:bg-destructive-faded aria-invalid:text-destructive-accent-foreground aria-invalid:outline-destructive aria-invalid:hover:not-disabled:not-focus-visible:bg-destructive-muted/80 aria-invalid:data-[placeholder]:text-destructive-muted-foreground aria-invalid:*:data-[slot=select-trigger-icon]:text-destructive-accent-foreground aria-invalid:[&_svg:not([class*='text-'])]:text-destructive-muted-foreground",
+          "aria-invalid:bg-destructive-muted/80 aria-invalid:text-destructive-accent-foreground aria-invalid:outline-destructive aria-invalid:hover:not-disabled:not-focus-visible:bg-destructive-muted aria-invalid:data-[placeholder]:text-destructive-muted-foreground aria-invalid:*:data-[slot=select-trigger-icon]:text-destructive-accent-foreground aria-invalid:[&_svg:not([class*='text-'])]:text-destructive-muted-foreground",
         ],
       },
       size: {

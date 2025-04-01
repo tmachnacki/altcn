@@ -43,21 +43,21 @@ const inputVariants = cva(
 
         // -- primary --
         primary: [
-          "bg-primary-faded text-primary-accent-foreground -outline-offset-1 hover:not-focus-visible:bg-primary-muted/80",
+          "bg-primary-muted/80 text-primary-accent-foreground -outline-offset-1 hover:not-focus-visible:bg-primary-muted",
           "file:text-primary-accent-foreground",
           "placeholder:text-primary-muted-foreground",
           "focus-visible:outline-2 focus-visible:outline-primary",
-          "aria-invalid:bg-destructive-faded aria-invalid:not-focus-visible:hover:bg-destructive-muted/80 aria-invalid:focus-visible:outline-destructive",
+          "aria-invalid:bg-destructive-muted/80 aria-invalid:not-focus-visible:hover:bg-destructive-muted aria-invalid:focus-visible:outline-destructive",
         ],
 
         // -- secondary --
         secondary: [
-          "bg-secondary-faded text-secondary-accent-foreground -outline-offset-1 hover:not-focus-visible:bg-secondary-muted/80",
+          "bg-secondary-muted/80 text-secondary-accent-foreground -outline-offset-1 hover:not-focus-visible:bg-secondary-muted",
           "selection:bg-secondary selection:text-secondary-foreground",
           "file:text-secondary-accent-foreground",
           "placeholder:text-secondary-muted-foreground",
           "focus-visible:outline-2 focus-visible:outline-secondary",
-          "aria-invalid:bg-destructive-faded aria-invalid:not-focus-visible:hover:bg-destructive-muted/80 aria-invalid:focus-visible:outline-destructive",
+          "aria-invalid:bg-destructive-muted/80 aria-invalid:not-focus-visible:hover:bg-destructive-muted aria-invalid:focus-visible:outline-destructive",
         ],
       },
     },

@@ -44,26 +44,26 @@ const inputOTPSlotVariants = cva(
         ],
 
         primary: [
-          "-ml-px bg-primary-faded text-primary-accent-foreground not-aria-invalid:group-not-has-disabled/input-otp:group-not-focus-within/input-otp:group-hover/input-otp:bg-primary-muted/80 first:ml-0 first:rounded-l-md last:rounded-r-md",
+          "-ml-px bg-primary-muted/80 text-primary-accent-foreground not-aria-invalid:group-not-has-disabled/input-otp:group-not-focus-within/input-otp:group-hover/input-otp:bg-primary-muted first:ml-0 first:rounded-l-md last:rounded-r-md",
 
           "[--shadow-border:var(--color-border-primary-faded)] aria-invalid:[--shadow-border:var(--color-border-destructive-faded)]",
           "shadow-[inset_1px_0_0_0_var(--shadow-border),inset_-1px_0_0_0_var(--shadow-border)] first:shadow-[inset_-1px_0_0_0_var(--shadow-border)] last:shadow-[inset_1px_0_0_0_var(--shadow-border)]",
 
           "data-[placeholder=true]:text-primary-muted-foreground",
           "data-[active=true]:outline-2 data-[active=true]:-outline-offset-2 data-[active=true]:outline-primary",
-          "aria-invalid:bg-destructive-faded aria-invalid:text-destructive-accent-foreground aria-invalid:group-not-focus-within/input-otp:group-hover/input-otp:bg-destructive-muted/80 aria-invalid:data-[active=true]:outline-destructive",
+          "aria-invalid:bg-destructive-muted/80 aria-invalid:text-destructive-accent-foreground aria-invalid:group-not-focus-within/input-otp:group-hover/input-otp:bg-destructive-muted aria-invalid:data-[active=true]:outline-destructive",
           "data-[split=true]:ml-0 data-[split=true]:rounded-md data-[split=true]:shadow-none",
         ],
 
         secondary: [
-          "-ml-px bg-secondary-faded text-secondary-accent-foreground not-aria-invalid:group-not-has-disabled/input-otp:group-not-focus-within/input-otp:group-hover/input-otp:bg-secondary-muted/80 first:ml-0 first:rounded-l-md last:rounded-r-md",
+          "-ml-px bg-secondary-muted/80 text-secondary-accent-foreground not-aria-invalid:group-not-has-disabled/input-otp:group-not-focus-within/input-otp:group-hover/input-otp:bg-secondary-muted first:ml-0 first:rounded-l-md last:rounded-r-md",
 
           "[--shadow-border:var(--color-border-secondary-faded)] aria-invalid:[--shadow-border:var(--color-border-destructive-faded)]",
           "shadow-[inset_1px_0_0_0_var(--shadow-border),inset_-1px_0_0_0_var(--shadow-border)] first:shadow-[inset_-1px_0_0_0_var(--shadow-border)] last:shadow-[inset_1px_0_0_0_var(--shadow-border)]",
 
           "data-[placeholder=true]:text-secondary-muted-foreground",
           "data-[active=true]:outline-2 data-[active=true]:-outline-offset-2 data-[active=true]:outline-secondary",
-          "aria-invalid:bg-destructive-faded aria-invalid:text-destructive-accent-foreground aria-invalid:group-not-focus-within/input-otp:group-hover/input-otp:bg-destructive-muted/80 aria-invalid:data-[active=true]:outline-destructive",
+          "aria-invalid:bg-destructive-muted/80 aria-invalid:text-destructive-accent-foreground aria-invalid:group-not-focus-within/input-otp:group-hover/input-otp:bg-destructive-muted aria-invalid:data-[active=true]:outline-destructive",
           "data-[split=true]:ml-0 data-[split=true]:rounded-md data-[split=true]:shadow-none",
         ],
       },
