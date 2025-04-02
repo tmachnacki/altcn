@@ -4,6 +4,7 @@ import * as React from "react";
 import * as ContextMenuPrimitive from "@radix-ui/react-context-menu";
 import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-react";
 import {
+  type MenuItemsVariantsContextType,
   menuItemVariants,
   menuItemIndicatorVariants,
 } from "@/components/ui/dropdown-menu";
@@ -74,7 +75,7 @@ function ContextMenuSubTrigger({
   ...props
 }: ContextMenuSubTriggerProps) {
   const { variant: variantFromContext, wide: wideFromContext } =
-    React.useContext(ContextMenuVariantsContext);
+    React.useContext(ContextMenuItemsVariantsContext);
   const variant = variantOverride ?? variantFromContext;
   const wide = wideOverride ?? wideFromContext;
   return (
@@ -111,14 +112,12 @@ function ContextMenuSubContent({
   );
 }
 
-const ContextMenuVariantsContext = React.createContext<
-  VariantProps<typeof menuItemVariants> &
-    VariantProps<typeof menuItemIndicatorVariants>
->({
-  variant: "accent",
-  wide: false,
-  indicatorVariant: "default",
-});
+const ContextMenuItemsVariantsContext =
+  React.createContext<MenuItemsVariantsContextType>({
+    variant: "accent",
+    wide: undefined,
+    indicatorVariant: "default",
+  });
 
 function ContextMenuContent({
   className,
@@ -127,10 +126,9 @@ function ContextMenuContent({
   indicatorVariant = "default",
   ...props
 }: React.ComponentProps<typeof ContextMenuPrimitive.Content> &
-  VariantProps<typeof menuItemVariants> &
-  VariantProps<typeof menuItemIndicatorVariants>) {
+  MenuItemsVariantsContextType) {
   return (
-    <ContextMenuVariantsContext.Provider
+    <ContextMenuItemsVariantsContext.Provider
       value={{ variant, wide, indicatorVariant }}
     >
       <ContextMenuPrimitive.Portal>
@@ -144,7 +142,7 @@ function ContextMenuContent({
           {...props}
         />
       </ContextMenuPrimitive.Portal>
-    </ContextMenuVariantsContext.Provider>
+    </ContextMenuItemsVariantsContext.Provider>
   );
 }
 
@@ -163,7 +161,7 @@ function ContextMenuItem({
   ...props
 }: ContextMenuItemProps) {
   const { variant: variantFromContext, wide: wideFromContext } =
-    React.useContext(ContextMenuVariantsContext);
+    React.useContext(ContextMenuItemsVariantsContext);
   const variant = variantOverride ?? variantFromContext;
   const wide = wideOverride ?? wideFromContext;
   return (
@@ -181,8 +179,7 @@ function ContextMenuItem({
 type ContextMenuCheckboxItemProps = React.ComponentProps<
   typeof ContextMenuPrimitive.CheckboxItem
 > &
-  VariantProps<typeof menuItemVariants> &
-  VariantProps<typeof menuItemIndicatorVariants> & {
+  MenuItemsVariantsContextType & {
     indicatorClassName?: string;
   };
 
@@ -200,7 +197,7 @@ function ContextMenuCheckboxItem({
     variant: variantFromContext,
     wide: wideFromContext,
     indicatorVariant: indicatorVariantFromContext,
-  } = React.useContext(ContextMenuVariantsContext);
+  } = React.useContext(ContextMenuItemsVariantsContext);
   const variant = variantOverride ?? variantFromContext;
   const wide = wideOverride ?? wideFromContext;
   const indicatorVariant =
@@ -222,7 +219,7 @@ function ContextMenuCheckboxItem({
         data-wide={wide}
         data-item-variant={variant}
         className={cn(
-          menuItemIndicatorVariants({ indicatorVariant }),
+          menuItemIndicatorVariants({ variant: indicatorVariant }),
           indicatorClassName,
         )}
       >
@@ -236,8 +233,7 @@ function ContextMenuCheckboxItem({
 type ContextMenuRadioItemProps = React.ComponentProps<
   typeof ContextMenuPrimitive.RadioItem
 > &
-  VariantProps<typeof menuItemVariants> &
-  VariantProps<typeof menuItemIndicatorVariants> & {
+  MenuItemsVariantsContextType & {
     indicatorClassName?: string;
   };
 
@@ -254,11 +250,12 @@ function ContextMenuRadioItem({
     variant: variantFromContext,
     wide: wideFromContext,
     indicatorVariant: indicatorVariantFromContext,
-  } = React.useContext(ContextMenuVariantsContext);
+  } = React.useContext(ContextMenuItemsVariantsContext);
   const variant = variantOverride ?? variantFromContext;
   const wide = wideOverride ?? wideFromContext;
   const indicatorVariant =
     indicatorVariantOverride ?? indicatorVariantFromContext;
+
   return (
     <ContextMenuPrimitive.RadioItem
       data-slot="context-menu-radio-item"
@@ -274,7 +271,7 @@ function ContextMenuRadioItem({
         data-wide={wide}
         data-item-variant={variant}
         className={cn(
-          menuItemIndicatorVariants({ indicatorVariant }),
+          menuItemIndicatorVariants({ variant: indicatorVariant }),
           indicatorClassName,
         )}
       >

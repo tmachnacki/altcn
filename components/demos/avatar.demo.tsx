@@ -1,6 +1,26 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export function AvatarDemo() {
+  const avatarFallbackVariants = [
+    "default",
+    "outline",
+    "base",
+    "accent",
+    "muted",
+    "surface",
+    "faded",
+    "primary",
+    "primary-accent",
+    "primary-muted",
+    "primary-surface",
+    "primary-faded",
+    "secondary",
+    "secondary-accent",
+    "secondary-muted",
+    "secondary-surface",
+    "secondary-faded",
+  ] as const;
+
   return (
     <div className="flex h-full w-full flex-1 flex-col gap-8">
       <div className="flex flex-wrap items-center gap-4">
@@ -91,41 +111,11 @@ export function AvatarDemo() {
       </div>
 
       <div className="flex flex-wrap items-center gap-4">
-        <Avatar>
-          <AvatarFallback></AvatarFallback>
-        </Avatar>
-
-        <Avatar>
-          <AvatarFallback variant="primary"></AvatarFallback>
-        </Avatar>
-        <Avatar>
-          <AvatarFallback variant="primary-accent"></AvatarFallback>
-        </Avatar>
-        <Avatar>
-          <AvatarFallback variant="primary-muted"></AvatarFallback>
-        </Avatar>
-        <Avatar>
-          <AvatarFallback variant="primary-surface"></AvatarFallback>
-        </Avatar>
-        <Avatar>
-          <AvatarFallback variant="primary-faded"></AvatarFallback>
-        </Avatar>
-
-        <Avatar>
-          <AvatarFallback variant="secondary"></AvatarFallback>
-        </Avatar>
-        <Avatar>
-          <AvatarFallback variant="secondary-accent"></AvatarFallback>
-        </Avatar>
-        <Avatar>
-          <AvatarFallback variant="secondary-muted"></AvatarFallback>
-        </Avatar>
-        <Avatar>
-          <AvatarFallback variant="secondary-surface"></AvatarFallback>
-        </Avatar>
-        <Avatar>
-          <AvatarFallback variant="secondary-faded"></AvatarFallback>
-        </Avatar>
+        {avatarFallbackVariants.map((variant) => (
+          <Avatar key={`avatar-fallback-${variant}`}>
+            <AvatarFallback variant={variant}></AvatarFallback>
+          </Avatar>
+        ))}
       </div>
     </div>
   );

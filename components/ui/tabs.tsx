@@ -34,6 +34,7 @@ const tabsTriggerVariants = cva(
   {
     variants: {
       variant: {
+        // -- base --
         default: [
           "data-[state=active]:bg-background data-[state=active]:text-foreground dark:data-[state=active]:bg-base-700",
           "data-[state=active]:shadow-[0_0_4px_0_rgba(0,0,0,0.04),0_2px_8px_0_rgba(0,0,0,0.06),0_0_2px_-1px_rgba(0,0,0,0.25)]",
@@ -57,6 +58,7 @@ const tabsTriggerVariants = cva(
 
         ghost: "data-[state=active]:text-foreground",
 
+        // -- primary --
         primary:
           "data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-sm",
 
@@ -82,6 +84,7 @@ const tabsTriggerVariants = cva(
           "data-[state=active]:*:data-[slot=tron-blur]:via-primary-tron-blur data-[state=active]:*:data-[slot=tron-wide]:via-primary",
         ],
 
+        // -- secondary --
         secondary:
           "data-[state=active]:bg-secondary data-[state=active]:text-secondary-foreground data-[state=active]:shadow-sm",
 
@@ -98,9 +101,10 @@ const tabsTriggerVariants = cva(
           "data-[state=active]:border data-[state=active]:border-border-secondary-faded data-[state=active]:bg-secondary-faded data-[state=active]:text-secondary-muted-foreground",
 
         "secondary-underlined":
-          "-outline-offset-2 data-[state=active]:text-secondary-500 data-[state=active]:*:data-[slot=tabs-trigger-underline]:border-secondary",
+          "-outline-offset-2 data-[state=active]:text-secondary-500 data-[state=active]:*:data-[slot=tabs-trigger-underline]:border-secondary dark:data-[state=active]:text-secondary",
 
-        "secondary-ghost": "data-[state=active]:text-secondary-500",
+        "secondary-ghost":
+          "data-[state=active]:text-secondary-500 dark:data-[state=active]:text-secondary",
 
         "secondary-tron": [
           "data-[state=active]:border data-[state=active]:border-secondary/30 data-[state=active]:bg-background data-[state=active]:bg-gradient-to-t data-[state=active]:from-secondary/15 data-[state=active]:to-transparent data-[state=active]:text-secondary-muted-foreground",

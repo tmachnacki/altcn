@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
 // TODO: maybe use visual-only inset span for wide+border variants to avoid negative margin issues
 const menuItemVariants = cva(
   [
-    "relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-[inset=true]:pl-8",
+    "relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-[inset]:pl-8",
     "data-[disabled]:pointer-events-none data-[disabled]:text-muted-foreground data-[disabled]:opacity-50",
     "[&_[data-slot*='-shortcut']]:text-muted-foreground data-[highlighted]:[&_[data-slot*='-shortcut']]:text-current",
     "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground data-[highlighted]:[&_svg:not([class*='text-'])]:text-current",
@@ -22,82 +22,65 @@ const menuItemVariants = cva(
         // -- base --
         accent: [
           "data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground",
-          "data-[state=open]:bg-accent data-[state=open]:text-accent-foreground", // for subtrigger
         ],
         surface: [
           "data-[highlighted]:bg-faded data-[highlighted]:text-accent-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-faded",
-          "data-[state=open]:bg-faded data-[state=open]:text-accent-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-border-faded",
         ],
 
         // -- primary --
         primary: [
           "data-[highlighted]:bg-primary data-[highlighted]:text-primary-foreground data-[highlighted]:[&_[data-slot*='-indicator'][data-variant='primary']]:text-current",
-          "data-[state=open]:bg-primary data-[state=open]:text-primary-foreground",
         ],
         "primary-accent": [
           "data-[highlighted]:bg-primary-muted data-[highlighted]:text-primary-accent-foreground",
-          "data-[state=open]:bg-primary-muted data-[state=open]:text-primary-accent-foreground",
         ],
         "primary-muted": [
           "data-[highlighted]:bg-primary-muted data-[highlighted]:text-primary-muted-foreground",
-          "data-[state=open]:bg-primary-muted data-[state=open]:text-primary-muted-foreground",
         ],
         "primary-surface": [
           "data-[highlighted]:bg-primary-faded data-[highlighted]:text-primary-accent-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-primary-faded",
-          "data-[state=open]:bg-primary-faded data-[state=open]:text-primary-accent-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-border-primary-faded",
         ],
         "primary-faded": [
           "data-[highlighted]:bg-primary-faded data-[highlighted]:text-primary-muted-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-primary-faded",
-          "data-[state=open]:bg-primary-faded data-[state=open]:text-primary-muted-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-border-primary-faded",
         ],
 
         // -- secondary --
         secondary: [
           "data-[highlighted]:bg-secondary data-[highlighted]:text-secondary-foreground data-[highlighted]:[&_[data-slot*='-indicator']]:text-current",
-          "data-[state=open]:bg-secondary data-[state=open]:text-secondary-foreground",
         ],
         "secondary-accent": [
           "data-[highlighted]:bg-secondary-muted data-[highlighted]:text-secondary-accent-foreground",
-          "data-[state=open]:bg-secondary-muted data-[state=open]:text-secondary-accent-foreground",
         ],
         "secondary-muted": [
           "data-[highlighted]:bg-secondary-muted data-[highlighted]:text-secondary-muted-foreground",
-          "data-[state=open]:bg-secondary-muted data-[state=open]:text-secondary-muted-foreground",
         ],
         "secondary-surface": [
           "data-[highlighted]:bg-secondary-faded data-[highlighted]:text-secondary-accent-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-secondary-faded",
-          "data-[state=open]:bg-secondary-faded data-[state=open]:text-secondary-accent-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-border-secondary-faded",
         ],
         "secondary-faded": [
           "data-[highlighted]:bg-secondary-faded data-[highlighted]:text-secondary-muted-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-secondary-faded",
-          "data-[state=open]:bg-secondary-faded data-[state=open]:text-secondary-muted-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-border-secondary-faded",
         ],
 
         // -- destructive --
         destructive: [
           "data-[highlighted]:bg-destructive data-[highlighted]:text-destructive-foreground data-[highlighted]:[&_[data-slot*='-indicator']]:text-current",
-          "data-[state=open]:bg-destructive data-[state=open]:text-destructive-foreground",
         ],
         "destructive-accent": [
           "data-[highlighted]:bg-destructive-muted data-[highlighted]:text-destructive-accent-foreground",
-          "data-[state=open]:bg-destructive-muted data-[state=open]:text-destructive-accent-foreground",
         ],
         "destructive-muted": [
           "data-[highlighted]:bg-destructive-muted data-[highlighted]:text-destructive-muted-foreground",
-          "data-[state=open]:bg-destructive-muted data-[state=open]:text-destructive-muted-foreground",
         ],
         "destructive-surface": [
           "data-[highlighted]:bg-destructive-faded data-[highlighted]:text-destructive-accent-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-destructive-faded",
-          "data-[state=open]:bg-destructive-faded data-[state=open]:text-destructive-accent-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-border-destructive-faded",
         ],
         "destructive-faded": [
           "data-[highlighted]:bg-destructive-faded data-[highlighted]:text-destructive-muted-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-destructive-faded",
-          "data-[state=open]:bg-destructive-faded data-[state=open]:text-destructive-muted-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-border-destructive-faded",
         ],
       },
       wide: {
         false: null,
-        true: "-mx-1 rounded-none px-3 data-[inset=true]:pl-9",
+        true: "-mx-1 rounded-none px-3 data-[inset]:pl-9",
       },
     },
     compoundVariants: [
@@ -113,7 +96,7 @@ const menuItemVariants = cva(
         ],
         wide: true,
         className:
-          "-mx-[calc(--spacing(1)+1px)] px-[calc(--spacing(3)+1px)] data-[inset=true]:pl-[calc(--spacing(9)+1px)]",
+          "-mx-[calc(--spacing(1)+1px)] px-[calc(--spacing(3)+1px)] data-[inset]:pl-[calc(--spacing(9)+1px)]",
       },
       {
         variant: [
@@ -159,27 +142,30 @@ function DropdownMenuTrigger({
   );
 }
 
-const DropdownMenuVariantsContext = React.createContext<
-  VariantProps<typeof menuItemVariants> &
-    VariantProps<typeof menuItemIndicatorVariants>
->({
-  variant: "accent",
-  wide: false,
-  indicatorVariant: "default",
-});
+type MenuItemsVariantsContextType = VariantProps<
+  typeof menuItemVariants
+> & {
+  indicatorVariant?: VariantProps<typeof menuItemIndicatorVariants>["variant"];
+};
+
+const DropdownMenuItemsVariantsContext =
+  React.createContext<MenuItemsVariantsContextType>({
+    variant: "accent",
+    wide: undefined,
+    indicatorVariant: "default",
+  });
 
 function DropdownMenuContent({
   className,
   sideOffset = 4,
   variant = "accent",
-  wide = false,
+  wide = undefined,
   indicatorVariant = "default",
   ...props
 }: React.ComponentProps<typeof DropdownMenuPrimitive.Content> &
-  VariantProps<typeof menuItemVariants> &
-  VariantProps<typeof menuItemIndicatorVariants>) {
+  MenuItemsVariantsContextType) {
   return (
-    <DropdownMenuVariantsContext.Provider
+    <DropdownMenuItemsVariantsContext.Provider
       value={{ variant, wide, indicatorVariant }}
     >
       <DropdownMenuPrimitive.Portal>
@@ -196,7 +182,7 @@ function DropdownMenuContent({
           {...props}
         />
       </DropdownMenuPrimitive.Portal>
-    </DropdownMenuVariantsContext.Provider>
+    </DropdownMenuItemsVariantsContext.Provider>
   );
 }
 
@@ -223,7 +209,7 @@ function DropdownMenuItem({
   ...props
 }: DropdownMenuItemProps) {
   const { variant: variantFromContext, wide: wideFromContext } =
-    React.useContext(DropdownMenuVariantsContext);
+    React.useContext(DropdownMenuItemsVariantsContext);
   const variant = variantOverride ?? variantFromContext;
   const wide = wideOverride ?? wideFromContext;
   return (
@@ -241,18 +227,18 @@ function DropdownMenuItem({
 const menuItemIndicatorVariants = cva(
   [
     "pointer-events-none absolute left-2 flex size-3.5 items-center justify-center",
-    "data-[wide=true]:left-3 data-[wide=true]:[data-item-variant*='faded']:left-[calc(--spacing(3)+1px)] data-[wide=true]:[data-item-variant*='surface']:left-[calc(--spacing(3)+1px)]",
+    "data-[wide]:left-3 data-[wide]:[data-item-variant*='faded']:left-[calc(--spacing(3)+1px)] data-[wide]:[data-item-variant*='surface']:left-[calc(--spacing(3)+1px)]",
   ],
   {
     variants: {
-      indicatorVariant: {
+      variant: {
         default: "text-accent-foreground",
         primary: "text-primary",
         secondary: "text-secondary",
         destructive: "text-destructive",
       },
       defaultVariants: {
-        indicatorVariant: "default",
+        variant: "default",
       },
     },
   },
@@ -261,8 +247,7 @@ const menuItemIndicatorVariants = cva(
 type DropdownMenuCheckboxItemProps = React.ComponentProps<
   typeof DropdownMenuPrimitive.CheckboxItem
 > &
-  VariantProps<typeof menuItemVariants> &
-  VariantProps<typeof menuItemIndicatorVariants> & {
+  MenuItemsVariantsContextType & {
     indicatorClassName?: string;
   };
 
@@ -280,7 +265,7 @@ function DropdownMenuCheckboxItem({
     variant: variantFromContext,
     wide: wideFromContext,
     indicatorVariant: indicatorVariantFromContext,
-  } = React.useContext(DropdownMenuVariantsContext);
+  } = React.useContext(DropdownMenuItemsVariantsContext);
   const variant = variantOverride ?? variantFromContext;
   const wide = wideOverride ?? wideFromContext;
   const indicatorVariant =
@@ -291,7 +276,7 @@ function DropdownMenuCheckboxItem({
       data-slot="dropdown-menu-checkbox-item"
       data-variant={variant}
       data-wide={wide}
-      data-inset={true}
+      data-inset
       className={cn(menuItemVariants({ variant, wide }), className)}
       checked={checked}
       {...props}
@@ -302,7 +287,7 @@ function DropdownMenuCheckboxItem({
         data-wide={wide}
         data-item-variant={variant}
         className={cn(
-          menuItemIndicatorVariants({ indicatorVariant }),
+          menuItemIndicatorVariants({ variant: indicatorVariant }),
           indicatorClassName,
         )}
       >
@@ -327,8 +312,7 @@ function DropdownMenuRadioGroup({
 type DropdownMenuRadioItemProps = React.ComponentProps<
   typeof DropdownMenuPrimitive.RadioItem
 > &
-  VariantProps<typeof menuItemVariants> &
-  VariantProps<typeof menuItemIndicatorVariants> & {
+  MenuItemsVariantsContextType & {
     indicatorClassName?: string;
   };
 
@@ -345,7 +329,7 @@ function DropdownMenuRadioItem({
     variant: variantFromContext,
     wide: wideFromContext,
     indicatorVariant: indicatorVariantFromContext,
-  } = React.useContext(DropdownMenuVariantsContext);
+  } = React.useContext(DropdownMenuItemsVariantsContext);
   const variant = variantOverride ?? variantFromContext;
   const wide = wideOverride ?? wideFromContext;
   const indicatorVariant =
@@ -355,7 +339,7 @@ function DropdownMenuRadioItem({
       data-slot="dropdown-menu-radio-item"
       data-variant={variant}
       data-wide={wide}
-      data-inset={true}
+      data-inset
       className={cn(menuItemVariants({ variant, wide }), className)}
       {...props}
     >
@@ -365,7 +349,7 @@ function DropdownMenuRadioItem({
         data-wide={wide}
         data-item-variant={variant}
         className={cn(
-          menuItemIndicatorVariants({ indicatorVariant }),
+          menuItemIndicatorVariants({ variant: indicatorVariant }),
           indicatorClassName,
         )}
       >
@@ -444,7 +428,7 @@ function DropdownMenuSubTrigger({
   ...props
 }: DropdownMenuSubTriggerProps) {
   const { variant: variantFromContext, wide: wideFromContext } =
-    React.useContext(DropdownMenuVariantsContext);
+    React.useContext(DropdownMenuItemsVariantsContext);
   const variant = variantOverride ?? variantFromContext;
   const wide = wideOverride ?? wideFromContext;
 
@@ -454,7 +438,11 @@ function DropdownMenuSubTrigger({
       data-inset={inset}
       data-variant={variant}
       data-wide={wide}
-      className={cn(menuItemVariants({ variant, wide }), className)}
+      className={cn(
+        menuItemVariants({ variant, wide }),
+        "data-[state=open]:bg-accent data-[state=open]:text-accent-foreground",
+        className,
+      )}
       {...props}
     >
       {children}
@@ -483,6 +471,7 @@ function DropdownMenuSubContent({
 }
 
 export {
+  type MenuItemsVariantsContextType,
   menuItemVariants,
   menuItemIndicatorVariants,
   DropdownMenu,

@@ -42,7 +42,19 @@ const avatarFallbackVariants = cva(
     variants: {
       variant: {
         // -- base --
-        muted: "bg-muted text-accent-foreground",
+        default: "bg-muted text-accent-foreground",
+
+        outline: "border border-border bg-background text-foreground",
+
+        base: "bg-base-600 text-base-50",
+
+        accent: "bg-accent text-accent-foreground",
+
+        muted: "bg-muted text-muted-foreground",
+
+        surface: "border border-border-faded bg-faded text-accent-foreground",
+
+        faded: "border border-border-faded bg-faded text-muted-foreground",
 
         // -- primary --
         primary: "bg-primary text-primary-foreground",
@@ -73,7 +85,7 @@ const avatarFallbackVariants = cva(
       },
     },
     defaultVariants: {
-      variant: "muted",
+      variant: "default",
     },
   },
 );

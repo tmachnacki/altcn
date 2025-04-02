@@ -1,3 +1,39 @@
+# TODO
+
+## Improvements
+
+- [ ] Better alerts with close button
+- [ ] Headless Sonner
+- [ ] Sizes
+- [ ] Tomato color swatches
+
+## Components
+
+- [ ] Breadcrumb
+- [ ] Button Input
+- [ ] Calendar/DatePicker
+- [ ] Charts
+- [ ] Command
+- [ ] Date & Time Picker
+- [ ] Drawer
+- [ ] Form (React Hook Form)
+- [ ] Form (Tanstack Form)
+- [ ] Input Group
+- [ ] Input Password
+- [ ] Radio Group Cards/Buttons
+- [ ] Rating
+- [ ] Select (Native)
+- [ ] Toggle
+- [ ] Toggle Group
+- [ ] Tooltip
+- [ ] Uploader
+
+## Site
+
+- [ ] Todos los docs
+
+---
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started

@@ -8,37 +8,33 @@ import { cn } from "@/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
 
 const accordionItemVariants = cva(
-  "border-b first:rounded-t-md last:rounded-b-md last:border-b-0 has-focus-visible:outline-2 **:data-[slot=accordion-content]:px-3 **:data-[slot=accordion-trigger]:px-3",
+  "border-b first:rounded-t-md last:rounded-b-md last:border-b-0 has-focus-visible:outline-2 **:data-[slot=accordion-content]:px-3 **:data-[slot=accordion-trigger]:px-3 data-[split]:mb-2 data-[split]:rounded-md data-[split]:last:mb-0",
   {
     variants: {
       variant: {
         // -- base --
         default:
-          "border-border not-data-[split=true]:**:data-[slot=accordion-content]:px-0 not-data-[split=true]:**:data-[slot=accordion-trigger]:px-0 data-[split=true]:border",
+          "border-border not-data-[split]:**:data-[slot=accordion-content]:px-0 not-data-[split]:**:data-[slot=accordion-trigger]:px-0 data-[split]:border",
 
         muted:
-          "border-border bg-muted **:data-[slot=accordion-trigger]:text-accent-foreground data-[split=true]:border-0",
+          "border-border bg-muted **:data-[slot=accordion-trigger]:text-accent-foreground data-[split]:border-0",
 
         faded:
-          "border-border-faded bg-faded **:data-[slot=accordion-trigger]:text-accent-foreground data-[split=true]:border",
+          "border-border-faded bg-faded **:data-[slot=accordion-trigger]:text-accent-foreground data-[split]:border",
 
         // -- primary --
         "primary-muted":
-          "border-border-primary-faded bg-primary-muted data-[split=true]:border-0",
+          "border-border-primary-faded bg-primary-muted data-[split]:border-0",
 
         "primary-faded":
-          "border-border-primary-faded bg-primary-faded data-[split=true]:border",
+          "border-border-primary-faded bg-primary-faded data-[split]:border",
 
         // -- secondary --
         "secondary-muted":
-          "border-border-secondary-faded bg-secondary-muted data-[split=true]:border-0",
+          "border-border-secondary-faded bg-secondary-muted data-[split]:border-0",
 
         "secondary-faded":
-          "border-border-secondary-faded bg-secondary-faded data-[split=true]:border",
-      },
-      split: {
-        false: null,
-        true: "mb-2 rounded-md last:mb-0",
+          "border-border-secondary-faded bg-secondary-faded data-[split]:border",
       },
     },
     compoundVariants: [
@@ -64,19 +60,24 @@ const accordionItemVariants = cva(
   },
 );
 
-const AccordionVariantsContext = React.createContext<
-  VariantProps<typeof accordionItemVariants>
->({
-  variant: "default",
-  split: false,
-});
+type AccordionVariantsContextType = VariantProps<
+  typeof accordionItemVariants
+> & {
+  split?: boolean;
+};
+
+const AccordionVariantsContext =
+  React.createContext<AccordionVariantsContextType>({
+    variant: "default",
+    split: undefined,
+  });
 
 function Accordion({
   variant = "default",
-  split = false,
+  split = undefined,
   ...props
 }: React.ComponentProps<typeof AccordionPrimitive.Root> &
-  VariantProps<typeof accordionItemVariants>) {
+  AccordionVariantsContextType) {
   return (
     <AccordionVariantsContext.Provider value={{ variant, split }}>
       <AccordionPrimitive.Root data-slot="accordion" {...props} />
@@ -95,7 +96,7 @@ function AccordionItem({
       data-variant={variant}
       data-split={split}
       className={cn(
-        accordionItemVariants({ variant, split }),
+        accordionItemVariants({ variant }),
         "group/accordion-item",
         className,
       )}

@@ -25,6 +25,7 @@ import {
 export function PaginationDemo() {
   const [activeVariant, setActiveVariant] = useState("outline");
   const [inactiveVariant, setInactiveVariant] = useState("ghost");
+  const [controlVariant, setControlVariant] = useState("ghost");
   const [activePage, setActivePage] = useState<number>(2);
 
   const isActive = (page: number) => activePage === page;
@@ -70,8 +71,8 @@ export function PaginationDemo() {
                 onClick={() =>
                   setActivePage((prevActivePage) => prevActivePage - 1)
                 }
-                inactiveVariant={
-                  inactiveVariant as (typeof paginationLinkVariants)[number]
+                variant={
+                  controlVariant as (typeof paginationLinkVariants)[number]
                 }
               />
             </PaginationItem>
@@ -121,6 +122,22 @@ export function PaginationDemo() {
               </PaginationLink>
             </PaginationItem>
             <PaginationItem>
+              <PaginationLink
+                href="#pagination"
+                disabled
+                isActive={isActive(4)}
+                onClick={() => setActivePage(4)}
+                activeVariant={
+                  activeVariant as (typeof paginationLinkVariants)[number]
+                }
+                inactiveVariant={
+                  inactiveVariant as (typeof paginationLinkVariants)[number]
+                }
+              >
+                4
+              </PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
               <PaginationEllipsis />
             </PaginationItem>
             <PaginationItem>
@@ -145,8 +162,8 @@ export function PaginationDemo() {
                 onClick={() =>
                   setActivePage((prevActivePage) => prevActivePage + 1)
                 }
-                inactiveVariant={
-                  inactiveVariant as (typeof paginationLinkVariants)[number]
+                variant={
+                  controlVariant as (typeof paginationLinkVariants)[number]
                 }
               />
             </PaginationItem>
@@ -162,7 +179,10 @@ export function PaginationDemo() {
             </SelectTrigger>
             <SelectContent>
               {paginationLinkVariants.map((variant) => (
-                <SelectItem key={variant} value={variant}>
+                <SelectItem
+                  key={`pagination-active-${variant}`}
+                  value={variant}
+                >
                   {variant}
                 </SelectItem>
               ))}
@@ -177,7 +197,28 @@ export function PaginationDemo() {
             </SelectTrigger>
             <SelectContent>
               {paginationLinkVariants.map((variant) => (
-                <SelectItem key={variant} value={variant}>
+                <SelectItem
+                  key={`pagination-inactive-${variant}`}
+                  value={variant}
+                >
+                  {variant}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+        <div className="grid gap-2">
+          <Label htmlFor="pagination-control-variant">Control Variant</Label>
+          <Select value={controlVariant} onValueChange={setControlVariant}>
+            <SelectTrigger id="pagination-control-variant" className="w-full">
+              <SelectValue placeholder="Select a variant" />
+            </SelectTrigger>
+            <SelectContent>
+              {paginationLinkVariants.map((variant) => (
+                <SelectItem
+                  key={`pagination-control-${variant}`}
+                  value={variant}
+                >
                   {variant}
                 </SelectItem>
               ))}

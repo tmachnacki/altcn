@@ -22,7 +22,9 @@ import {
 
 export function AccordionDemo() {
   const [accordionVariant, setAccordionVariant] = React.useState("default");
-  const [accordionSplit, setAccordionSplit] = React.useState(false);
+  const [accordionSplit, setAccordionSplit] = React.useState<true | undefined>(
+    undefined,
+  );
 
   const accordionVariants = [
     "default",
@@ -91,8 +93,10 @@ export function AccordionDemo() {
         <Label className="flex items-center gap-2">
           <Switch
             id="accordion-split"
-            checked={accordionSplit}
-            onCheckedChange={setAccordionSplit}
+            checked={accordionSplit === true}
+            onCheckedChange={(checked) =>
+              setAccordionSplit(checked ? true : undefined)
+            }
           />
           <span>Split</span>
         </Label>

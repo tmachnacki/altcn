@@ -22,6 +22,22 @@ export function BadgeDemo() {
           <BadgeClose />
         </Badge>
 
+        <Badge variant="base">Base</Badge>
+        <Badge variant="base">
+          <CheckIcon />
+          Icon
+        </Badge>
+        <Badge asChild variant="base">
+          <a href="#">
+            Link
+            <ArrowRightIcon />
+          </a>
+        </Badge>
+        <Badge variant="base">
+          Close
+          <BadgeClose />
+        </Badge>
+
         <Badge variant="accent">Accent</Badge>
         <Badge variant="accent">
           <CheckIcon />

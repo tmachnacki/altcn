@@ -4,6 +4,7 @@ import * as React from "react";
 import * as MenubarPrimitive from "@radix-ui/react-menubar";
 import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-react";
 import {
+  type MenuItemsVariantsContextType,
   menuItemVariants,
   menuItemIndicatorVariants,
 } from "@/components/ui/dropdown-menu";
@@ -46,15 +47,21 @@ function MenubarPortal({
 }
 
 const menubarTriggerVariants = cva(
-  "flex items-center rounded-sm px-2 py-1 text-sm font-medium outline-hidden select-none",
+  "relative flex items-center rounded-sm px-2 py-1 text-sm font-medium outline-hidden select-none",
   {
     variants: {
       variant: {
         // -- base --
+        base: [
+          "data-[highlighted]:bg-base-600 data-[highlighted]:text-base-50",
+          "data-[state=open]:bg-base-600 data-[state=open]:text-base-50",
+        ],
+
         accent: [
           "data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground",
           "data-[state=open]:bg-accent data-[state=open]:text-accent-foreground",
         ],
+
         surface: [
           "data-[highlighted]:bg-faded data-[highlighted]:text-accent-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-faded",
           "data-[state=open]:bg-faded data-[state=open]:text-accent-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-border-faded",
@@ -65,21 +72,37 @@ const menubarTriggerVariants = cva(
           "data-[highlighted]:bg-primary data-[highlighted]:text-primary-foreground",
           "data-[state=open]:bg-primary data-[state=open]:text-primary-foreground",
         ],
+
         "primary-accent": [
           "data-[highlighted]:bg-primary-muted data-[highlighted]:text-primary-accent-foreground",
           "data-[state=open]:bg-primary-muted data-[state=open]:text-primary-accent-foreground",
         ],
+
         "primary-muted": [
           "data-[highlighted]:bg-primary-muted data-[highlighted]:text-primary-muted-foreground",
           "data-[state=open]:bg-primary-muted data-[state=open]:text-primary-muted-foreground",
         ],
+
         "primary-surface": [
           "data-[highlighted]:bg-primary-faded data-[highlighted]:text-primary-accent-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-primary-faded",
           "data-[state=open]:bg-primary-faded data-[state=open]:text-primary-accent-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-border-primary-faded",
         ],
+
         "primary-faded": [
           "data-[highlighted]:bg-primary-faded data-[highlighted]:text-primary-muted-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-primary-faded",
           "data-[state=open]:bg-primary-faded data-[state=open]:text-primary-muted-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-border-primary-faded",
+        ],
+
+        "primary-tron": [
+          "data-[highlighted]:inset-ring data-[highlighted]:inset-ring-primary/30 data-[highlighted]:bg-background data-[highlighted]:bg-gradient-to-t data-[highlighted]:from-primary/15 data-[highlighted]:to-transparent data-[highlighted]:text-primary-muted-foreground",
+          "data-[highlighted]:*:data-[slot=tron-blur]:via-primary-tron-blur data-[highlighted]:*:data-[slot=tron-wide]:via-primary",
+          "data-[state=open]:inset-ring data-[state=open]:inset-ring-primary/30 data-[state=open]:bg-background data-[state=open]:bg-gradient-to-t data-[state=open]:from-primary/15 data-[state=open]:to-transparent data-[state=open]:text-primary-muted-foreground",
+          "data-[state=open]:*:data-[slot=tron-blur]:via-primary-tron-blur data-[state=open]:*:data-[slot=tron-wide]:via-primary",
+        ],
+
+        "primary-ghost": [
+          "data-[highlighted]:bg-transparent data-[highlighted]:text-primary",
+          "data-[state=open]:bg-transparent data-[state=open]:text-primary",
         ],
 
         // -- secondary --
@@ -87,21 +110,37 @@ const menubarTriggerVariants = cva(
           "data-[highlighted]:bg-secondary data-[highlighted]:text-secondary-foreground",
           "data-[state=open]:bg-secondary data-[state=open]:text-secondary-foreground",
         ],
+
         "secondary-accent": [
           "data-[highlighted]:bg-secondary-muted data-[highlighted]:text-secondary-accent-foreground",
           "data-[state=open]:bg-secondary-muted data-[state=open]:text-secondary-accent-foreground",
         ],
+
         "secondary-muted": [
           "data-[highlighted]:bg-secondary-muted data-[highlighted]:text-secondary-muted-foreground",
           "data-[state=open]:bg-secondary-muted data-[state=open]:text-secondary-muted-foreground",
         ],
+
         "secondary-surface": [
           "data-[highlighted]:bg-secondary-faded data-[highlighted]:text-secondary-accent-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-secondary-faded",
           "data-[state=open]:bg-secondary-faded data-[state=open]:text-secondary-accent-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-border-secondary-faded",
         ],
+
         "secondary-faded": [
           "data-[highlighted]:bg-secondary-faded data-[highlighted]:text-secondary-muted-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-secondary-faded",
           "data-[state=open]:bg-secondary-faded data-[state=open]:text-secondary-muted-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-border-secondary-faded",
+        ],
+
+        "secondary-tron": [
+          "data-[highlighted]:inset-ring data-[highlighted]:inset-ring-secondary/30 data-[highlighted]:bg-background data-[highlighted]:bg-gradient-to-t data-[highlighted]:from-secondary/15 data-[highlighted]:to-transparent data-[highlighted]:text-secondary-muted-foreground",
+          "data-[highlighted]:*:data-[slot=tron-blur]:via-secondary-tron-blur data-[highlighted]:*:data-[slot=tron-wide]:via-secondary",
+          "data-[state=open]:inset-ring data-[state=open]:inset-ring-secondary/30 data-[state=open]:bg-background data-[state=open]:bg-gradient-to-t data-[state=open]:from-secondary/15 data-[state=open]:to-transparent data-[state=open]:text-secondary-muted-foreground",
+          "data-[state=open]:*:data-[slot=tron-blur]:via-secondary-tron-blur data-[state=open]:*:data-[slot=tron-wide]:via-secondary",
+        ],
+
+        "secondary-ghost": [
+          "data-[highlighted]:bg-transparent data-[highlighted]:text-secondary-500 dark:data-[highlighted]:text-secondary",
+          "data-[state=open]:bg-transparent data-[state=open]:text-secondary-500 dark:data-[state=open]:text-secondary",
         ],
       },
     },
@@ -114,40 +153,58 @@ const menubarTriggerVariants = cva(
 function MenubarTrigger({
   className,
   variant,
+  children,
   ...props
 }: React.ComponentProps<typeof MenubarPrimitive.Trigger> &
   VariantProps<typeof menubarTriggerVariants>) {
   return (
     <MenubarPrimitive.Trigger
       data-slot="menubar-trigger"
-      className={cn(menubarTriggerVariants({ variant }), className)}
+      className={cn(
+        menubarTriggerVariants({ variant }),
+        "group/menubar-trigger",
+        className,
+      )}
       {...props}
-    />
+    >
+      {variant?.includes("tron") && (
+        <>
+          <span
+            aria-hidden="true"
+            data-slot="tron-wide"
+            className="absolute bottom-0 left-[5%] block h-[2px] w-[90%] bg-gradient-to-r from-transparent to-transparent opacity-0 transition-opacity duration-300 group-data-[highlighted]/menubar-trigger:opacity-100 group-data-[state=open]/menubar-trigger:opacity-100 motion-reduce:transition-none"
+          />
+          <span
+            aria-hidden="true"
+            data-slot="tron-blur"
+            className="absolute bottom-0 left-[20%] block h-[2px] w-[60%] bg-gradient-to-r from-transparent to-transparent opacity-0 blur-sm transition-opacity duration-300 group-data-[highlighted]/menubar-trigger:opacity-100 group-data-[state=open]/menubar-trigger:opacity-100 motion-reduce:transition-none"
+          />
+        </>
+      )}
+      {children}
+    </MenubarPrimitive.Trigger>
   );
 }
 
-const MenubarVariantsContext = React.createContext<
-  VariantProps<typeof menuItemVariants> &
-    VariantProps<typeof menuItemIndicatorVariants>
->({
-  variant: "accent",
-  wide: false,
-  indicatorVariant: "default",
-});
+const MenubarItemsVariantsContext =
+  React.createContext<MenuItemsVariantsContextType>({
+    variant: "accent",
+    wide: undefined,
+    indicatorVariant: "default",
+  });
 
 function MenubarContent({
   className,
   align = "start",
   sideOffset = 8,
   variant = "accent",
-  wide = false,
+  wide = undefined,
   indicatorVariant = "default",
   ...props
 }: React.ComponentProps<typeof MenubarPrimitive.Content> &
-  VariantProps<typeof menuItemVariants> &
-  VariantProps<typeof menuItemIndicatorVariants>) {
+  MenuItemsVariantsContextType) {
   return (
-    <MenubarVariantsContext.Provider
+    <MenubarItemsVariantsContext.Provider
       value={{ variant, wide, indicatorVariant }}
     >
       <MenubarPortal>
@@ -166,7 +223,7 @@ function MenubarContent({
           {...props}
         />
       </MenubarPortal>
-    </MenubarVariantsContext.Provider>
+    </MenubarItemsVariantsContext.Provider>
   );
 }
 
@@ -183,7 +240,7 @@ function MenubarItem({
   ...props
 }: MenubarItemProps) {
   const { variant: variantFromContext, wide: wideFromContext } =
-    React.useContext(MenubarVariantsContext);
+    React.useContext(MenubarItemsVariantsContext);
   const variant = variantOverride ?? variantFromContext;
   const wide = wideOverride ?? wideFromContext;
 
@@ -202,8 +259,7 @@ function MenubarItem({
 type MenubarCheckboxItemProps = React.ComponentProps<
   typeof MenubarPrimitive.CheckboxItem
 > &
-  VariantProps<typeof menuItemVariants> &
-  VariantProps<typeof menuItemIndicatorVariants> & {
+  MenuItemsVariantsContextType & {
     indicatorClassName?: string;
   };
 
@@ -221,7 +277,7 @@ function MenubarCheckboxItem({
     variant: variantFromContext,
     wide: wideFromContext,
     indicatorVariant: indicatorVariantFromContext,
-  } = React.useContext(MenubarVariantsContext);
+  } = React.useContext(MenubarItemsVariantsContext);
   const variant = variantOverride ?? variantFromContext;
   const wide = wideOverride ?? wideFromContext;
   const indicatorVariant =
@@ -243,7 +299,7 @@ function MenubarCheckboxItem({
         data-wide={wide}
         data-item-variant={variant}
         className={cn(
-          menuItemIndicatorVariants({ indicatorVariant }),
+          menuItemIndicatorVariants({ variant: indicatorVariant }),
           indicatorClassName,
         )}
       >
@@ -265,8 +321,7 @@ function MenubarRadioGroup({
 type MenubarRadioItemProps = React.ComponentProps<
   typeof MenubarPrimitive.RadioItem
 > &
-  VariantProps<typeof menuItemVariants> &
-  VariantProps<typeof menuItemIndicatorVariants> & {
+  MenuItemsVariantsContextType & {
     indicatorClassName?: string;
   };
 
@@ -283,7 +338,7 @@ function MenubarRadioItem({
     variant: variantFromContext,
     wide: wideFromContext,
     indicatorVariant: indicatorVariantFromContext,
-  } = React.useContext(MenubarVariantsContext);
+  } = React.useContext(MenubarItemsVariantsContext);
   const variant = variantOverride ?? variantFromContext;
   const wide = wideOverride ?? wideFromContext;
   const indicatorVariant =
@@ -304,7 +359,7 @@ function MenubarRadioItem({
         data-wide={wide}
         data-item-variant={variant}
         className={cn(
-          menuItemIndicatorVariants({ indicatorVariant }),
+          menuItemIndicatorVariants({ variant: indicatorVariant }),
           indicatorClassName,
         )}
       >
@@ -383,9 +438,10 @@ function MenubarSubTrigger({
   ...props
 }: MenubarSubTriggerProps) {
   const { variant: variantFromContext, wide: wideFromContext } =
-    React.useContext(MenubarVariantsContext);
+    React.useContext(MenubarItemsVariantsContext);
   const variant = variantOverride ?? variantFromContext;
   const wide = wideOverride ?? wideFromContext;
+
   return (
     <MenubarPrimitive.SubTrigger
       data-slot="menubar-sub-trigger"

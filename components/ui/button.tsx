@@ -16,12 +16,12 @@ const buttonVariants = cva(
     variants: {
       variant: {
         // --- base ---
-        base: ["bg-base-600 text-white shadow", "hover:bg-base-600/90"],
-
         outline: [
           "border border-border bg-background text-foreground shadow-xs",
           "hover:border-border-hover hover:bg-muted hover:text-accent-foreground",
         ],
+
+        base: ["bg-base text-base-foreground shadow", "hover:bg-base/90"],
 
         accent: [
           "bg-accent text-accent-foreground",
@@ -76,7 +76,7 @@ const buttonVariants = cva(
         "primary-tron": [
           "border border-primary/30 bg-background bg-gradient-to-t from-primary/15 to-transparent text-primary-muted-foreground",
           "hover:border-primary/50 hover:bg-gradient-to-b hover:from-primary/20 hover:to-primary/[7%]",
-          "**:data-[slot=tron-blur]:via-primary-tron-blur **:data-[slot=tron-wide]:via-primary",
+          "*:data-[slot=tron-blur]:via-primary-tron-blur *:data-[slot=tron-wide]:via-primary",
         ],
 
         "primary-shadow": [
@@ -123,7 +123,7 @@ const buttonVariants = cva(
         "secondary-tron": [
           "border border-secondary/30 bg-background bg-gradient-to-t from-secondary/10 to-transparent text-secondary-muted-foreground",
           "hover:border-secondary/50 hover:bg-gradient-to-b hover:from-secondary/20 hover:to-secondary/[7%]",
-          "**:data-[slot=tron-blur]:via-secondary-tron-blur **:data-[slot=tron-wide]:via-secondary",
+          "*:data-[slot=tron-blur]:via-secondary-tron-blur *:data-[slot=tron-wide]:via-secondary",
         ],
 
         "secondary-shadow": [
@@ -170,7 +170,7 @@ const buttonVariants = cva(
         "destructive-tron": [
           "border border-destructive/30 bg-gradient-to-t from-destructive/10 to-transparent text-destructive-muted-foreground",
           "hover:border-destructive/50 hover:bg-gradient-to-b hover:from-destructive/20 hover:to-destructive/[7%]",
-          "**:data-[slot=tron-blur]:via-destructive-tron-blur **:data-[slot=tron-wide]:via-destructive",
+          "*:data-[slot=tron-blur]:via-destructive-tron-blur *:data-[slot=tron-wide]:via-destructive",
         ],
 
         "destructive-shadow": [

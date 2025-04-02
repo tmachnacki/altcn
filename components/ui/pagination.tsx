@@ -75,37 +75,60 @@ function PaginationLink({
   );
 }
 
+type PaginationControlProps = {
+  disabled?: boolean;
+} & VariantProps<typeof buttonVariants> &
+  React.ComponentProps<"a">;
+
+function PaginationControl({
+  className,
+  disabled,
+  size = "default",
+  variant = "ghost",
+  ...props
+}: PaginationControlProps) {
+  return (
+    <Button
+      asChild
+      disabled={disabled}
+      size={size}
+      variant={variant}
+      className={className}
+    >
+      <a aria-disabled={disabled} tabIndex={disabled ? -1 : 0} {...props} />
+    </Button>
+  );
+}
+
 function PaginationPrevious({
   className,
   ...props
-}: React.ComponentProps<typeof PaginationLink>) {
+}: React.ComponentProps<typeof PaginationControl>) {
   return (
-    <PaginationLink
+    <PaginationControl
       aria-label="Go to previous page"
-      size="default"
       className={cn("gap-1 px-2.5 sm:pl-2.5", className)}
       {...props}
     >
       <ChevronLeftIcon />
       <span className="hidden sm:block">Previous</span>
-    </PaginationLink>
+    </PaginationControl>
   );
 }
 
 function PaginationNext({
   className,
   ...props
-}: React.ComponentProps<typeof PaginationLink>) {
+}: React.ComponentProps<typeof PaginationControl>) {
   return (
-    <PaginationLink
+    <PaginationControl
       aria-label="Go to next page"
-      size="default"
       className={cn("gap-1 px-2.5 sm:pr-2.5", className)}
       {...props}
     >
       <span className="hidden sm:block">Next</span>
       <ChevronRightIcon />
-    </PaginationLink>
+    </PaginationControl>
   );
 }
 
