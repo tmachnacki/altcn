@@ -22,8 +22,8 @@
 
   --accent: color-mix(
     in oklab,
-    var(--color-base-200) 40%,
-    var(--color-base-100)
+    var(--color-base-200) 70%,
+    /* var(--color-base-100) */ transparent
   );
   --accent-foreground: var(--color-base-950);
   --subtle-foreground: var(--color-base-700);
@@ -39,7 +39,7 @@
   --input: var(--color-base-200);
   --outline: var(--color-base-700);
 
-  --primary: var(--color-primary-500);
+  --primary: var(--color-primary-600);
   --primary-foreground: var(--color-white);
   --primary-accent-foreground: var(--color-primary-950);
   --primary-muted: var(--color-primary-100);
@@ -168,8 +168,8 @@
 
   --accent: color-mix(
     in oklab,
-    var(--color-base-800) 60%,
-    var(--color-base-900)
+    var(--color-base-800) 70%,
+    /* var(--color-base-900) */ transparent
   );
   --accent-foreground: var(--color-base-50);
   --subtle-foreground: var(--color-base-300);

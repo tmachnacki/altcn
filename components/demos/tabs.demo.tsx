@@ -21,11 +21,48 @@ import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export function TabsDemo() {
+  const tabsListVariants = [
+    "default",
+    "underlined",
+    "ghost",
+    "outline",
+  ] as const;
+
+  const tabsTriggerVariants = [
+    "default",
+    "base",
+    "accent",
+    "outline",
+    "underlined",
+    "ghost",
+    "primary",
+    "primary-accent",
+    "primary-muted",
+    "primary-surface",
+    "primary-faded",
+    "primary-underlined",
+    "primary-ghost",
+    "secondary",
+    "secondary-accent",
+    "secondary-muted",
+    "secondary-surface",
+    "secondary-faded",
+    "secondary-underlined",
+    "secondary-ghost",
+  ] as const;
+
+  const tabsDemos = tabsListVariants.flatMap((tabsListVariant) =>
+    tabsTriggerVariants.map((tabsTriggerVariant) => ({
+      tabsListVariant,
+      tabsTriggerVariant,
+    })),
+  );
+
   return (
     <ComponentContainer>
       <div className="flex flex-col gap-8">
         <Tabs defaultValue="account" className="max-w-[400px]">
-          <TabsList className="grid w-full grid-cols-2">
+          <TabsList className="w-full">
             <TabsTrigger value="account">Account</TabsTrigger>
             <TabsTrigger value="password">Password</TabsTrigger>
           </TabsList>
@@ -95,30 +132,46 @@ export function TabsDemo() {
           </TabsList>
         </Tabs>
 
-        <Tabs defaultValue="music" className="w-full max-w-xl">
-          <TabsList variant={"underlined"} className="grid w-full grid-cols-5">
-            <TabsTrigger value="music" variant="primary-underlined">
-              <MusicIcon />
-              Music
-            </TabsTrigger>
-            <TabsTrigger value="podcasts" variant="primary-underlined">
-              <PodcastIcon />
-              Podcasts
-            </TabsTrigger>
-            <TabsTrigger value="photos" variant="primary-underlined">
-              <ImageIcon />
-              Photos
-            </TabsTrigger>
-            <TabsTrigger value="videos" variant="primary-underlined">
-              <FilmIcon />
-              Videos
-            </TabsTrigger>
-            <TabsTrigger value="onlyfans" variant="primary-underlined" disabled>
-              <BanIcon />
-              OnlyFans
-            </TabsTrigger>
-          </TabsList>
-        </Tabs>
+        {tabsDemos.map((tabDemo) => (
+          <Tabs
+            defaultValue="music"
+            className="w-full max-w-xl"
+            key={`${tabDemo.tabsListVariant}-${tabDemo.tabsTriggerVariant}`}
+          >
+            <TabsList
+              variant={tabDemo.tabsListVariant}
+              className="grid w-full grid-cols-5"
+            >
+              <TabsTrigger value="music" variant={tabDemo.tabsTriggerVariant}>
+                <MusicIcon />
+                Music
+              </TabsTrigger>
+              <TabsTrigger
+                value="podcasts"
+                variant={tabDemo.tabsTriggerVariant}
+              >
+                <PodcastIcon />
+                Podcasts
+              </TabsTrigger>
+              <TabsTrigger value="photos" variant={tabDemo.tabsTriggerVariant}>
+                <ImageIcon />
+                Photos
+              </TabsTrigger>
+              <TabsTrigger value="videos" variant={tabDemo.tabsTriggerVariant}>
+                <FilmIcon />
+                Videos
+              </TabsTrigger>
+              <TabsTrigger
+                value="onlyfans"
+                variant={tabDemo.tabsTriggerVariant}
+                disabled
+              >
+                <BanIcon />
+                OnlyFans
+              </TabsTrigger>
+            </TabsList>
+          </Tabs>
+        ))}
       </div>
     </ComponentContainer>
   );
