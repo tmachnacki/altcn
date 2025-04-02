@@ -17,15 +17,6 @@ export function ButtonDemo() {
         <Button variant={"link"}>Link</Button>
       </div>
       <div className="flex flex-wrap gap-4">
-        <Button variant="input">Input</Button>
-        <Button variant="input" empty>
-          Placeholder
-        </Button>
-        <Button variant="input" aria-invalid>
-          Invalid
-        </Button>
-      </div>
-      <div className="flex flex-wrap gap-4">
         <Button variant="primary">Primary</Button>
         <Button variant="primary-accent">Primary Accent</Button>
         <Button variant="primary-muted">Primary Muted</Button>

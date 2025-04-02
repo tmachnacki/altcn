@@ -68,7 +68,7 @@ const badgeVariants = cva(
         ],
 
         "primary-tron": [
-          "border-none bg-background bg-gradient-to-t from-primary/15 to-transparent text-primary-muted-foreground inset-ring inset-ring-border",
+          "border-none bg-background bg-gradient-to-t from-primary/15 to-transparent text-primary-muted-foreground inset-ring inset-ring-primary/30",
           "**:data-[slot=tron-blur]:via-primary-tron-blur **:data-[slot=tron-wide]:via-primary",
           "[a&]:hover:bg-gradient-to-b [a&]:hover:from-primary/20 [a&]:hover:to-primary/[7%] [a&]:hover:inset-ring-primary/50 [a&]:hover:*:data-[slot=tron-blur]:data-[side=bottom]:opacity-0 [a&]:hover:*:data-[slot=tron-blur]:data-[side=top]:opacity-100 [a&]:hover:*:data-[slot=tron-wide]:data-[side=bottom]:opacity-0 [a&]:hover:*:data-[slot=tron-wide]:data-[side=top]:opacity-100",
         ],
@@ -104,7 +104,7 @@ const badgeVariants = cva(
         ],
 
         "secondary-tron": [
-          "border-none bg-background bg-gradient-to-t from-secondary/10 to-transparent text-secondary-muted-foreground inset-ring inset-ring-border",
+          "border-none bg-background bg-gradient-to-t from-secondary/10 to-transparent text-secondary-muted-foreground inset-ring inset-ring-secondary/30",
           "**:data-[slot=tron-blur]:via-secondary-tron-blur **:data-[slot=tron-wide]:via-secondary",
           "[a&]:hover:bg-gradient-to-b [a&]:hover:from-secondary/20 [a&]:hover:to-secondary/[7%] [a&]:hover:inset-ring-secondary/50 [a&]:hover:*:data-[slot=tron-blur]:data-[side=bottom]:opacity-0 [a&]:hover:*:data-[slot=tron-blur]:data-[side=top]:opacity-100 [a&]:hover:*:data-[slot=tron-wide]:data-[side=bottom]:opacity-0 [a&]:hover:*:data-[slot=tron-wide]:data-[side=top]:opacity-100",
         ],
@@ -140,7 +140,7 @@ const badgeVariants = cva(
         ],
 
         "destructive-tron": [
-          "border-none bg-background bg-gradient-to-t from-destructive/10 to-transparent text-destructive-muted-foreground inset-ring inset-ring-border",
+          "border-none bg-background bg-gradient-to-t from-destructive/10 to-transparent text-destructive-muted-foreground inset-ring inset-ring-destructive/30",
           "**:data-[slot=tron-blur]:via-destructive-tron-blur **:data-[slot=tron-wide]:via-destructive",
           "[a&]:hover:bg-gradient-to-b [a&]:hover:from-destructive/20 [a&]:hover:to-destructive/[7%] [a&]:hover:inset-ring-destructive/50 [a&]:hover:*:data-[slot=tron-blur]:data-[side=bottom]:opacity-0 [a&]:hover:*:data-[slot=tron-blur]:data-[side=top]:opacity-100 [a&]:hover:*:data-[slot=tron-wide]:data-[side=bottom]:opacity-0 [a&]:hover:*:data-[slot=tron-wide]:data-[side=top]:opacity-100",
         ],
@@ -176,7 +176,7 @@ const badgeVariants = cva(
         ],
 
         "success-tron": [
-          "border-none bg-background bg-gradient-to-t from-success/10 to-transparent text-success-muted-foreground inset-ring inset-ring-border",
+          "border-none bg-background bg-gradient-to-t from-success/10 to-transparent text-success-muted-foreground inset-ring inset-ring-success/30",
           "**:data-[slot=tron-blur]:via-success-tron-blur **:data-[slot=tron-wide]:via-success",
           "[a&]:hover:bg-gradient-to-b [a&]:hover:from-success/20 [a&]:hover:to-success/[7%] [a&]:hover:inset-ring-success/50 [a&]:hover:*:data-[slot=tron-blur]:data-[side=bottom]:opacity-0 [a&]:hover:*:data-[slot=tron-blur]:data-[side=top]:opacity-100 [a&]:hover:*:data-[slot=tron-wide]:data-[side=bottom]:opacity-0 [a&]:hover:*:data-[slot=tron-wide]:data-[side=top]:opacity-100",
         ],
@@ -212,7 +212,7 @@ const badgeVariants = cva(
         ],
 
         "warning-tron": [
-          "border-none bg-background bg-gradient-to-t from-warning/10 to-transparent text-warning-muted-foreground inset-ring inset-ring-border",
+          "border-none bg-background bg-gradient-to-t from-warning/10 to-transparent text-warning-muted-foreground inset-ring inset-ring-warning/30",
           "**:data-[slot=tron-blur]:via-warning-tron-blur **:data-[slot=tron-wide]:via-warning",
           "[a&]:hover:bg-gradient-to-b [a&]:hover:from-warning/20 [a&]:hover:to-warning/[7%] [a&]:hover:inset-ring-warning/50 [a&]:hover:*:data-[slot=tron-blur]:data-[side=bottom]:opacity-0 [a&]:hover:*:data-[slot=tron-blur]:data-[side=top]:opacity-100 [a&]:hover:*:data-[slot=tron-wide]:data-[side=bottom]:opacity-0 [a&]:hover:*:data-[slot=tron-wide]:data-[side=top]:opacity-100",
         ],

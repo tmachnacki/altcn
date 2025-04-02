@@ -7,35 +7,37 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const tabsListVariants = cva(
-  "inline-flex h-10 w-fit flex-nowrap items-center justify-center p-[var(--tabs-list-padding)] text-muted-foreground [--tabs-list-padding:--spacing(1)]",
+  "inline-flex h-10 w-fit flex-nowrap items-center justify-center rounded-lg p-[var(--tabs-list-padding)] text-muted-foreground [--tabs-list-padding:--spacing(1)]",
   {
     variants: {
       variant: {
-        default: "rounded-lg bg-muted",
-        underlined: "rounded-none border-b border-border bg-transparent px-0",
-        ghost: "rounded-none bg-transparent",
-        outline: "rounded-lg border border-border bg-transparent",
+        muted: "bg-muted",
+        outline: "border border-border bg-transparent",
+        faded: "border border-border-faded bg-faded",
+        underlined: "rounded-b-none border-b border-border bg-transparent px-0",
+        ghost: "bg-transparent",
       },
     },
     defaultVariants: {
-      variant: "default",
+      variant: "muted",
     },
   },
 );
 
-// TODO: better focus outlines
 const tabsTriggerVariants = cva(
   [
     "relative isolate inline-flex h-full flex-1 items-center justify-center gap-1.5 rounded-md px-2.5 py-1 text-sm font-medium whitespace-nowrap text-muted-foreground select-none not-disabled:data-[state=inactive]:hover:text-subtle-foreground",
     "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
     "disabled:cursor-not-allowed disabled:opacity-50",
-    "outline-0 outline-offset-2 focus-visible:z-10 focus-visible:outline-2",
+    "outline-0 outline-offset-1 focus-visible:z-10 focus-visible:outline-2",
   ],
   {
     variants: {
       variant: {
-        default:
-          "data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm dark:data-[state=active]:bg-base-700",
+        default: [
+          "data-[state=active]:bg-background data-[state=active]:text-foreground dark:data-[state=active]:bg-base-700",
+          "data-[state=active]:shadow-[0_0_4px_0_rgba(0,0,0,0.04),0_2px_8px_0_rgba(0,0,0,0.06),0_0_2px_-1px_rgba(0,0,0,0.25)]",
+        ],
 
         base: "data-[state=active]:bg-base-600 data-[state=active]:text-white data-[state=active]:shadow-sm",
 
@@ -45,53 +47,107 @@ const tabsTriggerVariants = cva(
         accent:
           "data-[state=active]:bg-accent data-[state=active]:text-accent-foreground",
 
-        underlined: "rounded-none data-[state=active]:text-foreground",
+        surface:
+          "data-[state=active]:border data-[state=active]:border-border-faded data-[state=active]:bg-faded data-[state=active]:text-accent-foreground",
+
+        underlined: [
+          "-outline-offset-2 data-[state=active]:text-foreground",
+          "data-[state=active]:*:data-[slot=tabs-trigger-underline]:border-foreground",
+        ],
 
         ghost: "data-[state=active]:text-foreground",
 
         primary:
-          "focus-visible:outline-primary data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-sm",
+          "data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-sm",
 
         "primary-accent":
-          "focus-visible:outline-primary data-[state=active]:bg-primary-muted data-[state=active]:text-primary-accent-foreground",
+          "data-[state=active]:bg-primary-muted data-[state=active]:text-primary-accent-foreground",
 
         "primary-muted":
-          "focus-visible:outline-primary data-[state=active]:bg-primary-muted data-[state=active]:text-primary-muted-foreground",
+          "data-[state=active]:bg-primary-muted data-[state=active]:text-primary-muted-foreground",
 
         "primary-surface":
-          "focus-visible:outline-primary data-[state=active]:border data-[state=active]:border-border-primary-faded data-[state=active]:bg-primary-faded data-[state=active]:text-primary-accent-foreground",
+          "data-[state=active]:border data-[state=active]:border-border-primary-faded data-[state=active]:bg-primary-faded data-[state=active]:text-primary-accent-foreground",
 
         "primary-faded":
-          "focus-visible:outline-primary data-[state=active]:border data-[state=active]:border-border-primary-faded data-[state=active]:bg-primary-faded data-[state=active]:text-primary-muted-foreground",
+          "data-[state=active]:border data-[state=active]:border-border-primary-faded data-[state=active]:bg-primary-faded data-[state=active]:text-primary-muted-foreground",
 
         "primary-underlined":
-          "rounded-none first:rounded-l-md last:rounded-r-md focus-visible:outline-primary data-[state=active]:text-primary",
+          "-outline-offset-2 data-[state=active]:text-primary data-[state=active]:*:data-[slot=tabs-trigger-underline]:border-primary",
 
-        "primary-ghost":
-          "focus-visible:outline-primary data-[state=active]:text-primary",
+        "primary-ghost": "data-[state=active]:text-primary",
+
+        "primary-tron": [
+          "data-[state=active]:border data-[state=active]:border-primary/30 data-[state=active]:bg-background data-[state=active]:bg-gradient-to-t data-[state=active]:from-primary/15 data-[state=active]:to-transparent data-[state=active]:text-primary-muted-foreground",
+          "data-[state=active]:*:data-[slot=tron-blur]:via-primary-tron-blur data-[state=active]:*:data-[slot=tron-wide]:via-primary",
+        ],
 
         secondary:
-          "focus-visible:outline-secondary data-[state=active]:bg-secondary data-[state=active]:text-secondary-foreground data-[state=active]:shadow-sm",
+          "data-[state=active]:bg-secondary data-[state=active]:text-secondary-foreground data-[state=active]:shadow-sm",
 
         "secondary-accent":
-          "focus-visible:outline-secondary data-[state=active]:bg-secondary-muted data-[state=active]:text-secondary-accent-foreground",
+          "data-[state=active]:bg-secondary-muted data-[state=active]:text-secondary-accent-foreground",
 
         "secondary-muted":
-          "focus-visible:outline-secondary data-[state=active]:bg-secondary-muted data-[state=active]:text-secondary-muted-foreground",
+          "data-[state=active]:bg-secondary-muted data-[state=active]:text-secondary-muted-foreground",
 
         "secondary-surface":
-          "focus-visible:outline-secondary data-[state=active]:border data-[state=active]:border-border-secondary-faded data-[state=active]:bg-secondary-faded data-[state=active]:text-secondary-accent-foreground",
+          "data-[state=active]:border data-[state=active]:border-border-secondary-faded data-[state=active]:bg-secondary-faded data-[state=active]:text-secondary-accent-foreground",
 
         "secondary-faded":
-          "focus-visible:outline-secondary data-[state=active]:border data-[state=active]:border-border-secondary-faded data-[state=active]:bg-secondary-faded data-[state=active]:text-secondary-muted-foreground",
+          "data-[state=active]:border data-[state=active]:border-border-secondary-faded data-[state=active]:bg-secondary-faded data-[state=active]:text-secondary-muted-foreground",
 
         "secondary-underlined":
-          "rounded-none first:rounded-l-md last:rounded-r-md focus-visible:outline-secondary data-[state=active]:text-secondary-500",
+          "-outline-offset-2 data-[state=active]:text-secondary-500 data-[state=active]:*:data-[slot=tabs-trigger-underline]:border-secondary",
 
-        "secondary-ghost":
-          "focus-visible:outline-secondary data-[state=active]:text-secondary-500",
+        "secondary-ghost": "data-[state=active]:text-secondary-500",
+
+        "secondary-tron": [
+          "data-[state=active]:border data-[state=active]:border-secondary/30 data-[state=active]:bg-background data-[state=active]:bg-gradient-to-t data-[state=active]:from-secondary/15 data-[state=active]:to-transparent data-[state=active]:text-secondary-muted-foreground",
+          "data-[state=active]:*:data-[slot=tron-blur]:via-secondary-tron-blur data-[state=active]:*:data-[slot=tron-wide]:via-secondary",
+        ],
       },
     },
+    compoundVariants: [
+      {
+        variant: [
+          "default",
+          "base",
+          "outline",
+          "accent",
+          "surface",
+          "underlined",
+          "ghost",
+        ],
+        className: "focus-visible:outline-outline",
+      },
+      {
+        variant: [
+          "primary",
+          "primary-accent",
+          "primary-muted",
+          "primary-surface",
+          "primary-faded",
+          "primary-underlined",
+          "primary-ghost",
+          "primary-tron",
+        ],
+        className: "focus-visible:outline-primary",
+      },
+      {
+        variant: [
+          "secondary",
+          "secondary-accent",
+          "secondary-muted",
+          "secondary-surface",
+          "secondary-faded",
+          "secondary-underlined",
+          "secondary-ghost",
+          "secondary-tron",
+        ],
+        className: "focus-visible:outline-secondary",
+      },
+    ],
     defaultVariants: {
       variant: "default",
     },
@@ -111,28 +167,44 @@ function Tabs({
   );
 }
 
+type TabsListVariantsContextType = {
+  variant?: VariantProps<typeof tabsListVariants>["variant"];
+  triggersVariant?: VariantProps<typeof tabsTriggerVariants>["variant"];
+};
+
+const TabsListVariantsContext =
+  React.createContext<TabsListVariantsContextType>({
+    variant: "muted",
+    triggersVariant: "default",
+  });
+
 function TabsList({
   className,
-  variant = "default",
+  variant = "muted",
+  triggersVariant = "default",
   ...props
 }: React.ComponentProps<typeof TabsPrimitive.List> &
-  VariantProps<typeof tabsListVariants>) {
+  TabsListVariantsContextType) {
   return (
-    <TabsPrimitive.List
-      data-slot="tabs-list"
-      className={cn(tabsListVariants({ variant }), className)}
-      {...props}
-    />
+    <TabsListVariantsContext.Provider value={{ variant, triggersVariant }}>
+      <TabsPrimitive.List
+        data-slot="tabs-list"
+        className={cn(tabsListVariants({ variant }), className)}
+        {...props}
+      />
+    </TabsListVariantsContext.Provider>
   );
 }
 
 function TabsTrigger({
   className,
-  variant = "default",
+  variant: variantOverride,
   children,
   ...props
 }: React.ComponentProps<typeof TabsPrimitive.Trigger> &
   VariantProps<typeof tabsTriggerVariants>) {
+  const { triggersVariant } = React.useContext(TabsListVariantsContext);
+  const variant = variantOverride ?? triggersVariant;
   return (
     <TabsPrimitive.Trigger
       data-slot="tabs-trigger"
@@ -151,14 +223,22 @@ function TabsTrigger({
           className={cn(
             // use padding var as height to avoid flickering when hovering between trigger and underline indicator
             "absolute inset-x-0 -bottom-[var(--tabs-list-padding)] h-[var(--tabs-list-padding)] w-full border-b-2 border-transparent group-not-data-disabled/tabs-trigger:group-data-[state=inactive]/tabs-trigger:group-hover/tabs-trigger:border-border",
-            variant === "underlined" &&
-              "group-data-[state=active]/tabs-trigger:border-foreground",
-            variant === "primary-underlined" &&
-              "group-data-[state=active]/tabs-trigger:border-primary",
-            variant === "secondary-underlined" &&
-              "group-data-[state=active]/tabs-trigger:border-secondary",
           )}
         />
+      )}
+      {variant?.includes("tron") && (
+        <>
+          <span
+            aria-hidden="true"
+            data-slot="tron-wide"
+            className="absolute -bottom-px left-[5%] block h-[2px] w-[90%] bg-gradient-to-r from-transparent to-transparent opacity-0 transition-opacity duration-300 group-data-[state=active]/tabs-trigger:opacity-100 motion-reduce:transition-none"
+          />
+          <span
+            aria-hidden="true"
+            data-slot="tron-blur"
+            className="absolute -bottom-px left-[20%] block h-[2px] w-[60%] bg-gradient-to-r from-transparent to-transparent opacity-0 blur-sm transition-opacity duration-300 group-data-[state=active]/tabs-trigger:opacity-100 motion-reduce:transition-none"
+          />
+        </>
       )}
       {children}
     </TabsPrimitive.Trigger>

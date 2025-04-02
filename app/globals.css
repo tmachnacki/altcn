@@ -89,7 +89,7 @@
     var(--color-destructive-600) 10%,
     transparent
   );
-  --destructive-tron-blur: var(--color-rose-400);
+  --destructive-tron-blur: var(--color-pink-400);
   --destructive-popover: var(--color-destructive-50);
 
   --success: var(--color-success-600);
@@ -251,7 +251,7 @@
     var(--color-destructive-400) 20%,
     transparent
   );
-  --destructive-tron-blur: var(--color-rose-400);
+  --destructive-tron-blur: var(--color-pink-400);
   --destructive-popover: color-mix(
     in oklab,
     var(--color-destructive-950) 50%,

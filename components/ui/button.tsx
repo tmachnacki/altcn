@@ -47,9 +47,6 @@ const buttonVariants = cva(
 
         link: ["text-primary underline-offset-4", "hover:underline"],
 
-        input:
-          "border border-border font-normal text-foreground shadow-xs hover:border-border-hover focus-visible:border-primary focus-visible:ring-1 focus-visible:ring-primary focus-visible:outline-none data-[empty=true]:text-muted-foreground dark:bg-faded aria-invalid:border-destructive aria-invalid:focus-visible:ring-destructive",
-
         // --- primary ---
         primary: [
           "bg-primary text-primary-foreground shadow",
@@ -77,7 +74,7 @@ const buttonVariants = cva(
         ],
 
         "primary-tron": [
-          "border border-border bg-background bg-gradient-to-t from-primary/15 to-transparent text-primary-muted-foreground",
+          "border border-primary/30 bg-background bg-gradient-to-t from-primary/15 to-transparent text-primary-muted-foreground",
           "hover:border-primary/50 hover:bg-gradient-to-b hover:from-primary/20 hover:to-primary/[7%]",
           "**:data-[slot=tron-blur]:via-primary-tron-blur **:data-[slot=tron-wide]:via-primary",
         ],
@@ -88,8 +85,8 @@ const buttonVariants = cva(
         ],
 
         "primary-gradient": [
-          "bg-gradient-to-br from-primary-600 to-primary-400 text-primary-foreground",
-          "hover:from-primary-600/90 hover:to-primary-400/90",
+          "bg-gradient-to-br from-primary-700 to-primary-500 text-primary-foreground dark:from-primary-600 dark:to-primary-400",
+          "hover:from-primary-700/90 hover:to-primary-500/90 dark:hover:from-primary-600/90 dark:hover:to-primary-400/90",
         ],
 
         "primary-ghost": [
@@ -124,7 +121,7 @@ const buttonVariants = cva(
         ],
 
         "secondary-tron": [
-          "border border-border bg-background bg-gradient-to-t from-secondary/10 to-transparent text-secondary-muted-foreground",
+          "border border-secondary/30 bg-background bg-gradient-to-t from-secondary/10 to-transparent text-secondary-muted-foreground",
           "hover:border-secondary/50 hover:bg-gradient-to-b hover:from-secondary/20 hover:to-secondary/[7%]",
           "**:data-[slot=tron-blur]:via-secondary-tron-blur **:data-[slot=tron-wide]:via-secondary",
         ],
@@ -171,7 +168,7 @@ const buttonVariants = cva(
         ],
 
         "destructive-tron": [
-          "border border-border bg-gradient-to-t from-destructive/10 to-transparent text-destructive-muted-foreground",
+          "border border-destructive/30 bg-gradient-to-t from-destructive/10 to-transparent text-destructive-muted-foreground",
           "hover:border-destructive/50 hover:bg-gradient-to-b hover:from-destructive/20 hover:to-destructive/[7%]",
           "**:data-[slot=tron-blur]:via-destructive-tron-blur **:data-[slot=tron-wide]:via-destructive",
         ],

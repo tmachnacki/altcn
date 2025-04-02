@@ -22,17 +22,19 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export function TabsDemo() {
   const tabsListVariants = [
-    "default",
+    "muted",
+    "outline",
+    "faded",
     "underlined",
     "ghost",
-    "outline",
   ] as const;
 
   const tabsTriggerVariants = [
     "default",
     "base",
-    "accent",
     "outline",
+    "accent",
+    "surface",
     "underlined",
     "ghost",
     "primary",
@@ -42,6 +44,7 @@ export function TabsDemo() {
     "primary-faded",
     "primary-underlined",
     "primary-ghost",
+    "primary-tron",
     "secondary",
     "secondary-accent",
     "secondary-muted",
@@ -49,6 +52,7 @@ export function TabsDemo() {
     "secondary-faded",
     "secondary-underlined",
     "secondary-ghost",
+    "secondary-tron",
   ] as const;
 
   const tabsDemos = tabsListVariants.flatMap((tabsListVariant) =>
