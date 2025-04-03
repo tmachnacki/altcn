@@ -37,7 +37,7 @@ export function ContextMenuDemo() {
     {
       label: "Accent",
       variant: "accent",
-      wide: false,
+      wide: undefined,
     },
     {
       label: "Accent Wide",
@@ -47,7 +47,7 @@ export function ContextMenuDemo() {
     {
       label: "Surface",
       variant: "surface",
-      wide: false,
+      wide: undefined,
     },
     {
       label: "Surface Wide",
@@ -57,7 +57,7 @@ export function ContextMenuDemo() {
     {
       label: "Primary",
       variant: "primary",
-      wide: false,
+      wide: undefined,
     },
     {
       label: "Primary Wide",
@@ -67,7 +67,7 @@ export function ContextMenuDemo() {
     {
       label: "Primary Accent",
       variant: "primary-accent",
-      wide: false,
+      wide: undefined,
     },
     {
       label: "Primary Accent Wide",
@@ -77,7 +77,7 @@ export function ContextMenuDemo() {
     {
       label: "Primary Muted",
       variant: "primary-muted",
-      wide: false,
+      wide: undefined,
     },
     {
       label: "Primary Muted Wide",
@@ -87,7 +87,7 @@ export function ContextMenuDemo() {
     {
       label: "Primary Surface",
       variant: "primary-surface",
-      wide: false,
+      wide: undefined,
     },
     {
       label: "Primary Surface Wide",
@@ -97,7 +97,7 @@ export function ContextMenuDemo() {
     {
       label: "Primary Faded",
       variant: "primary-faded",
-      wide: false,
+      wide: undefined,
     },
     {
       label: "Primary Faded Wide",
@@ -107,7 +107,7 @@ export function ContextMenuDemo() {
     {
       label: "Secondary",
       variant: "secondary",
-      wide: false,
+      wide: undefined,
     },
     {
       label: "Secondary Wide",
@@ -117,7 +117,7 @@ export function ContextMenuDemo() {
     {
       label: "Secondary Accent",
       variant: "secondary-accent",
-      wide: false,
+      wide: undefined,
     },
     {
       label: "Secondary Accent Wide",
@@ -127,7 +127,7 @@ export function ContextMenuDemo() {
     {
       label: "Secondary Muted",
       variant: "secondary-muted",
-      wide: false,
+      wide: undefined,
     },
     {
       label: "Secondary Muted Wide",
@@ -137,7 +137,7 @@ export function ContextMenuDemo() {
     {
       label: "Secondary Surface",
       variant: "secondary-surface",
-      wide: false,
+      wide: undefined,
     },
     {
       label: "Secondary Surface Wide",
@@ -147,7 +147,7 @@ export function ContextMenuDemo() {
     {
       label: "Secondary Faded",
       variant: "secondary-faded",
-      wide: false,
+      wide: undefined,
     },
     {
       label: "Secondary Faded Wide",
@@ -161,7 +161,7 @@ export function ContextMenuDemo() {
       <div className="grid grid-cols-2 gap-4">
         {contextMenuDemos.map((demo) => (
           <ContextMenu key={demo.label}>
-            <ContextMenuTrigger className="flex items-center justify-center h-[150px] w-[300px] rounded-md border border-dashed text-sm bg-faded">
+            <ContextMenuTrigger className="flex h-[150px] w-[300px] items-center justify-center rounded-md border border-dashed bg-faded text-sm">
               {demo.label}
             </ContextMenuTrigger>
             <ContextMenuContent variant={demo.variant} wide={demo.wide}>

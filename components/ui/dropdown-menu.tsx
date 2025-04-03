@@ -9,12 +9,20 @@ import { cn } from "@/lib/utils";
 
 // TODO: better className overrides, maybe adjust subcontent offset for wide+border variants
 // TODO: maybe use visual-only inset span for wide+border variants to avoid negative margin issues
+// TODO: maybe extract subtrigger variants
+
+type MenuItemsVariantsContextType = VariantProps<typeof menuItemVariants> & {
+  indicatorVariant?: VariantProps<typeof menuItemIndicatorVariants>["variant"];
+};
+
 const menuItemVariants = cva(
   [
     "relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-[inset]:pl-8",
     "data-[disabled]:pointer-events-none data-[disabled]:text-muted-foreground data-[disabled]:opacity-50",
     "[&_[data-slot*='-shortcut']]:text-muted-foreground data-[highlighted]:[&_[data-slot*='-shortcut']]:text-current",
     "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground data-[highlighted]:[&_svg:not([class*='text-'])]:text-current",
+    // for subtrigger
+    "not-data-[highlighted]:data-[state=open]:bg-accent not-data-[highlighted]:data-[state=open]:text-accent-foreground",
   ],
   {
     variants: {
@@ -22,60 +30,78 @@ const menuItemVariants = cva(
         // -- base --
         accent: [
           "data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground",
+          // when sub is open and hovering subtrigger
+          "data-[highlighted]:[data-state=open]:bg-accent data-[highlighted]:[data-state=open]:text-accent-foreground",
         ],
         surface: [
           "data-[highlighted]:bg-faded data-[highlighted]:text-accent-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-faded",
+          "data-[highlighted]:[data-state=open]:bg-faded data-[highlighted]:[data-state=open]:text-accent-foreground data-[highlighted]:[data-state=open]:inset-ring data-[highlighted]:[data-state=open]:inset-ring-border-faded",
         ],
 
         // -- primary --
         primary: [
-          "data-[highlighted]:bg-primary data-[highlighted]:text-primary-foreground data-[highlighted]:[&_[data-slot*='-indicator'][data-variant='primary']]:text-current",
+          "data-[highlighted]:bg-primary data-[highlighted]:text-primary-foreground data-[highlighted]:[&_[data-slot*='-indicator'][data-variant='default']]:text-current data-[highlighted]:[&_[data-slot*='-indicator'][data-variant='primary']]:text-current",
+          "data-[highlighted]:[data-state=open]:bg-primary data-[highlighted]:[data-state=open]:text-primary-foreground",
         ],
         "primary-accent": [
           "data-[highlighted]:bg-primary-muted data-[highlighted]:text-primary-accent-foreground",
+          "data-[highlighted]:[data-state=open]:bg-primary-muted data-[highlighted]:[data-state=open]:text-primary-accent-foreground",
         ],
         "primary-muted": [
           "data-[highlighted]:bg-primary-muted data-[highlighted]:text-primary-muted-foreground",
+          "data-[highlighted]:[data-state=open]:bg-primary-muted data-[highlighted]:[data-state=open]:text-primary-muted-foreground",
         ],
         "primary-surface": [
           "data-[highlighted]:bg-primary-faded data-[highlighted]:text-primary-accent-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-primary-faded",
+          "data-[highlighted]:[data-state=open]:bg-primary-faded data-[highlighted]:[data-state=open]:text-primary-accent-foreground data-[highlighted]:[data-state=open]:inset-ring data-[highlighted]:[data-state=open]:inset-ring-border-primary-faded",
         ],
         "primary-faded": [
           "data-[highlighted]:bg-primary-faded data-[highlighted]:text-primary-muted-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-primary-faded",
+          "data-[highlighted]:[data-state=open]:bg-primary-faded data-[highlighted]:[data-state=open]:text-primary-muted-foreground data-[highlighted]:[data-state=open]:inset-ring data-[highlighted]:[data-state=open]:inset-ring-border-primary-faded",
         ],
 
         // -- secondary --
         secondary: [
-          "data-[highlighted]:bg-secondary data-[highlighted]:text-secondary-foreground data-[highlighted]:[&_[data-slot*='-indicator']]:text-current",
+          "data-[highlighted]:bg-secondary data-[highlighted]:text-secondary-foreground data-[highlighted]:[&_[data-slot*='-indicator'][data-variant='default']]:text-current data-[highlighted]:[&_[data-slot*='-indicator'][data-variant='secondary']]:text-current",
+          "data-[highlighted]:[data-state=open]:bg-secondary data-[highlighted]:[data-state=open]:text-secondary-foreground",
         ],
         "secondary-accent": [
           "data-[highlighted]:bg-secondary-muted data-[highlighted]:text-secondary-accent-foreground",
+          "data-[highlighted]:[data-state=open]:bg-secondary-muted data-[highlighted]:[data-state=open]:text-secondary-accent-foreground",
         ],
         "secondary-muted": [
           "data-[highlighted]:bg-secondary-muted data-[highlighted]:text-secondary-muted-foreground",
+          "data-[highlighted]:[data-state=open]:bg-secondary-muted data-[highlighted]:[data-state=open]:text-secondary-muted-foreground",
         ],
         "secondary-surface": [
           "data-[highlighted]:bg-secondary-faded data-[highlighted]:text-secondary-accent-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-secondary-faded",
+          "data-[highlighted]:[data-state=open]:bg-secondary-faded data-[highlighted]:[data-state=open]:text-secondary-accent-foreground data-[highlighted]:[data-state=open]:inset-ring data-[highlighted]:[data-state=open]:inset-ring-border-secondary-faded",
         ],
         "secondary-faded": [
           "data-[highlighted]:bg-secondary-faded data-[highlighted]:text-secondary-muted-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-secondary-faded",
+          "data-[highlighted]:[data-state=open]:bg-secondary-faded data-[highlighted]:[data-state=open]:text-secondary-muted-foreground data-[highlighted]:[data-state=open]:inset-ring data-[highlighted]:[data-state=open]:inset-ring-border-secondary-faded",
         ],
 
         // -- destructive --
         destructive: [
-          "data-[highlighted]:bg-destructive data-[highlighted]:text-destructive-foreground data-[highlighted]:[&_[data-slot*='-indicator']]:text-current",
+          "data-[highlighted]:bg-destructive data-[highlighted]:text-destructive-foreground data-[highlighted]:[&_[data-slot*='-indicator'][data-variant='default']]:text-current data-[highlighted]:[&_[data-slot*='-indicator'][data-variant='destructive']]:text-current",
+          "data-[highlighted]:[data-state=open]:bg-destructive data-[highlighted]:[data-state=open]:text-destructive-foreground",
         ],
         "destructive-accent": [
           "data-[highlighted]:bg-destructive-muted data-[highlighted]:text-destructive-accent-foreground",
+          "data-[highlighted]:[data-state=open]:bg-destructive-muted data-[highlighted]:[data-state=open]:text-destructive-accent-foreground",
         ],
         "destructive-muted": [
           "data-[highlighted]:bg-destructive-muted data-[highlighted]:text-destructive-muted-foreground",
+          "data-[highlighted]:[data-state=open]:bg-destructive-muted data-[highlighted]:[data-state=open]:text-destructive-muted-foreground",
         ],
         "destructive-surface": [
           "data-[highlighted]:bg-destructive-faded data-[highlighted]:text-destructive-accent-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-destructive-faded",
+          "data-[highlighted]:[data-state=open]:bg-destructive-faded data-[highlighted]:[data-state=open]:text-destructive-accent-foreground data-[highlighted]:[data-state=open]:inset-ring data-[highlighted]:[data-state=open]:inset-ring-border-destructive-faded",
         ],
         "destructive-faded": [
           "data-[highlighted]:bg-destructive-faded data-[highlighted]:text-destructive-muted-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-destructive-faded",
+          "data-[highlighted]:[data-state=open]:bg-destructive-faded data-[highlighted]:[data-state=open]:text-destructive-muted-foreground data-[highlighted]:[data-state=open]:inset-ring data-[highlighted]:[data-state=open]:inset-ring-border-destructive-faded",
         ],
       },
       wide: {
@@ -117,6 +143,26 @@ const menuItemVariants = cva(
   },
 );
 
+const menuItemIndicatorVariants = cva(
+  [
+    "pointer-events-none absolute left-2 flex size-3.5 items-center justify-center",
+    "data-[wide]:left-3 data-[wide]:[data-item-variant*='faded']:left-[calc(--spacing(3)+1px)] data-[wide]:[data-item-variant*='surface']:left-[calc(--spacing(3)+1px)]",
+  ],
+  {
+    variants: {
+      variant: {
+        default: "text-accent-foreground",
+        primary: "text-primary",
+        secondary: "text-secondary",
+        destructive: "text-destructive",
+      },
+      defaultVariants: {
+        variant: "default",
+      },
+    },
+  },
+);
+
 function DropdownMenu({
   ...props
 }: React.ComponentProps<typeof DropdownMenuPrimitive.Root>) {
@@ -142,12 +188,6 @@ function DropdownMenuTrigger({
   );
 }
 
-type MenuItemsVariantsContextType = VariantProps<
-  typeof menuItemVariants
-> & {
-  indicatorVariant?: VariantProps<typeof menuItemIndicatorVariants>["variant"];
-};
-
 const DropdownMenuItemsVariantsContext =
   React.createContext<MenuItemsVariantsContextType>({
     variant: "accent",
@@ -172,8 +212,6 @@ function DropdownMenuContent({
         <DropdownMenuPrimitive.Content
           data-slot="dropdown-menu-content"
           sideOffset={sideOffset}
-          data-variant={variant}
-          data-wide={wide}
           className={cn(
             "z-50 max-h-(--radix-dropdown-menu-content-available-height) min-w-[max(var(--radix-dropdown-menu-trigger-width),--spacing(32))] origin-(--radix-dropdown-menu-content-transform-origin) overflow-x-hidden overflow-y-auto rounded-md border bg-popover p-1 text-popover-foreground shadow-md",
             "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:ease-out data-[state=open]:fade-in-0",
@@ -223,26 +261,6 @@ function DropdownMenuItem({
     />
   );
 }
-
-const menuItemIndicatorVariants = cva(
-  [
-    "pointer-events-none absolute left-2 flex size-3.5 items-center justify-center",
-    "data-[wide]:left-3 data-[wide]:[data-item-variant*='faded']:left-[calc(--spacing(3)+1px)] data-[wide]:[data-item-variant*='surface']:left-[calc(--spacing(3)+1px)]",
-  ],
-  {
-    variants: {
-      variant: {
-        default: "text-accent-foreground",
-        primary: "text-primary",
-        secondary: "text-secondary",
-        destructive: "text-destructive",
-      },
-      defaultVariants: {
-        variant: "default",
-      },
-    },
-  },
-);
 
 type DropdownMenuCheckboxItemProps = React.ComponentProps<
   typeof DropdownMenuPrimitive.CheckboxItem
@@ -438,11 +456,7 @@ function DropdownMenuSubTrigger({
       data-inset={inset}
       data-variant={variant}
       data-wide={wide}
-      className={cn(
-        menuItemVariants({ variant, wide }),
-        "data-[state=open]:bg-accent data-[state=open]:text-accent-foreground",
-        className,
-      )}
+      className={cn(menuItemVariants({ variant, wide }), className)}
       {...props}
     >
       {children}

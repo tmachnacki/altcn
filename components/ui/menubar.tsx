@@ -12,40 +12,6 @@ import {
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
-function Menubar({
-  className,
-  ...props
-}: React.ComponentProps<typeof MenubarPrimitive.Root>) {
-  return (
-    <MenubarPrimitive.Root
-      data-slot="menubar"
-      className={cn(
-        "flex h-9 items-center gap-1 rounded-md border bg-background p-1 shadow-xs",
-        className,
-      )}
-      {...props}
-    />
-  );
-}
-
-function MenubarMenu({
-  ...props
-}: React.ComponentProps<typeof MenubarPrimitive.Menu>) {
-  return <MenubarPrimitive.Menu data-slot="menubar-menu" {...props} />;
-}
-
-function MenubarGroup({
-  ...props
-}: React.ComponentProps<typeof MenubarPrimitive.Group>) {
-  return <MenubarPrimitive.Group data-slot="menubar-group" {...props} />;
-}
-
-function MenubarPortal({
-  ...props
-}: React.ComponentProps<typeof MenubarPrimitive.Portal>) {
-  return <MenubarPrimitive.Portal data-slot="menubar-portal" {...props} />;
-}
-
 const menubarTriggerVariants = cva(
   "relative flex items-center rounded-sm px-2 py-1 text-sm font-medium outline-hidden select-none",
   {
@@ -94,9 +60,9 @@ const menubarTriggerVariants = cva(
         ],
 
         "primary-tron": [
-          "data-[highlighted]:inset-ring data-[highlighted]:inset-ring-primary/30 data-[highlighted]:bg-background data-[highlighted]:bg-gradient-to-t data-[highlighted]:from-primary/15 data-[highlighted]:to-transparent data-[highlighted]:text-primary-muted-foreground",
+          "data-[highlighted]:bg-background data-[highlighted]:bg-gradient-to-t data-[highlighted]:from-primary/15 data-[highlighted]:to-transparent data-[highlighted]:text-primary-muted-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-primary/30",
           "data-[highlighted]:*:data-[slot=tron-blur]:via-primary-tron-blur data-[highlighted]:*:data-[slot=tron-wide]:via-primary",
-          "data-[state=open]:inset-ring data-[state=open]:inset-ring-primary/30 data-[state=open]:bg-background data-[state=open]:bg-gradient-to-t data-[state=open]:from-primary/15 data-[state=open]:to-transparent data-[state=open]:text-primary-muted-foreground",
+          "data-[state=open]:bg-background data-[state=open]:bg-gradient-to-t data-[state=open]:from-primary/15 data-[state=open]:to-transparent data-[state=open]:text-primary-muted-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-primary/30",
           "data-[state=open]:*:data-[slot=tron-blur]:via-primary-tron-blur data-[state=open]:*:data-[slot=tron-wide]:via-primary",
         ],
 
@@ -132,9 +98,9 @@ const menubarTriggerVariants = cva(
         ],
 
         "secondary-tron": [
-          "data-[highlighted]:inset-ring data-[highlighted]:inset-ring-secondary/30 data-[highlighted]:bg-background data-[highlighted]:bg-gradient-to-t data-[highlighted]:from-secondary/15 data-[highlighted]:to-transparent data-[highlighted]:text-secondary-muted-foreground",
+          "data-[highlighted]:bg-background data-[highlighted]:bg-gradient-to-t data-[highlighted]:from-secondary/15 data-[highlighted]:to-transparent data-[highlighted]:text-secondary-muted-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-secondary/30",
           "data-[highlighted]:*:data-[slot=tron-blur]:via-secondary-tron-blur data-[highlighted]:*:data-[slot=tron-wide]:via-secondary",
-          "data-[state=open]:inset-ring data-[state=open]:inset-ring-secondary/30 data-[state=open]:bg-background data-[state=open]:bg-gradient-to-t data-[state=open]:from-secondary/15 data-[state=open]:to-transparent data-[state=open]:text-secondary-muted-foreground",
+          "data-[state=open]:bg-background data-[state=open]:bg-gradient-to-t data-[state=open]:from-secondary/15 data-[state=open]:to-transparent data-[state=open]:text-secondary-muted-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-secondary/30",
           "data-[state=open]:*:data-[slot=tron-blur]:via-secondary-tron-blur data-[state=open]:*:data-[slot=tron-wide]:via-secondary",
         ],
 
@@ -149,6 +115,40 @@ const menubarTriggerVariants = cva(
     },
   },
 );
+
+function Menubar({
+  className,
+  ...props
+}: React.ComponentProps<typeof MenubarPrimitive.Root>) {
+  return (
+    <MenubarPrimitive.Root
+      data-slot="menubar"
+      className={cn(
+        "flex h-9 items-center gap-1 rounded-md border bg-background p-1 shadow-xs",
+        className,
+      )}
+      {...props}
+    />
+  );
+}
+
+function MenubarMenu({
+  ...props
+}: React.ComponentProps<typeof MenubarPrimitive.Menu>) {
+  return <MenubarPrimitive.Menu data-slot="menubar-menu" {...props} />;
+}
+
+function MenubarGroup({
+  ...props
+}: React.ComponentProps<typeof MenubarPrimitive.Group>) {
+  return <MenubarPrimitive.Group data-slot="menubar-group" {...props} />;
+}
+
+function MenubarPortal({
+  ...props
+}: React.ComponentProps<typeof MenubarPrimitive.Portal>) {
+  return <MenubarPrimitive.Portal data-slot="menubar-portal" {...props} />;
+}
 
 function MenubarTrigger({
   className,

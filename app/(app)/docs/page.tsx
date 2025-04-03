@@ -13,6 +13,7 @@ import { DialogDemo } from "@/components/demos/dialog.demo";
 import { DropdownMenuDemo } from "@/components/demos/dropdown.menu.demo";
 import { InputDemo } from "@/components/demos/input.demo";
 import { InputOTPDemo } from "@/components/demos/input.otp.demo";
+import { InputPasswordDemo } from "@/components/demos/input-password.demo";
 import { MenubarDemo } from "@/components/demos/menubar.demo";
 import { PaginationDemo } from "@/components/demos/pagination.demo";
 import { PopoverDemo } from "@/components/demos/popover.demo";
@@ -91,6 +92,11 @@ const COMPONENTS = [
     title: "Input OTP",
     id: "input-otp",
     component: <InputOTPDemo />,
+  },
+  {
+    title: "Input Password",
+    id: "input-password",
+    component: <InputPasswordDemo />,
   },
   {
     title: "Menubar",

@@ -7,23 +7,7 @@ import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from "lucide-react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
-function Select({
-  ...props
-}: React.ComponentProps<typeof SelectPrimitive.Root>) {
-  return <SelectPrimitive.Root data-slot="select" {...props} />;
-}
-
-function SelectGroup({
-  ...props
-}: React.ComponentProps<typeof SelectPrimitive.Group>) {
-  return <SelectPrimitive.Group data-slot="select-group" {...props} />;
-}
-
-function SelectValue({
-  ...props
-}: React.ComponentProps<typeof SelectPrimitive.Value>) {
-  return <SelectPrimitive.Value data-slot="select-value" {...props} />;
-}
+// TODO: adjust spacing for position="item-aligned" (i.e., not "popper")
 
 const selectTriggerVariants = cva(
   [
@@ -41,11 +25,13 @@ const selectTriggerVariants = cva(
           "focus-visible:outline-2 focus-visible:outline-primary",
           "aria-invalid:text-destructive-accent-foreground aria-invalid:outline-destructive aria-invalid:data-[placeholder]:text-destructive-muted-foreground aria-invalid:*:data-[slot=select-trigger-icon]:text-destructive-accent-foreground dark:aria-invalid:bg-destructive-faded aria-invalid:[&_svg:not([class*='text-'])]:text-destructive-muted-foreground",
         ],
+
         muted: [
           "bg-muted text-accent-foreground -outline-offset-1 hover:not-disabled:not-aria-invalid:not-focus-visible:bg-accent data-[placeholder]:text-muted-foreground *:data-[slot=select-trigger-icon]:text-accent-foreground [&_svg:not([class*='text-'])]:text-muted-foreground",
           "focus-visible:outline-2 focus-visible:outline-primary",
           "aria-invalid:bg-destructive-muted/80 aria-invalid:text-destructive-accent-foreground aria-invalid:outline-destructive aria-invalid:hover:not-disabled:not-focus-visible:bg-destructive-muted aria-invalid:data-[placeholder]:text-destructive-muted-foreground aria-invalid:*:data-[slot=select-trigger-icon]:text-destructive-accent-foreground aria-invalid:[&_svg:not([class*='text-'])]:text-destructive-muted-foreground",
         ],
+
         underlined: [
           "rounded-none bg-transparent shadow-[inset_0_-1px_0_0_var(--color-border)] outline-none hover:not-disabled:not-aria-invalid:not-focus-visible:shadow-[inset_0_-1px_0_0_var(--color-border-hover)] data-[placeholder]:text-muted-foreground *:data-[slot=select-trigger-icon]:text-accent-foreground [&_svg:not([class*='text-'])]:text-muted-foreground",
           "focus-visible:shadow-[inset_0_-2px_0_0_var(--color-primary)]",
@@ -78,98 +64,6 @@ const selectTriggerVariants = cva(
     },
   },
 );
-
-function SelectTrigger({
-  className,
-  variant = "default",
-  size = "default",
-  children,
-  ...props
-}: React.ComponentProps<typeof SelectPrimitive.Trigger> &
-  VariantProps<typeof selectTriggerVariants>) {
-  return (
-    <SelectPrimitive.Trigger
-      data-slot="select-trigger"
-      data-variant={variant}
-      data-size={size}
-      className={cn(selectTriggerVariants({ variant, size }), className)}
-      {...props}
-    >
-      {children}
-      <SelectPrimitive.Icon data-slot="select-trigger-icon" asChild>
-        <ChevronDownIcon className="size-4 text-current opacity-50" />
-      </SelectPrimitive.Icon>
-    </SelectPrimitive.Trigger>
-  );
-}
-
-const SelectVariantsContext = React.createContext<
-  VariantProps<typeof selectItemVariants> &
-    VariantProps<typeof selectItemIndicatorVariants>
->({
-  variant: "accent",
-  wide: false,
-  indicatorVariant: "default",
-});
-
-function SelectContent({
-  className,
-  position = "popper",
-  variant = "accent",
-  wide = false,
-  indicatorVariant = "default",
-  children,
-  ...props
-}: React.ComponentProps<typeof SelectPrimitive.Content> &
-  VariantProps<typeof selectItemVariants> &
-  VariantProps<typeof selectItemIndicatorVariants>) {
-  return (
-    <SelectVariantsContext.Provider value={{ variant, wide, indicatorVariant }}>
-      <SelectPrimitive.Portal>
-        <SelectPrimitive.Content
-          data-slot="select-content"
-          position={position}
-          sideOffset={position === "popper" ? 4 : 0}
-          className={cn(
-            "relative z-50 max-h-(--radix-select-content-available-height) min-w-[max(var(--radix-select-trigger-width),--spacing(32))] origin-(--radix-select-content-transform-origin) overflow-x-hidden overflow-y-auto rounded-md border border-border bg-popover text-popover-foreground shadow-md",
-            // FIXME: exit animations ain't working
-            "data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
-            position === "popper" && [
-              // "data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1",
-              "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=open]:animate-in data-[state=open]:ease-out data-[state=open]:fade-in-0",
-            ],
-            className,
-          )}
-          {...props}
-        >
-          <SelectScrollUpButton />
-          <SelectPrimitive.Viewport
-            className={cn(
-              position === "popper" &&
-                "flex w-full flex-1 scroll-my-1 flex-col p-1",
-            )}
-          >
-            {children}
-          </SelectPrimitive.Viewport>
-          <SelectScrollDownButton />
-        </SelectPrimitive.Content>
-      </SelectPrimitive.Portal>
-    </SelectVariantsContext.Provider>
-  );
-}
-
-function SelectLabel({
-  className,
-  ...props
-}: React.ComponentProps<typeof SelectPrimitive.Label>) {
-  return (
-    <SelectPrimitive.Label
-      data-slot="select-label"
-      className={cn("px-2 py-1.5 text-xs text-muted-foreground", className)}
-      {...props}
-    />
-  );
-}
 
 const selectItemVariants = cva(
   [
@@ -278,26 +172,143 @@ const selectItemVariants = cva(
 const selectItemIndicatorVariants = cva(
   [
     "pointer-events-none absolute right-2 flex size-3.5 items-center justify-center",
-    "data-[wide=true]:right-3 data-[wide=true]:[data-item-variant*='faded']:right-[calc(--spacing(3)+1px)] data-[wide=true]:[data-item-variant*='surface']:right-[calc(--spacing(3)+1px)]",
+    "data-[wide]:right-3 data-[wide]:[data-item-variant*='faded']:right-[calc(--spacing(3)+1px)] data-[wide]:[data-item-variant*='surface']:right-[calc(--spacing(3)+1px)]",
   ],
   {
     variants: {
-      indicatorVariant: {
+      variant: {
         default: "text-accent-foreground",
         primary: "text-primary",
         secondary: "text-secondary",
         destructive: "text-destructive",
       },
       defaultVariants: {
-        indicatorVariant: "default",
+        variant: "default",
       },
     },
   },
 );
 
+function Select({
+  ...props
+}: React.ComponentProps<typeof SelectPrimitive.Root>) {
+  return <SelectPrimitive.Root data-slot="select" {...props} />;
+}
+
+function SelectGroup({
+  ...props
+}: React.ComponentProps<typeof SelectPrimitive.Group>) {
+  return <SelectPrimitive.Group data-slot="select-group" {...props} />;
+}
+
+function SelectValue({
+  ...props
+}: React.ComponentProps<typeof SelectPrimitive.Value>) {
+  return <SelectPrimitive.Value data-slot="select-value" {...props} />;
+}
+
+function SelectTrigger({
+  className,
+  variant = "default",
+  size = "default",
+  children,
+  ...props
+}: React.ComponentProps<typeof SelectPrimitive.Trigger> &
+  VariantProps<typeof selectTriggerVariants>) {
+  return (
+    <SelectPrimitive.Trigger
+      data-slot="select-trigger"
+      data-variant={variant}
+      data-size={size}
+      className={cn(selectTriggerVariants({ variant, size }), className)}
+      {...props}
+    >
+      {children}
+      <SelectPrimitive.Icon data-slot="select-trigger-icon" asChild>
+        <ChevronDownIcon className="size-4 text-current opacity-50" />
+      </SelectPrimitive.Icon>
+    </SelectPrimitive.Trigger>
+  );
+}
+
+type SelectItemsVariantsType = VariantProps<typeof selectItemVariants> & {
+  indicatorVariant?: VariantProps<
+    typeof selectItemIndicatorVariants
+  >["variant"];
+};
+
+type SelectItemsVariantsContextType = SelectItemsVariantsType &
+  Pick<SelectPrimitive.SelectContentProps, "position">;
+
+const SelectItemsVariantsContext =
+  React.createContext<SelectItemsVariantsContextType>({
+    variant: "accent",
+    wide: undefined,
+    indicatorVariant: "default",
+    position: "popper",
+  });
+
+function SelectContent({
+  className,
+  position = "popper",
+  variant = "accent",
+  wide = undefined,
+  indicatorVariant = "default",
+  children,
+  ...props
+}: React.ComponentProps<typeof SelectPrimitive.Content> &
+  SelectItemsVariantsType) {
+  return (
+    <SelectItemsVariantsContext.Provider
+      value={{ variant, wide, indicatorVariant, position }}
+    >
+      <SelectPrimitive.Portal>
+        <SelectPrimitive.Content
+          data-slot="select-content"
+          position={position}
+          sideOffset={position === "popper" ? 4 : 0}
+          className={cn(
+            "relative z-50 max-h-(--radix-select-content-available-height) min-w-[max(var(--radix-select-trigger-width),--spacing(32))] origin-(--radix-select-content-transform-origin) overflow-x-hidden overflow-y-auto rounded-md border border-border bg-popover text-popover-foreground shadow-md",
+            // FIXME: exit animations ain't working
+            "data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
+            position === "popper" && [
+              "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=open]:animate-in data-[state=open]:ease-out data-[state=open]:fade-in-0",
+            ],
+            className,
+          )}
+          {...props}
+        >
+          <SelectScrollUpButton />
+          <SelectPrimitive.Viewport
+            className={cn(
+              position === "popper" &&
+                "flex w-full flex-1 scroll-my-1 flex-col p-1",
+            )}
+          >
+            {children}
+          </SelectPrimitive.Viewport>
+          <SelectScrollDownButton />
+        </SelectPrimitive.Content>
+      </SelectPrimitive.Portal>
+    </SelectItemsVariantsContext.Provider>
+  );
+}
+
+function SelectLabel({
+  className,
+  ...props
+}: React.ComponentProps<typeof SelectPrimitive.Label>) {
+  return (
+    <SelectPrimitive.Label
+      data-slot="select-label"
+      className={cn("px-2 py-1.5 text-xs text-muted-foreground", className)}
+      {...props}
+    />
+  );
+}
+
 type SelectItemProps = React.ComponentProps<typeof SelectPrimitive.Item> &
-  VariantProps<typeof selectItemVariants> &
-  VariantProps<typeof selectItemIndicatorVariants> & {
+  SelectItemsVariantsType & {
     indicatorClassName?: string;
   };
 
@@ -314,7 +325,8 @@ function SelectItem({
     variant: variantFromContext,
     wide: wideFromContext,
     indicatorVariant: indicatorVariantFromContext,
-  } = React.useContext(SelectVariantsContext);
+    position,
+  } = React.useContext(SelectItemsVariantsContext);
   const variant = variantOverride ?? variantFromContext;
   const wide = wideOverride ?? wideFromContext;
   const indicatorVariant =
@@ -325,6 +337,7 @@ function SelectItem({
       data-slot="select-item"
       data-variant={variant}
       data-wide={wide}
+      data-position={position}
       className={cn(selectItemVariants({ variant, wide }), className)}
       {...props}
     >
@@ -333,8 +346,9 @@ function SelectItem({
         data-variant={indicatorVariant}
         data-item-variant={variant}
         data-wide={wide}
+        data-position={position}
         className={cn(
-          selectItemIndicatorVariants({ indicatorVariant }),
+          selectItemIndicatorVariants({ variant: indicatorVariant }),
           indicatorClassName,
         )}
       >

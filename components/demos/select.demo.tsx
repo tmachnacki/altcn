@@ -18,6 +18,7 @@ import {
   SelectGroup,
   SelectItem,
   SelectLabel,
+  SelectSeparator,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
@@ -93,6 +94,17 @@ export function SelectDemo() {
                   Grapes
                 </SelectItem>
                 <SelectItem value="pineapple">Pineapple</SelectItem>
+              </SelectGroup>
+              <SelectSeparator />
+              <SelectGroup>
+                <SelectLabel>Vegetables</SelectLabel>
+                <SelectItem value="carrot">Carrot</SelectItem>
+                <SelectItem value="broccoli">Broccoli</SelectItem>
+                <SelectItem value="onion">Onion</SelectItem>
+                <SelectItem value="spinach" disabled>
+                  Spinach
+                </SelectItem>
+                <SelectItem value="peas">Peas</SelectItem>
               </SelectGroup>
             </SelectContent>
           </Select>

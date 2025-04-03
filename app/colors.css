@@ -1,0 +1,49 @@
+@theme {
+  --color-corporate-blue-50: oklch(0.974 0.014 245.612);
+  --color-corporate-blue-100: oklch(0.942 0.029 246.205);
+  --color-corporate-blue-200: oklch(0.892 0.059 242.515);
+  --color-corporate-blue-300: oklch(0.819 0.108 241.066);
+  --color-corporate-blue-400: oklch(0.727 0.163 243.643);
+  --color-corporate-blue-500: oklch(0.654 0.192 248.569);
+  --color-corporate-blue-600: oklch(0.567 0.202 252.424);
+  --color-corporate-blue-700: oklch(0.494 0.189 253.563);
+  --color-corporate-blue-800: oklch(0.434 0.155 253.214);
+  --color-corporate-blue-900: oklch(0.385 0.118 253.199);
+  --color-corporate-blue-950: oklch(0.288 0.079 255.546);
+
+  --color-mauve-50: oklch(0.984 0.002 290);
+  --color-mauve-100: oklch(0.968 0.006 292);
+  --color-mauve-200: oklch(0.929 0.01 294);
+  --color-mauve-300: oklch(0.869 0.015 296);
+  --color-mauve-400: oklch(0.704 0.024 298);
+  --color-mauve-500: oklch(0.554 0.03 300);
+  --color-mauve-600: oklch(0.446 0.028 302);
+  --color-mauve-700: oklch(0.372 0.026 304);
+  --color-mauve-800: oklch(0.279 0.024 306);
+  --color-mauve-900: oklch(0.208 0.022 308);
+  --color-mauve-950: oklch(0.129 0.02 310);
+
+  --color-sage-50: oklch(0.984 0.0005 157);
+  --color-sage-100: oklch(0.968 0.002 158);
+  --color-sage-200: oklch(0.929 0.004 159);
+  --color-sage-300: oklch(0.869 0.006 160);
+  --color-sage-400: oklch(0.704 0.01 161);
+  --color-sage-500: oklch(0.554 0.012 162);
+  --color-sage-600: oklch(0.446 0.011 163);
+  --color-sage-700: oklch(0.372 0.01 164);
+  --color-sage-800: oklch(0.279 0.009 165);
+  --color-sage-900: oklch(0.208 0.008 166);
+  --color-sage-950: oklch(0.129 0.007 167);
+
+  --color-rust-50: oklch(0.984 0.001 40);
+  --color-rust-100: oklch(0.968 0.003 42);
+  --color-rust-200: oklch(0.929 0.006 44);
+  --color-rust-300: oklch(0.869 0.01 46);
+  --color-rust-400: oklch(0.704 0.018 48);
+  --color-rust-500: oklch(0.554 0.025 50);
+  --color-rust-600: oklch(0.446 0.022 52);
+  --color-rust-700: oklch(0.372 0.02 54);
+  --color-rust-800: oklch(0.279 0.018 56);
+  --color-rust-900: oklch(0.208 0.015 58);
+  --color-rust-950: oklch(0.129 0.012 60);
+}

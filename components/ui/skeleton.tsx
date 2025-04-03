@@ -7,7 +7,7 @@ export function Skeleton({ className, ...props }: React.ComponentProps<"div">) {
       data-slot="skeleton"
       aria-label={props["aria-label"] || "Loading"}
       className={cn(
-        "animate-skeleton-shimmer rounded-md bg-skeleton",
+        "motion-reduce:animate-skeleton-shimmer-reduced-motion animate-skeleton-shimmer rounded-md bg-skeleton",
         className,
       )}
       style={{

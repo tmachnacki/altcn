@@ -47,7 +47,7 @@ export function DropdownMenuDemo() {
     {
       label: "Accent",
       variant: "accent",
-      wide: false,
+      wide: undefined,
     },
     {
       label: "Accent Wide",
@@ -57,7 +57,7 @@ export function DropdownMenuDemo() {
     {
       label: "Surface",
       variant: "surface",
-      wide: false,
+      wide: undefined,
     },
     {
       label: "Surface Wide",
@@ -67,7 +67,7 @@ export function DropdownMenuDemo() {
     {
       label: "Primary",
       variant: "primary",
-      wide: false,
+      wide: undefined,
     },
     {
       label: "Primary Wide",
@@ -77,7 +77,7 @@ export function DropdownMenuDemo() {
     {
       label: "Primary Accent",
       variant: "primary-accent",
-      wide: false,
+      wide: undefined,
     },
     {
       label: "Primary Accent Wide",
@@ -87,7 +87,7 @@ export function DropdownMenuDemo() {
     {
       label: "Primary Muted",
       variant: "primary-muted",
-      wide: false,
+      wide: undefined,
     },
     {
       label: "Primary Muted Wide",
@@ -97,7 +97,7 @@ export function DropdownMenuDemo() {
     {
       label: "Primary Surface",
       variant: "primary-surface",
-      wide: false,
+      wide: undefined,
     },
     {
       label: "Primary Surface Wide",
@@ -107,7 +107,7 @@ export function DropdownMenuDemo() {
     {
       label: "Primary Faded",
       variant: "primary-faded",
-      wide: false,
+      wide: undefined,
     },
     {
       label: "Primary Faded Wide",
@@ -117,7 +117,7 @@ export function DropdownMenuDemo() {
     {
       label: "Secondary",
       variant: "secondary",
-      wide: false,
+      wide: undefined,
     },
     {
       label: "Secondary Wide",
@@ -127,7 +127,7 @@ export function DropdownMenuDemo() {
     {
       label: "Secondary Accent",
       variant: "secondary-accent",
-      wide: false,
+      wide: undefined,
     },
     {
       label: "Secondary Accent Wide",
@@ -137,7 +137,7 @@ export function DropdownMenuDemo() {
     {
       label: "Secondary Muted",
       variant: "secondary-muted",
-      wide: false,
+      wide: undefined,
     },
     {
       label: "Secondary Muted Wide",
@@ -147,7 +147,7 @@ export function DropdownMenuDemo() {
     {
       label: "Secondary Surface",
       variant: "secondary-surface",
-      wide: false,
+      wide: undefined,
     },
     {
       label: "Secondary Surface Wide",
@@ -157,7 +157,7 @@ export function DropdownMenuDemo() {
     {
       label: "Secondary Faded",
       variant: "secondary-faded",
-      wide: false,
+      wide: undefined,
     },
     {
       label: "Secondary Faded Wide",
@@ -412,9 +412,7 @@ function DropdownMenuWithAvatar() {
           <ChevronsUpDownIcon className="ml-auto text-muted-foreground" />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent
-        align="start"
-      >
+      <DropdownMenuContent align="start">
         <DropdownMenuLabel className="p-0 font-normal">
           <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
             <Avatar>
