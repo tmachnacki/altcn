@@ -1,4 +1,4 @@
-import { Badge, BadgeClose, BadgeDot } from "@/components/ui/badge";
+import { Badge, BadgeClose } from "@/components/ui/badge";
 import { ArrowRightIcon, CheckIcon } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 
@@ -102,19 +102,14 @@ export function BadgeDemo() {
           <BadgeClose />
         </Badge>
 
-        <Badge variant="dotted">
-          <BadgeDot />
-          Dotted
-        </Badge>
+        <Badge variant="dotted">Dotted</Badge>
         <Badge asChild variant="dotted">
           <a href="#">
-            <BadgeDot />
             Link
             <ArrowRightIcon />
           </a>
         </Badge>
         <Badge variant="dotted">
-          <BadgeDot />
           Close
           <BadgeClose />
         </Badge>
@@ -219,19 +214,14 @@ export function BadgeDemo() {
           <BadgeClose />
         </Badge>
 
-        <Badge variant="primary-dotted">
-          <BadgeDot />
-          Dotted
-        </Badge>
+        <Badge variant="primary-dotted">Dotted</Badge>
         <Badge asChild variant="primary-dotted">
           <a href="#">
-            <BadgeDot />
             Link
             <ArrowRightIcon />
           </a>
         </Badge>
         <Badge variant="primary-dotted">
-          <BadgeDot />
           Close
           <BadgeClose />
         </Badge>
@@ -336,19 +326,14 @@ export function BadgeDemo() {
           <BadgeClose />
         </Badge>
 
-        <Badge variant="secondary-dotted">
-          <BadgeDot />
-          Dotted
-        </Badge>
+        <Badge variant="secondary-dotted">Dotted</Badge>
         <Badge asChild variant="secondary-dotted">
           <a href="#">
-            <BadgeDot />
             Link
             <ArrowRightIcon />
           </a>
         </Badge>
         <Badge variant="secondary-dotted">
-          <BadgeDot />
           Close
           <BadgeClose />
         </Badge>
@@ -453,19 +438,14 @@ export function BadgeDemo() {
           <BadgeClose />
         </Badge>
 
-        <Badge variant="destructive-dotted">
-          <BadgeDot />
-          Dotted
-        </Badge>
+        <Badge variant="destructive-dotted">Dotted</Badge>
         <Badge asChild variant="destructive-dotted">
           <a href="#">
-            <BadgeDot />
             Link
             <ArrowRightIcon />
           </a>
         </Badge>
         <Badge variant="destructive-dotted">
-          <BadgeDot />
           Close
           <BadgeClose />
         </Badge>
@@ -570,19 +550,14 @@ export function BadgeDemo() {
           <BadgeClose />
         </Badge>
 
-        <Badge variant="success-dotted">
-          <BadgeDot />
-          Dotted
-        </Badge>
+        <Badge variant="success-dotted">Dotted</Badge>
         <Badge asChild variant="success-dotted">
           <a href="#">
-            <BadgeDot />
             Link
             <ArrowRightIcon />
           </a>
         </Badge>
         <Badge variant="success-dotted">
-          <BadgeDot />
           Close
           <BadgeClose />
         </Badge>
@@ -687,19 +662,14 @@ export function BadgeDemo() {
           <BadgeClose />
         </Badge>
 
-        <Badge variant="warning-dotted">
-          <BadgeDot />
-          Dotted
-        </Badge>
+        <Badge variant="warning-dotted">Dotted</Badge>
         <Badge asChild variant="warning-dotted">
           <a href="#">
-            <BadgeDot />
             Link
             <ArrowRightIcon />
           </a>
         </Badge>
         <Badge variant="warning-dotted">
-          <BadgeDot />
           Close
           <BadgeClose />
         </Badge>

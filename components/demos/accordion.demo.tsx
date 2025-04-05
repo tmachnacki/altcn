@@ -11,7 +11,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
-import { Switch } from "@/components/ui/switch";
 
 import {
   Accordion,
@@ -21,13 +20,10 @@ import {
 } from "@/components/ui/accordion";
 
 export function AccordionDemo() {
-  const [accordionVariant, setAccordionVariant] = React.useState("default");
-  const [accordionSplit, setAccordionSplit] = React.useState<true | undefined>(
-    undefined,
-  );
+  const [accordionVariant, setAccordionVariant] = React.useState("outline");
 
   const accordionVariants = [
-    "default",
+    "outline",
     "muted",
     "faded",
     "primary-muted",
@@ -39,13 +35,40 @@ export function AccordionDemo() {
   return (
     <>
       <ComponentContainer>
-        <div className="flex w-full max-w-xl">
+        <div className="grid w-full max-w-xl gap-4">
           <Accordion
             type="single"
             collapsible
             className="w-full"
             variant={accordionVariant as (typeof accordionVariants)[number]}
-            split={accordionSplit}
+          >
+            <AccordionItem value="item-1">
+              <AccordionTrigger>Is it accessible?</AccordionTrigger>
+              <AccordionContent>
+                Yes. It adheres to the WAI-ARIA design pattern.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-2">
+              <AccordionTrigger>Is it styled?</AccordionTrigger>
+              <AccordionContent>
+                Yes. It comes with default styles that matches the other
+                components&apos; aesthetic.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-3">
+              <AccordionTrigger>Is it animated?</AccordionTrigger>
+              <AccordionContent>
+                Yes. It&apos;s animated by default, but you can disable it if
+                you prefer.
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+          <Accordion
+            type="single"
+            collapsible
+            className="w-full"
+            variant={accordionVariant as (typeof accordionVariants)[number]}
+            split
           >
             <AccordionItem value="item-1">
               <AccordionTrigger>Is it accessible?</AccordionTrigger>
@@ -90,16 +113,6 @@ export function AccordionDemo() {
             </SelectContent>
           </Select>
         </div>
-        <Label className="flex items-center gap-2">
-          <Switch
-            id="accordion-split"
-            checked={accordionSplit === true}
-            onCheckedChange={(checked) =>
-              setAccordionSplit(checked ? true : undefined)
-            }
-          />
-          <span>Split</span>
-        </Label>
       </ComponentPlayground>
     </>
   );
