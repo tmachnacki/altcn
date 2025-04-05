@@ -39,17 +39,17 @@ const accordionItemVariants = cva(
       {
         variant: ["outline", "muted", "faded"],
         className:
-          "[--accordion-content-text:text-muted-foreground] [--accordion-trigger-text:text-accent-foreground]",
+          "[--accordion-content-text:var(--color-muted-foreground)] [--accordion-trigger-text:var(--color-accent-foreground)]",
       },
       {
         variant: ["primary-muted", "primary-faded"],
         className:
-          "outline-primary [--accordion-content-text:text-primary-muted-foreground] [--accordion-trigger-text:text-primary-accent-foreground]",
+          "outline-primary [--accordion-content-text:var(--color-primary-muted-foreground)] [--accordion-trigger-text:var(--color-primary-accent-foreground)]",
       },
       {
         variant: ["secondary-muted", "secondary-faded"],
         className:
-          "outline-secondary [--accordion-content-text:text-secondary-muted-foreground] [--accordion-trigger-text:text-secondary-accent-foreground]",
+          "outline-secondary [--accordion-content-text:var(--color-secondary-muted-foreground)] [--accordion-trigger-text:var(--color-secondary-accent-foreground)]",
       },
     ],
 

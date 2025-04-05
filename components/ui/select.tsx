@@ -21,7 +21,7 @@ const selectTriggerVariants = cva(
       variant: {
         // -- base --
         default: [
-          "bg-background text-accent-foreground outline-1 -outline-offset-1 outline-border hover:not-disabled:not-aria-invalid:not-focus-visible:outline-border-hover data-[placeholder]:text-muted-foreground *:data-[slot=select-trigger-icon]:text-accent-foreground dark:bg-faded [&_svg:not([class*='text-'])]:text-muted-foreground",
+          "bg-background text-accent-foreground outline-1 -outline-offset-1 outline-border hover:not-disabled:not-aria-invalid:not-focus-visible:outline-hover-border data-[placeholder]:text-muted-foreground *:data-[slot=select-trigger-icon]:text-accent-foreground dark:bg-faded [&_svg:not([class*='text-'])]:text-muted-foreground",
           "focus-visible:outline-2 focus-visible:outline-primary",
           "aria-invalid:text-destructive-accent-foreground aria-invalid:outline-destructive aria-invalid:data-[placeholder]:text-destructive-muted-foreground aria-invalid:*:data-[slot=select-trigger-icon]:text-destructive-accent-foreground dark:aria-invalid:bg-destructive-faded aria-invalid:[&_svg:not([class*='text-'])]:text-destructive-muted-foreground",
         ],
@@ -33,7 +33,7 @@ const selectTriggerVariants = cva(
         ],
 
         underlined: [
-          "rounded-none bg-transparent shadow-[inset_0_-1px_0_0_var(--color-border)] outline-none hover:not-disabled:not-aria-invalid:not-focus-visible:shadow-[inset_0_-1px_0_0_var(--color-border-hover)] data-[placeholder]:text-muted-foreground *:data-[slot=select-trigger-icon]:text-accent-foreground [&_svg:not([class*='text-'])]:text-muted-foreground",
+          "rounded-none bg-transparent shadow-[inset_0_-1px_0_0_var(--color-border)] outline-none hover:not-disabled:not-aria-invalid:not-focus-visible:shadow-[inset_0_-1px_0_0_var(--color-hover-border)] data-[placeholder]:text-muted-foreground *:data-[slot=select-trigger-icon]:text-accent-foreground [&_svg:not([class*='text-'])]:text-muted-foreground",
           "focus-visible:shadow-[inset_0_-2px_0_0_var(--color-primary)]",
           "aria-invalid:text-destructive-accent-foreground aria-invalid:shadow-[inset_0_-1px_0_0_var(--color-destructive)] aria-invalid:focus-visible:shadow-[inset_0_-2px_0_0_var(--color-destructive)] aria-invalid:data-[placeholder]:text-destructive-muted-foreground aria-invalid:*:data-[slot=select-trigger-icon]:text-destructive-accent-foreground aria-invalid:[&_svg:not([class*='text-'])]:text-destructive-muted-foreground",
         ],

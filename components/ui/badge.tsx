@@ -1,11 +1,10 @@
 import * as React from "react";
 import { Slot, Slottable } from "@radix-ui/react-slot";
-import { cva, type VariantProps } from "class-variance-authority";
 import { XIcon, CircleIcon, LucideProps } from "lucide-react";
 
+import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
-// TODO: better close colors
 const badgeVariants = cva(
   [
     "relative isolate inline-flex h-6 w-fit shrink-0 items-center justify-center gap-1.5 rounded-md px-2 py-1 text-xs leading-none font-medium whitespace-nowrap has-[[data-slot='badge-close']]:pr-1",
@@ -71,7 +70,7 @@ const badgeVariants = cva(
         ],
 
         "primary-tron": [
-          "bg-background bg-gradient-to-t from-primary/15 to-transparent text-primary-muted-foreground inset-ring inset-ring-primary/30",
+          "bg-background bg-linear-(--primary-tron-bg-gradient) text-primary-muted-foreground inset-ring inset-ring-primary/30",
           "*:data-[slot=tron-blur]:via-primary-tron-blur *:data-[slot=tron-wide]:via-primary",
           "[a&]:hover:bg-gradient-to-b [a&]:hover:from-primary/20 [a&]:hover:to-primary/[7%] [a&]:hover:inset-ring-primary/50 [a&]:hover:*:data-[slot=tron-blur]:data-[side=bottom]:opacity-0 [a&]:hover:*:data-[slot=tron-blur]:data-[side=top]:opacity-100 [a&]:hover:*:data-[slot=tron-wide]:data-[side=bottom]:opacity-0 [a&]:hover:*:data-[slot=tron-wide]:data-[side=top]:opacity-100",
         ],
@@ -232,7 +231,7 @@ const badgeVariants = cva(
         ],
         className: [
           "bg-transparent text-foreground inset-ring inset-ring-border",
-          "[a&]:hover:bg-muted [a&]:hover:inset-ring-border-hover",
+          "[a&]:hover:bg-muted [a&]:hover:inset-ring-hover-border",
         ],
       },
       {

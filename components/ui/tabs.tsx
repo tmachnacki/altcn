@@ -80,8 +80,8 @@ const tabsTriggerVariants = cva(
         "primary-ghost": "data-[state=active]:text-primary",
 
         "primary-tron": [
-          "data-[state=active]:border data-[state=active]:border-primary/30 data-[state=active]:bg-background data-[state=active]:bg-gradient-to-t data-[state=active]:from-primary/15 data-[state=active]:to-transparent data-[state=active]:text-primary-muted-foreground",
-          "data-[state=active]:*:data-[slot=tron-blur]:via-primary-tron-blur data-[state=active]:*:data-[slot=tron-wide]:via-primary",
+          "data-[state=active]:border data-[state=active]:border-border-primary-tron data-[state=active]:bg-background data-[state=active]:bg-[image:var(--primary-tron-bg-gradient)] data-[state=active]:text-primary-muted-foreground",
+          "data-[state=active]:*:data-[slot=tron-blur]:via-primary-tron-blur data-[state=active]:*:data-[slot=tron-beam]:via-primary",
         ],
 
         // -- secondary --
@@ -107,7 +107,7 @@ const tabsTriggerVariants = cva(
           "data-[state=active]:text-secondary-500 dark:data-[state=active]:text-secondary",
 
         "secondary-tron": [
-          "data-[state=active]:border data-[state=active]:border-secondary/30 data-[state=active]:bg-background data-[state=active]:bg-gradient-to-t data-[state=active]:from-secondary/15 data-[state=active]:to-transparent data-[state=active]:text-secondary-muted-foreground",
+          "data-[state=active]:border data-[state=active]:border-secondary/30 data-[state=active]:bg-background data-[state=active]:bg-linear-to-t data-[state=active]:from-secondary/15 data-[state=active]:to-transparent data-[state=active]:text-secondary-muted-foreground",
           "data-[state=active]:*:data-[slot=tron-blur]:via-secondary-tron-blur data-[state=active]:*:data-[slot=tron-wide]:via-secondary",
         ],
       },
@@ -234,7 +234,7 @@ function TabsTrigger({
         <>
           <span
             aria-hidden="true"
-            data-slot="tron-wide"
+            data-slot="tron-beam"
             className="absolute -bottom-px left-[5%] block h-[2px] w-[90%] bg-gradient-to-r from-transparent to-transparent opacity-0 transition-opacity duration-300 group-data-[state=active]/tabs-trigger:opacity-100 motion-reduce:transition-none"
           />
           <span

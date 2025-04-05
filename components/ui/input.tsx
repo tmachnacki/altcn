@@ -17,7 +17,7 @@ const inputVariants = cva(
       variant: {
         // -- base --
         default: [
-          "bg-background shadow-xs outline-1 -outline-offset-1 outline-border hover:outline-border-hover dark:bg-faded",
+          "bg-background shadow-xs outline-1 -outline-offset-1 outline-border hover:outline-hover-border dark:bg-faded",
           "file:text-accent-foreground",
           "placeholder:text-muted-foreground",
           "disabled:bg-muted",
@@ -34,7 +34,7 @@ const inputVariants = cva(
         ],
 
         underlined: [
-          "rounded-none bg-transparent px-0.5 shadow-[inset_0_-1px_0_0_var(--color-border)] outline-none hover:shadow-[inset_0_-1px_0_0_var(--color-border-hover)]",
+          "rounded-none bg-transparent px-0.5 shadow-[inset_0_-1px_0_0_var(--color-border)] outline-none hover:shadow-[inset_0_-1px_0_0_var(--color-hover-border)]",
           "file:text-accent-foreground",
           "placeholder:text-muted-foreground",
           "focus-visible:shadow-[inset_0_-2px_0_0_var(--color-primary)]",

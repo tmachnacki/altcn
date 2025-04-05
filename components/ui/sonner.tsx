@@ -47,7 +47,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
           closeButton: cx([
             "!cursor-default !text-current/80 hover:!text-current/100",
 
-            "!border-border !bg-popover hover:!border-border-hover hover:!bg-muted",
+            "!border-border !bg-popover hover:!border-hover-border hover:!bg-muted",
 
             "group-data-[type=success]/toast:!border-border-success-faded group-data-[type=success]/toast:!bg-success-popover group-data-[type=success]/toast:hover:!border-success-600/40 group-data-[type=success]/toast:hover:!bg-success-muted dark:group-data-[type=success]/toast:hover:!border-success-400/40",
 

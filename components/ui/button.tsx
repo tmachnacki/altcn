@@ -18,7 +18,7 @@ const buttonVariants = cva(
         // --- base ---
         outline: [
           "border border-border bg-background text-foreground shadow-xs",
-          "hover:border-border-hover hover:bg-muted hover:text-accent-foreground",
+          "hover:border-hover-border hover:bg-muted hover:text-accent-foreground",
         ],
 
         base: ["bg-base text-base-foreground shadow", "hover:bg-base/90"],
@@ -74,9 +74,9 @@ const buttonVariants = cva(
         ],
 
         "primary-tron": [
-          "border border-primary/30 bg-background bg-gradient-to-t from-primary/15 to-transparent text-primary-muted-foreground",
-          "hover:border-primary/50 hover:bg-gradient-to-b hover:from-primary/20 hover:to-primary/[7%]",
-          "*:data-[slot=tron-blur]:via-primary-tron-blur *:data-[slot=tron-wide]:via-primary",
+          "border border-border-primary-tron bg-background bg-[image:var(--primary-tron-bg-gradient)] text-primary-muted-foreground",
+          "hover:border-hover-border-primary-tron hover:bg-[image:var(--hover-primary-tron-bg-gradient)]",
+          "*:data-[slot=tron-blur]:via-primary-tron-blur *:data-[slot=tron-beam]:via-primary",
         ],
 
         "primary-shadow": [
@@ -320,7 +320,7 @@ function Button({
         <>
           <span
             aria-hidden="true"
-            data-slot="tron-wide"
+            data-slot="tron-beam"
             className="absolute -top-px left-[5%] block h-[2px] w-[90%] bg-gradient-to-r from-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover/button:opacity-100 motion-reduce:transition-none"
           />
           <span
@@ -330,7 +330,7 @@ function Button({
           />
           <span
             aria-hidden="true"
-            data-slot="tron-wide"
+            data-slot="tron-beam"
             className="absolute -bottom-px left-[5%] block h-[2px] w-[90%] bg-gradient-to-r from-transparent to-transparent opacity-100 transition-opacity duration-300 group-hover/button:opacity-0 motion-reduce:transition-none"
           />
           <span
