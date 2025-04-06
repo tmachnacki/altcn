@@ -9,10 +9,10 @@ import { cn } from "@/lib/utils";
 
 const checkBoxVariants = cva(
   [
-    "peer size-4 shrink-0 rounded-[4px] border border-border shadow-xs dark:data-[state=unchecked]:bg-faded",
+    "peer size-4 shrink-0 rounded-[4px] border border-border bg-background shadow-xs dark:data-[state=unchecked]:bg-faded",
     "hover:not-aria-invalid:not-disabled:data-[state=unchecked]:border-hover-border",
     "focus-visible:outline-2 focus-visible:outline-offset-2",
-    "disabled:cursor-not-allowed disabled:bg-muted disabled:opacity-50 disabled:border-border disabled:not-data-[state=unchecked]:text-muted-foreground",
+    "disabled:cursor-not-allowed disabled:border-border disabled:bg-muted disabled:opacity-50 disabled:not-data-[state=unchecked]:text-muted-foreground",
     "aria-invalid:border-destructive aria-invalid:outline-destructive aria-invalid:not-data-[state=unchecked]:bg-destructive aria-invalid:not-data-[state=unchecked]:text-destructive-foreground aria-invalid:disabled:bg-destructive-muted dark:aria-invalid:data-[state=unchecked]:bg-destructive-faded",
   ],
   {

@@ -18,11 +18,10 @@ type MenuItemsVariantsContextType = VariantProps<typeof menuItemVariants> & {
 const menuItemVariants = cva(
   [
     "relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-[inset]:pl-8",
-    "data-[disabled]:pointer-events-none data-[disabled]:text-muted-foreground data-[disabled]:opacity-50",
-    "[&_[data-slot*='-shortcut']]:text-muted-foreground data-[highlighted]:[&_[data-slot*='-shortcut']]:text-current",
+    "data-[disabled]:pointer-events-none data-[disabled]:text-muted-foreground data-[disabled]:opacity-50 data-[disabled]:[&_[data-slot*='-indicator']]:text-muted-foreground",
     "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground data-[highlighted]:[&_svg:not([class*='text-'])]:text-current",
     // for subtrigger
-    "not-data-[highlighted]:data-[state=open]:bg-accent not-data-[highlighted]:data-[state=open]:text-accent-foreground",
+    "not-data-[highlighted]:data-[state=open]:bg-muted not-data-[highlighted]:data-[state=open]:text-accent-foreground",
   ],
   {
     variants: {
@@ -30,78 +29,60 @@ const menuItemVariants = cva(
         // -- base --
         accent: [
           "data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground",
-          // when sub is open and hovering subtrigger
-          "data-[highlighted]:[data-state=open]:bg-accent data-[highlighted]:[data-state=open]:text-accent-foreground",
         ],
         surface: [
           "data-[highlighted]:bg-faded data-[highlighted]:text-accent-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-faded",
-          "data-[highlighted]:[data-state=open]:bg-faded data-[highlighted]:[data-state=open]:text-accent-foreground data-[highlighted]:[data-state=open]:inset-ring data-[highlighted]:[data-state=open]:inset-ring-border-faded",
         ],
 
         // -- primary --
         primary: [
-          "data-[highlighted]:bg-primary data-[highlighted]:text-primary-foreground data-[highlighted]:[&_[data-slot*='-indicator'][data-variant='default']]:text-current data-[highlighted]:[&_[data-slot*='-indicator'][data-variant='primary']]:text-current",
-          "data-[highlighted]:[data-state=open]:bg-primary data-[highlighted]:[data-state=open]:text-primary-foreground",
+          "data-[highlighted]:bg-primary data-[highlighted]:text-primary-foreground data-[highlighted]:[&_[data-slot*='-indicator']]:text-current",
         ],
         "primary-accent": [
           "data-[highlighted]:bg-primary-muted data-[highlighted]:text-primary-accent-foreground",
-          "data-[highlighted]:[data-state=open]:bg-primary-muted data-[highlighted]:[data-state=open]:text-primary-accent-foreground",
         ],
         "primary-muted": [
           "data-[highlighted]:bg-primary-muted data-[highlighted]:text-primary-muted-foreground",
-          "data-[highlighted]:[data-state=open]:bg-primary-muted data-[highlighted]:[data-state=open]:text-primary-muted-foreground",
         ],
         "primary-surface": [
           "data-[highlighted]:bg-primary-faded data-[highlighted]:text-primary-accent-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-primary-faded",
-          "data-[highlighted]:[data-state=open]:bg-primary-faded data-[highlighted]:[data-state=open]:text-primary-accent-foreground data-[highlighted]:[data-state=open]:inset-ring data-[highlighted]:[data-state=open]:inset-ring-border-primary-faded",
         ],
         "primary-faded": [
           "data-[highlighted]:bg-primary-faded data-[highlighted]:text-primary-muted-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-primary-faded",
-          "data-[highlighted]:[data-state=open]:bg-primary-faded data-[highlighted]:[data-state=open]:text-primary-muted-foreground data-[highlighted]:[data-state=open]:inset-ring data-[highlighted]:[data-state=open]:inset-ring-border-primary-faded",
         ],
 
         // -- secondary --
         secondary: [
-          "data-[highlighted]:bg-secondary data-[highlighted]:text-secondary-foreground data-[highlighted]:[&_[data-slot*='-indicator'][data-variant='default']]:text-current data-[highlighted]:[&_[data-slot*='-indicator'][data-variant='secondary']]:text-current",
-          "data-[highlighted]:[data-state=open]:bg-secondary data-[highlighted]:[data-state=open]:text-secondary-foreground",
+          "data-[highlighted]:bg-secondary data-[highlighted]:text-secondary-foreground data-[highlighted]:[&_[data-slot*='-indicator']]:text-current",
         ],
         "secondary-accent": [
           "data-[highlighted]:bg-secondary-muted data-[highlighted]:text-secondary-accent-foreground",
-          "data-[highlighted]:[data-state=open]:bg-secondary-muted data-[highlighted]:[data-state=open]:text-secondary-accent-foreground",
         ],
         "secondary-muted": [
           "data-[highlighted]:bg-secondary-muted data-[highlighted]:text-secondary-muted-foreground",
-          "data-[highlighted]:[data-state=open]:bg-secondary-muted data-[highlighted]:[data-state=open]:text-secondary-muted-foreground",
         ],
         "secondary-surface": [
           "data-[highlighted]:bg-secondary-faded data-[highlighted]:text-secondary-accent-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-secondary-faded",
-          "data-[highlighted]:[data-state=open]:bg-secondary-faded data-[highlighted]:[data-state=open]:text-secondary-accent-foreground data-[highlighted]:[data-state=open]:inset-ring data-[highlighted]:[data-state=open]:inset-ring-border-secondary-faded",
         ],
         "secondary-faded": [
           "data-[highlighted]:bg-secondary-faded data-[highlighted]:text-secondary-muted-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-secondary-faded",
-          "data-[highlighted]:[data-state=open]:bg-secondary-faded data-[highlighted]:[data-state=open]:text-secondary-muted-foreground data-[highlighted]:[data-state=open]:inset-ring data-[highlighted]:[data-state=open]:inset-ring-border-secondary-faded",
         ],
 
         // -- destructive --
         destructive: [
-          "data-[highlighted]:bg-destructive data-[highlighted]:text-destructive-foreground data-[highlighted]:[&_[data-slot*='-indicator'][data-variant='default']]:text-current data-[highlighted]:[&_[data-slot*='-indicator'][data-variant='destructive']]:text-current",
-          "data-[highlighted]:[data-state=open]:bg-destructive data-[highlighted]:[data-state=open]:text-destructive-foreground",
+          "data-[highlighted]:bg-destructive data-[highlighted]:text-destructive-foreground data-[highlighted]:[&_[data-slot*='-indicator']]:text-current",
         ],
         "destructive-accent": [
           "data-[highlighted]:bg-destructive-muted data-[highlighted]:text-destructive-accent-foreground",
-          "data-[highlighted]:[data-state=open]:bg-destructive-muted data-[highlighted]:[data-state=open]:text-destructive-accent-foreground",
         ],
         "destructive-muted": [
           "data-[highlighted]:bg-destructive-muted data-[highlighted]:text-destructive-muted-foreground",
-          "data-[highlighted]:[data-state=open]:bg-destructive-muted data-[highlighted]:[data-state=open]:text-destructive-muted-foreground",
         ],
         "destructive-surface": [
           "data-[highlighted]:bg-destructive-faded data-[highlighted]:text-destructive-accent-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-destructive-faded",
-          "data-[highlighted]:[data-state=open]:bg-destructive-faded data-[highlighted]:[data-state=open]:text-destructive-accent-foreground data-[highlighted]:[data-state=open]:inset-ring data-[highlighted]:[data-state=open]:inset-ring-border-destructive-faded",
         ],
         "destructive-faded": [
           "data-[highlighted]:bg-destructive-faded data-[highlighted]:text-destructive-muted-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-destructive-faded",
-          "data-[highlighted]:[data-state=open]:bg-destructive-faded data-[highlighted]:[data-state=open]:text-destructive-muted-foreground data-[highlighted]:[data-state=open]:inset-ring data-[highlighted]:[data-state=open]:inset-ring-border-destructive-faded",
         ],
       },
       wide: {
@@ -151,14 +132,16 @@ const menuItemIndicatorVariants = cva(
   {
     variants: {
       variant: {
-        default: "text-accent-foreground",
+        default: "text-subtle-foreground",
         primary: "text-primary",
         secondary: "text-secondary",
         destructive: "text-destructive",
+        success: "text-success",
+        warning: "text-warning",
       },
-      defaultVariants: {
-        variant: "default",
-      },
+    },
+    defaultVariants: {
+      variant: "default",
     },
   },
 );
@@ -250,6 +233,7 @@ function DropdownMenuItem({
     React.useContext(DropdownMenuItemsVariantsContext);
   const variant = variantOverride ?? variantFromContext;
   const wide = wideOverride ?? wideFromContext;
+
   return (
     <DropdownMenuPrimitive.Item
       data-slot="dropdown-menu-item"
@@ -352,6 +336,7 @@ function DropdownMenuRadioItem({
   const wide = wideOverride ?? wideFromContext;
   const indicatorVariant =
     indicatorVariantOverride ?? indicatorVariantFromContext;
+
   return (
     <DropdownMenuPrimitive.RadioItem
       data-slot="dropdown-menu-radio-item"
@@ -390,7 +375,7 @@ function DropdownMenuLabel({
       data-slot="dropdown-menu-label"
       data-inset={inset}
       className={cn(
-        "px-2 py-1.5 text-sm font-medium text-foreground data-[inset=true]:pl-8",
+        "px-2 py-1.5 text-sm font-medium text-foreground data-[inset]:pl-8",
         className,
       )}
       {...props}
@@ -418,7 +403,10 @@ function DropdownMenuShortcut({
   return (
     <span
       data-slot="dropdown-menu-shortcut"
-      className={cn("ml-auto text-xs tracking-widest", className)}
+      className={cn(
+        "ml-auto text-xs tracking-widest text-current/70",
+        className,
+      )}
       {...props}
     />
   );

@@ -25,7 +25,7 @@
   --hover-border: --alpha(var(--color-base-950) / 20%);
   --input: var(--color-base-200);
   --outline: var(--color-base-700);
-  --overlay: --alpha(var(--color-base-400) / 50%);
+  --overlay: --alpha(var(--color-base-100) / 50%);
 
   --accent: --alpha(var(--color-base-200) / 70%);
   --accent-foreground: var(--color-base-950);
@@ -61,13 +61,29 @@
   --secondary-foreground: var(--color-secondary-950);
   --secondary-accent-foreground: var(--color-secondary-950);
   --secondary-muted: var(--color-secondary-100);
-  --secondary-muted-foreground: var(--color-secondary-600);
+  --secondary-muted-foreground: color-mix(
+    in oklab,
+    var(--color-secondary-600) 50%,
+    var(--color-secondary-700)
+  );
   --secondary-faded: color-mix(
     in oklab,
     var(--color-secondary-50) 80%,
     var(--color-secondary-100)
   );
   --border-secondary-faded: --alpha(var(--color-secondary-600) / 20%);
+  --secondary-tron-bg-gradient: linear-gradient(
+    to top,
+    --alpha(var(--color-secondary) / 15%) 0%,
+    transparent 100%
+  );
+  --hover-secondary-tron-bg-gradient: linear-gradient(
+    to bottom,
+    --alpha(var(--color-secondary) / 20%) 0%,
+    --alpha(var(--color-secondary) / 7.5%) 100%
+  );
+  --border-secondary-tron: --alpha(var(--color-secondary) / 30%);
+  --hover-border-secondary-tron: --alpha(var(--color-secondary) / 50%);
   --secondary-tron-blur: var(--color-cyan-400);
   --secondary-popover: var(--color-secondary-50);
 
@@ -77,7 +93,19 @@
   --destructive-muted: var(--color-destructive-100);
   --destructive-muted-foreground: var(--color-destructive-600);
   --destructive-faded: var(--color-destructive-50);
-  --border-destructive-faded: --alpha(var(--color-destructive-600) / 12%);
+  --border-destructive-faded: --alpha(var(--color-destructive-600) / 12.5%);
+  --destructive-tron-bg-gradient: linear-gradient(
+    to top,
+    --alpha(var(--color-destructive) / 15%) 0%,
+    transparent 100%
+  );
+  --hover-destructive-tron-bg-gradient: linear-gradient(
+    to bottom,
+    --alpha(var(--color-destructive) / 20%) 0%,
+    --alpha(var(--color-destructive) / 7.5%) 100%
+  );
+  --border-destructive-tron: --alpha(var(--color-destructive) / 30%);
+  --hover-border-destructive-tron: --alpha(var(--color-destructive) / 50%);
   --destructive-tron-blur: var(--color-pink-400);
   --destructive-popover: var(--color-destructive-50);
 
@@ -88,6 +116,18 @@
   --success-muted-foreground: var(--color-success-700);
   --success-faded: var(--color-success-50);
   --border-success-faded: --alpha(var(--color-success-600) / 20%);
+  --success-tron-bg-gradient: linear-gradient(
+    to top,
+    --alpha(var(--color-success) / 15%) 0%,
+    transparent 100%
+  );
+  --hover-success-tron-bg-gradient: linear-gradient(
+    to bottom,
+    --alpha(var(--color-success) / 20%) 0%,
+    --alpha(var(--color-success) / 7.5%) 100%
+  );
+  --border-success-tron: --alpha(var(--color-success) / 30%);
+  --hover-border-success-tron: --alpha(var(--color-success) / 50%);
   --success-tron-blur: var(--color-green-400);
   --success-popover: var(--color-success-50);
 
@@ -98,6 +138,18 @@
   --warning-muted-foreground: var(--color-warning-600);
   --warning-faded: var(--color-warning-50);
   --border-warning-faded: --alpha(var(--color-warning-600) / 25%);
+  --warning-tron-bg-gradient: linear-gradient(
+    to top,
+    --alpha(var(--color-warning) / 15%) 0%,
+    transparent 100%
+  );
+  --hover-warning-tron-bg-gradient: linear-gradient(
+    to bottom,
+    --alpha(var(--color-warning) / 20%) 0%,
+    --alpha(var(--color-warning) / 7.5%) 100%
+  );
+  --border-warning-tron: --alpha(var(--color-warning) / 30%);
+  --hover-border-warning-tron: --alpha(var(--color-warning) / 50%);
   --warning-tron-blur: var(--color-yellow-300);
   --warning-popover: var(--color-warning-50);
 
@@ -140,14 +192,14 @@
   --hover-border: --alpha(var(--color-white) / 20%);
   --input: var(--color-zinc-800);
   --outline: var(--color-base-300);
-  --overlay: --alpha(var(--color-base-500) / 50%);
+  --overlay: --alpha(var(--color-black) / 50%);
 
   --accent: --alpha(var(--color-base-800) / 70%);
   --accent-foreground: var(--color-base-50);
   --subtle-foreground: var(--color-base-300);
   --muted: var(--color-base-900);
   --muted-foreground: var(--color-base-400);
-  --faded: --alpha(var(--color-base-500) / 12%);
+  --faded: --alpha(var(--color-base-600) / 15%);
   --border-faded: --alpha(var(--color-base-400) / 15%);
 
   --primary: var(--color-primary-500);
@@ -157,6 +209,18 @@
   --primary-muted-foreground: var(--color-primary-300);
   --primary-faded: --alpha(var(--color-primary-950) / 50%);
   --border-primary-faded: --alpha(var(--color-primary-500) / 25%);
+  --primary-tron-bg-gradient: linear-gradient(
+    to top,
+    --alpha(var(--color-primary) / 15%) 0%,
+    transparent 100%
+  );
+  --hover-primary-tron-bg-gradient: linear-gradient(
+    to bottom,
+    --alpha(var(--color-primary) / 20%) 0%,
+    --alpha(var(--color-primary) / 7.5%) 100%
+  );
+  --border-primary-tron: --alpha(var(--color-primary) / 30%);
+  --hover-border-primary-tron: --alpha(var(--color-primary) / 50%);
   --primary-tron-blur: var(--color-purple-400);
   --primary-popover: color-mix(
     in oklab,
@@ -171,6 +235,18 @@
   --secondary-muted-foreground: var(--color-secondary-400);
   --secondary-faded: --alpha(var(--color-secondary-950) / 50%);
   --border-secondary-faded: --alpha(var(--color-secondary-500) / 20%);
+  --secondary-tron-bg-gradient: linear-gradient(
+    to top,
+    --alpha(var(--color-secondary) / 15%) 0%,
+    transparent 100%
+  );
+  --hover-secondary-tron-bg-gradient: linear-gradient(
+    to bottom,
+    --alpha(var(--color-secondary) / 20%) 0%,
+    --alpha(var(--color-secondary) / 7.5%) 100%
+  );
+  --border-secondary-tron: --alpha(var(--color-secondary) / 30%);
+  --hover-border-secondary-tron: --alpha(var(--color-secondary) / 50%);
   --secondary-tron-blur: var(--color-cyan-400);
   --secondary-popover: color-mix(
     in oklab,
@@ -178,13 +254,25 @@
     var(--color-base-950)
   );
 
-  --destructive: var(--color-destructive-700);
+  --destructive: var(--color-destructive-600);
   --destructive-foreground: var(--color-white);
   --destructive-accent-foreground: var(--color-destructive-50);
   --destructive-muted: var(--color-destructive-950);
   --destructive-muted-foreground: var(--color-destructive-300);
   --destructive-faded: --alpha(var(--color-destructive-950) / 50%);
   --border-destructive-faded: --alpha(var(--color-destructive-400) / 20%);
+  --destructive-tron-bg-gradient: linear-gradient(
+    to top,
+    --alpha(var(--color-destructive) / 15%) 0%,
+    transparent 100%
+  );
+  --hover-destructive-tron-bg-gradient: linear-gradient(
+    to bottom,
+    --alpha(var(--color-destructive) / 20%) 0%,
+    --alpha(var(--color-destructive) / 7.5%) 100%
+  );
+  --border-destructive-tron: --alpha(var(--color-destructive) / 30%);
+  --hover-border-destructive-tron: --alpha(var(--color-destructive) / 50%);
   --destructive-tron-blur: var(--color-pink-400);
   --destructive-popover: color-mix(
     in oklab,
@@ -199,6 +287,18 @@
   --success-muted-foreground: var(--color-success-400);
   --success-faded: --alpha(var(--color-success-950) / 50%);
   --border-success-faded: --alpha(var(--color-success-500) / 20%);
+  --success-tron-bg-gradient: linear-gradient(
+    to top,
+    --alpha(var(--color-success) / 15%) 0%,
+    transparent 100%
+  );
+  --hover-success-tron-bg-gradient: linear-gradient(
+    to bottom,
+    --alpha(var(--color-success) / 20%) 0%,
+    --alpha(var(--color-success) / 7.5%) 100%
+  );
+  --border-success-tron: --alpha(var(--color-success) / 30%);
+  --hover-border-success-tron: --alpha(var(--color-success) / 50%);
   --success-tron-blur: var(--color-green-400);
   --success-popover: color-mix(
     in oklab,
@@ -213,6 +313,18 @@
   --warning-muted-foreground: var(--color-warning-500);
   --warning-faded: --alpha(var(--color-warning-950) / 50%);
   --border-warning-faded: --alpha(var(--color-warning-400) / 20%);
+  --warning-tron-bg-gradient: linear-gradient(
+    to top,
+    --alpha(var(--color-warning) / 15%) 0%,
+    transparent 100%
+  );
+  --hover-warning-tron-bg-gradient: linear-gradient(
+    to bottom,
+    --alpha(var(--color-warning) / 20%) 0%,
+    --alpha(var(--color-warning) / 7.5%) 100%
+  );
+  --border-warning-tron: --alpha(var(--color-warning) / 30%);
+  --hover-border-warning-tron: --alpha(var(--color-warning) / 50%);
   --warning-tron-blur: var(--color-yellow-300);
   --warning-popover: color-mix(
     in oklab,
@@ -354,6 +466,8 @@
   --color-secondary-muted-foreground: var(--secondary-muted-foreground);
   --color-secondary-faded: var(--secondary-faded);
   --color-border-secondary-faded: var(--border-secondary-faded);
+  --color-border-secondary-tron: var(--border-secondary-tron);
+  --color-hover-border-secondary-tron: var(--hover-border-secondary-tron);
   --color-secondary-tron-blur: var(--secondary-tron-blur);
   --color-secondary-popover: var(--secondary-popover);
 
@@ -364,6 +478,8 @@
   --color-destructive-muted-foreground: var(--destructive-muted-foreground);
   --color-destructive-faded: var(--destructive-faded);
   --color-border-destructive-faded: var(--border-destructive-faded);
+  --color-border-destructive-tron: var(--border-destructive-tron);
+  --color-hover-border-destructive-tron: var(--hover-border-destructive-tron);
   --color-destructive-tron-blur: var(--destructive-tron-blur);
   --color-destructive-popover: var(--destructive-popover);
 
@@ -374,6 +490,8 @@
   --color-success-muted-foreground: var(--success-muted-foreground);
   --color-success-faded: var(--success-faded);
   --color-border-success-faded: var(--border-success-faded);
+  --color-border-success-tron: var(--border-success-tron);
+  --color-hover-border-success-tron: var(--hover-border-success-tron);
   --color-success-tron-blur: var(--success-tron-blur);
   --color-success-popover: var(--success-popover);
 
@@ -384,6 +502,8 @@
   --color-warning-muted-foreground: var(--warning-muted-foreground);
   --color-warning-faded: var(--warning-faded);
   --color-border-warning-faded: var(--border-warning-faded);
+  --color-border-warning-tron: var(--border-warning-tron);
+  --color-hover-border-warning-tron: var(--hover-border-warning-tron);
   --color-warning-tron-blur: var(--warning-tron-blur);
   --color-warning-popover: var(--warning-popover);
 
@@ -473,6 +593,7 @@
 
 @theme {
   --breakpoint-xs: 576px;
+  --blur-2xs: 2px;
 }
 
 @layer base {

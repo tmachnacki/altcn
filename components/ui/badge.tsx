@@ -2,6 +2,7 @@ import * as React from "react";
 import { Slot, Slottable } from "@radix-ui/react-slot";
 import { XIcon, CircleIcon, LucideProps } from "lucide-react";
 
+import { Tron } from "@/components/ui/tron";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
@@ -70,9 +71,10 @@ const badgeVariants = cva(
         ],
 
         "primary-tron": [
-          "bg-background bg-linear-(--primary-tron-bg-gradient) text-primary-muted-foreground inset-ring inset-ring-primary/30",
-          "*:data-[slot=tron-blur]:via-primary-tron-blur *:data-[slot=tron-wide]:via-primary",
-          "[a&]:hover:bg-gradient-to-b [a&]:hover:from-primary/20 [a&]:hover:to-primary/[7%] [a&]:hover:inset-ring-primary/50 [a&]:hover:*:data-[slot=tron-blur]:data-[side=bottom]:opacity-0 [a&]:hover:*:data-[slot=tron-blur]:data-[side=top]:opacity-100 [a&]:hover:*:data-[slot=tron-wide]:data-[side=bottom]:opacity-0 [a&]:hover:*:data-[slot=tron-wide]:data-[side=top]:opacity-100",
+          "bg-background bg-[image:var(--primary-tron-bg-gradient)] text-primary-muted-foreground inset-ring inset-ring-border-primary-tron",
+          "[--tron-beam:var(--color-primary)] [--tron-blur:var(--color-primary-tron-blur)]",
+          "[a&]:hover:bg-[image:var(--hover-primary-tron-bg-gradient)] [a&]:hover:inset-ring-hover-border-primary-tron",
+          "[a&]:hover:*:data-[slot=tron-beam]:data-[side=bottom]:opacity-0 [a&]:hover:*:data-[slot=tron-beam]:data-[side=top]:opacity-100 [a&]:hover:*:data-[slot=tron-blur]:data-[side=bottom]:opacity-0 [a&]:hover:*:data-[slot=tron-blur]:data-[side=top]:opacity-100",
         ],
 
         "primary-dotted": "[--badge-dot-text:var(--color-primary)]",
@@ -105,9 +107,10 @@ const badgeVariants = cva(
         ],
 
         "secondary-tron": [
-          "bg-background bg-gradient-to-t from-secondary/10 to-transparent text-secondary-muted-foreground inset-ring inset-ring-secondary/30",
-          "*:data-[slot=tron-blur]:via-secondary-tron-blur *:data-[slot=tron-wide]:via-secondary",
-          "[a&]:hover:bg-gradient-to-b [a&]:hover:from-secondary/20 [a&]:hover:to-secondary/[7%] [a&]:hover:inset-ring-secondary/50 [a&]:hover:*:data-[slot=tron-blur]:data-[side=bottom]:opacity-0 [a&]:hover:*:data-[slot=tron-blur]:data-[side=top]:opacity-100 [a&]:hover:*:data-[slot=tron-wide]:data-[side=bottom]:opacity-0 [a&]:hover:*:data-[slot=tron-wide]:data-[side=top]:opacity-100",
+          "bg-background bg-[image:var(--secondary-tron-bg-gradient)] text-secondary-muted-foreground inset-ring inset-ring-border-secondary-tron",
+          "[--tron-beam:var(--color-secondary)] [--tron-blur:var(--color-secondary-tron-blur)]",
+          "[a&]:hover:bg-[image:var(--hover-secondary-tron-bg-gradient)] [a&]:hover:inset-ring-hover-border-secondary-tron",
+          "[a&]:hover:*:data-[slot=tron-beam]:data-[side=bottom]:opacity-0 [a&]:hover:*:data-[slot=tron-beam]:data-[side=top]:opacity-100 [a&]:hover:*:data-[slot=tron-blur]:data-[side=bottom]:opacity-0 [a&]:hover:*:data-[slot=tron-blur]:data-[side=top]:opacity-100",
         ],
 
         "secondary-dotted": "[--badge-dot-text:var(--color-secondary)]",
@@ -140,9 +143,10 @@ const badgeVariants = cva(
         ],
 
         "destructive-tron": [
-          "bg-background bg-gradient-to-t from-destructive/10 to-transparent text-destructive-muted-foreground inset-ring inset-ring-destructive/30",
-          "*:data-[slot=tron-blur]:via-destructive-tron-blur *:data-[slot=tron-wide]:via-destructive",
-          "[a&]:hover:bg-gradient-to-b [a&]:hover:from-destructive/20 [a&]:hover:to-destructive/[7%] [a&]:hover:inset-ring-destructive/50 [a&]:hover:*:data-[slot=tron-blur]:data-[side=bottom]:opacity-0 [a&]:hover:*:data-[slot=tron-blur]:data-[side=top]:opacity-100 [a&]:hover:*:data-[slot=tron-wide]:data-[side=bottom]:opacity-0 [a&]:hover:*:data-[slot=tron-wide]:data-[side=top]:opacity-100",
+          "bg-background bg-[image:var(--destructive-tron-bg-gradient)] text-destructive-muted-foreground inset-ring inset-ring-border-destructive-tron",
+          "[--tron-beam:var(--color-destructive)] [--tron-blur:var(--color-destructive-tron-blur)]",
+          "[a&]:hover:bg-[image:var(--hover-destructive-tron-bg-gradient)] [a&]:hover:inset-ring-hover-border-destructive-tron",
+          "[a&]:hover:*:data-[slot=tron-beam]:data-[side=bottom]:opacity-0 [a&]:hover:*:data-[slot=tron-beam]:data-[side=top]:opacity-100 [a&]:hover:*:data-[slot=tron-blur]:data-[side=bottom]:opacity-0 [a&]:hover:*:data-[slot=tron-blur]:data-[side=top]:opacity-100",
         ],
 
         "destructive-dotted": "[--badge-dot-text:var(--color-destructive)]",
@@ -175,9 +179,10 @@ const badgeVariants = cva(
         ],
 
         "success-tron": [
-          "bg-background bg-gradient-to-t from-success/10 to-transparent text-success-muted-foreground inset-ring inset-ring-success/30",
-          "*:data-[slot=tron-blur]:via-success-tron-blur *:data-[slot=tron-wide]:via-success",
-          "[a&]:hover:bg-gradient-to-b [a&]:hover:from-success/20 [a&]:hover:to-success/[7%] [a&]:hover:inset-ring-success/50 [a&]:hover:*:data-[slot=tron-blur]:data-[side=bottom]:opacity-0 [a&]:hover:*:data-[slot=tron-blur]:data-[side=top]:opacity-100 [a&]:hover:*:data-[slot=tron-wide]:data-[side=bottom]:opacity-0 [a&]:hover:*:data-[slot=tron-wide]:data-[side=top]:opacity-100",
+          "bg-background bg-[image:var(--success-tron-bg-gradient)] text-success-muted-foreground inset-ring inset-ring-border-success-tron",
+          "[--tron-beam:var(--color-success)] [--tron-blur:var(--color-success-tron-blur)]",
+          "[a&]:hover:bg-[image:var(--hover-success-tron-bg-gradient)] [a&]:hover:inset-ring-hover-border-success-tron",
+          "[a&]:hover:*:data-[slot=tron-beam]:data-[side=bottom]:opacity-0 [a&]:hover:*:data-[slot=tron-beam]:data-[side=top]:opacity-100 [a&]:hover:*:data-[slot=tron-blur]:data-[side=bottom]:opacity-0 [a&]:hover:*:data-[slot=tron-blur]:data-[side=top]:opacity-100",
         ],
 
         "success-dotted": "[--badge-dot-text:var(--color-success)]",
@@ -210,9 +215,10 @@ const badgeVariants = cva(
         ],
 
         "warning-tron": [
-          "bg-background bg-gradient-to-t from-warning/10 to-transparent text-warning-muted-foreground inset-ring inset-ring-warning/30",
-          "*:data-[slot=tron-blur]:via-warning-tron-blur *:data-[slot=tron-wide]:via-warning",
-          "[a&]:hover:bg-gradient-to-b [a&]:hover:from-warning/20 [a&]:hover:to-warning/[7%] [a&]:hover:inset-ring-warning/50 [a&]:hover:*:data-[slot=tron-blur]:data-[side=bottom]:opacity-0 [a&]:hover:*:data-[slot=tron-blur]:data-[side=top]:opacity-100 [a&]:hover:*:data-[slot=tron-wide]:data-[side=bottom]:opacity-0 [a&]:hover:*:data-[slot=tron-wide]:data-[side=top]:opacity-100",
+          "bg-background bg-[image:var(--warning-tron-bg-gradient)] text-warning-muted-foreground inset-ring inset-ring-border-warning-tron",
+          "[--tron-beam:var(--color-warning)] [--tron-blur:var(--color-warning-tron-blur)]",
+          "[a&]:hover:bg-[image:var(--hover-warning-tron-bg-gradient)] [a&]:hover:inset-ring-hover-border-warning-tron",
+          "[a&]:hover:*:data-[slot=tron-beam]:data-[side=bottom]:opacity-0 [a&]:hover:*:data-[slot=tron-beam]:data-[side=top]:opacity-100 [a&]:hover:*:data-[slot=tron-blur]:data-[side=bottom]:opacity-0 [a&]:hover:*:data-[slot=tron-blur]:data-[side=top]:opacity-100",
         ],
 
         "warning-dotted": "[--badge-dot-text:var(--color-warning)]",
@@ -384,29 +390,25 @@ function Badge({
     >
       {variant?.includes("tron") && (
         <>
-          <span
-            aria-hidden="true"
-            data-slot="tron-wide"
-            data-side="top"
-            className="absolute top-0 left-[5%] block h-px w-[90%] bg-gradient-to-r from-transparent to-transparent opacity-0 transition-opacity duration-300 motion-reduce:transition-none"
+          <Tron
+            side="top"
+            type="beam"
+            className="via-(--tron-beam) opacity-0"
           />
-          <span
-            aria-hidden="true"
-            data-slot="tron-blur"
-            data-side="top"
-            className="absolute top-0 left-[20%] block h-px w-[60%] bg-gradient-to-r from-transparent to-transparent opacity-0 blur-sm transition-opacity duration-300 motion-reduce:transition-none"
+          <Tron
+            side="top"
+            type="blur"
+            className="via-(--tron-blur) opacity-0"
           />
-          <span
-            aria-hidden="true"
-            data-slot="tron-wide"
-            data-side="bottom"
-            className="absolute bottom-0 left-[5%] block h-px w-[90%] bg-gradient-to-r from-transparent to-transparent opacity-100 transition-opacity duration-300 motion-reduce:transition-none"
+          <Tron
+            side="bottom"
+            type="beam"
+            className="via-(--tron-beam) opacity-100"
           />
-          <span
-            aria-hidden="true"
-            data-slot="tron-blur"
-            data-side="bottom"
-            className="absolute bottom-0 left-[20%] block h-px w-[60%] bg-gradient-to-r from-transparent to-transparent opacity-100 blur-sm transition-opacity duration-300 motion-reduce:transition-none"
+          <Tron
+            side="bottom"
+            type="blur"
+            className="via-(--tron-blur) opacity-100"
           />
         </>
       )}

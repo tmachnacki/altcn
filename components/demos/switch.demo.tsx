@@ -44,13 +44,32 @@ export function SwitchDemo() {
           </Label>
           <div className="flex w-full items-center gap-2">
             <Switch
+              id={`switch-${switchVariant}-invalid`}
+              variant={switchVariant as (typeof switchVariants)[number]}
+              aria-invalid
+              thin={switchThin}
+            />
+            <Label htmlFor={`switch-${switchVariant}-invalid`}>invalid</Label>
+          </div>
+          <div className="flex w-full items-center gap-2">
+            <Switch
               id={`switch-${switchVariant}-disabled`}
               variant={switchVariant as (typeof switchVariants)[number]}
               disabled
               thin={switchThin}
             />
-            <Label htmlFor={`switch-${switchVariant}-disabled`}>
-              {switchVariant} (disabled)
+            <Label htmlFor={`switch-${switchVariant}-disabled`}>disabled</Label>
+          </div>
+          <div className="flex w-full items-center gap-2">
+            <Switch
+              id={`switch-${switchVariant}-checked-disabled`}
+              variant={switchVariant as (typeof switchVariants)[number]}
+              disabled
+              thin={switchThin}
+              checked
+            />
+            <Label htmlFor={`switch-${switchVariant}-checked-disabled`}>
+              checked & disabled
             </Label>
           </div>
         </div>

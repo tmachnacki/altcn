@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 
 const radioGroupItemVariants = cva(
   [
-    "peer size-4 shrink-0 rounded-full border border-border shadow-xs dark:not-data-[state=checked]:bg-faded",
+    "peer size-4 shrink-0 rounded-full border border-border bg-background shadow-xs dark:not-data-[state=checked]:bg-faded",
     "hover:not-aria-invalid:not-disabled:data-[state=unchecked]:border-hover-border",
     "focus-visible:outline-2 focus-visible:outline-offset-2",
     "disabled:cursor-not-allowed disabled:bg-muted disabled:opacity-50 disabled:hover:border-border disabled:data-[state=checked]:text-muted-foreground",
@@ -30,7 +30,7 @@ const radioGroupItemVariants = cva(
   },
 );
 
-const RadioGroupVariantsContext = React.createContext<
+const RadioGroupItemsVariantsContext = React.createContext<
   VariantProps<typeof radioGroupItemVariants>
 >({ variant: "primary" });
 
@@ -41,13 +41,13 @@ function RadioGroup({
 }: React.ComponentProps<typeof RadioGroupPrimitive.Root> &
   VariantProps<typeof radioGroupItemVariants>) {
   return (
-    <RadioGroupVariantsContext.Provider value={{ variant }}>
+    <RadioGroupItemsVariantsContext.Provider value={{ variant }}>
       <RadioGroupPrimitive.Root
         data-slot="radio-group"
         className={cn("grid gap-3", className)}
         {...props}
       />
-    </RadioGroupVariantsContext.Provider>
+    </RadioGroupItemsVariantsContext.Provider>
   );
 }
 
@@ -58,7 +58,7 @@ function RadioGroupItem({
 }: React.ComponentProps<typeof RadioGroupPrimitive.Item> &
   VariantProps<typeof radioGroupItemVariants>) {
   const { variant: variantFromContext } = React.useContext(
-    RadioGroupVariantsContext,
+    RadioGroupItemsVariantsContext,
   );
   const variant = variantOverride ?? variantFromContext;
 

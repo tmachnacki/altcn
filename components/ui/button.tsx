@@ -2,6 +2,7 @@ import * as React from "react";
 import { Slot, Slottable } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 
+import { Tron } from "@/components/ui/tron";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
@@ -74,9 +75,9 @@ const buttonVariants = cva(
         ],
 
         "primary-tron": [
-          "border border-border-primary-tron bg-background bg-[image:var(--primary-tron-bg-gradient)] text-primary-muted-foreground",
-          "hover:border-hover-border-primary-tron hover:bg-[image:var(--hover-primary-tron-bg-gradient)]",
-          "*:data-[slot=tron-blur]:via-primary-tron-blur *:data-[slot=tron-beam]:via-primary",
+          "bg-background bg-[image:var(--primary-tron-bg-gradient)] text-primary-muted-foreground inset-ring inset-ring-border-primary-tron",
+          "hover:bg-[image:var(--hover-primary-tron-bg-gradient)] hover:inset-ring-hover-border-primary-tron",
+          "[--tron-beam:var(--color-primary)] [--tron-blur:var(--color-primary-tron-blur)]",
         ],
 
         "primary-shadow": [
@@ -121,9 +122,9 @@ const buttonVariants = cva(
         ],
 
         "secondary-tron": [
-          "border border-secondary/30 bg-background bg-gradient-to-t from-secondary/10 to-transparent text-secondary-muted-foreground",
-          "hover:border-secondary/50 hover:bg-gradient-to-b hover:from-secondary/20 hover:to-secondary/[7%]",
-          "*:data-[slot=tron-blur]:via-secondary-tron-blur *:data-[slot=tron-wide]:via-secondary",
+          "bg-background bg-[image:var(--secondary-tron-bg-gradient)] text-secondary-muted-foreground inset-ring inset-ring-border-secondary-tron",
+          "hover:bg-[image:var(--hover-secondary-tron-bg-gradient)] hover:inset-ring-hover-border-secondary-tron",
+          "[--tron-beam:var(--color-secondary)] [--tron-blur:var(--color-secondary-tron-blur)]",
         ],
 
         "secondary-shadow": [
@@ -168,9 +169,9 @@ const buttonVariants = cva(
         ],
 
         "destructive-tron": [
-          "border border-destructive/30 bg-gradient-to-t from-destructive/10 to-transparent text-destructive-muted-foreground",
-          "hover:border-destructive/50 hover:bg-gradient-to-b hover:from-destructive/20 hover:to-destructive/[7%]",
-          "*:data-[slot=tron-blur]:via-destructive-tron-blur *:data-[slot=tron-wide]:via-destructive",
+          "bg-background bg-[image:var(--destructive-tron-bg-gradient)] text-destructive-muted-foreground inset-ring inset-ring-border-destructive-tron",
+          "hover:bg-[image:var(--hover-destructive-tron-bg-gradient)] hover:inset-ring-hover-border-destructive-tron",
+          "[--tron-beam:var(--color-destructive)] [--tron-blur:var(--color-destructive-tron-blur)]",
         ],
 
         "destructive-shadow": [
@@ -179,8 +180,8 @@ const buttonVariants = cva(
         ],
 
         "destructive-gradient": [
-          "bg-gradient-to-br from-destructive-600 to-destructive-400 text-destructive-foreground dark:from-destructive-900 dark:to-destructive-700",
-          "hover:from-destructive-600/90 hover:to-destructive-400/90 dark:hover:from-destructive-900/90 dark:hover:to-destructive-700/90",
+          "bg-gradient-to-br from-destructive-600 to-destructive-400 text-destructive-foreground dark:from-destructive-800 dark:to-destructive-500",
+          "hover:from-destructive-600/90 hover:to-destructive-400/90 dark:hover:from-destructive-800/90 dark:hover:to-destructive-500/90",
         ],
 
         "destructive-ghost": [
@@ -191,7 +192,6 @@ const buttonVariants = cva(
       size: {
         default: [
           "h-9 px-4 py-2",
-          "data-[variant=input]:px-3 data-[variant=input]:py-1",
           "has-[[data-slot='spinner']]:px-3 has-[>svg]:px-3 **:data-[slot=spinner]:not-[[class*='size-']]:size-4",
           "[&_svg:not([class*='size-'])]:size-4",
         ],
@@ -318,25 +318,25 @@ function Button({
     >
       {variant?.includes("tron") && (
         <>
-          <span
-            aria-hidden="true"
-            data-slot="tron-beam"
-            className="absolute -top-px left-[5%] block h-[2px] w-[90%] bg-gradient-to-r from-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover/button:opacity-100 motion-reduce:transition-none"
+          <Tron
+            side="top"
+            type="beam"
+            className="via-(--tron-beam) opacity-0 group-hover/button:opacity-100"
           />
-          <span
-            aria-hidden="true"
-            data-slot="tron-blur"
-            className="absolute -top-px left-[20%] block h-[2px] w-[60%] bg-gradient-to-r from-transparent to-transparent opacity-0 blur-sm transition-opacity duration-300 group-hover/button:opacity-100 motion-reduce:transition-none"
+          <Tron
+            side="top"
+            type="blur"
+            className="via-(--tron-blur) opacity-0 group-hover/button:opacity-100"
           />
-          <span
-            aria-hidden="true"
-            data-slot="tron-beam"
-            className="absolute -bottom-px left-[5%] block h-[2px] w-[90%] bg-gradient-to-r from-transparent to-transparent opacity-100 transition-opacity duration-300 group-hover/button:opacity-0 motion-reduce:transition-none"
+          <Tron
+            side="bottom"
+            type="beam"
+            className="via-(--tron-beam) opacity-100 group-hover/button:opacity-0"
           />
-          <span
-            aria-hidden="true"
-            data-slot="tron-blur"
-            className="absolute -bottom-px left-[20%] block h-[2px] w-[60%] bg-gradient-to-r from-transparent to-transparent opacity-100 blur-sm transition-opacity duration-300 group-hover/button:opacity-0 motion-reduce:transition-none"
+          <Tron
+            side="bottom"
+            type="blur"
+            className="via-(--tron-blur) opacity-100 group-hover/button:opacity-0"
           />
         </>
       )}

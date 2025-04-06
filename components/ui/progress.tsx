@@ -11,18 +11,27 @@ const progressVariants = cva(
   {
     variants: {
       variant: {
-        primary: "bg-accent **:data-[slot=progress-indicator]:bg-primary",
-        "primary-muted":
-          "bg-primary-muted **:data-[slot=progress-indicator]:bg-primary",
+        primary: "bg-accent",
+        "primary-muted": "bg-primary-muted",
         "primary-faded":
-          "bg-primary-faded inset-ring inset-ring-border-primary-faded **:data-[slot=progress-indicator]:bg-primary",
-        secondary: "bg-accent **:data-[slot=progress-indicator]:bg-secondary",
-        "secondary-muted":
-          "bg-secondary-muted **:data-[slot=progress-indicator]:bg-secondary",
+          "bg-primary-faded inset-ring inset-ring-border-primary-faded",
+
+        secondary: "bg-accent",
+        "secondary-muted": "bg-secondary-muted",
         "secondary-faded":
-          "bg-secondary-faded inset-ring inset-ring-border-secondary-faded **:data-[slot=progress-indicator]:bg-secondary",
+          "bg-secondary-faded inset-ring inset-ring-border-secondary-faded",
       },
     },
+    compoundVariants: [
+      {
+        variant: ["primary", "primary-muted", "primary-faded"],
+        className: "[--progress-indicator-bg:var(--color-primary)]",
+      },
+      {
+        variant: ["secondary", "secondary-muted", "secondary-faded"],
+        className: "[--progress-indicator-bg:var(--color-secondary)]",
+      },
+    ],
     defaultVariants: {
       variant: "primary",
     },
@@ -44,7 +53,7 @@ function Progress({
     >
       <ProgressPrimitive.Indicator
         data-slot="progress-indicator"
-        className="h-full w-full flex-1 transition-all"
+        className="h-full w-full flex-1 bg-(--progress-indicator-bg) transition-all"
         style={{ transform: `translateX(-${100 - (value || 0)}%)` }}
       />
     </ProgressPrimitive.Root>

@@ -40,6 +40,8 @@ export function DropdownMenuDemo() {
   const [primaryChecked, setPrimaryChecked] = React.useState(true);
   const [secondaryChecked, setSecondaryChecked] = React.useState(true);
   const [destructiveChecked, setDestructiveChecked] = React.useState(true);
+  const [successChecked, setSuccessChecked] = React.useState(true);
+  const [warningChecked, setWarningChecked] = React.useState(true);
 
   const [radioIndicator, setRadioIndicator] = React.useState("default");
 
@@ -249,6 +251,20 @@ export function DropdownMenuDemo() {
                 >
                   Destructive Indicator
                 </DropdownMenuCheckboxItem>
+                <DropdownMenuCheckboxItem
+                  checked={successChecked}
+                  onCheckedChange={setSuccessChecked}
+                  indicatorVariant="success"
+                >
+                  Success Indicator
+                </DropdownMenuCheckboxItem>
+                <DropdownMenuCheckboxItem
+                  checked={warningChecked}
+                  onCheckedChange={setWarningChecked}
+                  indicatorVariant="warning"
+                >
+                  Warning Indicator
+                </DropdownMenuCheckboxItem>
                 <DropdownMenuCheckboxItem checked disabled>
                   Disabled
                 </DropdownMenuCheckboxItem>
@@ -280,6 +296,18 @@ export function DropdownMenuDemo() {
                     indicatorVariant="destructive"
                   >
                     Destructive
+                  </DropdownMenuRadioItem>
+                  <DropdownMenuRadioItem
+                    value="success"
+                    indicatorVariant="success"
+                  >
+                    Success
+                  </DropdownMenuRadioItem>
+                  <DropdownMenuRadioItem
+                    value="warning"
+                    indicatorVariant="warning"
+                  >
+                    Warning
                   </DropdownMenuRadioItem>
                   <DropdownMenuRadioItem value="disabled" disabled>
                     Disabled

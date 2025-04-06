@@ -8,6 +8,7 @@ import {
   menuItemVariants,
   menuItemIndicatorVariants,
 } from "@/components/ui/dropdown-menu";
+import { Tron } from "@/components/ui/tron";
 
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
@@ -60,10 +61,10 @@ const menubarTriggerVariants = cva(
         ],
 
         "primary-tron": [
-          "data-[highlighted]:bg-background data-[highlighted]:bg-gradient-to-t data-[highlighted]:from-primary/15 data-[highlighted]:to-transparent data-[highlighted]:text-primary-muted-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-primary/30",
-          "data-[highlighted]:*:data-[slot=tron-blur]:via-primary-tron-blur data-[highlighted]:*:data-[slot=tron-wide]:via-primary",
-          "data-[state=open]:bg-background data-[state=open]:bg-gradient-to-t data-[state=open]:from-primary/15 data-[state=open]:to-transparent data-[state=open]:text-primary-muted-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-primary/30",
-          "data-[state=open]:*:data-[slot=tron-blur]:via-primary-tron-blur data-[state=open]:*:data-[slot=tron-wide]:via-primary",
+          "data-[highlighted]:bg-background data-[highlighted]:bg-[image:var(--primary-tron-bg-gradient)] data-[highlighted]:text-primary-muted-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-primary-tron",
+          "data-[highlighted]:[--tron-beam:var(--color-primary)] data-[highlighted]:[--tron-blur:var(--primary-tron-blur)]",
+          "data-[state=open]:bg-background data-[state=open]:bg-[image:var(--primary-tron-bg-gradient)] data-[state=open]:text-primary-muted-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-border-primary-tron",
+          "data-[state=open]:[--tron-beam:var(--color-primary)] data-[state=open]:[--tron-blur:var(--primary-tron-blur)]",
         ],
 
         "primary-ghost": [
@@ -98,10 +99,10 @@ const menubarTriggerVariants = cva(
         ],
 
         "secondary-tron": [
-          "data-[highlighted]:bg-background data-[highlighted]:bg-gradient-to-t data-[highlighted]:from-secondary/15 data-[highlighted]:to-transparent data-[highlighted]:text-secondary-muted-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-secondary/30",
-          "data-[highlighted]:*:data-[slot=tron-blur]:via-secondary-tron-blur data-[highlighted]:*:data-[slot=tron-wide]:via-secondary",
-          "data-[state=open]:bg-background data-[state=open]:bg-gradient-to-t data-[state=open]:from-secondary/15 data-[state=open]:to-transparent data-[state=open]:text-secondary-muted-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-secondary/30",
-          "data-[state=open]:*:data-[slot=tron-blur]:via-secondary-tron-blur data-[state=open]:*:data-[slot=tron-wide]:via-secondary",
+          "data-[highlighted]:bg-background data-[highlighted]:bg-[image:var(--secondary-tron-bg-gradient)] data-[highlighted]:text-secondary-muted-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-secondary-tron",
+          "data-[highlighted]:[--tron-beam:var(--color-secondary)] data-[highlighted]:[--tron-blur:var(--secondary-tron-blur)]",
+          "data-[state=open]:bg-background data-[state=open]:bg-[image:var(--secondary-tron-bg-gradient)] data-[state=open]:text-secondary-muted-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-border-secondary-tron",
+          "data-[state=open]:[--tron-beam:var(--color-secondary)] data-[state=open]:[--tron-blur:var(--secondary-tron-blur)]",
         ],
 
         "secondary-ghost": [
@@ -169,15 +170,15 @@ function MenubarTrigger({
     >
       {variant?.includes("tron") && (
         <>
-          <span
-            aria-hidden="true"
-            data-slot="tron-wide"
-            className="absolute bottom-0 left-[5%] block h-[2px] w-[90%] bg-gradient-to-r from-transparent to-transparent opacity-0 transition-opacity duration-300 group-data-[highlighted]/menubar-trigger:opacity-100 group-data-[state=open]/menubar-trigger:opacity-100 motion-reduce:transition-none"
+          <Tron
+            side="bottom"
+            type="beam"
+            className="via-(--tron-beam) opacity-0 group-data-[highlighted]/menubar-trigger:opacity-100 group-data-[state=open]/menubar-trigger:opacity-100"
           />
-          <span
-            aria-hidden="true"
-            data-slot="tron-blur"
-            className="absolute bottom-0 left-[20%] block h-[2px] w-[60%] bg-gradient-to-r from-transparent to-transparent opacity-0 blur-sm transition-opacity duration-300 group-data-[highlighted]/menubar-trigger:opacity-100 group-data-[state=open]/menubar-trigger:opacity-100 motion-reduce:transition-none"
+          <Tron
+            side="bottom"
+            type="blur"
+            className="via-(--tron-blur) opacity-0 group-data-[highlighted]/menubar-trigger:opacity-100 group-data-[state=open]/menubar-trigger:opacity-100"
           />
         </>
       )}
@@ -216,7 +217,7 @@ function MenubarContent({
           data-wide={wide}
           className={cn(
             "z-50 max-h-(--radix-menubar-content-available-height) min-w-48 origin-(--radix-menubar-content-transform-origin) overflow-x-hidden overflow-y-auto rounded-md border bg-popover p-1 text-popover-foreground shadow-md",
-            // FIXME: exit animations be breaking shit
+            // FIXME: exit animations be breaking
             "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=open]:animate-in data-[state=open]:ease-out data-[state=open]:fade-in-0",
             className,
           )}

@@ -3,6 +3,7 @@
 import * as React from "react";
 import * as TabsPrimitive from "@radix-ui/react-tabs";
 
+import { Tron } from "@/components/ui/tron";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
@@ -80,8 +81,8 @@ const tabsTriggerVariants = cva(
         "primary-ghost": "data-[state=active]:text-primary",
 
         "primary-tron": [
-          "data-[state=active]:border data-[state=active]:border-border-primary-tron data-[state=active]:bg-background data-[state=active]:bg-[image:var(--primary-tron-bg-gradient)] data-[state=active]:text-primary-muted-foreground",
-          "data-[state=active]:*:data-[slot=tron-blur]:via-primary-tron-blur data-[state=active]:*:data-[slot=tron-beam]:via-primary",
+          "data-[state=active]:bg-background data-[state=active]:bg-[image:var(--primary-tron-bg-gradient)] data-[state=active]:text-primary-muted-foreground data-[state=active]:inset-ring data-[state=active]:inset-ring-border-primary-tron",
+          "data-[state=active]:[--tron-beam:var(--color-primary)] data-[state=active]:[--tron-blur:var(--color-primary-tron-blur)]",
         ],
 
         // -- secondary --
@@ -107,8 +108,8 @@ const tabsTriggerVariants = cva(
           "data-[state=active]:text-secondary-500 dark:data-[state=active]:text-secondary",
 
         "secondary-tron": [
-          "data-[state=active]:border data-[state=active]:border-secondary/30 data-[state=active]:bg-background data-[state=active]:bg-linear-to-t data-[state=active]:from-secondary/15 data-[state=active]:to-transparent data-[state=active]:text-secondary-muted-foreground",
-          "data-[state=active]:*:data-[slot=tron-blur]:via-secondary-tron-blur data-[state=active]:*:data-[slot=tron-wide]:via-secondary",
+          "data-[state=active]:bg-background data-[state=active]:bg-linear-to-t data-[state=active]:from-secondary/15 data-[state=active]:to-transparent data-[state=active]:text-secondary-muted-foreground data-[state=active]:inset-ring data-[state=active]:inset-ring-border-secondary-tron",
+          "data-[state=active]:[--tron-beam:var(--color-secondary)] data-[state=active]:[--tron-blur:var(--color-secondary-tron-blur)]",
         ],
       },
     },
@@ -232,15 +233,15 @@ function TabsTrigger({
       )}
       {variant?.includes("tron") && (
         <>
-          <span
-            aria-hidden="true"
-            data-slot="tron-beam"
-            className="absolute -bottom-px left-[5%] block h-[2px] w-[90%] bg-gradient-to-r from-transparent to-transparent opacity-0 transition-opacity duration-300 group-data-[state=active]/tabs-trigger:opacity-100 motion-reduce:transition-none"
+          <Tron
+            side="bottom"
+            type="beam"
+            className="via-(--tron-beam) opacity-0 group-data-[state=active]/tabs-trigger:opacity-100"
           />
-          <span
-            aria-hidden="true"
-            data-slot="tron-blur"
-            className="absolute -bottom-px left-[20%] block h-[2px] w-[60%] bg-gradient-to-r from-transparent to-transparent opacity-0 blur-sm transition-opacity duration-300 group-data-[state=active]/tabs-trigger:opacity-100 motion-reduce:transition-none"
+          <Tron
+            side="bottom"
+            type="blur"
+            className="via-(--tron-blur) opacity-0 group-data-[state=active]/tabs-trigger:opacity-100"
           />
         </>
       )}

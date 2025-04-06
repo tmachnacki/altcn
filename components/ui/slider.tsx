@@ -7,29 +7,41 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const sliderVariants = cva(
-  "aria-invalid:**:data-[slot=slider-range]:bg-destructive aria-invalid:**:data-[slot=slider-thumb]:border-destructive aria-invalid:**:data-[slot=slider-thumb]:ring-border-destructive-faded",
+  "aria-invalid:[--slider-range-bg:var(--color-destructive)] aria-invalid:[--slider-thumb-border:var(--color-destructive)] aria-invalid:[--slider-thumb-ring:var(--color-border-destructive-faded)]",
   {
     variants: {
       variant: {
         primary:
-          "**:data-[slot=slider-range]:bg-primary **:data-[slot=slider-thumb]:border-primary **:data-[slot=slider-thumb]:ring-border-primary-faded **:data-[slot=slider-track]:bg-accent aria-invalid:**:data-[slot=slider-track]:bg-destructive-muted",
+          "[--slider-track-bg:var(--color-accent)] aria-invalid:[--slider-track-bg:var(--color-destructive-muted)]",
 
         "primary-muted":
-          "**:data-[slot=slider-range]:bg-primary **:data-[slot=slider-thumb]:border-primary **:data-[slot=slider-thumb]:ring-border-primary-faded **:data-[slot=slider-track]:bg-primary-muted aria-invalid:**:data-[slot=slider-track]:bg-destructive-muted",
+          "[--slider-track-bg:var(--color-primary-muted)] aria-invalid:[--slider-track-bg:var(--color-destructive-muted)]",
 
         "primary-faded":
-          "**:data-[slot=slider-range]:bg-primary **:data-[slot=slider-thumb]:border-primary **:data-[slot=slider-thumb]:ring-border-primary-faded **:data-[slot=slider-track]:bg-primary-faded **:data-[slot=slider-track]:inset-ring-1 **:data-[slot=slider-track]:inset-ring-border-primary-faded aria-invalid:**:data-[slot=slider-track]:bg-destructive-faded aria-invalid:**:data-[slot=slider-track]:inset-ring-border-destructive-faded",
+          "[--slider-track-bg:var(--color-primary-faded)] *:data-[slot=slider-track]:inset-ring-1 *:data-[slot=slider-track]:inset-ring-border-primary-faded aria-invalid:[--slider-track-bg:var(--color-destructive-faded)] aria-invalid:*:data-[slot=slider-track]:inset-ring-border-destructive-faded",
 
         secondary:
-          "**:data-[slot=slider-range]:bg-secondary **:data-[slot=slider-thumb]:border-secondary **:data-[slot=slider-thumb]:ring-border-secondary-faded **:data-[slot=slider-track]:bg-accent aria-invalid:**:data-[slot=slider-track]:bg-destructive-muted",
+          "[--slider-track-bg:var(--color-accent)] aria-invalid:[--slider-track-bg:var(--color-destructive-muted)]",
 
         "secondary-muted":
-          "**:data-[slot=slider-range]:bg-secondary **:data-[slot=slider-thumb]:border-secondary **:data-[slot=slider-thumb]:ring-border-secondary-faded **:data-[slot=slider-track]:bg-secondary-muted aria-invalid:**:data-[slot=slider-track]:bg-destructive-muted",
+          "[--slider-track-bg:var(--color-secondary-muted)] aria-invalid:[--slider-track-bg:var(--color-destructive-muted)]",
 
         "secondary-faded":
-          "**:data-[slot=slider-range]:bg-secondary **:data-[slot=slider-thumb]:border-secondary **:data-[slot=slider-thumb]:ring-border-secondary-faded **:data-[slot=slider-track]:bg-secondary-faded **:data-[slot=slider-track]:inset-ring-1 **:data-[slot=slider-track]:inset-ring-border-secondary-faded aria-invalid:**:data-[slot=slider-track]:bg-destructive-faded aria-invalid:**:data-[slot=slider-track]:inset-ring-border-destructive-faded",
+          "[--slider-track-bg:var(--color-secondary-faded)] *:data-[slot=slider-track]:inset-ring-1 *:data-[slot=slider-track]:inset-ring-border-secondary-faded aria-invalid:[--slider-track-bg:var(--color-destructive-faded)] aria-invalid:*:data-[slot=slider-track]:inset-ring-border-destructive-faded",
       },
     },
+    compoundVariants: [
+      {
+        variant: ["primary", "primary-muted", "primary-faded"],
+        className:
+          "[--slider-range-bg:var(--color-primary)] [--slider-thumb-border:var(--color-primary)] [--slider-thumb-ring:var(--color-border-primary-faded)]",
+      },
+      {
+        variant: ["secondary", "secondary-muted", "secondary-faded"],
+        className:
+          "[--slider-range-bg:var(--color-secondary)] [--slider-thumb-border:var(--color-secondary)] [--slider-thumb-ring:var(--color-border-secondary-faded)]",
+      },
+    ],
     defaultVariants: {
       variant: "primary",
     },
@@ -43,9 +55,16 @@ function Slider({
   min = 0,
   max = 100,
   variant,
+  classNames,
   ...props
 }: React.ComponentProps<typeof SliderPrimitive.Root> &
-  VariantProps<typeof sliderVariants>) {
+  VariantProps<typeof sliderVariants> & {
+    classNames?: {
+      sliderTrack?: string;
+      sliderRange?: string;
+      sliderThumb?: string;
+    };
+  }) {
   const _values = React.useMemo(
     () =>
       Array.isArray(value)
@@ -74,13 +93,15 @@ function Slider({
       <SliderPrimitive.Track
         data-slot="slider-track"
         className={cn(
-          "relative grow overflow-hidden rounded-full data-[orientation=horizontal]:h-1.5 data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-1.5",
+          "relative grow overflow-hidden rounded-full bg-(--slider-track-bg) data-[orientation=horizontal]:h-1.5 data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-1.5",
+          classNames?.sliderTrack,
         )}
       >
         <SliderPrimitive.Range
           data-slot="slider-range"
           className={cn(
-            "absolute data-[orientation=horizontal]:h-full data-[orientation=vertical]:w-full",
+            "absolute bg-(--slider-range-bg) data-[orientation=horizontal]:h-full data-[orientation=vertical]:w-full",
+            classNames?.sliderRange,
           )}
         />
       </SliderPrimitive.Track>
@@ -88,7 +109,10 @@ function Slider({
         <SliderPrimitive.Thumb
           data-slot="slider-thumb"
           key={`slider-thumb-${index}`}
-          className="block size-4 shrink-0 rounded-full border bg-background shadow-sm hover:ring-4 focus-visible:ring-4 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50"
+          className={cn(
+            "block size-4 shrink-0 rounded-full border border-(--slider-thumb-border) bg-background shadow-sm ring-0 ring-(--slider-thumb-ring) transition-shadow hover:ring-[3px] focus:ring-[3px] focus:outline-hidden disabled:pointer-events-none disabled:opacity-50",
+            classNames?.sliderThumb,
+          )}
         />
       ))}
     </SliderPrimitive.Root>
