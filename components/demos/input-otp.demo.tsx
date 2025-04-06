@@ -42,9 +42,13 @@ function InputOTPSimple({
   return (
     <div className="flex flex-col gap-4">
       <div className="flex w-fit flex-col gap-2">
-        <Label htmlFor={`simple-${variant}`}>Simple</Label>
+        <Label
+          htmlFor={split ? `simple-${variant}-split` : `simple-${variant}`}
+        >
+          Simple
+        </Label>
         <InputOTP
-          id={`simple-${variant}`}
+          id={split ? `simple-${variant}-split` : `simple-${variant}`}
           maxLength={6}
           placeholder="000000"
           variant={variant}
@@ -64,9 +68,21 @@ function InputOTPSimple({
         </InputOTP>
       </div>
       <div className="flex w-fit flex-col gap-2">
-        <Label htmlFor={`simple-disabled-${variant}`}>Simple Disabled</Label>
+        <Label
+          htmlFor={
+            split
+              ? `simple-disabled-${variant}-split`
+              : `simple-disabled-${variant}`
+          }
+        >
+          Simple Disabled
+        </Label>
         <InputOTP
-          id={`simple-disabled-${variant}`}
+          id={
+            split
+              ? `simple-disabled-${variant}-split`
+              : `simple-disabled-${variant}`
+          }
           maxLength={6}
           placeholder="000000"
           variant={variant}
@@ -87,9 +103,17 @@ function InputOTPSimple({
         </InputOTP>
       </div>
       <div className="flex w-fit flex-col gap-2">
-        <Label htmlFor={`simple-error-${variant}`}>Simple Error</Label>
+        <Label
+          htmlFor={
+            split ? `simple-error-${variant}-split` : `simple-error-${variant}`
+          }
+        >
+          Simple Error
+        </Label>
         <InputOTP
-          id={`simple-error-${variant}`}
+          id={
+            split ? `simple-error-${variant}-split` : `simple-error-${variant}`
+          }
           maxLength={6}
           placeholder="000000"
           variant={variant}

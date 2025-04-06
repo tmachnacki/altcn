@@ -12,8 +12,8 @@ const tabsListVariants = cva(
   {
     variants: {
       variant: {
-        muted: "bg-muted",
         outline: "border border-border bg-transparent",
+        muted: "bg-muted",
         faded: "border border-border-faded bg-faded",
         underlined: "rounded-b-none border-b border-border bg-transparent px-0",
         ghost: "bg-transparent",

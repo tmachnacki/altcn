@@ -26,6 +26,7 @@ import { SliderDemo } from "@/components/demos/slider.demo";
 import { SonnerDemo } from "@/components/demos/sonner.demo";
 import { SwitchDemo } from "@/components/demos/switch.demo";
 import { TabsDemo } from "@/components/demos/tabs.demo";
+import { TooltipDemo } from "@/components/demos/tooltip.demo";
 
 const COMPONENTS = [
   {
@@ -157,6 +158,11 @@ const COMPONENTS = [
     title: "Tabs",
     id: "tabs",
     component: <TabsDemo />,
+  },
+  {
+    title: "Tooltip",
+    id: "tooltip",
+    component: <TooltipDemo />,
   },
 ];
 

@@ -22,7 +22,7 @@ const buttonVariants = cva(
           "hover:border-hover-border hover:bg-muted hover:text-accent-foreground",
         ],
 
-        base: ["bg-base text-base-foreground shadow", "hover:bg-base/90"],
+        base: ["bg-base-600 text-base-50 shadow", "hover:bg-base-600/90"],
 
         accent: [
           "bg-accent text-accent-foreground",
