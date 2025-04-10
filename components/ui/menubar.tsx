@@ -4,7 +4,8 @@ import * as React from "react";
 import * as MenubarPrimitive from "@radix-ui/react-menubar";
 import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-react";
 import {
-  type MenuItemsVariantsContextType,
+  type MenuContextType,
+  menuContentVariants,
   menuItemVariants,
   menuItemIndicatorVariants,
   menuShortcutVariants,
@@ -21,8 +22,8 @@ const menubarTriggerVariants = cva(
       variant: {
         // -- base --
         base: [
-          "data-[highlighted]:bg-base-600 data-[highlighted]:text-base-50",
-          "data-[state=open]:bg-base-600 data-[state=open]:text-base-50",
+          "data-[highlighted]:bg-base-500 data-[highlighted]:text-white dark:data-[highlighted]:bg-base-600 dark:data-[highlighted]:text-base-50",
+          "data-[state=open]:bg-base-500 data-[state=open]:text-white dark:data-[state=open]:bg-base-600 dark:data-[state=open]:text-base-50",
         ],
 
         accent: [
@@ -188,8 +189,7 @@ function MenubarTrigger({
   );
 }
 
-const MenubarItemsVariantsContext =
-  React.createContext<MenuItemsVariantsContextType>({});
+const MenubarContext = React.createContext<MenuContextType>({});
 
 function MenubarContent({
   className,
@@ -199,12 +199,9 @@ function MenubarContent({
   wide = undefined,
   indicatorVariant = "default",
   ...props
-}: React.ComponentProps<typeof MenubarPrimitive.Content> &
-  MenuItemsVariantsContextType) {
+}: React.ComponentProps<typeof MenubarPrimitive.Content> & MenuContextType) {
   return (
-    <MenubarItemsVariantsContext.Provider
-      value={{ variant, wide, indicatorVariant }}
-    >
+    <MenubarContext.Provider value={{ variant, wide, indicatorVariant }}>
       <MenubarPortal>
         <MenubarPrimitive.Content
           data-slot="menubar-content"
@@ -213,7 +210,8 @@ function MenubarContent({
           data-variant={variant}
           data-wide={wide}
           className={cn(
-            "z-50 max-h-(--radix-menubar-content-available-height) min-w-48 origin-(--radix-menubar-content-transform-origin) overflow-x-hidden overflow-y-auto rounded-md border bg-popover p-1 text-popover-foreground shadow-md",
+            menuContentVariants(),
+            "min-w-48",
             // FIXME: exit animations be breaking
             "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=open]:animate-in data-[state=open]:ease-out data-[state=open]:fade-in-0",
             className,
@@ -221,7 +219,7 @@ function MenubarContent({
           {...props}
         />
       </MenubarPortal>
-    </MenubarItemsVariantsContext.Provider>
+    </MenubarContext.Provider>
   );
 }
 
@@ -237,18 +235,18 @@ function MenubarItem({
   wide,
   ...props
 }: MenubarItemProps) {
-  const variantsContext = React.useContext(MenubarItemsVariantsContext);
+  const context = React.useContext(MenubarContext);
 
   return (
     <MenubarPrimitive.Item
       data-slot="menubar-item"
       data-inset={inset}
-      data-variant={variant || variantsContext.variant}
-      data-wide={wide || variantsContext.wide}
+      data-variant={variant || context.variant}
+      data-wide={wide || context.wide}
       className={cn(
         menuItemVariants({
-          variant: variant || variantsContext.variant,
-          wide: wide || variantsContext.wide,
+          variant: variant || context.variant,
+          wide: wide || context.wide,
         }),
         className,
       )}
@@ -260,7 +258,7 @@ function MenubarItem({
 type MenubarCheckboxItemProps = React.ComponentProps<
   typeof MenubarPrimitive.CheckboxItem
 > &
-  MenuItemsVariantsContextType & {
+  MenuContextType & {
     indicatorClassName?: string;
   };
 
@@ -274,18 +272,18 @@ function MenubarCheckboxItem({
   children,
   ...props
 }: MenubarCheckboxItemProps) {
-  const variantsContext = React.useContext(MenubarItemsVariantsContext);
+  const context = React.useContext(MenubarContext);
 
   return (
     <MenubarPrimitive.CheckboxItem
       data-slot="menubar-checkbox-item"
-      data-variant={variant || variantsContext.variant}
-      data-wide={wide || variantsContext.wide}
+      data-variant={variant || context.variant}
+      data-wide={wide || context.wide}
       data-inset={true}
       className={cn(
         menuItemVariants({
-          variant: variant || variantsContext.variant,
-          wide: wide || variantsContext.wide,
+          variant: variant || context.variant,
+          wide: wide || context.wide,
         }),
         className,
       )}
@@ -294,12 +292,12 @@ function MenubarCheckboxItem({
     >
       <MenubarPrimitive.ItemIndicator
         data-slot="menubar-checkbox-item-indicator"
-        data-variant={indicatorVariant || variantsContext.indicatorVariant}
-        data-wide={wide || variantsContext.wide}
-        data-item-variant={variant || variantsContext.variant}
+        data-variant={indicatorVariant || context.indicatorVariant}
+        data-wide={wide || context.wide}
+        data-item-variant={variant || context.variant}
         className={cn(
           menuItemIndicatorVariants({
-            variant: indicatorVariant || variantsContext.indicatorVariant,
+            variant: indicatorVariant || context.indicatorVariant,
           }),
           indicatorClassName,
         )}
@@ -322,7 +320,7 @@ function MenubarRadioGroup({
 type MenubarRadioItemProps = React.ComponentProps<
   typeof MenubarPrimitive.RadioItem
 > &
-  MenuItemsVariantsContextType & {
+  MenuContextType & {
     indicatorClassName?: string;
   };
 
@@ -335,18 +333,18 @@ function MenubarRadioItem({
   children,
   ...props
 }: MenubarRadioItemProps) {
-  const variantsContext = React.useContext(MenubarItemsVariantsContext);
+  const context = React.useContext(MenubarContext);
 
   return (
     <MenubarPrimitive.RadioItem
       data-slot="menubar-radio-item"
-      data-variant={variant || variantsContext.variant}
-      data-wide={wide || variantsContext.wide}
+      data-variant={variant || context.variant}
+      data-wide={wide || context.wide}
       data-inset
       className={cn(
         menuItemVariants({
-          variant: variant || variantsContext.variant,
-          wide: wide || variantsContext.wide,
+          variant: variant || context.variant,
+          wide: wide || context.wide,
         }),
         className,
       )}
@@ -354,12 +352,12 @@ function MenubarRadioItem({
     >
       <MenubarPrimitive.ItemIndicator
         data-slot="menubar-radio-item-indicator"
-        data-variant={indicatorVariant || variantsContext.indicatorVariant}
-        data-wide={wide || variantsContext.wide}
-        data-item-variant={variant || variantsContext.variant}
+        data-variant={indicatorVariant || context.indicatorVariant}
+        data-wide={wide || context.wide}
+        data-item-variant={variant || context.variant}
         className={cn(
           menuItemIndicatorVariants({
-            variant: indicatorVariant || variantsContext.indicatorVariant,
+            variant: indicatorVariant || context.indicatorVariant,
           }),
           indicatorClassName,
         )}
@@ -383,7 +381,7 @@ function MenubarLabel({
       data-slot="menubar-label"
       data-inset={inset}
       className={cn(
-        "px-2 py-1.5 text-sm font-medium text-foreground data-[inset]:pl-8",
+        "px-(--menu-item-px) py-1.5 text-sm font-medium text-foreground data-[inset]:pl-(--inset-pl)",
         className,
       )}
       {...props}
@@ -398,7 +396,7 @@ function MenubarSeparator({
   return (
     <MenubarPrimitive.Separator
       data-slot="menubar-separator"
-      className={cn("-mx-1 my-1 h-px bg-border", className)}
+      className={cn("-mx-(--menu-content-px) my-1 h-px bg-border", className)}
       {...props}
     />
   );
@@ -438,18 +436,18 @@ function MenubarSubTrigger({
   children,
   ...props
 }: MenubarSubTriggerProps) {
-  const variantsContext = React.useContext(MenubarItemsVariantsContext);
+  const context = React.useContext(MenubarContext);
 
   return (
     <MenubarPrimitive.SubTrigger
       data-slot="menubar-sub-trigger"
       data-inset={inset}
-      data-variant={variant || variantsContext.variant}
-      data-wide={wide || variantsContext.wide}
+      data-variant={variant || context.variant}
+      data-wide={wide || context.wide}
       className={cn(
         menuItemVariants({
-          variant: variant || variantsContext.variant,
-          wide: wide || variantsContext.wide,
+          variant: variant || context.variant,
+          wide: wide || context.wide,
         }),
         className,
       )}
@@ -470,7 +468,8 @@ function MenubarSubContent({
       <MenubarPrimitive.SubContent
         data-slot="menubar-sub-content"
         className={cn(
-          "z-50 max-h-(--radix-menubar-content-available-height) min-w-32 origin-(--radix-menubar-content-transform-origin) overflow-x-hidden overflow-y-auto rounded-md border bg-popover p-1 text-popover-foreground shadow-lg",
+          menuContentVariants(),
+          "min-w-32 shadow-lg",
           "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:ease-out data-[state=open]:fade-in-0",
           className,
         )}

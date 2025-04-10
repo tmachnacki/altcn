@@ -33,9 +33,6 @@ const switchVariants = cva(
         ],
       },
       thin: {
-        undefined: null,
-        null: null,
-        false: null,
         true: "h-2.5 p-0 focus-visible:outline-offset-[3px] data-[state=unchecked]:shadow-none",
       },
     },
@@ -67,9 +64,9 @@ function Switch({
       <SwitchPrimitive.Thumb
         data-slot="switch-thumb"
         className={cn(
-          "pointer-events-none block size-4 rounded-full bg-background shadow-sm outline-0 transition-transform group-aria-invalid/switch:group-data-[state=unchecked]/switch:outline-1 group-aria-invalid/switch:group-data-[state=unchecked]/switch:outline-destructive data-[state=unchecked]:translate-x-0 dark:bg-foreground",
+          "pointer-events-none block size-4 rounded-full bg-background shadow-sm outline-0 transition-transform group-aria-invalid/switch:group-data-[state=unchecked]/switch:outline-1 group-aria-invalid/switch:group-data-[state=unchecked]/switch:outline-destructive data-[state=unchecked]:translate-x-0 dark:bg-foreground dark:shadow-none",
           thin
-            ? "border border-border data-[state=checked]:translate-x-[calc(--spacing(5)+1px)]"
+            ? "border border-border dark:border-none data-[state=checked]:translate-x-[calc(--spacing(5)+1px)]"
             : "data-[state=checked]:translate-x-4",
         )}
       />

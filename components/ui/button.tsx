@@ -10,7 +10,7 @@ const buttonVariants = cva(
     "relative isolate inline-flex items-center justify-center gap-2 rounded-md text-sm font-semibold whitespace-nowrap select-none",
     "active:opacity-80",
     "disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50",
-    "focus-visible:outline-2 focus-visible:outline-offset-2",
+    "outline-offset-2 focus-visible:outline-2",
     "[&_svg]:pointer-events-none [&_svg]:shrink-0",
   ],
   {
@@ -22,7 +22,10 @@ const buttonVariants = cva(
           "hover:border-hover-border hover:bg-muted hover:text-accent-foreground",
         ],
 
-        base: ["bg-base-600 text-base-50 shadow", "hover:bg-base-600/90"],
+        base: [
+          "bg-base-bg text-base-foreground shadow",
+          "hover:bg-base-bg/90",
+        ],
 
         accent: [
           "bg-accent text-accent-foreground",
@@ -251,7 +254,7 @@ const buttonVariants = cva(
           "primary-gradient",
           "primary-ghost",
         ],
-        className: "focus-visible:outline-primary",
+        className: "outline-primary",
       },
       {
         variant: [
@@ -265,7 +268,7 @@ const buttonVariants = cva(
           "secondary-gradient",
           "secondary-ghost",
         ],
-        className: "focus-visible:outline-secondary",
+        className: "outline-secondary",
       },
       {
         variant: [
@@ -279,7 +282,7 @@ const buttonVariants = cva(
           "destructive-gradient",
           "destructive-ghost",
         ],
-        className: "focus-visible:outline-destructive",
+        className: "outline-destructive",
       },
     ],
     defaultVariants: {

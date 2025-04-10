@@ -12,7 +12,7 @@ const radioGroupItemVariants = cva(
     "peer size-4 shrink-0 rounded-full border border-border bg-background shadow-xs dark:not-data-[state=checked]:bg-faded",
     "hover:not-aria-invalid:not-disabled:data-[state=unchecked]:border-hover-border",
     "focus-visible:outline-2 focus-visible:outline-offset-2",
-    "disabled:cursor-not-allowed disabled:bg-muted disabled:opacity-50 disabled:hover:border-border disabled:data-[state=checked]:text-muted-foreground",
+    "disabled:cursor-not-allowed disabled:opacity-50 disabled:data-[state=checked]:border-border disabled:data-[state=checked]:bg-muted disabled:data-[state=checked]:text-muted-foreground disabled:data-[state=unchecked]:border-border disabled:data-[state=unchecked]:bg-muted disabled:data-[state=unchecked]:text-muted-foreground",
     "aria-invalid:border-destructive aria-invalid:outline-destructive aria-invalid:disabled:bg-destructive-muted aria-invalid:data-[state=checked]:bg-destructive aria-invalid:data-[state=checked]:text-destructive-foreground dark:aria-invalid:data-[state=unchecked]:bg-destructive-faded",
   ],
   {
@@ -30,9 +30,9 @@ const radioGroupItemVariants = cva(
   },
 );
 
-const RadioGroupItemsVariantsContext = React.createContext<
+const RadioGroupContext = React.createContext<
   VariantProps<typeof radioGroupItemVariants>
->({ variant: "primary" });
+>({});
 
 function RadioGroup({
   className,
@@ -41,32 +41,32 @@ function RadioGroup({
 }: React.ComponentProps<typeof RadioGroupPrimitive.Root> &
   VariantProps<typeof radioGroupItemVariants>) {
   return (
-    <RadioGroupItemsVariantsContext.Provider value={{ variant }}>
+    <RadioGroupContext.Provider value={{ variant }}>
       <RadioGroupPrimitive.Root
         data-slot="radio-group"
         className={cn("grid gap-3", className)}
         {...props}
       />
-    </RadioGroupItemsVariantsContext.Provider>
+    </RadioGroupContext.Provider>
   );
 }
 
 function RadioGroupItem({
-  variant: variantOverride,
+  variant,
   className,
   ...props
 }: React.ComponentProps<typeof RadioGroupPrimitive.Item> &
   VariantProps<typeof radioGroupItemVariants>) {
-  const { variant: variantFromContext } = React.useContext(
-    RadioGroupItemsVariantsContext,
-  );
-  const variant = variantOverride ?? variantFromContext;
+  const context = React.useContext(RadioGroupContext);
 
   return (
     <RadioGroupPrimitive.Item
       data-slot="radio-group-item"
-      data-variant={variant}
-      className={cn(radioGroupItemVariants({ variant }), className)}
+      data-variant={variant || context.variant}
+      className={cn(
+        radioGroupItemVariants({ variant: variant || context.variant }),
+        className,
+      )}
       {...props}
     >
       <RadioGroupPrimitive.Indicator

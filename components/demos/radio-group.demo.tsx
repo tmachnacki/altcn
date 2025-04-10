@@ -38,8 +38,12 @@ export function RadioGroupDemo() {
           <Label htmlFor="p4">Disabled</Label>
         </div>
         <div className="flex items-center gap-3">
-          <RadioGroupItem value="invalid" id="p5" aria-invalid />
-          <Label htmlFor="p5">Invalid</Label>
+          <RadioGroupItem value="disabled" id="p5" disabled checked />
+          <Label htmlFor="p5">CheckedDisabled</Label>
+        </div>
+        <div className="flex items-center gap-3">
+          <RadioGroupItem value="invalid" id="p6" aria-invalid />
+          <Label htmlFor="p6">Invalid</Label>
         </div>
       </RadioGroup>
       <RadioGroup defaultValue="comfortable" variant="secondary">

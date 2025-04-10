@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 
 const badgeVariants = cva(
   [
-    "relative isolate inline-flex h-6 w-fit shrink-0 items-center justify-center gap-1.5 rounded-md px-2 py-1 text-xs leading-none font-medium whitespace-nowrap has-[[data-slot='badge-close']]:pr-1",
+    "relative isolate inline-flex h-6 w-fit shrink-0 items-center justify-center gap-1.5 rounded-md px-2 py-1 text-xs leading-none font-medium whitespace-nowrap",
     "focus-visible:outline-2 focus-visible:outline-offset-1",
     "[&_svg:not([class*='size-'])]:size-3 [&>svg]:pointer-events-none",
   ],
@@ -19,9 +19,9 @@ const badgeVariants = cva(
         outline: "",
 
         base: [
-          "bg-base-600 text-base-50",
+          "bg-base-bg text-base-foreground",
           "[--hover-badge-close-bg:--alpha(var(--color-base-200)/20%)]",
-          "[a&]:hover:bg-base-600/90",
+          "[a&]:hover:bg-base-bg/90",
         ],
 
         accent: [
@@ -236,7 +236,7 @@ const badgeVariants = cva(
           "warning-dotted",
         ],
         className: [
-          "bg-transparent text-foreground inset-ring inset-ring-border",
+          "bg-background text-foreground inset-ring inset-ring-border",
           "[a&]:hover:bg-muted [a&]:hover:inset-ring-hover-border",
         ],
       },
@@ -265,7 +265,7 @@ const badgeVariants = cva(
           "primary-faded",
           "primary-tron",
         ],
-        className: "focus-visible:outline-primary",
+        className: "outline-primary",
       },
       {
         variant: [
@@ -286,7 +286,7 @@ const badgeVariants = cva(
           "secondary-faded",
           "secondary-tron",
         ],
-        className: "focus-visible:outline-secondary",
+        className: "outline-secondary",
       },
       {
         variant: [
@@ -308,7 +308,7 @@ const badgeVariants = cva(
           "destructive-faded",
           "destructive-tron",
         ],
-        className: "focus-visible:outline-destructive",
+        className: "outline-destructive",
       },
       {
         variant: [
@@ -330,7 +330,7 @@ const badgeVariants = cva(
           "success-faded",
           "success-tron",
         ],
-        className: "focus-visible:outline-success",
+        className: "outline-success",
       },
       {
         variant: [
@@ -351,7 +351,7 @@ const badgeVariants = cva(
           "warning-faded",
           "warning-tron",
         ],
-        className: "focus-visible:outline-warning",
+        className: "outline-warning",
       },
       {
         variant: [
@@ -424,7 +424,7 @@ function BadgeDot({ className, ...props }: LucideProps) {
       data-slot="badge-dot"
       aria-hidden="true"
       className={cn(
-        "size-1.5 fill-current stroke-current text-(--badge-dot-text)",
+        "shrink-0 size-1.5 fill-current stroke-current text-(--badge-dot-text)",
         className,
       )}
       {...props}
@@ -439,7 +439,7 @@ function BadgeClose({ className, ...props }: React.ComponentProps<"button">) {
       type="button"
       aria-label={props["aria-label"] || "Remove"}
       className={cn(
-        "relative inline-flex size-4 items-center justify-center rounded-xs opacity-70 outline-offset-0 hover:bg-(--hover-badge-close-bg) hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-2 focus-visible:outline-current",
+        "relative -mx-1 inline-flex size-4 items-center justify-center rounded-xs opacity-70 -outline-offset-1 outline-current hover:bg-(--hover-badge-close-bg) hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-2",
         className,
       )}
       {...props}

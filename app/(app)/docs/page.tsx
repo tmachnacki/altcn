@@ -15,6 +15,7 @@ import { InputDemo } from "@/components/demos/input.demo";
 import { InputOTPDemo } from "@/components/demos/input-otp.demo";
 import { InputPasswordDemo } from "@/components/demos/input-password.demo";
 import { MenubarDemo } from "@/components/demos/menubar.demo";
+import { NotificationDemo } from "@/components/demos/notification.demo";
 import { PaginationDemo } from "@/components/demos/pagination.demo";
 import { PopoverDemo } from "@/components/demos/popover.demo";
 import { ProgressDemo } from "@/components/demos/progress.demo";
@@ -103,6 +104,11 @@ const COMPONENTS = [
     title: "Menubar",
     id: "menubar",
     component: <MenubarDemo />,
+  },
+  {
+    title: "Notification",
+    id: "notification",
+    component: <NotificationDemo />,
   },
   {
     title: "Pagination",

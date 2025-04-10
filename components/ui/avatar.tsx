@@ -2,9 +2,10 @@
 
 import * as React from "react";
 import * as AvatarPrimitive from "@radix-ui/react-avatar";
-import { cva, type VariantProps } from "class-variance-authority";
+
 import { UserRoundIcon } from "lucide-react";
 
+import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 function Avatar({
@@ -46,7 +47,7 @@ const avatarFallbackVariants = cva(
 
         outline: "border border-border bg-background text-foreground",
 
-        base: "bg-base-600 text-base-50",
+        base: "bg-base-bg text-base-foreground",
 
         accent: "bg-accent text-accent-foreground",
 

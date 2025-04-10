@@ -47,6 +47,16 @@ export function DropdownMenuDemo() {
 
   const dropdownMenuDemos = [
     {
+      label: "Base",
+      variant: "base",
+      wide: undefined,
+    },
+    {
+      label: "Base Wide",
+      variant: "base",
+      wide: true,
+    },
+    {
       label: "Accent",
       variant: "accent",
       wide: undefined,

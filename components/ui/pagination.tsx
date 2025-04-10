@@ -64,10 +64,11 @@ function PaginationLink({
       className={className}
     >
       <a
+        data-slot="pagination-link"
+        role="button"
         aria-current={isActive ? "page" : undefined}
         aria-disabled={disabled}
         tabIndex={disabled ? -1 : 0}
-        data-slot="pagination-link"
         data-active={isActive}
         {...props}
       />
@@ -95,7 +96,12 @@ function PaginationControl({
       variant={variant}
       className={className}
     >
-      <a aria-disabled={disabled} tabIndex={disabled ? -1 : 0} {...props} />
+      <a
+        role="button"
+        aria-disabled={disabled}
+        tabIndex={disabled ? -1 : 0}
+        {...props}
+      />
     </Button>
   );
 }

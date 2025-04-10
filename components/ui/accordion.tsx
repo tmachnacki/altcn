@@ -59,28 +59,22 @@ const accordionItemVariants = cva(
   },
 );
 
-type AccordionVariantsContextType = VariantProps<
-  typeof accordionItemVariants
-> & {
+type AccordionContextType = VariantProps<typeof accordionItemVariants> & {
   split?: boolean;
 };
 
-const AccordionVariantsContext =
-  React.createContext<AccordionVariantsContextType>({
-    variant: "outline",
-    split: undefined,
-  });
+const AccordionContext = React.createContext<AccordionContextType>({});
 
 function Accordion({
   variant = "outline",
   split = undefined,
   ...props
 }: React.ComponentProps<typeof AccordionPrimitive.Root> &
-  AccordionVariantsContextType) {
+  AccordionContextType) {
   return (
-    <AccordionVariantsContext.Provider value={{ variant, split }}>
+    <AccordionContext.Provider value={{ variant, split }}>
       <AccordionPrimitive.Root data-slot="accordion" {...props} />
-    </AccordionVariantsContext.Provider>
+    </AccordionContext.Provider>
   );
 }
 
@@ -88,7 +82,7 @@ function AccordionItem({
   className,
   ...props
 }: React.ComponentProps<typeof AccordionPrimitive.Item>) {
-  const { variant, split } = React.useContext(AccordionVariantsContext);
+  const { variant, split } = React.useContext(AccordionContext);
   return (
     <AccordionPrimitive.Item
       data-slot="accordion-item"
