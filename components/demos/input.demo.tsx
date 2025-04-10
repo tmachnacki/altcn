@@ -10,35 +10,122 @@ export function InputDemo() {
     "secondary",
   ] as const;
 
+  const sizes = ["sm", "default", "lg"] as const;
+
   return (
     <ComponentContainer>
-      <div className="flex flex-col gap-8">
+      <div className="grid gap-8">
         {variants.map((variant) => (
-          <div className="flex w-full max-w-sm flex-col gap-4" key={variant}>
-            <Input type="email" placeholder="Email" variant={variant} />
-            <Input type="password" placeholder="Password" variant={variant} />
-            <Input type="number" placeholder="Number" variant={variant} />
-            <Input type="file" placeholder="File" variant={variant} />
-            <Input type="tel" placeholder="Tel" variant={variant} />
-            <Input type="text" placeholder="Text" variant={variant} />
-            <Input type="url" placeholder="URL" variant={variant} />
-            <Input type="search" placeholder="Search" variant={variant} />
-            <Input type="date" placeholder="Date" variant={variant} />
-            <Input
-              type="datetime-local"
-              placeholder="Datetime Local"
-              variant={variant}
-            />
-            <Input type="month" placeholder="Month" variant={variant} />
-            <Input type="time" placeholder="Time" variant={variant} />
-            <Input type="week" placeholder="Week" variant={variant} />
-            <Input
-              type="text"
-              placeholder="Error"
-              aria-invalid="true"
-              variant={variant}
-            />
-            <Input disabled placeholder="Disabled" variant={variant} />
+          <div className="grid w-full max-w-sm gap-8" key={`input-${variant}`}>
+            {sizes.map((size) => (
+              <div className="grid gap-4" key={`input-${variant}-${size}`}>
+                <Input
+                  type="email"
+                  placeholder="Email"
+                  variant={variant}
+                  inputSize={size}
+                />
+                <Input
+                  type="password"
+                  placeholder="Password"
+                  variant={variant}
+                  inputSize={size}
+                />
+                <Input
+                  type="number"
+                  placeholder="Number"
+                  variant={variant}
+                  inputSize={size}
+                />
+                <Input
+                  type="file"
+                  placeholder="File"
+                  variant={variant}
+                  inputSize={size}
+                />
+                <Input
+                  type="file"
+                  placeholder="File"
+                  variant={variant}
+                  aria-invalid="true"
+                  inputSize={size}
+                />
+                <Input
+                  type="tel"
+                  placeholder="Tel"
+                  variant={variant}
+                  inputSize={size}
+                />
+                <Input
+                  type="text"
+                  placeholder="Text"
+                  variant={variant}
+                  inputSize={size}
+                />
+                <Input
+                  type="url"
+                  placeholder="URL"
+                  variant={variant}
+                  inputSize={size}
+                />
+                <Input
+                  type="search"
+                  placeholder="Search"
+                  variant={variant}
+                  inputSize={size}
+                />
+                <Input
+                  type="date"
+                  placeholder="Date"
+                  variant={variant}
+                  inputSize={size}
+                />
+                <Input
+                  type="datetime-local"
+                  placeholder="Datetime Local"
+                  variant={variant}
+                  inputSize={size}
+                />
+                <Input
+                  type="datetime-local"
+                  placeholder="Datetime Local"
+                  variant={variant}
+                  aria-invalid="true"
+                  inputSize={size}
+                />
+                <Input
+                  type="month"
+                  placeholder="Month"
+                  variant={variant}
+                  inputSize={size}
+                />
+                <Input
+                  type="time"
+                  placeholder="Time"
+                  variant={variant}
+                  inputSize={size}
+                />
+                <Input
+                  type="week"
+                  placeholder="Week"
+                  variant={variant}
+                  inputSize={size}
+                />
+                <Input
+                  type="text"
+                  placeholder="Error"
+                  aria-invalid="true"
+                  variant={variant}
+                  inputSize={size}
+                />
+                <Input
+                  disabled
+                  placeholder="Disabled"
+                  variant={variant}
+                  inputSize={size}
+                />
+              </div>
+            ))}
           </div>
         ))}
       </div>

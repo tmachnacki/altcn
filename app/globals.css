@@ -34,6 +34,7 @@
   --muted-foreground: var(--color-base-500);
   --faded: var(--color-base-50);
   --border-faded: --alpha(var(--color-base-500) / 15%);
+  --placeholder: var(--color-base-400);
 
   --primary: var(--color-primary-600);
   --primary-foreground: var(--color-white);
@@ -108,6 +109,7 @@
   --hover-border-destructive-tron: --alpha(var(--color-destructive) / 50%);
   --destructive-tron-blur: var(--color-pink-400);
   --destructive-popover: var(--color-destructive-50);
+  --destructive-placeholder: var(--color-destructive-400);
 
   --success: var(--color-success-600);
   --success-foreground: var(--color-white);
@@ -201,6 +203,7 @@
   --muted-foreground: var(--color-base-400);
   --faded: --alpha(var(--color-base-600) / 15%);
   --border-faded: --alpha(var(--color-base-400) / 15%);
+  --placeholder: var(--color-base-500);
 
   --primary: var(--color-primary-500);
   --primary-foreground: var(--color-white);
@@ -279,6 +282,7 @@
     var(--color-destructive-950) 50%,
     var(--color-base-950)
   );
+  --destructive-placeholder: var(--color-destructive-400);
 
   --success: var(--color-success-600);
   --success-foreground: var(--color-white);
@@ -446,6 +450,7 @@
   --color-muted-foreground: var(--muted-foreground);
   --color-faded: var(--faded);
   --color-border-faded: var(--border-faded);
+  --color-placeholder: var(--placeholder);
 
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
@@ -482,6 +487,7 @@
   --color-hover-border-destructive-tron: var(--hover-border-destructive-tron);
   --color-destructive-tron-blur: var(--destructive-tron-blur);
   --color-destructive-popover: var(--destructive-popover);
+  --color-destructive-placeholder: var(--destructive-placeholder);
 
   --color-success: var(--success);
   --color-success-foreground: var(--success-foreground);

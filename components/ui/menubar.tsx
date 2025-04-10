@@ -7,6 +7,7 @@ import {
   type MenuItemsVariantsContextType,
   menuItemVariants,
   menuItemIndicatorVariants,
+  menuShortcutVariants,
 } from "@/components/ui/dropdown-menu";
 import { Tron } from "@/components/ui/tron";
 
@@ -188,11 +189,7 @@ function MenubarTrigger({
 }
 
 const MenubarItemsVariantsContext =
-  React.createContext<MenuItemsVariantsContextType>({
-    variant: "accent",
-    wide: undefined,
-    indicatorVariant: "default",
-  });
+  React.createContext<MenuItemsVariantsContextType>({});
 
 function MenubarContent({
   className,
@@ -236,22 +233,25 @@ type MenubarItemProps = React.ComponentProps<typeof MenubarPrimitive.Item> &
 function MenubarItem({
   className,
   inset,
-  variant: variantOverride,
-  wide: wideOverride,
+  variant,
+  wide,
   ...props
 }: MenubarItemProps) {
-  const { variant: variantFromContext, wide: wideFromContext } =
-    React.useContext(MenubarItemsVariantsContext);
-  const variant = variantOverride ?? variantFromContext;
-  const wide = wideOverride ?? wideFromContext;
+  const variantsContext = React.useContext(MenubarItemsVariantsContext);
 
   return (
     <MenubarPrimitive.Item
       data-slot="menubar-item"
       data-inset={inset}
-      data-variant={variant}
-      data-wide={wide}
-      className={cn(menuItemVariants({ variant, wide }), className)}
+      data-variant={variant || variantsContext.variant}
+      data-wide={wide || variantsContext.wide}
+      className={cn(
+        menuItemVariants({
+          variant: variant || variantsContext.variant,
+          wide: wide || variantsContext.wide,
+        }),
+        className,
+      )}
       {...props}
     />
   );
@@ -267,40 +267,40 @@ type MenubarCheckboxItemProps = React.ComponentProps<
 function MenubarCheckboxItem({
   className,
   checked,
-  variant: variantOverride,
-  wide: wideOverride,
-  indicatorVariant: indicatorVariantOverride,
+  variant,
+  wide,
+  indicatorVariant,
   indicatorClassName,
   children,
   ...props
 }: MenubarCheckboxItemProps) {
-  const {
-    variant: variantFromContext,
-    wide: wideFromContext,
-    indicatorVariant: indicatorVariantFromContext,
-  } = React.useContext(MenubarItemsVariantsContext);
-  const variant = variantOverride ?? variantFromContext;
-  const wide = wideOverride ?? wideFromContext;
-  const indicatorVariant =
-    indicatorVariantOverride ?? indicatorVariantFromContext;
+  const variantsContext = React.useContext(MenubarItemsVariantsContext);
 
   return (
     <MenubarPrimitive.CheckboxItem
       data-slot="menubar-checkbox-item"
-      data-variant={variant}
-      data-wide={wide}
+      data-variant={variant || variantsContext.variant}
+      data-wide={wide || variantsContext.wide}
       data-inset={true}
-      className={cn(menuItemVariants({ variant, wide }), className)}
+      className={cn(
+        menuItemVariants({
+          variant: variant || variantsContext.variant,
+          wide: wide || variantsContext.wide,
+        }),
+        className,
+      )}
       checked={checked}
       {...props}
     >
       <MenubarPrimitive.ItemIndicator
         data-slot="menubar-checkbox-item-indicator"
-        data-variant={indicatorVariant}
-        data-wide={wide}
-        data-item-variant={variant}
+        data-variant={indicatorVariant || variantsContext.indicatorVariant}
+        data-wide={wide || variantsContext.wide}
+        data-item-variant={variant || variantsContext.variant}
         className={cn(
-          menuItemIndicatorVariants({ variant: indicatorVariant }),
+          menuItemIndicatorVariants({
+            variant: indicatorVariant || variantsContext.indicatorVariant,
+          }),
           indicatorClassName,
         )}
       >
@@ -328,39 +328,39 @@ type MenubarRadioItemProps = React.ComponentProps<
 
 function MenubarRadioItem({
   className,
-  variant: variantOverride,
-  wide: wideOverride,
-  indicatorVariant: indicatorVariantOverride,
+  variant,
+  wide,
+  indicatorVariant,
   indicatorClassName,
   children,
   ...props
 }: MenubarRadioItemProps) {
-  const {
-    variant: variantFromContext,
-    wide: wideFromContext,
-    indicatorVariant: indicatorVariantFromContext,
-  } = React.useContext(MenubarItemsVariantsContext);
-  const variant = variantOverride ?? variantFromContext;
-  const wide = wideOverride ?? wideFromContext;
-  const indicatorVariant =
-    indicatorVariantOverride ?? indicatorVariantFromContext;
+  const variantsContext = React.useContext(MenubarItemsVariantsContext);
 
   return (
     <MenubarPrimitive.RadioItem
       data-slot="menubar-radio-item"
-      data-variant={variant}
-      data-wide={wide}
-      data-inset={true}
-      className={cn(menuItemVariants({ variant, wide }), className)}
+      data-variant={variant || variantsContext.variant}
+      data-wide={wide || variantsContext.wide}
+      data-inset
+      className={cn(
+        menuItemVariants({
+          variant: variant || variantsContext.variant,
+          wide: wide || variantsContext.wide,
+        }),
+        className,
+      )}
       {...props}
     >
       <MenubarPrimitive.ItemIndicator
         data-slot="menubar-radio-item-indicator"
-        data-variant={indicatorVariant}
-        data-wide={wide}
-        data-item-variant={variant}
+        data-variant={indicatorVariant || variantsContext.indicatorVariant}
+        data-wide={wide || variantsContext.wide}
+        data-item-variant={variant || variantsContext.variant}
         className={cn(
-          menuItemIndicatorVariants({ variant: indicatorVariant }),
+          menuItemIndicatorVariants({
+            variant: indicatorVariant || variantsContext.indicatorVariant,
+          }),
           indicatorClassName,
         )}
       >
@@ -383,7 +383,7 @@ function MenubarLabel({
       data-slot="menubar-label"
       data-inset={inset}
       className={cn(
-        "px-2 py-1.5 text-sm font-medium text-foreground data-[inset=true]:pl-8",
+        "px-2 py-1.5 text-sm font-medium text-foreground data-[inset]:pl-8",
         className,
       )}
       {...props}
@@ -411,7 +411,7 @@ function MenubarShortcut({
   return (
     <span
       data-slot="menubar-shortcut"
-      className={cn("ml-auto text-xs tracking-widest", className)}
+      className={cn(menuShortcutVariants(), className)}
       {...props}
     />
   );
@@ -433,23 +433,26 @@ type MenubarSubTriggerProps = React.ComponentProps<
 function MenubarSubTrigger({
   className,
   inset,
-  variant: variantOverride,
-  wide: wideOverride,
+  variant,
+  wide,
   children,
   ...props
 }: MenubarSubTriggerProps) {
-  const { variant: variantFromContext, wide: wideFromContext } =
-    React.useContext(MenubarItemsVariantsContext);
-  const variant = variantOverride ?? variantFromContext;
-  const wide = wideOverride ?? wideFromContext;
+  const variantsContext = React.useContext(MenubarItemsVariantsContext);
 
   return (
     <MenubarPrimitive.SubTrigger
       data-slot="menubar-sub-trigger"
       data-inset={inset}
-      data-variant={variant}
-      data-wide={wide}
-      className={cn(menuItemVariants({ variant, wide }), className)}
+      data-variant={variant || variantsContext.variant}
+      data-wide={wide || variantsContext.wide}
+      className={cn(
+        menuItemVariants({
+          variant: variant || variantsContext.variant,
+          wide: wide || variantsContext.wide,
+        }),
+        className,
+      )}
       {...props}
     >
       {children}
