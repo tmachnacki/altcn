@@ -51,6 +51,13 @@ export function InputDemo() {
                   inputSize={size}
                 />
                 <Input
+                  type="file"
+                  placeholder="File"
+                  variant={variant}
+                  inputSize={size}
+                  disabled
+                />
+                <Input
                   type="tel"
                   placeholder="Tel"
                   variant={variant}
@@ -90,8 +97,15 @@ export function InputDemo() {
                   type="datetime-local"
                   placeholder="Datetime Local"
                   variant={variant}
-                  aria-invalid="true"
                   inputSize={size}
+                  aria-invalid="true"
+                />
+                <Input
+                  type="datetime-local"
+                  placeholder="Datetime Local"
+                  variant={variant}
+                  inputSize={size}
+                  disabled
                 />
                 <Input
                   type="month"

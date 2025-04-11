@@ -202,7 +202,43 @@ export function SelectDemo() {
             <SelectTrigger
               className="w-[180px]"
               variant={triggerVariant as (typeof triggerVariants)[number]}
-              aria-invalid={true}
+              aria-invalid="true"
+            >
+              <SelectValue
+                placeholder={
+                  <>
+                    <CircleDashed />
+                    With Icon
+                  </>
+                }
+              />
+            </SelectTrigger>
+            <SelectContent
+              variant={itemsVariant as (typeof itemsVariants)[number]}
+              wide={wide}
+              indicatorVariant={
+                indicatorVariant as (typeof indicatorVariants)[number]
+              }
+            >
+              <SelectItem value="line">
+                <ChartLineIcon />
+                Line
+              </SelectItem>
+              <SelectItem value="bar">
+                <ChartBarIcon />
+                Bar
+              </SelectItem>
+              <SelectItem value="pie">
+                <ChartPieIcon />
+                Pie
+              </SelectItem>
+            </SelectContent>
+          </Select>
+          <Select>
+            <SelectTrigger
+              className="w-[180px]"
+              variant={triggerVariant as (typeof triggerVariants)[number]}
+              disabled
             >
               <SelectValue
                 placeholder={

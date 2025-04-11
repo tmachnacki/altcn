@@ -8,10 +8,8 @@ import {
   InputOTPGroup,
   InputOTPSeparator,
   InputOTPSlot,
-  inputOTPSlotVariants,
 } from "@/components/ui/input-otp";
 import { Label } from "@/components/ui/label";
-import { VariantProps } from "class-variance-authority";
 import { ComponentContainer } from "@/components/demos/component-container";
 
 export function InputOTPDemo() {
@@ -38,7 +36,7 @@ export function InputOTPDemo() {
 function InputOTPSimple({
   variant,
   split,
-}: VariantProps<typeof inputOTPSlotVariants> & { split?: boolean }) {
+}: Pick<React.ComponentProps<typeof InputOTP>, "variant" | "split">) {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex w-fit flex-col gap-2">

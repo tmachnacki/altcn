@@ -8,10 +8,13 @@ import { cn } from "@/lib/utils";
 
 const switchVariants = cva(
   [
-    "peer relative isolate inline-flex h-5 w-9 shrink-0 items-center rounded-full p-[2px] transition-colors data-[state=checked]:inset-shadow-sm",
+    "peer relative isolate inline-flex h-5 w-9 shrink-0 items-center rounded-full p-0.5 transition data-[state=unchecked]:inset-shadow-sm dark:data-[state=unchecked]:shadow-none",
+
     "focus-visible:outline-2 focus-visible:outline-offset-2",
-    "disabled:cursor-not-allowed disabled:opacity-50 disabled:data-[state=checked]:bg-base-500 disabled:data-[state=unchecked]:bg-accent",
-    "aria-invalid:outline-destructive aria-invalid:data-[state=checked]:bg-destructive aria-invalid:data-[state=unchecked]:bg-destructive-muted",
+
+    "disabled:cursor-not-allowed disabled:opacity-50 disabled:data-[state=checked]:bg-base-500 data-[state=unchecked]:disabled:bg-accent dark:data-[state=unchecked]:disabled:bg-faded dark:data-[state=unchecked]:disabled:inset-ring dark:data-[state=unchecked]:disabled:inset-ring-border",
+
+    "dark:aria-invalid:data-[state=unchecked]:inset-ring-border-destructive aria-invalid:outline-destructive aria-invalid:data-[state=checked]:bg-destructive aria-invalid:data-[state=unchecked]:bg-destructive-muted aria-invalid:data-[state=unchecked]:inset-ring aria-invalid:data-[state=unchecked]:inset-ring-destructive dark:aria-invalid:data-[state=unchecked]:bg-destructive-faded dark:aria-invalid:data-[state=unchecked]:inset-ring",
   ],
   {
     variants: {
@@ -19,21 +22,25 @@ const switchVariants = cva(
         // -- primary --
         primary: [
           "outline-primary data-[state=checked]:bg-primary data-[state=unchecked]:bg-accent",
+          "dark:data-[state=unchecked]:bg-faded dark:data-[state=unchecked]:inset-ring dark:data-[state=unchecked]:inset-ring-border",
         ],
         "primary-muted": [
           "outline-primary data-[state=checked]:bg-primary data-[state=unchecked]:bg-primary-muted",
+          "dark:data-[state=unchecked]:bg-primary-faded dark:data-[state=unchecked]:inset-ring dark:data-[state=unchecked]:inset-ring-border-primary-faded",
         ],
 
         // -- secondary --
         secondary: [
           "outline-secondary data-[state=checked]:bg-secondary data-[state=unchecked]:bg-accent",
+          "dark:data-[state=unchecked]:bg-faded dark:data-[state=unchecked]:inset-ring dark:data-[state=unchecked]:inset-ring-border",
         ],
         "secondary-muted": [
           "outline-secondary data-[state=checked]:bg-secondary data-[state=unchecked]:bg-secondary-muted",
+          "dark:data-[state=unchecked]:bg-secondary-faded dark:data-[state=unchecked]:inset-ring dark:data-[state=unchecked]:inset-ring-border-secondary-faded",
         ],
       },
       thin: {
-        true: "h-2.5 p-0 focus-visible:outline-offset-[3px] data-[state=unchecked]:shadow-none",
+        true: "h-2.5 p-0 focus-visible:outline-offset-4 data-[state=unchecked]:shadow-none",
       },
     },
     defaultVariants: {
@@ -64,10 +71,10 @@ function Switch({
       <SwitchPrimitive.Thumb
         data-slot="switch-thumb"
         className={cn(
-          "pointer-events-none block size-4 rounded-full bg-background shadow-sm outline-0 transition-transform group-aria-invalid/switch:group-data-[state=unchecked]/switch:outline-1 group-aria-invalid/switch:group-data-[state=unchecked]/switch:outline-destructive data-[state=unchecked]:translate-x-0 dark:bg-foreground dark:shadow-none",
+          "pointer-events-none block size-4 rounded-full bg-background shadow-sm outline-0 transition-transform data-[disabled]:bg-base-50 dark:bg-foreground dark:shadow-none dark:data-[disabled]:bg-foreground",
           thin
-            ? "border border-border dark:border-none data-[state=checked]:translate-x-[calc(--spacing(5)+1px)]"
-            : "data-[state=checked]:translate-x-4",
+            ? "border border-border data-[state=checked]:translate-x-[calc(--spacing(5)+1px)] data-[state=unchecked]:-translate-x-px dark:border-none"
+            : "data-[state=checked]:translate-x-4 data-[state=unchecked]:translate-x-0",
         )}
       />
     </SwitchPrimitive.Root>

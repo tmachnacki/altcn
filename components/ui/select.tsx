@@ -13,49 +13,68 @@ const selectTriggerVariants = cva(
   [
     "flex w-fit items-center justify-between gap-2 rounded-md text-sm whitespace-nowrap",
     "disabled:cursor-not-allowed disabled:opacity-50",
-    "*:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2",
     "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+    "*:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2",
+    "aria-invalid:text-destructive-accent-foreground aria-invalid:[--select-trigger-icon-text:var(--color-destructive-muted-foreground)] aria-invalid:[&_svg:not([class*='text-'])]:text-destructive-muted-foreground",
   ],
   {
     variants: {
+      size: {
+        default: "h-9 px-3 py-2 [--select-trigger-icon-size:--spacing(4)]",
+        sm: "h-8 px-2.5 py-1.5 [--select-trigger-icon-size:--spacing(4)]",
+        lg: "h-10 px-4 py-2.5 text-base [--select-trigger-icon-size:--spacing(5)]",
+      },
       variant: {
         // -- base --
         default: [
-          "bg-background text-accent-foreground outline-1 -outline-offset-1 outline-border hover:not-disabled:not-aria-invalid:not-focus-visible:outline-hover-border data-[placeholder]:text-muted-foreground *:data-[slot=select-trigger-icon]:text-accent-foreground dark:bg-faded [&_svg:not([class*='text-'])]:text-muted-foreground",
+          "bg-background text-accent-foreground shadow-xs outline-1 -outline-offset-1 outline-border hover:not-disabled:not-aria-invalid:not-focus-visible:outline-hover-border dark:bg-faded",
+          "[&_svg:not([class*='text-'])]:text-muted-foreground",
+          "[--select-trigger-icon-text:var(--color-muted-foreground)]",
+          "data-[placeholder]:text-placeholder",
+          "disabled:bg-muted disabled:shadow-none",
           "focus-visible:outline-2 focus-visible:outline-primary",
-          "aria-invalid:text-destructive-accent-foreground aria-invalid:outline-destructive aria-invalid:data-[placeholder]:text-destructive-muted-foreground aria-invalid:*:data-[slot=select-trigger-icon]:text-destructive-accent-foreground dark:aria-invalid:bg-destructive-faded aria-invalid:[&_svg:not([class*='text-'])]:text-destructive-muted-foreground",
+          "aria-invalid:outline-destructive aria-invalid:data-[placeholder]:text-destructive-placeholder dark:aria-invalid:bg-destructive-faded",
         ],
 
         muted: [
-          "bg-muted text-accent-foreground -outline-offset-1 hover:not-disabled:not-aria-invalid:not-focus-visible:bg-accent data-[placeholder]:text-muted-foreground *:data-[slot=select-trigger-icon]:text-accent-foreground [&_svg:not([class*='text-'])]:text-muted-foreground",
+          "bg-muted text-accent-foreground -outline-offset-1 hover:not-disabled:not-aria-invalid:not-focus-visible:bg-accent",
+          "[&_svg:not([class*='text-'])]:text-muted-foreground",
+          "[--select-trigger-icon-text:var(--color-muted-foreground)]",
+          "data-[placeholder]:text-muted-foreground",
           "focus-visible:outline-2 focus-visible:outline-primary",
-          "aria-invalid:bg-destructive-muted/80 aria-invalid:text-destructive-accent-foreground aria-invalid:outline-destructive aria-invalid:hover:not-disabled:not-focus-visible:bg-destructive-muted aria-invalid:data-[placeholder]:text-destructive-muted-foreground aria-invalid:*:data-[slot=select-trigger-icon]:text-destructive-accent-foreground aria-invalid:[&_svg:not([class*='text-'])]:text-destructive-muted-foreground",
+          "aria-invalid:bg-destructive-muted/80 aria-invalid:outline-destructive aria-invalid:hover:not-disabled:not-focus-visible:bg-destructive-muted aria-invalid:data-[placeholder]:text-destructive-muted-foreground",
         ],
 
         underlined: [
-          "rounded-none bg-transparent shadow-[inset_0_-1px_0_0_var(--color-border)] outline-none hover:not-disabled:not-aria-invalid:not-focus-visible:shadow-[inset_0_-1px_0_0_var(--color-hover-border)] data-[placeholder]:text-muted-foreground *:data-[slot=select-trigger-icon]:text-accent-foreground [&_svg:not([class*='text-'])]:text-muted-foreground",
+          "rounded-none bg-transparent shadow-[inset_0_-1px_0_0_var(--color-border)] outline-none hover:not-disabled:not-aria-invalid:not-focus-visible:shadow-[inset_0_-1px_0_0_var(--color-hover-border)]",
+          "[&_svg:not([class*='text-'])]:text-muted-foreground",
+          "[--select-trigger-icon-text:var(--color-muted-foreground)]",
+          "data-[placeholder]:text-placeholder",
           "focus-visible:shadow-[inset_0_-2px_0_0_var(--color-primary)]",
-          "aria-invalid:text-destructive-accent-foreground aria-invalid:shadow-[inset_0_-1px_0_0_var(--color-destructive)] aria-invalid:focus-visible:shadow-[inset_0_-2px_0_0_var(--color-destructive)] aria-invalid:data-[placeholder]:text-destructive-muted-foreground aria-invalid:*:data-[slot=select-trigger-icon]:text-destructive-accent-foreground aria-invalid:[&_svg:not([class*='text-'])]:text-destructive-muted-foreground",
+          "aria-invalid:shadow-[inset_0_-1px_0_0_var(--color-destructive)] aria-invalid:focus-visible:shadow-[inset_0_-2px_0_0_var(--color-destructive)] aria-invalid:data-[placeholder]:text-destructive-placeholder",
         ],
 
         // -- primary --
         primary: [
-          "bg-primary-muted/80 text-primary-accent-foreground -outline-offset-1 hover:not-disabled:not-aria-invalid:not-focus-visible:bg-primary-muted data-[placeholder]:text-primary-muted-foreground *:data-[slot=select-trigger-icon]:text-primary-accent-foreground [&_svg:not([class*='text-'])]:text-primary-muted-foreground",
+          "bg-primary-muted/80 text-primary-accent-foreground -outline-offset-1 hover:not-disabled:not-aria-invalid:not-focus-visible:bg-primary-muted",
+          "[&_svg:not([class*='text-'])]:text-primary-muted-foreground",
+          "[--select-trigger-icon-text:var(--color-primary-muted-foreground)]",
+          "data-[placeholder]:text-primary-muted-foreground",
+          "disabled:bg-muted disabled:text-accent-foreground disabled:[--select-trigger-icon-text:var(--color-muted-foreground)] disabled:data-[placeholder]:text-muted-foreground disabled:[&_svg:not([class*='text-'])]:text-muted-foreground",
           "focus-visible:outline-2 focus-visible:outline-primary",
-          "aria-invalid:bg-destructive-muted/80 aria-invalid:text-destructive-accent-foreground aria-invalid:outline-destructive aria-invalid:hover:not-disabled:not-focus-visible:bg-destructive-muted aria-invalid:data-[placeholder]:text-destructive-muted-foreground aria-invalid:*:data-[slot=select-trigger-icon]:text-destructive-accent-foreground aria-invalid:[&_svg:not([class*='text-'])]:text-destructive-muted-foreground",
+          "aria-invalid:bg-destructive-muted/80 aria-invalid:outline-destructive aria-invalid:hover:not-disabled:not-focus-visible:bg-destructive-muted aria-invalid:data-[placeholder]:text-destructive-muted-foreground",
         ],
 
         // -- secondary --
         secondary: [
-          "bg-secondary-muted/80 text-secondary-accent-foreground -outline-offset-1 hover:not-disabled:not-aria-invalid:not-focus-visible:bg-secondary-muted data-[placeholder]:text-secondary-muted-foreground *:data-[slot=select-trigger-icon]:text-secondary-accent-foreground [&_svg:not([class*='text-'])]:text-secondary-muted-foreground",
+          "bg-secondary-muted/80 text-secondary-accent-foreground -outline-offset-1 hover:not-disabled:not-aria-invalid:not-focus-visible:bg-secondary-muted",
+          "[&_svg:not([class*='text-'])]:text-secondary-muted-foreground",
+          "[--select-trigger-icon-text:var(--color-secondary-muted-foreground)]",
+          "data-[placeholder]:text-secondary-muted-foreground",
+          "disabled:bg-muted disabled:text-accent-foreground disabled:[--select-trigger-icon-text:var(--color-muted-foreground)] disabled:data-[placeholder]:text-muted-foreground disabled:[&_svg:not([class*='text-'])]:text-muted-foreground",
           "focus-visible:outline-2 focus-visible:outline-secondary",
-          "aria-invalid:bg-destructive-muted/80 aria-invalid:text-destructive-accent-foreground aria-invalid:outline-destructive aria-invalid:hover:not-disabled:not-focus-visible:bg-destructive-muted aria-invalid:data-[placeholder]:text-destructive-muted-foreground aria-invalid:*:data-[slot=select-trigger-icon]:text-destructive-accent-foreground aria-invalid:[&_svg:not([class*='text-'])]:text-destructive-muted-foreground",
+          "aria-invalid:bg-destructive-muted/80 aria-invalid:outline-destructive aria-invalid:hover:not-disabled:not-focus-visible:bg-destructive-muted aria-invalid:data-[placeholder]:text-destructive-muted-foreground",
         ],
-      },
-      size: {
-        default: "h-9 px-3 py-2 data-[variant=underlined]:px-0.5",
-        sm: "h-8 px-2.5 py-1.5 data-[variant=underlined]:px-0.5",
-        lg: "h-10 px-4 py-2.5 text-base *:data-[slot=select-trigger-icon]:size-5 data-[variant=underlined]:px-0.5",
       },
     },
     defaultVariants: {
@@ -225,28 +244,22 @@ function SelectTrigger({
     >
       {children}
       <SelectPrimitive.Icon data-slot="select-trigger-icon" asChild>
-        <ChevronDownIcon className="size-4 text-current opacity-50" />
+        <ChevronDownIcon className="size-(--select-trigger-icon-size) text-(--select-trigger-icon-text) opacity-50" />
       </SelectPrimitive.Icon>
     </SelectPrimitive.Trigger>
   );
 }
 
-type SelectItemsVariantsType = VariantProps<typeof selectItemVariants> & {
+type SelectVariantsType = VariantProps<typeof selectItemVariants> & {
   indicatorVariant?: VariantProps<
     typeof selectItemIndicatorVariants
   >["variant"];
 };
 
-type SelectItemsVariantsContextType = SelectItemsVariantsType &
-  Pick<SelectPrimitive.SelectContentProps, "position">;
+type SelectContextType = SelectVariantsType &
+  Pick<React.ComponentProps<typeof SelectPrimitive.Content>, "position">;
 
-const SelectItemsVariantsContext =
-  React.createContext<SelectItemsVariantsContextType>({
-    variant: "accent",
-    wide: undefined,
-    indicatorVariant: "default",
-    position: "popper",
-  });
+const SelectContext = React.createContext<SelectContextType>({});
 
 function SelectContent({
   className,
@@ -256,10 +269,9 @@ function SelectContent({
   indicatorVariant = "default",
   children,
   ...props
-}: React.ComponentProps<typeof SelectPrimitive.Content> &
-  SelectItemsVariantsType) {
+}: React.ComponentProps<typeof SelectPrimitive.Content> & SelectVariantsType) {
   return (
-    <SelectItemsVariantsContext.Provider
+    <SelectContext.Provider
       value={{ variant, wide, indicatorVariant, position }}
     >
       <SelectPrimitive.Portal>
@@ -290,7 +302,7 @@ function SelectContent({
           <SelectScrollDownButton />
         </SelectPrimitive.Content>
       </SelectPrimitive.Portal>
-    </SelectItemsVariantsContext.Provider>
+    </SelectContext.Provider>
   );
 }
 
@@ -308,47 +320,46 @@ function SelectLabel({
 }
 
 type SelectItemProps = React.ComponentProps<typeof SelectPrimitive.Item> &
-  SelectItemsVariantsType & {
+  SelectVariantsType & {
     indicatorClassName?: string;
   };
 
 function SelectItem({
   className,
-  variant: variantOverride,
-  wide: wideOverride,
-  indicatorVariant: indicatorVariantOverride,
+  variant,
+  wide,
+  indicatorVariant,
   indicatorClassName,
   children,
   ...props
 }: SelectItemProps) {
-  const {
-    variant: variantFromContext,
-    wide: wideFromContext,
-    indicatorVariant: indicatorVariantFromContext,
-    position,
-  } = React.useContext(SelectItemsVariantsContext);
-  const variant = variantOverride ?? variantFromContext;
-  const wide = wideOverride ?? wideFromContext;
-  const indicatorVariant =
-    indicatorVariantOverride ?? indicatorVariantFromContext;
+  const context = React.useContext(SelectContext);
 
   return (
     <SelectPrimitive.Item
       data-slot="select-item"
-      data-variant={variant}
-      data-wide={wide}
-      data-position={position}
-      className={cn(selectItemVariants({ variant, wide }), className)}
+      data-variant={variant || context.variant}
+      data-wide={wide || context.wide}
+      data-position={context.position}
+      className={cn(
+        selectItemVariants({
+          variant: variant || context.variant,
+          wide: wide || context.wide,
+        }),
+        className,
+      )}
       {...props}
     >
       <SelectPrimitive.ItemIndicator
         data-slot="select-item-indicator"
-        data-variant={indicatorVariant}
-        data-item-variant={variant}
-        data-wide={wide}
-        data-position={position}
+        data-variant={indicatorVariant || context.indicatorVariant}
+        data-item-variant={variant || context.variant}
+        data-wide={wide || context.wide}
+        data-position={context.position}
         className={cn(
-          selectItemIndicatorVariants({ variant: indicatorVariant }),
+          selectItemIndicatorVariants({
+            variant: indicatorVariant || context.indicatorVariant,
+          }),
           indicatorClassName,
         )}
       >
