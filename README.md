@@ -2,15 +2,19 @@
 
 ## Improvements
 
-- [ ] Better alerts with close button
+- [ ] alert close button
+- [ ] Better Notification with ping animations
 - [ ] Headless Sonner
 - [ ] Sizes
-- [ ] Tomato color swatches
+- [ ] Transparent vs solid muted and faded colors
+- [ ] Select "item-aligned" positioning
+- [ ] "vertical" orientations (tabs, navigation menu)
+- [ ] "Tomato" color swatches
 
 ## Components
 
 - [ ] Breadcrumb
-- [ ] Button Input
+- [ ] Button Group
 - [ ] Calendar/DatePicker
 - [ ] Charts
 - [ ] Command
@@ -20,9 +24,13 @@
 - [ ] Form (Tanstack Form)
 - [ ] Input Group
 - [ ] Input Password
+- [ ] Navigation Menu
+- [ ] Progress Circular
 - [ ] Radio Group Cards/Buttons
 - [ ] Rating
 - [ ] Select (Native)
+- [ ] Speed Dial (Dropdown Menu Primitive)
+- [ ] Tab Nav (Navigation Primitive)
 - [ ] Toggle
 - [ ] Toggle Group
 - [ ] Tooltip

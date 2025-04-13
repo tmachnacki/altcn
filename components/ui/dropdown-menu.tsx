@@ -7,9 +7,8 @@ import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
-// TODO: better className overrides, maybe adjust subcontent offset for wide+border variants
+// TODO: maybe adjust subcontent offset for wide+border variants
 // TODO: maybe use visual-only inset span for wide+border variants to avoid negative margin issues
-// TODO: maybe extract subtrigger variants
 
 type MenuContextType = VariantProps<typeof menuItemVariants> & {
   indicatorVariant?: VariantProps<typeof menuItemIndicatorVariants>["variant"];
@@ -153,7 +152,7 @@ const menuItemIndicatorVariants = cva(
 );
 
 const menuShortcutVariants = cva(
-  "ml-auto text-xs font-normal tracking-widest opacity-60",
+  "ml-auto text-xs font-normal tracking-widest text-current/60",
 );
 
 function DropdownMenu({

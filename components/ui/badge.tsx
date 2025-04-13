@@ -22,23 +22,31 @@ const badgeVariants = cva(
           "bg-base-bg text-base-foreground",
           "[--hover-badge-close-bg:--alpha(var(--color-base-200)/20%)]",
           "[a&]:hover:bg-base-bg/90",
+          "[button&]:hover:bg-base-bg/90",
         ],
 
         accent: [
           "bg-accent text-accent-foreground",
           "[a&]:hover:bg-base-200 dark:[a&]:hover:bg-base-800",
+          "[button&]:hover:bg-base-200 dark:[button&]:hover:bg-base-800",
         ],
 
-        muted: ["bg-muted text-muted-foreground", "[a&]:hover:bg-accent"],
+        muted: [
+          "bg-muted text-muted-foreground",
+          "[a&]:hover:bg-accent",
+          "[button&]:hover:bg-accent",
+        ],
 
         surface: [
           "bg-faded text-accent-foreground inset-ring inset-ring-border-faded",
           "[a&]:hover:bg-muted",
+          "[button&]:hover:bg-muted",
         ],
 
         faded: [
           "bg-faded text-muted-foreground inset-ring inset-ring-border-faded",
           "[a&]:hover:bg-muted",
+          "[button&]:hover:bg-muted",
         ],
 
         dotted: "[--badge-dot-text:var(--color-muted-foreground)]",
@@ -48,26 +56,31 @@ const badgeVariants = cva(
           "bg-primary text-primary-foreground",
           "[--hover-badge-close-bg:--alpha(var(--color-primary-200)/20%)]",
           "[a&]:hover:bg-primary/90",
+          "[button&]:hover:bg-primary/90",
         ],
 
         "primary-accent": [
           "bg-primary-muted text-primary-accent-foreground",
           "[a&]:hover:bg-primary-muted/80",
+          "[button&]:hover:bg-primary-muted/80",
         ],
 
         "primary-muted": [
           "bg-primary-muted text-primary-muted-foreground",
           "[a&]:hover:bg-primary-muted/80",
+          "[button&]:hover:bg-primary-muted/80",
         ],
 
         "primary-surface": [
           "bg-primary-faded text-primary-accent-foreground inset-ring inset-ring-border-primary-faded",
           "[a&]:hover:bg-primary-muted/80",
+          "[button&]:hover:bg-primary-muted/80",
         ],
 
         "primary-faded": [
           "bg-primary-faded text-primary-muted-foreground inset-ring inset-ring-border-primary-faded",
           "[a&]:hover:bg-primary-muted/80",
+          "[button&]:hover:bg-primary-muted/80",
         ],
 
         "primary-tron": [
@@ -75,6 +88,8 @@ const badgeVariants = cva(
           "[--tron-beam:var(--color-primary)] [--tron-blur:var(--color-primary-tron-blur)]",
           "[a&]:hover:bg-[image:var(--hover-primary-tron-bg-gradient)] [a&]:hover:inset-ring-hover-border-primary-tron",
           "[a&]:hover:*:data-[slot=tron-beam]:data-[side=bottom]:opacity-0 [a&]:hover:*:data-[slot=tron-beam]:data-[side=top]:opacity-100 [a&]:hover:*:data-[slot=tron-blur]:data-[side=bottom]:opacity-0 [a&]:hover:*:data-[slot=tron-blur]:data-[side=top]:opacity-100",
+          "[button&]:hover:bg-[image:var(--hover-primary-tron-bg-gradient)] [button&]:hover:inset-ring-hover-border-primary-tron",
+          "[button&]:hover:*:data-[slot=tron-beam]:data-[side=bottom]:opacity-0 [button&]:hover:*:data-[slot=tron-beam]:data-[side=top]:opacity-100 [button&]:hover:*:data-[slot=tron-blur]:data-[side=bottom]:opacity-0 [button&]:hover:*:data-[slot=tron-blur]:data-[side=top]:opacity-100",
         ],
 
         "primary-dotted": "[--badge-dot-text:var(--color-primary)]",
@@ -84,26 +99,31 @@ const badgeVariants = cva(
           "bg-secondary text-secondary-foreground",
           "[--hover-badge-close-bg:--alpha(var(--color-secondary-700)/30%)]",
           "[a&]:hover:bg-secondary/90",
+          "[button&]:hover:bg-secondary/90",
         ],
 
         "secondary-accent": [
           "bg-secondary-muted text-secondary-accent-foreground",
           "[a&]:hover:bg-secondary-muted/80",
+          "[button&]:hover:bg-secondary-muted/80",
         ],
 
         "secondary-muted": [
           "bg-secondary-muted text-secondary-muted-foreground",
           "[a&]:hover:bg-secondary-muted/80",
+          "[button&]:hover:bg-secondary-muted/80",
         ],
 
         "secondary-surface": [
           "bg-secondary-faded text-secondary-accent-foreground inset-ring inset-ring-border-secondary-faded",
           "[a&]:hover:bg-secondary-muted/80",
+          "[button&]:hover:bg-secondary-muted/80",
         ],
 
         "secondary-faded": [
           "bg-secondary-faded text-secondary-muted-foreground inset-ring inset-ring-border-secondary-faded",
           "[a&]:hover:bg-secondary-muted/80",
+          "[button&]:hover:bg-secondary-muted/80",
         ],
 
         "secondary-tron": [
@@ -111,6 +131,8 @@ const badgeVariants = cva(
           "[--tron-beam:var(--color-secondary)] [--tron-blur:var(--color-secondary-tron-blur)]",
           "[a&]:hover:bg-[image:var(--hover-secondary-tron-bg-gradient)] [a&]:hover:inset-ring-hover-border-secondary-tron",
           "[a&]:hover:*:data-[slot=tron-beam]:data-[side=bottom]:opacity-0 [a&]:hover:*:data-[slot=tron-beam]:data-[side=top]:opacity-100 [a&]:hover:*:data-[slot=tron-blur]:data-[side=bottom]:opacity-0 [a&]:hover:*:data-[slot=tron-blur]:data-[side=top]:opacity-100",
+          "[button&]:hover:bg-[image:var(--hover-secondary-tron-bg-gradient)] [button&]:hover:inset-ring-hover-border-secondary-tron",
+          "[button&]:hover:*:data-[slot=tron-beam]:data-[side=bottom]:opacity-0 [button&]:hover:*:data-[slot=tron-beam]:data-[side=top]:opacity-100 [button&]:hover:*:data-[slot=tron-blur]:data-[side=bottom]:opacity-0 [button&]:hover:*:data-[slot=tron-blur]:data-[side=top]:opacity-100",
         ],
 
         "secondary-dotted": "[--badge-dot-text:var(--color-secondary)]",
@@ -120,26 +142,31 @@ const badgeVariants = cva(
           "bg-destructive text-destructive-foreground",
           "[--hover-badge-close-bg:--alpha(var(--color-destructive-100)/40%)]",
           "[a&]:hover:bg-destructive/90",
+          "[button&]:hover:bg-destructive/90",
         ],
 
         "destructive-accent": [
           "bg-destructive-muted text-destructive-accent-foreground",
           "[a&]:hover:bg-destructive-muted/80",
+          "[button&]:hover:bg-destructive-muted/80",
         ],
 
         "destructive-muted": [
           "bg-destructive-muted text-destructive-muted-foreground",
           "[a&]:hover:bg-destructive-muted/80",
+          "[button&]:hover:bg-destructive-muted/80",
         ],
 
         "destructive-surface": [
           "bg-destructive-faded text-destructive-accent-foreground inset-ring inset-ring-border-destructive-faded",
           "[a&]:hover:bg-destructive-muted/80",
+          "[button&]:hover:bg-destructive-muted/80",
         ],
 
         "destructive-faded": [
           "bg-destructive-faded text-destructive-muted-foreground inset-ring inset-ring-border-destructive-faded",
           "[a&]:hover:bg-destructive-muted/80",
+          "[button&]:hover:bg-destructive-muted/80",
         ],
 
         "destructive-tron": [
@@ -147,6 +174,8 @@ const badgeVariants = cva(
           "[--tron-beam:var(--color-destructive)] [--tron-blur:var(--color-destructive-tron-blur)]",
           "[a&]:hover:bg-[image:var(--hover-destructive-tron-bg-gradient)] [a&]:hover:inset-ring-hover-border-destructive-tron",
           "[a&]:hover:*:data-[slot=tron-beam]:data-[side=bottom]:opacity-0 [a&]:hover:*:data-[slot=tron-beam]:data-[side=top]:opacity-100 [a&]:hover:*:data-[slot=tron-blur]:data-[side=bottom]:opacity-0 [a&]:hover:*:data-[slot=tron-blur]:data-[side=top]:opacity-100",
+          "[button&]:hover:bg-[image:var(--hover-destructive-tron-bg-gradient)] [button&]:hover:inset-ring-hover-border-destructive-tron",
+          "[button&]:hover:*:data-[slot=tron-beam]:data-[side=bottom]:opacity-0 [button&]:hover:*:data-[slot=tron-beam]:data-[side=top]:opacity-100 [button&]:hover:*:data-[slot=tron-blur]:data-[side=bottom]:opacity-0 [button&]:hover:*:data-[slot=tron-blur]:data-[side=top]:opacity-100",
         ],
 
         "destructive-dotted": "[--badge-dot-text:var(--color-destructive)]",
@@ -156,26 +185,31 @@ const badgeVariants = cva(
           "bg-success text-success-foreground",
           "[--hover-badge-close-bg:--alpha(var(--color-success-200)/20%)]",
           "[a&]:hover:bg-success/90",
+          "[button&]:hover:bg-success/90",
         ],
 
         "success-accent": [
           "bg-success-muted text-success-accent-foreground",
           "[a&]:hover:bg-success-muted/80",
+          "[button&]:hover:bg-success-muted/80",
         ],
 
         "success-muted": [
           "bg-success-muted text-success-muted-foreground",
           "[a&]:hover:bg-success-muted/80",
+          "[button&]:hover:bg-success-muted/80",
         ],
 
         "success-surface": [
           "bg-success-faded text-success-accent-foreground inset-ring inset-ring-border-success-faded",
           "[a&]:hover:bg-success-muted/80",
+          "[button&]:hover:bg-success-muted/80",
         ],
 
         "success-faded": [
           "bg-success-faded text-success-muted-foreground inset-ring inset-ring-border-success-faded",
           "[a&]:hover:bg-success-muted/80",
+          "[button&]:hover:bg-success-muted/80",
         ],
 
         "success-tron": [
@@ -183,6 +217,8 @@ const badgeVariants = cva(
           "[--tron-beam:var(--color-success)] [--tron-blur:var(--color-success-tron-blur)]",
           "[a&]:hover:bg-[image:var(--hover-success-tron-bg-gradient)] [a&]:hover:inset-ring-hover-border-success-tron",
           "[a&]:hover:*:data-[slot=tron-beam]:data-[side=bottom]:opacity-0 [a&]:hover:*:data-[slot=tron-beam]:data-[side=top]:opacity-100 [a&]:hover:*:data-[slot=tron-blur]:data-[side=bottom]:opacity-0 [a&]:hover:*:data-[slot=tron-blur]:data-[side=top]:opacity-100",
+          "[button&]:hover:bg-[image:var(--hover-success-tron-bg-gradient)] [button&]:hover:inset-ring-hover-border-success-tron",
+          "[button&]:hover:*:data-[slot=tron-beam]:data-[side=bottom]:opacity-0 [button&]:hover:*:data-[slot=tron-beam]:data-[side=top]:opacity-100 [button&]:hover:*:data-[slot=tron-blur]:data-[side=bottom]:opacity-0 [button&]:hover:*:data-[slot=tron-blur]:data-[side=top]:opacity-100",
         ],
 
         "success-dotted": "[--badge-dot-text:var(--color-success)]",
@@ -192,26 +228,31 @@ const badgeVariants = cva(
           "bg-warning text-warning-foreground",
           "[--hover-badge-close-bg:--alpha(var(--color-warning-700)/30%)]",
           "[a&]:hover:bg-warning/90",
+          "[button&]:hover:bg-warning/90",
         ],
 
         "warning-accent": [
           "bg-warning-muted text-warning-accent-foreground",
           "[a&]:hover:bg-warning-muted/80",
+          "[button&]:hover:bg-warning-muted/80",
         ],
 
         "warning-muted": [
           "bg-warning-muted text-warning-muted-foreground",
           "[a&]:hover:bg-warning-muted/80",
+          "[button&]:hover:bg-warning-muted/80",
         ],
 
         "warning-surface": [
           "bg-warning-faded text-warning-accent-foreground inset-ring inset-ring-border-warning-faded",
           "[a&]:hover:bg-warning-muted/80",
+          "[button&]:hover:bg-warning-muted/80",
         ],
 
         "warning-faded": [
           "bg-warning-faded text-warning-muted-foreground inset-ring inset-ring-border-warning-faded",
           "[a&]:hover:bg-warning-muted/80",
+          "[button&]:hover:bg-warning-muted/80",
         ],
 
         "warning-tron": [
@@ -219,6 +260,8 @@ const badgeVariants = cva(
           "[--tron-beam:var(--color-warning)] [--tron-blur:var(--color-warning-tron-blur)]",
           "[a&]:hover:bg-[image:var(--hover-warning-tron-bg-gradient)] [a&]:hover:inset-ring-hover-border-warning-tron",
           "[a&]:hover:*:data-[slot=tron-beam]:data-[side=bottom]:opacity-0 [a&]:hover:*:data-[slot=tron-beam]:data-[side=top]:opacity-100 [a&]:hover:*:data-[slot=tron-blur]:data-[side=bottom]:opacity-0 [a&]:hover:*:data-[slot=tron-blur]:data-[side=top]:opacity-100",
+          "[button&]:hover:bg-[image:var(--hover-warning-tron-bg-gradient)] [button&]:hover:inset-ring-hover-border-warning-tron",
+          "[button&]:hover:*:data-[slot=tron-beam]:data-[side=bottom]:opacity-0 [button&]:hover:*:data-[slot=tron-beam]:data-[side=top]:opacity-100 [button&]:hover:*:data-[slot=tron-blur]:data-[side=bottom]:opacity-0 [button&]:hover:*:data-[slot=tron-blur]:data-[side=top]:opacity-100",
         ],
 
         "warning-dotted": "[--badge-dot-text:var(--color-warning)]",
@@ -238,6 +281,7 @@ const badgeVariants = cva(
         className: [
           "bg-background text-foreground inset-ring inset-ring-border",
           "[a&]:hover:bg-muted [a&]:hover:inset-ring-hover-border",
+          "[button&]:hover:bg-muted [button&]:hover:inset-ring-hover-border",
         ],
       },
       {
@@ -379,6 +423,7 @@ function Badge({
   ...props
 }: React.ComponentProps<"span"> &
   VariantProps<typeof badgeVariants> & { asChild?: boolean }) {
+  // render as button or link
   const Comp = asChild ? Slot : "span";
 
   return (
@@ -424,7 +469,7 @@ function BadgeDot({ className, ...props }: LucideProps) {
       data-slot="badge-dot"
       aria-hidden="true"
       className={cn(
-        "shrink-0 size-1.5 fill-current stroke-current text-(--badge-dot-text)",
+        "size-1.5 shrink-0 fill-current stroke-current text-(--badge-dot-text)",
         className,
       )}
       {...props}

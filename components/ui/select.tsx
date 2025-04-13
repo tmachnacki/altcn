@@ -13,16 +13,16 @@ const selectTriggerVariants = cva(
   [
     "flex w-fit items-center justify-between gap-2 rounded-md text-sm whitespace-nowrap",
     "disabled:cursor-not-allowed disabled:opacity-50",
-    "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+    "[&_svg]:pointer-events-none [&_svg]:shrink-0",
     "*:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2",
     "aria-invalid:text-destructive-accent-foreground aria-invalid:[--select-trigger-icon-text:var(--color-destructive-muted-foreground)] aria-invalid:[&_svg:not([class*='text-'])]:text-destructive-muted-foreground",
   ],
   {
     variants: {
       size: {
-        default: "h-9 px-3 py-2 [--select-trigger-icon-size:--spacing(4)]",
-        sm: "h-8 px-2.5 py-1.5 [--select-trigger-icon-size:--spacing(4)]",
-        lg: "h-10 px-4 py-2.5 text-base [--select-trigger-icon-size:--spacing(5)]",
+        default: "h-9 px-3 py-2 [&_svg:not([class*='size-'])]:size-4",
+        sm: "h-8 px-2.5 py-1.5 [&_svg:not([class*='size-'])]:size-4",
+        lg: "h-10 px-4 py-2.5 text-base [&_svg:not([class*='size-'])]:size-5",
       },
       variant: {
         // -- base --
@@ -244,7 +244,7 @@ function SelectTrigger({
     >
       {children}
       <SelectPrimitive.Icon data-slot="select-trigger-icon" asChild>
-        <ChevronDownIcon className="size-(--select-trigger-icon-size) text-(--select-trigger-icon-text) opacity-50" />
+        <ChevronDownIcon className="text-(--select-trigger-icon-text)/50" />
       </SelectPrimitive.Icon>
     </SelectPrimitive.Trigger>
   );
