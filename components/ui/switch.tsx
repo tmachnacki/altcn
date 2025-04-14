@@ -14,7 +14,7 @@ const switchVariants = cva(
 
     "disabled:cursor-not-allowed disabled:opacity-50 disabled:data-[state=checked]:bg-base-500 data-[state=unchecked]:disabled:bg-accent dark:data-[state=unchecked]:disabled:bg-faded dark:data-[state=unchecked]:disabled:inset-ring dark:data-[state=unchecked]:disabled:inset-ring-border",
 
-    "dark:aria-invalid:data-[state=unchecked]:inset-ring-border-destructive aria-invalid:outline-destructive aria-invalid:data-[state=checked]:bg-destructive aria-invalid:data-[state=unchecked]:bg-destructive-muted aria-invalid:data-[state=unchecked]:inset-ring aria-invalid:data-[state=unchecked]:inset-ring-destructive dark:aria-invalid:data-[state=unchecked]:bg-destructive-faded dark:aria-invalid:data-[state=unchecked]:inset-ring",
+    "aria-invalid:outline-destructive aria-invalid:data-[state=checked]:bg-destructive aria-invalid:data-[state=unchecked]:bg-destructive-muted aria-invalid:data-[state=unchecked]:inset-ring aria-invalid:data-[state=unchecked]:inset-ring-destructive dark:aria-invalid:data-[state=unchecked]:bg-destructive-muted dark:aria-invalid:data-[state=unchecked]:inset-ring",
   ],
   {
     variants: {
@@ -71,9 +71,9 @@ function Switch({
       <SwitchPrimitive.Thumb
         data-slot="switch-thumb"
         className={cn(
-          "pointer-events-none block size-4 rounded-full bg-background shadow-sm outline-0 transition-transform data-[disabled]:bg-base-50 dark:bg-foreground dark:shadow-none dark:data-[disabled]:bg-foreground",
+          "pointer-events-none block size-4 rounded-full border border-border bg-background shadow-xs transition-all outline-none data-[disabled]:bg-base-50 dark:backdrop-blur-lg dark:data-[state=checked]:bg-foreground dark:data-[state=unchecked]:bg-white/25 dark:data-[state=unchecked]:data-[disabled]:bg-base-700",
           thin
-            ? "border border-border data-[state=checked]:translate-x-[calc(--spacing(5)+1px)] data-[state=unchecked]:-translate-x-px dark:border-none"
+            ? "data-[state=checked]:translate-x-[calc(--spacing(5)+1px)] data-[state=unchecked]:-translate-x-px"
             : "data-[state=checked]:translate-x-4 data-[state=unchecked]:translate-x-0",
         )}
       />

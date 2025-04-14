@@ -16,10 +16,11 @@ type InputPasswordProps = Omit<React.ComponentProps<typeof Input>, "type"> & {
 
 function InputPassword({
   className,
+  inputSize = "default",
   containerClassName,
   variant: inputVariant,
   buttonClassName,
-  buttonVariant,
+  buttonVariant = "ghost",
   ...props
 }: InputPasswordProps) {
   const [showPassword, setShowPassword] = React.useState(false);
@@ -28,8 +29,9 @@ function InputPassword({
       <Input
         type={showPassword ? "text" : "password"}
         variant={inputVariant}
+        inputSize={inputSize}
         className={cn(
-          "pr-9",
+          { default: "pr-9", sm: "pr-8", lg: "pr-10" }[inputSize || "default"],
           "[&::-ms-reveal]:pointer-events-none [&::-ms-reveal]:invisible [&::-ms-reveal]:hidden",
           "[&::-ms-clear]:pointer-events-none [&::-ms-clear]:invisible [&::-ms-clear]:hidden",
           className,
@@ -39,10 +41,14 @@ function InputPassword({
 
       <Button
         type="button"
-        variant={buttonVariant || "ghost"}
-        size="icon-sm"
+        variant={buttonVariant}
         className={cn(
-          "absolute top-1/2 right-1 size-7 -translate-y-1/2",
+          "absolute top-1/2 right-1 -translate-y-1/2 rounded-sm",
+          {
+            default: "size-7",
+            sm: "size-6",
+            lg: "size-8",
+          }[inputSize || "default"],
           buttonClassName,
         )}
         onClick={() => setShowPassword((prev) => !prev)}
