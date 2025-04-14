@@ -7,13 +7,15 @@ export function CheckboxDemo() {
     <ComponentContainer>
       <div className="flex flex-col gap-8">
         <div className="flex items-center gap-3">
-          <Checkbox id="terms" />
-          <Label htmlFor="terms">Accept terms and conditions</Label>
+          <Checkbox id="checkbox-terms" />
+          <Label htmlFor="checkbox-terms">Accept terms and conditions</Label>
         </div>
         <div className="flex items-start gap-3">
-          <Checkbox id="terms-2" defaultChecked />
+          <Checkbox id="checkbox-terms-2" defaultChecked />
           <div className="grid gap-2">
-            <Label htmlFor="terms-2">Accept terms and conditions</Label>
+            <Label htmlFor="checkbox-terms-2">
+              Accept terms and conditions
+            </Label>
             <p className="text-sm text-muted-foreground">
               By clicking this checkbox, you agree to the terms and conditions.
             </p>
@@ -21,47 +23,53 @@ export function CheckboxDemo() {
         </div>
         <div className="flex items-start gap-3">
           <Checkbox
-            id="indeterminate-primary"
+            id="checkbox-indeterminate-primary"
             checked={"indeterminate"}
             variant={"primary"}
           />
-          <Label htmlFor="indeterminate-primary">
+          <Label htmlFor="checkbox-indeterminate-primary">
             Indeterminate primary checkbox
           </Label>
         </div>
         <div className="flex items-start gap-3">
           <Checkbox
-            id="disabled-checked"
+            id="checkbox-disabled-checked"
             disabled
             checked
             variant={"primary"}
           />
-          <Label htmlFor="disabled-checked">Disabled checked checkbox</Label>
+          <Label htmlFor="checkbox-disabled-checked">
+            Disabled checked checkbox
+          </Label>
         </div>
         <div className="flex items-start gap-3">
-          <Checkbox id="toggle" disabled />
-          <Label htmlFor="toggle">Enable notifications</Label>
+          <Checkbox id="checkbox-notifications" disabled />
+          <Label htmlFor="checkbox-notifications">Enable notifications</Label>
         </div>
         <div className="flex items-start gap-3">
-          <Checkbox id="invalid" aria-invalid={true} />
-          <Label htmlFor="invalid">Invalid checkbox</Label>
+          <Checkbox id="checkbox-invalid" aria-invalid={true} />
+          <Label htmlFor="checkbox-invalid">Invalid checkbox</Label>
         </div>
         <div className="flex items-start gap-3">
-          <Checkbox id="secondary" variant="secondary" />
-          <Label htmlFor="secondary">Secondary checkbox</Label>
+          <Checkbox id="checkbox-secondary" variant="secondary" />
+          <Label htmlFor="checkbox-secondary">Secondary checkbox</Label>
         </div>
         <div className="flex items-start gap-3">
           <Checkbox
-            id="indeterminate-secondary"
+            id="checkbox-indeterminate-secondary"
             variant="secondary"
             checked={"indeterminate"}
           />
-          <Label htmlFor="indeterminate-secondary">
+          <Label htmlFor="checkbox-indeterminate-secondary">
             Indeterminate secondary checkbox
           </Label>
         </div>
         <Label className="group flex items-start gap-3 rounded-lg border p-3 hover:bg-faded has-[[aria-checked=true]]:border-primary/50 has-[[aria-checked=true]]:bg-primary-faded">
-          <Checkbox id="primary-card" defaultChecked variant="primary" />
+          <Checkbox
+            id="checkbox-primary-card"
+            defaultChecked
+            variant="primary"
+          />
           <div className="grid gap-1.5 font-normal">
             <p className="text-sm leading-none font-medium group-has-[[aria-checked=true]]:text-primary-accent-foreground">
               Enable notifications
@@ -72,7 +80,11 @@ export function CheckboxDemo() {
           </div>
         </Label>
         <Label className="group flex items-start gap-3 rounded-lg border p-3 hover:bg-faded has-[[aria-checked=true]]:border-secondary/50 has-[[aria-checked=true]]:bg-secondary-faded">
-          <Checkbox id="secondary-card" defaultChecked variant="secondary" />
+          <Checkbox
+            id="checkbox-secondary-card"
+            defaultChecked
+            variant="secondary"
+          />
           <div className="grid gap-1.5 font-normal">
             <p className="text-sm leading-none font-medium group-has-[[aria-checked=true]]:text-secondary-accent-foreground">
               Enable notifications
@@ -83,7 +95,11 @@ export function CheckboxDemo() {
           </div>
         </Label>
         <Label className="group flex items-start gap-3 rounded-lg border p-3 hover:bg-faded has-[[aria-checked=true]]:border-destructive/50 has-[[aria-checked=true]]:bg-destructive-faded">
-          <Checkbox id="invalid-card" defaultChecked aria-invalid={true} />
+          <Checkbox
+            id="checkbox-invalid-card"
+            defaultChecked
+            aria-invalid={true}
+          />
           <div className="grid gap-1.5 font-normal">
             <p className="text-sm leading-none font-medium group-has-[[aria-checked=true]]:text-destructive-accent-foreground">
               Enable notifications
