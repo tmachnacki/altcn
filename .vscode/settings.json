@@ -1,3 +1,4 @@
 {
-  "tailwindCSS.experimental.configFile": "app/globals.css"
+  "tailwindCSS.experimental.configFile": "app/globals.css",
+  "cSpell.words": ["oklch"]
 }

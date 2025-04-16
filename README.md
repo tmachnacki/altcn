@@ -6,6 +6,7 @@
 - [ ] Better Notification with ping animations
 - [ ] Headless Sonner
 - [ ] Sizes
+- [ ] Input Password Sizes
 - [ ] Transparent vs solid muted and faded colors
 - [ ] Select "item-aligned" positioning
 - [ ] "vertical" orientations (tabs, navigation menu)
@@ -23,7 +24,6 @@
 - [ ] Form (React Hook Form)
 - [ ] Form (Tanstack Form)
 - [ ] Input Group
-- [ ] Input Password
 - [ ] Navigation Menu
 - [ ] Progress Circular
 - [ ] Radio Group Cards/Buttons

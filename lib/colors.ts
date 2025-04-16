@@ -1,5 +1,221 @@
 export const colors = [
   {
+    name: "Red",
+    text: "text-red-500 dark:text-red-400",
+    swatches: [
+      {
+        label: "red-50",
+        token: "var(--color-red-50)",
+        value: "oklch(0.971 0.013 17.38)",
+        background: "bg-red-50",
+      },
+      {
+        label: "red-100",
+        token: "var(--color-red-100)",
+        value: "oklch(0.936 0.032 17.717)",
+        background: "bg-red-100",
+      },
+      {
+        label: "red-200",
+        token: "var(--color-red-200)",
+        value: "oklch(0.885 0.062 18.334)",
+        background: "bg-red-200",
+      },
+      {
+        label: "red-300",
+        token: "var(--color-red-300)",
+        value: "oklch(0.808 0.114 19.571)",
+        background: "bg-red-300",
+      },
+      {
+        label: "red-400",
+        token: "var(--color-red-400)",
+        value: "oklch(0.704 0.191 22.216)",
+        background: "bg-red-400",
+      },
+      {
+        label: "red-500",
+        token: "var(--color-red-500)",
+        value: "oklch(0.637 0.237 25.331)",
+        background: "bg-red-500",
+      },
+      {
+        label: "red-600",
+        token: "var(--color-red-600)",
+        value: "oklch(0.577 0.245 27.325)",
+        background: "bg-red-600",
+      },
+      {
+        label: "red-700",
+        token: "var(--color-red-700)",
+        value: "oklch(0.505 0.213 27.518)",
+        background: "bg-red-700",
+      },
+      {
+        label: "red-800",
+        token: "var(--color-red-800)",
+        value: "oklch(0.444 0.177 26.899)",
+        background: "bg-red-800",
+      },
+      {
+        label: "red-900",
+        token: "var(--color-red-900)",
+        value: "oklch(0.391 0.146 265.522)",
+        background: "bg-red-900",
+      },
+      {
+        label: "red-950",
+        token: "var(--color-red-950)",
+        value: "oklch(0.293 0.066 243.157)",
+        background: "bg-red-950",
+      },
+    ],
+  },
+  {
+    name: "Tomato",
+    text: "text-tomato-500 dark:text-tomato-400",
+    swatches: [
+      {
+        label: "tomato-50",
+        token: "var(--color-tomato-50)",
+        value: "oklch(0.975 0.014 40)",
+        background: "bg-tomato-50",
+      },
+      {
+        label: "tomato-100",
+        token: "var(--color-tomato-100)",
+        value: "oklch(0.945 0.035 41)",
+        background: "bg-tomato-100",
+      },
+      {
+        label: "tomato-200",
+        token: "var(--color-tomato-200)",
+        value: "oklch(0.893 0.069 39.5)",
+        background: "bg-tomato-200",
+      },
+      {
+        label: "tomato-300",
+        token: "var(--color-tomato-300)",
+        value: "oklch(0.823 0.121 38)",
+        background: "bg-tomato-300",
+      },
+      {
+        label: "tomato-400",
+        token: "var(--color-tomato-400)",
+        value: "oklch(0.727 0.187 34)",
+        background: "bg-tomato-400",
+      },
+      {
+        label: "tomato-500",
+        token: "var(--color-tomato-500)",
+        value: "oklch(0.671 0.225 31.5)",
+        background: "bg-tomato-500",
+      },
+      {
+        label: "tomato-600",
+        token: "var(--color-tomato-600)",
+        value: "oklch(0.612 0.234 34)",
+        background: "bg-tomato-600",
+      },
+      {
+        label: "tomato-700",
+        token: "var(--color-tomato-700)",
+        value: "oklch(0.529 0.204 33)",
+        background: "bg-tomato-700",
+      },
+      {
+        label: "tomato-800",
+        token: "var(--color-tomato-800)",
+        value: "oklch(0.457 0.167 32)",
+        background: "bg-tomato-800",
+      },
+      {
+        label: "tomato-900",
+        token: "var(--color-tomato-900)",
+        value: "oklch(0.402 0.132 32)",
+        background: "bg-tomato-900",
+      },
+      {
+        label: "tomato-950",
+        token: "var(--color-tomato-950)",
+        value: "oklch(0.262 0.086 31)",
+        background: "bg-tomato-950",
+      },
+    ],
+  },
+  {
+    name: "Orange",
+    text: "text-orange-500 dark:text-orange-400",
+    swatches: [
+      {
+        label: "orange-50",
+        token: "var(--color-orange-50)",
+        value: "oklch(0.975 0.014 45)",
+        background: "bg-orange-50",
+      },
+      {
+        label: "orange-100",
+        token: "var(--color-orange-100)",
+        value: "oklch(0.945 0.035 46)",
+        background: "bg-orange-100",
+      },
+      {
+        label: "orange-200",
+        token: "var(--color-orange-200)",
+        value: "oklch(0.893 0.069 44.5)",
+        background: "bg-orange-200",
+      },
+      {
+        label: "orange-300",
+        token: "var(--color-orange-300)",
+        value: "oklch(0.823 0.121 43)",
+        background: "bg-orange-300",
+      },
+      {
+        label: "orange-400",
+        token: "var(--color-orange-400)",
+        value: "oklch(0.727 0.187 39)",
+        background: "bg-orange-400",
+      },
+      {
+        label: "orange-500",
+        token: "var(--color-orange-500)",
+        value: "oklch(0.671 0.225 36.5)",
+        background: "bg-orange-500",
+      },
+      {
+        label: "orange-600",
+        token: "var(--color-orange-600)",
+        value: "oklch(0.612 0.234 34)",
+        background: "bg-orange-600",
+      },
+      {
+        label: "orange-700",
+        token: "var(--color-orange-700)",
+        value: "oklch(0.529 0.204 33)",
+        background: "bg-orange-700",
+      },
+      {
+        label: "orange-800",
+        token: "var(--color-orange-800)",
+        value: "oklch(0.457 0.167 32)",
+        background: "bg-orange-800",
+      },
+      {
+        label: "orange-900",
+        token: "var(--color-orange-900)",
+        value: "oklch(0.391 0.146 265.522)",
+        background: "bg-orange-900",
+      },
+      {
+        label: "orange-950",
+        token: "var(--color-orange-950)",
+        value: "oklch(0.293 0.066 243.157)",
+        background: "bg-orange-950",
+      },
+    ],
+  },
+  {
     name: "Sky",
     text: "text-sky-500 dark:text-sky-400",
     swatches: [
@@ -576,6 +792,42 @@ export const colors = [
     ],
   },
 ];
+
+// --color-red-50: oklch(0.971 0.013 17.38);
+// --color-red-100: oklch(0.936 0.032 17.717);
+// --color-red-200: oklch(0.885 0.062 18.334);
+// --color-red-300: oklch(0.808 0.114 19.571);
+// --color-red-400: oklch(0.704 0.191 22.216);
+// --color-red-500: oklch(0.637 0.237 25.331);
+// --color-red-600: oklch(0.577 0.245 27.325);
+// --color-red-700: oklch(0.505 0.213 27.518);
+// --color-red-800: oklch(0.444 0.177 26.899);
+// --color-red-900: oklch(0.396 0.141 25.723);
+// --color-red-950: oklch(0.258 0.092 26.042);
+
+// --color-tomato-50: oklch(0.975 0.014 40.0);
+// --color-tomato-100: oklch(0.945 0.035 41.0);
+// --color-tomato-200: oklch(0.893 0.069 39.5);
+// --color-tomato-300: oklch(0.823 0.121 38.0);
+// --color-tomato-400: oklch(0.727 0.187 34.0);
+// --color-tomato-500: oklch(0.671 0.225 31.5);
+// --color-tomato-600: oklch(0.612 0.234 34.0);
+// --color-tomato-700: oklch(0.529 0.204 33.0);
+// --color-tomato-800: oklch(0.457 0.167 32.0);
+// --color-tomato-900: oklch(0.402 0.132 32.0);
+// --color-tomato-950: oklch(0.262 0.086 31.0);
+
+// --color-orange-50: oklch(0.98 0.016 73.684);
+// --color-orange-100: oklch(0.954 0.038 75.164);
+// --color-orange-200: oklch(0.901 0.076 70.697);
+// --color-orange-300: oklch(0.837 0.128 66.29);
+// --color-orange-400: oklch(0.75 0.183 55.934);
+// --color-orange-500: oklch(0.705 0.213 47.604);
+// --color-orange-600: oklch(0.646 0.222 41.116);
+// --color-orange-700: oklch(0.553 0.195 38.402);
+// --color-orange-800: oklch(0.47 0.157 37.304);
+// --color-orange-900: oklch(0.408 0.123 38.172);
+// --color-orange-950: oklch(0.266 0.079 36.259);
 
 // --color-sky-50: oklch(0.977 0.013 236.62);
 // --color-sky-100: oklch(0.951 0.026 236.824);
