@@ -3,14 +3,12 @@
 ## Improvements
 
 - [ ] alert close button
-- [ ] Better Notification with ping animations
+- [ ] Better Notification with ping animations (radial tron gradients?)
 - [ ] Headless Sonner
-- [ ] Sizes
-- [ ] Input Password Sizes
+- [ ] Pagination Control Sizes
 - [ ] Transparent vs solid muted and faded colors
 - [ ] Select "item-aligned" positioning
 - [ ] "vertical" orientations (tabs, navigation menu)
-- [ ] "Tomato" color swatches
 
 ## Components
 
@@ -21,9 +19,9 @@
 - [ ] Command
 - [ ] Date & Time Picker
 - [ ] Drawer
-- [ ] Form (React Hook Form)
 - [ ] Form (Tanstack Form)
 - [ ] Input Group
+- [ ] Input Tags
 - [ ] Navigation Menu
 - [ ] Progress Circular
 - [ ] Radio Group Cards/Buttons
@@ -31,7 +29,6 @@
 - [ ] Select (Native)
 - [ ] Speed Dial (Dropdown Menu Primitive)
 - [ ] Tab Nav (Navigation Primitive)
-- [ ] Toggle
 - [ ] Toggle Group
 - [ ] Tooltip
 - [ ] Uploader
