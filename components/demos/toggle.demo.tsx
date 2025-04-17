@@ -9,7 +9,20 @@ import { Toggle } from "@/components/ui/toggle";
 import { ComponentContainer } from "./component-container";
 
 export function ToggleDemo() {
-  const variants = ["outline", "base", "accent", "primary", "primary-accent"] as const;
+  const variants = [
+    "outline",
+    "base",
+    "accent",
+    "surface",
+    "primary",
+    "primary-accent",
+    "primary-surface",
+    "primary-tron",
+    "secondary",
+    "secondary-accent",
+    "secondary-surface",
+    "secondary-tron",
+  ] as const;
 
   return (
     <ComponentContainer>
@@ -19,10 +32,10 @@ export function ToggleDemo() {
             className="flex flex-wrap items-center gap-4"
             key={`toggle-${variant}`}
           >
-            <Toggle aria-label="Toggle italic" variant={variant}>
+            <Toggle aria-label="Toggle bold" variant={variant} defaultPressed>
               <BoldIcon />
             </Toggle>
-            <Toggle aria-label="Toggle italic" variant={variant}>
+            <Toggle aria-label="Toggle underline" variant={variant}>
               <UnderlineIcon />
             </Toggle>
             <Toggle aria-label="Toggle italic" variant={variant} disabled>
@@ -39,11 +52,14 @@ export function ToggleDemo() {
             >
               <BookmarkIcon />
             </Toggle>
-            <Toggle variant={variant} aria-label="Toggle italic" size="sm">
-              Small
+            <Toggle variant={variant} aria-label="Toggle extra small" size="xs">
+              XS
             </Toggle>
-            <Toggle variant={variant} aria-label="Toggle italic" size="lg">
-              Large
+            <Toggle variant={variant} aria-label="Toggle small" size="sm">
+              SM
+            </Toggle>
+            <Toggle variant={variant} aria-label="Toggle large" size="lg">
+              LG
             </Toggle>
           </div>
         ))}

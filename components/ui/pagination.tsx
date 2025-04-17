@@ -51,8 +51,8 @@ function PaginationLink({
   disabled,
   isActive,
   size = "icon",
-  activeVariant = "outline",
-  inactiveVariant = "ghost",
+  activeVariant = "primary",
+  inactiveVariant = "outline",
   ...props
 }: PaginationLinkProps) {
   return (
@@ -65,7 +65,6 @@ function PaginationLink({
     >
       <a
         data-slot="pagination-link"
-        role="button"
         aria-current={isActive ? "page" : undefined}
         aria-disabled={disabled}
         tabIndex={disabled ? -1 : 0}
@@ -96,12 +95,7 @@ function PaginationControl({
       variant={variant}
       className={className}
     >
-      <a
-        role="button"
-        aria-disabled={disabled}
-        tabIndex={disabled ? -1 : 0}
-        {...props}
-      />
+      <a aria-disabled={disabled} tabIndex={disabled ? -1 : 0} {...props} />
     </Button>
   );
 }
