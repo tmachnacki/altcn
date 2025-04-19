@@ -23,6 +23,7 @@ import { SheetDemo } from "@/components/demos/sheet.demo";
 import { SkeletonDemo } from "@/components/demos/skeleton.demo";
 import { SliderDemo } from "@/components/demos/slider.demo";
 import { SonnerDemo } from "@/components/demos/sonner.demo";
+import { SpeedDialDemo } from "@/components/demos/speed-dial.demo";
 import { SwitchDemo } from "@/components/demos/switch.demo";
 import { TabsDemo } from "@/components/demos/tabs.demo";
 import { ToggleDemo } from "@/components/demos/toggle.demo";
@@ -153,6 +154,11 @@ const COMPONENTS = [
     title: "Sonner",
     id: "sonner",
     component: <SonnerDemo />,
+  },
+  {
+    title: "Speed Dial",
+    id: "speed-dial",
+    component: <SpeedDialDemo />,
   },
   {
     title: "Switch",
