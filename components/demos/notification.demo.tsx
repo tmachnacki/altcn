@@ -1,5 +1,5 @@
 import * as React from "react";
-import { InboxIcon, BellIcon } from "lucide-react";
+import { InboxIcon, BellIcon, MessageCircleIcon } from "lucide-react";
 import { Notification } from "@/components/ui/notification";
 import { Button } from "@/components/ui/button";
 
@@ -12,37 +12,31 @@ const variants = [
   "muted",
   "surface",
   "faded",
-  "dotted",
   "primary",
   "primary-accent",
   "primary-muted",
   "primary-surface",
   "primary-faded",
-  "primary-dotted",
   "secondary",
   "secondary-accent",
   "secondary-muted",
   "secondary-surface",
   "secondary-faded",
-  "secondary-dotted",
   "destructive",
   "destructive-accent",
   "destructive-muted",
   "destructive-surface",
   "destructive-faded",
-  "destructive-dotted",
   "success",
   "success-accent",
   "success-muted",
   "success-surface",
   "success-faded",
-  "success-dotted",
   "warning",
   "warning-accent",
   "warning-muted",
   "warning-surface",
   "warning-faded",
-  "warning-dotted",
 ] as const;
 
 const positions = [
@@ -67,6 +61,40 @@ export function NotificationDemo() {
                   <Notification variant={variant}>
                     <BellIcon />
                   </Notification>
+                  <div className="relative">
+                    <Button variant="primary" size="icon">
+                      <MessageCircleIcon />
+                    </Button>
+                    <Notification
+                      variant={variant}
+                      position="top-right"
+                      outlined
+                    >
+                      5
+                    </Notification>
+                  </div>
+                  <div className="relative">
+                    <Button variant="outline" size="icon">
+                      <MessageCircleIcon />
+                    </Button>
+                    <Notification
+                      variant={variant}
+                      position="top-right"
+                      animated
+                    />
+                  </div>
+                  <div className="relative">
+                    <Button variant="outline" size="icon">
+                      <MessageCircleIcon />
+                    </Button>
+                    <Notification
+                      variant={variant}
+                      position="top-right"
+                      animated
+                    >
+                      <BellIcon />
+                    </Notification>
+                  </div>
                   <Notification variant={variant}></Notification>
                 </div>
 

@@ -1,10 +1,9 @@
 import { colors } from "@/lib/colors";
-import { Container } from "@/components/container";
 import { Card, CardContent } from "@/components/ui/card";
 
 export default function Colors() {
   return (
-    <Container className="py-content">
+    <main className="container py-content">
       <h1 className="text-2xl font-bold">Colors</h1>
 
       <div className="mt-16 flex flex-col gap-8">
@@ -76,6 +75,6 @@ export default function Colors() {
           </CardContent>
         </Card>
       </div>
-    </Container>
+    </main>
   );
 }

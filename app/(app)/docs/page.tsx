@@ -1,5 +1,3 @@
-import { Container } from "@/components/container";
-
 import { AccordionDemo } from "@/components/demos/accordion.demo";
 import { AlertDemo } from "@/components/demos/alert.demo";
 import { AlertDialogDemo } from "@/components/demos/alert-dialog.demo";
@@ -207,7 +205,7 @@ export default function Components() {
           ))}
         </nav>
       </aside>
-      <Container>
+      <main className="container">
         <div className="space-y-16 py-content">
           <h1 className="text-2xl font-bold">Components</h1>
           <div className="flex flex-col gap-12">
@@ -222,7 +220,7 @@ export default function Components() {
             ))}
           </div>
         </div>
-      </Container>
+      </main>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import * as React from "react";
+import Link from "next/link";
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
@@ -44,7 +45,7 @@ type PaginationLinkProps = {
   activeVariant?: VariantProps<typeof buttonVariants>["variant"];
   inactiveVariant?: VariantProps<typeof buttonVariants>["variant"];
 } & Pick<React.ComponentProps<typeof Button>, "size"> &
-  React.ComponentProps<"a">;
+  React.ComponentProps<typeof Link>;
 
 function PaginationLink({
   className,
@@ -63,7 +64,7 @@ function PaginationLink({
       variant={isActive ? activeVariant : inactiveVariant}
       className={className}
     >
-      <a
+      <Link
         data-slot="pagination-link"
         aria-current={isActive ? "page" : undefined}
         aria-disabled={disabled}
@@ -78,7 +79,7 @@ function PaginationLink({
 type PaginationControlProps = {
   disabled?: boolean;
 } & VariantProps<typeof buttonVariants> &
-  React.ComponentProps<"a">;
+  React.ComponentProps<typeof Link>;
 
 function PaginationControl({
   className,
@@ -95,7 +96,7 @@ function PaginationControl({
       variant={variant}
       className={className}
     >
-      <a aria-disabled={disabled} tabIndex={disabled ? -1 : 0} {...props} />
+      <Link aria-disabled={disabled} tabIndex={disabled ? -1 : 0} {...props} />
     </Button>
   );
 }

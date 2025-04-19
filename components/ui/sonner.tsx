@@ -49,13 +49,13 @@ const Toaster = ({ ...props }: ToasterProps) => {
 
             "!border-border !bg-popover hover:!border-hover-border hover:!bg-muted",
 
-            "group-data-[type=success]/toast:!border-border-success-faded group-data-[type=success]/toast:!bg-success-popover group-data-[type=success]/toast:hover:!border-success-600/40 group-data-[type=success]/toast:hover:!bg-success-muted dark:group-data-[type=success]/toast:hover:!border-success-400/40",
+            "group-data-[type=success]/toast:!bg-success-popover group-data-[type=success]/toast:!border-border-success-faded group-data-[type=success]/toast:hover:!border-success-600/40 group-data-[type=success]/toast:hover:!bg-success-muted dark:group-data-[type=success]/toast:hover:!border-success-400/40",
 
-            "group-data-[type=info]/toast:!border-border-primary-faded group-data-[type=info]/toast:!bg-primary-popover group-data-[type=info]/toast:hover:!border-primary-600/40 group-data-[type=info]/toast:hover:!bg-primary-muted dark:group-data-[type=info]/toast:hover:!border-primary-400/40",
+            "group-data-[type=info]/toast:!bg-primary-popover group-data-[type=info]/toast:!border-border-primary-faded group-data-[type=info]/toast:hover:!border-primary-600/40 group-data-[type=info]/toast:hover:!bg-primary-muted dark:group-data-[type=info]/toast:hover:!border-primary-400/40",
 
-            "group-data-[type=warning]/toast:!border-border-warning-faded group-data-[type=warning]/toast:!bg-warning-popover group-data-[type=warning]/toast:hover:!border-warning-600/40 group-data-[type=warning]/toast:hover:!bg-warning-muted dark:group-data-[type=warning]/toast:hover:!border-warning-400/40",
+            "group-data-[type=warning]/toast:!bg-warning-popover group-data-[type=warning]/toast:!border-border-warning-faded group-data-[type=warning]/toast:hover:!border-warning-600/40 group-data-[type=warning]/toast:hover:!bg-warning-muted dark:group-data-[type=warning]/toast:hover:!border-warning-400/40",
 
-            "group-data-[type=error]/toast:!border-border-destructive-faded group-data-[type=error]/toast:!bg-destructive-popover group-data-[type=error]/toast:hover:!border-destructive-600/40 group-data-[type=error]/toast:hover:!bg-destructive-muted dark:group-data-[type=error]/toast:hover:!border-destructive-400/40",
+            "group-data-[type=error]/toast:!bg-destructive-popover group-data-[type=error]/toast:!border-border-destructive-faded group-data-[type=error]/toast:hover:!border-destructive-600/40 group-data-[type=error]/toast:hover:!bg-destructive-muted dark:group-data-[type=error]/toast:hover:!border-destructive-400/40",
           ]),
 
           actionButton: cx([
@@ -119,19 +119,19 @@ const Toaster = ({ ...props }: ToasterProps) => {
           "--normal-text": "var(--accent-foreground)",
           "--normal-border": "var(--border)",
 
-          "--success-bg": "var(--success-popover)",
+          "--success-bg": "var(--success-faded-solid)",
           "--success-text": "var(--success-accent-foreground)",
           "--success-border": "var(--border-success-faded)",
 
-          "--info-bg": "var(--primary-popover)",
+          "--info-bg": "var(--primary-faded-solid)",
           "--info-text": "var(--primary-accent-foreground)",
           "--info-border": "var(--border-primary-faded)",
 
-          "--warning-bg": "var(--warning-popover)",
+          "--warning-bg": "var(--warning-faded-solid)",
           "--warning-text": "var(--warning-accent-foreground)",
           "--warning-border": "var(--border-warning-faded)",
 
-          "--error-bg": "var(--destructive-popover)",
+          "--error-bg": "var(--destructive-faded-solid)",
           "--error-text": "var(--destructive-accent-foreground)",
           "--error-border": "var(--border-destructive-faded)",
         } as React.CSSProperties
