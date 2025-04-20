@@ -554,6 +554,8 @@
   --animate-skeleton-shimmer-reduced-motion: skeleton-shimmer 15s ease infinite;
   --animate-spinner-ease: spinner 0.9s ease infinite;
   --animate-spinner-linear: spinner 0.9s linear infinite;
+  --animate-notification-ping: notification-ping 1s cubic-bezier(0, 0, 0.2, 1)
+    infinite;
 
   @keyframes accordion-down {
     from {
@@ -604,6 +606,15 @@
     }
     100% {
       transform: rotate(360deg);
+    }
+  }
+
+  @keyframes notification-ping {
+    75%,
+    100% {
+      height: calc(100% + (var(--spacing) * 2.5));
+      width: calc(100% + (var(--spacing) * 2.5));
+      opacity: 0;
     }
   }
 }

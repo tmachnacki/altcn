@@ -95,6 +95,18 @@ export function NotificationDemo() {
                       <BellIcon />
                     </Notification>
                   </div>
+                  <div className="relative">
+                    <Button variant="outline" size="icon">
+                      <MessageCircleIcon />
+                    </Button>
+                    <Notification
+                      variant={variant}
+                      position="top-right"
+                      animated
+                    >
+                      20+
+                    </Notification>
+                  </div>
                   <Notification variant={variant}></Notification>
                 </div>
 
