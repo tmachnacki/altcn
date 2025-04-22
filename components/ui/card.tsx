@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 
-import { cn } from "@/lib/utils";
+import { cn } from "~/lib/utils";
 
 function Card({
   className,
@@ -15,11 +15,9 @@ function Card({
       data-slot="card"
       data-translucent={translucent}
       className={cn(
-        "rounded-lg text-card-foreground border border-border",
-        translucent
-          ? "bg-card/50 backdrop-blur-3xl"
-          : "bg-card shadow-md",
-        className,
+        "rounded-lg border border-border text-card-foreground",
+        translucent ? "bg-card/50 backdrop-blur-3xl" : "bg-card shadow-md",
+        className
       )}
       {...props}
     />
@@ -42,7 +40,7 @@ function CardTitle({ className, ...props }: React.ComponentProps<"div">) {
       data-slot="card-title"
       className={cn(
         "text-base leading-none font-semibold tracking-tight",
-        className,
+        className
       )}
       {...props}
     />

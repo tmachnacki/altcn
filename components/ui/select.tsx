@@ -2,10 +2,10 @@
 
 import * as React from "react";
 import * as SelectPrimitive from "@radix-ui/react-select";
+import { cva, type VariantProps } from "class-variance-authority";
 import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from "lucide-react";
 
-import { cva, type VariantProps } from "class-variance-authority";
-import { cn } from "@/lib/utils";
+import { cn } from "~/lib/utils";
 
 // TODO: adjust spacing for position="item-aligned" (i.e., not "popper")
 
@@ -81,7 +81,7 @@ const selectTriggerVariants = cva(
       variant: "default",
       size: "default",
     },
-  },
+  }
 );
 
 const selectItemVariants = cva(
@@ -185,7 +185,7 @@ const selectItemVariants = cva(
       variant: "accent",
       wide: false,
     },
-  },
+  }
 );
 
 const selectItemIndicatorVariants = cva(
@@ -205,7 +205,7 @@ const selectItemIndicatorVariants = cva(
         variant: "default",
       },
     },
-  },
+  }
 );
 
 function Select({
@@ -286,7 +286,7 @@ function SelectContent({
             position === "popper" && [
               "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=open]:animate-in data-[state=open]:ease-out data-[state=open]:fade-in-0",
             ],
-            className,
+            className
           )}
           {...props}
         >
@@ -294,7 +294,7 @@ function SelectContent({
           <SelectPrimitive.Viewport
             className={cn(
               position === "popper" &&
-                "flex w-full flex-1 scroll-my-1 flex-col p-1",
+                "flex w-full flex-1 scroll-my-1 flex-col p-1"
             )}
           >
             {children}
@@ -346,7 +346,7 @@ function SelectItem({
           variant: variant || context.variant,
           wide: wide || context.wide,
         }),
-        className,
+        className
       )}
       {...props}
     >
@@ -360,7 +360,7 @@ function SelectItem({
           selectItemIndicatorVariants({
             variant: indicatorVariant || context.indicatorVariant,
           }),
-          indicatorClassName,
+          indicatorClassName
         )}
       >
         <CheckIcon className="size-4 text-current" />
@@ -394,7 +394,7 @@ function SelectScrollUpButton({
       data-slot="select-scroll-up-button"
       className={cn(
         "flex cursor-default items-center justify-center py-1",
-        className,
+        className
       )}
       {...props}
     >
@@ -412,7 +412,7 @@ function SelectScrollDownButton({
       data-slot="select-scroll-down-button"
       className={cn(
         "flex cursor-default items-center justify-center py-1",
-        className,
+        className
       )}
       {...props}
     >

@@ -1,0 +1,15 @@
+.gitignore
+.env
+.DS_Store
+.vercel
+
+.next
+build
+out
+coverage
+next-env.d.ts
+*.tsbuildinfo
+
+package-lock.json
+
+README.md

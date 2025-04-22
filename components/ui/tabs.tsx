@@ -2,10 +2,11 @@
 
 import * as React from "react";
 import * as TabsPrimitive from "@radix-ui/react-tabs";
-
-import { Tron } from "@/components/ui/tron";
 import { cva, type VariantProps } from "class-variance-authority";
-import { cn } from "@/lib/utils";
+
+import { cn } from "~/lib/utils";
+
+import { Tron } from "~/components/ui/tron";
 
 const tabsListVariants = cva(
   "inline-flex h-10 w-fit flex-nowrap items-center justify-center rounded-lg p-[var(--tabs-list-padding)] text-muted-foreground [--tabs-list-padding:--spacing(1)]",
@@ -22,7 +23,7 @@ const tabsListVariants = cva(
     defaultVariants: {
       variant: "muted",
     },
-  },
+  }
 );
 
 const tabsTriggerVariants = cva(
@@ -156,7 +157,7 @@ const tabsTriggerVariants = cva(
     defaultVariants: {
       variant: "default",
     },
-  },
+  }
 );
 
 function Tabs({
@@ -214,7 +215,7 @@ function TabsTrigger({
       className={cn(
         tabsTriggerVariants({ variant }),
         "group/tabs-trigger",
-        className,
+        className
       )}
       {...props}
     >
@@ -225,7 +226,7 @@ function TabsTrigger({
           role="presentation"
           className={cn(
             // use padding var as height to avoid flickering when hovering between trigger and underline indicator
-            "absolute inset-x-0 -bottom-[var(--tabs-list-padding)] h-[var(--tabs-list-padding)] w-full border-b-2 border-transparent group-not-data-disabled/tabs-trigger:group-data-[state=inactive]/tabs-trigger:group-hover/tabs-trigger:border-border",
+            "absolute inset-x-0 -bottom-[var(--tabs-list-padding)] h-[var(--tabs-list-padding)] w-full border-b-2 border-transparent group-not-data-disabled/tabs-trigger:group-data-[state=inactive]/tabs-trigger:group-hover/tabs-trigger:border-border"
           )}
         />
       )}

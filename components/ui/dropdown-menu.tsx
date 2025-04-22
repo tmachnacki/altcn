@@ -2,10 +2,10 @@
 
 import * as React from "react";
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
+import { cva, type VariantProps } from "class-variance-authority";
 import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-react";
 
-import { cva, type VariantProps } from "class-variance-authority";
-import { cn } from "@/lib/utils";
+import { cn } from "~/lib/utils";
 
 // TODO: maybe adjust subcontent offset for wide+border variants
 // TODO: maybe use visual-only inset span for wide+border variants to avoid negative margin issues
@@ -126,7 +126,7 @@ const menuItemVariants = cva(
     defaultVariants: {
       variant: "accent",
     },
-  },
+  }
 );
 
 const menuItemIndicatorVariants = cva(
@@ -148,11 +148,11 @@ const menuItemIndicatorVariants = cva(
     defaultVariants: {
       variant: "default",
     },
-  },
+  }
 );
 
 const menuShortcutVariants = cva(
-  "ml-auto text-xs font-normal tracking-widest text-current/60",
+  "ml-auto text-xs font-normal tracking-widest text-current/60"
 );
 
 function DropdownMenu({
@@ -200,7 +200,7 @@ function DropdownMenuContent({
           className={cn(
             menuContentVariants(),
             "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:ease-out data-[state=open]:fade-in-0",
-            className,
+            className
           )}
           {...props}
         />
@@ -244,7 +244,7 @@ function DropdownMenuItem({
           variant: variant || context.variant,
           wide: wide || context.wide,
         }),
-        className,
+        className
       )}
       {...props}
     />
@@ -281,7 +281,7 @@ function DropdownMenuCheckboxItem({
           variant: variant || context.variant,
           wide: wide || context.wide,
         }),
-        className,
+        className
       )}
       checked={checked}
       {...props}
@@ -295,7 +295,7 @@ function DropdownMenuCheckboxItem({
           menuItemIndicatorVariants({
             variant: indicatorVariant || context.indicatorVariant,
           }),
-          indicatorClassName,
+          indicatorClassName
         )}
       >
         <CheckIcon className="size-4 text-current" />
@@ -345,7 +345,7 @@ function DropdownMenuRadioItem({
           variant: variant || context.variant,
           wide: wide || context.wide,
         }),
-        className,
+        className
       )}
       {...props}
     >
@@ -358,7 +358,7 @@ function DropdownMenuRadioItem({
           menuItemIndicatorVariants({
             variant: indicatorVariant || context.indicatorVariant,
           }),
-          indicatorClassName,
+          indicatorClassName
         )}
       >
         <CircleIcon className="size-2 fill-current text-current" />
@@ -381,7 +381,7 @@ function DropdownMenuLabel({
       data-inset={inset}
       className={cn(
         "px-(--menu-item-px) py-1.5 text-sm font-medium text-foreground data-[inset]:pl-(--inset-pl)",
-        className,
+        className
       )}
       {...props}
     />
@@ -448,7 +448,7 @@ function DropdownMenuSubTrigger({
           variant: variant || context.variant,
           wide: wide || context.wide,
         }),
-        className,
+        className
       )}
       {...props}
     >
@@ -470,7 +470,7 @@ function DropdownMenuSubContent({
           menuContentVariants(),
           "min-w-32 shadow-lg",
           "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:ease-out data-[state=open]:fade-in-0",
-          className,
+          className
         )}
         {...props}
       />

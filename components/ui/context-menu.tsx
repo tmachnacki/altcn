@@ -2,17 +2,18 @@
 
 import * as React from "react";
 import * as ContextMenuPrimitive from "@radix-ui/react-context-menu";
-import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-react";
-import {
-  type MenuContextType,
-  menuContentVariants,
-  menuItemVariants,
-  menuItemIndicatorVariants,
-  menuShortcutVariants,
-} from "@/components/ui/dropdown-menu";
-
 import { type VariantProps } from "class-variance-authority";
-import { cn } from "@/lib/utils";
+import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-react";
+
+import { cn } from "~/lib/utils";
+
+import {
+  menuContentVariants,
+  menuItemIndicatorVariants,
+  menuItemVariants,
+  menuShortcutVariants,
+  type MenuContextType,
+} from "~/components/ui/dropdown-menu";
 
 function ContextMenu({
   ...props
@@ -89,7 +90,7 @@ function ContextMenuSubTrigger({
           variant: variant || context.variant,
           wide: wide || context.wide,
         }),
-        className,
+        className
       )}
       {...props}
     >
@@ -111,7 +112,7 @@ function ContextMenuSubContent({
           menuContentVariants(),
           "min-w-32 shadow-lg",
           "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:ease-out data-[state=open]:fade-in-0",
-          className,
+          className
         )}
         {...props}
       />
@@ -138,7 +139,7 @@ function ContextMenuContent({
             menuContentVariants(),
             "min-w-32",
             "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:ease-out data-[state=open]:fade-in-0",
-            className,
+            className
           )}
           {...props}
         />
@@ -174,7 +175,7 @@ function ContextMenuItem({
           variant: variant || context.variant,
           wide: wide || context.wide,
         }),
-        className,
+        className
       )}
       {...props}
     />
@@ -211,7 +212,7 @@ function ContextMenuCheckboxItem({
           variant: variant || context.variant,
           wide: wide || context.wide,
         }),
-        className,
+        className
       )}
       checked={checked}
       {...props}
@@ -225,7 +226,7 @@ function ContextMenuCheckboxItem({
           menuItemIndicatorVariants({
             variant: indicatorVariant || context.indicatorVariant,
           }),
-          indicatorClassName,
+          indicatorClassName
         )}
       >
         <CheckIcon className="size-4 text-current" />
@@ -264,7 +265,7 @@ function ContextMenuRadioItem({
           variant: variant || context.variant,
           wide: wide || context.wide,
         }),
-        className,
+        className
       )}
       {...props}
     >
@@ -277,7 +278,7 @@ function ContextMenuRadioItem({
           menuItemIndicatorVariants({
             variant: indicatorVariant || context.indicatorVariant,
           }),
-          indicatorClassName,
+          indicatorClassName
         )}
       >
         <CircleIcon className="size-2 fill-current text-current" />
@@ -300,7 +301,7 @@ function ContextMenuLabel({
       data-inset={inset}
       className={cn(
         "px-(--menu-item-px) py-1.5 text-sm font-medium text-foreground data-[inset]:pl-(--inset-pl)",
-        className,
+        className
       )}
       {...props}
     />

@@ -3,7 +3,7 @@
 import * as React from "react";
 import { toast } from "sonner";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "~/components/ui/button";
 
 const allTypes = [
   {
@@ -53,7 +53,7 @@ const allTypes = [
             return `${data.name} toast has been added`;
           },
           error: "Error",
-        },
+        }
       ),
   },
 
@@ -62,7 +62,7 @@ const allTypes = [
     name: "Success Basic",
     action: () =>
       toast.success(
-        "Event has been created. However, this is a really long title, so let's see how it wraps",
+        "Event has been created. However, this is a really long title, so let's see how it wraps"
       ),
   },
   {
@@ -120,7 +120,7 @@ const allTypes = [
     name: "Info Basic",
     action: () =>
       toast.info(
-        "Event has been created. However, this is a really long title, so let's see how it wraps",
+        "Event has been created. However, this is a really long title, so let's see how it wraps"
       ),
   },
   {
@@ -178,7 +178,7 @@ const allTypes = [
     name: "Warning Basic",
     action: () =>
       toast.warning(
-        "Event has been created. However, this is a really long title, so let's see how it wraps",
+        "Event has been created. However, this is a really long title, so let's see how it wraps"
       ),
   },
   {
@@ -236,7 +236,7 @@ const allTypes = [
     name: "Error Basic",
     action: () =>
       toast.error(
-        "Event has been created. However, this is a really long title, so let's see how it wraps",
+        "Event has been created. However, this is a really long title, so let's see how it wraps"
       ),
   },
   {

@@ -6,7 +6,9 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format:write": "prettier --write \"**/*.{js,ts,tsx,json,mdx}\" --cache",
+    "format:check": "prettier --check \"**/*.{js,ts,tsx,json,mdx}\" --cache"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.4",
@@ -46,6 +48,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
+    "@ianvs/prettier-plugin-sort-imports": "^4.4.1",
     "@types/node": "^20.17.30",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
@@ -54,5 +57,61 @@
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
     "typescript": "^5.8.3"
+  },
+  "prettier": {
+    "endOfLine": "lf",
+    "semi": true,
+    "singleQuote": false,
+    "tabWidth": 2,
+    "trailingComma": "es5",
+    "importOrder": [
+      "^(react/(.*)$)|^(react$)",
+      "^(react-dom/(.*)$)|^(react-dom$)",
+      "^(next/(.*)$)|^(next$)",
+      "<THIRD_PARTY_MODULES>",
+      "^class-variance-authority$",
+      "^lucide-react$",
+      "",
+      "^types$",
+      "^~/types/(.*)$",
+      "^~/config/(.*)$",
+      "^~/lib/(.*)$",
+      "^~/hooks/(.*)$",
+      "^~/utils/(.*)$",
+      "",
+      "^~/components/ui/(.*)$",
+      "^~/components/(.*)$",
+      "^~/styles/(.*)$",
+      "",
+      "^[./]",
+      "^[.]"
+    ],
+    "importOrderSeparation": false,
+    "importOrderSortSpecifiers": true,
+    "importOrderBuiltinModulesToTop": true,
+    "importOrderParserPlugins": [
+      "typescript",
+      "jsx",
+      "decorators-legacy"
+    ],
+    "importOrderMergeDuplicateImports": true,
+    "importOrderCombineTypeAndValueImports": true,
+    "plugins": [
+      "@ianvs/prettier-plugin-sort-imports",
+      "prettier-plugin-tailwindcss"
+    ],
+    "tailwindStylesheet": "./app/globals.css",
+    "tailwindFunctions": [
+      "cn",
+      "cva",
+      "cx",
+      "clsx"
+    ],
+    "tailwindAttributes": [
+      "className",
+      "class",
+      "classNames",
+      "toastOptions"
+    ]
   }
 }

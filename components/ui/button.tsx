@@ -2,8 +2,9 @@ import * as React from "react";
 import { Slot, Slottable } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 
-import { Tron } from "@/components/ui/tron";
-import { cn } from "@/lib/utils";
+import { cn } from "~/lib/utils";
+
+import { Tron } from "~/components/ui/tron";
 
 const buttonVariants = cva(
   [
@@ -22,10 +23,7 @@ const buttonVariants = cva(
           "hover:border-hover-border hover:bg-muted hover:text-accent-foreground",
         ],
 
-        base: [
-          "bg-base-bg text-base-foreground shadow",
-          "hover:bg-base-bg/90",
-        ],
+        base: ["bg-base-bg text-base-foreground shadow", "hover:bg-base-bg/90"],
 
         accent: [
           "bg-accent text-accent-foreground",
@@ -289,7 +287,7 @@ const buttonVariants = cva(
       variant: "primary",
       size: "default",
     },
-  },
+  }
 );
 
 function Button({
@@ -315,7 +313,7 @@ function Button({
       className={cn(
         buttonVariants({ variant, size }),
         "group/button",
-        className,
+        className
       )}
       {...props}
     >

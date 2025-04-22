@@ -4,11 +4,11 @@ import { useTheme } from "next-themes";
 import { Toaster as Sonner, type ToasterProps } from "sonner";
 import { cx } from "class-variance-authority";
 
-// import { Spinner } from "@/components/ui/spinner";
-// import { SuccessFilledIcon } from "@/components/icons/success-filled";
-// import { InfoFilledIcon } from "@/components/icons/info-filled";
-// import { WarningFilledIcon } from "@/components/icons/warning-filled";
-// import { ErrorFilledIcon } from "@/components/icons/error-filled";
+// import { Spinner } from "~/components/ui/spinner";
+// import { SuccessFilledIcon } from "~/components/icons/success-filled";
+// import { InfoFilledIcon } from "~/components/icons/info-filled";
+// import { WarningFilledIcon } from "~/components/icons/warning-filled";
+// import { ErrorFilledIcon } from "~/components/icons/error-filled";
 
 // TODO: should probably abstract to headless/custom implementation
 // FIXME: overriding styles is straight booty cheeks
@@ -61,7 +61,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
           actionButton: cx([
             "!cursor-default !shadow-none focus-visible:!outline-2 focus-visible:!outline-offset-2 focus-visible:!outline-outline active:!opacity-80",
 
-            "!bg-base-600 !text-white hover:!bg-base-600/90",
+            "!bg-base-bg !text-base-foreground hover:!bg-base-bg/90",
 
             "group-data-[type=success]/toast:!bg-success group-data-[type=success]/toast:!text-success-foreground group-data-[type=success]/toast:hover:!bg-success/90",
 

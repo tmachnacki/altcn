@@ -2,10 +2,11 @@
 
 import * as React from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
-import { buttonVariants } from "@/components/ui/button";
 import { XIcon } from "lucide-react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "~/lib/utils";
+
+import { buttonVariants } from "~/components/ui/button";
 
 function Dialog({
   ...props
@@ -41,7 +42,7 @@ function DialogOverlay({
       className={cn(
         "fixed inset-0 z-50 bg-overlay backdrop-blur-2xs",
         "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:fade-in-0",
-        className,
+        className
       )}
       {...props}
     />
@@ -64,7 +65,7 @@ function DialogContent({
         className={cn(
           "fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border bg-background p-6 text-foreground shadow-lg sm:max-w-lg",
           "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:duration-300 data-[state=open]:ease-out data-[state=open]:fade-in-0 data-[state=open]:slide-in-from-bottom-2",
-          className,
+          className
         )}
         {...props}
       >
@@ -72,7 +73,7 @@ function DialogContent({
         <DialogPrimitive.Close
           className={cn(
             buttonVariants({ variant: "ghost", size: "icon-xs" }),
-            "absolute top-2 right-2",
+            "absolute top-2 right-2"
           )}
           aria-label="Close"
         >
@@ -99,7 +100,7 @@ function DialogFooter({ className, ...props }: React.ComponentProps<"div">) {
       data-slot="dialog-footer"
       className={cn(
         "flex flex-col-reverse gap-2 sm:flex-row sm:justify-end",
-        className,
+        className
       )}
       {...props}
     />

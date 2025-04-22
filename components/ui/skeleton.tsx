@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "~/lib/utils";
 
 // credit: https://daisyui.com/components/skeleton/
 export function Skeleton({ className, ...props }: React.ComponentProps<"div">) {
@@ -7,8 +7,8 @@ export function Skeleton({ className, ...props }: React.ComponentProps<"div">) {
       data-slot="skeleton"
       aria-label={props["aria-label"] || "Loading"}
       className={cn(
-        "motion-reduce:animate-skeleton-shimmer-reduced-motion animate-skeleton-shimmer rounded-md bg-skeleton",
-        className,
+        "animate-skeleton-shimmer rounded-md bg-skeleton motion-reduce:animate-skeleton-shimmer-reduced-motion",
+        className
       )}
       style={{
         willChange: "background-position",

@@ -2,15 +2,15 @@
 
 import * as React from "react";
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
+import { cva, type VariantProps } from "class-variance-authority";
+
+import { cn } from "~/lib/utils";
 
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/components/ui/tooltip";
-
-import { cva, type VariantProps } from "class-variance-authority";
-import { cn } from "@/lib/utils";
+} from "~/components/ui/tooltip";
 
 const speedDialContentVariants = cva(
   [
@@ -33,7 +33,7 @@ const speedDialContentVariants = cva(
     defaultVariants: {
       variant: "ghost",
     },
-  },
+  }
 );
 
 const speedDialItemVariants = cva(
@@ -56,7 +56,7 @@ const speedDialItemVariants = cva(
     defaultVariants: {
       variant: "outline",
     },
-  },
+  }
 );
 
 function SpeedDial({
@@ -113,7 +113,7 @@ function SpeedDialContent({
           className={cn(
             speedDialContentVariants({ variant: contentVariant }),
             "group/speed-dial-content",
-            className,
+            className
           )}
           {...props}
         />
@@ -151,7 +151,7 @@ function SpeedDialItem({
           aria-label={label}
           className={cn(
             speedDialItemVariants({ variant: variant || context.variant }),
-            className,
+            className
           )}
           {...props}
         >

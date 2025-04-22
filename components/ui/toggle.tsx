@@ -2,11 +2,11 @@
 
 import * as React from "react";
 import * as TogglePrimitive from "@radix-ui/react-toggle";
-
-import { Tron } from "@/components/ui/tron";
-
 import { cva, type VariantProps } from "class-variance-authority";
-import { cn } from "@/lib/utils";
+
+import { cn } from "~/lib/utils";
+
+import { Tron } from "~/components/ui/tron";
 
 const toggleVariants = cva(
   [
@@ -89,7 +89,7 @@ const toggleVariants = cva(
       variant: "accent",
       size: "default",
     },
-  },
+  }
 );
 
 function Toggle({
@@ -106,7 +106,7 @@ function Toggle({
       className={cn(
         toggleVariants({ variant, size }),
         "group/toggle",
-        className,
+        className
       )}
       {...props}
     >

@@ -2,9 +2,9 @@
 
 import * as React from "react";
 import * as SwitchPrimitive from "@radix-ui/react-switch";
-
 import { cva, type VariantProps } from "class-variance-authority";
-import { cn } from "@/lib/utils";
+
+import { cn } from "~/lib/utils";
 
 const switchVariants = cva(
   [
@@ -46,7 +46,7 @@ const switchVariants = cva(
     defaultVariants: {
       variant: "primary",
     },
-  },
+  }
 );
 
 function Switch({
@@ -64,7 +64,7 @@ function Switch({
       className={cn(
         switchVariants({ variant, thin }),
         "group/switch",
-        className,
+        className
       )}
       {...props}
     >
@@ -74,7 +74,7 @@ function Switch({
           "pointer-events-none block size-4 rounded-full bg-background shadow-xs inset-ring inset-ring-border transition-all outline-none data-[disabled]:bg-base-50 dark:backdrop-blur-lg dark:data-[state=checked]:bg-foreground dark:data-[state=unchecked]:bg-white/25 dark:data-[state=unchecked]:data-[disabled]:bg-base-700",
           thin
             ? "data-[state=checked]:translate-x-[calc(--spacing(5)+1px)] data-[state=unchecked]:-translate-x-px"
-            : "data-[state=checked]:translate-x-4 data-[state=unchecked]:translate-x-0",
+            : "data-[state=checked]:translate-x-4 data-[state=unchecked]:translate-x-0"
         )}
       />
     </SwitchPrimitive.Root>

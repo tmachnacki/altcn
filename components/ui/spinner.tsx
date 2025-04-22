@@ -1,4 +1,5 @@
-import { cn } from "@/lib/utils";
+import { cn } from "~/lib/utils";
+
 // import { Loader2Icon, type LucideProps } from "lucide-react";
 
 // export function Spinner({ className, ...props }: LucideProps) {
@@ -19,13 +20,19 @@ export function Spinner({ className, ...props }: React.ComponentProps<"div">) {
       data-slot="spinner"
       className={cn(
         "relative inline-flex flex-none items-center justify-center",
-        className,
+        className
       )}
       aria-label={props["aria-label"] || "Loading"}
       {...props}
     >
-      <i data-slot="spinner-solid" className="absolute size-full animate-spinner-ease rounded-full border-2 border-solid border-t-transparent border-r-transparent border-b-current border-l-transparent"></i>
-      <i data-slot="spinner-dotted" className="absolute size-full animate-spinner-linear rounded-full border-2 border-dotted border-t-transparent border-r-transparent border-b-current border-l-transparent opacity-70"></i>
+      <i
+        data-slot="spinner-solid"
+        className="absolute size-full animate-spinner-ease rounded-full border-2 border-solid border-t-transparent border-r-transparent border-b-current border-l-transparent"
+      ></i>
+      <i
+        data-slot="spinner-dotted"
+        className="absolute size-full animate-spinner-linear rounded-full border-2 border-dotted border-t-transparent border-r-transparent border-b-current border-l-transparent opacity-70"
+      ></i>
     </span>
   );
 }

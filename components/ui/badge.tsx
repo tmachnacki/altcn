@@ -1,10 +1,11 @@
 import * as React from "react";
 import { Slot, Slottable } from "@radix-ui/react-slot";
-import { XIcon, CircleIcon, LucideProps } from "lucide-react";
-
-import { Tron } from "@/components/ui/tron";
 import { cva, type VariantProps } from "class-variance-authority";
-import { cn } from "@/lib/utils";
+import { CircleIcon, LucideProps, XIcon } from "lucide-react";
+
+import { cn } from "~/lib/utils";
+
+import { Tron } from "~/components/ui/tron";
 
 const badgeVariants = cva(
   [
@@ -411,7 +412,7 @@ const badgeVariants = cva(
     defaultVariants: {
       variant: "primary",
     },
-  },
+  }
 );
 
 // Use role="status" when badge is used to reflect a status (i.e., an invoice that is paid, pending, rejected)
@@ -470,7 +471,7 @@ function BadgeDot({ className, ...props }: LucideProps) {
       aria-hidden="true"
       className={cn(
         "size-1.5 shrink-0 fill-current stroke-current text-(--badge-dot-text)",
-        className,
+        className
       )}
       {...props}
     />
@@ -485,7 +486,7 @@ function BadgeClose({ className, ...props }: React.ComponentProps<"button">) {
       aria-label={props["aria-label"] || "Remove"}
       className={cn(
         "relative -mx-1 inline-flex size-4 items-center justify-center rounded-xs opacity-70 -outline-offset-1 outline-current hover:bg-(--hover-badge-close-bg) hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-2",
-        className,
+        className
       )}
       {...props}
     >

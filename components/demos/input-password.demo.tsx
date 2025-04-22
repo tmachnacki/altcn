@@ -1,23 +1,21 @@
-import { ComponentContainer } from "@/components/demos/component-container";
-
-import { Button } from "@/components/ui/button";
+import { Button } from "~/components/ui/button";
 import {
   Card,
   CardContent,
+  CardFooter,
   CardHeader,
   CardTitle,
-  CardFooter,
-} from "@/components/ui/card";
-import { Label } from "@/components/ui/label";
-
-import { InputPassword } from "@/components/ui/input-password";
+} from "~/components/ui/card";
+import { InputPassword } from "~/components/ui/input-password";
+import { Label } from "~/components/ui/label";
+import { ComponentContainer } from "~/components/demos/component-container";
 
 export function InputPasswordDemo() {
   const sizes = ["sm", "default", "lg"] as const;
 
   return (
     <ComponentContainer>
-      <div className="grid gap-8 w-full max-w-sm">
+      <div className="grid w-full max-w-sm gap-8">
         {sizes.map((size) => (
           <Card className="w-full" key={`input-password-${size}`}>
             <CardHeader>

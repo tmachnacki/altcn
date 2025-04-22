@@ -2,6 +2,15 @@
 
 import * as React from "react";
 import {
+  BadgeCheckIcon,
+  BellIcon,
+  CreditCardIcon,
+  MailIcon,
+  SendIcon,
+  TrashIcon,
+} from "lucide-react";
+
+import {
   ContextMenu,
   ContextMenuCheckboxItem,
   ContextMenuContent,
@@ -16,15 +25,7 @@ import {
   ContextMenuSubContent,
   ContextMenuSubTrigger,
   ContextMenuTrigger,
-} from "@/components/ui/context-menu";
-import {
-  BadgeCheckIcon,
-  CreditCardIcon,
-  BellIcon,
-  MailIcon,
-  SendIcon,
-  TrashIcon,
-} from "lucide-react";
+} from "~/components/ui/context-menu";
 
 export function ContextMenuDemo() {
   const [defaultChecked, setDefaultChecked] = React.useState(true);

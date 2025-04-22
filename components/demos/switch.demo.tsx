@@ -2,19 +2,17 @@
 
 import { useState } from "react";
 
-import { ComponentContainer } from "@/components/demos/component-container";
-import { ComponentPlayground } from "@/components/demos/component-playground";
-
+import { Label } from "~/components/ui/label";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-
-import { Switch } from "@/components/ui/switch";
-import { Label } from "@/components/ui/label";
+} from "~/components/ui/select";
+import { Switch } from "~/components/ui/switch";
+import { ComponentContainer } from "~/components/demos/component-container";
+import { ComponentPlayground } from "~/components/demos/component-playground";
 
 export function SwitchDemo() {
   const [switchVariant, setSwitchVariant] = useState("primary");

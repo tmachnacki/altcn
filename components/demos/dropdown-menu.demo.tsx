@@ -7,17 +7,17 @@ import {
   ChevronsUpDownIcon,
   CreditCardIcon,
   LogOutIcon,
+  MailIcon,
   MoreHorizontalIcon,
   PencilIcon,
+  SendIcon,
   ShareIcon,
   SparklesIcon,
   TrashIcon,
-  MailIcon,
-  SendIcon,
 } from "lucide-react";
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar";
+import { Button } from "~/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -33,7 +33,7 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from "~/components/ui/dropdown-menu";
 
 export function DropdownMenuDemo() {
   const [defaultChecked, setDefaultChecked] = React.useState(true);

@@ -1,9 +1,9 @@
 import * as React from "react";
-import { InboxIcon, BellIcon, MessageCircleIcon } from "lucide-react";
-import { Notification } from "@/components/ui/notification";
-import { Button } from "@/components/ui/button";
+import { BellIcon, InboxIcon, MessageCircleIcon } from "lucide-react";
 
-import { ComponentContainer } from "@/components/demos/component-container";
+import { Button } from "~/components/ui/button";
+import { Notification } from "~/components/ui/notification";
+import { ComponentContainer } from "~/components/demos/component-container";
 
 const variants = [
   "outline",

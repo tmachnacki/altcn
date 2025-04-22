@@ -1,17 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { ComponentContainer } from "@/components/demos/component-container";
-import { ComponentPlayground } from "@/components/demos/component-playground";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Label } from "@/components/ui/label";
 
+import { Label } from "~/components/ui/label";
 import {
   Pagination,
   PaginationContent,
@@ -20,7 +11,16 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from "@/components/ui/pagination";
+} from "~/components/ui/pagination";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "~/components/ui/select";
+import { ComponentContainer } from "~/components/demos/component-container";
+import { ComponentPlayground } from "~/components/demos/component-playground";
 
 export function PaginationDemo() {
   const [activeVariant, setActiveVariant] = useState("outline");

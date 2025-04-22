@@ -2,10 +2,10 @@
 
 import * as React from "react";
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
+import { cva, type VariantProps } from "class-variance-authority";
 import { ChevronLeftIcon } from "lucide-react";
 
-import { cn } from "@/lib/utils";
-import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "~/lib/utils";
 
 const accordionItemVariants = cva(
   "border-b -outline-offset-1 [--accordion-item-px:--spacing(3)] first:rounded-t-md last:rounded-b-md last:border-b-0 has-focus-visible:outline-2 data-[split]:mb-2 data-[split]:rounded-md data-[split]:last:mb-0",
@@ -56,7 +56,7 @@ const accordionItemVariants = cva(
     defaultVariants: {
       variant: "outline",
     },
-  },
+  }
 );
 
 type AccordionContextType = VariantProps<typeof accordionItemVariants> & {
@@ -91,7 +91,7 @@ function AccordionItem({
       className={cn(
         accordionItemVariants({ variant }),
         "group/accordion-item",
-        className,
+        className
       )}
       {...props}
     />
@@ -109,7 +109,7 @@ function AccordionTrigger({
         data-slot="accordion-trigger"
         className={cn(
           "group/accordion-trigger flex flex-1 items-start justify-between gap-4 rounded-md px-(--accordion-item-px) py-4 text-left text-sm font-medium text-(--accordion-trigger-text) transition-all hover:underline focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 motion-reduce:transition-none",
-          className,
+          className
         )}
         {...props}
       >

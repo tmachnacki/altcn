@@ -1,6 +1,6 @@
-import { ComponentContainer } from "@/components/demos/component-container";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Label } from "@/components/ui/label";
+import { Checkbox } from "~/components/ui/checkbox";
+import { Label } from "~/components/ui/label";
+import { ComponentContainer } from "~/components/demos/component-container";
 
 export function CheckboxDemo() {
   return (

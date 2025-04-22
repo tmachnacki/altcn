@@ -2,10 +2,10 @@
 
 import * as React from "react";
 import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
+import { cva, type VariantProps } from "class-variance-authority";
 import { CircleIcon } from "lucide-react";
 
-import { cva, type VariantProps } from "class-variance-authority";
-import { cn } from "@/lib/utils";
+import { cn } from "~/lib/utils";
 
 const radioGroupItemVariants = cva(
   [
@@ -27,7 +27,7 @@ const radioGroupItemVariants = cva(
     defaultVariants: {
       variant: "primary",
     },
-  },
+  }
 );
 
 const RadioGroupContext = React.createContext<
@@ -65,7 +65,7 @@ function RadioGroupItem({
       data-variant={variant || context.variant}
       className={cn(
         radioGroupItemVariants({ variant: variant || context.variant }),
-        className,
+        className
       )}
       {...props}
     >

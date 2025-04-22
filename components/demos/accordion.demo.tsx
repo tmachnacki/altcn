@@ -1,23 +1,23 @@
 "use client";
 
 import * as React from "react";
-import { ComponentContainer } from "@/components/demos/component-container";
-import { ComponentPlayground } from "@/components/demos/component-playground";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Label } from "@/components/ui/label";
 
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
+} from "~/components/ui/accordion";
+import { Label } from "~/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "~/components/ui/select";
+import { ComponentContainer } from "~/components/demos/component-container";
+import { ComponentPlayground } from "~/components/demos/component-playground";
 
 export function AccordionDemo() {
   const [accordionVariant, setAccordionVariant] = React.useState("outline");

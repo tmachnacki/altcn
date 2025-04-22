@@ -1,6 +1,7 @@
-import { Badge, BadgeClose } from "@/components/ui/badge";
 import { ArrowRightIcon, CheckIcon } from "lucide-react";
-import { Separator } from "@/components/ui/separator";
+
+import { Badge, BadgeClose } from "~/components/ui/badge";
+import { Separator } from "~/components/ui/separator";
 
 export function BadgeDemo() {
   return (

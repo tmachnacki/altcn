@@ -3,10 +3,10 @@
 import * as React from "react";
 import { EyeIcon, EyeOffIcon } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { cn } from "~/lib/utils";
 
-import { cn } from "@/lib/utils";
+import { Button } from "~/components/ui/button";
+import { Input } from "~/components/ui/input";
 
 type InputPasswordProps = Omit<React.ComponentProps<typeof Input>, "type"> & {
   containerClassName?: string;
@@ -34,7 +34,7 @@ function InputPassword({
           { default: "pr-9", sm: "pr-8", lg: "pr-10" }[inputSize || "default"],
           "[&::-ms-reveal]:pointer-events-none [&::-ms-reveal]:invisible [&::-ms-reveal]:hidden",
           "[&::-ms-clear]:pointer-events-none [&::-ms-clear]:invisible [&::-ms-clear]:hidden",
-          className,
+          className
         )}
         {...props}
       />
@@ -49,7 +49,7 @@ function InputPassword({
             sm: "size-6",
             lg: "size-8",
           }[inputSize || "default"],
-          buttonClassName,
+          buttonClassName
         )}
         onClick={() => setShowPassword((prev) => !prev)}
       >

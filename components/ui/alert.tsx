@@ -1,13 +1,13 @@
 import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
-
-import { InfoFilledIcon } from "@/components/icons/info-filled";
-import { ErrorFilledIcon } from "@/components/icons/error-filled";
-import { SuccessFilledIcon } from "@/components/icons/success-filled";
-import { WarningFilledIcon } from "@/components/icons/warning-filled";
-
 import { cva, type VariantProps } from "class-variance-authority";
-import { cn } from "@/lib/utils";
+
+import { cn } from "~/lib/utils";
+
+import { ErrorFilledIcon } from "~/components/icons/error-filled";
+import { InfoFilledIcon } from "~/components/icons/info-filled";
+import { SuccessFilledIcon } from "~/components/icons/success-filled";
+import { WarningFilledIcon } from "~/components/icons/warning-filled";
 
 const alertVariants = cva(
   [
@@ -74,7 +74,7 @@ const alertVariants = cva(
           "bg-destructive text-destructive-foreground",
           "[--alert-inset-color-bg:var(--color-destructive-200)] dark:[--alert-inset-color-bg:var(--color-destructive-300)]",
           "[--alert-description-text:var(--color-destructive-100)] dark:[--alert-description-text:var(--color-destructive-200)]",
-          "[--alert-icon-bg:--alpha(var(--color-destructive-50)/15%)] dark:[--alert-icon-bg:--alpha(var(--color-destructive-100)/25%)] [--alert-icon-border:--alpha(var(--color-destructive-50)/20%)] [--alert-icon-text:var(--color-destructive-foreground)]",
+          "[--alert-icon-bg:--alpha(var(--color-destructive-50)/15%)] [--alert-icon-border:--alpha(var(--color-destructive-50)/20%)] [--alert-icon-text:var(--color-destructive-foreground)] dark:[--alert-icon-bg:--alpha(var(--color-destructive-100)/25%)]",
         ],
 
         "destructive-muted": [
@@ -178,7 +178,7 @@ const alertVariants = cva(
     defaultVariants: {
       variant: "outline",
     },
-  },
+  }
 );
 
 function Alert({
@@ -211,7 +211,7 @@ function Alert({
           data-slot="alert-inset-color"
           className={cn(
             "absolute top-0 left-0 h-full w-1.5 rounded-l-lg bg-(--alert-inset-color-bg)",
-            insetColorClassName,
+            insetColorClassName
           )}
         />
       )}
@@ -245,7 +245,7 @@ function AlertIcon({
         intent
           ? "text-(--alert-icon-text) [&>svg]:size-5"
           : "[&>svg]:size-4 [&>svg]:text-current",
-        className,
+        className
       )}
       {...props}
     >
@@ -285,7 +285,7 @@ function AlertTitle({
       data-slot="alert-title"
       className={cn(
         "line-clamp-1 min-h-4 font-medium tracking-tight",
-        className,
+        className
       )}
       {...props}
     />
@@ -301,7 +301,7 @@ function AlertDescription({
       data-slot="alert-description"
       className={cn(
         "grid justify-items-start gap-1 text-sm text-(--alert-description-text) [&_p]:leading-relaxed",
-        className,
+        className
       )}
       {...props}
     />

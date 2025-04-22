@@ -8,9 +8,9 @@ import {
   InputOTPGroup,
   InputOTPSeparator,
   InputOTPSlot,
-} from "@/components/ui/input-otp";
-import { Label } from "@/components/ui/label";
-import { ComponentContainer } from "@/components/demos/component-container";
+} from "~/components/ui/input-otp";
+import { Label } from "~/components/ui/label";
+import { ComponentContainer } from "~/components/demos/component-container";
 
 export function InputOTPDemo() {
   return (

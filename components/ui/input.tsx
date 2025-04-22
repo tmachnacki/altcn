@@ -1,7 +1,7 @@
 import * as React from "react";
-
 import { cva, type VariantProps } from "class-variance-authority";
-import { cn } from "@/lib/utils";
+
+import { cn } from "~/lib/utils";
 
 const inputVariants = cva(
   [
@@ -115,7 +115,7 @@ const inputVariants = cva(
       variant: "default",
       size: "default",
     },
-  },
+  }
 );
 
 function Input({

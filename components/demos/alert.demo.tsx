@@ -2,26 +2,26 @@
 
 import * as React from "react";
 import { CheckCircle2Icon } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { ComponentContainer } from "@/components/demos/component-container";
-import { ComponentPlayground } from "@/components/demos/component-playground";
-import { Label } from "@/components/ui/label";
+
+import {
+  Alert,
+  AlertContent,
+  AlertDescription,
+  AlertFooter,
+  AlertIcon,
+  AlertTitle,
+} from "~/components/ui/alert";
+import { Button } from "~/components/ui/button";
+import { Label } from "~/components/ui/label";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-
-import {
-  Alert,
-  AlertIcon,
-  AlertContent,
-  AlertDescription,
-  AlertTitle,
-  AlertFooter,
-} from "@/components/ui/alert";
+} from "~/components/ui/select";
+import { ComponentContainer } from "~/components/demos/component-container";
+import { ComponentPlayground } from "~/components/demos/component-playground";
 
 export function AlertDemo() {
   const [alertVariant, setAlertVariant] = React.useState("outline");
@@ -90,7 +90,9 @@ export function AlertDemo() {
           >
             <AlertIcon intent="info" />
             <AlertContent>
-              <AlertTitle>FYI This one is centered with info intent icon</AlertTitle>
+              <AlertTitle>
+                FYI This one is centered with info intent icon
+              </AlertTitle>
             </AlertContent>
             <Button variant={"outline"} size="sm" className="h-6">
               Dismiss

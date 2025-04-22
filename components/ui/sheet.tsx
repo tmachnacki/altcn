@@ -2,10 +2,11 @@
 
 import * as React from "react";
 import * as SheetPrimitive from "@radix-ui/react-dialog";
-import { buttonVariants } from "@/components/ui/button";
 import { XIcon } from "lucide-react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "~/lib/utils";
+
+import { buttonVariants } from "~/components/ui/button";
 
 function Sheet({ ...props }: React.ComponentProps<typeof SheetPrimitive.Root>) {
   return <SheetPrimitive.Root data-slot="sheet" {...props} />;
@@ -39,7 +40,7 @@ function SheetOverlay({
       className={cn(
         "fixed inset-0 z-50 bg-overlay backdrop-blur-2xs",
         "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:fade-in-0",
-        className,
+        className
       )}
       {...props}
     />
@@ -72,7 +73,7 @@ function SheetContent({
             "inset-x-0 top-0 h-auto rounded-b-lg border-b data-[state=closed]:slide-out-to-top data-[state=open]:slide-in-from-top",
           side === "bottom" &&
             "inset-x-0 bottom-0 h-auto rounded-t-lg border-t data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom",
-          className,
+          className
         )}
         {...props}
       >
@@ -81,7 +82,7 @@ function SheetContent({
           aria-label="Close"
           className={cn(
             buttonVariants({ variant: "ghost", size: "icon-xs" }),
-            "absolute top-2 right-2",
+            "absolute top-2 right-2"
           )}
         >
           <XIcon className="size-4" />

@@ -2,11 +2,10 @@
 
 import * as React from "react";
 import * as AvatarPrimitive from "@radix-ui/react-avatar";
-
+import { cva, type VariantProps } from "class-variance-authority";
 import { UserRoundIcon } from "lucide-react";
 
-import { cva, type VariantProps } from "class-variance-authority";
-import { cn } from "@/lib/utils";
+import { cn } from "~/lib/utils";
 
 function Avatar({
   className,
@@ -17,7 +16,7 @@ function Avatar({
       data-slot="avatar"
       className={cn(
         "relative flex size-8 shrink-0 overflow-hidden rounded-full",
-        className,
+        className
       )}
       {...props}
     />
@@ -88,7 +87,7 @@ const avatarFallbackVariants = cva(
     defaultVariants: {
       variant: "default",
     },
-  },
+  }
 );
 
 function AvatarFallback({

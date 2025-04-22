@@ -1,12 +1,12 @@
 import { InfoIcon } from "lucide-react";
-import { ComponentContainer } from "@/components/demos/component-container";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "~/components/ui/button";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/components/ui/tooltip";
+} from "~/components/ui/tooltip";
+import { ComponentContainer } from "~/components/demos/component-container";
 
 export function TooltipDemo() {
   return (

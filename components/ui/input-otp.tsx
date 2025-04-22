@@ -5,10 +5,10 @@ import {
   OTPInput as InputOTPPrimitive,
   OTPInputContext as InputOTPPrimitiveContext,
 } from "input-otp";
+import { cva, type VariantProps } from "class-variance-authority";
 import { MinusIcon } from "lucide-react";
 
-import { cva, type VariantProps } from "class-variance-authority";
-import { cn } from "@/lib/utils";
+import { cn } from "~/lib/utils";
 
 const inputOTPSlotVariants = cva(
   [
@@ -100,7 +100,7 @@ const inputOTPSlotVariants = cva(
     defaultVariants: {
       variant: "default",
     },
-  },
+  }
 );
 
 type InputOTPContextType = {
@@ -136,7 +136,7 @@ function InputOTP({
         containerClassName={cn(
           "flex items-center gap-2 has-disabled:opacity-50",
           "group/input-otp",
-          containerClassName,
+          containerClassName
         )}
         className={cn("disabled:cursor-not-allowed", className)}
         {...props}

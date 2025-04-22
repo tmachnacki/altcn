@@ -2,10 +2,10 @@
 
 import * as React from "react";
 import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
+import { cva, type VariantProps } from "class-variance-authority";
 import { CheckIcon, MinusIcon } from "lucide-react";
 
-import { cva, type VariantProps } from "class-variance-authority";
-import { cn } from "@/lib/utils";
+import { cn } from "~/lib/utils";
 
 const checkBoxVariants = cva(
   [
@@ -31,7 +31,7 @@ const checkBoxVariants = cva(
     defaultVariants: {
       variant: "primary",
     },
-  },
+  }
 );
 
 function Checkbox({

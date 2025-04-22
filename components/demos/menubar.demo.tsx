@@ -18,7 +18,7 @@ import {
   MenubarSubContent,
   MenubarSubTrigger,
   MenubarTrigger,
-} from "@/components/ui/menubar";
+} from "~/components/ui/menubar";
 
 export function MenubarDemo() {
   const [defaultChecked, setDefaultChecked] = React.useState(true);

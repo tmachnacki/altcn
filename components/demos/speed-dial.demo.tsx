@@ -3,22 +3,21 @@
 import * as React from "react";
 import {
   ClipboardIcon,
-  SaveIcon,
-  PrinterIcon,
-  ShareIcon,
   PlusIcon,
+  PrinterIcon,
+  SaveIcon,
+  ShareIcon,
 } from "lucide-react";
-import { ComponentContainer } from "@/components/demos/component-container";
-import { BackgroundPattern } from "@/components/demos/background-pattern";
 
-import { Button } from "@/components/ui/button";
-
+import { Button } from "~/components/ui/button";
 import {
   SpeedDial,
   SpeedDialContent,
   SpeedDialItem,
   SpeedDialTrigger,
-} from "@/components/ui/speed-dial";
+} from "~/components/ui/speed-dial";
+import { BackgroundPattern } from "~/components/demos/background-pattern";
+import { ComponentContainer } from "~/components/demos/component-container";
 
 export function SpeedDialDemo() {
   return (

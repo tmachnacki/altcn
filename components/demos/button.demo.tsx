@@ -1,7 +1,7 @@
-import { Button } from "@/components/ui/button";
-import { SettingsIcon, ArrowRightIcon, MailIcon } from "lucide-react";
+import { ArrowRightIcon, MailIcon, SettingsIcon } from "lucide-react";
 
-import { Spinner } from "@/components/ui/spinner";
+import { Button } from "~/components/ui/button";
+import { Spinner } from "~/components/ui/spinner";
 
 export function ButtonDemo() {
   return (

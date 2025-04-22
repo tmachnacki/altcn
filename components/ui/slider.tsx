@@ -2,9 +2,9 @@
 
 import * as React from "react";
 import * as SliderPrimitive from "@radix-ui/react-slider";
-
 import { cva, type VariantProps } from "class-variance-authority";
-import { cn } from "@/lib/utils";
+
+import { cn } from "~/lib/utils";
 
 const sliderVariants = cva(
   "aria-invalid:[--slider-range-bg:var(--color-destructive)] aria-invalid:[--slider-thumb-border:var(--color-destructive)] aria-invalid:[--slider-thumb-ring:var(--color-border-destructive-faded)]",
@@ -45,7 +45,7 @@ const sliderVariants = cva(
     defaultVariants: {
       variant: "primary",
     },
-  },
+  }
 );
 
 function Slider({
@@ -73,7 +73,7 @@ function Slider({
         : Array.isArray(defaultValue)
           ? defaultValue
           : [min, max],
-    [value, defaultValue, min, max],
+    [value, defaultValue, min, max]
   );
 
   return (
@@ -88,7 +88,7 @@ function Slider({
         "relative flex w-full touch-none items-center select-none data-[disabled]:opacity-50 data-[orientation=vertical]:h-full data-[orientation=vertical]:min-h-44 data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col",
         sliderVariants({ variant }),
         classNames?.slider,
-        className,
+        className
       )}
       {...props}
     >
@@ -96,14 +96,14 @@ function Slider({
         data-slot="slider-track"
         className={cn(
           "relative grow overflow-hidden rounded-full bg-(--slider-track-bg) data-[orientation=horizontal]:h-1.5 data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-1.5",
-          classNames?.sliderTrack,
+          classNames?.sliderTrack
         )}
       >
         <SliderPrimitive.Range
           data-slot="slider-range"
           className={cn(
             "absolute bg-(--slider-range-bg) data-[orientation=horizontal]:h-full data-[orientation=vertical]:w-full",
-            classNames?.sliderRange,
+            classNames?.sliderRange
           )}
         />
       </SliderPrimitive.Track>
@@ -113,7 +113,7 @@ function Slider({
           key={`slider-thumb-${index}`}
           className={cn(
             "block size-4 shrink-0 rounded-full border border-(--slider-thumb-border) bg-background shadow-sm ring-0 ring-(--slider-thumb-ring) transition-shadow hover:ring-[3px] focus:ring-[3px] focus:outline-hidden disabled:pointer-events-none disabled:opacity-50",
-            classNames?.sliderThumb,
+            classNames?.sliderThumb
           )}
         />
       ))}

@@ -1,8 +1,6 @@
 "use client";
 
 import * as React from "react";
-import { ComponentContainer } from "@/components/demos/component-container";
-import { Button } from "@/components/ui/button";
 
 import {
   AlertDialog,
@@ -14,7 +12,9 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
+} from "~/components/ui/alert-dialog";
+import { Button } from "~/components/ui/button";
+import { ComponentContainer } from "~/components/demos/component-container";
 
 export function AlertDialogDemo() {
   return (

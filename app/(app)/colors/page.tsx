@@ -1,5 +1,6 @@
-import { colors } from "@/lib/colors";
-import { Card, CardContent } from "@/components/ui/card";
+import { colors } from "~/lib/colors";
+
+import { Card, CardContent } from "~/components/ui/card";
 
 export default function Colors() {
   return (

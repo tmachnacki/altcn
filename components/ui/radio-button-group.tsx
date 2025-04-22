@@ -2,9 +2,9 @@
 
 import * as React from "react";
 import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
-
 import { cva, type VariantProps } from "class-variance-authority";
-import { cn } from "@/lib/utils";
+
+import { cn } from "~/lib/utils";
 
 const radioButtonGroupItemVariants = cva(
   [
@@ -28,7 +28,7 @@ const radioButtonGroupItemVariants = cva(
     defaultVariants: {
       variant: "primary",
     },
-  },
+  }
 );
 
 const RadioButtonGroupVariantsContext = React.createContext<
@@ -59,7 +59,7 @@ function RadioButtonGroupItem({
 }: React.ComponentProps<typeof RadioGroupPrimitive.Item> &
   VariantProps<typeof radioButtonGroupItemVariants>) {
   const { variant: variantFromContext } = React.useContext(
-    RadioButtonGroupVariantsContext,
+    RadioButtonGroupVariantsContext
   );
   const variant = variantOverride ?? variantFromContext;
 

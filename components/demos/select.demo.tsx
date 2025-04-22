@@ -7,11 +7,8 @@ import {
   ChartPieIcon,
   CircleDashed,
 } from "lucide-react";
-import { ComponentContainer } from "@/components/demos/component-container";
-import { ComponentPlayground } from "@/components/demos/component-playground";
-import { Label } from "@/components/ui/label";
-import { Switch } from "@/components/ui/switch";
 
+import { Label } from "~/components/ui/label";
 import {
   Select,
   SelectContent,
@@ -21,7 +18,10 @@ import {
   SelectSeparator,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from "~/components/ui/select";
+import { Switch } from "~/components/ui/switch";
+import { ComponentContainer } from "~/components/demos/component-container";
+import { ComponentPlayground } from "~/components/demos/component-playground";
 
 export function SelectDemo() {
   const [triggerVariant, setTriggerVariant] = React.useState("default");

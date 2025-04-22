@@ -1,5 +1,5 @@
-import { ComponentContainer } from "@/components/demos/component-container";
-import { Input } from "@/components/ui/input";
+import { Input } from "~/components/ui/input";
+import { ComponentContainer } from "~/components/demos/component-container";
 
 export function InputDemo() {
   const variants = [

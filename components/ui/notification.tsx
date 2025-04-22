@@ -1,7 +1,7 @@
 import * as React from "react";
-
 import { cva, type VariantProps } from "class-variance-authority";
-import { cn } from "@/lib/utils";
+
+import { cn } from "~/lib/utils";
 
 const notificationVariants = cva(
   [
@@ -98,7 +98,7 @@ const notificationVariants = cva(
     defaultVariants: {
       variant: "primary",
     },
-  },
+  }
 );
 
 const pingVariants = ({
@@ -167,7 +167,7 @@ function Notification({
       className={cn(
         "relative isolate z-[1] flex [--offset:42%] data-[position]:absolute [[data-position*='bottom']]:bottom-0 [[data-position*='bottom']]:translate-y-(--offset) [[data-position*='left']]:left-0 [[data-position*='left']]:-translate-x-(--offset) [[data-position*='right']]:right-0 [[data-position*='right']]:translate-x-(--offset) [[data-position*='top']]:top-0 [[data-position*='top']]:-translate-y-(--offset)",
         children ? "h-5 min-w-5" : "size-2.5",
-        containerClassName,
+        containerClassName
       )}
     >
       <span
@@ -176,7 +176,7 @@ function Notification({
           notificationVariants({ variant }),
           children ? "h-5 min-w-5" : "size-2.5",
           outlined && "outline-2 outline-background",
-          className,
+          className
         )}
         {...props}
       >
@@ -190,7 +190,7 @@ function Notification({
           className={cn(
             "absolute top-1/2 left-1/2 z-[2] size-full -translate-x-1/2 -translate-y-1/2 animate-notification-ping rounded-full bg-primary opacity-75",
             pingVariants({ variant }),
-            pingClassName,
+            pingClassName
           )}
         />
       )}

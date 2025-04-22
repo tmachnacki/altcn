@@ -2,18 +2,19 @@
 
 import * as React from "react";
 import * as MenubarPrimitive from "@radix-ui/react-menubar";
-import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-react";
-import {
-  type MenuContextType,
-  menuContentVariants,
-  menuItemVariants,
-  menuItemIndicatorVariants,
-  menuShortcutVariants,
-} from "@/components/ui/dropdown-menu";
-import { Tron } from "@/components/ui/tron";
-
 import { cva, type VariantProps } from "class-variance-authority";
-import { cn } from "@/lib/utils";
+import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-react";
+
+import { cn } from "~/lib/utils";
+
+import {
+  menuContentVariants,
+  menuItemIndicatorVariants,
+  menuItemVariants,
+  menuShortcutVariants,
+  type MenuContextType,
+} from "~/components/ui/dropdown-menu";
+import { Tron } from "~/components/ui/tron";
 
 const menubarTriggerVariants = cva(
   "relative flex items-center rounded-sm px-2 py-1 text-sm font-medium outline-hidden select-none",
@@ -116,7 +117,7 @@ const menubarTriggerVariants = cva(
     defaultVariants: {
       variant: "accent",
     },
-  },
+  }
 );
 
 function Menubar({
@@ -128,7 +129,7 @@ function Menubar({
       data-slot="menubar"
       className={cn(
         "flex h-9 items-center gap-1 rounded-md border bg-background p-1 shadow-xs",
-        className,
+        className
       )}
       {...props}
     />
@@ -166,7 +167,7 @@ function MenubarTrigger({
       className={cn(
         menubarTriggerVariants({ variant }),
         "group/menubar-trigger",
-        className,
+        className
       )}
       {...props}
     >
@@ -214,7 +215,7 @@ function MenubarContent({
             "min-w-48",
             // FIXME: exit animations be breaking
             "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=open]:animate-in data-[state=open]:ease-out data-[state=open]:fade-in-0",
-            className,
+            className
           )}
           {...props}
         />
@@ -248,7 +249,7 @@ function MenubarItem({
           variant: variant || context.variant,
           wide: wide || context.wide,
         }),
-        className,
+        className
       )}
       {...props}
     />
@@ -285,7 +286,7 @@ function MenubarCheckboxItem({
           variant: variant || context.variant,
           wide: wide || context.wide,
         }),
-        className,
+        className
       )}
       checked={checked}
       {...props}
@@ -299,7 +300,7 @@ function MenubarCheckboxItem({
           menuItemIndicatorVariants({
             variant: indicatorVariant || context.indicatorVariant,
           }),
-          indicatorClassName,
+          indicatorClassName
         )}
       >
         <CheckIcon className="size-4 text-current" />
@@ -346,7 +347,7 @@ function MenubarRadioItem({
           variant: variant || context.variant,
           wide: wide || context.wide,
         }),
-        className,
+        className
       )}
       {...props}
     >
@@ -359,7 +360,7 @@ function MenubarRadioItem({
           menuItemIndicatorVariants({
             variant: indicatorVariant || context.indicatorVariant,
           }),
-          indicatorClassName,
+          indicatorClassName
         )}
       >
         <CircleIcon className="size-2 fill-current text-current" />
@@ -382,7 +383,7 @@ function MenubarLabel({
       data-inset={inset}
       className={cn(
         "px-(--menu-item-px) py-1.5 text-sm font-medium text-foreground data-[inset]:pl-(--inset-pl)",
-        className,
+        className
       )}
       {...props}
     />
@@ -449,7 +450,7 @@ function MenubarSubTrigger({
           variant: variant || context.variant,
           wide: wide || context.wide,
         }),
-        className,
+        className
       )}
       {...props}
     >
@@ -471,7 +472,7 @@ function MenubarSubContent({
           menuContentVariants(),
           "min-w-32 shadow-lg",
           "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:ease-out data-[state=open]:fade-in-0",
-          className,
+          className
         )}
         {...props}
       />

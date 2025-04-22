@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "~/lib/utils";
 
 // credit: https://www.radix-ui.com/themes/playground
 export function BackgroundPattern({ className }: { className?: string }) {
@@ -45,16 +45,10 @@ export function BackgroundPattern({ className }: { className?: string }) {
           gradientTransform="translate(-804.109 -2036.8) rotate(64.9401) scale(6436.87 6304.81)"
         >
           <stop stopColor="var(--color-background)"></stop>
-          <stop
-            offset="0.0833333"
-            stopColor="var(--color-background)"
-          ></stop>
+          <stop offset="0.0833333" stopColor="var(--color-background)"></stop>
           <stop offset="0.364583" stopColor="var(--color-primary)"></stop>
           <stop offset="0.658041" stopColor="var(--color-background)"></stop>
-          <stop
-            offset="0.798521"
-            stopColor="var(--color-primary)"
-          ></stop>
+          <stop offset="0.798521" stopColor="var(--color-primary)"></stop>
           <stop offset="0.942708" stopColor="var(--color-background)"></stop>
           <stop offset="1" stopColor="var(--color-background)"></stop>
         </radialGradient>

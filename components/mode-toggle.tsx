@@ -1,10 +1,10 @@
 "use client";
 
 import * as React from "react";
-import { SunIcon, MoonIcon } from "lucide-react";
 import { useTheme } from "next-themes";
+import { MoonIcon, SunIcon } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "~/components/ui/button";
 
 export function ModeToggle() {
   const { setTheme, resolvedTheme } = useTheme();

@@ -1,9 +1,9 @@
 import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
+import { cva, type VariantProps } from "class-variance-authority";
 import { ChevronsUpDown } from "lucide-react";
 
-import { cva, type VariantProps } from "class-variance-authority";
-import { cn } from "@/lib/utils";
+import { cn } from "~/lib/utils";
 
 const buttonInputVariants = cva(
   [
@@ -76,7 +76,7 @@ const buttonInputVariants = cva(
       variant: "default",
       size: "default",
     },
-  },
+  }
 );
 
 // use role="combobox" when using as a combobox trigger
