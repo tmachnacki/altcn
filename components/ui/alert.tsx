@@ -366,7 +366,7 @@ function AlertClose({ className, ...props }: React.ComponentProps<"button">) {
       type="button"
       aria-label={props["aria-label"] || "Dismiss"}
       className={cn(
-        "text-(--alert-description-text) absolute top-2.5 right-4 group-data-[centered]/alert:top-1/2 group-data-[centered]/alert:-translate-y-1/2 inline-flex items-center justify-center rounded-sm size-6 opacity-70 outline-current hover:bg-(--hover-alert-close-bg) hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-2",
+        "text-(--alert-description-text) absolute top-2.5 right-4 group-data-[centered]/alert:top-1/2 group-data-[centered]/alert:-translate-y-1/2 inline-flex items-center justify-center rounded-sm size-6 opacity-70 outline-(--alert-close-outline) hover:bg-(--hover-alert-close-bg) hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-2",
         className,
       )}
       {...props}
