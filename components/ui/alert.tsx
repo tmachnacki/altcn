@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
+import { XIcon } from "lucide-react";
 
 import { cn } from "~/lib/utils";
 
@@ -11,7 +12,7 @@ import { WarningFilledIcon } from "~/components/icons/warning-filled";
 
 const alertVariants = cva(
   [
-    "relative flex w-full items-start gap-x-3 overflow-hidden rounded-lg px-4 py-3 text-sm data-[centered]:items-center",
+    "relative flex w-full items-start gap-x-3 overflow-hidden rounded-lg px-4 py-3 text-sm data-[centered]:items-center has-[[data-slot='alert-close']]:pr-12",
     "[&>svg]:flex-none [&>svg]:text-current [&>svg:not([class*='size-'])]:h-[1lh] [&>svg:not([class*='size-'])]:w-4",
   ],
   {
@@ -21,16 +22,22 @@ const alertVariants = cva(
         outline: [
           "border border-border bg-background",
           "[--alert-icon-bg:var(--color-muted)]",
+          "[--hover-alert-close-bg:--alpha(var(--color-base-500)/20%)]",
+          "[--alert-close-outline:var(--color-outline)]",
         ],
 
         muted: [
           "bg-muted",
           "[--alert-icon-bg:var(--color-faded)] dark:[--alert-icon-bg:var(--color-base-800)]",
+          "[--hover-alert-close-bg:--alpha(var(--color-base-500)/20%)]",
+          "[--alert-close-outline:var(--color-outline)]",
         ],
 
         faded: [
           "border border-border-faded bg-faded",
           "[--alert-icon-bg:var(--color-accent)]",
+          "[--hover-alert-close-bg:--alpha(var(--color-base-500)/20%)]",
+          "[--alert-close-outline:var(--color-outline)]",
         ],
 
         // -- primary --
@@ -39,16 +46,22 @@ const alertVariants = cva(
           "data-[inset-color]:[--alert-inset-color-bg:var(--color-primary-200)]",
           "[--alert-description-text:var(--color-primary-100)]",
           "[--alert-icon-bg:--alpha(var(--color-primary-50)/15%)] [--alert-icon-border:--alpha(var(--color-primary-50)/20%)] [--alert-icon-text:var(--color-primary-foreground)]",
+          "[--hover-alert-close-bg:--alpha(var(--color-primary-200)/20%)]",
+          "[--alert-close-outline:var(--color-primary-foreground)]",
         ],
 
         "primary-muted": [
           "bg-primary-muted",
           "[--alert-icon-bg:var(--color-primary-faded)] [--alert-icon-text:var(--color-primary-500)] dark:[--alert-icon-bg:var(--color-primary-900)] dark:[--alert-icon-text:var(--color-primary-200)]",
+          "[--hover-alert-close-bg:--alpha(var(--color-primary-500)/20%)]",
+          "[--alert-close-outline:var(--color-primary)]",
         ],
 
         "primary-faded": [
           "border border-border-primary-faded bg-primary-faded",
           "[--alert-icon-bg:var(--color-primary-muted)] [--alert-icon-text:var(--color-primary-muted-foreground)]",
+          "[--hover-alert-close-bg:--alpha(var(--color-primary-500)/20%)]",
+          "[--alert-close-outline:var(--color-primary)]",
         ],
 
         // -- secondary --
@@ -57,16 +70,22 @@ const alertVariants = cva(
           "[--alert-inset-color-bg:var(--color-secondary-600)]",
           "[--alert-description-text:var(--color-secondary-900)]",
           "[--alert-icon-bg:--alpha(var(--color-secondary-50)/60%)] [--alert-icon-border:--alpha(var(--color-secondary-100)/40%)] [--alert-icon-text:var(--color-secondary-600)]",
+          "[--hover-alert-close-bg:--alpha(var(--color-secondary-700)/30%)]",
+          "[--alert-close-outline:var(--color-secondary-foreground)]",
         ],
 
         "secondary-muted": [
           "bg-secondary-muted",
           "[--alert-icon-bg:var(--color-secondary-faded)] [--alert-icon-text:var(--color-secondary-500)] dark:[--alert-icon-bg:var(--color-secondary-900)] dark:[--alert-icon-text:var(--color-secondary-300)]",
+          "[--hover-alert-close-bg:--alpha(var(--color-secondary-500)/20%)]",
+          "[--alert-close-outline:var(--color-secondary)]",
         ],
 
         "secondary-faded": [
           "border border-border-secondary-faded bg-secondary-faded",
           "[--alert-icon-bg:var(--color-secondary-muted)] [--alert-icon-text:var(--color-secondary-muted-foreground)]",
+          "[--hover-alert-close-bg:--alpha(var(--color-secondary-500)/20%)]",
+          "[--alert-close-outline:var(--color-secondary)]",
         ],
 
         // -- destructive --
@@ -75,16 +94,22 @@ const alertVariants = cva(
           "[--alert-inset-color-bg:var(--color-destructive-200)] dark:[--alert-inset-color-bg:var(--color-destructive-300)]",
           "[--alert-description-text:var(--color-destructive-100)] dark:[--alert-description-text:var(--color-destructive-200)]",
           "[--alert-icon-bg:--alpha(var(--color-destructive-50)/15%)] [--alert-icon-border:--alpha(var(--color-destructive-50)/20%)] [--alert-icon-text:var(--color-destructive-foreground)] dark:[--alert-icon-bg:--alpha(var(--color-destructive-100)/25%)]",
+          "[--hover-alert-close-bg:--alpha(var(--color-destructive-200)/25%)]",
+          "[--alert-close-outline:var(--color-destructive-foreground)]",
         ],
 
         "destructive-muted": [
           "bg-destructive-muted",
-          "[--alert-icon-bg:var(--color-destructive-faded)] [--alert-icon-text:var(--color-destructive-500)] dark:[--alert-icon-bg:var(--color-destructive-900)] dark:[--alert-icon-text:var(--color-destructive-200)]",
+          "[--alert-icon-bg:var(--color-destructive-faded)] [--alert-icon-text:var(--color-destructive-500)] dark:[--alert-icon-bg:var(--color-destructive-900)] dark:[--alert-ic0on-text:var(--color-destructive-200)]",
+          "[--hover-alert-close-bg:--alpha(var(--color-destructive-500)/20%)]",
+          "[--alert-close-outline:var(--color-destructive)]",
         ],
 
         "destructive-faded": [
           "border border-border-destructive-faded bg-destructive-faded",
           "[--alert-icon-bg:var(--color-destructive-muted)] [--alert-icon-text:var(--color-destructive-muted-foreground)]",
+          "[--hover-alert-close-bg:--alpha(var(--color-destructive-500)/20%)]",
+          "[--alert-close-outline:var(--color-destructive)]",
         ],
 
         // -- success --
@@ -93,16 +118,22 @@ const alertVariants = cva(
           "data-[inset-color]:[--alert-inset-color-bg:var(--color-success-200)]",
           "[--alert-description-text:var(--color-success-100)]",
           "[--alert-icon-bg:--alpha(var(--color-success-50)/15%)] [--alert-icon-border:--alpha(var(--color-success-50)/20%)] [--alert-icon-text:var(--color-success-foreground)]",
+          "[--hover-alert-close-bg:--alpha(var(--color-success-200)/20%)]",
+          "[--alert-close-outline:var(--color-success-foreground)]",
         ],
 
         "success-muted": [
           "bg-success-muted",
           "[--alert-icon-bg:var(--color-success-faded)] [--alert-icon-text:var(--color-success-500)] dark:[--alert-icon-bg:var(--color-success-900)] dark:[--alert-icon-text:var(--color-success-200)]",
+          "[--hover-alert-close-bg:--alpha(var(--color-success-500)/20%)]",
+          "[--alert-close-outline:var(--color-success)]",
         ],
 
         "success-faded": [
           "border border-border-success-faded bg-success-faded",
           "[--alert-icon-bg:var(--color-success-muted)] [--alert-icon-text:var(--color-success-muted-foreground)]",
+          "[--hover-alert-close-bg:--alpha(var(--color-success-500)/20%)]",
+          "[--alert-close-outline:var(--color-success)]",
         ],
 
         // -- warning --
@@ -111,16 +142,22 @@ const alertVariants = cva(
           "[--alert-inset-color-bg:var(--color-warning-600)]",
           "[--alert-description-text:var(--color-warning-900)]",
           "[--alert-icon-bg:--alpha(var(--color-warning-50)/60%)] [--alert-icon-border:--alpha(var(--color-warning-100)/40%)] [--alert-icon-text:var(--color-warning-600)]",
+          "[--hover-alert-close-bg:--alpha(var(--color-warning-700)/25%)]",
+          "[--alert-close-outline:var(--color-warning-foreground)]",
         ],
 
         "warning-muted": [
           "bg-warning-muted",
           "[--alert-icon-bg:var(--color-warning-faded)] [--alert-icon-text:var(--color-warning-500)] dark:[--alert-icon-bg:var(--color-warning-900)] dark:[--alert-icon-text:var(--color-warning-300)]",
+          "[--hover-alert-close-bg:--alpha(var(--color-warning-500)/20%)]",
+          "[--alert-close-outline:var(--color-warning)]",
         ],
 
         "warning-faded": [
           "border border-border-warning-faded bg-warning-faded",
           "[--alert-icon-bg:var(--color-warning-muted)] [--alert-icon-text:var(--color-warning-muted-foreground)]",
+          "[--hover-alert-close-bg:--alpha(var(--color-warning-500)/20%)]",
+          "[--alert-close-outline:var(--color-warning)]",
         ],
       },
     },
@@ -181,6 +218,13 @@ const alertVariants = cva(
   }
 );
 
+type AlertProps = React.ComponentProps<"div"> &
+  VariantProps<typeof alertVariants> & {
+    insetColor?: boolean;
+    insetColorClassName?: string;
+    centered?: boolean;
+  };
+
 function Alert({
   className,
   variant = "outline",
@@ -189,12 +233,7 @@ function Alert({
   centered,
   children,
   ...props
-}: React.ComponentProps<"div"> &
-  VariantProps<typeof alertVariants> & {
-    insetColor?: boolean;
-    insetColorClassName?: string;
-    centered?: boolean;
-  }) {
+}: AlertProps) {
   return (
     <div
       data-slot="alert"
@@ -202,7 +241,7 @@ function Alert({
       data-variant={variant}
       data-inset-color={insetColor}
       data-centered={centered}
-      className={cn(alertVariants({ variant }), className)}
+      className={cn(alertVariants({ variant }), "group/alert", className)}
       {...props}
     >
       {insetColor && (
@@ -220,42 +259,44 @@ function Alert({
   );
 }
 
+type AlertIconProps = React.ComponentProps<"div"> &
+(
+  | {
+      type: "info" | "error" | "success" | "warning";
+      children?: never;
+    }
+  | {
+      type?: never;
+      children: React.ReactNode;
+    }
+)
+
 function AlertIcon({
   className,
-  intent,
+  type,
   children,
   ...props
-}: React.ComponentProps<"div"> &
-  (
-    | {
-        intent: "info" | "error" | "success" | "warning";
-        children?: never;
-      }
-    | {
-        intent?: never;
-        children: React.ReactNode;
-      }
-  )) {
+}: AlertIconProps) {
   return (
     <span
       data-slot="alert-icon"
-      data-intent={intent}
+      data-type={type}
       className={cn(
         "inline-flex size-8 flex-none items-center justify-center rounded-full bg-(--alert-icon-bg) shadow-sm inset-ring inset-ring-(--alert-icon-border) [&>svg]:shrink-0",
-        intent
+        type
           ? "text-(--alert-icon-text) [&>svg]:size-5"
           : "[&>svg]:size-4 [&>svg]:text-current",
         className
       )}
       {...props}
     >
-      {intent
+      {type
         ? {
             info: <InfoFilledIcon />,
             error: <ErrorFilledIcon />,
             success: <SuccessFilledIcon />,
             warning: <WarningFilledIcon />,
-          }[intent]
+          }[type]
         : children}
     </span>
   );
@@ -318,11 +359,29 @@ function AlertFooter({ className, ...props }: React.ComponentProps<"div">) {
   );
 }
 
+function AlertClose({ className, ...props }: React.ComponentProps<"button">) {
+  return (
+    <button
+      data-slot="alert-close"
+      type="button"
+      aria-label={props["aria-label"] || "Dismiss"}
+      className={cn(
+        "text-(--alert-description-text) absolute top-2.5 right-4 group-data-[centered]/alert:top-1/2 group-data-[centered]/alert:-translate-y-1/2 inline-flex items-center justify-center rounded-sm size-6 opacity-70 outline-current hover:bg-(--hover-alert-close-bg) hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-2",
+        className,
+      )}
+      {...props}
+    >
+      <XIcon className="size-4" />
+    </button>
+  );
+}
+
 export {
   Alert,
-  AlertIcon,
+  AlertClose,
   AlertContent,
-  AlertTitle,
+  AlertIcon,
   AlertDescription,
   AlertFooter,
+  AlertTitle,
 };

@@ -3,8 +3,11 @@
 import * as React from "react";
 import { CheckCircle2Icon } from "lucide-react";
 
+import { sleep } from "~/lib/utils";
+
 import {
   Alert,
+  AlertClose,
   AlertContent,
   AlertDescription,
   AlertFooter,
@@ -25,6 +28,8 @@ import { ComponentPlayground } from "~/components/demos/component-playground";
 
 export function AlertDemo() {
   const [alertVariant, setAlertVariant] = React.useState("outline");
+  const [showAlertCentered, setShowAlertCentered] = React.useState(true);
+  const [showAlert, setShowAlert] = React.useState(true);
 
   const alertVariants = [
     "outline",
@@ -46,6 +51,18 @@ export function AlertDemo() {
     "warning-muted",
     "warning-faded",
   ] as const;
+
+  async function handleCloseAlertCentered() {
+    setShowAlertCentered(false);
+    await sleep(2000);
+    setShowAlertCentered(true);
+  }
+
+  async function handleCloseAlert() {
+    setShowAlert(false);
+    await sleep(2000);
+    setShowAlert(true);
+  }
 
   return (
     <>
@@ -74,38 +91,55 @@ export function AlertDemo() {
             </AlertContent>
           </Alert>
           <Alert variant={alertVariant as (typeof alertVariants)[number]}>
-            <AlertIcon intent="success" />
+            <AlertIcon type="success" />
             <AlertContent>
               <AlertTitle>Success! Your changes have been saved</AlertTitle>
               <AlertDescription>
-                This is a {alertVariant} alert with success intent icon, title
+                This is a {alertVariant} alert with success type icon, title
                 and description.
               </AlertDescription>
             </AlertContent>
           </Alert>
-
           <Alert
             centered
             variant={alertVariant as (typeof alertVariants)[number]}
           >
-            <AlertIcon intent="info" />
+            <AlertIcon type="info" />
             <AlertContent>
               <AlertTitle>
-                FYI This one is centered with info intent icon
+                FYI This one is centered with info type icon
               </AlertTitle>
             </AlertContent>
             <Button variant={"outline"} size="sm" className="h-6">
-              Dismiss
+              Undo
             </Button>
           </Alert>
+          {showAlertCentered && (
+            <Alert
+              centered
+              variant={alertVariant as (typeof alertVariants)[number]}
+              className="animate-out fade-out-0"
+            >
+              <AlertIcon type="info" />
+              <AlertContent>
+                <AlertTitle>
+                  FYI This one is centered with info type icon
+                </AlertTitle>
+              </AlertContent>
+              <Button variant={"outline"} size="sm" className="h-6">
+                Undo
+              </Button>
+              <AlertClose onClick={handleCloseAlertCentered} />
+            </Alert>
+          )}
           <Alert
             centered
             variant={alertVariant as (typeof alertVariants)[number]}
           >
-            <AlertIcon intent="warning" />
+            <AlertIcon type="warning" />
             <AlertContent>
               <AlertDescription>
-                Warning! This one has a description and warning intent icon.
+                Warning! This one has a description and warning type icon.
               </AlertDescription>
             </AlertContent>
             <Button variant={"outline"} size="sm" className="h-6">
@@ -113,7 +147,7 @@ export function AlertDemo() {
             </Button>
           </Alert>
           <Alert variant={alertVariant as (typeof alertVariants)[number]}>
-            <AlertIcon intent="error" />
+            <AlertIcon type="error" />
             <AlertContent>
               <AlertTitle>Something went wrong!</AlertTitle>
               <AlertDescription>
@@ -131,6 +165,28 @@ export function AlertDemo() {
               </AlertFooter>
             </AlertContent>
           </Alert>
+          {showAlert && (
+            <Alert variant={alertVariant as (typeof alertVariants)[number]} className="animate-out fade-out-0">
+              <AlertIcon type="error" />
+              <AlertContent>
+                <AlertTitle>Something went wrong!</AlertTitle>
+                <AlertDescription>
+                  <p>Please verify your billing information and try again.</p>
+                  <ul className="list-inside list-disc">
+                    <li>Check your card details</li>
+                    <li>Ensure sufficient funds</li>
+                    <li>Verify billing address</li>
+                  </ul>
+                </AlertDescription>
+                <AlertFooter>
+                  <Button variant={"outline"} size="sm">
+                    Details
+                  </Button>
+                </AlertFooter>
+              </AlertContent>
+              <AlertClose onClick={handleCloseAlert} />
+            </Alert>
+          )}
         </div>
       </ComponentContainer>
       <ComponentPlayground>
