@@ -7,7 +7,7 @@ const inputVariants = cva(
   [
     "flex w-full min-w-0 appearance-none rounded-md",
     "selection:bg-primary selection:text-primary-foreground",
-    "file:inline-flex file:font-medium",
+    "file:inline-flex file:font-medium file:items-center",
     "disabled:pointer-events-none disabled:opacity-50",
     "aria-invalid:text-destructive-accent-foreground aria-invalid:selection:bg-destructive aria-invalid:selection:text-destructive-foreground",
   ],
