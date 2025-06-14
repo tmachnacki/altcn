@@ -5,15 +5,16 @@ import { cn } from "~/lib/utils";
 export function ComponentContainer({
   children,
   className,
-  ...props
-}: React.ComponentProps<"div">) {
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
   return (
     <div
       className={cn(
-        "flex min-h-48 flex-1 flex-col items-center justify-center px-8 py-16",
+        "flex max-h-[70vh] min-h-48 flex-1 flex-col items-center justify-center overflow-y-auto px-8 py-16",
         className
       )}
-      {...props}
     >
       {children}
     </div>

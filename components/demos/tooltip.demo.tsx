@@ -6,7 +6,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "~/components/ui/tooltip";
-import { ComponentContainer } from "~/components/demos/component-container";
+import { ComponentContainer } from "~/components/component-container";
 
 export function TooltipDemo() {
   return (
@@ -39,7 +39,7 @@ export function TooltipDemo() {
         <div className="flex flex-wrap gap-2">
           <Tooltip>
             <TooltipTrigger asChild>
-              <Button className="bg-base-950 text-base-50 capitalize hover:bg-base-900 dark:bg-base-50 dark:text-base-950 dark:hover:bg-base-100">
+              <Button className="bg-base-950 text-base-50 hover:bg-base-900 dark:bg-base-50 dark:text-base-950 dark:hover:bg-base-100 capitalize">
                 default
               </Button>
             </TooltipTrigger>

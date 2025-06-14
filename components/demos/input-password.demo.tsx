@@ -8,7 +8,7 @@ import {
 } from "~/components/ui/card";
 import { InputPassword } from "~/components/ui/input-password";
 import { Label } from "~/components/ui/label";
-import { ComponentContainer } from "~/components/demos/component-container";
+import { ComponentContainer } from "~/components/component-container";
 
 export function InputPasswordDemo() {
   const sizes = ["sm", "default", "lg"] as const;

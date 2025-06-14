@@ -8,31 +8,31 @@ import { ChevronLeftIcon } from "lucide-react";
 import { cn } from "~/lib/utils";
 
 const accordionItemVariants = cva(
-  "border-b -outline-offset-1 [--accordion-item-px:--spacing(3)] first:rounded-t-md last:rounded-b-md last:border-b-0 has-focus-visible:outline-2 data-[split]:mb-2 data-[split]:rounded-md data-[split]:last:mb-0",
+  "border-b -outline-offset-1 [--accordion-item-px:--spacing(3)] first:rounded-t-md last:rounded-b-md last:border-b-0 has-focus-visible:outline-2 data-[layout=split]:mb-2 data-[layout=split]:rounded-md data-[layout=split]:last:mb-0",
   {
     variants: {
       variant: {
         // -- base --
         outline:
-          "border-border not-data-[split]:[--accordion-item-px:--spacing(0)] data-[split]:border",
+          "border-border not-data-[layout=split]:[--accordion-item-px:--spacing(0)] data-[layout=split]:border",
 
-        muted: "border-border bg-muted data-[split]:border-0",
+        muted: "border-border bg-muted data-[layout=split]:border-0",
 
-        faded: "border-border-faded bg-faded data-[split]:border",
+        faded: "border-border-faded bg-faded data-[layout=split]:border",
 
         // -- primary --
         "primary-muted":
-          "border-border-primary-faded bg-primary-muted data-[split]:border-0",
+          "border-border-primary-faded bg-primary-muted data-[layout=split]:border-0",
 
         "primary-faded":
-          "border-border-primary-faded bg-primary-faded data-[split]:border",
+          "border-border-primary-faded bg-primary-faded data-[layout=split]:border",
 
         // -- secondary --
         "secondary-muted":
-          "border-border-secondary-faded bg-secondary-muted data-[split]:border-0",
+          "border-border-secondary-faded bg-secondary-muted data-[layout=split]:border-0",
 
         "secondary-faded":
-          "border-border-secondary-faded bg-secondary-faded data-[split]:border",
+          "border-border-secondary-faded bg-secondary-faded data-[layout=split]:border",
       },
     },
     compoundVariants: [
@@ -60,19 +60,19 @@ const accordionItemVariants = cva(
 );
 
 type AccordionContextType = VariantProps<typeof accordionItemVariants> & {
-  split?: boolean;
+  layout?: "compact" | "split";
 };
 
 const AccordionContext = React.createContext<AccordionContextType>({});
 
 function Accordion({
   variant = "outline",
-  split = undefined,
+  layout = "compact",
   ...props
 }: React.ComponentProps<typeof AccordionPrimitive.Root> &
   AccordionContextType) {
   return (
-    <AccordionContext.Provider value={{ variant, split }}>
+    <AccordionContext.Provider value={{ variant, layout }}>
       <AccordionPrimitive.Root data-slot="accordion" {...props} />
     </AccordionContext.Provider>
   );
@@ -82,12 +82,12 @@ function AccordionItem({
   className,
   ...props
 }: React.ComponentProps<typeof AccordionPrimitive.Item>) {
-  const { variant, split } = React.useContext(AccordionContext);
+  const { variant, layout } = React.useContext(AccordionContext);
   return (
     <AccordionPrimitive.Item
       data-slot="accordion-item"
       data-variant={variant}
-      data-split={split}
+      data-layout={layout}
       className={cn(
         accordionItemVariants({ variant }),
         "group/accordion-item",

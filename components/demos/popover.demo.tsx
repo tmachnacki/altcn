@@ -7,7 +7,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "~/components/ui/popover";
-import { ComponentContainer } from "~/components/demos/component-container";
+import { ComponentContainer } from "~/components/component-container";
 
 export function PopoverDemo() {
   return (
@@ -19,8 +19,8 @@ export function PopoverDemo() {
         <PopoverContent className="w-80">
           <div className="grid gap-4">
             <div className="grid gap-1.5">
-              <h4 className="leading-none font-medium">Dimensions</h4>
-              <p className="text-sm text-muted-foreground">
+              <h4 className="font-medium leading-none">Dimensions</h4>
+              <p className="text-muted-foreground text-sm">
                 Set the dimensions for the layer.
               </p>
             </div>

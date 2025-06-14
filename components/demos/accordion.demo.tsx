@@ -9,15 +9,9 @@ import {
   AccordionTrigger,
 } from "~/components/ui/accordion";
 import { Label } from "~/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "~/components/ui/select";
-import { ComponentContainer } from "~/components/demos/component-container";
-import { ComponentPlayground } from "~/components/demos/component-playground";
+import { RadioGroup, RadioGroupItem } from "~/components/ui/radio-group";
+import { ComponentContainer } from "~/components/component-container";
+import { ComponentPlayground } from "~/components/component-playground";
 
 export function AccordionDemo() {
   const [accordionVariant, setAccordionVariant] = React.useState("outline");
@@ -68,7 +62,7 @@ export function AccordionDemo() {
             collapsible
             className="w-full"
             variant={accordionVariant as (typeof accordionVariants)[number]}
-            split
+            layout="split"
           >
             <AccordionItem value="item-1">
               <AccordionTrigger>Is it accessible?</AccordionTrigger>
@@ -94,25 +88,24 @@ export function AccordionDemo() {
         </div>
       </ComponentContainer>
       <ComponentPlayground>
-        <div className="flex flex-col gap-2">
-          <Label htmlFor="accordion-variant">Accordion Variant</Label>
-          <Select
-            value={accordionVariant}
-            onValueChange={setAccordionVariant}
-            defaultValue="default"
-          >
-            <SelectTrigger id="accordion-variant" className="w-full">
-              <SelectValue>{accordionVariant}</SelectValue>
-            </SelectTrigger>
-            <SelectContent>
-              {accordionVariants.map((accordionVariant) => (
-                <SelectItem key={accordionVariant} value={accordionVariant}>
-                  {accordionVariant}
-                </SelectItem>
+        <fieldset>
+          <div className="flex flex-col gap-4">
+            <legend className="text-base leading-none font-semibold">
+              Accordion Variant
+            </legend>
+            <RadioGroup
+              onValueChange={setAccordionVariant}
+              defaultValue={accordionVariant}
+            >
+              {accordionVariants.map((variant) => (
+                <div key={variant} className="flex items-center gap-3">
+                  <RadioGroupItem value={variant} id={variant} />
+                  <Label htmlFor={variant}>{variant}</Label>
+                </div>
               ))}
-            </SelectContent>
-          </Select>
-        </div>
+            </RadioGroup>
+          </div>
+        </fieldset>
       </ComponentPlayground>
     </>
   );

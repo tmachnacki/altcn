@@ -10,7 +10,7 @@ import {
   InputOTPSlot,
 } from "~/components/ui/input-otp";
 import { Label } from "~/components/ui/label";
-import { ComponentContainer } from "~/components/demos/component-container";
+import { ComponentContainer } from "~/components/component-container";
 
 export function InputOTPDemo() {
   return (

@@ -19,8 +19,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "~/components/ui/select";
-import { ComponentContainer } from "~/components/demos/component-container";
-import { ComponentPlayground } from "~/components/demos/component-playground";
+import { ComponentContainer } from "~/components/component-container";
+import { ComponentPlayground } from "~/components/component-playground";
 
 export function PaginationDemo() {
   const [activeVariant, setActiveVariant] = useState("outline");

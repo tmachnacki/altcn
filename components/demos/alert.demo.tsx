@@ -23,8 +23,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "~/components/ui/select";
-import { ComponentContainer } from "~/components/demos/component-container";
-import { ComponentPlayground } from "~/components/demos/component-playground";
+import { ComponentContainer } from "~/components/component-container";
+import { ComponentPlayground } from "~/components/component-playground";
 
 export function AlertDemo() {
   const [alertVariant, setAlertVariant] = React.useState("outline");
@@ -95,8 +95,8 @@ export function AlertDemo() {
             <AlertContent>
               <AlertTitle>Success! Your changes have been saved</AlertTitle>
               <AlertDescription>
-                This is a {alertVariant} alert with success type icon, title
-                and description.
+                This is a {alertVariant} alert with success type icon, title and
+                description.
               </AlertDescription>
             </AlertContent>
           </Alert>
@@ -166,7 +166,10 @@ export function AlertDemo() {
             </AlertContent>
           </Alert>
           {showAlert && (
-            <Alert variant={alertVariant as (typeof alertVariants)[number]} className="animate-out fade-out-0">
+            <Alert
+              variant={alertVariant as (typeof alertVariants)[number]}
+              className="animate-out fade-out-0"
+            >
               <AlertIcon type="error" />
               <AlertContent>
                 <AlertTitle>Something went wrong!</AlertTitle>

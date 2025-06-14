@@ -19,7 +19,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "altcn",
-  description: "Alternatively styled shadcn/ui components",
+  description: "Alternatively styled shadcn/ui component variants",
 };
 
 export default function RootLayout({
@@ -29,7 +29,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} [--header-h:--spacing(12)]`}
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

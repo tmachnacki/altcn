@@ -16,13 +16,13 @@ import {
   SpeedDialItem,
   SpeedDialTrigger,
 } from "~/components/ui/speed-dial";
+import { ComponentContainer } from "~/components/component-container";
 import { BackgroundPattern } from "~/components/demos/background-pattern";
-import { ComponentContainer } from "~/components/demos/component-container";
 
 export function SpeedDialDemo() {
   return (
     <ComponentContainer>
-      <div className="relative flex h-full min-h-96 w-full max-w-[1000px] flex-col items-center justify-center overflow-hidden rounded-lg border border-border-primary-faded bg-transparent p-24">
+      <div className="border-border-primary-faded relative flex h-full min-h-96 w-full max-w-[1000px] flex-col items-center justify-center overflow-hidden rounded-lg border bg-transparent p-24">
         <div className="absolute inset-0 flex shrink-0 items-center justify-center overflow-hidden">
           <BackgroundPattern className="shrink-0" />
         </div>
@@ -32,7 +32,7 @@ export function SpeedDialDemo() {
             <Button
               variant="primary"
               size="icon-lg"
-              className="absolute right-4 bottom-4 z-50 size-12 rounded-full shadow-md data-[state=open]:[&>svg]:rotate-45"
+              className="absolute bottom-4 right-4 z-50 size-12 rounded-full shadow-md data-[state=open]:[&>svg]:rotate-45"
             >
               <PlusIcon className={`transition-transform`} />
             </Button>
