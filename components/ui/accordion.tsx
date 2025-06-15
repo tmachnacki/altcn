@@ -59,18 +59,18 @@ const accordionItemVariants = cva(
   }
 );
 
-type AccordionContextType = VariantProps<typeof accordionItemVariants> & {
+type AccordionContextProps = VariantProps<typeof accordionItemVariants> & {
   layout?: "compact" | "split";
 };
 
-const AccordionContext = React.createContext<AccordionContextType>({});
+const AccordionContext = React.createContext<AccordionContextProps>({});
 
 function Accordion({
   variant = "outline",
   layout = "compact",
   ...props
 }: React.ComponentProps<typeof AccordionPrimitive.Root> &
-  AccordionContextType) {
+  AccordionContextProps) {
   return (
     <AccordionContext.Provider value={{ variant, layout }}>
       <AccordionPrimitive.Root data-slot="accordion" {...props} />
@@ -86,7 +86,6 @@ function AccordionItem({
   return (
     <AccordionPrimitive.Item
       data-slot="accordion-item"
-      data-variant={variant}
       data-layout={layout}
       className={cn(
         accordionItemVariants({ variant }),

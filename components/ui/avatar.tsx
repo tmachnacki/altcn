@@ -37,18 +37,16 @@ function AvatarImage({
 }
 
 const avatarFallbackVariants = cva(
-  "flex size-full items-center justify-center rounded-full [&>svg:not([class*='size-'])]:size-4",
+  "flex size-full items-center justify-center rounded-full *:[svg]:not-[[class*='size-']]:size-4",
   {
     variants: {
       variant: {
         // -- base --
-        default: "bg-muted text-accent-foreground",
-
         outline: "border border-border bg-background text-foreground",
 
         base: "bg-base-bg text-base-foreground",
 
-        accent: "bg-accent text-accent-foreground",
+        accent: "bg-muted text-accent-foreground",
 
         muted: "bg-muted text-muted-foreground",
 
@@ -85,7 +83,7 @@ const avatarFallbackVariants = cva(
       },
     },
     defaultVariants: {
-      variant: "default",
+      variant: "accent",
     },
   }
 );
@@ -100,11 +98,10 @@ function AvatarFallback({
   return (
     <AvatarPrimitive.Fallback
       data-slot="avatar-fallback"
-      data-variant={variant}
       className={cn(avatarFallbackVariants({ variant }), className)}
       {...props}
     >
-      {children ? children : <UserRoundIcon className="text-current" />}
+      {children ?? <UserRoundIcon className="text-current" />}
     </AvatarPrimitive.Fallback>
   );
 }

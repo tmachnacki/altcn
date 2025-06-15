@@ -12,8 +12,8 @@ import { WarningFilledIcon } from "~/components/icons/warning-filled";
 
 const alertVariants = cva(
   [
-    "relative flex w-full items-start gap-x-3 overflow-hidden rounded-lg px-4 py-3 text-sm data-[centered]:items-center has-[[data-slot='alert-close']]:pr-12",
-    "[&>svg]:flex-none [&>svg]:text-current [&>svg:not([class*='size-'])]:h-[1lh] [&>svg:not([class*='size-'])]:w-4",
+    "relative flex w-full items-start gap-x-3 overflow-hidden rounded-lg px-4 py-3 text-sm has-[[data-slot='alert-close']]:pr-12 data-[align=center]:items-center",
+    "*:[svg]:flex-none *:[svg]:text-current *:[svg]:not-[[class*='size-']]:not-[[class*='h-']]:h-[1lh] *:[svg]:not-[[class*='size-']]:not-[[class*='w-']]:w-4",
   ],
   {
     variants: {
@@ -26,6 +26,15 @@ const alertVariants = cva(
           "[--alert-close-outline:var(--color-outline)]",
         ],
 
+        base: [
+          "bg-base-bg text-base-foreground",
+          "[--alert-inset-color-bg:var(--color-base-200)]",
+          "[--alert-description-text:var(--color-base-100)]",
+          "[--alert-icon-bg:--alpha(var(--color-base-50)/15%)] [--alert-icon-border:--alpha(var(--color-base-50)/20%)] [--alert-icon-text:var(--color-base-foreground)]",
+          "[--hover-alert-close-bg:--alpha(var(--color-base-200)/20%)]",
+          "[--alert-close-outline:var(--color-base-foreground)]",
+        ],
+
         muted: [
           "bg-muted",
           "[--alert-icon-bg:var(--color-faded)] dark:[--alert-icon-bg:var(--color-base-800)]",
@@ -35,7 +44,7 @@ const alertVariants = cva(
 
         faded: [
           "border border-border-faded bg-faded",
-          "[--alert-icon-bg:var(--color-accent)]",
+          "[--alert-icon-bg:var(--color-muted)]",
           "[--hover-alert-close-bg:--alpha(var(--color-base-500)/20%)]",
           "[--alert-close-outline:var(--color-outline)]",
         ],
@@ -43,7 +52,7 @@ const alertVariants = cva(
         // -- primary --
         primary: [
           "bg-primary text-primary-foreground",
-          "data-[inset-color]:[--alert-inset-color-bg:var(--color-primary-200)]",
+          "[--alert-inset-color-bg:var(--color-primary-200)]",
           "[--alert-description-text:var(--color-primary-100)]",
           "[--alert-icon-bg:--alpha(var(--color-primary-50)/15%)] [--alert-icon-border:--alpha(var(--color-primary-50)/20%)] [--alert-icon-text:var(--color-primary-foreground)]",
           "[--hover-alert-close-bg:--alpha(var(--color-primary-200)/20%)]",
@@ -100,7 +109,7 @@ const alertVariants = cva(
 
         "destructive-muted": [
           "bg-destructive-muted",
-          "[--alert-icon-bg:var(--color-destructive-faded)] [--alert-icon-text:var(--color-destructive-500)] dark:[--alert-icon-bg:var(--color-destructive-900)] dark:[--alert-ic0on-text:var(--color-destructive-200)]",
+          "[--alert-icon-bg:var(--color-destructive-faded)] [--alert-icon-text:var(--color-destructive-500)] dark:[--alert-icon-bg:var(--color-destructive-900)] dark:[--alert-icon-text:var(--color-destructive-200)]",
           "[--hover-alert-close-bg:--alpha(var(--color-destructive-500)/20%)]",
           "[--alert-close-outline:var(--color-destructive)]",
         ],
@@ -115,7 +124,7 @@ const alertVariants = cva(
         // -- success --
         success: [
           "bg-success text-success-foreground",
-          "data-[inset-color]:[--alert-inset-color-bg:var(--color-success-200)]",
+          "[--alert-inset-color-bg:var(--color-success-200)]",
           "[--alert-description-text:var(--color-success-100)]",
           "[--alert-icon-bg:--alpha(var(--color-success-50)/15%)] [--alert-icon-border:--alpha(var(--color-success-50)/20%)] [--alert-icon-text:var(--color-success-foreground)]",
           "[--hover-alert-close-bg:--alpha(var(--color-success-200)/20%)]",
@@ -220,17 +229,13 @@ const alertVariants = cva(
 
 type AlertProps = React.ComponentProps<"div"> &
   VariantProps<typeof alertVariants> & {
-    insetColor?: boolean;
-    insetColorClassName?: string;
-    centered?: boolean;
+    align?: "start" | "center";
   };
 
 function Alert({
   className,
   variant = "outline",
-  insetColor,
-  insetColorClassName,
-  centered,
+  align = "start",
   children,
   ...props
 }: AlertProps) {
@@ -238,54 +243,51 @@ function Alert({
     <div
       data-slot="alert"
       role="alert"
-      data-variant={variant}
-      data-inset-color={insetColor}
-      data-centered={centered}
+      data-align={align}
       className={cn(alertVariants({ variant }), "group/alert", className)}
       {...props}
     >
-      {insetColor && (
-        <div
-          aria-hidden="true"
-          data-slot="alert-inset-color"
-          className={cn(
-            "absolute top-0 left-0 h-full w-1.5 rounded-l-lg bg-(--alert-inset-color-bg)",
-            insetColorClassName
-          )}
-        />
-      )}
       {children}
     </div>
   );
 }
 
-type AlertIconProps = React.ComponentProps<"div"> &
-(
-  | {
-      type: "info" | "error" | "success" | "warning";
-      children?: never;
-    }
-  | {
-      type?: never;
-      children: React.ReactNode;
-    }
-)
+function AlertInsetColor({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      aria-hidden="true"
+      data-slot="alert-inset-color"
+      className={cn(
+        "absolute top-0 left-0 h-full w-1.5 rounded-l-lg bg-(--alert-inset-color-bg)",
+        className
+      )}
+      {...props}
+    />
+  );
+}
 
-function AlertIcon({
-  className,
-  type,
-  children,
-  ...props
-}: AlertIconProps) {
+type AlertIconProps = React.ComponentProps<"div"> &
+  (
+    | {
+        type: "info" | "error" | "success" | "warning";
+        children?: never;
+      }
+    | {
+        type?: never;
+        children: React.ReactNode;
+      }
+  );
+
+function AlertIcon({ className, type, children, ...props }: AlertIconProps) {
   return (
     <span
       data-slot="alert-icon"
       data-type={type}
       className={cn(
-        "inline-flex size-8 flex-none items-center justify-center rounded-full bg-(--alert-icon-bg) shadow-sm inset-ring inset-ring-(--alert-icon-border) [&>svg]:shrink-0",
+        "inline-flex size-8 flex-none items-center justify-center rounded-full bg-(--alert-icon-bg) shadow-sm inset-ring inset-ring-(--alert-icon-border) *:[svg]:shrink-0",
         type
-          ? "text-(--alert-icon-text) [&>svg]:size-5"
-          : "[&>svg]:size-4 [&>svg]:text-current",
+          ? "text-(--alert-icon-text) *:[svg]:[not([class*='size-'])]:size-5"
+          : "*:[svg]:text-current *:[svg]:[not([class*='size-'])]:size-4",
         className
       )}
       {...props}
@@ -341,7 +343,7 @@ function AlertDescription({
     <div
       data-slot="alert-description"
       className={cn(
-        "grid justify-items-start gap-1 text-sm text-(--alert-description-text) [&_p]:leading-relaxed",
+        "grid justify-items-start gap-1 text-sm text-(--alert-description-text) **:[p]:leading-relaxed",
         className
       )}
       {...props}
@@ -364,10 +366,10 @@ function AlertClose({ className, ...props }: React.ComponentProps<"button">) {
     <button
       data-slot="alert-close"
       type="button"
-      aria-label={props["aria-label"] || "Dismiss"}
+      aria-label={"Dismiss"}
       className={cn(
-        "text-(--alert-description-text) absolute top-2.5 right-4 group-data-[centered]/alert:top-1/2 group-data-[centered]/alert:-translate-y-1/2 inline-flex items-center justify-center rounded-sm size-6 opacity-70 outline-(--alert-close-outline) hover:bg-(--hover-alert-close-bg) hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-2",
-        className,
+        "absolute top-2.5 right-4 inline-flex size-6 items-center justify-center rounded-sm text-(--alert-description-text) opacity-70 outline-(--alert-close-outline) group-data-[align=center]/alert:top-1/2 group-data-[align=center]/alert:-translate-y-1/2 hover:bg-(--hover-alert-close-bg) hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-2",
+        className
       )}
       {...props}
     >
@@ -381,6 +383,7 @@ export {
   AlertClose,
   AlertContent,
   AlertIcon,
+  AlertInsetColor,
   AlertDescription,
   AlertFooter,
   AlertTitle,

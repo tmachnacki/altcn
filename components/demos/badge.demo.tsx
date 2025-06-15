@@ -1,680 +1,109 @@
+"use client";
+
+import * as React from "react";
 import { ArrowRightIcon, CheckIcon } from "lucide-react";
 
 import { Badge, BadgeClose } from "~/components/ui/badge";
-import { Separator } from "~/components/ui/separator";
+import { Label } from "~/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "~/components/ui/radio-group";
+import { ComponentContainer } from "~/components/component-container";
+import { ComponentPlayground } from "~/components/component-playground";
+
+const badgeVariants = [
+  "outline",
+  "base",
+  "accent",
+  "muted",
+  "surface",
+  "faded",
+  "dotted",
+  "primary",
+  "primary-accent",
+  "primary-muted",
+  "primary-surface",
+  "primary-faded",
+  "primary-tron",
+  "primary-dotted",
+  "secondary",
+  "secondary-accent",
+  "secondary-muted",
+  "secondary-surface",
+  "secondary-faded",
+  "secondary-tron",
+  "secondary-dotted",
+  "destructive",
+  "destructive-accent",
+  "destructive-muted",
+  "destructive-surface",
+  "destructive-faded",
+  "destructive-tron",
+  "destructive-dotted",
+  "success",
+  "success-accent",
+  "success-muted",
+  "success-surface",
+  "success-faded",
+  "success-tron",
+  "success-dotted",
+  "warning",
+  "warning-accent",
+  "warning-muted",
+  "warning-surface",
+  "warning-faded",
+  "warning-tron",
+  "warning-dotted",
+] as const;
 
 export function BadgeDemo() {
+  const [badgeVariant, setBadgeVariant] = React.useState("outline");
+
   return (
-    <div className="flex h-full w-full flex-1 flex-col gap-8">
-      <div className="flex flex-wrap gap-4">
-        <Badge variant="outline">Outline</Badge>
-        <Badge variant="outline">
-          <CheckIcon />
-          Icon
-        </Badge>
-        <Badge asChild variant="outline">
-          <a href="#">
-            Link
-            <ArrowRightIcon />
-          </a>
-        </Badge>
-        <Badge variant="outline">
-          Close
-          <BadgeClose />
-        </Badge>
+    <>
+      <ComponentContainer>
+        <div className="flex flex-wrap gap-4">
+          <Badge variant={badgeVariant as (typeof badgeVariants)[number]}>
+            Badge
+          </Badge>
+          <Badge variant={badgeVariant as (typeof badgeVariants)[number]}>
+            <CheckIcon />
+            Icon
+          </Badge>
+          <Badge
+            asChild
+            variant={badgeVariant as (typeof badgeVariants)[number]}
+          >
+            <a href="#">
+              Link
+              <ArrowRightIcon />
+            </a>
+          </Badge>
+          <Badge variant={badgeVariant as (typeof badgeVariants)[number]}>
+            Close
+            <BadgeClose />
+          </Badge>
+        </div>
+      </ComponentContainer>
 
-        <Badge variant="base">Base</Badge>
-        <Badge variant="base">
-          <CheckIcon />
-          Icon
-        </Badge>
-        <Badge asChild variant="base">
-          <a href="#">
-            Link
-            <ArrowRightIcon />
-          </a>
-        </Badge>
-        <Badge variant="base">
-          Close
-          <BadgeClose />
-        </Badge>
-
-        <Badge variant="accent">Accent</Badge>
-        <Badge variant="accent">
-          <CheckIcon />
-          Icon
-        </Badge>
-        <Badge asChild variant="accent">
-          <a href="#">
-            Link
-            <ArrowRightIcon />
-          </a>
-        </Badge>
-        <Badge variant="accent">
-          Close
-          <BadgeClose />
-        </Badge>
-
-        <Badge variant="muted">Muted</Badge>
-        <Badge variant="muted">
-          <CheckIcon />
-          Icon
-        </Badge>
-        <Badge asChild variant="muted">
-          <a href="#">
-            Link
-            <ArrowRightIcon />
-          </a>
-        </Badge>
-        <Badge variant="muted">
-          Close
-          <BadgeClose />
-        </Badge>
-
-        <Badge variant="surface">Surface</Badge>
-        <Badge variant="surface">
-          <CheckIcon />
-          Icon
-        </Badge>
-        <Badge asChild variant="surface">
-          <a href="#">
-            Link
-            <ArrowRightIcon />
-          </a>
-        </Badge>
-        <Badge variant="surface">
-          Close
-          <BadgeClose />
-        </Badge>
-
-        <Badge variant="faded">Faded</Badge>
-        <Badge variant="faded">
-          <CheckIcon />
-          Icon
-        </Badge>
-        <Badge asChild variant="faded">
-          <a href="#">
-            Link
-            <ArrowRightIcon />
-          </a>
-        </Badge>
-        <Badge variant="faded">
-          Close
-          <BadgeClose />
-        </Badge>
-
-        <Badge variant="dotted">Dotted</Badge>
-        <Badge asChild variant="dotted">
-          <a href="#">
-            Link
-            <ArrowRightIcon />
-          </a>
-        </Badge>
-        <Badge variant="dotted">
-          Close
-          <BadgeClose />
-        </Badge>
-      </div>
-
-      <Separator />
-
-      <div className="flex flex-wrap gap-4">
-        <Badge variant="primary">Primary</Badge>
-        <Badge variant="primary">
-          <CheckIcon />
-          Icon
-        </Badge>
-        <Badge asChild variant="primary">
-          <a href="#">
-            Link
-            <ArrowRightIcon />
-          </a>
-        </Badge>
-        <Badge variant="primary">
-          Close
-          <BadgeClose />
-        </Badge>
-
-        <Badge variant="primary-accent">Accent</Badge>
-        <Badge variant="primary-accent">
-          <CheckIcon />
-          Icon
-        </Badge>
-        <Badge asChild variant="primary-accent">
-          <a href="#">
-            Link
-            <ArrowRightIcon />
-          </a>
-        </Badge>
-        <Badge variant="primary-accent">
-          Close
-          <BadgeClose />
-        </Badge>
-
-        <Badge variant="primary-muted">Muted</Badge>
-        <Badge variant="primary-muted">
-          <CheckIcon />
-          Icon
-        </Badge>
-        <Badge asChild variant="primary-muted">
-          <a href="#">
-            Link
-            <ArrowRightIcon />
-          </a>
-        </Badge>
-        <Badge variant="primary-muted">
-          Close
-          <BadgeClose />
-        </Badge>
-
-        <Badge variant="primary-surface">Surface</Badge>
-        <Badge variant="primary-surface">
-          <CheckIcon />
-          Icon
-        </Badge>
-        <Badge asChild variant="primary-surface">
-          <a href="#">
-            Link
-            <ArrowRightIcon />
-          </a>
-        </Badge>
-        <Badge variant="primary-surface">
-          Close
-          <BadgeClose />
-        </Badge>
-
-        <Badge variant="primary-faded">Faded</Badge>
-        <Badge variant="primary-faded">
-          <CheckIcon />
-          Icon
-        </Badge>
-        <Badge asChild variant="primary-faded">
-          <a href="#">
-            Link
-            <ArrowRightIcon />
-          </a>
-        </Badge>
-        <Badge variant="primary-faded">
-          Close
-          <BadgeClose />
-        </Badge>
-
-        <Badge variant="primary-tron">Tron</Badge>
-        <Badge variant="primary-tron">
-          <CheckIcon />
-          Icon
-        </Badge>
-        <Badge asChild variant="primary-tron">
-          <a href="#">
-            Link
-            <ArrowRightIcon />
-          </a>
-        </Badge>
-        <Badge variant="primary-tron">
-          Close
-          <BadgeClose />
-        </Badge>
-
-        <Badge variant="primary-dotted">Dotted</Badge>
-        <Badge asChild variant="primary-dotted">
-          <a href="#">
-            Link
-            <ArrowRightIcon />
-          </a>
-        </Badge>
-        <Badge variant="primary-dotted">
-          Close
-          <BadgeClose />
-        </Badge>
-      </div>
-
-      <Separator />
-
-      <div className="flex flex-wrap gap-4">
-        <Badge variant="secondary">Secondary</Badge>
-        <Badge variant="secondary">
-          <CheckIcon />
-          Icon
-        </Badge>
-        <Badge asChild variant="secondary">
-          <a href="#">
-            Link
-            <ArrowRightIcon />
-          </a>
-        </Badge>
-        <Badge variant="secondary">
-          Close
-          <BadgeClose />
-        </Badge>
-
-        <Badge variant="secondary-accent">Accent</Badge>
-        <Badge variant="secondary-accent">
-          <CheckIcon />
-          Icon
-        </Badge>
-        <Badge asChild variant="secondary-accent">
-          <a href="#">
-            Link
-            <ArrowRightIcon />
-          </a>
-        </Badge>
-        <Badge variant="secondary-accent">
-          Close
-          <BadgeClose />
-        </Badge>
-
-        <Badge variant="secondary-muted">Muted</Badge>
-        <Badge variant="secondary-muted">
-          <CheckIcon />
-          Icon
-        </Badge>
-        <Badge asChild variant="secondary-muted">
-          <a href="#">
-            Link
-            <ArrowRightIcon />
-          </a>
-        </Badge>
-        <Badge variant="secondary-muted">
-          Close
-          <BadgeClose />
-        </Badge>
-
-        <Badge variant="secondary-surface">Surface</Badge>
-        <Badge variant="secondary-surface">
-          <CheckIcon />
-          Icon
-        </Badge>
-        <Badge asChild variant="secondary-surface">
-          <a href="#">
-            Link
-            <ArrowRightIcon />
-          </a>
-        </Badge>
-        <Badge variant="secondary-surface">
-          Close
-          <BadgeClose />
-        </Badge>
-
-        <Badge variant="secondary-faded">Faded</Badge>
-        <Badge variant="secondary-faded">
-          <CheckIcon />
-          Icon
-        </Badge>
-        <Badge asChild variant="secondary-faded">
-          <a href="#">
-            Link
-            <ArrowRightIcon />
-          </a>
-        </Badge>
-        <Badge variant="secondary-faded">
-          Close
-          <BadgeClose />
-        </Badge>
-
-        <Badge variant="secondary-tron">Tron</Badge>
-        <Badge variant="secondary-tron">
-          <CheckIcon />
-          Icon
-        </Badge>
-        <Badge asChild variant="secondary-tron">
-          <a href="#">
-            Link
-            <ArrowRightIcon />
-          </a>
-        </Badge>
-        <Badge variant="secondary-tron">
-          Close
-          <BadgeClose />
-        </Badge>
-
-        <Badge variant="secondary-dotted">Dotted</Badge>
-        <Badge asChild variant="secondary-dotted">
-          <a href="#">
-            Link
-            <ArrowRightIcon />
-          </a>
-        </Badge>
-        <Badge variant="secondary-dotted">
-          Close
-          <BadgeClose />
-        </Badge>
-      </div>
-
-      <Separator />
-
-      <div className="flex flex-wrap gap-4">
-        <Badge variant="destructive">Destructive</Badge>
-        <Badge variant="destructive">
-          <CheckIcon />
-          Icon
-        </Badge>
-        <Badge asChild variant="destructive">
-          <a href="#">
-            Link
-            <ArrowRightIcon />
-          </a>
-        </Badge>
-        <Badge variant="destructive">
-          Close
-          <BadgeClose />
-        </Badge>
-
-        <Badge variant="destructive-accent">Accent</Badge>
-        <Badge variant="destructive-accent">
-          <CheckIcon />
-          Icon
-        </Badge>
-        <Badge asChild variant="destructive-accent">
-          <a href="#">
-            Link
-            <ArrowRightIcon />
-          </a>
-        </Badge>
-        <Badge variant="destructive-accent">
-          Close
-          <BadgeClose />
-        </Badge>
-
-        <Badge variant="destructive-muted">Muted</Badge>
-        <Badge variant="destructive-muted">
-          <CheckIcon />
-          Icon
-        </Badge>
-        <Badge asChild variant="destructive-muted">
-          <a href="#">
-            Link
-            <ArrowRightIcon />
-          </a>
-        </Badge>
-        <Badge variant="destructive-muted">
-          Close
-          <BadgeClose />
-        </Badge>
-
-        <Badge variant="destructive-surface">Surface</Badge>
-        <Badge variant="destructive-surface">
-          <CheckIcon />
-          Icon
-        </Badge>
-        <Badge asChild variant="destructive-surface">
-          <a href="#">
-            Link
-            <ArrowRightIcon />
-          </a>
-        </Badge>
-        <Badge variant="destructive-surface">
-          Close
-          <BadgeClose />
-        </Badge>
-
-        <Badge variant="destructive-faded">Faded</Badge>
-        <Badge variant="destructive-faded">
-          <CheckIcon />
-          Icon
-        </Badge>
-        <Badge asChild variant="destructive-faded">
-          <a href="#">
-            Link
-            <ArrowRightIcon />
-          </a>
-        </Badge>
-        <Badge variant="destructive-faded">
-          Close
-          <BadgeClose />
-        </Badge>
-
-        <Badge variant="destructive-tron">Tron</Badge>
-        <Badge variant="destructive-tron">
-          <CheckIcon />
-          Icon
-        </Badge>
-        <Badge asChild variant="destructive-tron">
-          <a href="#">
-            Link
-            <ArrowRightIcon />
-          </a>
-        </Badge>
-        <Badge variant="destructive-tron">
-          Close
-          <BadgeClose />
-        </Badge>
-
-        <Badge variant="destructive-dotted">Dotted</Badge>
-        <Badge asChild variant="destructive-dotted">
-          <a href="#">
-            Link
-            <ArrowRightIcon />
-          </a>
-        </Badge>
-        <Badge variant="destructive-dotted">
-          Close
-          <BadgeClose />
-        </Badge>
-      </div>
-
-      <Separator />
-
-      <div className="flex flex-wrap gap-4">
-        <Badge variant="success">Success</Badge>
-        <Badge variant="success">
-          <CheckIcon />
-          Icon
-        </Badge>
-        <Badge asChild variant="success">
-          <a href="#">
-            Link
-            <ArrowRightIcon />
-          </a>
-        </Badge>
-        <Badge variant="success">
-          Close
-          <BadgeClose />
-        </Badge>
-
-        <Badge variant="success-accent">Accent</Badge>
-        <Badge variant="success-accent">
-          <CheckIcon />
-          Icon
-        </Badge>
-        <Badge asChild variant="success-accent">
-          <a href="#">
-            Link
-            <ArrowRightIcon />
-          </a>
-        </Badge>
-        <Badge variant="success-accent">
-          Close
-          <BadgeClose />
-        </Badge>
-
-        <Badge variant="success-muted">Muted</Badge>
-        <Badge variant="success-muted">
-          <CheckIcon />
-          Icon
-        </Badge>
-        <Badge asChild variant="success-muted">
-          <a href="#">
-            Link
-            <ArrowRightIcon />
-          </a>
-        </Badge>
-        <Badge variant="success-muted">
-          Close
-          <BadgeClose />
-        </Badge>
-
-        <Badge variant="success-surface">Surface</Badge>
-        <Badge variant="success-surface">
-          <CheckIcon />
-          Icon
-        </Badge>
-        <Badge asChild variant="success-surface">
-          <a href="#">
-            Link
-            <ArrowRightIcon />
-          </a>
-        </Badge>
-        <Badge variant="success-surface">
-          Close
-          <BadgeClose />
-        </Badge>
-
-        <Badge variant="success-faded">Faded</Badge>
-        <Badge variant="success-faded">
-          <CheckIcon />
-          Icon
-        </Badge>
-        <Badge asChild variant="success-faded">
-          <a href="#">
-            Link
-            <ArrowRightIcon />
-          </a>
-        </Badge>
-        <Badge variant="success-faded">
-          Close
-          <BadgeClose />
-        </Badge>
-
-        <Badge variant="success-tron">Tron</Badge>
-        <Badge variant="success-tron">
-          <CheckIcon />
-          Icon
-        </Badge>
-        <Badge asChild variant="success-tron">
-          <a href="#">
-            Link
-            <ArrowRightIcon />
-          </a>
-        </Badge>
-        <Badge variant="success-tron">
-          Close
-          <BadgeClose />
-        </Badge>
-
-        <Badge variant="success-dotted">Dotted</Badge>
-        <Badge asChild variant="success-dotted">
-          <a href="#">
-            Link
-            <ArrowRightIcon />
-          </a>
-        </Badge>
-        <Badge variant="success-dotted">
-          Close
-          <BadgeClose />
-        </Badge>
-      </div>
-
-      <Separator />
-
-      <div className="flex flex-wrap gap-4">
-        <Badge variant="warning">Warning</Badge>
-        <Badge variant="warning">
-          <CheckIcon />
-          Icon
-        </Badge>
-        <Badge asChild variant="warning">
-          <a href="#">
-            Link
-            <ArrowRightIcon />
-          </a>
-        </Badge>
-        <Badge variant="warning">
-          Close
-          <BadgeClose />
-        </Badge>
-
-        <Badge variant="warning-accent">Accent</Badge>
-        <Badge variant="warning-accent">
-          <CheckIcon />
-          Icon
-        </Badge>
-        <Badge asChild variant="warning-accent">
-          <a href="#">
-            Link
-            <ArrowRightIcon />
-          </a>
-        </Badge>
-        <Badge variant="warning-accent">
-          Close
-          <BadgeClose />
-        </Badge>
-
-        <Badge variant="warning-muted">Muted</Badge>
-        <Badge variant="warning-muted">
-          <CheckIcon />
-          Icon
-        </Badge>
-        <Badge asChild variant="warning-muted">
-          <a href="#">
-            Link
-            <ArrowRightIcon />
-          </a>
-        </Badge>
-        <Badge variant="warning-muted">
-          Close
-          <BadgeClose />
-        </Badge>
-
-        <Badge variant="warning-surface">Surface</Badge>
-        <Badge variant="warning-surface">
-          <CheckIcon />
-          Icon
-        </Badge>
-        <Badge asChild variant="warning-surface">
-          <a href="#">
-            Link
-            <ArrowRightIcon />
-          </a>
-        </Badge>
-        <Badge variant="warning-surface">
-          Close
-          <BadgeClose />
-        </Badge>
-
-        <Badge variant="warning-faded">Faded</Badge>
-        <Badge variant="warning-faded">
-          <CheckIcon />
-          Icon
-        </Badge>
-        <Badge asChild variant="warning-faded">
-          <a href="#">
-            Link
-            <ArrowRightIcon />
-          </a>
-        </Badge>
-        <Badge variant="warning-faded">
-          Close
-          <BadgeClose />
-        </Badge>
-
-        <Badge variant="warning-tron">Tron</Badge>
-        <Badge variant="warning-tron">
-          <CheckIcon />
-          Icon
-        </Badge>
-        <Badge asChild variant="warning-tron">
-          <a href="#">
-            Link
-            <ArrowRightIcon />
-          </a>
-        </Badge>
-        <Badge variant="warning-tron">
-          Close
-          <BadgeClose />
-        </Badge>
-
-        <Badge variant="warning-dotted">Dotted</Badge>
-        <Badge asChild variant="warning-dotted">
-          <a href="#">
-            Link
-            <ArrowRightIcon />
-          </a>
-        </Badge>
-        <Badge variant="warning-dotted">
-          Close
-          <BadgeClose />
-        </Badge>
-      </div>
-    </div>
+      <ComponentPlayground>
+        <fieldset>
+          <div className="flex flex-col gap-3">
+            <legend className="leading-none font-semibold">
+              Badge Variant
+            </legend>
+            <RadioGroup
+              onValueChange={setBadgeVariant}
+              defaultValue={badgeVariant}
+            >
+              {badgeVariants.map((variant) => (
+                <div key={variant} className="flex items-center gap-3">
+                  <RadioGroupItem value={variant} id={variant} />
+                  <Label htmlFor={variant}>{variant}</Label>
+                </div>
+              ))}
+            </RadioGroup>
+          </div>
+        </fieldset>
+      </ComponentPlayground>
+    </>
   );
 }

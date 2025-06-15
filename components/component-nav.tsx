@@ -145,7 +145,7 @@ export function ComponentNav() {
                 className={cn(
                   "relative isolate flex shrink-0 items-center gap-2 overflow-visible rounded-md px-3 py-1.5 text-sm font-medium outline-outline hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-2",
                   isActive
-                    ? "pointer-events-none bg-primary-muted text-primary-accent-foreground"
+                    ? "pointer-events-none bg-primary-muted text-primary-muted-foreground"
                     : "text-muted-foreground"
                 )}
                 aria-current={isActive ? "page" : undefined}

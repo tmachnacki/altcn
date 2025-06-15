@@ -12,7 +12,7 @@ const buttonVariants = cva(
     "active:opacity-80",
     "disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50",
     "outline-offset-2 focus-visible:outline-2",
-    "[&_svg]:pointer-events-none [&_svg]:shrink-0",
+    "*:[svg]:pointer-events-none *:[svg]:shrink-0",
   ],
   {
     variants: {
@@ -26,19 +26,22 @@ const buttonVariants = cva(
         base: ["bg-base-bg text-base-foreground shadow", "hover:bg-base-bg/90"],
 
         accent: [
-          "bg-accent text-accent-foreground",
+          "bg-muted text-accent-foreground",
           "hover:bg-base-200 dark:hover:bg-base-800",
         ],
 
-        muted: ["bg-muted text-muted-foreground", "hover:bg-accent"],
+        muted: [
+          "bg-muted text-muted-foreground",
+          "hover:bg-base-200 dark:hover:bg-base-800",
+        ],
 
         surface: [
-          "border border-border-faded bg-faded text-accent-foreground shadow-xs",
+          "border border-border-faded bg-faded text-accent-foreground",
           "hover:bg-muted",
         ],
 
         faded: [
-          "border border-border-faded bg-faded text-muted-foreground shadow-xs",
+          "border border-border-faded bg-faded text-muted-foreground",
           "hover:bg-muted",
         ],
 
@@ -66,12 +69,12 @@ const buttonVariants = cva(
         ],
 
         "primary-surface": [
-          "border border-border-primary-faded bg-primary-faded text-primary-accent-foreground shadow-xs",
+          "border border-border-primary-faded bg-primary-faded text-primary-accent-foreground",
           "hover:bg-primary-muted/80",
         ],
 
         "primary-faded": [
-          "border border-border-primary-faded bg-primary-faded text-primary-muted-foreground shadow-xs",
+          "border border-border-primary-faded bg-primary-faded text-primary-muted-foreground",
           "hover:bg-primary-muted/80",
         ],
 
@@ -113,12 +116,12 @@ const buttonVariants = cva(
         ],
 
         "secondary-surface": [
-          "border border-border-secondary-faded bg-secondary-faded text-secondary-accent-foreground shadow-xs",
+          "border border-border-secondary-faded bg-secondary-faded text-secondary-accent-foreground",
           "hover:bg-secondary-muted/80",
         ],
 
         "secondary-faded": [
-          "border border-border-secondary-faded bg-secondary-faded text-secondary-muted-foreground shadow-xs",
+          "border border-border-secondary-faded bg-secondary-faded text-secondary-muted-foreground",
           "hover:bg-secondary-muted/80",
         ],
 
@@ -160,12 +163,12 @@ const buttonVariants = cva(
         ],
 
         "destructive-surface": [
-          "border border-border-destructive-faded bg-destructive-faded text-destructive-accent-foreground shadow-xs",
+          "border border-border-destructive-faded bg-destructive-faded text-destructive-accent-foreground",
           "hover:bg-destructive-muted/80",
         ],
 
         "destructive-faded": [
-          "border border-border-destructive-faded bg-destructive-faded text-destructive-muted-foreground shadow-xs",
+          "border border-border-destructive-faded bg-destructive-faded text-destructive-muted-foreground",
           "hover:bg-destructive-muted/80",
         ],
 
@@ -194,48 +197,48 @@ const buttonVariants = cva(
         default: [
           "h-9 px-4 py-2",
           "has-[[data-slot='spinner']]:px-3 has-[>svg]:px-3 **:data-[slot=spinner]:not-[[class*='size-']]:size-4",
-          "[&_svg:not([class*='size-'])]:size-4",
+          "*:[svg]:not-[[class*='size-']]:size-4",
         ],
 
         lg: [
           "h-10 gap-3 rounded-md px-6 py-2 text-base",
           "has-[[data-slot='spinner']]:px-4 has-[>svg]:px-4 **:data-[slot=spinner]:not-[[class*='size-']]:size-5",
-          "[&_svg:not([class*='size-'])]:size-5",
+          "*:[svg]:not-[[class*='size-']]:size-5",
         ],
 
         sm: [
           "h-8 rounded-md px-3 py-1.5",
           "has-[[data-slot='spinner']]:px-2.5 has-[>svg]:px-2.5 **:data-[slot=spinner]:not-[[class*='size-']]:size-4",
-          "[&_svg:not([class*='size-'])]:size-4",
+          "*:[svg]:not-[[class*='size-']]:size-4",
         ],
 
         xs: [
           "h-6 gap-1.5 rounded-sm px-2 py-1 text-xs font-normal",
-          "has-[[data-slot='spinner']]:px-2 has-[>svg]:px-2 **:data-[slot=spinner]:not-[[class*='size-']]:size-3.5 [&_svg:not([class*='size-'])]:size-3.5",
+          "has-[[data-slot='spinner']]:px-2 has-[>svg]:px-2 **:data-[slot=spinner]:not-[[class*='size-']]:size-3.5 *:[svg]:not-[[class*='size-']]:size-3.5",
         ],
 
         icon: [
           "size-9",
           "**:data-[slot=spinner]:not-[[class*='size-']]:size-4",
-          "[&_svg:not([class*='size-'])]:size-4",
+          "*:[svg]:not-[[class*='size-']]:size-4",
         ],
 
         "icon-lg": [
           "size-10",
           "**:data-[slot=spinner]:not-[[class*='size-']]:size-5",
-          "[&_svg:not([class*='size-'])]:size-5",
+          "*:[svg]:not-[[class*='size-']]:size-5",
         ],
 
         "icon-sm": [
           "size-8",
           "**:data-[slot=spinner]:not-[[class*='size-']]:size-4",
-          "[&_svg:not([class*='size-'])]:size-4",
+          "*:[svg]:not-[[class*='size-']]:size-4",
         ],
 
         "icon-xs": [
           "size-6 rounded-sm",
           "**:data-[slot=spinner]:not-[[class*='size-']]:size-3.5",
-          "[&_svg:not([class*='size-'])]:size-3.5",
+          "*:[svg]:not-[[class*='size-']]:size-3.5",
         ],
       },
     },
@@ -295,7 +298,6 @@ function Button({
   variant,
   size,
   asChild = false,
-  empty = false,
   children,
   ...props
 }: React.ComponentProps<"button"> &
@@ -308,8 +310,6 @@ function Button({
   return (
     <Comp
       data-slot="button"
-      data-variant={variant}
-      data-empty={empty}
       className={cn(
         buttonVariants({ variant, size }),
         "group/button",

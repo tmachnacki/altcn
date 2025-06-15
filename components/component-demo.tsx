@@ -8,8 +8,10 @@ export function ComponentDemo({ children }: { children: React.ReactNode }) {
   const title = componentSlug?.replace(/-/g, " ");
 
   return (
-    <div className="grid gap-3">
-      <h1 className="text-lg font-medium capitalize">{title}</h1>
+    <div className="grid gap-4">
+      <h1 className="text-lg leading-none font-semibold tracking-tight capitalize">
+        {title}
+      </h1>
       <div className="flex rounded-lg border">{children}</div>
     </div>
   );

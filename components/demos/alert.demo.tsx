@@ -12,17 +12,12 @@ import {
   AlertDescription,
   AlertFooter,
   AlertIcon,
+  AlertInsetColor,
   AlertTitle,
 } from "~/components/ui/alert";
 import { Button } from "~/components/ui/button";
 import { Label } from "~/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "~/components/ui/select";
+import { RadioGroup, RadioGroupItem } from "~/components/ui/radio-group";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
 
@@ -33,6 +28,7 @@ export function AlertDemo() {
 
   const alertVariants = [
     "outline",
+    "base",
     "muted",
     "faded",
     "primary",
@@ -78,10 +74,8 @@ export function AlertDemo() {
               </AlertDescription>
             </AlertContent>
           </Alert>
-          <Alert
-            insetColor
-            variant={alertVariant as (typeof alertVariants)[number]}
-          >
+          <Alert variant={alertVariant as (typeof alertVariants)[number]}>
+            <AlertInsetColor />
             <CheckCircle2Icon />
             <AlertContent>
               <AlertTitle>Success! This one has insetColor</AlertTitle>
@@ -101,7 +95,7 @@ export function AlertDemo() {
             </AlertContent>
           </Alert>
           <Alert
-            centered
+            align="center"
             variant={alertVariant as (typeof alertVariants)[number]}
           >
             <AlertIcon type="info" />
@@ -116,9 +110,8 @@ export function AlertDemo() {
           </Alert>
           {showAlertCentered && (
             <Alert
-              centered
+              align="center"
               variant={alertVariant as (typeof alertVariants)[number]}
-              className="animate-out fade-out-0"
             >
               <AlertIcon type="info" />
               <AlertContent>
@@ -133,7 +126,7 @@ export function AlertDemo() {
             </Alert>
           )}
           <Alert
-            centered
+            align="center"
             variant={alertVariant as (typeof alertVariants)[number]}
           >
             <AlertIcon type="warning" />
@@ -166,10 +159,7 @@ export function AlertDemo() {
             </AlertContent>
           </Alert>
           {showAlert && (
-            <Alert
-              variant={alertVariant as (typeof alertVariants)[number]}
-              className="animate-out fade-out-0"
-            >
+            <Alert variant={alertVariant as (typeof alertVariants)[number]}>
               <AlertIcon type="error" />
               <AlertContent>
                 <AlertTitle>Something went wrong!</AlertTitle>
@@ -193,25 +183,24 @@ export function AlertDemo() {
         </div>
       </ComponentContainer>
       <ComponentPlayground>
-        <div className="flex flex-col gap-2">
-          <Label htmlFor="alert-variant">Alert Variant</Label>
-          <Select
-            value={alertVariant}
-            onValueChange={setAlertVariant}
-            defaultValue="outline"
-          >
-            <SelectTrigger id="alert-variant" className="w-full">
-              <SelectValue>{alertVariant}</SelectValue>
-            </SelectTrigger>
-            <SelectContent>
-              {alertVariants.map((alertVariant) => (
-                <SelectItem key={alertVariant} value={alertVariant}>
-                  {alertVariant}
-                </SelectItem>
+        <fieldset>
+          <div className="flex flex-col gap-3">
+            <legend className="leading-none font-semibold">
+              Alert Variant
+            </legend>
+            <RadioGroup
+              onValueChange={setAlertVariant}
+              defaultValue={alertVariant}
+            >
+              {alertVariants.map((variant) => (
+                <div key={variant} className="flex items-center gap-3">
+                  <RadioGroupItem value={variant} id={variant} />
+                  <Label htmlFor={variant}>{variant}</Label>
+                </div>
               ))}
-            </SelectContent>
-          </Select>
-        </div>
+            </RadioGroup>
+          </div>
+        </fieldset>
       </ComponentPlayground>
     </>
   );

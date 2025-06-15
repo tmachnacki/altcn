@@ -12,7 +12,7 @@ export function ComponentContainer({
   return (
     <div
       className={cn(
-        "flex max-h-[70vh] min-h-48 flex-1 flex-col items-center justify-center overflow-y-auto px-8 py-16",
+        "grid max-h-[60svh] min-h-48 flex-1 flex-col place-items-center overflow-y-auto px-8 py-12",
         className
       )}
     >
