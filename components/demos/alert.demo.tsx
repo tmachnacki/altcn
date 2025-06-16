@@ -17,7 +17,13 @@ import {
 } from "~/components/ui/alert";
 import { Button } from "~/components/ui/button";
 import { Label } from "~/components/ui/label";
-import { RadioGroup, RadioGroupItem } from "~/components/ui/radio-group";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "~/components/ui/select";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
 
@@ -183,24 +189,21 @@ export function AlertDemo() {
         </div>
       </ComponentContainer>
       <ComponentPlayground>
-        <fieldset>
-          <div className="flex flex-col gap-3">
-            <legend className="leading-none font-semibold">
-              Alert Variant
-            </legend>
-            <RadioGroup
-              onValueChange={setAlertVariant}
-              defaultValue={alertVariant}
-            >
+        <div className="grid gap-2">
+          <Label htmlFor="alert-variant">Alert Variant</Label>
+          <Select value={alertVariant} onValueChange={setAlertVariant}>
+            <SelectTrigger id="alert-variant" className="w-full">
+              <SelectValue placeholder="Select variant" />
+            </SelectTrigger>
+            <SelectContent>
               {alertVariants.map((variant) => (
-                <div key={variant} className="flex items-center gap-3">
-                  <RadioGroupItem value={variant} id={variant} />
-                  <Label htmlFor={variant}>{variant}</Label>
-                </div>
+                <SelectItem key={variant} value={variant}>
+                  {variant}
+                </SelectItem>
               ))}
-            </RadioGroup>
-          </div>
-        </fieldset>
+            </SelectContent>
+          </Select>
+        </div>
       </ComponentPlayground>
     </>
   );

@@ -134,8 +134,8 @@ const COMPONENTS = [
 export function ComponentNav() {
   const pathname = usePathname();
   return (
-    <nav className="flex min-h-0 flex-1 flex-col overflow-y-auto">
-      <ul className="flex min-h-0 flex-1 flex-col gap-2">
+    <nav className="h-full overflow-auto py-content no-scrollbar">
+      <ul className="flex min-h-0 flex-1 flex-col gap-1">
         {COMPONENTS.map((component) => {
           const isActive = pathname === component.href;
           return (

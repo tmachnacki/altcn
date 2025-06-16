@@ -14,11 +14,11 @@ export default function ComponentsLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="relative container flex h-full min-h-0 gap-12">
-      <aside className="sticky z-10 hidden h-[calc(100svh-var(--header-h))] w-48 flex-none flex-col py-content lg:flex">
+    <div className="relative container grid grid-cols-1 gap-12 lg:grid-cols-[12rem_minmax(0,1fr)]">
+      <aside className="relative z-10 hidden h-[calc(100svh-var(--header-h))] w-full shrink-0 mask-[linear-gradient(#000,#000,transparent_0,#000_var(--scroll-shadow-size),#000_calc(100%_-_var(--scroll-shadow-size)),transparent)] [--scroll-shadow-size:--spacing(8)] lg:sticky lg:top-12 lg:block">
         <ComponentNav />
       </aside>
-      <main className="mx-auto min-h-min w-full flex-1 px-4 py-content lg:px-0">
+      <main className="mx-auto min-h-min w-full px-4 py-content lg:px-0">
         <ComponentDemo>{children}</ComponentDemo>
       </main>
     </div>

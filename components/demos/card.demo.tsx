@@ -13,20 +13,26 @@ import {
 } from "~/components/ui/card";
 import { Input } from "~/components/ui/input";
 import { Label } from "~/components/ui/label";
-import { RadioGroup, RadioGroupItem } from "~/components/ui/radio-group";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "~/components/ui/select";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
 import { BackgroundPattern } from "~/components/demos/background-pattern";
 
-const cardVariants = ["default", "translucent"] as const;
+const cardVariants = ["solid", "translucent"] as const;
 
 export function CardDemo() {
-  const [variant, setVariant] = React.useState("default");
+  const [variant, setVariant] = React.useState("solid");
 
   return (
     <>
-      <ComponentContainer>
-        <div className="relative flex w-full max-w-[1000px] flex-col items-center justify-center overflow-hidden rounded-lg border border-border-primary-faded bg-transparent p-24">
+      <ComponentContainer className="p-0">
+        <div className="relative flex min-h-96 w-full min-w-0 flex-col items-center justify-center overflow-hidden rounded-s-lg bg-transparent p-6">
           <div className="absolute inset-0 z-0 flex shrink-0 items-center justify-center overflow-hidden">
             <BackgroundPattern className="shrink-0" />
           </div>
@@ -73,11 +79,19 @@ export function CardDemo() {
                 </div>
               </form>
             </CardContent>
-            <CardFooter className="flex items-center justify-end gap-2">
-              <Button variant="primary-muted" type="button">
-                Create an account
+            <CardFooter className="flex flex-col-reverse items-center justify-end gap-2 sm:flex-row">
+              <Button
+                variant="primary-muted"
+                type="button"
+                className="w-full sm:w-auto"
+              >
+                Get Started
               </Button>
-              <Button variant="primary" type="submit">
+              <Button
+                variant="primary"
+                type="submit"
+                className="w-full sm:w-auto"
+              >
                 Sign in
               </Button>
             </CardFooter>
@@ -85,21 +99,21 @@ export function CardDemo() {
         </div>
       </ComponentContainer>
       <ComponentPlayground>
-        <fieldset>
-          <div className="flex flex-col gap-3">
-            <legend className="leading-none font-semibold">Card Variant</legend>
-            <RadioGroup value={variant} onValueChange={setVariant}>
+        <div className="grid gap-2">
+          <Label htmlFor="card-variant">Card Variant</Label>
+          <Select value={variant} onValueChange={setVariant}>
+            <SelectTrigger id="card-variant" className="w-full">
+              <SelectValue placeholder="Select variant" />
+            </SelectTrigger>
+            <SelectContent>
               {cardVariants.map((variant) => (
-                <div className="flex items-center gap-3" key={variant}>
-                  <RadioGroupItem value={variant} id={variant}>
-                    {variant}
-                  </RadioGroupItem>
-                  <Label htmlFor={variant}>{variant}</Label>
-                </div>
+                <SelectItem key={variant} value={variant}>
+                  {variant}
+                </SelectItem>
               ))}
-            </RadioGroup>
-          </div>
-        </fieldset>
+            </SelectContent>
+          </Select>
+        </div>
       </ComponentPlayground>
     </>
   );

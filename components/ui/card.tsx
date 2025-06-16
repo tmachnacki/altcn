@@ -6,11 +6,11 @@ import { cn } from "~/lib/utils";
 function Card({
   className,
   asChild,
-  variant = "default",
+  variant = "solid",
   ...props
 }: React.ComponentProps<"div"> & {
   asChild?: boolean;
-  variant?: "default" | "translucent";
+  variant?: "solid" | "translucent";
 }) {
   const Comp = asChild ? Slot : "div";
   return (
@@ -18,7 +18,7 @@ function Card({
       data-slot="card"
       className={cn(
         "rounded-lg border border-border text-card-foreground",
-        variant === "default"
+        variant === "solid"
           ? "bg-card shadow-md"
           : "bg-card/50 backdrop-blur-3xl",
         className

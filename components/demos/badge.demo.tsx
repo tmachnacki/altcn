@@ -3,9 +3,17 @@
 import * as React from "react";
 import { ArrowRightIcon, CheckIcon } from "lucide-react";
 
+import { sleep } from "~/lib/utils";
+
 import { Badge, BadgeClose } from "~/components/ui/badge";
 import { Label } from "~/components/ui/label";
-import { RadioGroup, RadioGroupItem } from "~/components/ui/radio-group";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "~/components/ui/select";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
 
@@ -56,6 +64,13 @@ const badgeVariants = [
 
 export function BadgeDemo() {
   const [badgeVariant, setBadgeVariant] = React.useState("outline");
+  const [showBadge, setShowBadge] = React.useState(true);
+
+  async function handleCloseBadge() {
+    setShowBadge(false);
+    await sleep(2000);
+    setShowBadge(true);
+  }
 
   return (
     <>
@@ -77,32 +92,31 @@ export function BadgeDemo() {
               <ArrowRightIcon />
             </a>
           </Badge>
-          <Badge variant={badgeVariant as (typeof badgeVariants)[number]}>
-            Close
-            <BadgeClose />
-          </Badge>
+          {showBadge && (
+            <Badge variant={badgeVariant as (typeof badgeVariants)[number]}>
+              Close
+              <BadgeClose onClick={handleCloseBadge} />
+            </Badge>
+          )}
         </div>
       </ComponentContainer>
 
       <ComponentPlayground>
-        <fieldset>
-          <div className="flex flex-col gap-3">
-            <legend className="leading-none font-semibold">
-              Badge Variant
-            </legend>
-            <RadioGroup
-              onValueChange={setBadgeVariant}
-              defaultValue={badgeVariant}
-            >
+        <div className="grid gap-2">
+          <Label htmlFor="badge-variant">Badge Variant</Label>
+          <Select value={badgeVariant} onValueChange={setBadgeVariant}>
+            <SelectTrigger id="badge-variant" className="w-full">
+              <SelectValue placeholder="Select variant" />
+            </SelectTrigger>
+            <SelectContent>
               {badgeVariants.map((variant) => (
-                <div key={variant} className="flex items-center gap-3">
-                  <RadioGroupItem value={variant} id={variant} />
-                  <Label htmlFor={variant}>{variant}</Label>
-                </div>
+                <SelectItem key={variant} value={variant}>
+                  {variant}
+                </SelectItem>
               ))}
-            </RadioGroup>
-          </div>
-        </fieldset>
+            </SelectContent>
+          </Select>
+        </div>
       </ComponentPlayground>
     </>
   );

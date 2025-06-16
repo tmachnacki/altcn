@@ -12,7 +12,7 @@ const sliderVariants = cva(
     variants: {
       variant: {
         primary:
-          "[--slider-track-bg:var(--color-accent)] aria-invalid:[--slider-track-bg:var(--color-destructive-muted)]",
+          "[--slider-track-bg:var(--color-muted)] aria-invalid:[--slider-track-bg:var(--color-destructive-muted)]",
 
         "primary-muted":
           "[--slider-track-bg:var(--color-primary-muted)] aria-invalid:[--slider-track-bg:var(--color-destructive-muted)]",
@@ -21,7 +21,7 @@ const sliderVariants = cva(
           "[--slider-track-bg:var(--color-primary-faded)] *:data-[slot=slider-track]:inset-ring-1 *:data-[slot=slider-track]:inset-ring-border-primary-faded aria-invalid:[--slider-track-bg:var(--color-destructive-faded)] aria-invalid:*:data-[slot=slider-track]:inset-ring-border-destructive-faded",
 
         secondary:
-          "[--slider-track-bg:var(--color-accent)] aria-invalid:[--slider-track-bg:var(--color-destructive-muted)]",
+          "[--slider-track-bg:var(--color-muted)] aria-invalid:[--slider-track-bg:var(--color-destructive-muted)]",
 
         "secondary-muted":
           "[--slider-track-bg:var(--color-secondary-muted)] aria-invalid:[--slider-track-bg:var(--color-destructive-muted)]",
@@ -60,10 +60,10 @@ function Slider({
 }: React.ComponentProps<typeof SliderPrimitive.Root> &
   VariantProps<typeof sliderVariants> & {
     classNames?: {
-      slider?: string;
-      sliderTrack?: string;
-      sliderRange?: string;
-      sliderThumb?: string;
+      root?: string;
+      track?: string;
+      range?: string;
+      thumb?: string;
     };
   }) {
   const _values = React.useMemo(
@@ -87,7 +87,7 @@ function Slider({
       className={cn(
         "relative flex w-full touch-none items-center select-none data-[disabled]:opacity-50 data-[orientation=vertical]:h-full data-[orientation=vertical]:min-h-44 data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col",
         sliderVariants({ variant }),
-        classNames?.slider,
+        classNames?.root,
         className
       )}
       {...props}
@@ -96,14 +96,14 @@ function Slider({
         data-slot="slider-track"
         className={cn(
           "relative grow overflow-hidden rounded-full bg-(--slider-track-bg) data-[orientation=horizontal]:h-1.5 data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-1.5",
-          classNames?.sliderTrack
+          classNames?.track
         )}
       >
         <SliderPrimitive.Range
           data-slot="slider-range"
           className={cn(
             "absolute bg-(--slider-range-bg) data-[orientation=horizontal]:h-full data-[orientation=vertical]:w-full",
-            classNames?.sliderRange
+            classNames?.range
           )}
         />
       </SliderPrimitive.Track>
@@ -113,7 +113,7 @@ function Slider({
           key={`slider-thumb-${index}`}
           className={cn(
             "block size-4 shrink-0 rounded-full border border-(--slider-thumb-border) bg-background shadow-sm ring-0 ring-(--slider-thumb-ring) transition-shadow hover:ring-[3px] focus:ring-[3px] focus:outline-hidden disabled:pointer-events-none disabled:opacity-50",
-            classNames?.sliderThumb
+            classNames?.thumb
           )}
         />
       ))}

@@ -11,7 +11,7 @@ const badgeVariants = cva(
   [
     "relative isolate inline-flex h-6 w-fit shrink-0 items-center justify-center gap-1.5 rounded-md px-2 py-1 text-xs leading-none font-medium whitespace-nowrap",
     "focus-visible:outline-2 focus-visible:outline-offset-2",
-    "*:[svg]:pointer-events-none *:[svg]:not-[[class*='size-']]:size-3",
+    "**:[svg]:pointer-events-none **:[svg]:not-[[class*='size-']]:size-3",
   ],
   {
     variants: {
@@ -281,8 +281,8 @@ const badgeVariants = cva(
         ],
         className: [
           "bg-background text-foreground inset-ring inset-ring-border",
-          "[a&]:hover:bg-muted [a&]:hover:inset-ring-hover-border",
-          "[button&]:hover:bg-muted [button&]:hover:inset-ring-hover-border",
+          "[a&]:hover:bg-faded-solid [a&]:hover:inset-ring-hover-border",
+          "[button&]:hover:bg-faded-solid [button&]:hover:inset-ring-hover-border",
         ],
       },
       {

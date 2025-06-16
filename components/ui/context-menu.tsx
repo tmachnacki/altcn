@@ -12,7 +12,7 @@ import {
   menuItemIndicatorVariants,
   menuItemVariants,
   menuShortcutVariants,
-  type MenuContextType,
+  type MenuContextProps,
 } from "~/components/ui/dropdown-menu";
 
 function ContextMenu({
@@ -66,14 +66,14 @@ type ContextMenuSubTriggerProps = React.ComponentProps<
   typeof ContextMenuPrimitive.SubTrigger
 > &
   VariantProps<typeof menuItemVariants> & {
-    inset?: boolean;
+    position?: "default" | "inset";
   };
 
 function ContextMenuSubTrigger({
   className,
-  inset,
+  position = "default",
   variant,
-  wide,
+  width,
   children,
   ...props
 }: ContextMenuSubTriggerProps) {
@@ -82,13 +82,13 @@ function ContextMenuSubTrigger({
   return (
     <ContextMenuPrimitive.SubTrigger
       data-slot="context-menu-sub-trigger"
-      data-inset={inset}
+      data-position={position}
       data-variant={variant || context.variant}
-      data-wide={wide || context.wide}
+      data-width={width || context.width}
       className={cn(
         menuItemVariants({
           variant: variant || context.variant,
-          wide: wide || context.wide,
+          width: width || context.width,
         }),
         className
       )}
@@ -120,25 +120,25 @@ function ContextMenuSubContent({
   );
 }
 
-const ContextMenuContext = React.createContext<MenuContextType>({});
+const ContextMenuContext = React.createContext<MenuContextProps>({});
 
 function ContextMenuContent({
   className,
   variant = "accent",
-  wide = undefined,
+  width = "default",
   indicatorVariant = "default",
   ...props
 }: React.ComponentProps<typeof ContextMenuPrimitive.Content> &
-  MenuContextType) {
+  MenuContextProps) {
   return (
-    <ContextMenuContext.Provider value={{ variant, wide, indicatorVariant }}>
+    <ContextMenuContext.Provider value={{ variant, width, indicatorVariant }}>
       <ContextMenuPrimitive.Portal>
         <ContextMenuPrimitive.Content
           data-slot="context-menu-content"
           className={cn(
             menuContentVariants(),
-            "min-w-32",
-            "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:ease-out data-[state=open]:fade-in-0",
+            "max-h-(--radix-context-menu-content-available-height) min-w-32 origin-(--radix-context-menu-content-transform-origin)",
+            "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:ease-out data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95",
             className
           )}
           {...props}
@@ -152,14 +152,14 @@ type ContextMenuItemProps = React.ComponentProps<
   typeof ContextMenuPrimitive.Item
 > &
   VariantProps<typeof menuItemVariants> & {
-    inset?: boolean;
+    position?: "default" | "inset";
   };
 
 function ContextMenuItem({
   className,
-  inset,
+  position = "default",
   variant,
-  wide,
+  width,
   ...props
 }: ContextMenuItemProps) {
   const context = React.useContext(ContextMenuContext);
@@ -167,13 +167,13 @@ function ContextMenuItem({
   return (
     <ContextMenuPrimitive.Item
       data-slot="context-menu-item"
-      data-inset={inset}
+      data-position={position}
       data-variant={variant || context.variant}
-      data-wide={wide || context.wide}
+      data-width={width || context.width}
       className={cn(
         menuItemVariants({
           variant: variant || context.variant,
-          wide: wide || context.wide,
+          width: width || context.width,
         }),
         className
       )}
@@ -185,7 +185,7 @@ function ContextMenuItem({
 type ContextMenuCheckboxItemProps = React.ComponentProps<
   typeof ContextMenuPrimitive.CheckboxItem
 > &
-  MenuContextType & {
+  MenuContextProps & {
     indicatorClassName?: string;
   };
 
@@ -193,7 +193,7 @@ function ContextMenuCheckboxItem({
   className,
   checked,
   variant,
-  wide,
+  width,
   indicatorVariant,
   indicatorClassName,
   children,
@@ -205,12 +205,12 @@ function ContextMenuCheckboxItem({
     <ContextMenuPrimitive.CheckboxItem
       data-slot="context-menu-checkbox-item"
       data-variant={variant || context.variant}
-      data-wide={wide || context.wide}
-      data-inset
+      data-width={width || context.width}
+      data-position="inset"
       className={cn(
         menuItemVariants({
           variant: variant || context.variant,
-          wide: wide || context.wide,
+          width: width || context.width,
         }),
         className
       )}
@@ -220,7 +220,7 @@ function ContextMenuCheckboxItem({
       <ContextMenuPrimitive.ItemIndicator
         data-slot="context-menu-checkbox-item-indicator"
         data-variant={indicatorVariant || context.indicatorVariant}
-        data-wide={wide || context.wide}
+        data-width={width || context.width}
         data-item-variant={variant || context.variant}
         className={cn(
           menuItemIndicatorVariants({
@@ -239,14 +239,14 @@ function ContextMenuCheckboxItem({
 type ContextMenuRadioItemProps = React.ComponentProps<
   typeof ContextMenuPrimitive.RadioItem
 > &
-  MenuContextType & {
+  MenuContextProps & {
     indicatorClassName?: string;
   };
 
 function ContextMenuRadioItem({
   className,
   variant,
-  wide,
+  width,
   indicatorVariant,
   indicatorClassName,
   children,
@@ -258,12 +258,12 @@ function ContextMenuRadioItem({
     <ContextMenuPrimitive.RadioItem
       data-slot="context-menu-radio-item"
       data-variant={variant || context.variant}
-      data-wide={wide || context.wide}
-      data-inset
+      data-width={width || context.width}
+      data-position="inset"
       className={cn(
         menuItemVariants({
           variant: variant || context.variant,
-          wide: wide || context.wide,
+          width: width || context.width,
         }),
         className
       )}
@@ -272,7 +272,7 @@ function ContextMenuRadioItem({
       <ContextMenuPrimitive.ItemIndicator
         data-slot="context-menu-radio-item-indicator"
         data-variant={indicatorVariant || context.indicatorVariant}
-        data-wide={wide || context.wide}
+        data-width={width || context.width}
         data-item-variant={variant || context.variant}
         className={cn(
           menuItemIndicatorVariants({
@@ -290,17 +290,17 @@ function ContextMenuRadioItem({
 
 function ContextMenuLabel({
   className,
-  inset,
+  position = "default",
   ...props
 }: React.ComponentProps<typeof ContextMenuPrimitive.Label> & {
-  inset?: boolean;
+  position?: "default" | "inset";
 }) {
   return (
     <ContextMenuPrimitive.Label
       data-slot="context-menu-label"
-      data-inset={inset}
+      data-position={position}
       className={cn(
-        "px-(--menu-item-px) py-1.5 text-sm font-medium text-foreground data-[inset]:pl-(--inset-pl)",
+        "px-(--menu-item-px) py-1.5 text-sm font-medium text-foreground data-[position=inset]:pl-(--inset-pl)",
         className
       )}
       {...props}

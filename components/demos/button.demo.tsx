@@ -5,7 +5,14 @@ import { ArrowRightIcon, MailIcon, SettingsIcon } from "lucide-react";
 
 import { Button } from "~/components/ui/button";
 import { Label } from "~/components/ui/label";
-import { RadioGroup, RadioGroupItem } from "~/components/ui/radio-group";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "~/components/ui/select";
+import { Slider } from "~/components/ui/slider";
 import { Spinner } from "~/components/ui/spinner";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
@@ -48,13 +55,26 @@ const buttonVariants = [
   "destructive-ghost",
 ] as const;
 
-const buttonSizes = ["default", "sm", "lg", "xs"] as const;
-const buttonIconSizes = ["icon", "icon-sm", "icon-lg", "icon-xs"] as const;
+type ButtonSize = "xs" | "sm" | "default" | "lg";
+const buttonSizesMap: Record<number, ButtonSize> = {
+  1: "xs",
+  2: "sm",
+  3: "default",
+  4: "lg",
+};
+
+type ButtonIconSize = "icon-xs" | "icon-sm" | "icon" | "icon-lg";
+const buttonIconSizesMap: Record<number, ButtonIconSize> = {
+  1: "icon-xs",
+  2: "icon-sm",
+  3: "icon",
+  4: "icon-lg",
+};
 
 export function ButtonDemo() {
   const [variant, setVariant] = React.useState("outline");
-  const [size, setSize] = React.useState("default");
-  const [iconSize, setIconSize] = React.useState("icon");
+  const [size, setSize] = React.useState(3);
+  const [iconSize, setIconSize] = React.useState(3);
 
   return (
     <>
@@ -63,33 +83,33 @@ export function ButtonDemo() {
           <div className="flex flex-wrap items-center gap-2">
             <Button
               variant={variant as (typeof buttonVariants)[number]}
-              size={size as (typeof buttonSizes)[number]}
+              size={buttonSizesMap[size]}
             >
               Button
             </Button>
             <Button
               variant={variant as (typeof buttonVariants)[number]}
-              size={size as (typeof buttonSizes)[number]}
+              size={buttonSizesMap[size]}
             >
               Get Started <ArrowRightIcon />
             </Button>
             <Button
               variant={variant as (typeof buttonVariants)[number]}
-              size={size as (typeof buttonSizes)[number]}
+              size={buttonSizesMap[size]}
             >
               <MailIcon />
               Inbox
             </Button>
             <Button
               variant={variant as (typeof buttonVariants)[number]}
-              size={size as (typeof buttonSizes)[number]}
+              size={buttonSizesMap[size]}
               disabled
             >
               Disabled
             </Button>
             <Button
               variant={variant as (typeof buttonVariants)[number]}
-              size={size as (typeof buttonSizes)[number]}
+              size={buttonSizesMap[size]}
               disabled
             >
               <Spinner />
@@ -99,20 +119,20 @@ export function ButtonDemo() {
           <div className="flex flex-wrap items-center gap-2">
             <Button
               variant={variant as (typeof buttonVariants)[number]}
-              size={iconSize as (typeof buttonIconSizes)[number]}
+              size={buttonIconSizesMap[iconSize]}
             >
               <SettingsIcon />
             </Button>
             <Button
               variant={variant as (typeof buttonVariants)[number]}
-              size={iconSize as (typeof buttonIconSizes)[number]}
+              size={buttonIconSizesMap[iconSize]}
               disabled
             >
               <SettingsIcon />
             </Button>
             <Button
               variant={variant as (typeof buttonVariants)[number]}
-              size={iconSize as (typeof buttonIconSizes)[number]}
+              size={buttonIconSizesMap[iconSize]}
               disabled
             >
               <Spinner />
@@ -122,55 +142,53 @@ export function ButtonDemo() {
       </ComponentContainer>
 
       <ComponentPlayground>
-        <fieldset>
-          <div className="flex flex-col gap-3">
-            <legend className="leading-none font-semibold">
-              Button Variant
-            </legend>
-            <RadioGroup value={variant} onValueChange={setVariant}>
+        <div className="grid gap-2">
+          <Label htmlFor="button-variant">Button Variant</Label>
+          <Select value={variant} onValueChange={setVariant}>
+            <SelectTrigger id="button-variant" className="w-full">
+              <SelectValue placeholder="Select variant" />
+            </SelectTrigger>
+            <SelectContent>
               {buttonVariants.map((variant) => (
-                <div className="flex items-center gap-3" key={variant}>
-                  <RadioGroupItem value={variant} id={variant}>
-                    {variant}
-                  </RadioGroupItem>
-                  <Label htmlFor={variant}>{variant}</Label>
-                </div>
+                <SelectItem key={variant} value={variant}>
+                  {variant}
+                </SelectItem>
               ))}
-            </RadioGroup>
-          </div>
-        </fieldset>
-        <fieldset>
-          <div className="flex flex-col gap-3">
-            <legend className="leading-none font-semibold">Button Size</legend>
-            <RadioGroup value={size} onValueChange={setSize}>
-              {buttonSizes.map((size) => (
-                <div className="flex items-center gap-3" key={size}>
-                  <RadioGroupItem value={size} id={size}>
-                    {size}
-                  </RadioGroupItem>
-                  <Label htmlFor={size}>{size}</Label>
-                </div>
-              ))}
-            </RadioGroup>
-          </div>
-        </fieldset>
-        <fieldset>
-          <div className="flex flex-col gap-3">
-            <legend className="leading-none font-semibold">
-              Button Icon Size
-            </legend>
-            <RadioGroup value={iconSize} onValueChange={setIconSize}>
-              {buttonIconSizes.map((iconSize) => (
-                <div className="flex items-center gap-3" key={iconSize}>
-                  <RadioGroupItem value={iconSize} id={iconSize}>
-                    {iconSize}
-                  </RadioGroupItem>
-                  <Label htmlFor={iconSize}>{iconSize}</Label>
-                </div>
-              ))}
-            </RadioGroup>
-          </div>
-        </fieldset>
+            </SelectContent>
+          </Select>
+        </div>
+        <div className="grid gap-3">
+          <Label htmlFor="button-size">
+            Button Size:{" "}
+            <span className="inline-block leading-none font-normal text-primary-muted-foreground">
+              {buttonSizesMap[size]}
+            </span>
+          </Label>
+          <Slider
+            id="button-size"
+            min={1}
+            max={4}
+            step={1}
+            value={[size]}
+            onValueChange={(value: number[]) => setSize(value[0])}
+          />
+        </div>
+        <div className="grid gap-3">
+          <Label htmlFor="button-icon-size">
+            Button Icon Size:{" "}
+            <span className="inline-block leading-none font-normal text-primary-muted-foreground">
+              {buttonIconSizesMap[iconSize]}
+            </span>
+          </Label>
+          <Slider
+            id="button-icon-size"
+            min={1}
+            max={4}
+            step={1}
+            value={[iconSize]}
+            onValueChange={(value: number[]) => setIconSize(value[0])}
+          />
+        </div>
       </ComponentPlayground>
     </>
   );

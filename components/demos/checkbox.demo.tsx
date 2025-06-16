@@ -4,7 +4,13 @@ import * as React from "react";
 
 import { Checkbox } from "~/components/ui/checkbox";
 import { Label } from "~/components/ui/label";
-import { RadioGroup, RadioGroupItem } from "~/components/ui/radio-group";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "~/components/ui/select";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
 
@@ -118,23 +124,21 @@ export function CheckboxDemo() {
       </ComponentContainer>
 
       <ComponentPlayground>
-        <fieldset>
-          <div className="flex flex-col gap-3">
-            <legend className="leading-none font-semibold">
-              Checkbox Variant
-            </legend>
-            <RadioGroup value={variant} onValueChange={setVariant}>
+        <div className="grid gap-2">
+          <Label htmlFor="checkbox-variant">Checkbox Variant</Label>
+          <Select value={variant} onValueChange={setVariant}>
+            <SelectTrigger id="checkbox-variant" className="w-full">
+              <SelectValue placeholder="Select variant" />
+            </SelectTrigger>
+            <SelectContent>
               {checkboxVariants.map((variant) => (
-                <div className="flex items-center gap-3" key={variant}>
-                  <RadioGroupItem value={variant} id={variant}>
-                    {variant}
-                  </RadioGroupItem>
-                  <Label htmlFor={variant}>{variant}</Label>
-                </div>
+                <SelectItem key={variant} value={variant}>
+                  {variant}
+                </SelectItem>
               ))}
-            </RadioGroup>
-          </div>
-        </fieldset>
+            </SelectContent>
+          </Select>
+        </div>
       </ComponentPlayground>
     </>
   );

@@ -12,7 +12,7 @@ export function ComponentDemo({ children }: { children: React.ReactNode }) {
       <h1 className="text-lg leading-none font-semibold tracking-tight capitalize">
         {title}
       </h1>
-      <div className="flex rounded-lg border">{children}</div>
+      <div className="flex flex-col md:flex-row rounded-lg border">{children}</div>
     </div>
   );
 }

@@ -284,10 +284,10 @@ function AlertIcon({ className, type, children, ...props }: AlertIconProps) {
       data-slot="alert-icon"
       data-type={type}
       className={cn(
-        "inline-flex size-8 flex-none items-center justify-center rounded-full bg-(--alert-icon-bg) shadow-sm inset-ring inset-ring-(--alert-icon-border) *:[svg]:shrink-0",
+        "inline-flex size-8 flex-none items-center justify-center rounded-full bg-(--alert-icon-bg) shadow-sm inset-ring inset-ring-(--alert-icon-border) **:[svg]:shrink-0",
         type
-          ? "text-(--alert-icon-text) *:[svg]:[not([class*='size-'])]:size-5"
-          : "*:[svg]:text-current *:[svg]:[not([class*='size-'])]:size-4",
+          ? "text-(--alert-icon-text) **:[svg]:not-[[class*='size-']]:size-5"
+          : "**:[svg]:text-current **:[svg]:not-[[class*='size-']]:size-4",
         className
       )}
       {...props}

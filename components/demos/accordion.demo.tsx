@@ -9,7 +9,13 @@ import {
   AccordionTrigger,
 } from "~/components/ui/accordion";
 import { Label } from "~/components/ui/label";
-import { RadioGroup, RadioGroupItem } from "~/components/ui/radio-group";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "~/components/ui/select";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
 
@@ -64,42 +70,36 @@ export function AccordionDemo() {
         </div>
       </ComponentContainer>
       <ComponentPlayground>
-        <fieldset>
-          <div className="flex flex-col gap-3">
-            <legend className="leading-none font-semibold">
-              Accordion Variant
-            </legend>
-            <RadioGroup
-              onValueChange={setAccordionVariant}
-              defaultValue={accordionVariant}
-            >
+        <div className="grid gap-2">
+          <Label htmlFor="accordion-variant">Accordion Variant</Label>
+          <Select value={accordionVariant} onValueChange={setAccordionVariant}>
+            <SelectTrigger id="accordion-variant" className="w-full">
+              <SelectValue placeholder="Select variant" />
+            </SelectTrigger>
+            <SelectContent>
               {accordionVariants.map((variant) => (
-                <div key={variant} className="flex items-center gap-3">
-                  <RadioGroupItem value={variant} id={variant} />
-                  <Label htmlFor={variant}>{variant}</Label>
-                </div>
+                <SelectItem key={variant} value={variant}>
+                  {variant}
+                </SelectItem>
               ))}
-            </RadioGroup>
-          </div>
-        </fieldset>
-        <fieldset>
-          <div className="flex flex-col gap-3">
-            <legend className="leading-none font-semibold">
-              Accordion Layout
-            </legend>
-            <RadioGroup
-              onValueChange={setAccordionLayout}
-              defaultValue={accordionLayout}
-            >
+            </SelectContent>
+          </Select>
+        </div>
+        <div className="grid gap-2">
+          <Label htmlFor="accordion-layout">Accordion Layout</Label>
+          <Select value={accordionLayout} onValueChange={setAccordionLayout}>
+            <SelectTrigger id="accordion-layout" className="w-full">
+              <SelectValue placeholder="Select variant" />
+            </SelectTrigger>
+            <SelectContent>
               {accordionLayouts.map((layout) => (
-                <div key={layout} className="flex items-center gap-3">
-                  <RadioGroupItem value={layout} id={layout} />
-                  <Label htmlFor={layout}>{layout}</Label>
-                </div>
+                <SelectItem key={layout} value={layout}>
+                  {layout}
+                </SelectItem>
               ))}
-            </RadioGroup>
-          </div>
-        </fieldset>
+            </SelectContent>
+          </Select>
+        </div>
       </ComponentPlayground>
     </>
   );
