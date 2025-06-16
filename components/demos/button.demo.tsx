@@ -1,140 +1,177 @@
+"use client";
+
+import * as React from "react";
 import { ArrowRightIcon, MailIcon, SettingsIcon } from "lucide-react";
 
 import { Button } from "~/components/ui/button";
+import { Label } from "~/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "~/components/ui/radio-group";
 import { Spinner } from "~/components/ui/spinner";
+import { ComponentContainer } from "~/components/component-container";
+import { ComponentPlayground } from "~/components/component-playground";
+
+const buttonVariants = [
+  "outline",
+  "base",
+  "accent",
+  "muted",
+  "surface",
+  "faded",
+  "ghost",
+  "link",
+  "primary",
+  "primary-accent",
+  "primary-muted",
+  "primary-surface",
+  "primary-faded",
+  "primary-tron",
+  "primary-shadow",
+  "primary-gradient",
+  "primary-ghost",
+  "secondary",
+  "secondary-accent",
+  "secondary-muted",
+  "secondary-surface",
+  "secondary-faded",
+  "secondary-tron",
+  "secondary-shadow",
+  "secondary-gradient",
+  "secondary-ghost",
+  "destructive",
+  "destructive-accent",
+  "destructive-muted",
+  "destructive-surface",
+  "destructive-faded",
+  "destructive-tron",
+  "destructive-shadow",
+  "destructive-gradient",
+  "destructive-ghost",
+] as const;
+
+const buttonSizes = ["default", "sm", "lg", "xs"] as const;
+const buttonIconSizes = ["icon", "icon-sm", "icon-lg", "icon-xs"] as const;
 
 export function ButtonDemo() {
+  const [variant, setVariant] = React.useState("outline");
+  const [size, setSize] = React.useState("default");
+  const [iconSize, setIconSize] = React.useState("icon");
+
   return (
-    <div className="flex h-full w-full flex-1 flex-col gap-8">
-      <div className="flex flex-wrap gap-4">
-        <Button variant={"base"}>Base</Button>
-        <Button variant={"outline"}>Outline</Button>
-        <Button variant="accent">Accent</Button>
-        <Button variant={"muted"}>Muted</Button>
-        <Button variant={"surface"}>Surface</Button>
-        <Button variant={"faded"}>Faded</Button>
-        <Button variant={"ghost"}>Ghost</Button>
-        <Button variant={"link"}>Link</Button>
-      </div>
-      <div className="flex flex-wrap gap-4">
-        <Button variant="primary">Primary</Button>
-        <Button variant="primary-accent">Primary Accent</Button>
-        <Button variant="primary-muted">Primary Muted</Button>
-        <Button variant="primary-surface">Primary Surface</Button>
-        <Button variant="primary-faded">Primary Faded</Button>
-        <Button variant="primary-tron">Primary Tron</Button>
-        <Button variant="primary-shadow">Primary Shadow</Button>
-        <Button variant="primary-gradient">Primary Gradient</Button>
-        <Button variant="primary-ghost">Primary Ghost</Button>
-      </div>
-      <div className="flex flex-wrap gap-4">
-        <Button variant="secondary">Secondary</Button>
-        <Button variant="secondary-accent">Secondary Accent</Button>
-        <Button variant="secondary-muted">Secondary Muted</Button>
-        <Button variant="secondary-surface">Secondary Surface</Button>
-        <Button variant="secondary-faded">Secondary Faded</Button>
-        <Button variant="secondary-tron">Secondary Tron</Button>
-        <Button variant="secondary-shadow">Secondary Shadow</Button>
-        <Button variant="secondary-gradient">Secondary Gradient</Button>
-        <Button variant="secondary-ghost">Secondary Ghost</Button>
-      </div>
-      <div className="flex flex-wrap gap-4">
-        <Button variant="destructive">Destructive</Button>
-        <Button variant="destructive-accent">Destructive Accent</Button>
-        <Button variant="destructive-muted">Destructive Muted</Button>
-        <Button variant="destructive-surface">Destructive Surface</Button>
-        <Button variant="destructive-faded">Destructive Faded</Button>
-        <Button variant="destructive-tron">Destructive Tron</Button>
-        <Button variant="destructive-shadow">Destructive Shadow</Button>
-        <Button variant="destructive-gradient">Destructive Gradient</Button>
-        <Button variant="destructive-ghost">Destructive Ghost</Button>
-      </div>
-      <div className="flex flex-wrap gap-4">
-        <Button size="lg">Large</Button>
-        <Button size="lg" disabled>
-          <Spinner />
-          Loading
-        </Button>
-        <Button size="lg">
-          Get Started
-          <ArrowRightIcon />
-        </Button>
-        <Button size="lg">
-          <MailIcon />
-          Send Invite
-        </Button>
-        <Button size={"icon-lg"}>
-          <SettingsIcon />
-        </Button>
-        <Button size={"icon-lg"} disabled>
-          <Spinner />
-        </Button>
-      </div>
-      <div className="flex flex-wrap gap-4">
-        <Button>Default</Button>
-        <Button disabled size="default">
-          <Spinner />
-          Loading
-        </Button>
-        <Button size="default">
-          Get Started
-          <ArrowRightIcon />
-        </Button>
-        <Button size="default">
-          <MailIcon />
-          Send Invite
-        </Button>
-        <Button size={"icon"}>
-          <SettingsIcon />
-        </Button>
-        <Button size={"icon"} disabled>
-          <Spinner />
-        </Button>
-      </div>
+    <>
+      <ComponentContainer>
+        <div className="flex flex-col gap-8">
+          <div className="flex flex-wrap items-center gap-2">
+            <Button
+              variant={variant as (typeof buttonVariants)[number]}
+              size={size as (typeof buttonSizes)[number]}
+            >
+              Button
+            </Button>
+            <Button
+              variant={variant as (typeof buttonVariants)[number]}
+              size={size as (typeof buttonSizes)[number]}
+            >
+              Get Started <ArrowRightIcon />
+            </Button>
+            <Button
+              variant={variant as (typeof buttonVariants)[number]}
+              size={size as (typeof buttonSizes)[number]}
+            >
+              <MailIcon />
+              Inbox
+            </Button>
+            <Button
+              variant={variant as (typeof buttonVariants)[number]}
+              size={size as (typeof buttonSizes)[number]}
+              disabled
+            >
+              Disabled
+            </Button>
+            <Button
+              variant={variant as (typeof buttonVariants)[number]}
+              size={size as (typeof buttonSizes)[number]}
+              disabled
+            >
+              <Spinner />
+              Loading...
+            </Button>
+          </div>
+          <div className="flex flex-wrap items-center gap-2">
+            <Button
+              variant={variant as (typeof buttonVariants)[number]}
+              size={iconSize as (typeof buttonIconSizes)[number]}
+            >
+              <SettingsIcon />
+            </Button>
+            <Button
+              variant={variant as (typeof buttonVariants)[number]}
+              size={iconSize as (typeof buttonIconSizes)[number]}
+              disabled
+            >
+              <SettingsIcon />
+            </Button>
+            <Button
+              variant={variant as (typeof buttonVariants)[number]}
+              size={iconSize as (typeof buttonIconSizes)[number]}
+              disabled
+            >
+              <Spinner />
+            </Button>
+          </div>
+        </div>
+      </ComponentContainer>
 
-      <div className="flex flex-wrap gap-4">
-        <Button size="sm">Small</Button>
-        <Button disabled size="sm">
-          <Spinner />
-          Loading
-        </Button>
-        <Button size="sm">
-          Get Started
-          <ArrowRightIcon />
-        </Button>
-        <Button size="sm">
-          <MailIcon />
-          Send Invite
-        </Button>
-        <Button size={"icon-sm"}>
-          <SettingsIcon />
-        </Button>
-        <Button size={"icon-sm"} disabled>
-          <Spinner />
-        </Button>
-      </div>
-
-      <div className="flex flex-wrap gap-4">
-        <Button size="xs">Extra small</Button>
-        <Button disabled size="xs">
-          <Spinner />
-          Loading
-        </Button>
-        <Button size="xs">
-          Get Started
-          <ArrowRightIcon />
-        </Button>
-        <Button size="xs">
-          <MailIcon />
-          Send Invite
-        </Button>
-        <Button size={"icon-xs"}>
-          <SettingsIcon />
-        </Button>
-        <Button size={"icon-xs"} disabled>
-          <Spinner />
-        </Button>
-      </div>
-    </div>
+      <ComponentPlayground>
+        <fieldset>
+          <div className="flex flex-col gap-3">
+            <legend className="leading-none font-semibold">
+              Button Variant
+            </legend>
+            <RadioGroup value={variant} onValueChange={setVariant}>
+              {buttonVariants.map((variant) => (
+                <div className="flex items-center gap-3" key={variant}>
+                  <RadioGroupItem value={variant} id={variant}>
+                    {variant}
+                  </RadioGroupItem>
+                  <Label htmlFor={variant}>{variant}</Label>
+                </div>
+              ))}
+            </RadioGroup>
+          </div>
+        </fieldset>
+        <fieldset>
+          <div className="flex flex-col gap-3">
+            <legend className="leading-none font-semibold">Button Size</legend>
+            <RadioGroup value={size} onValueChange={setSize}>
+              {buttonSizes.map((size) => (
+                <div className="flex items-center gap-3" key={size}>
+                  <RadioGroupItem value={size} id={size}>
+                    {size}
+                  </RadioGroupItem>
+                  <Label htmlFor={size}>{size}</Label>
+                </div>
+              ))}
+            </RadioGroup>
+          </div>
+        </fieldset>
+        <fieldset>
+          <div className="flex flex-col gap-3">
+            <legend className="leading-none font-semibold">
+              Button Icon Size
+            </legend>
+            <RadioGroup value={iconSize} onValueChange={setIconSize}>
+              {buttonIconSizes.map((iconSize) => (
+                <div className="flex items-center gap-3" key={iconSize}>
+                  <RadioGroupItem value={iconSize} id={iconSize}>
+                    {iconSize}
+                  </RadioGroupItem>
+                  <Label htmlFor={iconSize}>{iconSize}</Label>
+                </div>
+              ))}
+            </RadioGroup>
+          </div>
+        </fieldset>
+      </ComponentPlayground>
+    </>
   );
 }
