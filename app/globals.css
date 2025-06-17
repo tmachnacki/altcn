@@ -646,6 +646,8 @@
 @theme {
   --breakpoint-xs: 36rem; /* 576px */
   --blur-2xs: 2px;
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
 }
 
 @layer base {
@@ -653,7 +655,7 @@
     @apply border-border outline-outline;
   }
   body {
-    @apply bg-background text-sm text-foreground antialiased;
+    @apply bg-background font-sans text-sm text-foreground antialiased;
     text-rendering: optimizeLegibility;
   }
 

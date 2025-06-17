@@ -53,24 +53,50 @@ const dropdownMenuVariants = [
   "secondary-surface",
   "secondary-faded",
 ] as const;
-const dropdownMenuWidths = ["default", "full"] as const;
 
+const checkboxIndicatorVariants = [
+  "default",
+  "primary",
+  "secondary",
+  "destructive",
+  "success",
+  "warning",
+] as const;
+const radioIndicatorVariants = [
+  "default",
+  "primary",
+  "secondary",
+  "destructive",
+  "success",
+  "warning",
+] as const;
+
+const dropdownMenuDestructiveVariants = [
+  "destructive",
+  "destructive-accent",
+  "destructive-muted",
+  "destructive-surface",
+  "destructive-faded",
+] as const;
+
+const dropdownMenuWidths = ["default", "full"] as const;
 const dropdownMenuSides = ["top", "right", "bottom", "left"] as const;
 const dropdownMenuAligns = ["start", "center", "end"] as const;
 
 export function DropdownMenuDemo() {
   const [variant, setVariant] = React.useState("accent");
+  const [checkboxIndicatorVariant, setCheckboxIndicatorVariant] =
+    React.useState("default");
+  const [radioIndicatorVariant, setRadioIndicatorVariant] =
+    React.useState("default");
+  const [destructiveVariant, setDestructiveVariant] =
+    React.useState("destructive");
   const [width, setWidth] = React.useState("default");
   const [side, setSide] = React.useState("bottom");
   const [align, setAlign] = React.useState("start");
 
-  const [defaultChecked, setDefaultChecked] = React.useState(true);
-  const [primaryChecked, setPrimaryChecked] = React.useState(true);
-  const [secondaryChecked, setSecondaryChecked] = React.useState(true);
-  const [destructiveChecked, setDestructiveChecked] = React.useState(true);
-  const [successChecked, setSuccessChecked] = React.useState(true);
-  const [warningChecked, setWarningChecked] = React.useState(true);
-  const [radioIndicator, setRadioIndicator] = React.useState("default");
+  const [checked, setChecked] = React.useState(true);
+  const [radioIndicator, setRadioIndicator] = React.useState("one");
 
   const variantLabel = variant.replace("-", " ");
 
@@ -133,45 +159,14 @@ export function DropdownMenuDemo() {
             <DropdownMenuGroup>
               <DropdownMenuLabel position="inset">Checkboxes</DropdownMenuLabel>
               <DropdownMenuCheckboxItem
-                checked={defaultChecked}
-                onCheckedChange={setDefaultChecked}
+                checked={checked}
+                onCheckedChange={setChecked}
+                indicatorVariant={
+                  checkboxIndicatorVariant as (typeof checkboxIndicatorVariants)[number]
+                }
+                onSelect={(e) => e.preventDefault()}
               >
                 Default Indicator
-              </DropdownMenuCheckboxItem>
-              <DropdownMenuCheckboxItem
-                checked={primaryChecked}
-                onCheckedChange={setPrimaryChecked}
-                indicatorVariant="primary"
-              >
-                Primary Indicator
-              </DropdownMenuCheckboxItem>
-              <DropdownMenuCheckboxItem
-                checked={secondaryChecked}
-                onCheckedChange={setSecondaryChecked}
-                indicatorVariant="secondary"
-              >
-                Secondary Indicator
-              </DropdownMenuCheckboxItem>
-              <DropdownMenuCheckboxItem
-                checked={destructiveChecked}
-                onCheckedChange={setDestructiveChecked}
-                indicatorVariant="destructive"
-              >
-                Destructive Indicator
-              </DropdownMenuCheckboxItem>
-              <DropdownMenuCheckboxItem
-                checked={successChecked}
-                onCheckedChange={setSuccessChecked}
-                indicatorVariant="success"
-              >
-                Success Indicator
-              </DropdownMenuCheckboxItem>
-              <DropdownMenuCheckboxItem
-                checked={warningChecked}
-                onCheckedChange={setWarningChecked}
-                indicatorVariant="warning"
-              >
-                Warning Indicator
               </DropdownMenuCheckboxItem>
               <DropdownMenuCheckboxItem checked disabled>
                 Disabled
@@ -186,72 +181,53 @@ export function DropdownMenuDemo() {
                 value={radioIndicator}
                 onValueChange={setRadioIndicator}
               >
-                <DropdownMenuRadioItem value="default">
-                  Default
+                <DropdownMenuRadioItem
+                  value="one"
+                  indicatorVariant={
+                    radioIndicatorVariant as (typeof radioIndicatorVariants)[number]
+                  }
+                  onSelect={(e) => e.preventDefault()}
+                >
+                  Option 1
                 </DropdownMenuRadioItem>
                 <DropdownMenuRadioItem
-                  value="primary"
-                  indicatorVariant="primary"
+                  value="two"
+                  indicatorVariant={
+                    radioIndicatorVariant as (typeof radioIndicatorVariants)[number]
+                  }
+                  onSelect={(e) => e.preventDefault()}
                 >
-                  Primary
+                  Option 2
                 </DropdownMenuRadioItem>
                 <DropdownMenuRadioItem
-                  value="secondary"
-                  indicatorVariant="secondary"
+                  value="disabled"
+                  disabled
+                  indicatorVariant={
+                    radioIndicatorVariant as (typeof radioIndicatorVariants)[number]
+                  }
+                  onSelect={(e) => e.preventDefault()}
                 >
-                  Secondary
-                </DropdownMenuRadioItem>
-                <DropdownMenuRadioItem
-                  value="destructive"
-                  indicatorVariant="destructive"
-                >
-                  Destructive
-                </DropdownMenuRadioItem>
-                <DropdownMenuRadioItem
-                  value="success"
-                  indicatorVariant="success"
-                >
-                  Success
-                </DropdownMenuRadioItem>
-                <DropdownMenuRadioItem
-                  value="warning"
-                  indicatorVariant="warning"
-                >
-                  Warning
-                </DropdownMenuRadioItem>
-                <DropdownMenuRadioItem value="disabled" disabled>
                   Disabled
                 </DropdownMenuRadioItem>
               </DropdownMenuRadioGroup>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
-              <DropdownMenuItem variant="destructive">
+              <DropdownMenuItem
+                variant={
+                  destructiveVariant as (typeof dropdownMenuDestructiveVariants)[number]
+                }
+              >
                 <TrashIcon />
                 Destructive
                 <DropdownMenuShortcut>⌘+D</DropdownMenuShortcut>
               </DropdownMenuItem>
-              <DropdownMenuItem variant="destructive-accent">
-                <TrashIcon />
-                Destructive Accent
-                <DropdownMenuShortcut>⌘+D</DropdownMenuShortcut>
-              </DropdownMenuItem>
-              <DropdownMenuItem variant="destructive-muted">
-                <TrashIcon />
-                Destructive Muted
-                <DropdownMenuShortcut>⌘+D</DropdownMenuShortcut>
-              </DropdownMenuItem>
-              <DropdownMenuItem variant="destructive-surface">
-                <TrashIcon />
-                Destructive Surface
-                <DropdownMenuShortcut>⌘+D</DropdownMenuShortcut>
-              </DropdownMenuItem>
-              <DropdownMenuItem variant="destructive-faded">
-                <TrashIcon />
-                Destructive Faded
-                <DropdownMenuShortcut>⌘+D</DropdownMenuShortcut>
-              </DropdownMenuItem>
-              <DropdownMenuItem variant="destructive" disabled>
+              <DropdownMenuItem
+                variant={
+                  destructiveVariant as (typeof dropdownMenuDestructiveVariants)[number]
+                }
+                disabled
+              >
                 <TrashIcon />
                 Destructive Disabled
                 <DropdownMenuShortcut>⌘+D</DropdownMenuShortcut>
@@ -270,6 +246,78 @@ export function DropdownMenuDemo() {
             </SelectTrigger>
             <SelectContent>
               {dropdownMenuVariants.map((variant) => (
+                <SelectItem key={variant} value={variant}>
+                  {variant}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+
+        <div className="grid gap-2">
+          <Label htmlFor="dropdown-menu-checkbox-indicator-variant">
+            Checkbox Indicator Variant
+          </Label>
+          <Select
+            value={checkboxIndicatorVariant}
+            onValueChange={setCheckboxIndicatorVariant}
+          >
+            <SelectTrigger
+              id="dropdown-menu-checkbox-indicator-variant"
+              className="w-full"
+            >
+              <SelectValue placeholder="Select variant" />
+            </SelectTrigger>
+            <SelectContent>
+              {checkboxIndicatorVariants.map((variant) => (
+                <SelectItem key={variant} value={variant}>
+                  {variant}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+
+        <div className="grid gap-2">
+          <Label htmlFor="dropdown-menu-radio-indicator-variant">
+            Radio Indicator Variant
+          </Label>
+          <Select
+            value={radioIndicatorVariant}
+            onValueChange={setRadioIndicatorVariant}
+          >
+            <SelectTrigger
+              id="dropdown-menu-radio-indicator-variant"
+              className="w-full"
+            >
+              <SelectValue placeholder="Select variant" />
+            </SelectTrigger>
+            <SelectContent>
+              {radioIndicatorVariants.map((variant) => (
+                <SelectItem key={variant} value={variant}>
+                  {variant}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+
+        <div className="grid gap-2">
+          <Label htmlFor="dropdown-menu-destructive-variant">
+            Destructive Variant
+          </Label>
+          <Select
+            value={destructiveVariant}
+            onValueChange={setDestructiveVariant}
+          >
+            <SelectTrigger
+              id="dropdown-menu-destructive-variant"
+              className="w-full"
+            >
+              <SelectValue placeholder="Select variant" />
+            </SelectTrigger>
+            <SelectContent>
+              {dropdownMenuDestructiveVariants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
                   {variant}
                 </SelectItem>

@@ -31,6 +31,10 @@ const COMPONENTS = [
     href: "/components/button",
   },
   {
+    label: "Button Input",
+    href: "/components/button-input",
+  },
+  {
     label: "Card",
     href: "/components/card",
   },
@@ -134,7 +138,7 @@ const COMPONENTS = [
 export function ComponentNav() {
   const pathname = usePathname();
   return (
-    <nav className="h-full overflow-auto py-content no-scrollbar">
+    <nav className="no-scrollbar h-full overflow-auto py-content">
       <ul className="flex min-h-0 flex-1 flex-col gap-1">
         {COMPONENTS.map((component) => {
           const isActive = pathname === component.href;

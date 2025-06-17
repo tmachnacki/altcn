@@ -10,12 +10,60 @@ import {
   InputOTPSlot,
 } from "~/components/ui/input-otp";
 import { Label } from "~/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "~/components/ui/select";
+import { Slider } from "~/components/ui/slider";
 import { ComponentContainer } from "~/components/component-container";
 
+const variants = [
+  "outline",
+  "muted",
+  "underlined",
+  "primary",
+  "secondary",
+] as const;
+
+type Size = "sm" | "default" | "lg";
+const sizesMap: Record<number, Size> = {
+  1: "sm",
+  2: "default",
+  3: "lg",
+};
+
+const layouts = ["compact", "split"] as const;
+
 export function InputOTPDemo() {
+  const [variant, setVariant] = React.useState("outline");
+  const [size, setSize] = React.useState(2);
+  const [layout, setLayout] = React.useState("compact");
+
   return (
     <ComponentContainer>
-      <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-4">
+        <InputOTP
+          maxLength={6}
+          placeholder="000000"
+          variant={variant as (typeof variants)[number]}
+          layout={layout as (typeof layouts)[number]}
+          size={sizesMap[size]}
+        >
+          <InputOTPGroup>
+            <InputOTPSlot index={0} />
+            <InputOTPSlot index={1} />
+            <InputOTPSlot index={2} />
+          </InputOTPGroup>
+          <InputOTPSeparator />
+          <InputOTPGroup>
+            <InputOTPSlot index={3} />
+            <InputOTPSlot index={4} />
+            <InputOTPSlot index={5} />
+          </InputOTPGroup>
+        </InputOTP>
         <InputOTPSimple />
         <InputOTPSimple split={true} />
         <InputOTPSimple variant="muted" />
@@ -45,25 +93,6 @@ function InputOTPSimple({
         >
           Simple
         </Label>
-        <InputOTP
-          id={split ? `simple-${variant}-split` : `simple-${variant}`}
-          maxLength={6}
-          placeholder="000000"
-          variant={variant}
-          split={split}
-        >
-          <InputOTPGroup>
-            <InputOTPSlot index={0} />
-            <InputOTPSlot index={1} />
-            <InputOTPSlot index={2} />
-          </InputOTPGroup>
-          <InputOTPSeparator />
-          <InputOTPGroup>
-            <InputOTPSlot index={3} />
-            <InputOTPSlot index={4} />
-            <InputOTPSlot index={5} />
-          </InputOTPGroup>
-        </InputOTP>
       </div>
       <div className="flex w-fit flex-col gap-2">
         <Label

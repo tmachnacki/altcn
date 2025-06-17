@@ -12,19 +12,19 @@ import { cn } from "~/lib/utils";
 
 const inputOTPSlotVariants = cva(
   [
-    "relative flex items-center justify-center data-[active=true]:z-10",
+    "relative isolate flex items-center justify-center hover:group-not-has-disabled/input-otp:not-data-[active=true]:z-10 data-[active=true]:z-20",
     "aria-invalid:text-destructive-accent-foreground",
-    "data-[split]:last:mr-0",
+    "data-[layout=split]:last:mr-0",
   ],
   {
     variants: {
       size: {
-        default: "h-9 w-9 text-sm data-[split]:mr-2",
-        sm: "text-smF h-8 w-8 data-[split]:mr-1.5",
-        lg: "h-10 w-10 text-base data-[split]:mr-2.5",
+        default: "h-9 w-9 text-sm data-[layout=split]:mr-2",
+        sm: "h-8 w-8 text-sm data-[layout=split]:mr-1.5",
+        lg: "h-10 w-10 text-base data-[layout=split]:mr-2.5",
       },
       variant: {
-        default: [
+        outline: [
           "-ml-px bg-background text-foreground shadow-xs inset-ring inset-ring-border not-aria-invalid:group-not-has-disabled/input-otp:group-not-focus-within/input-otp:group-hover/input-otp:inset-ring-hover-border first:-ml-0 first:rounded-l-md last:rounded-r-md dark:bg-faded",
 
           "data-[placeholder]:text-placeholder",
@@ -35,7 +35,7 @@ const inputOTPSlotVariants = cva(
 
           "data-[active=true]:outline-2 data-[active=true]:-outline-offset-2 data-[active=true]:outline-primary",
 
-          "data-[split]:-ml-0 data-[split]:rounded-md",
+          "data-[layout=split]:-ml-0 data-[layout=split]:rounded-md",
         ],
 
         muted: [
@@ -50,7 +50,7 @@ const inputOTPSlotVariants = cva(
 
           "aria-invalid:bg-destructive-muted/80 aria-invalid:text-destructive-accent-foreground aria-invalid:group-not-focus-within/input-otp:group-hover/input-otp:bg-destructive-muted aria-invalid:data-[active=true]:outline-destructive aria-invalid:data-[placeholder]:text-destructive-muted-foreground",
 
-          "data-[split]:ml-0 data-[split]:rounded-md data-[split]:shadow-none",
+          "data-[layout=split]:ml-0 data-[layout=split]:rounded-md data-[layout=split]:shadow-none",
         ],
 
         underlined: [
@@ -77,7 +77,7 @@ const inputOTPSlotVariants = cva(
           "data-[active=true]:outline-2 data-[active=true]:-outline-offset-2 data-[active=true]:outline-primary",
 
           "aria-invalid:bg-destructive-muted/80 aria-invalid:text-destructive-accent-foreground aria-invalid:group-not-focus-within/input-otp:group-hover/input-otp:bg-destructive-muted aria-invalid:data-[active=true]:outline-destructive aria-invalid:data-[placeholder]:text-destructive-muted-foreground",
-          "data-[split]:-ml-0 data-[split]:rounded-md data-[split]:shadow-none",
+          "data-[layout=split]:-ml-0 data-[layout=split]:rounded-md data-[layout=split]:shadow-none",
         ],
 
         secondary: [
@@ -93,55 +93,62 @@ const inputOTPSlotVariants = cva(
           "data-[active=true]:outline-2 data-[active=true]:-outline-offset-2 data-[active=true]:outline-secondary",
 
           "aria-invalid:bg-destructive-muted/80 aria-invalid:text-destructive-accent-foreground aria-invalid:group-not-focus-within/input-otp:group-hover/input-otp:bg-destructive-muted aria-invalid:data-[active=true]:outline-destructive aria-invalid:data-[placeholder]:text-destructive-muted-foreground",
-          "data-[split]:-ml-0 data-[split]:rounded-md data-[split]:shadow-none",
+          "data-[layout=split]:-ml-0 data-[layout=split]:rounded-md data-[layout=split]:shadow-none",
         ],
       },
     },
     defaultVariants: {
-      variant: "default",
+      variant: "outline",
     },
   }
 );
 
-type InputOTPContextType = {
+type InputOTPContextProps = {
   variant?: VariantProps<typeof inputOTPSlotVariants>["variant"];
   size?: VariantProps<typeof inputOTPSlotVariants>["size"];
-  split?: boolean;
+  layout?: "compact" | "split";
 };
 
-const InputOTPContext = React.createContext<InputOTPContextType>({});
+const InputOTPContext = React.createContext<InputOTPContextProps>({});
 
-type InputOTPProps = React.ComponentProps<typeof InputOTPPrimitive> & {
-  variant?: VariantProps<typeof inputOTPSlotVariants>["variant"];
-  inputSize?: VariantProps<typeof inputOTPSlotVariants>["size"];
-  split?: boolean;
-  containerClassName?: string;
-};
+type InputOTPProps = Omit<
+  React.ComponentProps<typeof InputOTPPrimitive>,
+  "size"
+> &
+  InputOTPContextProps & {
+    containerClassName?: string;
+    htmlSize?: React.ComponentProps<typeof InputOTPPrimitive>["size"];
+  };
 
 function InputOTP({
   className,
   containerClassName,
-  variant = "default",
-  inputSize = "default",
-  split = undefined,
+  variant = "outline",
+  size = "default",
+  layout = "compact",
+  htmlSize,
+  children,
   ...props
 }: InputOTPProps) {
   return (
-    <InputOTPContext.Provider value={{ variant, split, size: inputSize }}>
-      <InputOTPPrimitive
-        data-slot="input-otp"
-        data-variant={variant}
-        data-split={split}
-        data-size={inputSize}
-        containerClassName={cn(
-          "flex items-center gap-2 has-disabled:opacity-50",
-          "group/input-otp",
-          containerClassName
-        )}
-        className={cn("disabled:cursor-not-allowed", className)}
-        {...props}
-      />
-    </InputOTPContext.Provider>
+    <InputOTPPrimitive
+      data-slot="input-otp"
+      data-variant={variant}
+      data-layout={layout}
+      data-size={size}
+      containerClassName={cn(
+        "flex items-center gap-2 has-disabled:opacity-50",
+        "group/input-otp",
+        containerClassName
+      )}
+      className={cn("disabled:cursor-not-allowed", className)}
+      size={htmlSize}
+      {...props}
+    >
+      <InputOTPContext.Provider value={{ variant, layout, size }}>
+        {children}
+      </InputOTPContext.Provider>
+    </InputOTPPrimitive>
   );
 }
 
@@ -165,14 +172,14 @@ function InputOTPSlot({
   const inputOTPPrimitiveContext = React.useContext(InputOTPPrimitiveContext);
   const { char, hasFakeCaret, isActive, placeholderChar } =
     inputOTPPrimitiveContext?.slots[index] ?? {};
-  const { variant, split, size } = React.useContext(InputOTPContext);
+  const { variant, layout, size } = React.useContext(InputOTPContext);
 
   return (
     <div
       data-slot="input-otp-slot"
       data-active={isActive}
       data-variant={variant}
-      data-split={split}
+      data-layout={layout}
       data-size={size}
       data-placeholder={placeholderChar ? true : undefined}
       className={cn(inputOTPSlotVariants({ variant, size }), className)}
