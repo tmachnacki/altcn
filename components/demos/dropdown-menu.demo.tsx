@@ -38,7 +38,7 @@ import {
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
 
-const dropdownMenuVariants = [
+const itemVariants = [
   "base",
   "accent",
   "surface",
@@ -54,15 +54,7 @@ const dropdownMenuVariants = [
   "secondary-faded",
 ] as const;
 
-const checkboxIndicatorVariants = [
-  "default",
-  "primary",
-  "secondary",
-  "destructive",
-  "success",
-  "warning",
-] as const;
-const radioIndicatorVariants = [
+const indicatorVariants = [
   "default",
   "primary",
   "secondary",
@@ -71,7 +63,7 @@ const radioIndicatorVariants = [
   "warning",
 ] as const;
 
-const dropdownMenuDestructiveVariants = [
+const destructiveItemVariants = [
   "destructive",
   "destructive-accent",
   "destructive-muted",
@@ -79,24 +71,21 @@ const dropdownMenuDestructiveVariants = [
   "destructive-faded",
 ] as const;
 
-const dropdownMenuWidths = ["default", "full"] as const;
-const dropdownMenuSides = ["top", "right", "bottom", "left"] as const;
-const dropdownMenuAligns = ["start", "center", "end"] as const;
+const itemWidths = ["default", "full"] as const;
+const sides = ["top", "right", "bottom", "left"] as const;
+const aligns = ["start", "center", "end"] as const;
 
 export function DropdownMenuDemo() {
   const [variant, setVariant] = React.useState("accent");
-  const [checkboxIndicatorVariant, setCheckboxIndicatorVariant] =
-    React.useState("default");
-  const [radioIndicatorVariant, setRadioIndicatorVariant] =
-    React.useState("default");
+  const [indicatorVariant, setIndicatorVariant] = React.useState("default");
   const [destructiveVariant, setDestructiveVariant] =
-    React.useState("destructive");
+    React.useState("destructive-muted");
   const [width, setWidth] = React.useState("default");
   const [side, setSide] = React.useState("bottom");
   const [align, setAlign] = React.useState("start");
 
   const [checked, setChecked] = React.useState(true);
-  const [radioIndicator, setRadioIndicator] = React.useState("one");
+  const [radioSelection, setRadioSelection] = React.useState("one");
 
   const variantLabel = variant.replace("-", " ");
 
@@ -110,10 +99,13 @@ export function DropdownMenuDemo() {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent
-            variant={variant as (typeof dropdownMenuVariants)[number]}
-            width={width as (typeof dropdownMenuWidths)[number]}
-            align={align as (typeof dropdownMenuAligns)[number]}
-            side={side as (typeof dropdownMenuSides)[number]}
+            variant={variant as (typeof itemVariants)[number]}
+            width={width as (typeof itemWidths)[number]}
+            align={align as (typeof aligns)[number]}
+            side={side as (typeof sides)[number]}
+            indicatorVariant={
+              indicatorVariant as (typeof indicatorVariants)[number]
+            }
           >
             <DropdownMenuGroup>
               <DropdownMenuLabel>Account</DropdownMenuLabel>
@@ -161,12 +153,9 @@ export function DropdownMenuDemo() {
               <DropdownMenuCheckboxItem
                 checked={checked}
                 onCheckedChange={setChecked}
-                indicatorVariant={
-                  checkboxIndicatorVariant as (typeof checkboxIndicatorVariants)[number]
-                }
                 onSelect={(e) => e.preventDefault()}
               >
-                Default Indicator
+                Checkbox Indicator
               </DropdownMenuCheckboxItem>
               <DropdownMenuCheckboxItem checked disabled>
                 Disabled
@@ -178,23 +167,17 @@ export function DropdownMenuDemo() {
                 Radio Group
               </DropdownMenuLabel>
               <DropdownMenuRadioGroup
-                value={radioIndicator}
-                onValueChange={setRadioIndicator}
+                value={radioSelection}
+                onValueChange={setRadioSelection}
               >
                 <DropdownMenuRadioItem
                   value="one"
-                  indicatorVariant={
-                    radioIndicatorVariant as (typeof radioIndicatorVariants)[number]
-                  }
                   onSelect={(e) => e.preventDefault()}
                 >
                   Option 1
                 </DropdownMenuRadioItem>
                 <DropdownMenuRadioItem
                   value="two"
-                  indicatorVariant={
-                    radioIndicatorVariant as (typeof radioIndicatorVariants)[number]
-                  }
                   onSelect={(e) => e.preventDefault()}
                 >
                   Option 2
@@ -202,9 +185,6 @@ export function DropdownMenuDemo() {
                 <DropdownMenuRadioItem
                   value="disabled"
                   disabled
-                  indicatorVariant={
-                    radioIndicatorVariant as (typeof radioIndicatorVariants)[number]
-                  }
                   onSelect={(e) => e.preventDefault()}
                 >
                   Disabled
@@ -215,7 +195,7 @@ export function DropdownMenuDemo() {
             <DropdownMenuGroup>
               <DropdownMenuItem
                 variant={
-                  destructiveVariant as (typeof dropdownMenuDestructiveVariants)[number]
+                  destructiveVariant as (typeof destructiveItemVariants)[number]
                 }
               >
                 <TrashIcon />
@@ -224,7 +204,7 @@ export function DropdownMenuDemo() {
               </DropdownMenuItem>
               <DropdownMenuItem
                 variant={
-                  destructiveVariant as (typeof dropdownMenuDestructiveVariants)[number]
+                  destructiveVariant as (typeof destructiveItemVariants)[number]
                 }
                 disabled
               >
@@ -239,13 +219,13 @@ export function DropdownMenuDemo() {
 
       <ComponentPlayground>
         <div className="grid gap-2">
-          <Label htmlFor="dropdown-menu-variant">Dropdown Menu Variant</Label>
+          <Label htmlFor="item-variant">Item Variant</Label>
           <Select value={variant} onValueChange={setVariant}>
-            <SelectTrigger id="dropdown-menu-variant" className="w-full">
+            <SelectTrigger id="item-variant" className="w-full">
               <SelectValue placeholder="Select variant" />
             </SelectTrigger>
             <SelectContent>
-              {dropdownMenuVariants.map((variant) => (
+              {itemVariants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
                   {variant}
                 </SelectItem>
@@ -255,21 +235,13 @@ export function DropdownMenuDemo() {
         </div>
 
         <div className="grid gap-2">
-          <Label htmlFor="dropdown-menu-checkbox-indicator-variant">
-            Checkbox Indicator Variant
-          </Label>
-          <Select
-            value={checkboxIndicatorVariant}
-            onValueChange={setCheckboxIndicatorVariant}
-          >
-            <SelectTrigger
-              id="dropdown-menu-checkbox-indicator-variant"
-              className="w-full"
-            >
+          <Label htmlFor="indicator-variant">Indicator Variant</Label>
+          <Select value={indicatorVariant} onValueChange={setIndicatorVariant}>
+            <SelectTrigger id="indicator-variant" className="w-full">
               <SelectValue placeholder="Select variant" />
             </SelectTrigger>
             <SelectContent>
-              {checkboxIndicatorVariants.map((variant) => (
+              {indicatorVariants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
                   {variant}
                 </SelectItem>
@@ -279,45 +251,18 @@ export function DropdownMenuDemo() {
         </div>
 
         <div className="grid gap-2">
-          <Label htmlFor="dropdown-menu-radio-indicator-variant">
-            Radio Indicator Variant
-          </Label>
-          <Select
-            value={radioIndicatorVariant}
-            onValueChange={setRadioIndicatorVariant}
-          >
-            <SelectTrigger
-              id="dropdown-menu-radio-indicator-variant"
-              className="w-full"
-            >
-              <SelectValue placeholder="Select variant" />
-            </SelectTrigger>
-            <SelectContent>
-              {radioIndicatorVariants.map((variant) => (
-                <SelectItem key={variant} value={variant}>
-                  {variant}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </div>
-
-        <div className="grid gap-2">
-          <Label htmlFor="dropdown-menu-destructive-variant">
-            Destructive Variant
+          <Label htmlFor="destructive-item-variant">
+            Destructive Item Variant
           </Label>
           <Select
             value={destructiveVariant}
             onValueChange={setDestructiveVariant}
           >
-            <SelectTrigger
-              id="dropdown-menu-destructive-variant"
-              className="w-full"
-            >
+            <SelectTrigger id="destructive-item-variant" className="w-full">
               <SelectValue placeholder="Select variant" />
             </SelectTrigger>
             <SelectContent>
-              {dropdownMenuDestructiveVariants.map((variant) => (
+              {destructiveItemVariants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
                   {variant}
                 </SelectItem>
@@ -327,13 +272,13 @@ export function DropdownMenuDemo() {
         </div>
 
         <div className="grid gap-2">
-          <Label htmlFor="dropdown-menu-width">Dropdown Menu Width</Label>
+          <Label htmlFor="item-width">Item Width</Label>
           <Select value={width} onValueChange={setWidth}>
-            <SelectTrigger id="dropdown-menu-width" className="w-full">
+            <SelectTrigger id="item-width" className="w-full">
               <SelectValue placeholder="Select width" />
             </SelectTrigger>
             <SelectContent>
-              {dropdownMenuWidths.map((width) => (
+              {itemWidths.map((width) => (
                 <SelectItem key={width} value={width}>
                   {width}
                 </SelectItem>
@@ -343,13 +288,13 @@ export function DropdownMenuDemo() {
         </div>
 
         <div className="grid gap-2">
-          <Label htmlFor="dropdown-menu-side">Dropdown Menu Side</Label>
+          <Label htmlFor="side">Side</Label>
           <Select value={side} onValueChange={setSide}>
-            <SelectTrigger id="dropdown-menu-side" className="w-full">
+            <SelectTrigger id="side" className="w-full">
               <SelectValue placeholder="Select side" />
             </SelectTrigger>
             <SelectContent>
-              {dropdownMenuSides.map((side) => (
+              {sides.map((side) => (
                 <SelectItem key={side} value={side}>
                   {side}
                 </SelectItem>
@@ -359,13 +304,13 @@ export function DropdownMenuDemo() {
         </div>
 
         <div className="grid gap-2">
-          <Label htmlFor="dropdown-menu-align">Dropdown Menu Align</Label>
+          <Label htmlFor="align">Align</Label>
           <Select value={align} onValueChange={setAlign}>
-            <SelectTrigger id="dropdown-menu-align" className="w-full">
+            <SelectTrigger id="align" className="w-full">
               <SelectValue placeholder="Select align" />
             </SelectTrigger>
             <SelectContent>
-              {dropdownMenuAligns.map((align) => (
+              {aligns.map((align) => (
                 <SelectItem key={align} value={align}>
                   {align}
                 </SelectItem>

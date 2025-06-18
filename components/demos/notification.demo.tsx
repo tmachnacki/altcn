@@ -1,9 +1,22 @@
+"use client";
+
 import * as React from "react";
-import { BellIcon, InboxIcon, MessageCircleIcon } from "lucide-react";
+import { BellIcon, MessageCircleIcon } from "lucide-react";
 
 import { Button } from "~/components/ui/button";
+import { Label } from "~/components/ui/label";
 import { Notification } from "~/components/ui/notification";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "~/components/ui/select";
+import { Switch } from "~/components/ui/switch";
 import { ComponentContainer } from "~/components/component-container";
+
+import { ComponentPlayground } from "../component-playground";
 
 const variants = [
   "outline",
@@ -47,124 +60,146 @@ const positions = [
 ] as const;
 
 export function NotificationDemo() {
-  return (
-    <ComponentContainer>
-      <div className="grid gap-8">
-        {variants.map((variant) => {
-          return (
-            <div className="grid gap-8" key={`notification-${variant}`}>
-              <div className="grid gap-8">
-                <div className="flex flex-wrap items-center gap-4">
-                  <Notification variant={variant}>New</Notification>
-                  <Notification variant={variant}>7</Notification>
-                  <Notification variant={variant}>20+</Notification>
-                  <Notification variant={variant}>
-                    <BellIcon />
-                  </Notification>
-                  <div className="relative">
-                    <Button variant="primary" size="icon">
-                      <MessageCircleIcon />
-                    </Button>
-                    <Notification
-                      variant={variant}
-                      position="top-right"
-                      outlined
-                    >
-                      5
-                    </Notification>
-                  </div>
-                  <div className="relative">
-                    <Button variant="outline" size="icon">
-                      <MessageCircleIcon />
-                    </Button>
-                    <Notification
-                      variant={variant}
-                      position="top-right"
-                      animated
-                    />
-                  </div>
-                  <div className="relative">
-                    <Button variant="outline" size="icon">
-                      <MessageCircleIcon />
-                    </Button>
-                    <Notification
-                      variant={variant}
-                      position="top-right"
-                      animated
-                    >
-                      <BellIcon />
-                    </Notification>
-                  </div>
-                  <div className="relative">
-                    <Button variant="outline" size="icon">
-                      <MessageCircleIcon />
-                    </Button>
-                    <Notification
-                      variant={variant}
-                      position="top-right"
-                      animated
-                    >
-                      20+
-                    </Notification>
-                  </div>
-                  <Notification variant={variant}></Notification>
-                </div>
+  const [variant, setVariant] = React.useState("primary");
+  const [position, setPosition] = React.useState("top-right");
 
-                <div className="flex flex-wrap items-center gap-8">
-                  {positions.map((position) => (
-                    <React.Fragment key={`notification-${variant}-${position}`}>
-                      {/* wrap in element to prevent button opacity changes from affecting notification */}
-                      <div className="relative">
-                        <Notification variant={variant} position={position}>
-                          New
-                        </Notification>
-                        <Button variant="outline">
-                          <InboxIcon />
-                          Inbox
-                        </Button>
-                      </div>
-                      <div className="relative">
-                        <Notification variant={variant} position={position}>
-                          7
-                        </Notification>
-                        <Button variant="outline">
-                          <InboxIcon />
-                          Inbox
-                        </Button>
-                      </div>
-                      <div className="relative">
-                        <Notification variant={variant} position={position}>
-                          20+
-                        </Notification>
-                        <Button variant="outline">
-                          <InboxIcon />
-                          Inbox
-                        </Button>
-                      </div>
-                      <div className="relative">
-                        <Notification variant={variant} position={position}>
-                          <BellIcon />
-                        </Notification>
-                        <Button variant="outline">
-                          <InboxIcon />
-                          Inbox
-                        </Button>
-                      </div>
-                      <div className="relative">
-                        <Notification variant={variant} position={position} />
-                        <Button variant="outline">
-                          <InboxIcon />
-                          Inbox
-                        </Button>
-                      </div>
-                    </React.Fragment>
-                  ))}
-                </div>
-              </div>
+  const [outlined, setOutlined] = React.useState(false);
+  const [ping, setPing] = React.useState(false);
+
+  return (
+    <>
+      <ComponentContainer>
+        <div className="grid gap-8">
+          <div className="flex flex-wrap items-center gap-4">
+            <Notification
+              variant={variant as (typeof variants)[number]}
+              ping={ping}
+            >
+              New
+            </Notification>
+            <Notification
+              variant={variant as (typeof variants)[number]}
+              ping={ping}
+            >
+              7
+            </Notification>
+            <Notification
+              variant={variant as (typeof variants)[number]}
+              ping={ping}
+            >
+              20+
+            </Notification>
+            <Notification
+              variant={variant as (typeof variants)[number]}
+              ping={ping}
+            >
+              <BellIcon />
+            </Notification>
+            <Notification
+              variant={variant as (typeof variants)[number]}
+              ping={ping}
+            />
+          </div>
+
+          <div className="flex flex-wrap items-center gap-4">
+            <div className="relative">
+              <Button variant="accent" size="icon">
+                <MessageCircleIcon />
+              </Button>
+              <Notification
+                variant={variant as (typeof variants)[number]}
+                position={position as (typeof positions)[number]}
+                outlined={outlined}
+                ping={ping}
+              >
+                5
+              </Notification>
             </div>
-          );
-        })}
-      </div>
-    </ComponentContainer>
+            <div className="relative">
+              <Button variant="accent" size="icon">
+                <MessageCircleIcon />
+              </Button>
+              <Notification
+                variant={variant as (typeof variants)[number]}
+                position={position as (typeof positions)[number]}
+                outlined={outlined}
+                ping={ping}
+              />
+            </div>
+            <div className="relative">
+              <Button variant="accent" size="icon">
+                <MessageCircleIcon />
+              </Button>
+              <Notification
+                variant={variant as (typeof variants)[number]}
+                position={position as (typeof positions)[number]}
+                outlined={outlined}
+                ping={ping}
+              >
+                <BellIcon />
+              </Notification>
+            </div>
+            <div className="relative">
+              <Button variant="accent" size="icon">
+                <MessageCircleIcon />
+              </Button>
+              <Notification
+                variant={variant as (typeof variants)[number]}
+                position={position as (typeof positions)[number]}
+                outlined={outlined}
+                ping={ping}
+              >
+                20+
+              </Notification>
+            </div>
+          </div>
+        </div>
+      </ComponentContainer>
+
+      <ComponentPlayground>
+        <div className="grid gap-2">
+          <Label htmlFor="variant">Variant</Label>
+          <Select value={variant} onValueChange={setVariant}>
+            <SelectTrigger id="variant" className="w-full">
+              <SelectValue placeholder="Select variant" />
+            </SelectTrigger>
+            <SelectContent className="max-h-96">
+              {variants.map((variant) => (
+                <SelectItem key={variant} value={variant}>
+                  {variant}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+        <div className="grid gap-2">
+          <Label htmlFor="position">Position</Label>
+          <Select value={position} onValueChange={setPosition}>
+            <SelectTrigger id="position" className="w-full">
+              <SelectValue placeholder="Select position" />
+            </SelectTrigger>
+            <SelectContent>
+              {positions.map((position) => (
+                <SelectItem key={position} value={position}>
+                  {position}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+        <div className="flex items-center gap-3">
+          <Switch
+            id="outlined"
+            checked={outlined}
+            onCheckedChange={setOutlined}
+          />
+          <Label htmlFor="outlined">Outlined</Label>
+        </div>
+        <div className="flex items-center gap-3">
+          <Switch id="ping" checked={ping} onCheckedChange={setPing} />
+          <Label htmlFor="ping">Ping</Label>
+        </div>
+      </ComponentPlayground>
+    </>
   );
 }

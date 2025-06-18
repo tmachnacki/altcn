@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import {
+  BanIcon,
   ChartBarIcon,
   ChartLineIcon,
   ChartPieIcon,
@@ -19,68 +20,76 @@ import {
   SelectTrigger,
   SelectValue,
 } from "~/components/ui/select";
-import { Switch } from "~/components/ui/switch";
+import { Slider } from "~/components/ui/slider";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
 
+const triggerVariants = [
+  "outline",
+  "muted",
+  "underlined",
+  "primary",
+  "secondary",
+] as const;
+
+type TriggerSize = "default" | "sm" | "lg";
+const triggerSizesMap: Record<number, TriggerSize> = {
+  1: "sm",
+  2: "default",
+  3: "lg",
+};
+
+const itemVariants = [
+  "accent",
+  "surface",
+  "primary",
+  "primary-accent",
+  "primary-muted",
+  "primary-surface",
+  "primary-faded",
+  "secondary",
+  "secondary-accent",
+  "secondary-muted",
+  "secondary-surface",
+  "secondary-faded",
+  "destructive",
+  "destructive-accent",
+  "destructive-muted",
+  "destructive-surface",
+  "destructive-faded",
+] as const;
+
+const indicatorVariants = [
+  "default",
+  "primary",
+  "secondary",
+  "destructive",
+] as const;
+
+const widths = ["default", "full"] as const;
+
 export function SelectDemo() {
-  const [triggerVariant, setTriggerVariant] = React.useState("default");
-  const [triggerSize, setTriggerSize] = React.useState("default");
-  const [itemsVariant, setItemsVariant] = React.useState("accent");
-  const [wide, setWide] = React.useState(false);
+  const [triggerVariant, setTriggerVariant] = React.useState("outline");
+  const [triggerSize, setTriggerSize] = React.useState(2);
+  const [itemVariant, setItemVariant] = React.useState("accent");
   const [indicatorVariant, setIndicatorVariant] = React.useState("default");
-
-  const triggerVariants = [
-    "default",
-    "muted",
-    "underlined",
-    "primary",
-    "secondary",
-  ] as const;
-
-  const triggerSizes = ["default"] as const;
-
-  const itemsVariants = [
-    "accent",
-    "surface",
-    "primary",
-    "primary-accent",
-    "primary-muted",
-    "primary-surface",
-    "primary-faded",
-    "secondary",
-    "secondary-accent",
-    "secondary-muted",
-    "secondary-surface",
-    "secondary-faded",
-    "destructive",
-    "destructive-accent",
-    "destructive-muted",
-    "destructive-surface",
-    "destructive-faded",
-  ] as const;
-
-  const indicatorVariants = [
-    "default",
-    "primary",
-    "secondary",
-    "destructive",
-  ] as const;
+  const [width, setWidth] = React.useState("default");
 
   return (
     <>
       <ComponentContainer>
-        <div className="flex h-full flex-1 flex-wrap items-center justify-start gap-4">
+        <div className="grid w-full max-w-md grid-cols-2 gap-4">
           <Select>
             <SelectTrigger
-              className="w-[180px]"
+              className="w-full"
               variant={triggerVariant as (typeof triggerVariants)[number]}
+              size={triggerSizesMap[triggerSize]}
             >
               <SelectValue placeholder="Select a fruit" />
             </SelectTrigger>
             <SelectContent
-              variant={itemsVariant as (typeof itemsVariants)[number]}
-              wide={wide}
+              variant={itemVariant as (typeof itemVariants)[number]}
+              width={width as (typeof widths)[number]}
               indicatorVariant={
                 indicatorVariant as (typeof indicatorVariants)[number]
               }
@@ -110,14 +119,15 @@ export function SelectDemo() {
           </Select>
           <Select>
             <SelectTrigger
-              className="w-[180px]"
+              className="w-full"
               variant={triggerVariant as (typeof triggerVariants)[number]}
+              size={triggerSizesMap[triggerSize]}
             >
               <SelectValue placeholder="Large List" />
             </SelectTrigger>
             <SelectContent
-              variant={itemsVariant as (typeof itemsVariants)[number]}
-              wide={wide}
+              variant={itemVariant as (typeof itemVariants)[number]}
+              width={width as (typeof widths)[number]}
               indicatorVariant={
                 indicatorVariant as (typeof indicatorVariants)[number]
               }
@@ -131,8 +141,9 @@ export function SelectDemo() {
           </Select>
           <Select>
             <SelectTrigger
-              className="w-[180px]"
+              className="w-full"
               variant={triggerVariant as (typeof triggerVariants)[number]}
+              size={triggerSizesMap[triggerSize]}
             >
               <SelectValue
                 placeholder={
@@ -144,8 +155,8 @@ export function SelectDemo() {
               />
             </SelectTrigger>
             <SelectContent
-              variant={itemsVariant as (typeof itemsVariants)[number]}
-              wide={wide}
+              variant={itemVariant as (typeof itemVariants)[number]}
+              width={width as (typeof widths)[number]}
               indicatorVariant={
                 indicatorVariant as (typeof indicatorVariants)[number]
               }
@@ -162,60 +173,32 @@ export function SelectDemo() {
                 <ChartPieIcon />
                 Pie
               </SelectItem>
+              <SelectItem value="disabled" disabled>
+                <BanIcon />
+                Disabled
+              </SelectItem>
             </SelectContent>
           </Select>
+
           <Select>
             <SelectTrigger
-              className="w-[180px]"
+              className="w-full"
               variant={triggerVariant as (typeof triggerVariants)[number]}
-            >
-              <SelectValue placeholder="Indicator Variants" />
-            </SelectTrigger>
-            <SelectContent
-              variant={itemsVariant as (typeof itemsVariants)[number]}
-              wide={wide}
-              indicatorVariant={
-                indicatorVariant as (typeof indicatorVariants)[number]
-              }
-            >
-              <SelectGroup>
-                <SelectLabel>Variant</SelectLabel>
-                <SelectItem value="default" indicatorVariant={"default"}>
-                  Default
-                </SelectItem>
-                <SelectItem value="primary" indicatorVariant={"primary"}>
-                  Primary
-                </SelectItem>
-                <SelectItem value="secondary" indicatorVariant={"secondary"}>
-                  Secondary
-                </SelectItem>
-                <SelectItem
-                  value="destructive"
-                  indicatorVariant={"destructive"}
-                >
-                  Destructive
-                </SelectItem>
-              </SelectGroup>
-            </SelectContent>
-          </Select>
-          <Select>
-            <SelectTrigger
-              className="w-[180px]"
-              variant={triggerVariant as (typeof triggerVariants)[number]}
+              size={triggerSizesMap[triggerSize]}
               aria-invalid="true"
             >
               <SelectValue
                 placeholder={
                   <>
                     <CircleDashed />
-                    With Icon
+                    Invalid
                   </>
                 }
               />
             </SelectTrigger>
             <SelectContent
-              variant={itemsVariant as (typeof itemsVariants)[number]}
-              wide={wide}
+              variant={itemVariant as (typeof itemVariants)[number]}
+              width={width as (typeof widths)[number]}
               indicatorVariant={
                 indicatorVariant as (typeof indicatorVariants)[number]
               }
@@ -232,157 +215,123 @@ export function SelectDemo() {
                 <ChartPieIcon />
                 Pie
               </SelectItem>
-            </SelectContent>
-          </Select>
-          <Select>
-            <SelectTrigger
-              className="w-[180px]"
-              variant={triggerVariant as (typeof triggerVariants)[number]}
-              disabled
-            >
-              <SelectValue
-                placeholder={
-                  <>
-                    <CircleDashed />
-                    With Icon
-                  </>
-                }
-              />
-            </SelectTrigger>
-            <SelectContent
-              variant={itemsVariant as (typeof itemsVariants)[number]}
-              wide={wide}
-              indicatorVariant={
-                indicatorVariant as (typeof indicatorVariants)[number]
-              }
-            >
-              <SelectItem value="line">
-                <ChartLineIcon />
-                Line
-              </SelectItem>
-              <SelectItem value="bar">
-                <ChartBarIcon />
-                Bar
-              </SelectItem>
-              <SelectItem value="pie">
-                <ChartPieIcon />
-                Pie
+              <SelectItem value="disabled" disabled>
+                <BanIcon />
+                Disabled
               </SelectItem>
             </SelectContent>
           </Select>
           <Select disabled>
             <SelectTrigger
-              className="w-[180px]"
+              className="w-full"
               variant={triggerVariant as (typeof triggerVariants)[number]}
+              size={triggerSizesMap[triggerSize]}
+              disabled
             >
-              <SelectValue placeholder="Disabled" />
+              <SelectValue
+                placeholder={
+                  <>
+                    <BanIcon />
+                    Disabled
+                  </>
+                }
+              />
             </SelectTrigger>
             <SelectContent
-              variant={itemsVariant as (typeof itemsVariants)[number]}
-              wide={wide}
+              variant={itemVariant as (typeof itemVariants)[number]}
+              width={width as (typeof widths)[number]}
               indicatorVariant={
                 indicatorVariant as (typeof indicatorVariants)[number]
               }
             >
-              <SelectItem value="apple">Apple</SelectItem>
-              <SelectItem value="banana">Banana</SelectItem>
-              <SelectItem value="blueberry">Blueberry</SelectItem>
-              <SelectItem value="grapes" disabled>
-                Grapes
+              <SelectItem value="line">
+                <ChartLineIcon />
+                Line
               </SelectItem>
-              <SelectItem value="pineapple">Pineapple</SelectItem>
+              <SelectItem value="bar">
+                <ChartBarIcon />
+                Bar
+              </SelectItem>
+              <SelectItem value="pie">
+                <ChartPieIcon />
+                Pie
+              </SelectItem>
+              <SelectItem value="disabled" disabled>
+                <BanIcon />
+                Disabled
+              </SelectItem>
             </SelectContent>
           </Select>
         </div>
       </ComponentContainer>
       <ComponentPlayground>
-        <div className="flex w-full flex-col gap-2">
-          <Label htmlFor="select-trigger-variant">Trigger Variant</Label>
-          <Select
-            value={triggerVariant}
-            onValueChange={setTriggerVariant}
-            defaultValue="default"
-          >
-            <SelectTrigger id="select-trigger-variant" className="w-full">
-              <SelectValue>{triggerVariant}</SelectValue>
+        <div className="grid gap-2">
+          <Label htmlFor="trigger-variant">Trigger Variant</Label>
+          <Select value={triggerVariant} onValueChange={setTriggerVariant}>
+            <SelectTrigger id="trigger-variant" className="w-full">
+              <SelectValue placeholder="Select variant" />
             </SelectTrigger>
             <SelectContent>
-              {triggerVariants.map((triggerVariant) => (
-                <SelectItem
-                  key={`trigger-variant-${triggerVariant}`}
-                  value={triggerVariant}
-                >
-                  {triggerVariant}
+              {triggerVariants.map((variant) => (
+                <SelectItem key={variant} value={variant}>
+                  {variant}
                 </SelectItem>
               ))}
             </SelectContent>
           </Select>
         </div>
-        <div className="flex flex-col gap-2">
-          <Label htmlFor="select-trigger-size">Trigger Size</Label>
-          <Select
-            value={triggerSize}
-            onValueChange={setTriggerSize}
-            defaultValue="default"
-          >
-            <SelectTrigger id="select-trigger-size" className="w-full">
-              <SelectValue>{triggerSize}</SelectValue>
+        <div className="grid gap-3">
+          <Label htmlFor="trigger-size">Trigger Size</Label>
+          <Slider
+            id="trigger-size"
+            className="w-full"
+            min={1}
+            max={3}
+            step={1}
+            value={[triggerSize]}
+            onValueChange={(value) => setTriggerSize(value[0])}
+          />
+        </div>
+        <div className="grid gap-2">
+          <Label htmlFor="item-variant">Item Variant</Label>
+          <Select value={itemVariant} onValueChange={setItemVariant}>
+            <SelectTrigger id="item-variant" className="w-full">
+              <SelectValue placeholder="Select variant" />
             </SelectTrigger>
             <SelectContent>
-              {triggerSizes.map((triggerSize) => (
-                <SelectItem
-                  key={`trigger-size-${triggerSize}`}
-                  value={triggerSize}
-                >
-                  {triggerSize}
+              {itemVariants.map((variant) => (
+                <SelectItem key={variant} value={variant}>
+                  {variant}
                 </SelectItem>
               ))}
             </SelectContent>
           </Select>
         </div>
-        <div className="flex flex-col gap-2">
-          <Label htmlFor="select-items-variant">Items Variant</Label>
-          <Select
-            value={itemsVariant}
-            onValueChange={setItemsVariant}
-            defaultValue="accent"
-          >
-            <SelectTrigger id="select-items-variant" className="w-full">
-              <SelectValue>{itemsVariant}</SelectValue>
+        <div className="grid gap-2">
+          <Label htmlFor="indicator-variant">Indicator Variant</Label>
+          <Select value={indicatorVariant} onValueChange={setIndicatorVariant}>
+            <SelectTrigger id="indicator-variant" className="w-full">
+              <SelectValue placeholder="Select variant" />
             </SelectTrigger>
             <SelectContent>
-              {itemsVariants.map((itemsVariant) => (
-                <SelectItem
-                  key={`items-variant-${itemsVariant}`}
-                  value={itemsVariant}
-                >
-                  {itemsVariant}
+              {indicatorVariants.map((variant) => (
+                <SelectItem key={variant} value={variant}>
+                  {variant}
                 </SelectItem>
               ))}
             </SelectContent>
           </Select>
         </div>
-        <Label className="flex items-center gap-2" htmlFor="select-wide">
-          <span>Wide</span>
-          <Switch id="select-wide" checked={wide} onCheckedChange={setWide} />
-        </Label>
-        <div className="flex flex-col gap-2">
-          <Label htmlFor="select-indicator-variant">Indicator Variant</Label>
-          <Select
-            value={indicatorVariant}
-            onValueChange={setIndicatorVariant}
-            defaultValue="default"
-          >
-            <SelectTrigger id="select-indicator-variant" className="w-full">
-              <SelectValue>{indicatorVariant}</SelectValue>
+        <div className="grid gap-2">
+          <Label htmlFor="width">Width</Label>
+          <Select value={width} onValueChange={setWidth}>
+            <SelectTrigger id="width" className="w-full">
+              <SelectValue placeholder="Select variant" />
             </SelectTrigger>
             <SelectContent>
-              {indicatorVariants.map((indicatorVariant) => (
-                <SelectItem
-                  key={`indicator-variant-${indicatorVariant}`}
-                  value={indicatorVariant}
-                >
-                  {indicatorVariant}
+              {widths.map((width) => (
+                <SelectItem key={width} value={width}>
+                  {width}
                 </SelectItem>
               ))}
             </SelectContent>

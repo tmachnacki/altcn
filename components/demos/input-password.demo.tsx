@@ -1,59 +1,111 @@
-import { Button } from "~/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "~/components/ui/card";
+"use client";
+
+import * as React from "react";
+
 import { InputPassword } from "~/components/ui/input-password";
 import { Label } from "~/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "~/components/ui/select";
+import { Slider } from "~/components/ui/slider";
 import { ComponentContainer } from "~/components/component-container";
+import { ComponentPlayground } from "~/components/component-playground";
+
+const variants = [
+  "outline",
+  "muted",
+  "underlined",
+  "primary",
+  "secondary",
+] as const;
+
+type Size = "sm" | "default" | "lg";
+const sizesMap: Record<number, Size> = {
+  1: "sm",
+  2: "default",
+  3: "lg",
+};
 
 export function InputPasswordDemo() {
-  const sizes = ["sm", "default", "lg"] as const;
+  const [variant, setVariant] = React.useState("outline");
+  const [size, setSize] = React.useState(2);
 
   return (
-    <ComponentContainer>
-      <div className="grid w-full max-w-sm gap-8">
-        {sizes.map((size) => (
-          <Card className="w-full" key={`input-password-${size}`}>
-            <CardHeader>
-              <CardTitle>Reset Password</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <form className="grid gap-6">
-                <div className="grid gap-2">
-                  <Label htmlFor={`new-password-${size}`}>New Password</Label>
-                  <InputPassword
-                    id={`new-password-${size}`}
-                    name={`new-password-${size}`}
-                    inputSize={size}
-                  />
-                </div>
-                <div className="grid gap-2">
-                  <Label htmlFor={`confirm-password-${size}`}>
-                    Confirm Password
-                  </Label>
-                  <InputPassword
-                    id={`confirm-password-${size}`}
-                    name={`confirm-password-${size}`}
-                    inputSize={size}
-                  />
-                </div>
-              </form>
-            </CardContent>
-            <CardFooter className="flex justify-end gap-2">
-              <Button type="reset" variant={"primary-muted"}>
-                Clear
-              </Button>
-              <Button type="submit" variant={"primary-gradient"}>
-                Reset Password
-              </Button>
-            </CardFooter>
-          </Card>
-        ))}
-      </div>
-    </ComponentContainer>
+    <>
+      <ComponentContainer>
+        <div className="grid w-full max-w-xs gap-8">
+          <div className="grid gap-2">
+            <Label htmlFor="input-password">Password</Label>
+            <InputPassword
+              id="input-password"
+              name="input-password"
+              autoComplete="current-password"
+              size={sizesMap[size]}
+              variant={variant as (typeof variants)[number]}
+            />
+          </div>
+          <div className="grid gap-2">
+            <Label htmlFor="input-password-invalid">Invalid</Label>
+            <InputPassword
+              id="input-password-invalid"
+              name="input-password-invalid"
+              autoComplete="current-password"
+              size={sizesMap[size]}
+              variant={variant as (typeof variants)[number]}
+              aria-invalid="true"
+            />
+          </div>
+          <div className="grid gap-2">
+            <Label htmlFor="input-password-disabled">Disabled</Label>
+            <InputPassword
+              id="input-password-disabled"
+              name="input-password-disabled"
+              autoComplete="current-password"
+              size={sizesMap[size]}
+              variant={variant as (typeof variants)[number]}
+              disabled
+            />
+          </div>
+        </div>
+      </ComponentContainer>
+      <ComponentPlayground>
+        <div className="grid gap-2">
+          <Label htmlFor="variant">Variant</Label>
+          <Select value={variant} onValueChange={setVariant}>
+            <SelectTrigger id="variant" className="w-full">
+              <SelectValue placeholder="Select variant" />
+            </SelectTrigger>
+            <SelectContent>
+              {variants.map((variant) => (
+                <SelectItem key={variant} value={variant}>
+                  {variant}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+
+        <div className="grid gap-3">
+          <Label htmlFor="size">
+            Size:{" "}
+            <span className="font-normal text-primary-muted-foreground">
+              {sizesMap[size]}
+            </span>
+          </Label>
+          <Slider
+            id="size"
+            min={1}
+            max={3}
+            step={1}
+            value={[size]}
+            onValueChange={(value) => setSize(value[0])}
+          />
+        </div>
+      </ComponentPlayground>
+    </>
   );
 }

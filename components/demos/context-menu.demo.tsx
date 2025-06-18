@@ -37,7 +37,7 @@ import {
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
 
-const contextMenuVariants = [
+const itemVariants = [
   "base",
   "accent",
   "surface",
@@ -53,15 +53,7 @@ const contextMenuVariants = [
   "secondary-faded",
 ] as const;
 
-const checkboxIndicatorVariants = [
-  "default",
-  "primary",
-  "secondary",
-  "destructive",
-  "success",
-  "warning",
-] as const;
-const radioIndicatorVariants = [
+const indicatorVariants = [
   "default",
   "primary",
   "secondary",
@@ -70,7 +62,7 @@ const radioIndicatorVariants = [
   "warning",
 ] as const;
 
-const contextMenuDestructiveVariants = [
+const destructiveItemVariants = [
   "destructive",
   "destructive-accent",
   "destructive-muted",
@@ -78,20 +70,17 @@ const contextMenuDestructiveVariants = [
   "destructive-faded",
 ] as const;
 
-const contextMenuWidths = ["default", "full"] as const;
+const itemWidths = ["default", "full"] as const;
 
 export function ContextMenuDemo() {
   const [variant, setVariant] = React.useState("accent");
-  const [checkboxIndicatorVariant, setCheckboxIndicatorVariant] =
-    React.useState("default");
-  const [radioIndicatorVariant, setRadioIndicatorVariant] =
-    React.useState("default");
+  const [indicatorVariant, setIndicatorVariant] = React.useState("default");
   const [destructiveVariant, setDestructiveVariant] =
-    React.useState("destructive");
+    React.useState("destructive-muted");
   const [width, setWidth] = React.useState("default");
 
   const [checked, setChecked] = React.useState(true);
-  const [radioIndicator, setRadioIndicator] = React.useState("one");
+  const [radioSelection, setRadioSelection] = React.useState("one");
 
   const variantLabel = variant.replace("-", " ");
 
@@ -103,8 +92,11 @@ export function ContextMenuDemo() {
             {variantLabel}
           </ContextMenuTrigger>
           <ContextMenuContent
-            variant={variant as (typeof contextMenuVariants)[number]}
-            width={width as (typeof contextMenuWidths)[number]}
+            variant={variant as (typeof itemVariants)[number]}
+            width={width as (typeof itemWidths)[number]}
+            indicatorVariant={
+              indicatorVariant as (typeof indicatorVariants)[number]
+            }
           >
             <ContextMenuGroup>
               <ContextMenuLabel>Account</ContextMenuLabel>
@@ -152,9 +144,6 @@ export function ContextMenuDemo() {
               <ContextMenuCheckboxItem
                 checked={checked}
                 onCheckedChange={setChecked}
-                indicatorVariant={
-                  checkboxIndicatorVariant as (typeof checkboxIndicatorVariants)[number]
-                }
                 onSelect={(e) => e.preventDefault()}
               >
                 Default Indicator
@@ -167,23 +156,17 @@ export function ContextMenuDemo() {
             <ContextMenuGroup>
               <ContextMenuLabel position="inset">Radio Group</ContextMenuLabel>
               <ContextMenuRadioGroup
-                value={radioIndicator}
-                onValueChange={setRadioIndicator}
+                value={radioSelection}
+                onValueChange={setRadioSelection}
               >
                 <ContextMenuRadioItem
                   value="one"
-                  indicatorVariant={
-                    radioIndicatorVariant as (typeof radioIndicatorVariants)[number]
-                  }
                   onSelect={(e) => e.preventDefault()}
                 >
                   Option 1
                 </ContextMenuRadioItem>
                 <ContextMenuRadioItem
                   value="two"
-                  indicatorVariant={
-                    radioIndicatorVariant as (typeof radioIndicatorVariants)[number]
-                  }
                   onSelect={(e) => e.preventDefault()}
                 >
                   Option 2
@@ -191,9 +174,6 @@ export function ContextMenuDemo() {
                 <ContextMenuRadioItem
                   value="disabled"
                   disabled
-                  indicatorVariant={
-                    radioIndicatorVariant as (typeof radioIndicatorVariants)[number]
-                  }
                   onSelect={(e) => e.preventDefault()}
                 >
                   Disabled
@@ -204,7 +184,7 @@ export function ContextMenuDemo() {
             <ContextMenuGroup>
               <ContextMenuItem
                 variant={
-                  destructiveVariant as (typeof contextMenuDestructiveVariants)[number]
+                  destructiveVariant as (typeof destructiveItemVariants)[number]
                 }
               >
                 <TrashIcon />
@@ -213,7 +193,7 @@ export function ContextMenuDemo() {
               </ContextMenuItem>
               <ContextMenuItem
                 variant={
-                  destructiveVariant as (typeof contextMenuDestructiveVariants)[number]
+                  destructiveVariant as (typeof destructiveItemVariants)[number]
                 }
                 disabled
               >
@@ -228,13 +208,13 @@ export function ContextMenuDemo() {
 
       <ComponentPlayground>
         <div className="grid gap-2">
-          <Label htmlFor="context-menu-variant">Context Menu Variant</Label>
+          <Label htmlFor="item-variant">Item Variant</Label>
           <Select value={variant} onValueChange={setVariant}>
-            <SelectTrigger id="context-menu-variant" className="w-full">
+            <SelectTrigger id="item-variant" className="w-full">
               <SelectValue placeholder="Select variant" />
             </SelectTrigger>
             <SelectContent>
-              {contextMenuVariants.map((variant) => (
+              {itemVariants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
                   {variant}
                 </SelectItem>
@@ -244,21 +224,13 @@ export function ContextMenuDemo() {
         </div>
 
         <div className="grid gap-2">
-          <Label htmlFor="context-menu-checkbox-indicator-variant">
-            Checkbox Indicator Variant
-          </Label>
-          <Select
-            value={checkboxIndicatorVariant}
-            onValueChange={setCheckboxIndicatorVariant}
-          >
-            <SelectTrigger
-              id="context-menu-checkbox-indicator-variant"
-              className="w-full"
-            >
+          <Label htmlFor="indicator-variant">Indicator Variant</Label>
+          <Select value={indicatorVariant} onValueChange={setIndicatorVariant}>
+            <SelectTrigger id="indicator-variant" className="w-full">
               <SelectValue placeholder="Select variant" />
             </SelectTrigger>
             <SelectContent>
-              {checkboxIndicatorVariants.map((variant) => (
+              {indicatorVariants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
                   {variant}
                 </SelectItem>
@@ -268,45 +240,18 @@ export function ContextMenuDemo() {
         </div>
 
         <div className="grid gap-2">
-          <Label htmlFor="context-menu-radio-indicator-variant">
-            Radio Indicator Variant
-          </Label>
-          <Select
-            value={radioIndicatorVariant}
-            onValueChange={setRadioIndicatorVariant}
-          >
-            <SelectTrigger
-              id="context-menu-radio-indicator-variant"
-              className="w-full"
-            >
-              <SelectValue placeholder="Select variant" />
-            </SelectTrigger>
-            <SelectContent>
-              {radioIndicatorVariants.map((variant) => (
-                <SelectItem key={variant} value={variant}>
-                  {variant}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </div>
-
-        <div className="grid gap-2">
-          <Label htmlFor="context-menu-destructive-variant">
-            Destructive Variant
+          <Label htmlFor="destructive-item-variant">
+            Destructive Item Variant
           </Label>
           <Select
             value={destructiveVariant}
             onValueChange={setDestructiveVariant}
           >
-            <SelectTrigger
-              id="context-menu-destructive-variant"
-              className="w-full"
-            >
+            <SelectTrigger id="destructive-item-variant" className="w-full">
               <SelectValue placeholder="Select variant" />
             </SelectTrigger>
             <SelectContent>
-              {contextMenuDestructiveVariants.map((variant) => (
+              {destructiveItemVariants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
                   {variant}
                 </SelectItem>
@@ -316,13 +261,13 @@ export function ContextMenuDemo() {
         </div>
 
         <div className="grid gap-2">
-          <Label htmlFor="context-menu-width">Context Menu Width</Label>
+          <Label htmlFor="item-width">Item Width</Label>
           <Select value={width} onValueChange={setWidth}>
-            <SelectTrigger id="context-menu-width" className="w-full">
+            <SelectTrigger id="item-width" className="w-full">
               <SelectValue placeholder="Select width" />
             </SelectTrigger>
             <SelectContent>
-              {contextMenuWidths.map((width) => (
+              {itemWidths.map((width) => (
                 <SelectItem key={width} value={width}>
                   {width}
                 </SelectItem>

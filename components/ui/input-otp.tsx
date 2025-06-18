@@ -29,7 +29,7 @@ const inputOTPSlotVariants = cva(
 
           "data-[placeholder]:text-placeholder",
 
-          "group-has-disabled/input-otp:bg-muted group-has-disabled/input-otp:shadow-none",
+          "group-has-disabled/input-otp:bg-faded group-has-disabled/input-otp:shadow-none",
 
           "data-[invalid=true]:inset-ring-destructive data-[invalid=true]:outline-destructive data-[invalid=true]:data-[placeholder]:text-destructive-placeholder dark:data-[invalid=true]:bg-destructive-faded",
 
@@ -39,7 +39,7 @@ const inputOTPSlotVariants = cva(
         ],
 
         muted: [
-          "-ml-px bg-muted text-accent-foreground group-hover/input-otp:not-data-[invalid=true]:group-not-has-disabled/input-otp:group-not-focus-within/input-otp:bg-base-200 first:ml-0 first:rounded-l-md last:rounded-r-md dark:group-hover/input-otp:not-data-[invalid=true]:group-not-has-disabled/input-otp:group-not-focus-within/input-otp:bg-base-800",
+          "-ml-px bg-muted text-accent-foreground group-hover/input-otp:not-data-[invalid=true]:group-not-has-disabled/input-otp:group-not-focus-within/input-otp:bg-hover-muted first:ml-0 first:rounded-l-md last:rounded-r-md",
           "[--shadow-border:var(--color-border)] data-[invalid=true]:[--shadow-border:var(--color-border-destructive-faded)]",
 
           "shadow-[inset_1px_0_0_0_var(--shadow-border),inset_-1px_0_0_0_var(--shadow-border)] first:shadow-[inset_-1px_0_0_0_var(--shadow-border)] last:shadow-[inset_1px_0_0_0_var(--shadow-border)]",
@@ -48,7 +48,7 @@ const inputOTPSlotVariants = cva(
 
           "data-[active=true]:outline-2 data-[active=true]:-outline-offset-2 data-[active=true]:outline-primary",
 
-          "data-[invalid=true]:bg-destructive-muted/80 data-[invalid=true]:text-destructive-accent-foreground data-[invalid=true]:group-not-focus-within/input-otp:group-hover/input-otp:bg-destructive-muted data-[invalid=true]:data-[active=true]:outline-destructive data-[invalid=true]:data-[placeholder]:text-destructive-muted-foreground",
+          "data-[invalid=true]:bg-destructive-muted data-[invalid=true]:text-destructive-accent-foreground data-[invalid=true]:group-not-focus-within/input-otp:group-hover/input-otp:bg-hover-destructive-muted data-[invalid=true]:data-[active=true]:outline-destructive data-[invalid=true]:data-[placeholder]:text-destructive-muted-foreground",
 
           "data-[layout=split]:ml-0 data-[layout=split]:rounded-md data-[layout=split]:shadow-none",
         ],
@@ -64,7 +64,7 @@ const inputOTPSlotVariants = cva(
         ],
 
         primary: [
-          "-ml-px bg-primary-muted/80 text-primary-accent-foreground group-hover/input-otp:not-data-[invalid=true]:group-not-has-disabled/input-otp:group-not-focus-within/input-otp:bg-primary-muted first:ml-0 first:rounded-l-md last:rounded-r-md",
+          "-ml-px bg-primary-muted text-primary-accent-foreground group-hover/input-otp:not-data-[invalid=true]:group-not-has-disabled/input-otp:group-not-focus-within/input-otp:bg-hover-primary-muted first:ml-0 first:rounded-l-md last:rounded-r-md",
 
           "[--shadow-border:var(--color-border-primary-faded)] data-[invalid=true]:[--shadow-border:var(--color-border-destructive-faded)]",
 
@@ -76,12 +76,12 @@ const inputOTPSlotVariants = cva(
 
           "data-[active=true]:outline-2 data-[active=true]:-outline-offset-2 data-[active=true]:outline-primary",
 
-          "data-[invalid=true]:bg-destructive-muted/80 data-[invalid=true]:text-destructive-accent-foreground data-[invalid=true]:group-not-focus-within/input-otp:group-hover/input-otp:bg-destructive-muted data-[invalid=true]:data-[active=true]:outline-destructive data-[invalid=true]:data-[placeholder]:text-destructive-muted-foreground",
+          "data-[invalid=true]:bg-destructive-muted data-[invalid=true]:text-destructive-accent-foreground data-[invalid=true]:group-not-focus-within/input-otp:group-hover/input-otp:bg-hover-destructive-muted data-[invalid=true]:data-[active=true]:outline-destructive data-[invalid=true]:data-[placeholder]:text-destructive-muted-foreground",
           "data-[layout=split]:-ml-0 data-[layout=split]:rounded-md data-[layout=split]:shadow-none",
         ],
 
         secondary: [
-          "-ml-px bg-secondary-muted/80 text-secondary-accent-foreground group-hover/input-otp:not-data-[invalid=true]:group-not-has-disabled/input-otp:group-not-focus-within/input-otp:bg-secondary-muted first:ml-0 first:rounded-l-md last:rounded-r-md",
+          "-ml-px bg-secondary-muted text-secondary-accent-foreground group-hover/input-otp:not-data-[invalid=true]:group-not-has-disabled/input-otp:group-not-focus-within/input-otp:bg-hover-secondary-muted first:ml-0 first:rounded-l-md last:rounded-r-md",
 
           "[--shadow-border:var(--color-border-secondary-faded)] data-[invalid=true]:[--shadow-border:var(--color-border-destructive-faded)]",
           "shadow-[inset_1px_0_0_0_var(--shadow-border),inset_-1px_0_0_0_var(--shadow-border)] first:shadow-[inset_-1px_0_0_0_var(--shadow-border)] last:shadow-[inset_1px_0_0_0_var(--shadow-border)]",
@@ -92,7 +92,7 @@ const inputOTPSlotVariants = cva(
 
           "data-[active=true]:outline-2 data-[active=true]:-outline-offset-2 data-[active=true]:outline-secondary",
 
-          "data-[invalid=true]:bg-destructive-muted/80 data-[invalid=true]:text-destructive-accent-foreground data-[invalid=true]:group-not-focus-within/input-otp:group-hover/input-otp:bg-destructive-muted data-[invalid=true]:data-[active=true]:outline-destructive data-[invalid=true]:data-[placeholder]:text-destructive-muted-foreground",
+          "data-[invalid=true]:bg-destructive-muted data-[invalid=true]:text-destructive-accent-foreground data-[invalid=true]:group-not-focus-within/input-otp:group-hover/input-otp:bg-hover-destructive-muted data-[invalid=true]:data-[active=true]:outline-destructive data-[invalid=true]:data-[placeholder]:text-destructive-muted-foreground",
           "data-[layout=split]:-ml-0 data-[layout=split]:rounded-md data-[layout=split]:shadow-none",
         ],
       },

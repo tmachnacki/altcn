@@ -22,32 +22,32 @@ const badgeVariants = cva(
         base: [
           "bg-base-bg text-base-foreground",
           "[--hover-badge-close-bg:--alpha(var(--color-base-200)/20%)]",
-          "[a&]:hover:bg-base-bg/90",
-          "[button&]:hover:bg-base-bg/90",
+          "[a&]:hover:bg-hover-base",
+          "[button&]:hover:bg-hover-base",
         ],
 
         accent: [
           "bg-muted text-accent-foreground",
-          "[a&]:hover:bg-base-200 dark:[a&]:hover:bg-base-800",
-          "[button&]:hover:bg-base-200 dark:[button&]:hover:bg-base-800",
+          "[a&]:hover:bg-hover-muted",
+          "[button&]:hover:bg-hover-muted",
         ],
 
         muted: [
           "bg-muted text-muted-foreground",
-          "[a&]:hover:bg-base-200 dark:[a&]:hover:bg-base-800",
-          "[button&]:hover:bg-base-200 dark:[button&]:hover:bg-base-800",
+          "[a&]:hover:bg-hover-muted",
+          "[button&]:hover:bg-hover-muted",
         ],
 
         surface: [
           "bg-faded text-accent-foreground inset-ring inset-ring-border-faded",
-          "[a&]:hover:bg-muted",
-          "[button&]:hover:bg-muted",
+          "[a&]:hover:bg-hover-faded",
+          "[button&]:hover:bg-hover-faded",
         ],
 
         faded: [
           "bg-faded text-muted-foreground inset-ring inset-ring-border-faded",
-          "[a&]:hover:bg-muted",
-          "[button&]:hover:bg-muted",
+          "[a&]:hover:bg-hover-faded",
+          "[button&]:hover:bg-hover-faded",
         ],
 
         dotted: "[--badge-dot-text:var(--color-muted-foreground)]",
@@ -56,32 +56,32 @@ const badgeVariants = cva(
         primary: [
           "bg-primary text-primary-foreground",
           "[--hover-badge-close-bg:--alpha(var(--color-primary-200)/20%)]",
-          "[a&]:hover:bg-primary/90",
-          "[button&]:hover:bg-primary/90",
+          "[a&]:hover:bg-hover-primary",
+          "[button&]:hover:bg-hover-primary",
         ],
 
         "primary-accent": [
           "bg-primary-muted text-primary-accent-foreground",
-          "[a&]:hover:bg-primary-muted/80",
-          "[button&]:hover:bg-primary-muted/80",
+          "[a&]:hover:bg-hover-primary-muted",
+          "[button&]:hover:bg-hover-primary-muted",
         ],
 
         "primary-muted": [
           "bg-primary-muted text-primary-muted-foreground",
-          "[a&]:hover:bg-primary-muted/80",
-          "[button&]:hover:bg-primary-muted/80",
+          "[a&]:hover:bg-hover-primary-muted",
+          "[button&]:hover:bg-hover-primary-muted",
         ],
 
         "primary-surface": [
           "bg-primary-faded text-primary-accent-foreground inset-ring inset-ring-border-primary-faded",
-          "[a&]:hover:bg-primary-muted/80",
-          "[button&]:hover:bg-primary-muted/80",
+          "[a&]:hover:bg-hover-primary-faded",
+          "[button&]:hover:bg-hover-primary-faded",
         ],
 
         "primary-faded": [
           "bg-primary-faded text-primary-muted-foreground inset-ring inset-ring-border-primary-faded",
-          "[a&]:hover:bg-primary-muted/80",
-          "[button&]:hover:bg-primary-muted/80",
+          "[a&]:hover:bg-hover-primary-faded",
+          "[button&]:hover:bg-hover-primary-faded",
         ],
 
         "primary-tron": [
@@ -99,32 +99,32 @@ const badgeVariants = cva(
         secondary: [
           "bg-secondary text-secondary-foreground",
           "[--hover-badge-close-bg:--alpha(var(--color-secondary-700)/30%)]",
-          "[a&]:hover:bg-secondary/90",
-          "[button&]:hover:bg-secondary/90",
+          "[a&]:hover:bg-hover-secondary",
+          "[button&]:hover:bg-hover-secondary",
         ],
 
         "secondary-accent": [
           "bg-secondary-muted text-secondary-accent-foreground",
-          "[a&]:hover:bg-secondary-muted/80",
-          "[button&]:hover:bg-secondary-muted/80",
+          "[a&]:hover:bg-hover-secondary-muted",
+          "[button&]:hover:bg-hover-secondary-muted",
         ],
 
         "secondary-muted": [
           "bg-secondary-muted text-secondary-muted-foreground",
-          "[a&]:hover:bg-secondary-muted/80",
-          "[button&]:hover:bg-secondary-muted/80",
+          "[a&]:hover:bg-hover-secondary-muted",
+          "[button&]:hover:bg-hover-secondary-muted",
         ],
 
         "secondary-surface": [
           "bg-secondary-faded text-secondary-accent-foreground inset-ring inset-ring-border-secondary-faded",
-          "[a&]:hover:bg-secondary-muted/80",
-          "[button&]:hover:bg-secondary-muted/80",
+          "[a&]:hover:bg-hover-secondary-faded",
+          "[button&]:hover:bg-hover-secondary-faded",
         ],
 
         "secondary-faded": [
           "bg-secondary-faded text-secondary-muted-foreground inset-ring inset-ring-border-secondary-faded",
-          "[a&]:hover:bg-secondary-muted/80",
-          "[button&]:hover:bg-secondary-muted/80",
+          "[a&]:hover:bg-hover-secondary-faded",
+          "[button&]:hover:bg-hover-secondary-faded",
         ],
 
         "secondary-tron": [
@@ -142,32 +142,32 @@ const badgeVariants = cva(
         destructive: [
           "bg-destructive text-destructive-foreground",
           "[--hover-badge-close-bg:--alpha(var(--color-destructive-100)/40%)]",
-          "[a&]:hover:bg-destructive/90",
-          "[button&]:hover:bg-destructive/90",
+          "[a&]:hover:bg-hover-destructive",
+          "[button&]:hover:bg-hover-destructive",
         ],
 
         "destructive-accent": [
           "bg-destructive-muted text-destructive-accent-foreground",
-          "[a&]:hover:bg-destructive-muted/80",
-          "[button&]:hover:bg-destructive-muted/80",
+          "[a&]:hover:bg-hover-destructive-muted",
+          "[button&]:hover:bg-hover-destructive-muted",
         ],
 
         "destructive-muted": [
           "bg-destructive-muted text-destructive-muted-foreground",
-          "[a&]:hover:bg-destructive-muted/80",
-          "[button&]:hover:bg-destructive-muted/80",
+          "[a&]:hover:bg-hover-destructive-muted",
+          "[button&]:hover:bg-hover-destructive-muted",
         ],
 
         "destructive-surface": [
           "bg-destructive-faded text-destructive-accent-foreground inset-ring inset-ring-border-destructive-faded",
-          "[a&]:hover:bg-destructive-muted/80",
-          "[button&]:hover:bg-destructive-muted/80",
+          "[a&]:hover:bg-hover-destructive-faded",
+          "[button&]:hover:bg-hover-destructive-faded",
         ],
 
         "destructive-faded": [
           "bg-destructive-faded text-destructive-muted-foreground inset-ring inset-ring-border-destructive-faded",
-          "[a&]:hover:bg-destructive-muted/80",
-          "[button&]:hover:bg-destructive-muted/80",
+          "[a&]:hover:bg-hover-destructive-faded",
+          "[button&]:hover:bg-hover-destructive-faded",
         ],
 
         "destructive-tron": [
@@ -185,32 +185,32 @@ const badgeVariants = cva(
         success: [
           "bg-success text-success-foreground",
           "[--hover-badge-close-bg:--alpha(var(--color-success-200)/20%)]",
-          "[a&]:hover:bg-success/90",
-          "[button&]:hover:bg-success/90",
+          "[a&]:hover:bg-hover-success",
+          "[button&]:hover:bg-hover-success",
         ],
 
         "success-accent": [
           "bg-success-muted text-success-accent-foreground",
-          "[a&]:hover:bg-success-muted/80",
-          "[button&]:hover:bg-success-muted/80",
+          "[a&]:hover:bg-hover-success-muted",
+          "[button&]:hover:bg-hover-success-muted",
         ],
 
         "success-muted": [
           "bg-success-muted text-success-muted-foreground",
-          "[a&]:hover:bg-success-muted/80",
-          "[button&]:hover:bg-success-muted/80",
+          "[a&]:hover:bg-hover-success-muted",
+          "[button&]:hover:bg-hover-success-muted",
         ],
 
         "success-surface": [
           "bg-success-faded text-success-accent-foreground inset-ring inset-ring-border-success-faded",
-          "[a&]:hover:bg-success-muted/80",
-          "[button&]:hover:bg-success-muted/80",
+          "[a&]:hover:bg-hover-success-faded",
+          "[button&]:hover:bg-hover-success-faded",
         ],
 
         "success-faded": [
           "bg-success-faded text-success-muted-foreground inset-ring inset-ring-border-success-faded",
-          "[a&]:hover:bg-success-muted/80",
-          "[button&]:hover:bg-success-muted/80",
+          "[a&]:hover:bg-hover-success-faded",
+          "[button&]:hover:bg-hover-success-faded",
         ],
 
         "success-tron": [
@@ -228,32 +228,32 @@ const badgeVariants = cva(
         warning: [
           "bg-warning text-warning-foreground",
           "[--hover-badge-close-bg:--alpha(var(--color-warning-700)/30%)]",
-          "[a&]:hover:bg-warning/90",
-          "[button&]:hover:bg-warning/90",
+          "[a&]:hover:bg-hover-warning",
+          "[button&]:hover:bg-hover-warning",
         ],
 
         "warning-accent": [
           "bg-warning-muted text-warning-accent-foreground",
-          "[a&]:hover:bg-warning-muted/80",
-          "[button&]:hover:bg-warning-muted/80",
+          "[a&]:hover:bg-hover-warning-muted",
+          "[button&]:hover:bg-hover-warning-muted",
         ],
 
         "warning-muted": [
           "bg-warning-muted text-warning-muted-foreground",
-          "[a&]:hover:bg-warning-muted/80",
-          "[button&]:hover:bg-warning-muted/80",
+          "[a&]:hover:bg-hover-warning-muted",
+          "[button&]:hover:bg-hover-warning-muted",
         ],
 
         "warning-surface": [
           "bg-warning-faded text-warning-accent-foreground inset-ring inset-ring-border-warning-faded",
-          "[a&]:hover:bg-warning-muted/80",
-          "[button&]:hover:bg-warning-muted/80",
+          "[a&]:hover:bg-hover-warning-faded",
+          "[button&]:hover:bg-hover-warning-faded",
         ],
 
         "warning-faded": [
           "bg-warning-faded text-warning-muted-foreground inset-ring inset-ring-border-warning-faded",
-          "[a&]:hover:bg-warning-muted/80",
-          "[button&]:hover:bg-warning-muted/80",
+          "[a&]:hover:bg-hover-warning-faded",
+          "[button&]:hover:bg-hover-warning-faded",
         ],
 
         "warning-tron": [
@@ -281,8 +281,8 @@ const badgeVariants = cva(
         ],
         className: [
           "bg-background text-foreground inset-ring inset-ring-border",
-          "[a&]:hover:bg-faded-solid [a&]:hover:inset-ring-hover-border",
-          "[button&]:hover:bg-faded-solid [button&]:hover:inset-ring-hover-border",
+          "[a&]:hover:bg-faded [a&]:hover:inset-ring-hover-border",
+          "[button&]:hover:bg-faded [button&]:hover:inset-ring-hover-border",
         ],
       },
       {

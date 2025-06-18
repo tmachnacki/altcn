@@ -26,11 +26,11 @@ const inputVariants = cva(
         outline: [
           "bg-background text-foreground shadow-xs outline-1 -outline-offset-1 outline-border hover:not-disabled:not-focus-visible:not-aria-invalid:outline-hover-border dark:bg-faded",
 
-          "file:border-r file:border-border file:bg-accent file:text-accent-foreground hover:not-disabled:not-focus-visible:not-aria-invalid:file:border-hover-border",
+          "file:border-r file:border-border file:bg-muted file:text-accent-foreground hover:not-disabled:not-focus-visible:not-aria-invalid:file:border-hover-border",
 
           "placeholder:text-placeholder",
 
-          "disabled:bg-base-100 disabled:shadow-none dark:disabled:bg-base-900",
+          "disabled:bg-faded disabled:shadow-none",
 
           "focus-visible:outline-2 focus-visible:outline-primary",
 
@@ -38,7 +38,7 @@ const inputVariants = cva(
         ],
 
         muted: [
-          "bg-muted text-accent-foreground -outline-offset-1 hover:not-disabled:not-focus-visible:not-aria-invalid:bg-base-200 dark:hover:not-disabled:not-focus-visible:not-aria-invalid:bg-base-800",
+          "bg-muted text-accent-foreground -outline-offset-1 hover:not-disabled:not-focus-visible:not-aria-invalid:bg-hover-muted",
 
           "file:bg-base-bg file:text-base-foreground",
 
@@ -46,7 +46,7 @@ const inputVariants = cva(
 
           "focus-visible:outline-2 focus-visible:outline-primary",
 
-          "aria-invalid:bg-destructive-muted/80 aria-invalid:file:bg-destructive aria-invalid:file:text-destructive-foreground aria-invalid:placeholder:text-destructive-muted-foreground aria-invalid:hover:not-focus-visible:bg-destructive-muted aria-invalid:focus-visible:outline-destructive",
+          "aria-invalid:bg-destructive-muted aria-invalid:file:bg-destructive aria-invalid:file:text-destructive-foreground aria-invalid:placeholder:text-destructive-muted-foreground aria-invalid:hover:not-focus-visible:bg-hover-destructive-muted aria-invalid:focus-visible:outline-destructive",
         ],
 
         underlined: [
@@ -63,7 +63,7 @@ const inputVariants = cva(
 
         // -- primary --
         primary: [
-          "bg-primary-muted/80 text-primary-accent-foreground -outline-offset-1 hover:not-disabled:not-focus-visible:not-aria-invalid:bg-primary-muted",
+          "bg-primary-muted text-primary-accent-foreground -outline-offset-1 hover:not-disabled:not-focus-visible:not-aria-invalid:bg-hover-primary-muted",
 
           "file:bg-primary file:text-primary-foreground",
 
@@ -73,12 +73,12 @@ const inputVariants = cva(
 
           "focus-visible:outline-2 focus-visible:outline-primary",
 
-          "aria-invalid:bg-destructive-muted/80 aria-invalid:file:bg-destructive aria-invalid:file:text-destructive-foreground aria-invalid:placeholder:text-destructive-muted-foreground aria-invalid:hover:not-focus-visible:bg-destructive-muted aria-invalid:focus-visible:outline-destructive",
+          "aria-invalid:bg-destructive-muted aria-invalid:file:bg-destructive aria-invalid:file:text-destructive-foreground aria-invalid:placeholder:text-destructive-muted-foreground aria-invalid:hover:not-focus-visible:bg-hover-destructive-muted aria-invalid:focus-visible:outline-destructive",
         ],
 
         // -- secondary --
         secondary: [
-          "bg-secondary-muted/80 text-secondary-accent-foreground -outline-offset-1 hover:not-disabled:not-focus-visible:not-aria-invalid:bg-secondary-muted",
+          "bg-secondary-muted text-secondary-accent-foreground -outline-offset-1 hover:not-disabled:not-focus-visible:not-aria-invalid:bg-hover-secondary-muted",
 
           "selection:bg-secondary selection:text-secondary-foreground",
 
@@ -90,7 +90,7 @@ const inputVariants = cva(
 
           "focus-visible:outline-2 focus-visible:outline-secondary",
 
-          "aria-invalid:bg-destructive-muted/80 aria-invalid:file:bg-destructive aria-invalid:file:text-destructive-foreground aria-invalid:placeholder:text-destructive-muted-foreground aria-invalid:hover:not-focus-visible:bg-destructive-muted aria-invalid:focus-visible:outline-destructive",
+          "aria-invalid:bg-destructive-muted aria-invalid:file:bg-destructive aria-invalid:file:text-destructive-foreground aria-invalid:placeholder:text-destructive-muted-foreground aria-invalid:hover:not-focus-visible:bg-hover-destructive-muted aria-invalid:focus-visible:outline-destructive",
         ],
       },
     },

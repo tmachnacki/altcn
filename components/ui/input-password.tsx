@@ -13,9 +13,8 @@ type InputPasswordProps = Omit<
   "type" | "autoComplete"
 > & {
   autoComplete?: "current-password" | "new-password" | "off";
-  toggleVariant?: React.ComponentProps<typeof Button>["variant"];
   classNames?: {
-    root?: string;
+    container?: string;
     input?: string;
     toggle?: string;
   };
@@ -25,24 +24,29 @@ function InputPassword({
   className,
   size = "default",
   variant = "outline",
-  toggleVariant = "ghost",
   classNames,
   autoComplete,
+  disabled,
   ...props
 }: InputPasswordProps) {
   const [showPassword, setShowPassword] = React.useState(false);
   return (
-    <div data-slot className={cn("relative", classNames?.root)}>
+    <div
+      data-slot="input-password-container"
+      className={cn("relative", classNames?.container)}
+    >
       <Input
         data-slot="input-password-input"
         type={showPassword ? "text" : "password"}
         variant={variant}
         size={size}
         autoComplete={autoComplete}
+        disabled={disabled}
         className={cn(
           { default: "pr-9", sm: "pr-8", lg: "pr-10" }[size || "default"],
           "[&::-ms-reveal]:pointer-events-none [&::-ms-reveal]:invisible [&::-ms-reveal]:hidden",
           "[&::-ms-clear]:pointer-events-none [&::-ms-clear]:invisible [&::-ms-clear]:hidden",
+          "peer/input-password-input",
           classNames?.input,
           className
         )}
@@ -52,22 +56,52 @@ function InputPassword({
       <Button
         data-slot="input-password-toggle"
         type="button"
-        variant={toggleVariant}
+        variant={"ghost"}
         className={cn(
-          "absolute top-1/2 right-1 -translate-y-1/2 rounded-sm",
+          "absolute top-1/2 right-1 -translate-y-1/2 rounded-sm bg-transparent outline-offset-0",
+          "peer-aria-invalid/input-password-input:text-destructive-muted-foreground peer-aria-invalid/input-password-input:outline-destructive peer-aria-invalid/input-password-input:hover:bg-destructive-500/20",
+          "disabled:text-muted-foreground disabled:pointer-events-none",
           {
             default: "size-7",
             sm: "size-6",
             lg: "size-8",
           }[size || "default"],
+          {
+            outline: "text-subtle-foreground hover:bg-base-500/20 outline-outline",
+            muted: "text-subtle-foreground hover:bg-base-500/20 outline-outline ",
+            underlined: "text-subtle-foreground hover:bg-base-500/20 outline-outline ",
+            primary:
+              "text-primary-muted-foreground hover:bg-primary-500/20 outline-primary ",
+            secondary:
+              "text-secondary-muted-foreground hover:bg-secondary-500/20 outline-secondary",
+          }[variant || "outline"],
           classNames?.toggle
         )}
         onClick={() => setShowPassword((prev) => !prev)}
+        disabled={disabled}
       >
         {showPassword ? (
-          <EyeOffIcon aria-hidden="true" className="size-4" />
+          <EyeOffIcon
+            aria-hidden="true"
+            className={cn(
+              {
+                default: "size-4",
+                sm: "size-3.5",
+                lg: "size-5",
+              }[size || "default"]
+            )}
+          />
         ) : (
-          <EyeIcon aria-hidden="true" className="size-4" />
+          <EyeIcon
+            aria-hidden="true"
+            className={cn(
+              {
+                default: "size-4",
+                sm: "size-3.5",
+                lg: "size-5",
+              }[size || "default"]
+            )}
+          />
         )}
         <span className="sr-only">
           {showPassword ? "Hide password" : "Show password"}

@@ -12,7 +12,7 @@ import {
   menuItemIndicatorVariants,
   menuItemVariants,
   menuShortcutVariants,
-  type MenuContextType,
+  type MenuContextProps,
 } from "~/components/ui/dropdown-menu";
 import { Tron } from "~/components/ui/tron";
 
@@ -23,13 +23,13 @@ const menubarTriggerVariants = cva(
       variant: {
         // -- base --
         base: [
-          "data-[highlighted]:bg-base-500 data-[highlighted]:text-white dark:data-[highlighted]:bg-base-600 dark:data-[highlighted]:text-base-50",
-          "data-[state=open]:bg-base-500 data-[state=open]:text-white dark:data-[state=open]:bg-base-600 dark:data-[state=open]:text-base-50",
+          "data-[highlighted]:bg-base-bg data-[highlighted]:text-base-foreground",
+          "data-[state=open]:bg-base-bg data-[state=open]:text-base-foreground",
         ],
 
         accent: [
-          "data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground",
-          "data-[state=open]:bg-accent data-[state=open]:text-accent-foreground",
+          "data-[highlighted]:bg-muted data-[highlighted]:text-accent-foreground",
+          "data-[state=open]:bg-muted data-[state=open]:text-accent-foreground",
         ],
 
         surface: [
@@ -190,31 +190,31 @@ function MenubarTrigger({
   );
 }
 
-const MenubarContext = React.createContext<MenuContextType>({});
+const MenubarContext = React.createContext<MenuContextProps>({});
 
 function MenubarContent({
   className,
   align = "start",
   sideOffset = 8,
   variant = "accent",
-  wide = undefined,
+  width = "default",
   indicatorVariant = "default",
   ...props
-}: React.ComponentProps<typeof MenubarPrimitive.Content> & MenuContextType) {
+}: React.ComponentProps<typeof MenubarPrimitive.Content> & MenuContextProps) {
   return (
-    <MenubarContext.Provider value={{ variant, wide, indicatorVariant }}>
+    <MenubarContext.Provider value={{ variant, width, indicatorVariant }}>
       <MenubarPortal>
         <MenubarPrimitive.Content
           data-slot="menubar-content"
           data-align={align}
           sideOffset={sideOffset}
           data-variant={variant}
-          data-wide={wide}
+          data-width={width}
           className={cn(
             menuContentVariants(),
-            "min-w-48",
+            "max-h-(--radix-menubar-content-available-height) max-w-(--radix-menubar-content-available-width) min-w-48 origin-(--radix-menubar-content-transform-origin)",
             // FIXME: exit animations be breaking
-            "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=open]:animate-in data-[state=open]:ease-out data-[state=open]:fade-in-0",
+            "data-[state=open]:animate-in data-[state=open]:ease-out data-[state=open]:fade-in-0",
             className
           )}
           {...props}
@@ -226,14 +226,14 @@ function MenubarContent({
 
 type MenubarItemProps = React.ComponentProps<typeof MenubarPrimitive.Item> &
   VariantProps<typeof menuItemVariants> & {
-    inset?: boolean;
+    position?: "default" | "inset";
   };
 
 function MenubarItem({
   className,
-  inset,
+  position = "default",
   variant,
-  wide,
+  width,
   ...props
 }: MenubarItemProps) {
   const context = React.useContext(MenubarContext);
@@ -241,13 +241,13 @@ function MenubarItem({
   return (
     <MenubarPrimitive.Item
       data-slot="menubar-item"
-      data-inset={inset}
+      data-position={position}
       data-variant={variant || context.variant}
-      data-wide={wide || context.wide}
+      data-width={width || context.width}
       className={cn(
         menuItemVariants({
           variant: variant || context.variant,
-          wide: wide || context.wide,
+          width: width || context.width,
         }),
         className
       )}
@@ -259,7 +259,7 @@ function MenubarItem({
 type MenubarCheckboxItemProps = React.ComponentProps<
   typeof MenubarPrimitive.CheckboxItem
 > &
-  MenuContextType & {
+  MenuContextProps & {
     indicatorClassName?: string;
   };
 
@@ -267,7 +267,7 @@ function MenubarCheckboxItem({
   className,
   checked,
   variant,
-  wide,
+  width,
   indicatorVariant,
   indicatorClassName,
   children,
@@ -279,12 +279,12 @@ function MenubarCheckboxItem({
     <MenubarPrimitive.CheckboxItem
       data-slot="menubar-checkbox-item"
       data-variant={variant || context.variant}
-      data-wide={wide || context.wide}
-      data-inset={true}
+      data-width={width || context.width}
+      data-position="inset"
       className={cn(
         menuItemVariants({
           variant: variant || context.variant,
-          wide: wide || context.wide,
+          width: width || context.width,
         }),
         className
       )}
@@ -294,7 +294,7 @@ function MenubarCheckboxItem({
       <MenubarPrimitive.ItemIndicator
         data-slot="menubar-checkbox-item-indicator"
         data-variant={indicatorVariant || context.indicatorVariant}
-        data-wide={wide || context.wide}
+        data-width={width || context.width}
         data-item-variant={variant || context.variant}
         className={cn(
           menuItemIndicatorVariants({
@@ -321,14 +321,14 @@ function MenubarRadioGroup({
 type MenubarRadioItemProps = React.ComponentProps<
   typeof MenubarPrimitive.RadioItem
 > &
-  MenuContextType & {
+  MenuContextProps & {
     indicatorClassName?: string;
   };
 
 function MenubarRadioItem({
   className,
   variant,
-  wide,
+  width,
   indicatorVariant,
   indicatorClassName,
   children,
@@ -340,12 +340,12 @@ function MenubarRadioItem({
     <MenubarPrimitive.RadioItem
       data-slot="menubar-radio-item"
       data-variant={variant || context.variant}
-      data-wide={wide || context.wide}
-      data-inset
+      data-width={width || context.width}
+      data-position="inset"
       className={cn(
         menuItemVariants({
           variant: variant || context.variant,
-          wide: wide || context.wide,
+          width: width || context.width,
         }),
         className
       )}
@@ -354,7 +354,7 @@ function MenubarRadioItem({
       <MenubarPrimitive.ItemIndicator
         data-slot="menubar-radio-item-indicator"
         data-variant={indicatorVariant || context.indicatorVariant}
-        data-wide={wide || context.wide}
+        data-width={width || context.width}
         data-item-variant={variant || context.variant}
         className={cn(
           menuItemIndicatorVariants({
@@ -372,17 +372,17 @@ function MenubarRadioItem({
 
 function MenubarLabel({
   className,
-  inset,
+  position = "default",
   ...props
 }: React.ComponentProps<typeof MenubarPrimitive.Label> & {
-  inset?: boolean;
+  position?: "default" | "inset";
 }) {
   return (
     <MenubarPrimitive.Label
       data-slot="menubar-label"
-      data-inset={inset}
+      data-position={position}
       className={cn(
-        "px-(--menu-item-px) py-1.5 text-sm font-medium text-foreground data-[inset]:pl-(--inset-pl)",
+        "px-(--menu-item-px) py-1.5 text-sm font-medium text-foreground data-[position=inset]:pl-(--inset-pl)",
         className
       )}
       {...props}
@@ -426,14 +426,14 @@ type MenubarSubTriggerProps = React.ComponentProps<
   typeof MenubarPrimitive.SubTrigger
 > &
   VariantProps<typeof menuItemVariants> & {
-    inset?: boolean;
+    position?: "default" | "inset";
   };
 
 function MenubarSubTrigger({
   className,
-  inset,
+  position = "default",
   variant,
-  wide,
+  width,
   children,
   ...props
 }: MenubarSubTriggerProps) {
@@ -442,13 +442,13 @@ function MenubarSubTrigger({
   return (
     <MenubarPrimitive.SubTrigger
       data-slot="menubar-sub-trigger"
-      data-inset={inset}
+      data-position={position}
       data-variant={variant || context.variant}
-      data-wide={wide || context.wide}
+      data-width={width || context.width}
       className={cn(
         menuItemVariants({
           variant: variant || context.variant,
-          wide: wide || context.wide,
+          width: width || context.width,
         }),
         className
       )}
@@ -470,7 +470,7 @@ function MenubarSubContent({
         data-slot="menubar-sub-content"
         className={cn(
           menuContentVariants(),
-          "min-w-32 shadow-lg",
+          "max-h-(--radix-menubar-content-available-height) max-w-(--radix-menubar-content-available-width) min-w-32 origin-(--radix-menubar-content-transform-origin) shadow-lg",
           "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:ease-out data-[state=open]:fade-in-0",
           className
         )}

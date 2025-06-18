@@ -26,18 +26,18 @@ const buttonInputVariants = cva(
           "**:[svg]:not-[[class*='text-']]:text-muted-foreground",
           "[--button-input-icon-text:var(--color-muted-foreground)]",
           "data-[empty=true]:text-placeholder",
-          "disabled:bg-muted disabled:shadow-none",
+          "disabled:bg-faded disabled:shadow-none",
           "focus-visible:outline-2 focus-visible:outline-primary",
           "aria-invalid:outline-destructive aria-invalid:data-[empty=true]:text-destructive-placeholder dark:aria-invalid:bg-destructive-faded",
         ],
 
         muted: [
-          "bg-muted text-accent-foreground -outline-offset-1 hover:not-disabled:not-aria-invalid:not-focus-visible:bg-accent",
+          "bg-muted text-accent-foreground -outline-offset-1 hover:not-disabled:not-aria-invalid:not-focus-visible:bg-hover-muted",
           "**:[svg]:not-[[class*='text-']]:text-muted-foreground",
           "[--button-input-icon-text:var(--color-muted-foreground)]",
           "data-[empty=true]:text-muted-foreground",
           "focus-visible:outline-2 focus-visible:outline-primary",
-          "aria-invalid:bg-destructive-muted/80 aria-invalid:outline-destructive aria-invalid:hover:not-disabled:not-focus-visible:bg-destructive-muted aria-invalid:data-[empty=true]:text-destructive-muted-foreground",
+          "aria-invalid:bg-destructive-muted aria-invalid:outline-destructive aria-invalid:hover:not-disabled:not-focus-visible:bg-hover-destructive-muted aria-invalid:data-[empty=true]:text-destructive-muted-foreground",
         ],
 
         underlined: [
@@ -51,24 +51,24 @@ const buttonInputVariants = cva(
 
         // -- primary --
         primary: [
-          "bg-primary-muted/80 text-primary-accent-foreground -outline-offset-1 hover:not-disabled:not-aria-invalid:not-focus-visible:bg-primary-muted",
+          "bg-primary-muted text-primary-accent-foreground -outline-offset-1 hover:not-disabled:not-aria-invalid:not-focus-visible:bg-hover-primary-muted",
           "**:[svg]:not-[[class*='text-']]:text-primary-muted-foreground",
           "[--button-input-icon-text:var(--color-primary-muted-foreground)]",
           "data-[empty=true]:text-primary-muted-foreground",
           "disabled:bg-muted disabled:text-accent-foreground disabled:[--button-input-icon-text:var(--color-muted-foreground)] disabled:data-[empty=true]:text-muted-foreground disabled:[&_svg:not([class*='text-'])]:text-muted-foreground",
           "focus-visible:outline-2 focus-visible:outline-primary",
-          "aria-invalid:bg-destructive-muted/80 aria-invalid:outline-destructive aria-invalid:hover:not-disabled:not-focus-visible:bg-destructive-muted aria-invalid:data-[empty=true]:text-destructive-muted-foreground",
+          "aria-invalid:bg-destructive-muted aria-invalid:outline-destructive aria-invalid:hover:not-disabled:not-focus-visible:bg-hover-destructive-muted aria-invalid:data-[empty=true]:text-destructive-muted-foreground",
         ],
 
         // -- secondary --
         secondary: [
-          "bg-secondary-muted/80 text-secondary-accent-foreground -outline-offset-1 hover:not-disabled:not-aria-invalid:not-focus-visible:bg-secondary-muted",
+          "bg-secondary-muted text-secondary-accent-foreground -outline-offset-1 hover:not-disabled:not-aria-invalid:not-focus-visible:bg-hover-secondary-muted",
           "**:[svg]:not-[[class*='text-']]:text-secondary-muted-foreground",
           "[--button-input-icon-text:var(--color-secondary-muted-foreground)]",
           "data-[empty=true]:text-secondary-muted-foreground",
           "disabled:bg-muted disabled:text-accent-foreground disabled:[--button-input-icon-text:var(--color-muted-foreground)] disabled:data-[empty=true]:text-muted-foreground disabled:[&_svg:not([class*='text-'])]:text-muted-foreground",
           "focus-visible:outline-2 focus-visible:outline-secondary",
-          "aria-invalid:bg-destructive-muted/80 aria-invalid:outline-destructive aria-invalid:hover:not-disabled:not-focus-visible:bg-destructive-muted aria-invalid:data-[empty=true]:text-destructive-muted-foreground",
+          "aria-invalid:bg-destructive-muted aria-invalid:outline-destructive aria-invalid:hover:not-disabled:not-focus-visible:bg-hover-destructive-muted aria-invalid:data-[empty=true]:text-destructive-muted-foreground",
         ],
       },
     },

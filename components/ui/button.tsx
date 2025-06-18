@@ -10,7 +10,7 @@ const buttonVariants = cva(
   [
     "relative isolate inline-flex items-center justify-center gap-2 rounded-md text-sm font-semibold whitespace-nowrap select-none",
     "active:opacity-80",
-    "disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50",
+    "disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none aria-disabled:pointer-events-none aria-disabled:opacity-50",
     "outline-offset-2 focus-visible:outline-2",
     "**:[svg]:pointer-events-none **:[svg]:shrink-0",
   ],
@@ -20,62 +20,53 @@ const buttonVariants = cva(
         // --- base ---
         outline: [
           "border border-border bg-background text-foreground shadow-xs",
-          "hover:border-hover-border hover:bg-faded-solid hover:text-accent-foreground",
+          "hover:border-hover-border hover:bg-faded",
         ],
 
-        base: ["bg-base-bg text-base-foreground shadow", "hover:bg-base-bg/90"],
+        base: ["bg-base-bg text-base-foreground shadow", "hover:bg-hover-base"],
 
-        accent: [
-          "bg-muted text-accent-foreground",
-          "hover:bg-base-200 dark:hover:bg-base-800",
-        ],
+        accent: ["bg-muted text-accent-foreground", "hover:bg-hover-muted"],
 
-        muted: [
-          "bg-muted text-muted-foreground",
-          "hover:bg-base-200 dark:hover:bg-base-800",
-        ],
+        muted: ["bg-muted text-muted-foreground", "hover:bg-hover-muted"],
 
         surface: [
           "border border-border-faded bg-faded text-accent-foreground",
-          "hover:bg-muted",
+          "hover:bg-hover-faded",
         ],
 
         faded: [
           "border border-border-faded bg-faded text-muted-foreground",
-          "hover:bg-muted",
+          "hover:bg-hover-faded",
         ],
 
-        ghost: [
-          "bg-transparent text-foreground",
-          "hover:bg-muted hover:text-accent-foreground",
-        ],
+        ghost: ["bg-transparent text-foreground", "hover:bg-muted"],
 
         link: ["text-primary underline-offset-4", "hover:underline"],
 
         // --- primary ---
         primary: [
           "bg-primary text-primary-foreground shadow",
-          "hover:bg-primary/90",
+          "hover:bg-hover-primary",
         ],
 
         "primary-accent": [
           "bg-primary-muted text-primary-accent-foreground",
-          "hover:bg-primary-muted/80",
+          "hover:bg-hover-primary-muted",
         ],
 
         "primary-muted": [
           "bg-primary-muted text-primary-muted-foreground",
-          "hover:bg-primary-muted/80",
+          "hover:bg-hover-primary-muted",
         ],
 
         "primary-surface": [
           "border border-border-primary-faded bg-primary-faded text-primary-accent-foreground",
-          "hover:bg-primary-muted/80",
+          "hover:bg-hover-primary-faded",
         ],
 
         "primary-faded": [
           "border border-border-primary-faded bg-primary-faded text-primary-muted-foreground",
-          "hover:bg-primary-muted/80",
+          "hover:bg-hover-primary-faded",
         ],
 
         "primary-tron": [
@@ -86,7 +77,7 @@ const buttonVariants = cva(
 
         "primary-shadow": [
           "bg-primary text-primary-foreground shadow-lg shadow-primary/50",
-          "hover:bg-primary/90",
+          "hover:bg-hover-primary",
         ],
 
         "primary-gradient": [
@@ -102,27 +93,27 @@ const buttonVariants = cva(
         // secondary
         secondary: [
           "bg-secondary text-secondary-foreground shadow",
-          "hover:bg-secondary/90",
+          "hover:bg-hover-secondary",
         ],
 
         "secondary-accent": [
           "bg-secondary-muted text-secondary-accent-foreground",
-          "hover:bg-secondary-muted/80",
+          "hover:bg-hover-secondary-muted",
         ],
 
         "secondary-muted": [
           "bg-secondary-muted text-secondary-muted-foreground",
-          "hover:bg-secondary-muted/80",
+          "hover:bg-hover-secondary-muted",
         ],
 
         "secondary-surface": [
           "border border-border-secondary-faded bg-secondary-faded text-secondary-accent-foreground",
-          "hover:bg-secondary-muted/80",
+          "hover:bg-hover-secondary-faded",
         ],
 
         "secondary-faded": [
           "border border-border-secondary-faded bg-secondary-faded text-secondary-muted-foreground",
-          "hover:bg-secondary-muted/80",
+          "hover:bg-hover-secondary-faded",
         ],
 
         "secondary-tron": [
@@ -133,7 +124,7 @@ const buttonVariants = cva(
 
         "secondary-shadow": [
           "bg-secondary text-secondary-foreground shadow-lg shadow-secondary/50",
-          "hover:bg-secondary/90",
+          "hover:bg-hover-secondary",
         ],
 
         "secondary-gradient": [
@@ -149,27 +140,27 @@ const buttonVariants = cva(
         // --- destructive ---
         destructive: [
           "bg-destructive text-destructive-foreground shadow",
-          "hover:bg-destructive/90",
+          "hover:bg-hover-destructive",
         ],
 
         "destructive-accent": [
           "bg-destructive-muted text-destructive-accent-foreground",
-          "hover:bg-destructive-muted/80",
+          "hover:bg-hover-destructive-muted",
         ],
 
         "destructive-muted": [
           "bg-destructive-muted text-destructive-muted-foreground",
-          "hover:bg-destructive-muted/80",
+          "hover:bg-hover-destructive-muted",
         ],
 
         "destructive-surface": [
           "border border-border-destructive-faded bg-destructive-faded text-destructive-accent-foreground",
-          "hover:bg-destructive-muted/80",
+          "hover:bg-hover-destructive-faded",
         ],
 
         "destructive-faded": [
           "border border-border-destructive-faded bg-destructive-faded text-destructive-muted-foreground",
-          "hover:bg-destructive-muted/80",
+          "hover:bg-hover-destructive-faded",
         ],
 
         "destructive-tron": [
@@ -180,7 +171,7 @@ const buttonVariants = cva(
 
         "destructive-shadow": [
           "bg-destructive text-destructive-foreground shadow-lg shadow-destructive/50",
-          "hover:bg-destructive/90",
+          "hover:bg-hover-destructive",
         ],
 
         "destructive-gradient": [

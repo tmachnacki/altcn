@@ -5,14 +5,14 @@ import { cn } from "~/lib/utils";
 
 const notificationVariants = cva(
   [
-    "leading-0 inline-flex shrink-0 items-center justify-center gap-1 whitespace-nowrap rounded-full p-1 text-xs font-normal tabular-nums",
-    "[&>svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-3",
+    "inline-flex shrink-0 items-center justify-center gap-1 rounded-full p-1 text-xs leading-none font-normal whitespace-nowrap tabular-nums",
+    "*:[svg]:pointer-events-none *:[svg]:not-[[class*='size-']]:size-3",
   ],
   {
     variants: {
       variant: {
         // -- base --
-        outline: "bg-background text-foreground inset-ring inset-ring-border",
+        outline: "border border-border bg-background text-foreground",
 
         base: "bg-base-bg text-base-foreground",
 
@@ -20,11 +20,9 @@ const notificationVariants = cva(
 
         muted: "bg-muted text-muted-foreground",
 
-        surface:
-          "bg-faded text-accent-foreground inset-ring inset-ring-border-faded",
+        surface: "border border-border-faded bg-faded text-accent-foreground",
 
-        faded:
-          "bg-faded text-muted-foreground inset-ring inset-ring-border-faded",
+        faded: "border border-border-faded bg-faded text-muted-foreground",
 
         // -- primary --
         primary: "bg-primary text-primary-foreground",
@@ -34,10 +32,10 @@ const notificationVariants = cva(
         "primary-muted": "bg-primary-muted text-primary-muted-foreground",
 
         "primary-surface":
-          "bg-primary-faded text-primary-accent-foreground inset-ring inset-ring-border-primary-faded",
+          "border border-border-primary-faded bg-primary-faded text-primary-accent-foreground",
 
         "primary-faded":
-          "bg-primary-faded text-primary-muted-foreground inset-ring inset-ring-border-primary-faded",
+          "border border-border-primary-faded bg-primary-faded text-primary-muted-foreground",
 
         // -- secondary --
         secondary: "bg-secondary text-secondary-foreground",
@@ -48,10 +46,10 @@ const notificationVariants = cva(
         "secondary-muted": "bg-secondary-muted text-secondary-muted-foreground",
 
         "secondary-surface":
-          "bg-secondary-faded text-secondary-accent-foreground inset-ring inset-ring-border-secondary-faded",
+          "border border-border-secondary-faded bg-secondary-faded text-secondary-accent-foreground",
 
         "secondary-faded":
-          "bg-secondary-faded text-secondary-muted-foreground inset-ring inset-ring-border-secondary-faded",
+          "border border-border-secondary-faded bg-secondary-faded text-secondary-muted-foreground",
 
         // -- destructive --
         destructive: "bg-destructive text-destructive-foreground",
@@ -63,10 +61,10 @@ const notificationVariants = cva(
           "bg-destructive-muted text-destructive-muted-foreground",
 
         "destructive-surface":
-          "bg-destructive-faded text-destructive-accent-foreground inset-ring inset-ring-border-destructive-faded",
+          "border border-border-destructive-faded bg-destructive-faded text-destructive-accent-foreground",
 
         "destructive-faded":
-          "bg-destructive-faded text-destructive-muted-foreground inset-ring inset-ring-border-destructive-faded",
+          "border border-border-destructive-faded bg-destructive-faded text-destructive-muted-foreground",
 
         // -- success --
         success: "bg-success text-success-foreground",
@@ -76,10 +74,10 @@ const notificationVariants = cva(
         "success-muted": "bg-success-muted text-success-muted-foreground",
 
         "success-surface":
-          "bg-success-faded text-success-accent-foreground inset-ring inset-ring-border-success-faded",
+          "border border-border-success-faded bg-success-faded text-success-accent-foreground",
 
         "success-faded":
-          "bg-success-faded text-success-muted-foreground inset-ring inset-ring-border-success-faded",
+          "border border-border-success-faded bg-success-faded text-success-muted-foreground",
 
         // -- warning --
         warning: "bg-warning text-warning-foreground",
@@ -89,10 +87,10 @@ const notificationVariants = cva(
         "warning-muted": "bg-warning-muted text-warning-muted-foreground",
 
         "warning-surface":
-          "bg-warning-faded text-warning-accent-foreground inset-ring inset-ring-border-warning-faded",
+          "border border-border-warning-faded bg-warning-faded text-warning-accent-foreground",
 
         "warning-faded":
-          "bg-warning-faded text-warning-muted-foreground inset-ring inset-ring-border-warning-faded",
+          "border border-border-warning-faded bg-warning-faded text-warning-muted-foreground",
       },
     },
     defaultVariants: {
@@ -165,8 +163,9 @@ function Notification({
       data-slot="notification-container"
       data-position={position}
       className={cn(
-        "[[data-position*='bottom']]:bottom-0 [[data-position*='bottom']]:translate-y-(--offset) [[data-position*='left']]:left-0 [[data-position*='left']]:-translate-x-(--offset) [[data-position*='right']]:right-0 [[data-position*='right']]:translate-x-(--offset) [[data-position*='top']]:top-0 [[data-position*='top']]:-translate-y-(--offset) relative isolate flex [--offset:42%] data-[position]:absolute",
+        "relative isolate flex rounded-full bg-background [--offset:42%] data-[position]:absolute [[data-position*='bottom']]:bottom-0 [[data-position*='bottom']]:translate-y-(--offset) [[data-position*='left']]:left-0 [[data-position*='left']]:-translate-x-(--offset) [[data-position*='right']]:right-0 [[data-position*='right']]:translate-x-(--offset) [[data-position*='top']]:top-0 [[data-position*='top']]:-translate-y-(--offset)",
         children ? "h-5 min-w-5" : "size-2.5",
+        outlined && "outline-2 outline-background",
         containerClassName
       )}
     >
@@ -176,7 +175,7 @@ function Notification({
           notificationVariants({ variant }),
           "relative z-[3]",
           children ? "h-5 min-w-5" : "size-2.5",
-          outlined && "outline-background outline-2",
+
           className
         )}
         {...props}
@@ -190,7 +189,8 @@ function Notification({
           aria-hidden="true"
           className={cn(
             pingVariants({ variant }),
-            "animate-ping-sm absolute left-1/2 top-1/2 z-[2] size-full -translate-x-1/2 -translate-y-1/2 rounded-full opacity-75",
+            "absolute top-1/2 left-1/2 z-[2] size-full -translate-x-1/2 -translate-y-1/2 animate-ping rounded-full opacity-75",
+            children ? "animate-ping-sm" : "animate-ping",
             pingClassName
           )}
         />
