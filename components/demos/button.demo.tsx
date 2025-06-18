@@ -148,7 +148,7 @@ export function ButtonDemo() {
             <SelectTrigger id="button-variant" className="w-full">
               <SelectValue placeholder="Select variant" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="max-h-96">
               {buttonVariants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
                   {variant}

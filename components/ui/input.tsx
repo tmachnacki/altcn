@@ -26,11 +26,11 @@ const inputVariants = cva(
         outline: [
           "bg-background text-foreground shadow-xs outline-1 -outline-offset-1 outline-border hover:not-disabled:not-focus-visible:not-aria-invalid:outline-hover-border dark:bg-faded",
 
-          "file:border-r file:border-border file:bg-accent file:text-accent-foreground hover:file:border-hover-border",
+          "file:border-r file:border-border file:bg-accent file:text-accent-foreground hover:not-disabled:not-focus-visible:not-aria-invalid:file:border-hover-border",
 
           "placeholder:text-placeholder",
 
-          "disabled:bg-muted disabled:shadow-none",
+          "disabled:bg-base-100 disabled:shadow-none dark:disabled:bg-base-900",
 
           "focus-visible:outline-2 focus-visible:outline-primary",
 
