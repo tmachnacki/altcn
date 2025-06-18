@@ -3,7 +3,7 @@ import { BellIcon, InboxIcon, MessageCircleIcon } from "lucide-react";
 
 import { Button } from "~/components/ui/button";
 import { Notification } from "~/components/ui/notification";
-import { ComponentContainer } from "~/components/demos/component-container";
+import { ComponentContainer } from "~/components/component-container";
 
 const variants = [
   "outline",

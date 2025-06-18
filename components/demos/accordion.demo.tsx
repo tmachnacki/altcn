@@ -16,21 +16,24 @@ import {
   SelectTrigger,
   SelectValue,
 } from "~/components/ui/select";
-import { ComponentContainer } from "~/components/demos/component-container";
-import { ComponentPlayground } from "~/components/demos/component-playground";
+import { ComponentContainer } from "~/components/component-container";
+import { ComponentPlayground } from "~/components/component-playground";
+
+const accordionVariants = [
+  "outline",
+  "muted",
+  "faded",
+  "primary-muted",
+  "primary-faded",
+  "secondary-muted",
+  "secondary-faded",
+] as const;
+
+const accordionLayouts = ["compact", "split"] as const;
 
 export function AccordionDemo() {
   const [accordionVariant, setAccordionVariant] = React.useState("outline");
-
-  const accordionVariants = [
-    "outline",
-    "muted",
-    "faded",
-    "primary-muted",
-    "primary-faded",
-    "secondary-muted",
-    "secondary-faded",
-  ] as const;
+  const [accordionLayout, setAccordionLayout] = React.useState("compact");
 
   return (
     <>
@@ -41,34 +44,7 @@ export function AccordionDemo() {
             collapsible
             className="w-full"
             variant={accordionVariant as (typeof accordionVariants)[number]}
-          >
-            <AccordionItem value="item-1">
-              <AccordionTrigger>Is it accessible?</AccordionTrigger>
-              <AccordionContent>
-                Yes. It adheres to the WAI-ARIA design pattern.
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="item-2">
-              <AccordionTrigger>Is it styled?</AccordionTrigger>
-              <AccordionContent>
-                Yes. It comes with default styles that matches the other
-                components&apos; aesthetic.
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="item-3">
-              <AccordionTrigger>Is it animated?</AccordionTrigger>
-              <AccordionContent>
-                Yes. It&apos;s animated by default, but you can disable it if
-                you prefer.
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
-          <Accordion
-            type="single"
-            collapsible
-            className="w-full"
-            variant={accordionVariant as (typeof accordionVariants)[number]}
-            split
+            layout={accordionLayout as (typeof accordionLayouts)[number]}
           >
             <AccordionItem value="item-1">
               <AccordionTrigger>Is it accessible?</AccordionTrigger>
@@ -94,20 +70,31 @@ export function AccordionDemo() {
         </div>
       </ComponentContainer>
       <ComponentPlayground>
-        <div className="flex flex-col gap-2">
+        <div className="grid gap-2">
           <Label htmlFor="accordion-variant">Accordion Variant</Label>
-          <Select
-            value={accordionVariant}
-            onValueChange={setAccordionVariant}
-            defaultValue="default"
-          >
+          <Select value={accordionVariant} onValueChange={setAccordionVariant}>
             <SelectTrigger id="accordion-variant" className="w-full">
-              <SelectValue>{accordionVariant}</SelectValue>
+              <SelectValue placeholder="Select variant" />
             </SelectTrigger>
             <SelectContent>
-              {accordionVariants.map((accordionVariant) => (
-                <SelectItem key={accordionVariant} value={accordionVariant}>
-                  {accordionVariant}
+              {accordionVariants.map((variant) => (
+                <SelectItem key={variant} value={variant}>
+                  {variant}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+        <div className="grid gap-2">
+          <Label htmlFor="accordion-layout">Accordion Layout</Label>
+          <Select value={accordionLayout} onValueChange={setAccordionLayout}>
+            <SelectTrigger id="accordion-layout" className="w-full">
+              <SelectValue placeholder="Select variant" />
+            </SelectTrigger>
+            <SelectContent>
+              {accordionLayouts.map((layout) => (
+                <SelectItem key={layout} value={layout}>
+                  {layout}
                 </SelectItem>
               ))}
             </SelectContent>

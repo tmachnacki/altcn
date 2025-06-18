@@ -12,13 +12,17 @@ import {
 import { Input } from "~/components/ui/input";
 import { Label } from "~/components/ui/label";
 
+import { ComponentContainer } from "~/components/component-container";
+
 export function DialogDemo() {
   return (
-    <div className="flex h-full w-full flex-1 flex-wrap gap-4">
-      <DialogWithForm />
-      <DialogScrollableContent />
-      <DialogWithStickyFooter />
-    </div>
+    <ComponentContainer>
+      <div className="flex items-center flex-wrap gap-4">
+        <DialogWithForm />
+        <DialogScrollableContent />
+        <DialogWithStickyFooter />
+      </div>
+    </ComponentContainer>
   );
 }
 

@@ -14,7 +14,7 @@ import {
   AlertDialogTrigger,
 } from "~/components/ui/alert-dialog";
 import { Button } from "~/components/ui/button";
-import { ComponentContainer } from "~/components/demos/component-container";
+import { ComponentContainer } from "~/components/component-container";
 
 export function AlertDialogDemo() {
   return (

@@ -7,7 +7,7 @@ import {
 
 import { Toggle } from "~/components/ui/toggle";
 
-import { ComponentContainer } from "./component-container";
+import { ComponentContainer } from "../component-container";
 
 export function ToggleDemo() {
   const variants = [

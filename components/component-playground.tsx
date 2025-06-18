@@ -10,7 +10,7 @@ export function ComponentPlayground({
   return (
     <div
       className={cn(
-        "flex w-64 shrink-0 grow-0 flex-col gap-6 border-l border-border p-4",
+        "flex max-h-96 md:h-full md:max-h-[60svh] md:min-h-64 w-full  md:w-fit md:min-w-52 shrink-0 grow-0 flex-col gap-8 overflow-y-auto border-t md:border-t-0 md:border-l border-border p-4",
         className
       )}
       {...props}

@@ -20,8 +20,8 @@ import {
   SelectValue,
 } from "~/components/ui/select";
 import { Switch } from "~/components/ui/switch";
-import { ComponentContainer } from "~/components/demos/component-container";
-import { ComponentPlayground } from "~/components/demos/component-playground";
+import { ComponentContainer } from "~/components/component-container";
+import { ComponentPlayground } from "~/components/component-playground";
 
 export function SelectDemo() {
   const [triggerVariant, setTriggerVariant] = React.useState("default");

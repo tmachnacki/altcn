@@ -96,7 +96,7 @@ const selectItemVariants = cva(
       variant: {
         // -- base --
         accent:
-          "data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground",
+          "data-[highlighted]:bg-muted data-[highlighted]:text-accent-foreground",
 
         surface:
           "data-[highlighted]:bg-faded data-[highlighted]:text-accent-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-faded",

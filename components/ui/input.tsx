@@ -7,8 +7,8 @@ const inputVariants = cva(
   [
     "flex w-full min-w-0 appearance-none rounded-md",
     "selection:bg-primary selection:text-primary-foreground",
-    "file:inline-flex file:font-medium file:items-center",
-    "disabled:pointer-events-none disabled:opacity-50",
+    "file:inline-flex file:items-center file:font-medium",
+    "disabled:cursor-not-allowed disabled:opacity-50",
     "aria-invalid:text-destructive-accent-foreground aria-invalid:selection:bg-destructive aria-invalid:selection:text-destructive-foreground",
   ],
   {
@@ -23,14 +23,14 @@ const inputVariants = cva(
       },
       variant: {
         // -- base --
-        default: [
-          "bg-background text-foreground shadow-xs outline-1 -outline-offset-1 outline-border hover:not-focus-visible:not-aria-invalid:outline-hover-border dark:bg-faded",
+        outline: [
+          "bg-background text-foreground shadow-xs outline-1 -outline-offset-1 outline-border hover:not-disabled:not-focus-visible:not-aria-invalid:outline-hover-border dark:bg-faded",
 
-          "file:border-r file:border-border file:bg-accent file:text-accent-foreground hover:file:border-hover-border",
+          "file:border-r file:border-border file:bg-accent file:text-accent-foreground hover:not-disabled:not-focus-visible:not-aria-invalid:file:border-hover-border",
 
           "placeholder:text-placeholder",
 
-          "disabled:bg-muted disabled:shadow-none",
+          "disabled:bg-base-100 disabled:shadow-none dark:disabled:bg-base-900",
 
           "focus-visible:outline-2 focus-visible:outline-primary",
 
@@ -38,7 +38,7 @@ const inputVariants = cva(
         ],
 
         muted: [
-          "bg-muted text-accent-foreground -outline-offset-1 hover:not-focus-visible:not-aria-invalid:bg-accent",
+          "bg-muted text-accent-foreground -outline-offset-1 hover:not-disabled:not-focus-visible:not-aria-invalid:bg-base-200 dark:hover:not-disabled:not-focus-visible:not-aria-invalid:bg-base-800",
 
           "file:bg-base-bg file:text-base-foreground",
 
@@ -50,7 +50,7 @@ const inputVariants = cva(
         ],
 
         underlined: [
-          "rounded-none bg-transparent px-0.5 shadow-[inset_0_-1px_0_0_var(--color-border)] outline-none hover:not-focus-visible:not-aria-invalid:shadow-[inset_0_-1px_0_0_var(--color-hover-border)]",
+          "rounded-none bg-transparent px-0.5 shadow-[inset_0_-1px_0_0_var(--color-border)] outline-none hover:not-disabled:not-focus-visible:not-aria-invalid:shadow-[inset_0_-1px_0_0_var(--color-hover-border)]",
 
           "file:-ms-0.5 file:bg-transparent file:px-0.5 file:text-subtle-foreground",
 
@@ -63,7 +63,7 @@ const inputVariants = cva(
 
         // -- primary --
         primary: [
-          "bg-primary-muted/80 text-primary-accent-foreground -outline-offset-1 hover:not-focus-visible:not-aria-invalid:bg-primary-muted",
+          "bg-primary-muted/80 text-primary-accent-foreground -outline-offset-1 hover:not-disabled:not-focus-visible:not-aria-invalid:bg-primary-muted",
 
           "file:bg-primary file:text-primary-foreground",
 
@@ -78,7 +78,7 @@ const inputVariants = cva(
 
         // -- secondary --
         secondary: [
-          "bg-secondary-muted/80 text-secondary-accent-foreground -outline-offset-1 hover:not-focus-visible:not-aria-invalid:bg-secondary-muted",
+          "bg-secondary-muted/80 text-secondary-accent-foreground -outline-offset-1 hover:not-disabled:not-focus-visible:not-aria-invalid:bg-secondary-muted",
 
           "selection:bg-secondary selection:text-secondary-foreground",
 
@@ -112,7 +112,7 @@ const inputVariants = cva(
       },
     ],
     defaultVariants: {
-      variant: "default",
+      variant: "outline",
       size: "default",
     },
   }
@@ -120,19 +120,37 @@ const inputVariants = cva(
 
 function Input({
   className,
-  type,
-  variant = "default",
-  inputSize = "default",
+  type = "text",
+  variant = "outline",
+  size = "default",
+  htmlSize,
   ...props
-}: React.ComponentProps<"input"> & {
+}: Omit<React.ComponentProps<"input">, "size" | "type"> & {
+  type?:
+    | "text"
+    | "email"
+    | "password"
+    | "number"
+    | "tel"
+    | "url"
+    | "search"
+    | "date"
+    | "time"
+    | "datetime-local"
+    | "month"
+    | "week"
+    | "file"
+    | "hidden";
   variant?: VariantProps<typeof inputVariants>["variant"];
-  inputSize?: VariantProps<typeof inputVariants>["size"];
+  size?: VariantProps<typeof inputVariants>["size"];
+  htmlSize?: number;
 }) {
   return (
     <input
       type={type}
       data-slot="input"
-      className={cn(inputVariants({ variant, size: inputSize }), className)}
+      className={cn(inputVariants({ variant, size }), className)}
+      size={htmlSize}
       {...props}
     />
   );

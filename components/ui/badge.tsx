@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Slot, Slottable } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
-import { CircleIcon, LucideProps, XIcon } from "lucide-react";
+import { CircleIcon, XIcon } from "lucide-react";
 
 import { cn } from "~/lib/utils";
 
@@ -10,8 +10,8 @@ import { Tron } from "~/components/ui/tron";
 const badgeVariants = cva(
   [
     "relative isolate inline-flex h-6 w-fit shrink-0 items-center justify-center gap-1.5 rounded-md px-2 py-1 text-xs leading-none font-medium whitespace-nowrap",
-    "focus-visible:outline-2 focus-visible:outline-offset-1",
-    "[&_svg:not([class*='size-'])]:size-3 [&>svg]:pointer-events-none",
+    "focus-visible:outline-2 focus-visible:outline-offset-2",
+    "**:[svg]:pointer-events-none **:[svg]:not-[[class*='size-']]:size-3",
   ],
   {
     variants: {
@@ -27,15 +27,15 @@ const badgeVariants = cva(
         ],
 
         accent: [
-          "bg-accent text-accent-foreground",
+          "bg-muted text-accent-foreground",
           "[a&]:hover:bg-base-200 dark:[a&]:hover:bg-base-800",
           "[button&]:hover:bg-base-200 dark:[button&]:hover:bg-base-800",
         ],
 
         muted: [
           "bg-muted text-muted-foreground",
-          "[a&]:hover:bg-accent",
-          "[button&]:hover:bg-accent",
+          "[a&]:hover:bg-base-200 dark:[a&]:hover:bg-base-800",
+          "[button&]:hover:bg-base-200 dark:[button&]:hover:bg-base-800",
         ],
 
         surface: [
@@ -281,8 +281,8 @@ const badgeVariants = cva(
         ],
         className: [
           "bg-background text-foreground inset-ring inset-ring-border",
-          "[a&]:hover:bg-muted [a&]:hover:inset-ring-hover-border",
-          "[button&]:hover:bg-muted [button&]:hover:inset-ring-hover-border",
+          "[a&]:hover:bg-faded-solid [a&]:hover:inset-ring-hover-border",
+          "[button&]:hover:bg-faded-solid [button&]:hover:inset-ring-hover-border",
         ],
       },
       {
@@ -430,7 +430,6 @@ function Badge({
   return (
     <Comp
       data-slot="badge"
-      data-variant={variant}
       className={cn(badgeVariants({ variant }), className)}
       {...props}
     >
@@ -464,7 +463,7 @@ function Badge({
   );
 }
 
-function BadgeDot({ className, ...props }: LucideProps) {
+function BadgeDot({ className, ...props }: React.ComponentProps<"svg">) {
   return (
     <CircleIcon
       data-slot="badge-dot"
@@ -483,9 +482,9 @@ function BadgeClose({ className, ...props }: React.ComponentProps<"button">) {
     <button
       data-slot="badge-close"
       type="button"
-      aria-label={props["aria-label"] || "Remove"}
+      aria-label={"Remove"}
       className={cn(
-        "relative -mx-1 inline-flex size-4 items-center justify-center rounded-xs opacity-70 -outline-offset-1 outline-current hover:bg-(--hover-badge-close-bg) hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-2",
+        "relative -mr-1 inline-flex size-4 items-center justify-center rounded-sm opacity-70 -outline-offset-1 outline-current hover:bg-(--hover-badge-close-bg) hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-2",
         className
       )}
       {...props}

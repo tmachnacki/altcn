@@ -12,6 +12,7 @@ import {
   AlertDescription,
   AlertFooter,
   AlertIcon,
+  AlertInsetColor,
   AlertTitle,
 } from "~/components/ui/alert";
 import { Button } from "~/components/ui/button";
@@ -23,8 +24,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "~/components/ui/select";
-import { ComponentContainer } from "~/components/demos/component-container";
-import { ComponentPlayground } from "~/components/demos/component-playground";
+import { ComponentContainer } from "~/components/component-container";
+import { ComponentPlayground } from "~/components/component-playground";
 
 export function AlertDemo() {
   const [alertVariant, setAlertVariant] = React.useState("outline");
@@ -33,6 +34,7 @@ export function AlertDemo() {
 
   const alertVariants = [
     "outline",
+    "base",
     "muted",
     "faded",
     "primary",
@@ -78,10 +80,8 @@ export function AlertDemo() {
               </AlertDescription>
             </AlertContent>
           </Alert>
-          <Alert
-            insetColor
-            variant={alertVariant as (typeof alertVariants)[number]}
-          >
+          <Alert variant={alertVariant as (typeof alertVariants)[number]}>
+            <AlertInsetColor />
             <CheckCircle2Icon />
             <AlertContent>
               <AlertTitle>Success! This one has insetColor</AlertTitle>
@@ -95,13 +95,13 @@ export function AlertDemo() {
             <AlertContent>
               <AlertTitle>Success! Your changes have been saved</AlertTitle>
               <AlertDescription>
-                This is a {alertVariant} alert with success type icon, title
-                and description.
+                This is a {alertVariant} alert with success type icon, title and
+                description.
               </AlertDescription>
             </AlertContent>
           </Alert>
           <Alert
-            centered
+            align="center"
             variant={alertVariant as (typeof alertVariants)[number]}
           >
             <AlertIcon type="info" />
@@ -116,9 +116,8 @@ export function AlertDemo() {
           </Alert>
           {showAlertCentered && (
             <Alert
-              centered
+              align="center"
               variant={alertVariant as (typeof alertVariants)[number]}
-              className="animate-out fade-out-0"
             >
               <AlertIcon type="info" />
               <AlertContent>
@@ -133,7 +132,7 @@ export function AlertDemo() {
             </Alert>
           )}
           <Alert
-            centered
+            align="center"
             variant={alertVariant as (typeof alertVariants)[number]}
           >
             <AlertIcon type="warning" />
@@ -166,7 +165,7 @@ export function AlertDemo() {
             </AlertContent>
           </Alert>
           {showAlert && (
-            <Alert variant={alertVariant as (typeof alertVariants)[number]} className="animate-out fade-out-0">
+            <Alert variant={alertVariant as (typeof alertVariants)[number]}>
               <AlertIcon type="error" />
               <AlertContent>
                 <AlertTitle>Something went wrong!</AlertTitle>
@@ -190,20 +189,16 @@ export function AlertDemo() {
         </div>
       </ComponentContainer>
       <ComponentPlayground>
-        <div className="flex flex-col gap-2">
+        <div className="grid gap-2">
           <Label htmlFor="alert-variant">Alert Variant</Label>
-          <Select
-            value={alertVariant}
-            onValueChange={setAlertVariant}
-            defaultValue="outline"
-          >
+          <Select value={alertVariant} onValueChange={setAlertVariant}>
             <SelectTrigger id="alert-variant" className="w-full">
-              <SelectValue>{alertVariant}</SelectValue>
+              <SelectValue placeholder="Select variant" />
             </SelectTrigger>
             <SelectContent>
-              {alertVariants.map((alertVariant) => (
-                <SelectItem key={alertVariant} value={alertVariant}>
-                  {alertVariant}
+              {alertVariants.map((variant) => (
+                <SelectItem key={variant} value={variant}>
+                  {variant}
                 </SelectItem>
               ))}
             </SelectContent>

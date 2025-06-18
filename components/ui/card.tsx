@@ -6,17 +6,21 @@ import { cn } from "~/lib/utils";
 function Card({
   className,
   asChild,
-  translucent,
+  variant = "solid",
   ...props
-}: React.ComponentProps<"div"> & { asChild?: boolean; translucent?: boolean }) {
+}: React.ComponentProps<"div"> & {
+  asChild?: boolean;
+  variant?: "solid" | "translucent";
+}) {
   const Comp = asChild ? Slot : "div";
   return (
     <Comp
       data-slot="card"
-      data-translucent={translucent}
       className={cn(
         "rounded-lg border border-border text-card-foreground",
-        translucent ? "bg-card/50 backdrop-blur-3xl" : "bg-card shadow-md",
+        variant === "solid"
+          ? "bg-card shadow-md"
+          : "bg-card/50 backdrop-blur-3xl",
         className
       )}
       {...props}

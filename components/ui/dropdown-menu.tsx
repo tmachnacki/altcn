@@ -10,20 +10,20 @@ import { cn } from "~/lib/utils";
 // TODO: maybe adjust subcontent offset for wide+border variants
 // TODO: maybe use visual-only inset span for wide+border variants to avoid negative margin issues
 
-type MenuContextType = VariantProps<typeof menuItemVariants> & {
+type MenuContextProps = VariantProps<typeof menuItemVariants> & {
   indicatorVariant?: VariantProps<typeof menuItemIndicatorVariants>["variant"];
 };
 
 const menuContentVariants = cva([
   "[--inset-pl:--spacing(8)] [--menu-content-px:--spacing(1)] [--menu-item-px:--spacing(2)]",
-  "z-50 max-h-(--radix-dropdown-menu-content-available-height) min-w-[max(var(--radix-dropdown-menu-trigger-width),--spacing(32))] origin-(--radix-dropdown-menu-content-transform-origin) overflow-x-hidden overflow-y-auto rounded-md border bg-popover px-(--menu-content-px) py-1 text-popover-foreground shadow-md",
+  "z-50 overflow-x-hidden overflow-y-auto rounded-md border bg-popover px-(--menu-content-px) py-1 text-popover-foreground shadow-md",
 ]);
 
 const menuItemVariants = cva(
   [
-    "relative flex cursor-default items-center gap-2 rounded-sm px-(--menu-item-px) py-1.5 text-sm outline-hidden select-none data-[inset]:pl-(--inset-pl)",
-    "data-[disabled]:pointer-events-none data-[disabled]:text-muted-foreground data-[disabled]:opacity-50 data-[disabled]:[&_[data-slot*='-indicator']]:text-muted-foreground",
-    "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground data-[highlighted]:[&_svg:not([class*='text-'])]:text-current",
+    "relative flex cursor-default items-center gap-2 rounded-sm px-(--menu-item-px) py-1.5 text-sm outline-hidden select-none data-[position=inset]:pl-(--inset-pl)",
+    "data-[disabled]:pointer-events-none data-[disabled]:text-muted-foreground data-[disabled]:opacity-50 data-[disabled]:**:[[data-slot*='-indicator']]:text-muted-foreground",
+    "**:[svg]:pointer-events-none **:[svg]:shrink-0 **:[svg]:not-[[class*='size-']]:size-4 **:[svg]:not-[[class*='text-']]:text-muted-foreground data-[highlighted]:**:[svg]:not-[[class*='text-']]:text-current",
     // for subtrigger
     "not-data-[highlighted]:data-[state=open]:bg-muted not-data-[highlighted]:data-[state=open]:text-accent-foreground",
   ],
@@ -32,10 +32,10 @@ const menuItemVariants = cva(
       variant: {
         // -- base --
         base: [
-          "data-[highlighted]:bg-base-bg data-[highlighted]:text-base-foreground data-[highlighted]:[&_[data-slot*='-indicator']]:text-current",
+          "data-[highlighted]:bg-base-bg data-[highlighted]:text-base-foreground data-[highlighted]:**:[[data-slot*='-indicator']]:text-current",
         ],
         accent: [
-          "data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground",
+          "data-[highlighted]:bg-muted data-[highlighted]:text-accent-foreground",
         ],
         surface: [
           "data-[highlighted]:bg-faded data-[highlighted]:text-accent-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-faded",
@@ -43,7 +43,7 @@ const menuItemVariants = cva(
 
         // -- primary --
         primary: [
-          "data-[highlighted]:bg-primary data-[highlighted]:text-primary-foreground data-[highlighted]:[&_[data-slot*='-indicator']]:text-current",
+          "data-[highlighted]:bg-primary data-[highlighted]:text-primary-foreground data-[highlighted]:**:[[data-slot*='-indicator']]:text-current",
         ],
         "primary-accent": [
           "data-[highlighted]:bg-primary-muted data-[highlighted]:text-primary-accent-foreground",
@@ -60,7 +60,7 @@ const menuItemVariants = cva(
 
         // -- secondary --
         secondary: [
-          "data-[highlighted]:bg-secondary data-[highlighted]:text-secondary-foreground data-[highlighted]:[&_[data-slot*='-indicator']]:text-current",
+          "data-[highlighted]:bg-secondary data-[highlighted]:text-secondary-foreground data-[highlighted]:**:[[data-slot*='-indicator']]:text-current",
         ],
         "secondary-accent": [
           "data-[highlighted]:bg-secondary-muted data-[highlighted]:text-secondary-accent-foreground",
@@ -77,7 +77,7 @@ const menuItemVariants = cva(
 
         // -- destructive --
         destructive: [
-          "data-[highlighted]:bg-destructive data-[highlighted]:text-destructive-foreground data-[highlighted]:[&_[data-slot*='-indicator']]:text-current",
+          "data-[highlighted]:bg-destructive data-[highlighted]:text-destructive-foreground data-[highlighted]:**:[[data-slot*='-indicator']]:text-current",
         ],
         "destructive-accent": [
           "data-[highlighted]:bg-destructive-muted data-[highlighted]:text-destructive-accent-foreground",
@@ -92,8 +92,9 @@ const menuItemVariants = cva(
           "data-[highlighted]:bg-destructive-faded data-[highlighted]:text-destructive-muted-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-destructive-faded",
         ],
       },
-      wide: {
-        true: "-mx-(--menu-content-px) rounded-none px-[calc(var(--menu-content-px)+var(--menu-item-px))] data-[inset]:pl-[calc(var(--menu-content-px)+var(--inset-pl))]",
+      width: {
+        default: "",
+        full: "-mx-(--menu-content-px) rounded-none px-[calc(var(--menu-content-px)+var(--menu-item-px))] data-[position=inset]:pl-[calc(var(--menu-content-px)+var(--inset-pl))]",
       },
     },
     compoundVariants: [
@@ -107,9 +108,9 @@ const menuItemVariants = cva(
           "destructive-surface",
           "destructive-faded",
         ],
-        wide: true,
+        width: "full",
         className:
-          "-mx-[calc(var(--menu-content-px)+1px)] px-[calc((var(--menu-content-px)+var(--menu-item-px))+1px)] data-[inset]:pl-[calc((var(--menu-content-px)+var(--inset-pl))+1px)]",
+          "-mx-[calc(var(--menu-content-px)+1px)] px-[calc((var(--menu-content-px)+var(--menu-item-px))+1px)] data-[position=inset]:pl-[calc((var(--menu-content-px)+var(--inset-pl))+1px)]",
       },
       {
         variant: [
@@ -120,7 +121,7 @@ const menuItemVariants = cva(
           "destructive-faded",
         ],
         className:
-          "text-destructive-muted-foreground [&_svg:not([class*='text-'])]:text-current",
+          "text-destructive-muted-foreground **:[svg]:not-[[class*='text-']]:text-current",
       },
     ],
     defaultVariants: {
@@ -132,7 +133,7 @@ const menuItemVariants = cva(
 const menuItemIndicatorVariants = cva(
   [
     "pointer-events-none absolute left-(--menu-item-indicator-left) flex size-3.5 items-center justify-center [--menu-item-indicator-left:--spacing(2)]",
-    "data-[wide]:left-[calc(var(--menu-content-px)+var(--menu-item-indicator-left))] data-[wide]:[data-item-variant*='faded']:left-[calc((var(--menu-content-px)+var(--menu-item-indicator-left))+1px)] data-[wide]:[data-item-variant*='surface']:left-[calc((var(--menu-content-px)+var(--menu-item-indicator-left))+1px)]",
+    "data-[width=full]:left-[calc(var(--menu-content-px)+var(--menu-item-indicator-left))] data-[width=full]:[[data-item-variant*='faded']]:left-[calc((var(--menu-content-px)+var(--menu-item-indicator-left))+1px)] data-[width=full]:[[data-item-variant*='surface']]:left-[calc((var(--menu-content-px)+var(--menu-item-indicator-left))+1px)]",
   ],
   {
     variants: {
@@ -180,26 +181,27 @@ function DropdownMenuTrigger({
   );
 }
 
-const DropdownMenuContext = React.createContext<MenuContextType>({});
+const DropdownMenuContext = React.createContext<MenuContextProps>({});
 
 function DropdownMenuContent({
   className,
   sideOffset = 4,
   variant = "accent",
-  wide = undefined,
+  width = "default",
   indicatorVariant = "default",
   ...props
 }: React.ComponentProps<typeof DropdownMenuPrimitive.Content> &
-  MenuContextType) {
+  MenuContextProps) {
   return (
-    <DropdownMenuContext.Provider value={{ variant, wide, indicatorVariant }}>
+    <DropdownMenuContext.Provider value={{ variant, width, indicatorVariant }}>
       <DropdownMenuPrimitive.Portal>
         <DropdownMenuPrimitive.Content
           data-slot="dropdown-menu-content"
           sideOffset={sideOffset}
           className={cn(
             menuContentVariants(),
-            "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:ease-out data-[state=open]:fade-in-0",
+            "max-h-(--radix-dropdown-menu-content-available-height) min-w-[max(var(--radix-dropdown-menu-trigger-width),--spacing(32))] origin-(--radix-dropdown-menu-content-transform-origin)",
+            "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:ease-out data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95",
             className
           )}
           {...props}
@@ -221,14 +223,14 @@ type DropdownMenuItemProps = React.ComponentProps<
   typeof DropdownMenuPrimitive.Item
 > &
   VariantProps<typeof menuItemVariants> & {
-    inset?: boolean;
+    position?: "default" | "inset";
   };
 
 function DropdownMenuItem({
   className,
-  inset,
+  position = "default",
   variant,
-  wide,
+  width,
   ...props
 }: DropdownMenuItemProps) {
   const context = React.useContext(DropdownMenuContext);
@@ -236,13 +238,13 @@ function DropdownMenuItem({
   return (
     <DropdownMenuPrimitive.Item
       data-slot="dropdown-menu-item"
-      data-wide={wide || context.wide}
-      data-inset={inset}
+      data-width={width || context.width}
+      data-position={position}
       data-variant={variant || context.variant}
       className={cn(
         menuItemVariants({
           variant: variant || context.variant,
-          wide: wide || context.wide,
+          width: width || context.width,
         }),
         className
       )}
@@ -254,7 +256,7 @@ function DropdownMenuItem({
 type DropdownMenuCheckboxItemProps = React.ComponentProps<
   typeof DropdownMenuPrimitive.CheckboxItem
 > &
-  MenuContextType & {
+  MenuContextProps & {
     indicatorClassName?: string;
   };
 
@@ -262,7 +264,7 @@ function DropdownMenuCheckboxItem({
   className,
   checked,
   variant,
-  wide,
+  width,
   indicatorVariant,
   indicatorClassName,
   children,
@@ -274,12 +276,12 @@ function DropdownMenuCheckboxItem({
     <DropdownMenuPrimitive.CheckboxItem
       data-slot="dropdown-menu-checkbox-item"
       data-variant={variant || context.variant}
-      data-wide={wide || context.wide}
-      data-inset
+      data-width={width || context.width}
+      data-position="inset"
       className={cn(
         menuItemVariants({
           variant: variant || context.variant,
-          wide: wide || context.wide,
+          width: width || context.width,
         }),
         className
       )}
@@ -289,7 +291,7 @@ function DropdownMenuCheckboxItem({
       <DropdownMenuPrimitive.ItemIndicator
         data-slot="dropdown-menu-checkbox-item-indicator"
         data-variant={indicatorVariant || context.indicatorVariant}
-        data-wide={wide || context.wide}
+        data-width={width || context.width}
         data-item-variant={variant || context.variant}
         className={cn(
           menuItemIndicatorVariants({
@@ -319,14 +321,14 @@ function DropdownMenuRadioGroup({
 type DropdownMenuRadioItemProps = React.ComponentProps<
   typeof DropdownMenuPrimitive.RadioItem
 > &
-  MenuContextType & {
+  MenuContextProps & {
     indicatorClassName?: string;
   };
 
 function DropdownMenuRadioItem({
   className,
   variant,
-  wide,
+  width,
   indicatorVariant,
   indicatorClassName,
   children,
@@ -338,12 +340,12 @@ function DropdownMenuRadioItem({
     <DropdownMenuPrimitive.RadioItem
       data-slot="dropdown-menu-radio-item"
       data-variant={variant || context.variant}
-      data-wide={wide || context.wide}
-      data-inset
+      data-width={width || context.width}
+      data-position="inset"
       className={cn(
         menuItemVariants({
           variant: variant || context.variant,
-          wide: wide || context.wide,
+          width: width || context.width,
         }),
         className
       )}
@@ -352,7 +354,7 @@ function DropdownMenuRadioItem({
       <DropdownMenuPrimitive.ItemIndicator
         data-slot="dropdown-menu-radio-item-indicator"
         data-variant={indicatorVariant || context.indicatorVariant}
-        data-wide={wide || context.wide}
+        data-width={width || context.width}
         data-item-variant={variant || context.variant}
         className={cn(
           menuItemIndicatorVariants({
@@ -370,17 +372,17 @@ function DropdownMenuRadioItem({
 
 function DropdownMenuLabel({
   className,
-  inset,
+  position = "default",
   ...props
 }: React.ComponentProps<typeof DropdownMenuPrimitive.Label> & {
-  inset?: boolean;
+  position?: "default" | "inset";
 }) {
   return (
     <DropdownMenuPrimitive.Label
       data-slot="dropdown-menu-label"
-      data-inset={inset}
+      data-position={position}
       className={cn(
-        "px-(--menu-item-px) py-1.5 text-sm font-medium text-foreground data-[inset]:pl-(--inset-pl)",
+        "px-(--menu-item-px) py-1.5 text-sm font-medium text-foreground data-[position=inset]:pl-(--inset-pl)",
         className
       )}
       {...props}
@@ -424,14 +426,14 @@ type DropdownMenuSubTriggerProps = React.ComponentProps<
   typeof DropdownMenuPrimitive.SubTrigger
 > &
   VariantProps<typeof menuItemVariants> & {
-    inset?: boolean;
+    position?: "default" | "inset";
   };
 
 function DropdownMenuSubTrigger({
   className,
-  inset,
+  position = "default",
   variant,
-  wide,
+  width,
   children,
   ...props
 }: DropdownMenuSubTriggerProps) {
@@ -440,13 +442,13 @@ function DropdownMenuSubTrigger({
   return (
     <DropdownMenuPrimitive.SubTrigger
       data-slot="dropdown-menu-sub-trigger"
-      data-inset={inset}
+      data-position={position}
       data-variant={variant || context.variant}
-      data-wide={wide || context.wide}
+      data-width={width || context.width}
       className={cn(
         menuItemVariants({
           variant: variant || context.variant,
-          wide: wide || context.wide,
+          width: width || context.width,
         }),
         className
       )}
@@ -468,7 +470,7 @@ function DropdownMenuSubContent({
         data-slot="dropdown-menu-sub-content"
         className={cn(
           menuContentVariants(),
-          "min-w-32 shadow-lg",
+          "max-h-(--radix-dropdown-menu-content-available-height) min-w-32 origin-(--radix-dropdown-menu-content-transform-origin) shadow-lg",
           "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:ease-out data-[state=open]:fade-in-0",
           className
         )}
@@ -479,7 +481,7 @@ function DropdownMenuSubContent({
 }
 
 export {
-  type MenuContextType,
+  type MenuContextProps,
   menuContentVariants,
   menuItemVariants,
   menuItemIndicatorVariants,
