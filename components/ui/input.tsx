@@ -62,7 +62,7 @@ const inputVariants = cva(
         ],
 
         // -- primary --
-        primary: [
+        "primary-muted": [
           "bg-primary-muted text-primary-accent-foreground -outline-offset-1 hover:not-disabled:not-focus-visible:not-aria-invalid:bg-hover-primary-muted",
 
           "file:bg-primary file:text-primary-foreground",
@@ -77,7 +77,7 @@ const inputVariants = cva(
         ],
 
         // -- secondary --
-        secondary: [
+        "secondary-muted": [
           "bg-secondary-muted text-secondary-accent-foreground -outline-offset-1 hover:not-disabled:not-focus-visible:not-aria-invalid:bg-hover-secondary-muted",
 
           "selection:bg-secondary selection:text-secondary-foreground",

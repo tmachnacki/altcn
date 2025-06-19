@@ -16,6 +16,7 @@ import { Slider } from "~/components/ui/slider";
 import { Spinner } from "~/components/ui/spinner";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
+import { Swatch } from "~/components/swatch";
 
 const buttonVariants = [
   "outline",
@@ -56,26 +57,18 @@ const buttonVariants = [
 ] as const;
 
 type ButtonSize = "xs" | "sm" | "default" | "lg";
-const buttonSizesMap: Record<number, ButtonSize> = {
-  1: "xs",
-  2: "sm",
-  3: "default",
-  4: "lg",
-};
-
 type ButtonIconSize = "icon-xs" | "icon-sm" | "icon" | "icon-lg";
-const buttonIconSizesMap: Record<number, ButtonIconSize> = {
-  1: "icon-xs",
-  2: "icon-sm",
-  3: "icon",
-  4: "icon-lg",
+const buttonSizesMap: Record<number, {button: ButtonSize, icon: ButtonIconSize}> = {
+  1: {button: "xs", icon: "icon-xs"},
+  2: {button: "sm", icon: "icon-sm"},
+  3: {button: "default", icon: "icon"},
+  4: {button: "lg", icon: "icon-lg"},
 };
 
 export function ButtonDemo() {
   const [variant, setVariant] = React.useState("outline");
   const [size, setSize] = React.useState(3);
-  const [iconSize, setIconSize] = React.useState(3);
-
+  
   return (
     <>
       <ComponentContainer>
@@ -83,33 +76,33 @@ export function ButtonDemo() {
           <div className="flex flex-wrap items-center gap-2">
             <Button
               variant={variant as (typeof buttonVariants)[number]}
-              size={buttonSizesMap[size]}
+              size={buttonSizesMap[size].button}
             >
               Button
             </Button>
             <Button
               variant={variant as (typeof buttonVariants)[number]}
-              size={buttonSizesMap[size]}
+              size={buttonSizesMap[size].button}
             >
               Get Started <ArrowRightIcon />
             </Button>
             <Button
               variant={variant as (typeof buttonVariants)[number]}
-              size={buttonSizesMap[size]}
+              size={buttonSizesMap[size].button}
             >
               <MailIcon />
               Inbox
             </Button>
             <Button
               variant={variant as (typeof buttonVariants)[number]}
-              size={buttonSizesMap[size]}
+              size={buttonSizesMap[size].button}
               disabled
             >
               Disabled
             </Button>
             <Button
               variant={variant as (typeof buttonVariants)[number]}
-              size={buttonSizesMap[size]}
+              size={buttonSizesMap[size].button}
               disabled
             >
               <Spinner />
@@ -119,20 +112,20 @@ export function ButtonDemo() {
           <div className="flex flex-wrap items-center gap-2">
             <Button
               variant={variant as (typeof buttonVariants)[number]}
-              size={buttonIconSizesMap[iconSize]}
+              size={buttonSizesMap[size].icon}
             >
               <SettingsIcon />
             </Button>
             <Button
               variant={variant as (typeof buttonVariants)[number]}
-              size={buttonIconSizesMap[iconSize]}
+              size={buttonSizesMap[size].icon}
               disabled
             >
               <SettingsIcon />
             </Button>
             <Button
               variant={variant as (typeof buttonVariants)[number]}
-              size={buttonIconSizesMap[iconSize]}
+              size={buttonSizesMap[size].icon}
               disabled
             >
               <Spinner />
@@ -143,14 +136,15 @@ export function ButtonDemo() {
 
       <ComponentPlayground>
         <div className="grid gap-2">
-          <Label htmlFor="button-variant">Button Variant</Label>
+          <Label htmlFor="variant">Variant</Label>
           <Select value={variant} onValueChange={setVariant}>
-            <SelectTrigger id="button-variant" className="w-full">
+            <SelectTrigger id="variant" className="w-full">
               <SelectValue placeholder="Select variant" />
             </SelectTrigger>
             <SelectContent className="max-h-96">
               {buttonVariants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
+                  <Swatch variant={variant} />
                   {variant}
                 </SelectItem>
               ))}
@@ -158,10 +152,10 @@ export function ButtonDemo() {
           </Select>
         </div>
         <div className="grid gap-3">
-          <Label htmlFor="button-size">
-            Button Size:{" "}
+          <Label htmlFor="size">
+            Size:{" "}
             <span className="inline-block leading-none font-normal text-primary-muted-foreground">
-              {buttonSizesMap[size]}
+              {buttonSizesMap[size].button}, {buttonSizesMap[size].icon}
             </span>
           </Label>
           <Slider
@@ -171,22 +165,6 @@ export function ButtonDemo() {
             step={1}
             value={[size]}
             onValueChange={(value: number[]) => setSize(value[0])}
-          />
-        </div>
-        <div className="grid gap-3">
-          <Label htmlFor="button-icon-size">
-            Button Icon Size:{" "}
-            <span className="inline-block leading-none font-normal text-primary-muted-foreground">
-              {buttonIconSizesMap[iconSize]}
-            </span>
-          </Label>
-          <Slider
-            id="button-icon-size"
-            min={1}
-            max={4}
-            step={1}
-            value={[iconSize]}
-            onValueChange={(value: number[]) => setIconSize(value[0])}
           />
         </div>
       </ComponentPlayground>

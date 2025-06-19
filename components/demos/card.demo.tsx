@@ -20,9 +20,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "~/components/ui/select";
+import { BackgroundPattern } from "~/components/background-pattern";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
-import { BackgroundPattern } from "~/components/demos/background-pattern";
 
 const cardVariants = ["solid", "translucent"] as const;
 

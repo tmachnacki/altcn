@@ -192,16 +192,16 @@ export function MenubarDemo() {
                 Disabled
               </MenubarCheckboxItem>
               <MenubarSeparator />
-              <MenubarItem position="inset">
+              <MenubarItem align="inset">
                 Reload <MenubarShortcut>⌘R</MenubarShortcut>
               </MenubarItem>
-              <MenubarItem disabled position="inset">
+              <MenubarItem disabled align="inset">
                 Force Reload <MenubarShortcut>⇧⌘R</MenubarShortcut>
               </MenubarItem>
               <MenubarSeparator />
-              <MenubarItem position="inset">Toggle Fullscreen</MenubarItem>
+              <MenubarItem align="inset">Toggle Fullscreen</MenubarItem>
               <MenubarSeparator />
-              <MenubarItem position="inset">Hide Sidebar</MenubarItem>
+              <MenubarItem align="inset">Hide Sidebar</MenubarItem>
             </MenubarContent>
           </MenubarMenu>
           <MenubarMenu>
@@ -244,9 +244,9 @@ export function MenubarDemo() {
                 </MenubarRadioItem>
               </MenubarRadioGroup>
               <MenubarSeparator />
-              <MenubarItem position="inset">Edit...</MenubarItem>
+              <MenubarItem align="inset">Edit...</MenubarItem>
               <MenubarSeparator />
-              <MenubarItem position="inset">Add Profile...</MenubarItem>
+              <MenubarItem align="inset">Add Profile...</MenubarItem>
             </MenubarContent>
           </MenubarMenu>
           <MenubarMenu>

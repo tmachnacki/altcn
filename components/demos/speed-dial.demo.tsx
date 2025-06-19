@@ -17,7 +17,7 @@ import {
   SpeedDialTrigger,
 } from "~/components/ui/speed-dial";
 import { ComponentContainer } from "~/components/component-container";
-import { BackgroundPattern } from "~/components/demos/background-pattern";
+import { BackgroundPattern } from "~/components/background-pattern";
 
 export function SpeedDialDemo() {
   return (

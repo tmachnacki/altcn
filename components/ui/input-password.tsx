@@ -70,9 +70,9 @@ function InputPassword({
             outline: "text-subtle-foreground hover:bg-base-500/20 outline-outline",
             muted: "text-subtle-foreground hover:bg-base-500/20 outline-outline ",
             underlined: "text-subtle-foreground hover:bg-base-500/20 outline-outline ",
-            primary:
+            "primary-muted":
               "text-primary-muted-foreground hover:bg-primary-500/20 outline-primary ",
-            secondary:
+            "secondary-muted":
               "text-secondary-muted-foreground hover:bg-secondary-500/20 outline-secondary",
           }[variant || "outline"],
           classNames?.toggle
@@ -86,7 +86,7 @@ function InputPassword({
             className={cn(
               {
                 default: "size-4",
-                sm: "size-3.5",
+                sm: "size-4",
                 lg: "size-5",
               }[size || "default"]
             )}
@@ -97,7 +97,7 @@ function InputPassword({
             className={cn(
               {
                 default: "size-4",
-                sm: "size-3.5",
+                sm: "size-4",
                 lg: "size-5",
               }[size || "default"]
             )}

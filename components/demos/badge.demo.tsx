@@ -16,6 +16,7 @@ import {
 } from "~/components/ui/select";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
+import { Swatch } from "~/components/swatch";
 
 const badgeVariants = [
   "outline",
@@ -103,14 +104,15 @@ export function BadgeDemo() {
 
       <ComponentPlayground>
         <div className="grid gap-2">
-          <Label htmlFor="badge-variant">Badge Variant</Label>
+          <Label htmlFor="badge-variant">Variant</Label>
           <Select value={badgeVariant} onValueChange={setBadgeVariant}>
             <SelectTrigger id="badge-variant" className="w-full">
               <SelectValue placeholder="Select variant" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="max-h-96">
               {badgeVariants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
+                  <Swatch variant={variant} />
                   {variant}
                 </SelectItem>
               ))}

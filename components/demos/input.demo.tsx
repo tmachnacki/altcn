@@ -19,8 +19,8 @@ const variants = [
   "outline",
   "muted",
   "underlined",
-  "primary",
-  "secondary",
+  "primary-muted",
+  "secondary-muted",
 ] as const;
 
 type Size = "sm" | "default" | "lg";
@@ -178,7 +178,9 @@ export function InputDemo() {
         </div>
 
         <div className="grid gap-3">
-          <Label htmlFor="input-size">Size</Label>
+          <Label htmlFor="input-size">
+            Size: <span className="text-primary-muted-foreground font-normal">{sizesMap[size]}</span>
+          </Label>
           <Slider
             id="input-size"
             min={1}

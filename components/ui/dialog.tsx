@@ -77,7 +77,7 @@ function DialogContent({
           )}
           aria-label="Close"
         >
-          <XIcon className="size-4" />
+          <XIcon aria-hidden="true" className="size-4" />
         </DialogPrimitive.Close>
       </DialogPrimitive.Content>
     </DialogPortal>

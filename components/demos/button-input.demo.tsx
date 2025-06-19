@@ -15,13 +15,14 @@ import {
 import { Slider } from "~/components/ui/slider";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
+import { Swatch } from "~/components/swatch";
 
 const buttonInputVariants = [
   "outline",
   "muted",
   "underlined",
-  "primary",
-  "secondary",
+  "primary-muted",
+  "secondary-muted",
 ] as const;
 
 type ButtonInputSize = "sm" | "default" | "lg";
@@ -92,14 +93,15 @@ export function ButtonInputDemo() {
       </ComponentContainer>
       <ComponentPlayground>
         <div className="grid gap-2">
-          <Label htmlFor="button-input-variant">Variant</Label>
+          <Label htmlFor="variant">Variant</Label>
           <Select value={variant} onValueChange={setVariant}>
-            <SelectTrigger id="button-input-variant" className="w-full">
+            <SelectTrigger id="variant" className="w-full">
               <SelectValue placeholder="Select a variant" />
             </SelectTrigger>
             <SelectContent>
               {buttonInputVariants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
+                  <Swatch variant={variant} />
                   {variant}
                 </SelectItem>
               ))}
@@ -108,14 +110,14 @@ export function ButtonInputDemo() {
         </div>
 
         <div className="grid gap-3">
-          <Label htmlFor="button-input-size">
+          <Label htmlFor="size">
             Size:{" "}
-            <span className="text-primary-muted-foreground font-normal">
+            <span className="font-normal text-primary-muted-foreground">
               {buttonInputSizesMap[size]}
             </span>
           </Label>
           <Slider
-            id="button-input-size"
+            id="size"
             min={1}
             max={3}
             step={1}

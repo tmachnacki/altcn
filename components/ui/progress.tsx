@@ -11,12 +11,12 @@ const progressVariants = cva(
   {
     variants: {
       variant: {
-        primary: "bg-accent",
+        primary: "bg-muted",
         "primary-muted": "bg-primary-muted",
         "primary-faded":
           "bg-primary-faded inset-ring inset-ring-border-primary-faded",
 
-        secondary: "bg-accent",
+        secondary: "bg-muted",
         "secondary-muted": "bg-secondary-muted",
         "secondary-faded":
           "bg-secondary-faded inset-ring inset-ring-border-secondary-faded",
@@ -38,22 +38,33 @@ const progressVariants = cva(
   }
 );
 
+type ProgressProps = React.ComponentProps<typeof ProgressPrimitive.Root> &
+  VariantProps<typeof progressVariants> & {
+    classNames?: {
+      root?: string;
+      indicator?: string;
+    };
+  };
+
 function Progress({
   className,
   value,
   variant = "primary",
+  classNames,
   ...props
-}: React.ComponentProps<typeof ProgressPrimitive.Root> &
-  VariantProps<typeof progressVariants>) {
+}: ProgressProps) {
   return (
     <ProgressPrimitive.Root
       data-slot="progress"
-      className={cn(progressVariants({ variant }), className)}
+      className={cn(progressVariants({ variant }), classNames?.root, className)}
       {...props}
     >
       <ProgressPrimitive.Indicator
         data-slot="progress-indicator"
-        className="h-full w-full flex-1 bg-(--progress-indicator-bg) transition-all"
+        className={cn(
+          "h-full w-full flex-1 bg-(--progress-indicator-bg) transition-all",
+          classNames?.indicator
+        )}
         style={{ transform: `translateX(-${100 - (value || 0)}%)` }}
       />
     </ProgressPrimitive.Root>

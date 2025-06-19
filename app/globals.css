@@ -23,7 +23,7 @@
 
   --border: --alpha(var(--color-base-950) / 10%);
   --hover-border: --alpha(var(--color-base-950) / 20%);
-  --outline: var(--color-base-700);
+  --outline: var(--color-base-600);
   --overlay: --alpha(var(--color-base-100) / 50%);
 
   /* using "base-bg" instead of "base" to avoid conflict with "text-base" utility */

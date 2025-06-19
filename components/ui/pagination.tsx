@@ -67,10 +67,10 @@ function PaginationLink({
     >
       <Link
         data-slot="pagination-link"
+        data-state={isActive ? "active" : "inactive"}
         aria-current={isActive ? "page" : undefined}
         aria-disabled={disabled}
         tabIndex={disabled ? -1 : 0}
-        data-active={isActive}
         {...props}
       />
     </Button>

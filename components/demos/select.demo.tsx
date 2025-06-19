@@ -28,8 +28,8 @@ const triggerVariants = [
   "outline",
   "muted",
   "underlined",
-  "primary",
-  "secondary",
+  "primary-muted",
+  "secondary-muted",
 ] as const;
 
 type TriggerSize = "default" | "sm" | "lg";
@@ -64,6 +64,8 @@ const indicatorVariants = [
   "primary",
   "secondary",
   "destructive",
+  "success",
+  "warning",
 ] as const;
 
 const widths = ["default", "full"] as const;
@@ -281,7 +283,12 @@ export function SelectDemo() {
           </Select>
         </div>
         <div className="grid gap-3">
-          <Label htmlFor="trigger-size">Trigger Size</Label>
+          <Label htmlFor="trigger-size">
+            Trigger Size:{" "}
+            <span className="font-normal text-primary-muted-foreground">
+              {triggerSizesMap[triggerSize]}
+            </span>
+          </Label>
           <Slider
             id="trigger-size"
             className="w-full"
@@ -326,7 +333,7 @@ export function SelectDemo() {
           <Label htmlFor="width">Width</Label>
           <Select value={width} onValueChange={setWidth}>
             <SelectTrigger id="width" className="w-full">
-              <SelectValue placeholder="Select variant" />
+              <SelectValue placeholder="Select width" />
             </SelectTrigger>
             <SelectContent>
               {widths.map((width) => (

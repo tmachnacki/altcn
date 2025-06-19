@@ -36,6 +36,7 @@ import {
 } from "~/components/ui/select";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
+import { Swatch } from "~/components/swatch";
 
 const itemVariants = [
   "base",
@@ -82,14 +83,12 @@ export function ContextMenuDemo() {
   const [checked, setChecked] = React.useState(true);
   const [radioSelection, setRadioSelection] = React.useState("one");
 
-  const variantLabel = variant.replace("-", " ");
-
   return (
     <>
       <ComponentContainer>
         <ContextMenu>
           <ContextMenuTrigger className="grid min-h-48 w-full max-w-xs place-items-center rounded-lg border border-dashed border-border capitalize">
-            {variantLabel}
+            Right Click
           </ContextMenuTrigger>
           <ContextMenuContent
             variant={variant as (typeof itemVariants)[number]}
@@ -130,7 +129,7 @@ export function ContextMenuDemo() {
                     <ContextMenuShortcut>⌘+M</ContextMenuShortcut>
                   </ContextMenuItem>
                   <ContextMenuSeparator />
-                  <ContextMenuItem position="inset">More</ContextMenuItem>
+                  <ContextMenuItem align="inset">More</ContextMenuItem>
                 </ContextMenuSubContent>
               </ContextMenuSub>
               <ContextMenuItem>
@@ -140,7 +139,7 @@ export function ContextMenuDemo() {
             </ContextMenuGroup>
             <ContextMenuSeparator />
             <ContextMenuGroup>
-              <ContextMenuLabel position="inset">Checkboxes</ContextMenuLabel>
+              <ContextMenuLabel align="inset">Checkboxes</ContextMenuLabel>
               <ContextMenuCheckboxItem
                 checked={checked}
                 onCheckedChange={setChecked}
@@ -154,7 +153,7 @@ export function ContextMenuDemo() {
             </ContextMenuGroup>
             <ContextMenuSeparator />
             <ContextMenuGroup>
-              <ContextMenuLabel position="inset">Radio Group</ContextMenuLabel>
+              <ContextMenuLabel align="inset">Radio Group</ContextMenuLabel>
               <ContextMenuRadioGroup
                 value={radioSelection}
                 onValueChange={setRadioSelection}
@@ -216,6 +215,7 @@ export function ContextMenuDemo() {
             <SelectContent>
               {itemVariants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
+                  <Swatch variant={variant} />
                   {variant}
                 </SelectItem>
               ))}

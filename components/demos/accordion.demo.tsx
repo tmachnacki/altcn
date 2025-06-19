@@ -18,6 +18,7 @@ import {
 } from "~/components/ui/select";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
+import { Swatch } from "~/components/swatch";
 
 const accordionVariants = [
   "outline",
@@ -71,7 +72,7 @@ export function AccordionDemo() {
       </ComponentContainer>
       <ComponentPlayground>
         <div className="grid gap-2">
-          <Label htmlFor="accordion-variant">Accordion Variant</Label>
+          <Label htmlFor="accordion-variant">Variant</Label>
           <Select value={accordionVariant} onValueChange={setAccordionVariant}>
             <SelectTrigger id="accordion-variant" className="w-full">
               <SelectValue placeholder="Select variant" />
@@ -79,6 +80,7 @@ export function AccordionDemo() {
             <SelectContent>
               {accordionVariants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
+                  <Swatch variant={variant} />
                   {variant}
                 </SelectItem>
               ))}
@@ -86,7 +88,7 @@ export function AccordionDemo() {
           </Select>
         </div>
         <div className="grid gap-2">
-          <Label htmlFor="accordion-layout">Accordion Layout</Label>
+          <Label htmlFor="accordion-layout">Layout</Label>
           <Select value={accordionLayout} onValueChange={setAccordionLayout}>
             <SelectTrigger id="accordion-layout" className="w-full">
               <SelectValue placeholder="Select variant" />

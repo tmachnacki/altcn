@@ -53,6 +53,14 @@ const paginationLinkVariants = [
 ] as const;
 
 export function PaginationDemo() {
+  return (
+    <React.Suspense fallback={null}>
+      <PaginationWithParams />
+    </React.Suspense>
+  );
+}
+
+export function PaginationWithParams() {
   const [activeVariant, setActiveVariant] = React.useState("primary");
   const [inactiveVariant, setInactiveVariant] = React.useState("outline");
   const [controlVariant, setControlVariant] = React.useState("outline");

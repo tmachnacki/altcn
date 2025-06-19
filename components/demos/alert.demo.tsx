@@ -26,6 +26,7 @@ import {
 } from "~/components/ui/select";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
+import { Swatch } from "~/components/swatch";
 
 export function AlertDemo() {
   const [alertVariant, setAlertVariant] = React.useState("outline");
@@ -190,7 +191,7 @@ export function AlertDemo() {
       </ComponentContainer>
       <ComponentPlayground>
         <div className="grid gap-2">
-          <Label htmlFor="alert-variant">Alert Variant</Label>
+          <Label htmlFor="alert-variant">Variant</Label>
           <Select value={alertVariant} onValueChange={setAlertVariant}>
             <SelectTrigger id="alert-variant" className="w-full">
               <SelectValue placeholder="Select variant" />
@@ -198,6 +199,7 @@ export function AlertDemo() {
             <SelectContent>
               {alertVariants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
+                  <Swatch variant={variant} />
                   {variant}
                 </SelectItem>
               ))}

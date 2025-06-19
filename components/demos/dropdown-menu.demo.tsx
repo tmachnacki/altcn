@@ -4,6 +4,7 @@ import * as React from "react";
 import {
   BadgeCheckIcon,
   BellIcon,
+  ChevronDownIcon,
   CreditCardIcon,
   MailIcon,
   SendIcon,
@@ -87,15 +88,13 @@ export function DropdownMenuDemo() {
   const [checked, setChecked] = React.useState(true);
   const [radioSelection, setRadioSelection] = React.useState("one");
 
-  const variantLabel = variant.replace("-", " ");
-
   return (
     <>
       <ComponentContainer>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant={"outline"} className="capitalize">
-              {variantLabel}
+              Open <ChevronDownIcon />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent
@@ -139,7 +138,7 @@ export function DropdownMenuDemo() {
                     <DropdownMenuShortcut>⌘+M</DropdownMenuShortcut>
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem position="inset">More</DropdownMenuItem>
+                  <DropdownMenuItem align="inset">More</DropdownMenuItem>
                 </DropdownMenuSubContent>
               </DropdownMenuSub>
               <DropdownMenuItem>
@@ -149,7 +148,7 @@ export function DropdownMenuDemo() {
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
-              <DropdownMenuLabel position="inset">Checkboxes</DropdownMenuLabel>
+              <DropdownMenuLabel align="inset">Checkboxes</DropdownMenuLabel>
               <DropdownMenuCheckboxItem
                 checked={checked}
                 onCheckedChange={setChecked}
@@ -163,9 +162,7 @@ export function DropdownMenuDemo() {
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
-              <DropdownMenuLabel position="inset">
-                Radio Group
-              </DropdownMenuLabel>
+              <DropdownMenuLabel align="inset">Radio Group</DropdownMenuLabel>
               <DropdownMenuRadioGroup
                 value={radioSelection}
                 onValueChange={setRadioSelection}

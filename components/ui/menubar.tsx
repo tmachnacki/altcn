@@ -206,10 +206,8 @@ function MenubarContent({
       <MenubarPortal>
         <MenubarPrimitive.Content
           data-slot="menubar-content"
-          data-align={align}
+          align={align}
           sideOffset={sideOffset}
-          data-variant={variant}
-          data-width={width}
           className={cn(
             menuContentVariants(),
             "max-h-(--radix-menubar-content-available-height) max-w-(--radix-menubar-content-available-width) min-w-48 origin-(--radix-menubar-content-transform-origin)",
@@ -226,12 +224,12 @@ function MenubarContent({
 
 type MenubarItemProps = React.ComponentProps<typeof MenubarPrimitive.Item> &
   VariantProps<typeof menuItemVariants> & {
-    position?: "default" | "inset";
+    align?: "start" | "inset";
   };
 
 function MenubarItem({
   className,
-  position = "default",
+  align = "start",
   variant,
   width,
   ...props
@@ -241,8 +239,7 @@ function MenubarItem({
   return (
     <MenubarPrimitive.Item
       data-slot="menubar-item"
-      data-position={position}
-      data-variant={variant || context.variant}
+      data-align={align}
       data-width={width || context.width}
       className={cn(
         menuItemVariants({
@@ -260,7 +257,10 @@ type MenubarCheckboxItemProps = React.ComponentProps<
   typeof MenubarPrimitive.CheckboxItem
 > &
   MenuContextProps & {
-    indicatorClassName?: string;
+    classNames?: {
+      item?: string;
+      indicator?: string;
+    };
   };
 
 function MenubarCheckboxItem({
@@ -269,7 +269,7 @@ function MenubarCheckboxItem({
   variant,
   width,
   indicatorVariant,
-  indicatorClassName,
+  classNames,
   children,
   ...props
 }: MenubarCheckboxItemProps) {
@@ -278,14 +278,14 @@ function MenubarCheckboxItem({
   return (
     <MenubarPrimitive.CheckboxItem
       data-slot="menubar-checkbox-item"
-      data-variant={variant || context.variant}
       data-width={width || context.width}
-      data-position="inset"
+      data-align="inset"
       className={cn(
         menuItemVariants({
           variant: variant || context.variant,
           width: width || context.width,
         }),
+        classNames?.item,
         className
       )}
       checked={checked}
@@ -293,14 +293,13 @@ function MenubarCheckboxItem({
     >
       <MenubarPrimitive.ItemIndicator
         data-slot="menubar-checkbox-item-indicator"
-        data-variant={indicatorVariant || context.indicatorVariant}
         data-width={width || context.width}
         data-item-variant={variant || context.variant}
         className={cn(
           menuItemIndicatorVariants({
             variant: indicatorVariant || context.indicatorVariant,
           }),
-          indicatorClassName
+          classNames?.indicator
         )}
       >
         <CheckIcon className="size-4 text-current" />
@@ -322,7 +321,10 @@ type MenubarRadioItemProps = React.ComponentProps<
   typeof MenubarPrimitive.RadioItem
 > &
   MenuContextProps & {
-    indicatorClassName?: string;
+    classNames?: {
+      item?: string;
+      indicator?: string;
+    };
   };
 
 function MenubarRadioItem({
@@ -330,7 +332,7 @@ function MenubarRadioItem({
   variant,
   width,
   indicatorVariant,
-  indicatorClassName,
+  classNames,
   children,
   ...props
 }: MenubarRadioItemProps) {
@@ -339,28 +341,27 @@ function MenubarRadioItem({
   return (
     <MenubarPrimitive.RadioItem
       data-slot="menubar-radio-item"
-      data-variant={variant || context.variant}
       data-width={width || context.width}
-      data-position="inset"
+      data-align="inset"
       className={cn(
         menuItemVariants({
           variant: variant || context.variant,
           width: width || context.width,
         }),
+        classNames?.item,
         className
       )}
       {...props}
     >
       <MenubarPrimitive.ItemIndicator
         data-slot="menubar-radio-item-indicator"
-        data-variant={indicatorVariant || context.indicatorVariant}
         data-width={width || context.width}
         data-item-variant={variant || context.variant}
         className={cn(
           menuItemIndicatorVariants({
             variant: indicatorVariant || context.indicatorVariant,
           }),
-          indicatorClassName
+          classNames?.indicator
         )}
       >
         <CircleIcon className="size-2 fill-current text-current" />
@@ -372,17 +373,17 @@ function MenubarRadioItem({
 
 function MenubarLabel({
   className,
-  position = "default",
+  align = "start",
   ...props
 }: React.ComponentProps<typeof MenubarPrimitive.Label> & {
-  position?: "default" | "inset";
+  align?: "start" | "inset";
 }) {
   return (
     <MenubarPrimitive.Label
       data-slot="menubar-label"
-      data-position={position}
+      data-align={align}
       className={cn(
-        "px-(--menu-item-px) py-1.5 text-sm font-medium text-foreground data-[position=inset]:pl-(--inset-pl)",
+        "px-(--menu-item-px) py-1.5 text-sm font-medium text-foreground data-[align=inset]:pl-(--inset-pl)",
         className
       )}
       {...props}
@@ -426,12 +427,12 @@ type MenubarSubTriggerProps = React.ComponentProps<
   typeof MenubarPrimitive.SubTrigger
 > &
   VariantProps<typeof menuItemVariants> & {
-    position?: "default" | "inset";
+    align?: "start" | "inset";
   };
 
 function MenubarSubTrigger({
   className,
-  position = "default",
+  align = "start",
   variant,
   width,
   children,
@@ -442,8 +443,7 @@ function MenubarSubTrigger({
   return (
     <MenubarPrimitive.SubTrigger
       data-slot="menubar-sub-trigger"
-      data-position={position}
-      data-variant={variant || context.variant}
+      data-align={align}
       data-width={width || context.width}
       className={cn(
         menuItemVariants({

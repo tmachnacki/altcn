@@ -13,6 +13,7 @@ import {
 } from "~/components/ui/select";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
+import { Swatch } from "~/components/swatch";
 
 const avatarFallbackVariants = [
   "outline",
@@ -75,9 +76,7 @@ export function AvatarDemo() {
 
       <ComponentPlayground>
         <div className="grid gap-2">
-          <Label htmlFor="avatar-fallback-variant">
-            Avatar Fallback Variant
-          </Label>
+          <Label htmlFor="avatar-fallback-variant">Fallback Variant</Label>
           <Select
             value={avatarFallbackVariant}
             onValueChange={setAvatarFallbackVariant}
@@ -88,6 +87,7 @@ export function AvatarDemo() {
             <SelectContent>
               {avatarFallbackVariants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
+                  <Swatch variant={variant} />
                   {variant}
                 </SelectItem>
               ))}

@@ -50,7 +50,7 @@ const buttonInputVariants = cva(
         ],
 
         // -- primary --
-        primary: [
+        "primary-muted": [
           "bg-primary-muted text-primary-accent-foreground -outline-offset-1 hover:not-disabled:not-aria-invalid:not-focus-visible:bg-hover-primary-muted",
           "**:[svg]:not-[[class*='text-']]:text-primary-muted-foreground",
           "[--button-input-icon-text:var(--color-primary-muted-foreground)]",
@@ -61,7 +61,7 @@ const buttonInputVariants = cva(
         ],
 
         // -- secondary --
-        secondary: [
+        "secondary-muted": [
           "bg-secondary-muted text-secondary-accent-foreground -outline-offset-1 hover:not-disabled:not-aria-invalid:not-focus-visible:bg-hover-secondary-muted",
           "**:[svg]:not-[[class*='text-']]:text-secondary-muted-foreground",
           "[--button-input-icon-text:var(--color-secondary-muted-foreground)]",

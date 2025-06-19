@@ -63,7 +63,7 @@ const inputOTPSlotVariants = cva(
           "data-[invalid=true]:shadow-[inset_0_-1px_0_0_var(--color-destructive)] data-[invalid=true]:data-[active=true]:shadow-[inset_0_-2px_0_0_var(--color-destructive)] data-[invalid=true]:data-[placeholder]:text-destructive-placeholder",
         ],
 
-        primary: [
+        "primary-muted": [
           "-ml-px bg-primary-muted text-primary-accent-foreground group-hover/input-otp:not-data-[invalid=true]:group-not-has-disabled/input-otp:group-not-focus-within/input-otp:bg-hover-primary-muted first:ml-0 first:rounded-l-md last:rounded-r-md",
 
           "[--shadow-border:var(--color-border-primary-faded)] data-[invalid=true]:[--shadow-border:var(--color-border-destructive-faded)]",
@@ -80,7 +80,7 @@ const inputOTPSlotVariants = cva(
           "data-[layout=split]:-ml-0 data-[layout=split]:rounded-md data-[layout=split]:shadow-none",
         ],
 
-        secondary: [
+        "secondary-muted": [
           "-ml-px bg-secondary-muted text-secondary-accent-foreground group-hover/input-otp:not-data-[invalid=true]:group-not-has-disabled/input-otp:group-not-focus-within/input-otp:bg-hover-secondary-muted first:ml-0 first:rounded-l-md last:rounded-r-md",
 
           "[--shadow-border:var(--color-border-secondary-faded)] data-[invalid=true]:[--shadow-border:var(--color-border-destructive-faded)]",

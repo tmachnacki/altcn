@@ -2,46 +2,67 @@
 
 import * as React from "react";
 
+import { Label } from "~/components/ui/label";
 import { Progress } from "~/components/ui/progress";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "~/components/ui/select";
+import { ComponentContainer } from "~/components/component-container";
+import { ComponentPlayground } from "~/components/component-playground";
+
+const variants = [
+  "primary",
+  "primary-muted",
+  "primary-faded",
+  "secondary",
+  "secondary-muted",
+  "secondary-faded",
+] as const;
 
 export function ProgressDemo() {
-  const variants = [
-    "primary",
-    "primary-muted",
-    "primary-faded",
-    "secondary",
-    "secondary-muted",
-    "secondary-faded",
-  ] as const;
+  const [variant, setVariant] = React.useState("primary");
 
-  return (
-    <div className="flex-w flex h-full w-full flex-col gap-4">
-      {variants.map((variant) => (
-        <AnimatedProgress key={variant} variant={variant} />
-      ))}
-    </div>
-  );
-}
-
-function AnimatedProgress({
-  variant,
-}: {
-  variant:
-    | "primary"
-    | "secondary"
-    | "primary-muted"
-    | "secondary-muted"
-    | "primary-faded"
-    | "secondary-faded";
-}) {
-  const [progress, setProgress] = React.useState(13);
+  const [progress, setProgress] = React.useState(0);
 
   React.useEffect(() => {
-    const timer = setTimeout(() => setProgress(66), 500);
-    return () => clearTimeout(timer);
-  }, []);
+    setProgress(0);
+    const interval = setInterval(() => {
+      setProgress((prev) => (prev < 100 ? prev + 25 : 100));
+    }, 500);
+    return () => clearInterval(interval);
+  }, [variant]);
 
   return (
-    <Progress variant={variant} value={progress} className="w-full max-w-sm" />
+    <>
+      <ComponentContainer>
+        <Progress
+          variant={variant as (typeof variants)[number]}
+          value={progress}
+          className="w-full max-w-sm"
+        />
+      </ComponentContainer>
+
+      <ComponentPlayground>
+        <div className="grid gap-2">
+          <Label htmlFor="variant">Variant</Label>
+          <Select value={variant} onValueChange={setVariant}>
+            <SelectTrigger id="variant" className="w-full">
+              <SelectValue placeholder="Select variant" />
+            </SelectTrigger>
+            <SelectContent>
+              {variants.map((variant) => (
+                <SelectItem key={variant} value={variant}>
+                  {variant}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+      </ComponentPlayground>
+    </>
   );
 }

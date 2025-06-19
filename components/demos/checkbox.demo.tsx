@@ -13,6 +13,8 @@ import {
 } from "~/components/ui/select";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
+import { Swatch } from "~/components/swatch";
+import { CheckIcon } from "lucide-react";
 
 const checkboxVariants = ["primary", "secondary"] as const;
 
@@ -125,7 +127,7 @@ export function CheckboxDemo() {
 
       <ComponentPlayground>
         <div className="grid gap-2">
-          <Label htmlFor="checkbox-variant">Checkbox Variant</Label>
+          <Label htmlFor="checkbox-variant">Variant</Label>
           <Select value={variant} onValueChange={setVariant}>
             <SelectTrigger id="checkbox-variant" className="w-full">
               <SelectValue placeholder="Select variant" />
@@ -133,6 +135,9 @@ export function CheckboxDemo() {
             <SelectContent>
               {checkboxVariants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
+                  <Swatch variant={variant}>
+                    <CheckIcon />
+                  </Swatch>
                   {variant}
                 </SelectItem>
               ))}

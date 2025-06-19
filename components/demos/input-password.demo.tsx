@@ -19,8 +19,8 @@ const variants = [
   "outline",
   "muted",
   "underlined",
-  "primary",
-  "secondary",
+  "primary-muted",
+  "secondary-muted",
 ] as const;
 
 type Size = "sm" | "default" | "lg";
