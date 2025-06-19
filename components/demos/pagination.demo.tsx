@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import * as React from "react";
+import { useSearchParams } from "next/navigation";
 
 import { Label } from "~/components/ui/label";
 import {
@@ -22,42 +23,41 @@ import {
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
 
+const paginationLinkVariants = [
+  "base",
+  "outline",
+  "accent",
+  "muted",
+  "surface",
+  "faded",
+  "ghost",
+  "link",
+  "primary",
+  "primary-accent",
+  "primary-muted",
+  "primary-surface",
+  "primary-faded",
+  "primary-tron",
+  "primary-shadow",
+  "primary-gradient",
+  "primary-ghost",
+  "secondary",
+  "secondary-accent",
+  "secondary-muted",
+  "secondary-surface",
+  "secondary-faded",
+  "secondary-tron",
+  "secondary-shadow",
+  "secondary-gradient",
+  "secondary-ghost",
+] as const;
+
 export function PaginationDemo() {
-  const [activeVariant, setActiveVariant] = useState("outline");
-  const [inactiveVariant, setInactiveVariant] = useState("ghost");
-  const [controlVariant, setControlVariant] = useState("ghost");
-  const [activePage, setActivePage] = useState<number>(2);
+  const [activeVariant, setActiveVariant] = React.useState("primary");
+  const [inactiveVariant, setInactiveVariant] = React.useState("outline");
+  const [controlVariant, setControlVariant] = React.useState("outline");
 
-  const isActive = (page: number) => activePage === page;
-
-  const paginationLinkVariants = [
-    "base",
-    "outline",
-    "accent",
-    "muted",
-    "surface",
-    "faded",
-    "ghost",
-    "link",
-    "primary",
-    "primary-accent",
-    "primary-muted",
-    "primary-surface",
-    "primary-faded",
-    "primary-tron",
-    "primary-shadow",
-    "primary-gradient",
-    "primary-ghost",
-    "secondary",
-    "secondary-accent",
-    "secondary-muted",
-    "secondary-surface",
-    "secondary-faded",
-    "secondary-tron",
-    "secondary-shadow",
-    "secondary-gradient",
-    "secondary-ghost",
-  ] as const;
+  const page = useSearchParams().get("page") ?? "1";
 
   return (
     <>
@@ -66,11 +66,8 @@ export function PaginationDemo() {
           <PaginationContent>
             <PaginationItem>
               <PaginationPrevious
-                href="#pagination"
-                disabled={activePage === 1}
-                onClick={() =>
-                  setActivePage((prevActivePage) => prevActivePage - 1)
-                }
+                href={`/components/pagination?page=${Number(page) - 1}`}
+                disabled={page === "1"}
                 variant={
                   controlVariant as (typeof paginationLinkVariants)[number]
                 }
@@ -78,9 +75,8 @@ export function PaginationDemo() {
             </PaginationItem>
             <PaginationItem>
               <PaginationLink
-                href="#pagination"
-                isActive={isActive(1)}
-                onClick={() => setActivePage(1)}
+                href={`/components/pagination?page=1`}
+                isActive={page === "1"}
                 activeVariant={
                   activeVariant as (typeof paginationLinkVariants)[number]
                 }
@@ -93,9 +89,8 @@ export function PaginationDemo() {
             </PaginationItem>
             <PaginationItem>
               <PaginationLink
-                href="#pagination"
-                isActive={isActive(2)}
-                onClick={() => setActivePage(2)}
+                href={`/components/pagination?page=2`}
+                isActive={page === "2"}
                 activeVariant={
                   activeVariant as (typeof paginationLinkVariants)[number]
                 }
@@ -108,9 +103,8 @@ export function PaginationDemo() {
             </PaginationItem>
             <PaginationItem>
               <PaginationLink
-                href="#pagination"
-                isActive={isActive(3)}
-                onClick={() => setActivePage(3)}
+                href={`/components/pagination?page=3`}
+                isActive={page === "3"}
                 activeVariant={
                   activeVariant as (typeof paginationLinkVariants)[number]
                 }
@@ -123,10 +117,8 @@ export function PaginationDemo() {
             </PaginationItem>
             <PaginationItem>
               <PaginationLink
-                href="#pagination"
-                disabled
-                isActive={isActive(4)}
-                onClick={() => setActivePage(4)}
+                href={`/components/pagination?page=4`}
+                isActive={page === "4"}
                 activeVariant={
                   activeVariant as (typeof paginationLinkVariants)[number]
                 }
@@ -142,9 +134,8 @@ export function PaginationDemo() {
             </PaginationItem>
             <PaginationItem>
               <PaginationLink
-                href="#pagination"
-                isActive={isActive(10)}
-                onClick={() => setActivePage(10)}
+                href={`/components/pagination?page=10`}
+                isActive={page === "10"}
                 activeVariant={
                   activeVariant as (typeof paginationLinkVariants)[number]
                 }
@@ -157,11 +148,8 @@ export function PaginationDemo() {
             </PaginationItem>
             <PaginationItem>
               <PaginationNext
-                href="#pagination"
-                disabled={activePage === 10}
-                onClick={() =>
-                  setActivePage((prevActivePage) => prevActivePage + 1)
-                }
+                href={`/components/pagination?page=${Number(page) + 1}`}
+                disabled={page === "10"}
                 variant={
                   controlVariant as (typeof paginationLinkVariants)[number]
                 }
@@ -172,17 +160,14 @@ export function PaginationDemo() {
       </ComponentContainer>
       <ComponentPlayground>
         <div className="grid gap-2">
-          <Label htmlFor="pagination-active-variant">Active Variant</Label>
+          <Label htmlFor="active-variant">Active Variant</Label>
           <Select value={activeVariant} onValueChange={setActiveVariant}>
-            <SelectTrigger id="pagination-active-variant" className="w-full">
+            <SelectTrigger id="active-variant" className="w-full">
               <SelectValue placeholder="Select a variant" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="max-h-96">
               {paginationLinkVariants.map((variant) => (
-                <SelectItem
-                  key={`pagination-active-${variant}`}
-                  value={variant}
-                >
+                <SelectItem key={`active-${variant}`} value={variant}>
                   {variant}
                 </SelectItem>
               ))}
@@ -190,17 +175,14 @@ export function PaginationDemo() {
           </Select>
         </div>
         <div className="grid gap-2">
-          <Label htmlFor="pagination-inactive-variant">Inactive Variant</Label>
+          <Label htmlFor="inactive-variant">Inactive Variant</Label>
           <Select value={inactiveVariant} onValueChange={setInactiveVariant}>
-            <SelectTrigger id="pagination-inactive-variant" className="w-full">
+            <SelectTrigger id="inactive-variant" className="w-full">
               <SelectValue placeholder="Select a variant" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="max-h-96">
               {paginationLinkVariants.map((variant) => (
-                <SelectItem
-                  key={`pagination-inactive-${variant}`}
-                  value={variant}
-                >
+                <SelectItem key={`inactive-${variant}`} value={variant}>
                   {variant}
                 </SelectItem>
               ))}
@@ -208,17 +190,14 @@ export function PaginationDemo() {
           </Select>
         </div>
         <div className="grid gap-2">
-          <Label htmlFor="pagination-control-variant">Control Variant</Label>
+          <Label htmlFor="control-variant">Control Variant</Label>
           <Select value={controlVariant} onValueChange={setControlVariant}>
-            <SelectTrigger id="pagination-control-variant" className="w-full">
+            <SelectTrigger id="control-variant" className="w-full">
               <SelectValue placeholder="Select a variant" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="max-h-96">
               {paginationLinkVariants.map((variant) => (
-                <SelectItem
-                  key={`pagination-control-${variant}`}
-                  value={variant}
-                >
+                <SelectItem key={`control-${variant}`} value={variant}>
                   {variant}
                 </SelectItem>
               ))}

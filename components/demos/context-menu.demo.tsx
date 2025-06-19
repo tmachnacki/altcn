@@ -146,7 +146,7 @@ export function ContextMenuDemo() {
                 onCheckedChange={setChecked}
                 onSelect={(e) => e.preventDefault()}
               >
-                Default Indicator
+                Checkbox Indicator
               </ContextMenuCheckboxItem>
               <ContextMenuCheckboxItem checked disabled>
                 Disabled
