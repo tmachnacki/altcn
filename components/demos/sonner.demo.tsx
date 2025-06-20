@@ -4,8 +4,9 @@ import * as React from "react";
 import { toast } from "sonner";
 
 import { Button } from "~/components/ui/button";
+import { ComponentContainer } from "~/components/component-container";
 
-const allTypes = [
+const defaultToasts = [
   {
     name: "Default Basic",
     action: () => toast("Event has been created"),
@@ -56,7 +57,9 @@ const allTypes = [
         }
       ),
   },
+];
 
+const successToasts = [
   // success
   {
     name: "Success Basic",
@@ -114,7 +117,9 @@ const allTypes = [
         },
       }),
   },
+];
 
+const infoToasts = [
   // info
   {
     name: "Info Basic",
@@ -172,7 +177,9 @@ const allTypes = [
         },
       }),
   },
+];
 
+const warningToasts = [
   // warning
   {
     name: "Warning Basic",
@@ -230,7 +237,9 @@ const allTypes = [
         },
       }),
   },
+];
 
+const errorToasts = [
   // error
   {
     name: "Error Basic",
@@ -291,39 +300,49 @@ const allTypes = [
 ];
 
 export function SonnerDemo() {
-  const [activeType, setActiveType] = React.useState(allTypes[0]);
   return (
-    <div className="flex flex-wrap gap-4">
-      <Button onClick={() => toast("My first toast")} variant="outline">
-        Give me a toast
-      </Button>
-      <Button
-        variant="outline"
-        onClick={() =>
-          toast("Event has been created", {
-            description: "Sunday, December 03, 2023 at 9:00 AM",
-            action: {
-              label: "Undo",
-              onClick: () => console.log("Undo"),
-            },
-          })
-        }
-      >
-        Show Toast
-      </Button>
-      {allTypes.map((type) => (
-        <Button
-          variant="ghost"
-          data-active={activeType.name === type.name}
-          onClick={() => {
-            type.action();
-            setActiveType(type);
-          }}
-          key={type.name}
-        >
-          {type.name}
-        </Button>
-      ))}
-    </div>
+    <ComponentContainer>
+      <div className="flex flex-col gap-8">
+        <div className="flex flex-wrap items-center gap-4">
+          {defaultToasts.map((toast) => (
+            <Button variant="outline" key={toast.name} onClick={toast.action}>
+              {toast.name}
+            </Button>
+          ))}
+        </div>
+
+        <div className="flex flex-wrap items-center gap-4">
+          {successToasts.map((toast) => (
+            <Button variant="outline" key={toast.name} onClick={toast.action}>
+              {toast.name}
+            </Button>
+          ))}
+        </div>
+
+        <div className="flex flex-wrap items-center gap-4">
+          {infoToasts.map((toast) => (
+            <Button variant="outline" key={toast.name} onClick={toast.action}>
+              {toast.name}
+            </Button>
+          ))}
+        </div>
+
+        <div className="flex flex-wrap items-center gap-4">
+          {warningToasts.map((toast) => (
+            <Button variant="outline" key={toast.name} onClick={toast.action}>
+              {toast.name}
+            </Button>
+          ))}
+        </div>
+
+        <div className="flex flex-wrap items-center gap-4">
+          {errorToasts.map((toast) => (
+            <Button variant="outline" key={toast.name} onClick={toast.action}>
+              {toast.name}
+            </Button>
+          ))}
+        </div>
+      </div>
+    </ComponentContainer>
   );
 }

@@ -26,7 +26,7 @@ const sides = ["top", "right", "bottom", "left"] as const;
 const aligns = ["start", "center", "end"] as const;
 
 export function PopoverDemo() {
-  const [side, setSide] = React.useState("top");
+  const [side, setSide] = React.useState("bottom");
   const [align, setAlign] = React.useState("center");
   const [withCloseButton, setWithCloseButton] = React.useState(false);
 

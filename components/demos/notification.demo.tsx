@@ -15,8 +15,8 @@ import {
 } from "~/components/ui/select";
 import { Switch } from "~/components/ui/switch";
 import { ComponentContainer } from "~/components/component-container";
-
-import { ComponentPlayground } from "../component-playground";
+import { ComponentPlayground } from "~/components/component-playground";
+import { Swatch } from "~/components/swatch";
 
 const variants = [
   "outline",
@@ -158,14 +158,15 @@ export function NotificationDemo() {
 
       <ComponentPlayground>
         <div className="grid gap-2">
-          <Label htmlFor="variant">Variant</Label>
+          <Label htmlFor="notification-variant">Variant</Label>
           <Select value={variant} onValueChange={setVariant}>
-            <SelectTrigger id="variant" className="w-full">
+            <SelectTrigger id="notification-variant" className="w-full">
               <SelectValue placeholder="Select variant" />
             </SelectTrigger>
             <SelectContent className="max-h-96">
               {variants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
+                  <Swatch variant={variant} />
                   {variant}
                 </SelectItem>
               ))}
@@ -173,9 +174,9 @@ export function NotificationDemo() {
           </Select>
         </div>
         <div className="grid gap-2">
-          <Label htmlFor="position">Position</Label>
+          <Label htmlFor="notification-position">Position</Label>
           <Select value={position} onValueChange={setPosition}>
-            <SelectTrigger id="position" className="w-full">
+            <SelectTrigger id="notification-position" className="w-full">
               <SelectValue placeholder="Select position" />
             </SelectTrigger>
             <SelectContent>
@@ -189,15 +190,19 @@ export function NotificationDemo() {
         </div>
         <div className="flex items-center gap-3">
           <Switch
-            id="outlined"
+            id="notification-outlined"
             checked={outlined}
             onCheckedChange={setOutlined}
           />
-          <Label htmlFor="outlined">Outlined</Label>
+          <Label htmlFor="notification-outlined">Outlined</Label>
         </div>
         <div className="flex items-center gap-3">
-          <Switch id="ping" checked={ping} onCheckedChange={setPing} />
-          <Label htmlFor="ping">Ping</Label>
+          <Switch
+            id="notification-ping"
+            checked={ping}
+            onCheckedChange={setPing}
+          />
+          <Label htmlFor="notification-ping">Ping</Label>
         </div>
       </ComponentPlayground>
     </>

@@ -14,7 +14,6 @@ import {
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
 import { Swatch } from "~/components/swatch";
-import { CheckIcon } from "lucide-react";
 
 const checkboxVariants = ["primary", "secondary"] as const;
 
@@ -135,9 +134,7 @@ export function CheckboxDemo() {
             <SelectContent>
               {checkboxVariants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
-                  <Swatch variant={variant}>
-                    <CheckIcon />
-                  </Swatch>
+                  <Swatch variant={variant} />
                   {variant}
                 </SelectItem>
               ))}

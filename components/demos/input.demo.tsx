@@ -14,6 +14,7 @@ import {
 import { Slider } from "~/components/ui/slider";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
+import { Swatch } from "~/components/swatch";
 
 const variants = [
   "outline",
@@ -170,6 +171,7 @@ export function InputDemo() {
             <SelectContent>
               {variants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
+                  <Swatch variant={variant} />
                   {variant}
                 </SelectItem>
               ))}
@@ -179,7 +181,10 @@ export function InputDemo() {
 
         <div className="grid gap-3">
           <Label htmlFor="input-size">
-            Size: <span className="text-primary-muted-foreground font-normal">{sizesMap[size]}</span>
+            Size:{" "}
+            <span className="font-normal text-primary-muted-foreground">
+              {sizesMap[size]}
+            </span>
           </Label>
           <Slider
             id="input-size"

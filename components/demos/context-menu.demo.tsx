@@ -4,11 +4,14 @@ import * as React from "react";
 import {
   BadgeCheckIcon,
   BellIcon,
+  CircleIcon,
   CreditCardIcon,
   MailIcon,
   SendIcon,
   TrashIcon,
 } from "lucide-react";
+
+import { cn } from "~/lib/utils";
 
 import {
   ContextMenu,
@@ -26,6 +29,7 @@ import {
   ContextMenuSubTrigger,
   ContextMenuTrigger,
 } from "~/components/ui/context-menu";
+import { menuItemIndicatorVariants } from "~/components/ui/dropdown-menu";
 import { Label } from "~/components/ui/label";
 import {
   Select,
@@ -232,6 +236,14 @@ export function ContextMenuDemo() {
             <SelectContent>
               {indicatorVariants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
+                  <span
+                    className={cn(
+                      menuItemIndicatorVariants({ variant }),
+                      "relative inline-flex size-2 items-center justify-center"
+                    )}
+                  >
+                    <CircleIcon className="size-2 fill-current text-current" />
+                  </span>
                   {variant}
                 </SelectItem>
               ))}
@@ -253,6 +265,7 @@ export function ContextMenuDemo() {
             <SelectContent>
               {destructiveItemVariants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
+                  <Swatch variant={variant} />
                   {variant}
                 </SelectItem>
               ))}

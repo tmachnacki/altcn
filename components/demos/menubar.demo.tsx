@@ -1,8 +1,16 @@
 "use client";
 
 import * as React from "react";
-import { HelpCircleIcon, SettingsIcon, Trash2Icon } from "lucide-react";
+import {
+  CircleIcon,
+  HelpCircleIcon,
+  SettingsIcon,
+  Trash2Icon,
+} from "lucide-react";
 
+import { cn } from "~/lib/utils";
+
+import { menuItemIndicatorVariants } from "~/components/ui/dropdown-menu";
 import { Label } from "~/components/ui/label";
 import {
   Menubar,
@@ -29,6 +37,7 @@ import {
 } from "~/components/ui/select";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
+import { Swatch } from "~/components/swatch";
 
 const triggerVariants = [
   "base",
@@ -297,6 +306,7 @@ export function MenubarDemo() {
             <SelectContent>
               {triggerVariants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
+                  <Swatch variant={variant} />
                   {variant}
                 </SelectItem>
               ))}
@@ -304,14 +314,15 @@ export function MenubarDemo() {
           </Select>
         </div>
         <div className="grid gap-2">
-          <Label htmlFor="menubar-item-variant">Item Variant</Label>
+          <Label htmlFor="item-variant">Item Variant</Label>
           <Select value={itemVariant} onValueChange={setItemVariant}>
-            <SelectTrigger id="menubar-item-variant" className="w-full">
+            <SelectTrigger id="item-variant" className="w-full">
               <SelectValue placeholder="Select variant" />
             </SelectTrigger>
             <SelectContent>
               {itemVariants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
+                  <Swatch variant={variant} />
                   {variant}
                 </SelectItem>
               ))}
@@ -319,14 +330,22 @@ export function MenubarDemo() {
           </Select>
         </div>
         <div className="grid gap-2">
-          <Label htmlFor="menubar-indicator-variant">Indicator Variant</Label>
+          <Label htmlFor="indicator-variant">Indicator Variant</Label>
           <Select value={indicatorVariant} onValueChange={setIndicatorVariant}>
-            <SelectTrigger id="menubar-indicator-variant" className="w-full">
+            <SelectTrigger id="indicator-variant" className="w-full">
               <SelectValue placeholder="Select variant" />
             </SelectTrigger>
             <SelectContent>
               {indicatorVariants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
+                  <span
+                    className={cn(
+                      menuItemIndicatorVariants({ variant }),
+                      "relative inline-flex size-2 items-center justify-center"
+                    )}
+                  >
+                    <CircleIcon className="size-2 fill-current text-current" />
+                  </span>
                   {variant}
                 </SelectItem>
               ))}
@@ -348,6 +367,7 @@ export function MenubarDemo() {
             <SelectContent>
               {destructiveItemVariants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
+                  <Swatch variant={variant} />
                   {variant}
                 </SelectItem>
               ))}
@@ -356,9 +376,9 @@ export function MenubarDemo() {
         </div>
 
         <div className="grid gap-2">
-          <Label htmlFor="menubar-width">Menubar Item Width</Label>
+          <Label htmlFor="item-width">Item Width</Label>
           <Select value={width} onValueChange={setWidth}>
-            <SelectTrigger id="menubar-width" className="w-full">
+            <SelectTrigger id="item-width" className="w-full">
               <SelectValue placeholder="Select width" />
             </SelectTrigger>
             <SelectContent>

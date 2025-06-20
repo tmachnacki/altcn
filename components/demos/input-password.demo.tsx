@@ -14,6 +14,7 @@ import {
 import { Slider } from "~/components/ui/slider";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
+import { Swatch } from "~/components/swatch";
 
 const variants = [
   "outline",
@@ -74,14 +75,15 @@ export function InputPasswordDemo() {
       </ComponentContainer>
       <ComponentPlayground>
         <div className="grid gap-2">
-          <Label htmlFor="variant">Variant</Label>
+          <Label htmlFor="password-variant">Variant</Label>
           <Select value={variant} onValueChange={setVariant}>
-            <SelectTrigger id="variant" className="w-full">
+            <SelectTrigger id="password-variant" className="w-full">
               <SelectValue placeholder="Select variant" />
             </SelectTrigger>
             <SelectContent>
               {variants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
+                  <Swatch variant={variant} />
                   {variant}
                 </SelectItem>
               ))}
@@ -90,14 +92,14 @@ export function InputPasswordDemo() {
         </div>
 
         <div className="grid gap-3">
-          <Label htmlFor="size">
+          <Label htmlFor="password-size">
             Size:{" "}
             <span className="font-normal text-primary-muted-foreground">
               {sizesMap[size]}
             </span>
           </Label>
           <Slider
-            id="size"
+            id="password-size"
             min={1}
             max={3}
             step={1}

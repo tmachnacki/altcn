@@ -273,7 +273,7 @@ function SelectContent({
           align={align}
           sideOffset={position === "popper" ? 4 : 0}
           className={cn(
-            "relative isolate z-50 max-h-(--radix-select-content-available-height) min-w-[max(var(--radix-select-trigger-width),--spacing(32))] origin-(--radix-select-content-transform-origin) overflow-x-hidden overflow-y-auto rounded-md border border-border bg-popover text-popover-foreground shadow-md",
+            "relative isolate z-50 max-h-(--radix-select-content-available-height) min-w-[max(var(--radix-select-trigger-width),--spacing(32))] origin-(--radix-select-content-transform-origin) rounded-md border border-border bg-popover text-popover-foreground shadow-md",
             // FIXME: exit animations ain't working
             "data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
             position === "popper" && [
@@ -387,7 +387,7 @@ function SelectScrollUpButton({
     <SelectPrimitive.ScrollUpButton
       data-slot="select-scroll-up-button"
       className={cn(
-        "fixed top-0 left-0 z-10 flex w-full cursor-default items-center justify-center bg-gradient-to-b from-popover to-popover/10 py-2 text-popover-foreground",
+        "fixed top-px left-px z-10 flex w-[calc(100%-2px)] cursor-default items-center justify-center rounded-t-md bg-gradient-to-b from-popover to-popover/10 py-2 text-popover-foreground",
         className
       )}
       {...props}
@@ -405,7 +405,7 @@ function SelectScrollDownButton({
     <SelectPrimitive.ScrollDownButton
       data-slot="select-scroll-down-button"
       className={cn(
-        "fixed bottom-0 left-0 z-10 flex w-full cursor-default items-center justify-center bg-gradient-to-t from-popover to-popover/10 py-2 text-popover-foreground",
+        "fixed bottom-px left-px z-10 flex w-[calc(100%-2px)] cursor-default items-center justify-center rounded-b-md bg-gradient-to-t from-popover to-popover/10 py-2 text-popover-foreground",
         className
       )}
       {...props}

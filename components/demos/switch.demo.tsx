@@ -13,60 +13,61 @@ import {
 import { Switch } from "~/components/ui/switch";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
+import { Swatch } from "~/components/swatch";
+
+const variants = [
+  "primary",
+  "primary-muted",
+  "secondary",
+  "secondary-muted",
+] as const;
 
 export function SwitchDemo() {
-  const [switchVariant, setSwitchVariant] = useState("primary");
-  const [switchThin, setSwitchThin] = useState(false);
-
-  const switchVariants = [
-    "primary",
-    "primary-muted",
-    "secondary",
-    "secondary-muted",
-  ] as const;
+  const [variant, setVariant] = useState("primary");
+  const [thin, setThin] = useState(false);
 
   return (
     <>
       <ComponentContainer>
         <div className="flex flex-col items-center gap-4">
           <Label
-            htmlFor={`switch-${switchVariant}`}
+            htmlFor={`switch-${variant}`}
             className="flex w-full items-center gap-2"
           >
             <Switch
-              id={`switch-${switchVariant}`}
-              variant={switchVariant as (typeof switchVariants)[number]}
-              thin={switchThin}
+              id={`switch-${variant}`}
+              variant={variant as (typeof variants)[number]}
+              thin={thin}
             />
-            <span>{switchVariant}</span>
+            <span>{variant}</span>
           </Label>
           <div className="flex w-full items-center gap-2">
             <Switch
-              id={`switch-${switchVariant}-invalid`}
-              variant={switchVariant as (typeof switchVariants)[number]}
+              id={`switch-${variant}-invalid`}
+              variant={variant as (typeof variants)[number]}
               aria-invalid
-              thin={switchThin}
+              thin={thin}
             />
-            <Label htmlFor={`switch-${switchVariant}-invalid`}>invalid</Label>
+            <Label htmlFor={`switch-${variant}-invalid`}>invalid</Label>
           </div>
           <div className="flex w-full items-center gap-2">
             <Switch
-              id={`switch-${switchVariant}-disabled`}
-              variant={switchVariant as (typeof switchVariants)[number]}
+              id={`switch-${variant}-disabled`}
+              variant={variant as (typeof variants)[number]}
               disabled
-              thin={switchThin}
+              thin={thin}
             />
-            <Label htmlFor={`switch-${switchVariant}-disabled`}>disabled</Label>
+            <Label htmlFor={`switch-${variant}-disabled`}>disabled</Label>
           </div>
           <div className="flex w-full items-center gap-2">
             <Switch
-              id={`switch-${switchVariant}-checked-disabled`}
-              variant={switchVariant as (typeof switchVariants)[number]}
+              id={`switch-${variant}-checked-disabled`}
+              variant={variant as (typeof variants)[number]}
               disabled
-              thin={switchThin}
+              thin={thin}
               checked
             />
-            <Label htmlFor={`switch-${switchVariant}-checked-disabled`}>
+            <Label htmlFor={`switch-${variant}-checked-disabled`}>
               checked & disabled
             </Label>
           </div>
@@ -75,25 +76,22 @@ export function SwitchDemo() {
       <ComponentPlayground>
         <div className="flex flex-col gap-2">
           <Label htmlFor="switch-variant">Switch Variant</Label>
-          <Select value={switchVariant} onValueChange={setSwitchVariant}>
+          <Select value={variant} onValueChange={setVariant}>
             <SelectTrigger id="switch-variant" className="w-full">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
-              {switchVariants.map((variant) => (
+              {variants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
+                  <Swatch variant={variant} />
                   {variant}
                 </SelectItem>
               ))}
             </SelectContent>
           </Select>
         </div>
-        <Label htmlFor="switch-thin" className="flex items-center gap-2">
-          <Switch
-            id="switch-thin"
-            checked={switchThin}
-            onCheckedChange={setSwitchThin}
-          />
+        <Label htmlFor="switch-thin" className="flex items-center gap-3">
+          <Switch id="switch-thin" checked={thin} onCheckedChange={setThin} />
           <span>Thin</span>
         </Label>
       </ComponentPlayground>

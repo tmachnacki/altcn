@@ -95,6 +95,10 @@ const COMPONENTS = [
     href: "/components/select",
   },
   {
+    label: "Separator",
+    href: "/components/separator",
+  },
+  {
     label: "Sheet",
     href: "/components/sheet",
   },

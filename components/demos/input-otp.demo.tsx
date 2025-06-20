@@ -18,8 +18,8 @@ import {
 } from "~/components/ui/select";
 import { Slider } from "~/components/ui/slider";
 import { ComponentContainer } from "~/components/component-container";
-
-import { ComponentPlayground } from "../component-playground";
+import { ComponentPlayground } from "~/components/component-playground";
+import { Swatch } from "~/components/swatch";
 
 const variants = [
   "outline",
@@ -135,14 +135,15 @@ export function InputOTPDemo() {
 
       <ComponentPlayground>
         <div className="grid gap-2">
-          <Label htmlFor="variant">OTP Variant</Label>
+          <Label htmlFor="otp-variant">Variant</Label>
           <Select value={variant} onValueChange={setVariant}>
-            <SelectTrigger id="variant" className="w-full">
+            <SelectTrigger id="otp-variant" className="w-full">
               <SelectValue placeholder="Select variant" />
             </SelectTrigger>
             <SelectContent>
               {variants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
+                  <Swatch variant={variant} />
                   {variant}
                 </SelectItem>
               ))}
@@ -150,14 +151,14 @@ export function InputOTPDemo() {
           </Select>
         </div>
         <div className="grid gap-3">
-          <Label htmlFor="size">
+          <Label htmlFor="slot-size">
             Slot Size:{" "}
             <span className="font-normal text-primary-muted-foreground">
               {sizesMap[size]}
             </span>
           </Label>
           <Slider
-            id="size"
+            id="slot-size"
             min={1}
             max={3}
             step={1}
@@ -166,9 +167,9 @@ export function InputOTPDemo() {
           />
         </div>
         <div className="grid gap-2">
-          <Label htmlFor="layout">Layout</Label>
+          <Label htmlFor="otp-layout">Layout</Label>
           <Select value={layout} onValueChange={setLayout}>
-            <SelectTrigger id="layout" className="w-full">
+            <SelectTrigger id="otp-layout" className="w-full">
               <SelectValue placeholder="Select layout" />
             </SelectTrigger>
             <SelectContent>

@@ -6,9 +6,13 @@ import {
   ChartBarIcon,
   ChartLineIcon,
   ChartPieIcon,
+  CheckIcon,
   CircleDashed,
 } from "lucide-react";
 
+import { cn } from "~/lib/utils";
+
+import { menuItemIndicatorVariants } from "~/components/ui/dropdown-menu";
 import { Label } from "~/components/ui/label";
 import {
   Select,
@@ -23,6 +27,7 @@ import {
 import { Slider } from "~/components/ui/slider";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
+import { Swatch } from "~/components/swatch";
 
 const triggerVariants = [
   "outline",
@@ -276,6 +281,7 @@ export function SelectDemo() {
             <SelectContent>
               {triggerVariants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
+                  <Swatch variant={variant} />
                   {variant}
                 </SelectItem>
               ))}
@@ -308,6 +314,7 @@ export function SelectDemo() {
             <SelectContent>
               {itemVariants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
+                  <Swatch variant={variant} />
                   {variant}
                 </SelectItem>
               ))}
@@ -323,6 +330,14 @@ export function SelectDemo() {
             <SelectContent>
               {indicatorVariants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
+                  <span
+                    className={cn(
+                      menuItemIndicatorVariants({ variant }),
+                      "relative inline-flex size-3.5 items-center justify-center"
+                    )}
+                  >
+                    <CheckIcon className="size-3.5 text-current" />
+                  </span>
                   {variant}
                 </SelectItem>
               ))}
@@ -330,9 +345,9 @@ export function SelectDemo() {
           </Select>
         </div>
         <div className="grid gap-2">
-          <Label htmlFor="width">Width</Label>
+          <Label htmlFor="item-width">Item Width</Label>
           <Select value={width} onValueChange={setWidth}>
-            <SelectTrigger id="width" className="w-full">
+            <SelectTrigger id="item-width" className="w-full">
               <SelectValue placeholder="Select width" />
             </SelectTrigger>
             <SelectContent>

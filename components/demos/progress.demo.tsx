@@ -13,6 +13,7 @@ import {
 } from "~/components/ui/select";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
+import { Swatch } from "~/components/swatch";
 
 const variants = [
   "primary",
@@ -48,14 +49,15 @@ export function ProgressDemo() {
 
       <ComponentPlayground>
         <div className="grid gap-2">
-          <Label htmlFor="variant">Variant</Label>
+          <Label htmlFor="progress-variant">Variant</Label>
           <Select value={variant} onValueChange={setVariant}>
-            <SelectTrigger id="variant" className="w-full">
+            <SelectTrigger id="progress-variant" className="w-full">
               <SelectValue placeholder="Select variant" />
             </SelectTrigger>
             <SelectContent>
               {variants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
+                  <Swatch variant={variant} />
                   {variant}
                 </SelectItem>
               ))}

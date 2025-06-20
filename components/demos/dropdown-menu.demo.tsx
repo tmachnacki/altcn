@@ -5,11 +5,14 @@ import {
   BadgeCheckIcon,
   BellIcon,
   ChevronDownIcon,
+  CircleIcon,
   CreditCardIcon,
   MailIcon,
   SendIcon,
   TrashIcon,
 } from "lucide-react";
+
+import { cn } from "~/lib/utils";
 
 import { Button } from "~/components/ui/button";
 import {
@@ -27,6 +30,7 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
+  menuItemIndicatorVariants,
 } from "~/components/ui/dropdown-menu";
 import { Label } from "~/components/ui/label";
 import {
@@ -38,6 +42,7 @@ import {
 } from "~/components/ui/select";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
+import { Swatch } from "~/components/swatch";
 
 const itemVariants = [
   "base",
@@ -224,6 +229,7 @@ export function DropdownMenuDemo() {
             <SelectContent>
               {itemVariants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
+                  <Swatch variant={variant} />
                   {variant}
                 </SelectItem>
               ))}
@@ -240,6 +246,14 @@ export function DropdownMenuDemo() {
             <SelectContent>
               {indicatorVariants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
+                  <span
+                    className={cn(
+                      menuItemIndicatorVariants({ variant }),
+                      "relative inline-flex size-2 items-center justify-center"
+                    )}
+                  >
+                    <CircleIcon className="size-2 fill-current text-current" />
+                  </span>
                   {variant}
                 </SelectItem>
               ))}
@@ -261,6 +275,7 @@ export function DropdownMenuDemo() {
             <SelectContent>
               {destructiveItemVariants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
+                  <Swatch variant={variant} />
                   {variant}
                 </SelectItem>
               ))}
