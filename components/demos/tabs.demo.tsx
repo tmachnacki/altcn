@@ -1,3 +1,6 @@
+"use client";
+
+import * as React from "react";
 import {
   BanIcon,
   FilmIcon,
@@ -6,177 +9,224 @@ import {
   PodcastIcon,
 } from "lucide-react";
 
-import { Button } from "~/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "~/components/ui/card";
-import { Input } from "~/components/ui/input";
+import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import { Label } from "~/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "~/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
 import { ComponentContainer } from "~/components/component-container";
+import { ComponentPlayground } from "~/components/component-playground";
+
+const tabsListVariants = [
+  "outline",
+  "muted",
+  "faded",
+  "underlined",
+  "ghost",
+] as const;
+
+const tabsTriggerVariants = [
+  "default",
+  "base",
+  "outline",
+  "accent",
+  "surface",
+  "underlined",
+  "ghost",
+  "primary",
+  "primary-accent",
+  "primary-muted",
+  "primary-surface",
+  "primary-faded",
+  "primary-underlined",
+  "primary-ghost",
+  "primary-tron",
+  "secondary",
+  "secondary-accent",
+  "secondary-muted",
+  "secondary-surface",
+  "secondary-faded",
+  "secondary-underlined",
+  "secondary-ghost",
+  "secondary-tron",
+] as const;
 
 export function TabsDemo() {
-  const tabsListVariants = [
-    "muted",
-    "outline",
-    "faded",
-    "underlined",
-    "ghost",
-  ] as const;
-
-  const tabsTriggerVariants = [
-    "default",
-    "base",
-    "outline",
-    "accent",
-    "surface",
-    "underlined",
-    "ghost",
-    "primary",
-    "primary-accent",
-    "primary-muted",
-    "primary-surface",
-    "primary-faded",
-    "primary-underlined",
-    "primary-ghost",
-    "primary-tron",
-    "secondary",
-    "secondary-accent",
-    "secondary-muted",
-    "secondary-surface",
-    "secondary-faded",
-    "secondary-underlined",
-    "secondary-ghost",
-    "secondary-tron",
-  ] as const;
-
-  const tabsDemos = tabsListVariants.flatMap((tabsListVariant) =>
-    tabsTriggerVariants.map((tabsTriggerVariant) => ({
-      tabsListVariant,
-      tabsTriggerVariant,
-    }))
-  );
+  const [tabsListVariant, setTabsListVariant] = React.useState("muted");
+  const [tabsTriggerVariant, setTabsTriggerVariant] = React.useState("default");
 
   return (
-    <ComponentContainer>
-      <div className="flex flex-col gap-8">
-        <Tabs defaultValue="account" className="max-w-[400px]">
-          <TabsList className="w-full">
-            <TabsTrigger value="account">Account</TabsTrigger>
-            <TabsTrigger value="password">Password</TabsTrigger>
-          </TabsList>
-          <TabsContent value="account">
-            <Card>
-              <CardHeader>
-                <CardTitle>Account</CardTitle>
-                <CardDescription>
-                  Make changes to your account here. Click save when you&apos;re
-                  done.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="grid gap-6">
-                <div className="grid gap-2">
-                  <Label htmlFor="tabs-demo-name">Name</Label>
-                  <Input id="tabs-demo-name" defaultValue="Pedro Duarte" />
-                </div>
-                <div className="grid gap-2">
-                  <Label htmlFor="tabs-demo-username">Username</Label>
-                  <Input id="tabs-demo-username" defaultValue="@peduarte" />
-                </div>
-              </CardContent>
-              <CardFooter className="justify-end gap-2">
-                <Button variant={"primary-faded"}>Cancel</Button>
-                <Button variant={"primary-shadow"}>Save changes</Button>
-              </CardFooter>
-            </Card>
-          </TabsContent>
-          <TabsContent value="password">
-            <Card>
-              <CardHeader>
-                <CardTitle>Password</CardTitle>
-                <CardDescription>
-                  Change your password here. After saving, you&apos;ll be logged
-                  out.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="grid gap-6">
-                <div className="grid gap-2">
-                  <Label htmlFor="tabs-demo-current">Current password</Label>
-                  <Input id="tabs-demo-current" type="password" />
-                </div>
-                <div className="grid gap-2">
-                  <Label htmlFor="tabs-demo-new">New password</Label>
-                  <Input id="tabs-demo-new" type="password" />
-                </div>
-              </CardContent>
-              <CardFooter className="justify-end gap-2">
-                <Button variant={"primary-faded"}>Cancel</Button>
-                <Button variant={"primary-shadow"}>Save password</Button>
-              </CardFooter>
-            </Card>
-          </TabsContent>
-        </Tabs>
-        <Tabs defaultValue="home">
-          <TabsList>
-            <TabsTrigger value="home">Home</TabsTrigger>
-            <TabsTrigger value="settings">Settings</TabsTrigger>
-          </TabsList>
-        </Tabs>
-        <Tabs defaultValue="home">
-          <TabsList>
-            <TabsTrigger value="home">Home</TabsTrigger>
-            <TabsTrigger value="settings" disabled>
-              Disabled
+    <>
+      <ComponentContainer>
+        <Tabs defaultValue="music" className="w-full max-w-xl">
+          <TabsList
+            variant={tabsListVariant as (typeof tabsListVariants)[number]}
+            className="grid w-full grid-cols-5"
+          >
+            <TabsTrigger
+              value="music"
+              variant={
+                tabsTriggerVariant as (typeof tabsTriggerVariants)[number]
+              }
+            >
+              <MusicIcon />
+              Music
+            </TabsTrigger>
+            <TabsTrigger
+              value="podcasts"
+              variant={
+                tabsTriggerVariant as (typeof tabsTriggerVariants)[number]
+              }
+            >
+              <PodcastIcon />
+              Podcasts
+            </TabsTrigger>
+            <TabsTrigger
+              value="photos"
+              variant={
+                tabsTriggerVariant as (typeof tabsTriggerVariants)[number]
+              }
+            >
+              <ImageIcon />
+              Photos
+            </TabsTrigger>
+            <TabsTrigger
+              value="videos"
+              variant={
+                tabsTriggerVariant as (typeof tabsTriggerVariants)[number]
+              }
+            >
+              <FilmIcon />
+              Videos
+            </TabsTrigger>
+            <TabsTrigger
+              value="onlyfans"
+              variant={
+                tabsTriggerVariant as (typeof tabsTriggerVariants)[number]
+              }
+              disabled
+            >
+              <BanIcon />
+              OnlyFans
             </TabsTrigger>
           </TabsList>
+          <TabsContent value="music">
+            <Card>
+              <CardHeader>
+                <CardTitle>Music</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Maxime asperiores possimus quo aspernatur nostrum odio
+                  consequuntur facilis aliquam sint at, aut labore quam dolorum
+                  minima beatae dolore impedit perspiciatis explicabo.
+                </p>
+              </CardContent>
+            </Card>
+          </TabsContent>
+          <TabsContent value="podcasts">
+            <Card>
+              <CardHeader>
+                <CardTitle>Podcasts</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Maxime asperiores possimus quo aspernatur nostrum odio
+                  consequuntur facilis aliquam sint at, aut labore quam dolorum
+                  minima beatae dolore impedit perspiciatis explicabo.
+                </p>
+              </CardContent>
+            </Card>
+          </TabsContent>
+          <TabsContent value="photos">
+            <Card>
+              <CardHeader>
+                <CardTitle>Photos</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Maxime asperiores possimus quo aspernatur nostrum odio
+                  consequuntur facilis aliquam sint at, aut labore quam dolorum
+                  minima beatae dolore impedit perspiciatis explicabo.
+                </p>
+              </CardContent>
+            </Card>
+          </TabsContent>
+          <TabsContent value="videos">
+            <Card>
+              <CardHeader>
+                <CardTitle>Videos</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Maxime asperiores possimus quo aspernatur nostrum odio
+                  consequuntur facilis aliquam sint at, aut labore quam dolorum
+                  minima beatae dolore impedit perspiciatis explicabo.
+                </p>
+              </CardContent>
+            </Card>
+          </TabsContent>
+          <TabsContent value="onlyfans">
+            <Card>
+              <CardHeader>
+                <CardTitle>OnlyFans</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Maxime asperiores possimus quo aspernatur nostrum odio
+                  consequuntur facilis aliquam sint at, aut labore quam dolorum
+                  minima beatae dolore impedit perspiciatis explicabo.
+                </p>
+              </CardContent>
+            </Card>
+          </TabsContent>
         </Tabs>
-
-        {tabsDemos.map((tabDemo) => (
-          <Tabs
-            defaultValue="music"
-            className="w-full max-w-xl"
-            key={`${tabDemo.tabsListVariant}-${tabDemo.tabsTriggerVariant}`}
+      </ComponentContainer>
+      <ComponentPlayground>
+        <div className="grid gap-2">
+          <Label htmlFor="tabs-list-variant">Tabs List Variant</Label>
+          <Select value={tabsListVariant} onValueChange={setTabsListVariant}>
+            <SelectTrigger id="tabs-list-variant" className="w-full">
+              <SelectValue placeholder="Select a variant" />
+            </SelectTrigger>
+            <SelectContent>
+              {tabsListVariants.map((variant) => (
+                <SelectItem key={variant} value={variant}>
+                  {variant}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+        <div className="grid gap-2">
+          <Label htmlFor="tabs-trigger-variant">Tabs Trigger Variant</Label>
+          <Select
+            value={tabsTriggerVariant}
+            onValueChange={setTabsTriggerVariant}
           >
-            <TabsList
-              variant={tabDemo.tabsListVariant}
-              className="grid w-full grid-cols-5"
-            >
-              <TabsTrigger value="music" variant={tabDemo.tabsTriggerVariant}>
-                <MusicIcon />
-                Music
-              </TabsTrigger>
-              <TabsTrigger
-                value="podcasts"
-                variant={tabDemo.tabsTriggerVariant}
-              >
-                <PodcastIcon />
-                Podcasts
-              </TabsTrigger>
-              <TabsTrigger value="photos" variant={tabDemo.tabsTriggerVariant}>
-                <ImageIcon />
-                Photos
-              </TabsTrigger>
-              <TabsTrigger value="videos" variant={tabDemo.tabsTriggerVariant}>
-                <FilmIcon />
-                Videos
-              </TabsTrigger>
-              <TabsTrigger
-                value="onlyfans"
-                variant={tabDemo.tabsTriggerVariant}
-                disabled
-              >
-                <BanIcon />
-                OnlyFans
-              </TabsTrigger>
-            </TabsList>
-          </Tabs>
-        ))}
-      </div>
-    </ComponentContainer>
+            <SelectTrigger id="tabs-trigger-variant" className="w-full">
+              <SelectValue placeholder="Select a variant" />
+            </SelectTrigger>
+            <SelectContent>
+              {tabsTriggerVariants.map((variant) => (
+                <SelectItem key={variant} value={variant}>
+                  {variant}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+      </ComponentPlayground>
+    </>
   );
 }

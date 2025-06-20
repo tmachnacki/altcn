@@ -48,7 +48,7 @@ const tabsTriggerVariants = cva(
           "data-[state=active]:border data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-xs",
 
         accent:
-          "data-[state=active]:bg-accent data-[state=active]:text-accent-foreground",
+          "data-[state=active]:bg-muted data-[state=active]:text-accent-foreground",
 
         surface:
           "data-[state=active]:border data-[state=active]:border-border-faded data-[state=active]:bg-faded data-[state=active]:text-accent-foreground",

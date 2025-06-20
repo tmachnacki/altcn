@@ -25,7 +25,7 @@ const toggleVariants = cva(
         base: "hover:bg-muted hover:text-muted-foreground data-[state=on]:bg-base-bg data-[state=on]:text-base-foreground",
 
         accent:
-          "hover:bg-muted hover:text-muted-foreground data-[state=on]:bg-accent data-[state=on]:text-accent-foreground",
+          "hover:bg-muted hover:text-muted-foreground data-[state=on]:bg-muted data-[state=on]:text-accent-foreground",
 
         surface:
           "hover:bg-faded hover:text-muted-foreground data-[state=on]:bg-faded data-[state=on]:text-accent-foreground data-[state=on]:inset-ring data-[state=on]:inset-ring-border-faded",

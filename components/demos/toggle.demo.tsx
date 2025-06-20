@@ -27,7 +27,7 @@ export function ToggleDemo() {
 
   return (
     <ComponentContainer>
-      <div className="grid w-full gap-8">
+      <div className="grid w-full place-items-center gap-8">
         {variants.map((variant) => (
           <div
             className="flex flex-wrap items-center gap-4"
