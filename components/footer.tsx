@@ -22,8 +22,8 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="w-full border-t border-border">
-      <div className="container grid place-items-center gap-3 py-8">
+    <footer className="w-full border-t border-border/50">
+      <div className="container grid place-items-center gap-3 py-6">
         <div className="text-muted-foreground">
           <p>Made with ☕ by Tim</p>
         </div>

@@ -39,7 +39,7 @@ export function ButtonInputDemo() {
   return (
     <>
       <ComponentContainer>
-        <div className="grid w-full max-w-sm grid-cols-2 gap-4">
+        <div className="grid w-full max-w-xs grid-cols-1 gap-4 sm:max-w-sm sm:grid-cols-2">
           <ButtonInput
             variant={variant as (typeof buttonInputVariants)[number]}
             size={buttonInputSizesMap[size]}

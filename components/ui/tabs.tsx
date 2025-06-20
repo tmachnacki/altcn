@@ -9,7 +9,7 @@ import { cn } from "~/lib/utils";
 import { Tron } from "~/components/ui/tron";
 
 const tabsListVariants = cva(
-  "inline-flex h-10 w-fit flex-nowrap items-center justify-center rounded-lg p-[var(--tabs-list-padding)] text-muted-foreground [--tabs-list-padding:--spacing(1)]",
+  "inline-flex h-10 w-fit flex-nowrap items-center justify-center rounded-lg p-(--tabs-list-padding) text-muted-foreground [--tabs-list-padding:--spacing(1)]",
   {
     variants: {
       variant: {
@@ -29,8 +29,8 @@ const tabsListVariants = cva(
 const tabsTriggerVariants = cva(
   [
     "relative isolate inline-flex h-full flex-1 items-center justify-center gap-1.5 rounded-md px-2.5 py-1 text-sm font-medium whitespace-nowrap text-muted-foreground select-none not-disabled:data-[state=inactive]:hover:text-subtle-foreground",
-    "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
-    "disabled:cursor-not-allowed disabled:opacity-50",
+    "**:[svg]:pointer-events-none **:[svg]:shrink-0 **:[svg]:not-[[class*='size-']]:size-4",
+    "disabled:pointer-events-none disabled:opacity-50",
     "outline-0 outline-offset-1 focus-visible:z-10 focus-visible:outline-2",
   ],
   {
@@ -109,7 +109,7 @@ const tabsTriggerVariants = cva(
           "data-[state=active]:text-secondary-500 dark:data-[state=active]:text-secondary",
 
         "secondary-tron": [
-          "data-[state=active]:bg-background data-[state=active]:bg-linear-to-t data-[state=active]:from-secondary/15 data-[state=active]:to-transparent data-[state=active]:text-secondary-muted-foreground data-[state=active]:inset-ring data-[state=active]:inset-ring-border-secondary-tron",
+          "data-[state=active]:bg-background data-[state=active]:bg-[image:var(--secondary-tron-bg-gradient)] data-[state=active]:text-secondary-muted-foreground data-[state=active]:inset-ring data-[state=active]:inset-ring-border-secondary-tron",
           "data-[state=active]:[--tron-beam:var(--color-secondary)] data-[state=active]:[--tron-blur:var(--color-secondary-tron-blur)]",
         ],
       },
@@ -173,23 +173,23 @@ function Tabs({
   );
 }
 
-type TabsListVariantsContextType = {
+type TabsListVariantsContextProps = {
   variant?: VariantProps<typeof tabsListVariants>["variant"];
-  triggersVariant?: VariantProps<typeof tabsTriggerVariants>["variant"];
+  triggerVariant?: VariantProps<typeof tabsTriggerVariants>["variant"];
 };
 
 const TabsListVariantsContext =
-  React.createContext<TabsListVariantsContextType>({});
+  React.createContext<TabsListVariantsContextProps>({});
 
 function TabsList({
   className,
   variant = "muted",
-  triggersVariant = "default",
+  triggerVariant = "default",
   ...props
 }: React.ComponentProps<typeof TabsPrimitive.List> &
-  TabsListVariantsContextType) {
+  TabsListVariantsContextProps) {
   return (
-    <TabsListVariantsContext.Provider value={{ variant, triggersVariant }}>
+    <TabsListVariantsContext.Provider value={{ variant, triggerVariant }}>
       <TabsPrimitive.List
         data-slot="tabs-list"
         className={cn(tabsListVariants({ variant }), className)}
@@ -201,19 +201,20 @@ function TabsList({
 
 function TabsTrigger({
   className,
-  variant: variantOverride,
+  variant,
   children,
   ...props
 }: React.ComponentProps<typeof TabsPrimitive.Trigger> &
   VariantProps<typeof tabsTriggerVariants>) {
-  const variantsContext = React.useContext(TabsListVariantsContext);
-  const variant = variantOverride || variantsContext.triggersVariant;
+  const context = React.useContext(TabsListVariantsContext);
 
   return (
     <TabsPrimitive.Trigger
       data-slot="tabs-trigger"
       className={cn(
-        tabsTriggerVariants({ variant }),
+        tabsTriggerVariants({
+          variant: variant || context.triggerVariant,
+        }),
         "group/tabs-trigger",
         className
       )}
@@ -226,7 +227,7 @@ function TabsTrigger({
           role="presentation"
           className={cn(
             // use padding var as height to avoid flickering when hovering between trigger and underline indicator
-            "absolute inset-x-0 -bottom-[var(--tabs-list-padding)] h-[var(--tabs-list-padding)] w-full border-b-2 border-transparent group-not-data-disabled/tabs-trigger:group-data-[state=inactive]/tabs-trigger:group-hover/tabs-trigger:border-border"
+            "absolute inset-x-0 -bottom-(--tabs-list-padding) h-(--tabs-list-padding) w-full border-b-2 border-transparent group-not-data-disabled/tabs-trigger:group-data-[state=inactive]/tabs-trigger:group-hover/tabs-trigger:border-border"
           )}
         />
       )}

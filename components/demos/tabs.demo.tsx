@@ -22,6 +22,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
 
+// import { Swatch } from "~/components/swatch";
+
 const tabsListVariants = [
   "outline",
   "muted",
@@ -194,9 +196,9 @@ export function TabsDemo() {
       </ComponentContainer>
       <ComponentPlayground>
         <div className="grid gap-2">
-          <Label htmlFor="tabs-list-variant">Tabs List Variant</Label>
+          <Label htmlFor="list-variant">List Variant</Label>
           <Select value={tabsListVariant} onValueChange={setTabsListVariant}>
-            <SelectTrigger id="tabs-list-variant" className="w-full">
+            <SelectTrigger id="list-variant" className="w-full">
               <SelectValue placeholder="Select a variant" />
             </SelectTrigger>
             <SelectContent>
@@ -209,12 +211,12 @@ export function TabsDemo() {
           </Select>
         </div>
         <div className="grid gap-2">
-          <Label htmlFor="tabs-trigger-variant">Tabs Trigger Variant</Label>
+          <Label htmlFor="trigger-variant">Trigger Variant</Label>
           <Select
             value={tabsTriggerVariant}
             onValueChange={setTabsTriggerVariant}
           >
-            <SelectTrigger id="tabs-trigger-variant" className="w-full">
+            <SelectTrigger id="trigger-variant" className="w-full">
               <SelectValue placeholder="Select a variant" />
             </SelectTrigger>
             <SelectContent>

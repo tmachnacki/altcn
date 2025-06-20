@@ -85,7 +85,7 @@ export function SelectDemo() {
   return (
     <>
       <ComponentContainer>
-        <div className="grid w-full max-w-md grid-cols-2 gap-4">
+        <div className="grid w-full max-w-xs grid-cols-1 gap-4 sm:max-w-sm sm:grid-cols-2">
           <Select>
             <SelectTrigger
               className="w-full"

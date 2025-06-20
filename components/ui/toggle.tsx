@@ -25,10 +25,16 @@ const toggleVariants = cva(
         base: "hover:bg-muted hover:text-muted-foreground data-[state=on]:bg-base-bg data-[state=on]:text-base-foreground",
 
         accent:
-          "hover:bg-muted hover:text-muted-foreground data-[state=on]:bg-muted data-[state=on]:text-accent-foreground",
+          "hover:bg-faded hover:text-muted-foreground data-[state=on]:bg-muted data-[state=on]:text-accent-foreground",
+
+        muted:
+          "hover:bg-faded hover:text-muted-foreground/80 data-[state=on]:bg-muted data-[state=on]:text-muted-foreground",
 
         surface:
           "hover:bg-faded hover:text-muted-foreground data-[state=on]:bg-faded data-[state=on]:text-accent-foreground data-[state=on]:inset-ring data-[state=on]:inset-ring-border-faded",
+
+        faded:
+          "hover:bg-faded hover:text-muted-foreground/80 data-[state=on]:bg-faded data-[state=on]:text-muted-foreground data-[state=on]:inset-ring data-[state=on]:inset-ring-border-faded",
 
         primary:
           "hover:bg-primary-faded hover:text-primary-muted-foreground data-[state=on]:bg-primary data-[state=on]:text-primary-foreground",
@@ -36,8 +42,14 @@ const toggleVariants = cva(
         "primary-accent":
           "hover:bg-primary-faded hover:text-primary-muted-foreground data-[state=on]:bg-primary-muted data-[state=on]:text-primary-accent-foreground",
 
+        "primary-muted":
+          "hover:bg-primary-faded hover:text-primary-muted-foreground/80 data-[state=on]:bg-primary-muted data-[state=on]:text-primary-muted-foreground",
+
         "primary-surface":
           "hover:bg-primary-faded hover:text-primary-muted-foreground data-[state=on]:bg-primary-faded data-[state=on]:text-primary-accent-foreground data-[state=on]:inset-ring data-[state=on]:inset-ring-border-primary-faded",
+
+        "primary-faded":
+          "hover:bg-primary-faded hover:text-primary-muted-foreground/80 data-[state=on]:bg-primary-faded data-[state=on]:text-primary-muted-foreground data-[state=on]:inset-ring data-[state=on]:inset-ring-border-primary-faded",
 
         "primary-tron": [
           "hover:text-primary-muted-foreground hover:inset-ring hover:inset-ring-border-primary-faded data-[state=on]:bg-background data-[state=on]:bg-[image:var(--primary-tron-bg-gradient)] data-[state=on]:text-primary-muted-foreground data-[state=on]:inset-ring data-[state=on]:inset-ring-border-primary-tron",
@@ -50,8 +62,14 @@ const toggleVariants = cva(
         "secondary-accent":
           "hover:bg-secondary-faded hover:text-secondary-muted-foreground data-[state=on]:bg-secondary-muted data-[state=on]:text-secondary-accent-foreground",
 
+        "secondary-muted":
+          "hover:bg-secondary-faded hover:text-secondary-muted-foreground/80 data-[state=on]:bg-secondary-muted data-[state=on]:text-secondary-muted-foreground",
+
         "secondary-surface":
           "hover:bg-secondary-faded hover:text-secondary-muted-foreground data-[state=on]:bg-secondary-faded data-[state=on]:text-secondary-accent-foreground data-[state=on]:inset-ring data-[state=on]:inset-ring-border-secondary-faded",
+
+        "secondary-faded":
+          "hover:bg-secondary-faded hover:text-secondary-muted-foreground/80 data-[state=on]:bg-secondary-faded data-[state=on]:text-secondary-muted-foreground data-[state=on]:inset-ring data-[state=on]:inset-ring-border-secondary-faded",
 
         "secondary-tron": [
           "hover:text-secondary-muted-foreground hover:inset-ring hover:inset-ring-border-secondary-faded data-[state=on]:bg-background data-[state=on]:bg-[image:var(--secondary-tron-bg-gradient)] data-[state=on]:text-secondary-muted-foreground data-[state=on]:inset-ring data-[state=on]:inset-ring-border-secondary-tron",
@@ -68,20 +86,28 @@ const toggleVariants = cva(
     },
     compoundVariants: [
       {
-        variant: ["outline", "base", "accent", "surface"],
+        variant: ["outline", "base", "accent", "muted", "surface", "faded"],
         className: "outline-outline",
       },
       {
         variant: [
           "primary",
           "primary-accent",
+          "primary-muted",
           "primary-surface",
+          "primary-faded",
           "primary-tron",
         ],
         className: "outline-primary",
       },
       {
-        variant: ["secondary", "secondary-accent", "secondary-surface"],
+        variant: [
+          "secondary",
+          "secondary-accent",
+          "secondary-muted",
+          "secondary-surface",
+          "secondary-faded",
+        ],
         className: "outline-secondary",
       },
     ],
