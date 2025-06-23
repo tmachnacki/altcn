@@ -10,7 +10,7 @@ const radioCardsItemVariants = cva(
   [
     "flex items-start justify-start gap-2 rounded-md bg-background px-4 py-3.5 text-start shadow-xs inset-ring inset-ring-border *:not-data-[slot=radio-cards-indicator]:flex-1",
     "hover:not-disabled:not-data-[state=checked]:shadow-md hover:not-disabled:not-data-[state=checked]:not-aria-invalid:inset-ring-hover-border dark:hover:not-disabled:not-data-[state=checked]:not-aria-invalid:shadow-muted-foreground/20",
-    "disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none disabled:[--radio-cards-indicator-bg:var(--color-base-bg)] disabled:[--radio-cards-indicator-text:var(--color-base-foreground)] disabled:data-[state=checked]:shadow-none data-[state=checked]:disabled:inset-ring-base-bg",
+    "disabled:cursor-not-allowed disabled:bg-faded disabled:opacity-50 disabled:shadow-none disabled:[--radio-cards-indicator-bg:var(--color-base-bg)] disabled:[--radio-cards-indicator-text:var(--color-base-foreground)] disabled:data-[state=checked]:shadow-none data-[state=checked]:disabled:inset-ring-base-bg",
     "focus-visible:outline-2 focus-visible:outline-offset-2",
     "data-[state=checked]:inset-ring-2",
     "aria-invalid:inset-ring-destructive aria-invalid:outline-destructive aria-invalid:[--radio-cards-indicator-bg:var(--color-destructive)] aria-invalid:[--radio-cards-indicator-text:var(--color-destructive-foreground)] aria-invalid:data-[state=checked]:shadow-md aria-invalid:data-[state=checked]:shadow-destructive/50",

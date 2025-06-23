@@ -23,7 +23,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          "bg-background font-sans text-sm text-foreground antialiased [--header-h:--spacing(12)]",
+          "bg-background text-sm text-foreground antialiased [--header-h:--spacing(12)]",
           fontSans,
           fontMono
         )}

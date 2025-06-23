@@ -73,6 +73,7 @@ function RadioButtonsItem({
         size={context.size}
         className={cn(
           context.orientation === "horizontal" && "flex-1",
+          checked && "pointer-events-none",
           className
         )}
         aria-invalid={ariaInvalid}

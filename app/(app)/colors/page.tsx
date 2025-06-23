@@ -17,8 +17,11 @@ export default function Colors() {
                   <div
                     className={`aspect-square overflow-hidden rounded-md border outline -outline-offset-1 outline-black/10 dark:outline-white/10 ${swatch.background}`}
                   />
-                  <p className={`text-center font-mono text-sm ${color.text}`}>
-                    {swatch.label}
+                  <p className={`text-center font-mono text-xs sm:text-sm ${color.text}`}>
+                    <span className="hidden lg:block">{swatch.label}</span>
+                    <span className="block lg:hidden">
+                      {swatch.label.split("-").pop()}
+                    </span>
                   </p>
                 </div>
               ))}

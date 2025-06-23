@@ -108,7 +108,7 @@ export function Header() {
                     asChild
                     variant={isActive ? "accent" : "ghost"}
                     size="sm"
-                    className={isActive ? "" : "text-subtle-foreground"}
+                    className={`font-medium ${isActive ? "" : "text-subtle-foreground"}`}
                   >
                     <Link
                       href={navItem.href}

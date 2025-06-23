@@ -42,18 +42,26 @@ export function SelectNativeDemo() {
       <ComponentContainer>
         <div className="grid w-full max-w-xs grid-cols-1 gap-4 sm:max-w-sm sm:grid-cols-2">
           <SelectNative
-            defaultValue={fruits[0]}
+            defaultValue="disabled"
             id="select-native-basic"
             name="select-native-basic"
             variant={triggerVariant as (typeof triggerVariants)[number]}
             size={triggerSizesMap[triggerSize]}
             className="w-full"
           >
-            {fruits.map((fruit) => (
-              <option key={`${fruit}-basic`} value={fruit}>
-                {fruit}
-              </option>
-            ))}
+            <option value="disabled" disabled>
+              Select a fruit...
+            </option>
+            <option value="one">
+              One
+            </option>
+            <optgroup label="Fruits">
+              {fruits.map((fruit) => (
+                <option key={`${fruit}-basic`} value={fruit}>
+                  {fruit}
+                </option>
+              ))}
+            </optgroup>
           </SelectNative>
           <SelectNative
             id="select-native-multiple"

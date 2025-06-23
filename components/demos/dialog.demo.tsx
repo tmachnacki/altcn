@@ -11,13 +11,12 @@ import {
 } from "~/components/ui/dialog";
 import { Input } from "~/components/ui/input";
 import { Label } from "~/components/ui/label";
-
 import { ComponentContainer } from "~/components/component-container";
 
 export function DialogDemo() {
   return (
     <ComponentContainer>
-      <div className="flex items-center flex-wrap gap-4">
+      <div className="flex flex-wrap items-center gap-4">
         <DialogWithForm />
         <DialogScrollableContent />
         <DialogWithStickyFooter />
@@ -33,7 +32,7 @@ function DialogWithForm() {
         <DialogTrigger asChild>
           <Button variant="outline">Edit Profile</Button>
         </DialogTrigger>
-        <DialogContent className="sm:max-w-[425px]">
+        <DialogContent className="sm:max-w-md">
           <DialogHeader>
             <DialogTitle>Edit profile</DialogTitle>
             <DialogDescription>

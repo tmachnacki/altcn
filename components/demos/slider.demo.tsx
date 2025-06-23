@@ -45,6 +45,19 @@ export function SliderDemo() {
               orientation={orientation as (typeof orientations)[number]}
             />
             <Slider
+              defaultValue={[50]}
+              max={100}
+              step={25}
+              variant={variant as (typeof variants)[number]}
+              orientation={orientation as (typeof orientations)[number]}
+              markers={[
+                { value: 25 },
+                { value: 50 },
+                { value: 75 },
+                { value: 100 },
+              ]}
+            />
+            <Slider
               defaultValue={[25, 50]}
               max={100}
               step={1}

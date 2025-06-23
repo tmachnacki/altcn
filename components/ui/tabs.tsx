@@ -125,7 +125,7 @@ const tabsTriggerVariants = cva(
           "underlined",
           "ghost",
         ],
-        className: "focus-visible:outline-outline",
+        className: "outline-outline",
       },
       {
         variant: [
@@ -138,7 +138,7 @@ const tabsTriggerVariants = cva(
           "primary-ghost",
           "primary-tron",
         ],
-        className: "focus-visible:outline-primary",
+        className: "outline-primary",
       },
       {
         variant: [
@@ -151,7 +151,7 @@ const tabsTriggerVariants = cva(
           "secondary-ghost",
           "secondary-tron",
         ],
-        className: "focus-visible:outline-secondary",
+        className: "outline-secondary",
       },
     ],
     defaultVariants: {

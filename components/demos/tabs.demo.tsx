@@ -1,13 +1,7 @@
 "use client";
 
 import * as React from "react";
-import {
-  BanIcon,
-  FilmIcon,
-  ImageIcon,
-  MusicIcon,
-  PodcastIcon,
-} from "lucide-react";
+import { BanIcon, ImageIcon, MusicIcon, PodcastIcon } from "lucide-react";
 
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import { Label } from "~/components/ui/label";
@@ -68,7 +62,7 @@ export function TabsDemo() {
         <Tabs defaultValue="music" className="w-full max-w-xl">
           <TabsList
             variant={tabsListVariant as (typeof tabsListVariants)[number]}
-            className="grid w-full grid-cols-5"
+            className="grid w-full grid-cols-4"
           >
             <TabsTrigger
               value="music"
@@ -96,15 +90,6 @@ export function TabsDemo() {
             >
               <ImageIcon />
               Photos
-            </TabsTrigger>
-            <TabsTrigger
-              value="videos"
-              variant={
-                tabsTriggerVariant as (typeof tabsTriggerVariants)[number]
-              }
-            >
-              <FilmIcon />
-              Videos
             </TabsTrigger>
             <TabsTrigger
               value="onlyfans"
@@ -151,21 +136,6 @@ export function TabsDemo() {
             <Card>
               <CardHeader>
                 <CardTitle>Photos</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Maxime asperiores possimus quo aspernatur nostrum odio
-                  consequuntur facilis aliquam sint at, aut labore quam dolorum
-                  minima beatae dolore impedit perspiciatis explicabo.
-                </p>
-              </CardContent>
-            </Card>
-          </TabsContent>
-          <TabsContent value="videos">
-            <Card>
-              <CardHeader>
-                <CardTitle>Videos</CardTitle>
               </CardHeader>
               <CardContent>
                 <p>

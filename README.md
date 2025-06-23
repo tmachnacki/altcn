@@ -2,13 +2,16 @@
 
 ## Improvements
 
-- [ ] alert close button
-- [ ] Better Notification with ping animations (radial tron gradients?)
 - [ ] Headless Sonner
 - [ ] Pagination Control Sizes
 - [ ] Transparent vs solid muted and faded colors
 - [ ] Select "item-aligned" positioning
 - [ ] "vertical" orientations (tabs, navigation menu)
+- [ ] Select (Native) styling
+- [ ] Speed Dial variants
+- [ ] Tooltip variants
+- [ ] Radio and checkbox variants
+- [ ] Radio Buttons styling
 
 ## Components
 
@@ -21,21 +24,20 @@
 - [ ] Drawer
 - [ ] Form (Tanstack Form)
 - [ ] Input Group
+- [ ] Input Search
 - [ ] Input Tags
 - [ ] Navigation Menu
 - [ ] Progress Circular
-- [ ] Radio Group Cards/Buttons
 - [ ] Rating
-- [ ] Select (Native)
-- [ ] Speed Dial (Dropdown Menu Primitive)
 - [ ] Tab Nav (Navigation Primitive)
 - [ ] Toggle Group
-- [ ] Tooltip
 - [ ] Uploader
+- [ ] Table
+- [ ] Description List
 
 ## Site
 
-- [ ] Todos los docs
+- [ ] fumadocs
 
 ---
 

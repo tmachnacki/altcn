@@ -4,7 +4,7 @@ import { ChevronsUpDownIcon } from "lucide-react";
 
 import { cn } from "~/lib/utils";
 
-const selectNativeRootVariants = cva(["relative"], {
+const selectNativeRootVariants = cva(["relative has-data-multiple:h-auto"], {
   variants: {
     size: {
       default: "h-9",
@@ -19,52 +19,59 @@ const selectNativeRootVariants = cva(["relative"], {
 
 const selectNativeTriggerVariants = cva(
   [
-    "line-clamp-1 block h-full appearance-none truncate rounded-md leading-none whitespace-nowrap",
+    "line-clamp-1 block h-full appearance-none truncate rounded-md leading-none whitespace-nowrap data-multiple:h-auto data-multiple:py-2",
     "disabled:cursor-not-allowed disabled:opacity-50",
     "aria-invalid:text-destructive-accent-foreground",
+    "**:bg-popover **:text-popover-foreground data-multiple:**:bg-transparent",
+    "**:[optgroup]:font-semibold **:[optgroup]:text-muted-foreground",
   ],
   {
     variants: {
       size: {
-        default: "pr-10 pl-3 text-base data-[multiple]:pr-3 sm:text-sm",
-        sm: "pr-9 pl-2.5 text-sm data-[multiple]:pr-2.5",
-        lg: "pr-[calc(var(--spacing)*13)] pl-4 text-base data-[multiple]:pr-4",
+        default: "pr-10 pl-3 text-base data-multiple:pr-3 sm:text-sm",
+        sm: "pr-9 pl-2.5 text-sm data-multiple:pr-2.5",
+        lg: "pr-[calc(var(--spacing)*13)] pl-4 text-base data-multiple:pr-4",
       },
       variant: {
         // -- base --
         outline: [
-          "bg-background text-accent-foreground shadow-xs outline-1 -outline-offset-1 outline-border hover:not-disabled:not-aria-invalid:not-focus-visible:outline-hover-border dark:bg-faded",
+          "bg-background text-accent-foreground shadow-xs outline-1 -outline-offset-1 outline-border hover:not-disabled:not-aria-invalid:not-focus:outline-hover-border dark:bg-faded",
+          "placeholder:text-placeholder",
           "disabled:bg-faded disabled:shadow-none",
-          "focus:outline-2 focus:outline-primary",
-          "aria-invalid:outline-destructive dark:aria-invalid:bg-destructive-faded",
+          "focus-visible:outline-2 focus-visible:outline-primary",
+          "aria-invalid:outline-destructive aria-invalid:placeholder:text-destructive-placeholder dark:aria-invalid:bg-destructive-faded",
         ],
 
         muted: [
-          "bg-muted text-accent-foreground -outline-offset-1 hover:not-disabled:not-aria-invalid:not-focus-visible:bg-hover-muted",
-          "focus:outline-2 focus:outline-primary",
-          "aria-invalid:bg-destructive-muted aria-invalid:outline-destructive aria-invalid:hover:not-disabled:not-focus-visible:bg-hover-destructive-muted",
+          "bg-muted text-accent-foreground -outline-offset-1 hover:not-disabled:not-aria-invalid:not-focus:bg-hover-muted",
+          "placeholder:text-muted-foreground",
+          "focus-visible:outline-2 focus-visible:outline-primary",
+          "aria-invalid:bg-destructive-muted aria-invalid:outline-destructive aria-invalid:placeholder:text-destructive-muted-foreground aria-invalid:hover:not-disabled:not-focus-visible:bg-hover-destructive-muted",
         ],
 
         underlined: [
-          "rounded-none bg-transparent shadow-[inset_0_-1px_0_0_var(--color-border)] outline-none hover:not-disabled:not-aria-invalid:not-focus-visible:shadow-[inset_0_-1px_0_0_var(--color-hover-border)]",
-          "focus:shadow-[inset_0_-2px_0_0_var(--color-primary)]",
-          "aria-invalid:shadow-[inset_0_-1px_0_0_var(--color-destructive)] aria-invalid:focus:shadow-[inset_0_-2px_0_0_var(--color-destructive)]",
+          "rounded-none bg-transparent text-foreground shadow-[inset_0_-1px_0_0_var(--color-border)] outline-none hover:not-disabled:not-aria-invalid:not-focus:shadow-[inset_0_-1px_0_0_var(--color-hover-border)]",
+          "placeholder:text-placeholder",
+          "focus-visible:shadow-[inset_0_-2px_0_0_var(--color-primary)]",
+          "aria-invalid:shadow-[inset_0_-1px_0_0_var(--color-destructive)] aria-invalid:placeholder:text-destructive-placeholder aria-invalid:focus:shadow-[inset_0_-2px_0_0_var(--color-destructive)]",
         ],
 
         // -- primary --
         "primary-muted": [
-          "bg-primary-muted text-primary-accent-foreground -outline-offset-1 hover:not-disabled:not-aria-invalid:not-focus-visible:bg-hover-primary-muted",
-          "disabled:bg-muted disabled:text-accent-foreground",
-          "focus:outline-2 focus:outline-primary",
-          "aria-invalid:bg-destructive-muted aria-invalid:outline-destructive aria-invalid:hover:not-disabled:not-focus-visible:bg-hover-destructive-muted",
+          "bg-primary-muted text-primary-accent-foreground -outline-offset-1 hover:not-disabled:not-aria-invalid:not-focus:bg-hover-primary-muted",
+          "placeholder:text-primary-muted-foreground",
+          "disabled:bg-muted disabled:text-accent-foreground disabled:placeholder:text-muted-foreground",
+          "focus-visible:outline-2 focus-visible:outline-primary",
+          "aria-invalid:bg-destructive-muted aria-invalid:outline-destructive aria-invalid:placeholder:text-destructive-muted-foreground aria-invalid:hover:not-disabled:not-focus-visible:bg-hover-destructive-muted",
         ],
 
         // -- secondary --
         "secondary-muted": [
-          "bg-secondary-muted text-secondary-accent-foreground -outline-offset-1 hover:not-disabled:not-aria-invalid:not-focus-visible:bg-hover-secondary-muted",
-          "disabled:bg-muted disabled:text-accent-foreground",
-          "focus:outline-2 focus:outline-secondary",
-          "aria-invalid:bg-destructive-muted aria-invalid:outline-destructive aria-invalid:hover:not-disabled:not-focus-visible:bg-hover-destructive-muted",
+          "bg-secondary-muted text-secondary-accent-foreground -outline-offset-1 hover:not-disabled:not-aria-invalid:not-focus:bg-hover-secondary-muted",
+          "placeholder:text-secondary-muted-foreground",
+          "disabled:bg-muted disabled:text-accent-foreground disabled:placeholder:text-muted-foreground",
+          "focus-visible:outline-2 focus-visible:outline-secondary",
+          "aria-invalid:bg-destructive-muted aria-invalid:outline-destructive aria-invalid:placeholder:text-destructive-muted-foreground aria-invalid:hover:not-disabled:not-focus-visible:bg-hover-destructive-muted",
         ],
       },
     },
@@ -98,12 +105,12 @@ const selectNativeIconVariants = cva(
 
         // -- primary --
         "primary-muted": [
-          "text-primary-muted-foreground/60 peer-disabled:text-muted-foreground/60",
+          "text-primary-muted-foreground/60 peer-disabled/select-native-trigger:text-muted-foreground/60",
         ],
 
         // -- secondary --
         "secondary-muted": [
-          "text-secondary-muted-foreground/60 peer-disabled:text-muted-foreground/60",
+          "text-secondary-muted-foreground/60 peer-disabled/select-native-trigger:text-muted-foreground/60",
         ],
       },
     },
@@ -138,18 +145,13 @@ function SelectNative({
   return (
     <div
       data-slot="select-native"
-      className={cn(
-        selectNativeRootVariants({ size }),
-        multiple && "h-auto",
-        classNames?.root
-      )}
+      className={cn(selectNativeRootVariants({ size }), classNames?.root)}
     >
       <select
         data-slot="select-native-trigger"
         className={cn(
           selectNativeTriggerVariants({ variant, size }),
           "peer/select-native-trigger",
-          multiple && "h-auto py-2",
           classNames?.trigger,
           className
         )}
