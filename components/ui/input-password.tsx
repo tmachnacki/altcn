@@ -27,9 +27,11 @@ function InputPassword({
   classNames,
   autoComplete,
   disabled,
+  id,
   ...props
 }: InputPasswordProps) {
   const [showPassword, setShowPassword] = React.useState(false);
+  const _id = React.useId();
   return (
     <div
       data-slot="input-password-container"
@@ -37,6 +39,7 @@ function InputPassword({
     >
       <Input
         data-slot="input-password-input"
+        id={id ?? _id}
         type={showPassword ? "text" : "password"}
         variant={variant}
         size={size}
@@ -56,29 +59,33 @@ function InputPassword({
       <Button
         data-slot="input-password-toggle"
         type="button"
+        onClick={() => setShowPassword((prev) => !prev)}
+        disabled={disabled}
+        aria-controls={id ?? _id}
         variant={"ghost"}
         className={cn(
           "absolute top-1/2 right-1 -translate-y-1/2 rounded-sm bg-transparent outline-offset-0",
           "peer-aria-invalid/input-password-input:text-destructive-muted-foreground peer-aria-invalid/input-password-input:outline-destructive peer-aria-invalid/input-password-input:hover:bg-destructive-500/20",
-          "disabled:text-muted-foreground disabled:pointer-events-none",
+          "disabled:pointer-events-none disabled:text-muted-foreground",
           {
             default: "size-7",
             sm: "size-6",
             lg: "size-8",
           }[size || "default"],
           {
-            outline: "text-subtle-foreground hover:bg-base-500/20 outline-outline",
-            muted: "text-subtle-foreground hover:bg-base-500/20 outline-outline ",
-            underlined: "text-subtle-foreground hover:bg-base-500/20 outline-outline ",
+            outline:
+              "text-subtle-foreground outline-outline hover:bg-base-500/20",
+            muted:
+              "text-subtle-foreground outline-outline hover:bg-base-500/20",
+            underlined:
+              "text-subtle-foreground outline-outline hover:bg-base-500/20",
             "primary-muted":
-              "text-primary-muted-foreground hover:bg-primary-500/20 outline-primary ",
+              "text-primary-muted-foreground outline-primary hover:bg-primary-500/20",
             "secondary-muted":
-              "text-secondary-muted-foreground hover:bg-secondary-500/20 outline-secondary",
+              "text-secondary-muted-foreground outline-secondary hover:bg-secondary-500/20",
           }[variant || "outline"],
           classNames?.toggle
         )}
-        onClick={() => setShowPassword((prev) => !prev)}
-        disabled={disabled}
       >
         {showPassword ? (
           <EyeOffIcon

@@ -105,45 +105,50 @@ const inputOTPSlotVariants = cva(
 
 type InputOTPContextProps = {
   variant?: VariantProps<typeof inputOTPSlotVariants>["variant"];
-  slotSize?: VariantProps<typeof inputOTPSlotVariants>["size"];
+  size?: VariantProps<typeof inputOTPSlotVariants>["size"];
   layout?: "compact" | "split";
   ariaInvalid?: React.ComponentProps<typeof InputOTPPrimitive>["aria-invalid"];
 };
 
 const InputOTPContext = React.createContext<InputOTPContextProps>({});
 
-type InputOTPProps = React.ComponentProps<typeof InputOTPPrimitive> & {
-  variant?: VariantProps<typeof inputOTPSlotVariants>["variant"];
-  slotSize?: VariantProps<typeof inputOTPSlotVariants>["size"];
-  layout?: "compact" | "split";
-};
+type InputOTPProps = Omit<
+  React.ComponentProps<typeof InputOTPPrimitive>,
+  "size" | "render"
+> &
+  Pick<InputOTPContextProps, "variant" | "size" | "layout"> & {
+    htmlSize?: number;
+  };
 
 function InputOTP({
   className,
   containerClassName,
   variant = "outline",
-  slotSize = "default",
+  size = "default",
+  htmlSize,
   layout = "compact",
   "aria-invalid": ariaInvalid,
+  children,
   ...props
 }: InputOTPProps) {
   return (
-    <InputOTPContext.Provider
-      value={{ variant, layout, slotSize, ariaInvalid }}
+    <InputOTPPrimitive
+      data-slot="input-otp"
+      data-layout={layout}
+      containerClassName={cn(
+        "flex items-center gap-2 has-disabled:opacity-50",
+        "group/input-otp",
+        containerClassName
+      )}
+      className={cn("disabled:cursor-not-allowed", className)}
+      aria-invalid={ariaInvalid}
+      size={htmlSize}
+      {...props}
     >
-      <InputOTPPrimitive
-        data-slot="input-otp"
-        data-layout={layout}
-        containerClassName={cn(
-          "flex items-center gap-2 has-disabled:opacity-50",
-          "group/input-otp",
-          containerClassName
-        )}
-        className={cn("disabled:cursor-not-allowed", className)}
-        aria-invalid={ariaInvalid}
-        {...props}
-      />
-    </InputOTPContext.Provider>
+      <InputOTPContext.Provider value={{ variant, layout, size, ariaInvalid }}>
+        {children}
+      </InputOTPContext.Provider>
+    </InputOTPPrimitive>
   );
 }
 
@@ -167,7 +172,7 @@ function InputOTPSlot({
   const inputOTPPrimitiveContext = React.useContext(InputOTPPrimitiveContext);
   const { char, hasFakeCaret, isActive, placeholderChar } =
     inputOTPPrimitiveContext?.slots[index] ?? {};
-  const { variant, layout, slotSize, ariaInvalid } =
+  const { variant, layout, size, ariaInvalid } =
     React.useContext(InputOTPContext);
 
   return (
@@ -177,10 +182,7 @@ function InputOTPSlot({
       data-layout={layout}
       data-placeholder={placeholderChar ? true : undefined}
       data-invalid={ariaInvalid}
-      className={cn(
-        inputOTPSlotVariants({ variant, size: slotSize }),
-        className
-      )}
+      className={cn(inputOTPSlotVariants({ variant, size }), className)}
       {...props}
     >
       {(!isActive && placeholderChar) || char}

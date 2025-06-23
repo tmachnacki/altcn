@@ -199,26 +199,29 @@ function MenubarContent({
   variant = "accent",
   width = "default",
   indicatorVariant = "default",
+  children,
   ...props
 }: React.ComponentProps<typeof MenubarPrimitive.Content> & MenuContextProps) {
   return (
-    <MenubarContext.Provider value={{ variant, width, indicatorVariant }}>
-      <MenubarPortal>
-        <MenubarPrimitive.Content
-          data-slot="menubar-content"
-          align={align}
-          sideOffset={sideOffset}
-          className={cn(
-            menuContentVariants(),
-            "max-h-(--radix-menubar-content-available-height) max-w-(--radix-menubar-content-available-width) min-w-48 origin-(--radix-menubar-content-transform-origin)",
-            // FIXME: exit animations be breaking
-            "data-[state=open]:animate-in data-[state=open]:ease-out data-[state=open]:fade-in-0",
-            className
-          )}
-          {...props}
-        />
-      </MenubarPortal>
-    </MenubarContext.Provider>
+    <MenubarPortal>
+      <MenubarPrimitive.Content
+        data-slot="menubar-content"
+        align={align}
+        sideOffset={sideOffset}
+        className={cn(
+          menuContentVariants(),
+          "max-h-(--radix-menubar-content-available-height) max-w-(--radix-menubar-content-available-width) min-w-48 origin-(--radix-menubar-content-transform-origin)",
+          // FIXME: exit animations be breaking
+          "data-[state=open]:animate-in data-[state=open]:ease-out data-[state=open]:fade-in-0",
+          className
+        )}
+        {...props}
+      >
+        <MenubarContext.Provider value={{ variant, width, indicatorVariant }}>
+          {children}
+        </MenubarContext.Provider>
+      </MenubarPrimitive.Content>
+    </MenubarPortal>
   );
 }
 

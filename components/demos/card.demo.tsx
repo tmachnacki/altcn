@@ -32,8 +32,8 @@ export function CardDemo() {
   return (
     <>
       <ComponentContainer className="p-0">
-        <div className="relative flex min-h-96 w-full min-w-0 flex-col items-center justify-center overflow-hidden rounded-s-lg bg-transparent p-6">
-          <div className="absolute inset-0 z-0 flex shrink-0 items-center justify-center overflow-hidden">
+        <div className="relative flex min-h-96 w-full min-w-0 flex-col items-center justify-center overflow-hidden rounded-s-lg bg-transparent p-4">
+          <div className="absolute top-0 left-0 z-0 flex size-full shrink-0 items-center justify-center overflow-hidden">
             <BackgroundPattern className="shrink-0" />
           </div>
 

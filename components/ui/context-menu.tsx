@@ -126,24 +126,29 @@ function ContextMenuContent({
   variant = "accent",
   width = "default",
   indicatorVariant = "default",
+  children,
   ...props
 }: React.ComponentProps<typeof ContextMenuPrimitive.Content> &
   MenuContextProps) {
   return (
-    <ContextMenuContext.Provider value={{ variant, width, indicatorVariant }}>
-      <ContextMenuPrimitive.Portal>
-        <ContextMenuPrimitive.Content
-          data-slot="context-menu-content"
-          className={cn(
-            menuContentVariants(),
-            "max-h-(--radix-context-menu-content-available-height) min-w-32 origin-(--radix-context-menu-content-transform-origin)",
-            "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:ease-out data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95",
-            className
-          )}
-          {...props}
-        />
-      </ContextMenuPrimitive.Portal>
-    </ContextMenuContext.Provider>
+    <ContextMenuPrimitive.Portal>
+      <ContextMenuPrimitive.Content
+        data-slot="context-menu-content"
+        className={cn(
+          menuContentVariants(),
+          "max-h-(--radix-context-menu-content-available-height) min-w-32 origin-(--radix-context-menu-content-transform-origin)",
+          "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:ease-out data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95",
+          className
+        )}
+        {...props}
+      >
+        <ContextMenuContext.Provider
+          value={{ variant, width, indicatorVariant }}
+        >
+          {children}
+        </ContextMenuContext.Provider>
+      </ContextMenuPrimitive.Content>
+    </ContextMenuPrimitive.Portal>
   );
 }
 

@@ -80,12 +80,24 @@ export const componentLinks = [
     href: "/components/progress",
   },
   {
+    label: "Radio Buttons",
+    href: "/components/radio-buttons",
+  },
+  {
+    label: "Radio Cards",
+    href: "/components/radio-cards",
+  },
+  {
     label: "Radio Group",
     href: "/components/radio-group",
   },
   {
     label: "Select",
     href: "/components/select",
+  },
+  {
+    label: "Select Native",
+    href: "/components/select-native",
   },
   {
     label: "Separator",

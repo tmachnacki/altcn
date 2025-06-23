@@ -68,13 +68,16 @@ const AccordionContext = React.createContext<AccordionContextProps>({});
 function Accordion({
   variant = "outline",
   layout = "compact",
+  children,
   ...props
 }: React.ComponentProps<typeof AccordionPrimitive.Root> &
   AccordionContextProps) {
   return (
-    <AccordionContext.Provider value={{ variant, layout }}>
-      <AccordionPrimitive.Root data-slot="accordion" {...props} />
-    </AccordionContext.Provider>
+    <AccordionPrimitive.Root data-slot="accordion" {...props}>
+      <AccordionContext.Provider value={{ variant, layout }}>
+        {children}
+      </AccordionContext.Provider>
+    </AccordionPrimitive.Root>
   );
 }
 

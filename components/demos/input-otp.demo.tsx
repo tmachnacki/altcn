@@ -55,7 +55,7 @@ export function InputOTPDemo() {
               placeholder="000000"
               variant={variant as (typeof variants)[number]}
               layout={layout as (typeof layouts)[number]}
-              slotSize={sizesMap[size]}
+              size={sizesMap[size]}
             >
               <InputOTPGroup>
                 <InputOTPSlot index={0} />
@@ -75,7 +75,7 @@ export function InputOTPDemo() {
               placeholder="000000"
               variant={variant as (typeof variants)[number]}
               layout={layout as (typeof layouts)[number]}
-              slotSize={sizesMap[size]}
+              size={sizesMap[size]}
               aria-invalid="true"
             >
               <InputOTPGroup>
@@ -95,7 +95,7 @@ export function InputOTPDemo() {
               placeholder="000000"
               variant={variant as (typeof variants)[number]}
               layout={layout as (typeof layouts)[number]}
-              slotSize={sizesMap[size]}
+              size={sizesMap[size]}
               disabled
             >
               <InputOTPGroup>
@@ -115,7 +115,7 @@ export function InputOTPDemo() {
               maxLength={6}
               variant={variant as (typeof variants)[number]}
               layout={layout as (typeof layouts)[number]}
-              slotSize={sizesMap[size]}
+              size={sizesMap[size]}
             >
               <InputOTPGroup>
                 <InputOTPSlot index={0} />
@@ -151,14 +151,14 @@ export function InputOTPDemo() {
           </Select>
         </div>
         <div className="grid gap-3">
-          <Label htmlFor="slot-size">
-            Slot Size:{" "}
+          <Label htmlFor="otp-size">
+            Size:{" "}
             <span className="font-normal text-primary-muted-foreground">
               {sizesMap[size]}
             </span>
           </Label>
           <Slider
-            id="slot-size"
+            id="otp-size"
             min={1}
             max={3}
             step={1}

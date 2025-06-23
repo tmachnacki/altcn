@@ -176,25 +176,30 @@ function DropdownMenuContent({
   variant = "accent",
   width = "default",
   indicatorVariant = "default",
+  children,
   ...props
 }: React.ComponentProps<typeof DropdownMenuPrimitive.Content> &
   MenuContextProps) {
   return (
-    <DropdownMenuContext.Provider value={{ variant, width, indicatorVariant }}>
-      <DropdownMenuPrimitive.Portal>
-        <DropdownMenuPrimitive.Content
-          data-slot="dropdown-menu-content"
-          sideOffset={sideOffset}
-          className={cn(
-            menuContentVariants(),
-            "max-h-(--radix-dropdown-menu-content-available-height) min-w-[max(var(--radix-dropdown-menu-trigger-width),--spacing(32))] origin-(--radix-dropdown-menu-content-transform-origin)",
-            "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:ease-out data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95",
-            className
-          )}
-          {...props}
-        />
-      </DropdownMenuPrimitive.Portal>
-    </DropdownMenuContext.Provider>
+    <DropdownMenuPrimitive.Portal>
+      <DropdownMenuPrimitive.Content
+        data-slot="dropdown-menu-content"
+        sideOffset={sideOffset}
+        className={cn(
+          menuContentVariants(),
+          "max-h-(--radix-dropdown-menu-content-available-height) min-w-[max(var(--radix-dropdown-menu-trigger-width),--spacing(32))] origin-(--radix-dropdown-menu-content-transform-origin)",
+          "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:ease-out data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95",
+          className
+        )}
+        {...props}
+      >
+        <DropdownMenuContext.Provider
+          value={{ variant, width, indicatorVariant }}
+        >
+          {children}
+        </DropdownMenuContext.Provider>
+      </DropdownMenuPrimitive.Content>
+    </DropdownMenuPrimitive.Portal>
   );
 }
 

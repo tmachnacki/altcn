@@ -138,6 +138,7 @@ export function SelectDemo() {
               indicatorVariant={
                 indicatorVariant as (typeof indicatorVariants)[number]
               }
+              className="max-h-96"
             >
               {Array.from({ length: 100 }).map((_, i) => (
                 <SelectItem key={i} value={`item-${i}`}>

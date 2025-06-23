@@ -20,7 +20,7 @@ const selectTriggerVariants = cva(
     "disabled:cursor-not-allowed disabled:opacity-50",
     "**:[svg]:pointer-events-none **:[svg]:shrink-0",
     "*:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2",
-    "aria-invalid:text-destructive-accent-foreground aria-invalid:[--select-trigger-icon-text:var(--color-destructive-muted-foreground)] aria-invalid:[&_svg:not([class*='text-'])]:text-destructive-muted-foreground",
+    "aria-invalid:text-destructive-accent-foreground aria-invalid:[--select-trigger-icon-text:var(--color-destructive-muted-foreground)] aria-invalid:**:[svg]:not-[[class*='text-']]:text-destructive-muted-foreground",
   ],
   {
     variants: {
@@ -263,38 +263,38 @@ function SelectContent({
   ...props
 }: React.ComponentProps<typeof SelectPrimitive.Content> & SelectVariantsType) {
   return (
-    <SelectContext.Provider
-      value={{ variant, width, indicatorVariant, position }}
-    >
-      <SelectPrimitive.Portal>
-        <SelectPrimitive.Content
-          data-slot="select-content"
-          position={position}
-          align={align}
-          sideOffset={position === "popper" ? 4 : 0}
+    <SelectPrimitive.Portal>
+      <SelectPrimitive.Content
+        data-slot="select-content"
+        position={position}
+        align={align}
+        sideOffset={position === "popper" ? 4 : 0}
+        className={cn(
+          "relative isolate z-50 max-h-(--radix-select-content-available-height) min-w-[max(var(--radix-select-trigger-width),--spacing(32))] origin-(--radix-select-content-transform-origin) rounded-md border border-border bg-popover text-popover-foreground shadow-md",
+          // FIXME: exit animations ain't working
+          "data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
+          position === "popper" && [
+            "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=open]:animate-in data-[state=open]:ease-out data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95",
+          ],
+          className
+        )}
+        {...props}
+      >
+        <SelectScrollUpButton />
+        <SelectPrimitive.Viewport
           className={cn(
-            "relative isolate z-50 max-h-(--radix-select-content-available-height) min-w-[max(var(--radix-select-trigger-width),--spacing(32))] origin-(--radix-select-content-transform-origin) rounded-md border border-border bg-popover text-popover-foreground shadow-md",
-            // FIXME: exit animations ain't working
-            "data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
-            position === "popper" && [
-              "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=open]:animate-in data-[state=open]:ease-out data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95",
-            ],
-            className
+            position === "popper" && "flex w-full flex-1 flex-col p-1"
           )}
-          {...props}
         >
-          <SelectScrollUpButton />
-          <SelectPrimitive.Viewport
-            className={cn(
-              position === "popper" && "flex w-full flex-1 flex-col p-1"
-            )}
+          <SelectContext.Provider
+            value={{ variant, width, indicatorVariant, position }}
           >
             {children}
-          </SelectPrimitive.Viewport>
-          <SelectScrollDownButton />
-        </SelectPrimitive.Content>
-      </SelectPrimitive.Portal>
-    </SelectContext.Provider>
+          </SelectContext.Provider>
+        </SelectPrimitive.Viewport>
+        <SelectScrollDownButton />
+      </SelectPrimitive.Content>
+    </SelectPrimitive.Portal>
   );
 }
 
