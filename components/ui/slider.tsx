@@ -3,20 +3,19 @@
 import * as React from "react";
 import * as SliderPrimitive from "@radix-ui/react-slider";
 import { cva, type VariantProps } from "class-variance-authority";
-import { CircleIcon } from "lucide-react";
 
 import { cn } from "~/lib/utils";
 
 const sliderVariants = cva(
   [
     "relative flex w-full touch-none items-center select-none data-[disabled]:opacity-50 data-[orientation=vertical]:h-full data-[orientation=vertical]:min-h-44 data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col",
-    "aria-invalid:[--slider-marker-bg:var(--color-destructive-foreground)] aria-invalid:[--slider-range-bg:var(--color-destructive)] aria-invalid:[--slider-thumb-border:var(--color-destructive)] aria-invalid:[--slider-thumb-ring:var(--color-border-destructive-faded)]",
+    "aria-invalid:[--slider-range-bg:var(--color-destructive)] aria-invalid:[--slider-thumb-border:var(--color-destructive)] aria-invalid:[--slider-thumb-ring:var(--color-border-destructive-faded)]",
   ],
   {
     variants: {
       variant: {
         primary:
-          "[--slider-marker-bg:var(--color-muted-foreground)] [--slider-marker-selected-bg:var(--color-primary-foreground)] [--slider-track-bg:var(--color-muted)] aria-invalid:[--slider-marker-bg:var(--color-destructive-destructive-muted-foreground)] aria-invalid:[--slider-marker-selected-bg:var(--color-destructive-foreground)] aria-invalid:[--slider-track-bg:var(--color-destructive-muted)]",
+          "[--slider-track-bg:var(--color-muted)] aria-invalid:[--slider-track-bg:var(--color-destructive-muted)]",
 
         "primary-muted":
           "[--slider-track-bg:var(--color-primary-muted)] aria-invalid:[--slider-track-bg:var(--color-destructive-muted)]",
@@ -59,9 +58,7 @@ type SliderProps = React.ComponentProps<typeof SliderPrimitive.Root> &
       track?: string;
       range?: string;
       thumb?: string;
-      marker?: string;
     };
-    markers?: { value: number }[];
   };
 
 function Slider({
@@ -72,7 +69,6 @@ function Slider({
   max = 100,
   orientation = "horizontal",
   variant,
-  markers,
   classNames,
   ...props
 }: SliderProps) {
@@ -112,34 +108,6 @@ function Slider({
             classNames?.range
           )}
         />
-        {markers?.map((marker) => {
-          const isSelected =
-            marker.value >= _values[0] && marker.value <= _values[_values.length - 1];
-          return (
-            <CircleIcon
-              key={marker.value}
-              data-slot="slider-marker"
-              aria-hidden="true"
-              data-state={isSelected ? "selected" : "unselected"}
-              className={cn(
-                "absolute size-1 stroke-none fill-(--slider-marker-bg) data-[state=selected]:fill-(--slider-marker-selected-bg)",
-                orientation === "horizontal"
-                  ? "top-1/2 -translate-y-1/2"
-                  : "left-1/2 -translate-x-1/2",
-                classNames?.marker
-              )}
-              style={
-                orientation === "horizontal"
-                  ? {
-                      left: `calc(${marker.value}% - var(--spacing)*1)`,
-                    }
-                  : {
-                      bottom: `calc(${marker.value}% - var(--spacing)*1)`,
-                    }
-              }
-            />
-          );
-        })}
       </SliderPrimitive.Track>
       {Array.from({ length: _values.length }, (_, index) => (
         <SliderPrimitive.Thumb

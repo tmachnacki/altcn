@@ -50,12 +50,6 @@ export function SliderDemo() {
               step={25}
               variant={variant as (typeof variants)[number]}
               orientation={orientation as (typeof orientations)[number]}
-              markers={[
-                { value: 25 },
-                { value: 50 },
-                { value: 75 },
-                { value: 100 },
-              ]}
             />
             <Slider
               defaultValue={[25, 50]}
@@ -148,6 +142,11 @@ function SliderControlled({ variant }: { variant: (typeof variants)[number] }) {
         variant={variant}
         aria-invalid={hasError}
         aria-errormessage={hasError ? errorMessage : undefined}
+        classNames={{
+          root: "group/slider",
+          range:
+            "bg-gradient-to-r from-primary via-sky-500 to-primary group-aria-invalid/slider:bg-gradient-to-r group-aria-invalid/slider:from-destructive group-aria-invalid/slider:via-pink-500 group-aria-invalid/slider:to-destructive",
+        }}
       />
       {hasError && (
         <span className="text-sm text-destructive-muted-foreground">
