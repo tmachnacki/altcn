@@ -18,7 +18,7 @@ export function ComponentNav() {
               <Link
                 href={component.href}
                 className={cn(
-                  "flex shrink-0 items-center gap-2 rounded-md px-3 py-1.5 text-sm font-medium outline-outline hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-2",
+                  "text-[0.8rem] flex h-8 shrink-0 items-center justify-between gap-2 rounded-md px-2 font-medium outline-outline hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-2",
                   isActive
                     ? "pointer-events-none bg-primary-muted text-primary-muted-foreground"
                     : "text-muted-foreground"

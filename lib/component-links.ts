@@ -55,9 +55,13 @@ export const componentLinks = [
     label: "Input OTP",
     href: "/components/input-otp",
   },
+  // {
+  //   label: "Input Password",
+  //   href: "/components/input-password",
+  // },
   {
     label: "Input Password",
-    href: "/components/input-password",
+    href: "/components/input-password-radix",
   },
   {
     label: "Menubar",
@@ -139,7 +143,4 @@ export const componentLinks = [
     label: "Tooltip",
     href: "/components/tooltip",
   },
-] as const satisfies {
-  label: string;
-  href: string;
-}[];
+] as const;

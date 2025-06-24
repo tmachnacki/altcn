@@ -12,6 +12,9 @@
 - [ ] Tooltip variants
 - [ ] Radio and checkbox variants
 - [ ] Radio Buttons styling
+- [ ] Input-ish components invalid and placeholder styling
+- [ ] Refactor sizing "default" -> "md", declare global sizing utils for xs, sm, md, lg
+- [ ] Try to integrate heroicons instead of lucide
 
 ## Components
 

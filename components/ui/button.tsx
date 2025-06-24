@@ -10,7 +10,7 @@ const buttonVariants = cva(
   [
     "relative isolate inline-flex items-center justify-center gap-2 rounded-md text-sm font-semibold whitespace-nowrap select-none",
     "active:opacity-80",
-    "disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none aria-disabled:pointer-events-none aria-disabled:opacity-50",
+    "disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none aria-disabled:pointer-events-none aria-disabled:opacity-50 aria-disabled:shadow-none",
     "outline-offset-2 focus-visible:outline-2",
     "**:[svg]:pointer-events-none **:[svg]:shrink-0",
   ],
@@ -204,7 +204,7 @@ const buttonVariants = cva(
         ],
 
         xs: [
-          "h-6 gap-1.5 rounded-sm px-2 py-1 text-xs font-normal",
+          "h-6 gap-1.5 rounded-sm px-2 py-1 text-xs font-medium",
           "has-[[data-slot='spinner']]:px-2 has-[>svg]:px-2 **:data-[slot=spinner]:not-[[class*='size-']]:size-3.5 **:[svg]:not-[[class*='size-']]:size-3.5",
         ],
 

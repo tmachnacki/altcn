@@ -17,7 +17,6 @@ type RadioButtonsContextProps = {
   activeVariant?: React.ComponentProps<typeof Button>["variant"];
   inactiveVariant?: React.ComponentProps<typeof Button>["variant"];
   size?: React.ComponentProps<typeof Button>["size"];
-  orientation?: "horizontal" | "vertical";
 };
 
 const RadioButtonsContext = React.createContext<RadioButtonsContextProps>({});
@@ -41,7 +40,7 @@ function RadioButtons({
       {...props}
     >
       <RadioButtonsContext.Provider
-        value={{ activeVariant, inactiveVariant, size, orientation }}
+        value={{ activeVariant, inactiveVariant, size }}
       >
         {children}
       </RadioButtonsContext.Provider>
@@ -71,11 +70,7 @@ function RadioButtonsItem({
             : inactiveVariant || context.inactiveVariant
         }
         size={context.size}
-        className={cn(
-          context.orientation === "horizontal" && "flex-1",
-          checked && "pointer-events-none",
-          className
-        )}
+        className={cn(checked && "pointer-events-none", className)}
         aria-invalid={ariaInvalid}
       >
         {children}
