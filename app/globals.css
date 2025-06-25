@@ -12,10 +12,10 @@
 @custom-variant aria-invalid (&[aria-invalid="true"]);
 
 :root {
-  --size-2xs: --spacing(6);
-  --size-xs: --spacing(7);
+  --size-xs: --spacing(6);
+  /* --size-xs: --spacing(7); */
   --size-sm: --spacing(8);
-  --size-default: --spacing(9);
+  --size-md: --spacing(9);
   --size-lg: --spacing(10);
 
   --background: var(--color-white);

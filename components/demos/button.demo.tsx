@@ -56,19 +56,22 @@ const buttonVariants = [
   "destructive-ghost",
 ] as const;
 
-type ButtonSize = "xs" | "sm" | "default" | "lg";
-type ButtonIconSize = "icon-xs" | "icon-sm" | "icon" | "icon-lg";
-const buttonSizesMap: Record<number, {button: ButtonSize, icon: ButtonIconSize}> = {
-  1: {button: "xs", icon: "icon-xs"},
-  2: {button: "sm", icon: "icon-sm"},
-  3: {button: "default", icon: "icon"},
-  4: {button: "lg", icon: "icon-lg"},
+type ButtonSize = "xs" | "sm" | "md" | "lg";
+type ButtonIconSize = "icon-xs" | "icon-sm" | "icon-md" | "icon-lg";
+const buttonSizesMap: Record<
+  number,
+  { button: ButtonSize; icon: ButtonIconSize }
+> = {
+  1: { button: "xs", icon: "icon-xs" },
+  2: { button: "sm", icon: "icon-sm" },
+  3: { button: "md", icon: "icon-md" },
+  4: { button: "lg", icon: "icon-lg" },
 };
 
 export function ButtonDemo() {
   const [variant, setVariant] = React.useState("outline");
   const [size, setSize] = React.useState(3);
-  
+
   return (
     <>
       <ComponentContainer>

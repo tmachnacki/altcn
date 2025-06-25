@@ -25,10 +25,10 @@ const buttonInputVariants = [
   "secondary-muted",
 ] as const;
 
-type ButtonInputSize = "sm" | "default" | "lg";
+type ButtonInputSize = "sm" | "md" | "lg";
 const buttonInputSizesMap: Record<number, ButtonInputSize> = {
   1: "sm",
-  2: "default",
+  2: "md",
   3: "lg",
 } as const;
 

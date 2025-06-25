@@ -6,7 +6,7 @@ import { type VariantProps } from "class-variance-authority";
 
 import { cn } from "~/lib/utils";
 
-import { buttonVariants } from "~/components/ui/button";
+import { Button, buttonVariants } from "~/components/ui/button";
 
 function AlertDialog({
   ...props
@@ -49,19 +49,23 @@ function AlertDialogOverlay({
 
 function AlertDialogContent({
   className,
-  overlayClassName,
+  classNames,
   ...props
 }: React.ComponentProps<typeof AlertDialogPrimitive.Content> & {
-  overlayClassName?: string;
+  classNames?: {
+    overlay?: string;
+    content?: string;
+  };
 }) {
   return (
     <AlertDialogPortal>
-      <AlertDialogOverlay className={overlayClassName} />
+      <AlertDialogOverlay className={classNames?.overlay} />
       <AlertDialogPrimitive.Content
         data-slot="alert-dialog-content"
         className={cn(
           "fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border bg-background p-6 text-foreground shadow-lg sm:max-w-lg",
           "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:duration-300 data-[state=open]:ease-out data-[state=open]:fade-in-0 data-[state=open]:slide-in-from-bottom-2",
+          classNames?.content,
           className
         )}
         {...props}
@@ -128,30 +132,28 @@ function AlertDialogDescription({
 function AlertDialogAction({
   className,
   variant = "primary",
-  size = "default",
+  size = "md",
   ...props
 }: React.ComponentProps<typeof AlertDialogPrimitive.Action> &
   VariantProps<typeof buttonVariants>) {
   return (
-    <AlertDialogPrimitive.Action
-      className={cn(buttonVariants({ variant, size }), className)}
-      {...props}
-    />
+    <AlertDialogPrimitive.Action asChild {...props}>
+      <Button variant={variant} size={size} className={className} />
+    </AlertDialogPrimitive.Action>
   );
 }
 
 function AlertDialogCancel({
   className,
   variant = "outline",
-  size = "default",
+  size = "md",
   ...props
 }: React.ComponentProps<typeof AlertDialogPrimitive.Cancel> &
   VariantProps<typeof buttonVariants>) {
   return (
-    <AlertDialogPrimitive.Cancel
-      className={cn(buttonVariants({ variant, size }), className)}
-      {...props}
-    />
+    <AlertDialogPrimitive.Cancel asChild {...props}>
+      <Button variant={variant} size={size} className={className} />
+    </AlertDialogPrimitive.Cancel>
   );
 }
 

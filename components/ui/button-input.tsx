@@ -15,9 +15,9 @@ const buttonInputVariants = cva(
   {
     variants: {
       size: {
-        default: "h-9 px-3 py-2 **:[svg]:not-[[class*='size-']]:size-4",
-        sm: "h-8 px-2.5 py-1.5 **:[svg]:not-[[class*='size-']]:size-4",
-        lg: "h-10 px-3.5 py-2.5 text-base **:[svg]:not-[[class*='size-']]:size-5",
+        sm: "h-(--size-sm) px-2.5 py-1.5 **:[svg]:not-[[class*='size-']]:size-4",
+        md: "h-(--size-md) px-3 py-2 **:[svg]:not-[[class*='size-']]:size-4",
+        lg: "h-(--size-lg) px-3.5 py-2.5 text-base **:[svg]:not-[[class*='size-']]:size-5",
       },
       variant: {
         // -- base --
@@ -72,9 +72,21 @@ const buttonInputVariants = cva(
         ],
       },
     },
+    compoundVariants: [
+      {
+        variant: "underlined",
+        size: ["sm", "md"],
+        className: "px-0.5",
+      },
+      {
+        variant: "underlined",
+        size: "lg",
+        className: "px-1",
+      },
+    ],
     defaultVariants: {
       variant: "outline",
-      size: "default",
+      size: "md",
     },
   }
 );
@@ -83,7 +95,7 @@ const buttonInputVariants = cva(
 function ButtonInput({
   className,
   variant = "outline",
-  size = "default",
+  size = "md",
   empty,
   ...props
 }: React.ComponentProps<"button"> &
