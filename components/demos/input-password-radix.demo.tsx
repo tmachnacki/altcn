@@ -26,10 +26,10 @@ const variants = [
   "secondary-muted",
 ] as const;
 
-type Size = "sm" | "default" | "lg";
+type Size = "sm" | "md" | "lg";
 const sizesMap: Record<number, Size> = {
   1: "sm",
-  2: "default",
+  2: "md",
   3: "lg",
 };
 

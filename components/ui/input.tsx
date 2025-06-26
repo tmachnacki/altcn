@@ -14,12 +14,11 @@ const inputVariants = cva(
   {
     variants: {
       size: {
-        default:
-          "h-9 px-3 py-1 text-base file:-my-1 file:-ms-3 file:me-3 file:h-9 file:px-3 sm:text-sm",
+        sm: "h-(--size-sm) px-2.5 py-1 text-sm file:-my-1 file:-ms-2.5 file:me-2.5 file:h-8 file:px-2.5",
 
-        sm: "h-8 px-2.5 py-1 text-sm file:-my-1 file:-ms-2.5 file:me-2.5 file:h-8 file:px-2.5",
+        md: "h-(--size-md) px-3 py-1 text-base file:-my-1 file:-ms-3 file:me-3 file:h-9 file:px-3 sm:text-sm",
 
-        lg: "h-10 px-3.5 py-1.5 text-base file:-my-1.5 file:-ms-3.5 file:me-3.5 file:h-10 file:px-3.5",
+        lg: "h-(--size-lg) px-3.5 py-1.5 text-base file:-my-1.5 file:-ms-3.5 file:me-3.5 file:h-10 file:px-3.5",
       },
       variant: {
         // -- base --
@@ -34,7 +33,7 @@ const inputVariants = cva(
 
           "focus-visible:outline-2 focus-visible:outline-primary",
 
-          "aria-invalid:outline-destructive aria-invalid:file:border-destructive aria-invalid:file:bg-destructive-muted aria-invalid:file:text-destructive-accent-foreground aria-invalid:placeholder:text-destructive-placeholder dark:aria-invalid:bg-destructive-faded",
+          "aria-invalid:not-disabled:outline-destructive/50 aria-invalid:file:bg-destructive-muted aria-invalid:file:text-destructive-accent-foreground aria-invalid:not-disabled:file:border-destructive/50 aria-invalid:placeholder:text-destructive-placeholder aria-invalid:hover:not-disabled:outline-destructive aria-invalid:hover:not-disabled:file:border-destructive aria-invalid:focus-visible:outline-destructive aria-invalid:focus-visible:file:border-destructive dark:aria-invalid:bg-destructive-faded",
         ],
 
         muted: [
@@ -42,11 +41,11 @@ const inputVariants = cva(
 
           "file:bg-base-bg file:text-base-foreground",
 
-          "placeholder:text-muted-foreground",
+          "placeholder:text-placeholder",
 
           "focus-visible:outline-2 focus-visible:outline-primary",
 
-          "aria-invalid:bg-destructive-muted aria-invalid:file:bg-destructive aria-invalid:file:text-destructive-foreground aria-invalid:placeholder:text-destructive-muted-foreground aria-invalid:hover:not-focus-visible:bg-hover-destructive-muted aria-invalid:focus-visible:outline-destructive",
+          "aria-invalid:bg-destructive-muted aria-invalid:file:bg-destructive aria-invalid:file:text-destructive-foreground aria-invalid:placeholder:text-destructive-placeholder aria-invalid:hover:not-focus-visible:bg-hover-destructive-muted aria-invalid:focus-visible:outline-destructive",
         ],
 
         underlined: [
@@ -58,7 +57,7 @@ const inputVariants = cva(
 
           "focus-visible:shadow-[inset_0_-2px_0_0_var(--color-primary)]",
 
-          "aria-invalid:shadow-[inset_0_-1px_0_0_var(--color-destructive)] aria-invalid:file:text-destructive-muted-foreground aria-invalid:placeholder:text-destructive-placeholder aria-invalid:focus-visible:shadow-[inset_0_-2px_0_0_var(--color-destructive)]",
+          "aria-invalid:shadow-[inset_0_-1px_0_0_--alpha(var(--color-destructive)/50%)] aria-invalid:file:text-destructive-muted-foreground aria-invalid:placeholder:text-destructive-placeholder aria-invalid:hover:not-disabled:not-focus-visible:shadow-[inset_0_-1px_0_0_var(--color-destructive)] aria-invalid:focus-visible:shadow-[inset_0_-2px_0_0_var(--color-destructive)]",
         ],
 
         // -- primary --
@@ -67,13 +66,13 @@ const inputVariants = cva(
 
           "file:bg-primary file:text-primary-foreground",
 
-          "placeholder:text-primary-muted-foreground",
+          "placeholder:text-primary-placeholder",
 
-          "disabled:bg-muted disabled:text-accent-foreground disabled:file:bg-base-bg disabled:file:text-base-foreground disabled:placeholder:text-muted-foreground",
+          "disabled:bg-muted disabled:text-accent-foreground disabled:file:bg-base-bg disabled:file:text-base-foreground disabled:placeholder:text-placeholder",
 
           "focus-visible:outline-2 focus-visible:outline-primary",
 
-          "aria-invalid:bg-destructive-muted aria-invalid:file:bg-destructive aria-invalid:file:text-destructive-foreground aria-invalid:placeholder:text-destructive-muted-foreground aria-invalid:hover:not-focus-visible:bg-hover-destructive-muted aria-invalid:focus-visible:outline-destructive",
+          "aria-invalid:bg-destructive-muted aria-invalid:file:bg-destructive aria-invalid:file:text-destructive-foreground aria-invalid:placeholder:text-destructive-placeholder aria-invalid:hover:not-focus-visible:bg-hover-destructive-muted aria-invalid:focus-visible:outline-destructive",
         ],
 
         // -- secondary --
@@ -84,20 +83,20 @@ const inputVariants = cva(
 
           "file:bg-secondary file:text-secondary-foreground",
 
-          "placeholder:text-secondary-muted-foreground",
+          "placeholder:text-secondary-placeholder",
 
           "disabled:bg-muted disabled:text-accent-foreground disabled:file:bg-base-bg disabled:file:text-base-foreground disabled:placeholder:text-muted-foreground",
 
           "focus-visible:outline-2 focus-visible:outline-secondary",
 
-          "aria-invalid:bg-destructive-muted aria-invalid:file:bg-destructive aria-invalid:file:text-destructive-foreground aria-invalid:placeholder:text-destructive-muted-foreground aria-invalid:hover:not-focus-visible:bg-hover-destructive-muted aria-invalid:focus-visible:outline-destructive",
+          "aria-invalid:bg-destructive-muted aria-invalid:file:bg-destructive aria-invalid:file:text-destructive-foreground aria-invalid:placeholder:text-destructive-placeholder aria-invalid:hover:not-focus-visible:bg-hover-destructive-muted aria-invalid:focus-visible:outline-destructive",
         ],
       },
     },
     compoundVariants: [
       {
         variant: "underlined",
-        size: "default",
+        size: "md",
         className: "file:me-3",
       },
       {
@@ -113,7 +112,7 @@ const inputVariants = cva(
     ],
     defaultVariants: {
       variant: "outline",
-      size: "default",
+      size: "md",
     },
   }
 );
@@ -122,7 +121,7 @@ function Input({
   className,
   type = "text",
   variant = "outline",
-  size = "default",
+  size = "md",
   htmlSize,
   ...props
 }: Omit<React.ComponentProps<"input">, "size" | "type"> & {

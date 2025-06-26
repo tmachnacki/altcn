@@ -52,7 +52,7 @@ function PaginationLink({
   className,
   disabled,
   isActive,
-  size = "icon",
+  size = "icon-md",
   activeVariant = "primary",
   inactiveVariant = "outline",
   ...props
@@ -85,7 +85,7 @@ type PaginationControlProps = {
 function PaginationControl({
   className,
   disabled,
-  size = "default",
+  size = "md",
   variant = "ghost",
   ...props
 }: PaginationControlProps) {

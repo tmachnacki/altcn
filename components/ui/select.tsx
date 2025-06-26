@@ -3,12 +3,7 @@
 import * as React from "react";
 import * as SelectPrimitive from "@radix-ui/react-select";
 import { cva, type VariantProps } from "class-variance-authority";
-import {
-  CheckIcon,
-  ChevronDownIcon,
-  ChevronsUpDownIcon,
-  ChevronUpIcon,
-} from "lucide-react";
+import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from "lucide-react";
 
 import { cn } from "~/lib/utils";
 
@@ -17,74 +12,106 @@ import { cn } from "~/lib/utils";
 const selectTriggerVariants = cva(
   [
     "flex w-fit items-center justify-between gap-2 rounded-md text-sm whitespace-nowrap",
+
     "disabled:cursor-not-allowed disabled:opacity-50",
-    "**:[svg]:pointer-events-none **:[svg]:shrink-0",
+
+    "**:[svg]:pointer-events-none **:[svg]:shrink-0 **:[svg]:grow-0",
+
     "*:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2",
+
     "aria-invalid:text-destructive-accent-foreground aria-invalid:[--select-trigger-icon-text:var(--color-destructive-muted-foreground)] aria-invalid:**:[svg]:not-[[class*='text-']]:text-destructive-muted-foreground",
   ],
   {
     variants: {
       size: {
-        default: "h-9 px-3 py-2 **:[svg]:not-[[class*='size-']]:size-4",
-        sm: "h-8 px-2.5 py-1.5 **:[svg]:not-[[class*='size-']]:size-4",
-        lg: "h-10 px-3.5 py-2.5 text-base **:[svg]:not-[[class*='size-']]:size-5",
+        md: "h-(--size-md) px-3 py-2 **:[svg]:not-[[class*='size-']]:size-4",
+        sm: "h-(--size-sm) px-2.5 py-1.5 **:[svg]:not-[[class*='size-']]:size-4",
+        lg: "h-(--size-lg) px-3.5 py-2.5 text-base **:[svg]:not-[[class*='size-']]:size-5",
       },
       variant: {
         // -- base --
         outline: [
           "bg-background text-accent-foreground shadow-xs outline-1 -outline-offset-1 outline-border hover:not-disabled:not-aria-invalid:not-focus-visible:outline-hover-border dark:bg-faded",
+
           "**:[svg]:not-[[class*='text-']]:text-muted-foreground",
+
           "[--select-trigger-icon-text:var(--color-muted-foreground)]",
+
           "data-[placeholder]:text-placeholder",
+
           "disabled:bg-faded disabled:shadow-none",
+
           "focus-visible:outline-2 focus-visible:outline-primary",
-          "aria-invalid:outline-destructive aria-invalid:data-[placeholder]:text-destructive-placeholder dark:aria-invalid:bg-destructive-faded",
+
+          "aria-invalid:outline-destructive/50 aria-invalid:hover:not-disabled:outline-destructive aria-invalid:focus-visible:outline-destructive aria-invalid:disabled:bg-destructive-faded aria-invalid:data-[placeholder]:text-destructive-placeholder dark:aria-invalid:bg-destructive-faded",
         ],
 
         muted: [
           "bg-muted text-accent-foreground -outline-offset-1 hover:not-disabled:not-aria-invalid:not-focus-visible:bg-hover-muted",
+
           "**:[svg]:not-[[class*='text-']]:text-muted-foreground",
+
           "[--select-trigger-icon-text:var(--color-muted-foreground)]",
-          "data-[placeholder]:text-muted-foreground",
+
+          "data-[placeholder]:text-placeholder",
+
           "focus-visible:outline-2 focus-visible:outline-primary",
-          "aria-invalid:bg-destructive-muted aria-invalid:outline-destructive aria-invalid:hover:not-disabled:not-focus-visible:bg-hover-destructive-muted aria-invalid:data-[placeholder]:text-destructive-muted-foreground",
+
+          "aria-invalid:bg-destructive-muted aria-invalid:outline-destructive aria-invalid:hover:not-disabled:not-focus-visible:bg-hover-destructive-muted aria-invalid:data-[placeholder]:text-destructive-placeholder",
         ],
 
         underlined: [
           "rounded-none bg-transparent shadow-[inset_0_-1px_0_0_var(--color-border)] outline-none hover:not-disabled:not-aria-invalid:not-focus-visible:shadow-[inset_0_-1px_0_0_var(--color-hover-border)]",
+
           "**:[svg]:not-[[class*='text-']]:text-muted-foreground",
+
           "[--select-trigger-icon-text:var(--color-muted-foreground)]",
+
           "data-[placeholder]:text-placeholder",
+
           "focus-visible:shadow-[inset_0_-2px_0_0_var(--color-primary)]",
-          "aria-invalid:shadow-[inset_0_-1px_0_0_var(--color-destructive)] aria-invalid:focus-visible:shadow-[inset_0_-2px_0_0_var(--color-destructive)] aria-invalid:data-[placeholder]:text-destructive-placeholder",
+
+          "aria-invalid:shadow-[inset_0_-1px_0_0_--alpha(var(--color-destructive)/50%)] aria-invalid:hover:not-disabled:shadow-[inset_0_-1px_0_0_var(--color-destructive)] aria-invalid:focus-visible:shadow-[inset_0_-2px_0_0_var(--color-destructive)] aria-invalid:data-[placeholder]:text-destructive-placeholder",
         ],
 
         // -- primary --
         "primary-muted": [
           "bg-primary-muted text-primary-accent-foreground -outline-offset-1 hover:not-disabled:not-aria-invalid:not-focus-visible:bg-hover-primary-muted",
+
           "**:[svg]:not-[[class*='text-']]:text-primary-muted-foreground",
+
           "[--select-trigger-icon-text:var(--color-primary-muted-foreground)]",
-          "data-[placeholder]:text-primary-muted-foreground",
-          "disabled:bg-muted disabled:text-accent-foreground disabled:[--select-trigger-icon-text:var(--color-muted-foreground)] disabled:data-[placeholder]:text-muted-foreground disabled:**:[svg]:not-[[class*='text-']]:text-muted-foreground",
+
+          "data-[placeholder]:text-primary-placeholder",
+
+          "disabled:bg-muted disabled:text-accent-foreground disabled:[--select-trigger-icon-text:var(--color-muted-foreground)] disabled:data-[placeholder]:text-placeholder disabled:**:[svg]:not-[[class*='text-']]:text-muted-foreground",
+
           "focus-visible:outline-2 focus-visible:outline-primary",
-          "aria-invalid:bg-destructive-muted aria-invalid:outline-destructive aria-invalid:hover:not-disabled:not-focus-visible:bg-hover-destructive-muted aria-invalid:data-[placeholder]:text-destructive-muted-foreground",
+
+          "aria-invalid:bg-destructive-muted aria-invalid:outline-destructive aria-invalid:hover:not-disabled:not-focus-visible:bg-hover-destructive-muted aria-invalid:data-[placeholder]:text-destructive-placeholder",
         ],
 
         // -- secondary --
         "secondary-muted": [
           "bg-secondary-muted text-secondary-accent-foreground -outline-offset-1 hover:not-disabled:not-aria-invalid:not-focus-visible:bg-hover-secondary-muted",
+
           "**:[svg]:not-[[class*='text-']]:text-secondary-muted-foreground",
+
           "[--select-trigger-icon-text:var(--color-secondary-muted-foreground)]",
-          "data-[placeholder]:text-secondary-muted-foreground",
-          "disabled:bg-muted disabled:text-accent-foreground disabled:[--select-trigger-icon-text:var(--color-muted-foreground)] disabled:data-[placeholder]:text-muted-foreground disabled:**:[svg]:not-[[class*='text-']]:text-muted-foreground",
+
+          "data-[placeholder]:text-secondary-placeholder",
+
+          "disabled:bg-muted disabled:text-accent-foreground disabled:[--select-trigger-icon-text:var(--color-muted-foreground)] disabled:data-[placeholder]:text-placeholder disabled:**:[svg]:not-[[class*='text-']]:text-muted-foreground",
+
           "focus-visible:outline-2 focus-visible:outline-secondary",
-          "aria-invalid:bg-destructive-muted aria-invalid:outline-destructive aria-invalid:hover:not-disabled:not-focus-visible:bg-hover-destructive-muted aria-invalid:data-[placeholder]:text-destructive-muted-foreground",
+
+          "aria-invalid:bg-destructive-muted aria-invalid:outline-destructive aria-invalid:hover:not-disabled:not-focus-visible:bg-hover-destructive-muted aria-invalid:data-[placeholder]:text-destructive-placeholder",
         ],
       },
     },
     defaultVariants: {
       variant: "outline",
-      size: "default",
+      size: "md",
     },
   }
 );
@@ -222,7 +249,7 @@ function SelectValue({
 function SelectTrigger({
   className,
   variant = "outline",
-  size = "default",
+  size = "md",
   children,
   ...props
 }: React.ComponentProps<typeof SelectPrimitive.Trigger> &
@@ -235,7 +262,18 @@ function SelectTrigger({
     >
       {children}
       <SelectPrimitive.Icon data-slot="select-trigger-icon" asChild>
-        <ChevronsUpDownIcon className="text-(--select-trigger-icon-text)/60" />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 16 16"
+          fill="currentColor"
+          className="-mr-1 text-(--select-trigger-icon-text)/60"
+        >
+          <path
+            fillRule="evenodd"
+            d="M5.22 10.22a.75.75 0 0 1 1.06 0L8 11.94l1.72-1.72a.75.75 0 1 1 1.06 1.06l-2.25 2.25a.75.75 0 0 1-1.06 0l-2.25-2.25a.75.75 0 0 1 0-1.06ZM10.78 5.78a.75.75 0 0 1-1.06 0L8 4.06 6.28 5.78a.75.75 0 0 1-1.06-1.06l2.25-2.25a.75.75 0 0 1 1.06 0l2.25 2.25a.75.75 0 0 1 0 1.06Z"
+            clipRule="evenodd"
+          />
+        </svg>
       </SelectPrimitive.Icon>
     </SelectPrimitive.Trigger>
   );

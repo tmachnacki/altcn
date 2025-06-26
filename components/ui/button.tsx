@@ -8,11 +8,11 @@ import { Tron } from "~/components/ui/tron";
 
 const buttonVariants = cva(
   [
-    "relative isolate inline-flex items-center justify-center gap-2 rounded-md text-sm font-semibold whitespace-nowrap select-none",
+    "touch-target relative isolate inline-flex items-center justify-center gap-2 rounded-md text-sm font-semibold whitespace-nowrap select-none",
     "active:opacity-80",
     "disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none aria-disabled:pointer-events-none aria-disabled:opacity-50 aria-disabled:shadow-none",
     "outline-offset-2 focus-visible:outline-2",
-    "**:[svg]:pointer-events-none **:[svg]:shrink-0",
+    "**:[svg]:pointer-events-none **:[svg]:shrink-0 **:[svg]:grow-0",
   ],
   {
     variants: {

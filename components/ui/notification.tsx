@@ -6,7 +6,7 @@ import { cn } from "~/lib/utils";
 const notificationVariants = cva(
   [
     "inline-flex shrink-0 items-center justify-center gap-1 rounded-full p-1 text-xs leading-none font-normal whitespace-nowrap tabular-nums",
-    "*:[svg]:pointer-events-none *:[svg]:not-[[class*='size-']]:size-3",
+    "**:[svg]:pointer-events-none **:[svg]:not-[[class*='size-']]:size-3",
   ],
   {
     variants: {

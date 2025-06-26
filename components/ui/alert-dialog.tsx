@@ -64,7 +64,7 @@ function AlertDialogContent({
         data-slot="alert-dialog-content"
         className={cn(
           "fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border bg-background p-6 text-foreground shadow-lg sm:max-w-lg",
-          "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:duration-300 data-[state=open]:ease-out data-[state=open]:fade-in-0 data-[state=open]:slide-in-from-bottom-2",
+          "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-[97.5%] data-[state=open]:animate-in data-[state=open]:duration-300 data-[state=open]:ease-out data-[state=open]:fade-in-0 data-[state=open]:slide-in-from-bottom-2",
           classNames?.content,
           className
         )}
@@ -133,12 +133,15 @@ function AlertDialogAction({
   className,
   variant = "primary",
   size = "md",
+  children,
   ...props
 }: React.ComponentProps<typeof AlertDialogPrimitive.Action> &
   VariantProps<typeof buttonVariants>) {
   return (
     <AlertDialogPrimitive.Action asChild {...props}>
-      <Button variant={variant} size={size} className={className} />
+      <Button variant={variant} size={size} className={className}>
+        {children}
+      </Button>
     </AlertDialogPrimitive.Action>
   );
 }
@@ -147,12 +150,15 @@ function AlertDialogCancel({
   className,
   variant = "outline",
   size = "md",
+  children,
   ...props
 }: React.ComponentProps<typeof AlertDialogPrimitive.Cancel> &
   VariantProps<typeof buttonVariants>) {
   return (
     <AlertDialogPrimitive.Cancel asChild {...props}>
-      <Button variant={variant} size={size} className={className} />
+      <Button variant={variant} size={size} className={className}>
+        {children}
+      </Button>
     </AlertDialogPrimitive.Cancel>
   );
 }

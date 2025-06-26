@@ -25,7 +25,7 @@ function RadioButtons({
   className,
   activeVariant = "primary",
   inactiveVariant = "outline",
-  size = "default",
+  size = "md",
   orientation = "horizontal",
   children,
   ...props

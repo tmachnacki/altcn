@@ -62,11 +62,11 @@ const variants = [
   "destructive-ghost",
 ] as const;
 
-type Size = "xs" | "sm" | "default" | "lg";
+type Size = "xs" | "sm" | "md" | "lg";
 const sizesMap: Record<number, Size> = {
   1: "xs",
   2: "sm",
-  3: "default",
+  3: "md",
   4: "lg",
 } as const;
 
@@ -147,8 +147,13 @@ export function RadioButtonsDemo() {
           </Select>
         </div>
 
-        <div className="flex items-center gap-3">
-          <Label>Size</Label>
+        <div className="grid gap-3">
+          <Label>
+            Size:{" "}
+            <span className="font-normal text-primary-muted-foreground">
+              {sizesMap[size]}
+            </span>
+          </Label>
           <Slider
             min={1}
             max={4}

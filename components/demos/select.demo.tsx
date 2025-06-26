@@ -37,10 +37,10 @@ const triggerVariants = [
   "secondary-muted",
 ] as const;
 
-type TriggerSize = "default" | "sm" | "lg";
+type TriggerSize = "sm" | "md" | "lg";
 const triggerSizesMap: Record<number, TriggerSize> = {
   1: "sm",
-  2: "default",
+  2: "md",
   3: "lg",
 };
 

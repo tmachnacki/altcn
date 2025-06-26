@@ -43,7 +43,7 @@
   /* --accent: --alpha(var(--color-base-200) / 70%); */
   --accent-foreground: var(--color-base-950);
   --subtle-foreground: var(--color-base-700);
-  --placeholder: var(--color-base-400);
+  --placeholder: --alpha(var(--color-base-500) / 70%);
   /* --muted: var(--color-base-100); */
   --muted: --alpha(var(--color-base-200) / 60%);
   --hover-muted: var(--color-base-200);
@@ -85,6 +85,7 @@
   --border-primary-tron: --alpha(var(--color-primary) / 30%);
   --hover-border-primary-tron: --alpha(var(--color-primary) / 50%);
   --primary-tron-blur: var(--color-purple-400);
+  --primary-placeholder: --alpha(var(--color-primary-600) / 60%);
 
   --secondary: var(--color-secondary-400);
   --hover-secondary: color-mix(
@@ -130,6 +131,7 @@
   --border-secondary-tron: --alpha(var(--color-secondary) / 30%);
   --hover-border-secondary-tron: --alpha(var(--color-secondary) / 50%);
   --secondary-tron-blur: var(--color-cyan-400);
+  --secondary-placeholder: --alpha(var(--color-secondary-600) / 60%);
 
   --destructive: var(--color-destructive-500);
   --hover-destructive: color-mix(
@@ -163,7 +165,7 @@
   --border-destructive-tron: --alpha(var(--color-destructive) / 30%);
   --hover-border-destructive-tron: --alpha(var(--color-destructive) / 50%);
   --destructive-tron-blur: var(--color-pink-400);
-  --destructive-placeholder: var(--color-destructive-400);
+  --destructive-placeholder: --alpha(var(--color-destructive-500) / 60%);
 
   --success: var(--color-success-600);
   --hover-success: color-mix(
@@ -292,7 +294,7 @@
   );
   --hover-faded: var(--color-base-900);
   --border-faded: --alpha(var(--color-base-400) / 15%);
-  --placeholder: var(--color-base-500);
+  --placeholder: --alpha(var(--color-base-400) / 60%);
 
   --primary: var(--color-primary-500);
   --hover-primary: color-mix(
@@ -330,6 +332,7 @@
   --border-primary-tron: --alpha(var(--color-primary) / 30%);
   --hover-border-primary-tron: --alpha(var(--color-primary) / 50%);
   --primary-tron-blur: var(--color-purple-400);
+  --primary-placeholder: --alpha(var(--color-primary-300) / 60%);
 
   --secondary: var(--color-secondary-400);
   --hover-secondary: color-mix(
@@ -367,6 +370,7 @@
   --border-secondary-tron: --alpha(var(--color-secondary) / 30%);
   --hover-border-secondary-tron: --alpha(var(--color-secondary) / 50%);
   --secondary-tron-blur: var(--color-cyan-400);
+  --secondary-placeholder: --alpha(var(--color-secondary-300) / 50%);
 
   --destructive: var(--color-destructive-600);
   --hover-destructive: color-mix(
@@ -616,6 +620,7 @@
   --color-border-primary-tron: var(--border-primary-tron);
   --color-hover-border-primary-tron: var(--hover-border-primary-tron);
   --color-primary-tron-blur: var(--primary-tron-blur);
+  --color-primary-placeholder: var(--primary-placeholder);
 
   --color-secondary: var(--secondary);
   --color-hover-secondary: var(--hover-secondary);
@@ -631,6 +636,7 @@
   --color-border-secondary-tron: var(--border-secondary-tron);
   --color-hover-border-secondary-tron: var(--hover-border-secondary-tron);
   --color-secondary-tron-blur: var(--secondary-tron-blur);
+  --color-secondary-placeholder: var(--secondary-placeholder);
 
   --color-destructive: var(--destructive);
   --color-hover-destructive: var(--hover-destructive);

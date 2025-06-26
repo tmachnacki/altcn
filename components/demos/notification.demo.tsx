@@ -103,7 +103,7 @@ export function NotificationDemo() {
 
           <div className="flex flex-wrap items-center gap-4">
             <div className="relative">
-              <Button variant="accent" size="icon">
+              <Button variant="accent" size="icon-md">
                 <MessageCircleIcon />
               </Button>
               <Notification
@@ -116,7 +116,7 @@ export function NotificationDemo() {
               </Notification>
             </div>
             <div className="relative">
-              <Button variant="accent" size="icon">
+              <Button variant="accent" size="icon-md">
                 <MessageCircleIcon />
               </Button>
               <Notification
@@ -127,7 +127,7 @@ export function NotificationDemo() {
               />
             </div>
             <div className="relative">
-              <Button variant="accent" size="icon">
+              <Button variant="accent" size="icon-md">
                 <MessageCircleIcon />
               </Button>
               <Notification
@@ -140,7 +140,7 @@ export function NotificationDemo() {
               </Notification>
             </div>
             <div className="relative">
-              <Button variant="accent" size="icon">
+              <Button variant="accent" size="icon-md">
                 <MessageCircleIcon />
               </Button>
               <Notification

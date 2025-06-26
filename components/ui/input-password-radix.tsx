@@ -14,53 +14,60 @@ const inputPasswordContainerVariants = cva(
   {
     variants: {
       size: {
-        default: "h-(--size-default)",
+        md: "h-(--size-md)",
         sm: "h-(--size-sm)",
         lg: "h-(--size-lg)",
       },
       variant: {
         outline: [
           "bg-background shadow-xs outline-1 -outline-offset-1 outline-border dark:bg-faded",
-          "hover:not-has-disabled:not-has-focus:not-has-aria-invalid:outline-hover-border hover:not-has-aria-invalid:has-[button:focus-visible]:outline-hover-border",
+
+          "hover:not-has-disabled:not-focus-within:not-has-aria-invalid:outline-hover-border",
+
           "has-disabled:bg-faded has-disabled:shadow-none",
-          "has-focus:outline-2 has-focus:outline-primary has-[button:focus-visible]:outline-1 has-[button:focus-visible]:outline-border",
-          "has-aria-invalid:outline-destructive/50 has-aria-invalid:has-focus:outline-destructive has-aria-invalid:hover:not-has-disabled:not-has-focus:outline-destructive dark:has-aria-invalid:bg-destructive-faded",
+
+          "focus-within:outline-2 focus-within:outline-primary",
+
+          "has-aria-invalid:outline-destructive/50 has-aria-invalid:focus-within:outline-destructive has-aria-invalid:hover:not-has-disabled:not-focus-within:outline-destructive has-aria-invalid:has-disabled:bg-destructive-faded dark:has-aria-invalid:bg-destructive-faded",
         ],
         muted: [
           "bg-muted outline-0 -outline-offset-1",
-          "hover:not-has-disabled:not-has-focus:not-has-aria-invalid:bg-hover-muted hover:not-has-aria-invalid:has-[button:focus-visible]:bg-hover-muted",
-          "outline-primary has-focus:outline-2 has-[button:focus-visible]:outline-0",
-          "has-aria-invalid:bg-destructive-muted has-aria-invalid:outline-destructive has-aria-invalid:hover:not-has-disabled:not-has-focus:bg-hover-destructive-muted has-aria-invalid:hover:has-[button:focus-visible]:bg-hover-destructive-muted",
+
+          "hover:not-has-disabled:not-focus-within:not-has-aria-invalid:bg-hover-muted",
+
+          "outline-primary focus-within:outline-2",
+
+          "has-aria-invalid:bg-destructive-muted has-aria-invalid:outline-destructive has-aria-invalid:hover:not-has-disabled:not-focus-within:bg-hover-destructive-muted",
         ],
         underlined: [
-          "rounded-none bg-transparent shadow-[inset_0_-1px_0_0_var(--color-border)] outline-none hover:not-has-disabled:not-has-focus:not-has-aria-invalid:shadow-[inset_0_-1px_0_0_var(--color-hover-border)]",
+          "rounded-none bg-transparent shadow-[inset_0_-1px_0_0_var(--color-border)] outline-none hover:not-has-disabled:not-focus-within:not-has-aria-invalid:shadow-[inset_0_-1px_0_0_var(--color-hover-border)]",
 
-          "has-focus:shadow-[inset_0_-2px_0_0_var(--color-primary)]",
+          "focus-within:shadow-[inset_0_-2px_0_0_var(--color-primary)]",
 
-          "has-aria-invalid:shadow-[inset_0_-1px_0_0_var(--color-destructive)] has-aria-invalid:has-focus:shadow-[inset_0_-2px_0_0_var(--color-destructive)]",
+          "has-aria-invalid:shadow-[inset_0_-1px_0_0_--alpha(var(--color-destructive)/50%)] has-aria-invalid:focus-within:shadow-[inset_0_-2px_0_0_var(--color-destructive)] has-aria-invalid:hover:not-has-disabled:shadow-[inset_0_-1px_0_0_var(--color-destructive)]",
         ],
         "primary-muted": [
-          "bg-primary-muted outline-0 -outline-offset-1 hover:not-has-disabled:not-has-focus:not-has-aria-invalid:bg-hover-primary-muted",
+          "bg-primary-muted outline-0 -outline-offset-1 hover:not-has-disabled:not-focus-within:not-has-aria-invalid:bg-hover-primary-muted",
 
           "has-disabled:bg-muted",
 
-          "outline-primary focus-visible:outline-2",
+          "outline-primary focus-within:outline-2",
 
-          "has-aria-invalid:bg-destructive-muted has-aria-invalid:hover:not-has-focus:bg-hover-destructive-muted has-aria-invalid:has-focus:outline-destructive",
+          "has-aria-invalid:bg-destructive-muted has-aria-invalid:focus-within:outline-destructive has-aria-invalid:hover:not-has-disabled:not-focus-within:bg-hover-destructive-muted",
         ],
         "secondary-muted": [
-          "bg-secondary-muted outline-0 -outline-offset-1 hover:not-has-disabled:not-has-focus:not-has-aria-invalid:bg-hover-secondary-muted",
+          "bg-secondary-muted outline-0 -outline-offset-1 hover:not-has-disabled:not-focus-within:not-has-aria-invalid:bg-hover-secondary-muted",
 
           "has-disabled:bg-muted",
 
-          "outline-secondary has-focus:outline-2",
+          "outline-secondary focus-within:outline-2",
 
-          "has-aria-invalid:bg-destructive-muted has-aria-invalid:hover:not-has-focus:bg-hover-destructive-muted has-aria-invalid:has-focus:outline-destructive",
+          "has-aria-invalid:bg-destructive-muted has-aria-invalid:focus-within:outline-destructive has-aria-invalid:hover:not-has-disabled:not-focus-within:bg-hover-destructive-muted",
         ],
       },
     },
     defaultVariants: {
-      size: "default",
+      size: "md",
       variant: "outline",
     },
   }
@@ -75,9 +82,9 @@ const inputPasswordInputVariants = cva(
   {
     variants: {
       size: {
-        default: "py-1 pr-10 pl-3 text-base sm:text-sm",
+        md: "py-1 pr-10 pl-3 text-base sm:text-sm",
         sm: "py-1 pr-9 pl-2.5 text-sm",
-        lg: "py-1.5 pr-11 pl-3.5 text-base sm:text-sm",
+        lg: "py-1.5 pr-11 pl-3.5 text-base",
       },
       variant: {
         outline: [
@@ -87,8 +94,8 @@ const inputPasswordInputVariants = cva(
         ],
         muted: [
           "text-accent-foreground",
-          "placeholder:text-muted-foreground",
-          "aria-invalid:placeholder:text-destructive-muted-foreground",
+          "placeholder:text-placeholder",
+          "aria-invalid:placeholder:text-destructive-placeholder",
         ],
         underlined: [
           "pl-0.5 text-foreground",
@@ -97,22 +104,22 @@ const inputPasswordInputVariants = cva(
         ],
         "primary-muted": [
           "text-primary-accent-foreground",
-          "disabled:text-accent-foreground disabled:placeholder:text-muted-foreground",
-          "placeholder:text-primary-muted-foreground",
-          "aria-invalid:placeholder:text-destructive-muted-foreground",
+          "disabled:text-accent-foreground disabled:placeholder:text-placeholder",
+          "placeholder:text-primary-placeholder",
+          "aria-invalid:placeholder:text-destructive-placeholder",
         ],
         "secondary-muted": [
           "text-secondary-accent-foreground",
           "selection:bg-secondary selection:text-secondary-foreground",
-          "disabled:text-accent-foreground disabled:placeholder:text-muted-foreground",
-          "placeholder:text-secondary-muted-foreground",
-          "aria-invalid:placeholder:text-destructive-muted-foreground",
+          "disabled:text-accent-foreground disabled:placeholder:text-placeholder",
+          "placeholder:text-secondary-placeholder",
+          "aria-invalid:placeholder:text-destructive-placeholder",
         ],
       },
     },
     compoundVariants: [
       {
-        size: "default",
+        size: "md",
         variant: "underlined",
         className: "pr-[calc(var(--spacing)*9.5)]",
       },
@@ -128,7 +135,7 @@ const inputPasswordInputVariants = cva(
       },
     ],
     defaultVariants: {
-      size: "default",
+      size: "md",
       variant: "outline",
     },
   }
@@ -136,14 +143,14 @@ const inputPasswordInputVariants = cva(
 
 const inputPasswordToggleVariants = cva(
   [
-    "touch-target col-start-1 row-start-1 mr-1 inline-flex flex-none items-center justify-center self-center justify-self-end rounded-sm outline-offset-0 focus-visible:outline-2 active:opacity-80",
+    "touch-target col-start-1 row-start-1 mr-1 inline-flex flex-none items-center justify-center self-center justify-self-end rounded-sm -outline-offset-1 focus-visible:outline-2 active:opacity-80",
     "peer-aria-invalid/input-password-input:text-destructive-muted-foreground peer-aria-invalid/input-password-input:outline-destructive peer-aria-invalid/input-password-input:hover:bg-destructive-500/20",
-    "disabled:pointer-events-none disabled:text-muted-foreground",
+    "disabled:pointer-events-none",
   ],
   {
     variants: {
       size: {
-        default: "size-7 *:[svg]:size-4",
+        md: "size-7 *:[svg]:size-4",
         sm: "size-6 *:[svg]:size-4",
         lg: "size-8 *:[svg]:size-5",
       },
@@ -159,7 +166,7 @@ const inputPasswordToggleVariants = cva(
       },
     },
     defaultVariants: {
-      size: "default",
+      size: "md",
       variant: "outline",
     },
   }
@@ -185,7 +192,7 @@ type InputPasswordProps = Omit<
   };
 
 function InputPasswordRadix({
-  size = "default",
+  size = "md",
   variant = "outline",
   disabled,
   htmlSize,
