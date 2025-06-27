@@ -33,7 +33,7 @@ const inputVariants = cva(
 
           "focus-visible:outline-2 focus-visible:outline-primary",
 
-          "aria-invalid:not-disabled:outline-destructive/50 aria-invalid:file:bg-destructive-muted aria-invalid:file:text-destructive-accent-foreground aria-invalid:not-disabled:file:border-destructive/50 aria-invalid:placeholder:text-destructive-placeholder aria-invalid:hover:not-disabled:outline-destructive aria-invalid:hover:not-disabled:file:border-destructive aria-invalid:focus-visible:outline-destructive aria-invalid:focus-visible:file:border-destructive dark:aria-invalid:bg-destructive-faded",
+          "aria-invalid:not-disabled:outline-destructive/50 aria-invalid:file:bg-destructive-muted aria-invalid:file:text-destructive-accent-foreground aria-invalid:not-disabled:file:border-destructive/50 aria-invalid:placeholder:text-destructive-placeholder aria-invalid:hover:not-disabled:outline-destructive aria-invalid:hover:not-disabled:file:border-destructive aria-invalid:focus-visible:outline-destructive aria-invalid:focus-visible:file:border-destructive dark:aria-invalid:bg-destructive-faded aria-invalid:disabled:bg-destructive-faded",
         ],
 
         muted: [

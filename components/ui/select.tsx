@@ -24,8 +24,8 @@ const selectTriggerVariants = cva(
   {
     variants: {
       size: {
-        md: "h-(--size-md) px-3 py-2 **:[svg]:not-[[class*='size-']]:size-4",
         sm: "h-(--size-sm) px-2.5 py-1.5 **:[svg]:not-[[class*='size-']]:size-4",
+        md: "h-(--size-md) px-3 py-2 **:[svg]:not-[[class*='size-']]:size-4",
         lg: "h-(--size-lg) px-3.5 py-2.5 text-base **:[svg]:not-[[class*='size-']]:size-5",
       },
       variant: {

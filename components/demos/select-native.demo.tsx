@@ -26,10 +26,10 @@ const triggerVariants = [
   "secondary-muted",
 ] as const;
 
-type TriggerSize = "default" | "sm" | "lg";
+type TriggerSize = "sm" | "md" | "lg";
 const triggerSizesMap: Record<number, TriggerSize> = {
   1: "sm",
-  2: "default",
+  2: "md",
   3: "lg",
 };
 
@@ -52,9 +52,7 @@ export function SelectNativeDemo() {
             <option value="disabled" disabled>
               Select a fruit...
             </option>
-            <option value="one">
-              One
-            </option>
+            <option value="one">One</option>
             <optgroup label="Fruits">
               {fruits.map((fruit) => (
                 <option key={`${fruit}-basic`} value={fruit}>
@@ -87,6 +85,25 @@ export function SelectNativeDemo() {
             variant={triggerVariant as (typeof triggerVariants)[number]}
             size={triggerSizesMap[triggerSize]}
             aria-invalid="true"
+            className="w-full"
+          >
+            <option value="disabled" disabled>
+              Select a fruit...
+            </option>
+            {fruits.map((fruit) => (
+              <option key={`${fruit}-invalid`} value={fruit}>
+                {fruit}
+              </option>
+            ))}
+          </SelectNative>
+          <SelectNative
+            defaultValue="disabled"
+            id="select-native-invalid"
+            name="select-native-invalid"
+            variant={triggerVariant as (typeof triggerVariants)[number]}
+            size={triggerSizesMap[triggerSize]}
+            aria-invalid="true"
+            disabled
             className="w-full"
           >
             <option value="disabled" disabled>

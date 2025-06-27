@@ -22,7 +22,7 @@ type InputPasswordProps = Omit<
 
 function InputPassword({
   className,
-  size = "default",
+  size = "md",
   variant = "outline",
   classNames,
   autoComplete,
@@ -46,7 +46,7 @@ function InputPassword({
         autoComplete={autoComplete}
         disabled={disabled}
         className={cn(
-          { default: "pr-9", sm: "pr-8", lg: "pr-10" }[size || "default"],
+          { md: "pr-9", sm: "pr-8", lg: "pr-10" }[size || "md"],
           "[&::-ms-reveal]:pointer-events-none [&::-ms-reveal]:invisible [&::-ms-reveal]:hidden",
           "[&::-ms-clear]:pointer-events-none [&::-ms-clear]:invisible [&::-ms-clear]:hidden",
           "peer/input-password-input",
@@ -68,10 +68,10 @@ function InputPassword({
           "peer-aria-invalid/input-password-input:text-destructive-muted-foreground peer-aria-invalid/input-password-input:outline-destructive peer-aria-invalid/input-password-input:hover:bg-destructive-500/20",
           "disabled:pointer-events-none disabled:text-muted-foreground",
           {
-            default: "size-7",
+            md: "size-7",
             sm: "size-6",
             lg: "size-8",
-          }[size || "default"],
+          }[size || "md"],
           {
             outline:
               "text-subtle-foreground outline-outline hover:bg-base-500/20",
@@ -92,10 +92,10 @@ function InputPassword({
             aria-hidden="true"
             className={cn(
               {
-                default: "size-4",
+                md: "size-4",
                 sm: "size-4",
                 lg: "size-5",
-              }[size || "default"]
+              }[size || "md"]
             )}
           />
         ) : (
@@ -103,10 +103,10 @@ function InputPassword({
             aria-hidden="true"
             className={cn(
               {
-                default: "size-4",
+                md: "size-4",
                 sm: "size-4",
                 lg: "size-5",
-              }[size || "default"]
+              }[size || "md"]
             )}
           />
         )}

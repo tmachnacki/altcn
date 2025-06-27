@@ -6,6 +6,7 @@
 - [ ] Pagination Control Sizes
 - [ ] Transparent vs solid muted and faded colors
 - [ ] Select "item-aligned" positioning
+- [ ] Select Native styling
 - [ ] "vertical" orientations (tabs, navigation menu)
 - [ ] Select (Native) styling
 - [ ] Speed Dial variants
@@ -13,8 +14,10 @@
 - [ ] Radio and checkbox variants
 - [ ] Radio Buttons styling
 - [ ] Input-ish components invalid and placeholder styling
-- [ ] Refactor sizing "default" -> "md", declare global sizing utils for xs, sm, md, lg
 - [ ] Try to integrate heroicons instead of lucide
+- [ ] Reduced motion
+- [ ] Tanstack links examples
+- [ ] Maybe restructure multiple variants props with contexts
 
 ## Components
 

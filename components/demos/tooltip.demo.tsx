@@ -39,7 +39,7 @@ export function TooltipDemo() {
         <div className="flex flex-wrap gap-2">
           <Tooltip>
             <TooltipTrigger asChild>
-              <Button className="bg-base-950 text-base-50 hover:not-disabled:not-aria-disabled:bg-base-800 dark:bg-base-50 dark:text-base-950 dark:hover:not-disabled:not-aria-disabled:bg-base-200 capitalize">
+              <Button className="bg-base-950 text-base-50 capitalize hover:not-disabled:not-aria-disabled:bg-base-800 dark:bg-base-50 dark:text-base-950 dark:hover:not-disabled:not-aria-disabled:bg-base-200">
                 default
               </Button>
             </TooltipTrigger>
@@ -90,7 +90,7 @@ export function TooltipDemo() {
         </div>
         <Tooltip>
           <TooltipTrigger asChild>
-            <Button variant="ghost" size="icon">
+            <Button variant="ghost" size="icon-md">
               <InfoIcon />
               <span className="sr-only">Info</span>
             </Button>
