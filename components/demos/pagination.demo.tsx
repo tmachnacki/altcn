@@ -24,8 +24,19 @@ import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
 import { Swatch } from "~/components/swatch";
 
-const paginationLinkVariants = [
+const activeVariants = [
   "base",
+  "primary",
+  "primary-gradient",
+  "primary-shadow",
+  "primary-tron",
+  "secondary",
+  "secondary-gradient",
+  "secondary-shadow",
+  "secondary-tron",
+] as const;
+
+const inactiveVariants = [
   "outline",
   "accent",
   "muted",
@@ -33,25 +44,46 @@ const paginationLinkVariants = [
   "faded",
   "ghost",
   "link",
-  "primary",
   "primary-accent",
   "primary-muted",
   "primary-surface",
   "primary-faded",
-  "primary-tron",
-  "primary-shadow",
-  "primary-gradient",
   "primary-ghost",
-  "secondary",
   "secondary-accent",
   "secondary-muted",
   "secondary-surface",
   "secondary-faded",
-  "secondary-tron",
-  "secondary-shadow",
-  "secondary-gradient",
   "secondary-ghost",
 ] as const;
+
+// const paginationLinkVariants = [
+//   "base",
+//   "outline",
+//   "accent",
+//   "muted",
+//   "surface",
+//   "faded",
+//   "ghost",
+//   "link",
+//   "primary",
+//   "primary-accent",
+//   "primary-muted",
+//   "primary-surface",
+//   "primary-faded",
+//   "primary-tron",
+//   "primary-shadow",
+//   "primary-gradient",
+//   "primary-ghost",
+//   "secondary",
+//   "secondary-accent",
+//   "secondary-muted",
+//   "secondary-surface",
+//   "secondary-faded",
+//   "secondary-tron",
+//   "secondary-shadow",
+//   "secondary-gradient",
+//   "secondary-ghost",
+// ] as const;
 
 export function PaginationDemo() {
   return (
@@ -77,20 +109,16 @@ export function PaginationWithParams() {
               <PaginationPrevious
                 href={`/components/pagination?page=${Number(page) - 1}`}
                 disabled={page === "1"}
-                variant={
-                  controlVariant as (typeof paginationLinkVariants)[number]
-                }
+                variant={controlVariant as (typeof inactiveVariants)[number]}
               />
             </PaginationItem>
             <PaginationItem>
               <PaginationLink
                 href={`/components/pagination?page=1`}
                 isActive={page === "1"}
-                activeVariant={
-                  activeVariant as (typeof paginationLinkVariants)[number]
-                }
+                activeVariant={activeVariant as (typeof activeVariants)[number]}
                 inactiveVariant={
-                  inactiveVariant as (typeof paginationLinkVariants)[number]
+                  inactiveVariant as (typeof inactiveVariants)[number]
                 }
               >
                 1
@@ -100,11 +128,9 @@ export function PaginationWithParams() {
               <PaginationLink
                 href={`/components/pagination?page=2`}
                 isActive={page === "2"}
-                activeVariant={
-                  activeVariant as (typeof paginationLinkVariants)[number]
-                }
+                activeVariant={activeVariant as (typeof activeVariants)[number]}
                 inactiveVariant={
-                  inactiveVariant as (typeof paginationLinkVariants)[number]
+                  inactiveVariant as (typeof inactiveVariants)[number]
                 }
               >
                 2
@@ -114,11 +140,9 @@ export function PaginationWithParams() {
               <PaginationLink
                 href={`/components/pagination?page=3`}
                 isActive={page === "3"}
-                activeVariant={
-                  activeVariant as (typeof paginationLinkVariants)[number]
-                }
+                activeVariant={activeVariant as (typeof activeVariants)[number]}
                 inactiveVariant={
-                  inactiveVariant as (typeof paginationLinkVariants)[number]
+                  inactiveVariant as (typeof inactiveVariants)[number]
                 }
               >
                 3
@@ -128,11 +152,9 @@ export function PaginationWithParams() {
               <PaginationLink
                 href={`/components/pagination?page=4`}
                 isActive={page === "4"}
-                activeVariant={
-                  activeVariant as (typeof paginationLinkVariants)[number]
-                }
+                activeVariant={activeVariant as (typeof activeVariants)[number]}
                 inactiveVariant={
-                  inactiveVariant as (typeof paginationLinkVariants)[number]
+                  inactiveVariant as (typeof inactiveVariants)[number]
                 }
               >
                 4
@@ -145,11 +167,9 @@ export function PaginationWithParams() {
               <PaginationLink
                 href={`/components/pagination?page=10`}
                 isActive={page === "10"}
-                activeVariant={
-                  activeVariant as (typeof paginationLinkVariants)[number]
-                }
+                activeVariant={activeVariant as (typeof activeVariants)[number]}
                 inactiveVariant={
-                  inactiveVariant as (typeof paginationLinkVariants)[number]
+                  inactiveVariant as (typeof inactiveVariants)[number]
                 }
               >
                 10
@@ -159,9 +179,7 @@ export function PaginationWithParams() {
               <PaginationNext
                 href={`/components/pagination?page=${Number(page) + 1}`}
                 disabled={page === "10"}
-                variant={
-                  controlVariant as (typeof paginationLinkVariants)[number]
-                }
+                variant={controlVariant as (typeof inactiveVariants)[number]}
               />
             </PaginationItem>
           </PaginationContent>
@@ -175,7 +193,7 @@ export function PaginationWithParams() {
               <SelectValue placeholder="Select a variant" />
             </SelectTrigger>
             <SelectContent className="max-h-96">
-              {paginationLinkVariants.map((variant) => (
+              {activeVariants.map((variant) => (
                 <SelectItem key={`active-${variant}`} value={variant}>
                   <Swatch variant={variant} />
                   {variant}
@@ -191,7 +209,7 @@ export function PaginationWithParams() {
               <SelectValue placeholder="Select a variant" />
             </SelectTrigger>
             <SelectContent className="max-h-96">
-              {paginationLinkVariants.map((variant) => (
+              {inactiveVariants.map((variant) => (
                 <SelectItem key={`inactive-${variant}`} value={variant}>
                   <Swatch variant={variant} />
                   {variant}
@@ -207,7 +225,7 @@ export function PaginationWithParams() {
               <SelectValue placeholder="Select a variant" />
             </SelectTrigger>
             <SelectContent className="max-h-96">
-              {paginationLinkVariants.map((variant) => (
+              {inactiveVariants.map((variant) => (
                 <SelectItem key={`control-${variant}`} value={variant}>
                   <Swatch variant={variant} />
                   {variant}

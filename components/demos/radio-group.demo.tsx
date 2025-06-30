@@ -33,7 +33,7 @@ const plans = [
   },
 ] as const;
 
-const variants = ["primary", "secondary"] as const;
+const variants = ["base", "accent", "primary", "secondary"] as const;
 
 export function RadioGroupDemo() {
   const [variant, setVariant] = React.useState("primary");
@@ -70,6 +70,25 @@ export function RadioGroupDemo() {
               <RadioGroupItem value="invalid" id="r6" aria-invalid="true" />
               <Label htmlFor="r6">Invalid</Label>
             </div>
+            <div className="flex items-center gap-3">
+              <RadioGroupItem
+                value="invalid-disabled"
+                id="r7"
+                aria-invalid="true"
+                disabled
+              />
+              <Label htmlFor="r7">Invalid &amp; Disabled</Label>
+            </div>
+            <div className="flex items-center gap-3">
+              <RadioGroupItem
+                value="invalid-checked-disabled"
+                id="r8"
+                aria-invalid="true"
+                disabled
+                checked
+              />
+              <Label htmlFor="r8">Invalid &amp; Checked &amp; Disabled</Label>
+            </div>
           </RadioGroup>
           <RadioGroup defaultValue="starter" className="w-full">
             {plans.map((plan) => (
@@ -77,6 +96,7 @@ export function RadioGroupDemo() {
                 data-variant={variant}
                 className={cn(
                   "group flex items-start gap-3 rounded-lg border p-4 hover:bg-faded",
+                  "data-[variant=base]:has-[[data-state=checked]]:border-base-bg/50 data-[variant=base]:has-[[data-state=checked]]:bg-faded",
                   "data-[variant=primary]:has-[[data-state=checked]]:border-primary/50 data-[variant=primary]:has-[[data-state=checked]]:bg-primary-faded",
                   "data-[variant=secondary]:has-[[data-state=checked]]:border-secondary/50 data-[variant=secondary]:has-[[data-state=checked]]:bg-secondary-faded"
                 )}

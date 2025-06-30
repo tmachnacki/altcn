@@ -1,6 +1,5 @@
 import * as React from "react";
 import Link from "next/link";
-import { VariantProps } from "class-variance-authority";
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
@@ -9,7 +8,7 @@ import {
 
 import { cn } from "~/lib/utils";
 
-import { Button, buttonVariants } from "~/components/ui/button";
+import { Button } from "~/components/ui/button";
 
 function Pagination({ className, ...props }: React.ComponentProps<"nav">) {
   return (
@@ -40,11 +39,41 @@ function PaginationItem({ ...props }: React.ComponentProps<"li">) {
   return <li data-slot="pagination-item" {...props} />;
 }
 
+type ActiveVariant =
+  | "base"
+  | "primary"
+  | "primary-gradient"
+  | "primary-shadow"
+  | "primary-tron"
+  | "secondary"
+  | "secondary-gradient"
+  | "secondary-shadow"
+  | "secondary-tron";
+
+type InactiveVariant =
+  | "outline"
+  | "accent"
+  | "muted"
+  | "surface"
+  | "faded"
+  | "ghost"
+  | "link"
+  | "primary-accent"
+  | "primary-muted"
+  | "primary-surface"
+  | "primary-faded"
+  | "primary-ghost"
+  | "secondary-accent"
+  | "secondary-muted"
+  | "secondary-surface"
+  | "secondary-faded"
+  | "secondary-ghost";
+
 type PaginationLinkProps = {
   disabled?: boolean;
   isActive?: boolean;
-  activeVariant?: VariantProps<typeof buttonVariants>["variant"];
-  inactiveVariant?: VariantProps<typeof buttonVariants>["variant"];
+  activeVariant?: ActiveVariant;
+  inactiveVariant?: InactiveVariant;
 } & Pick<React.ComponentProps<typeof Button>, "size"> &
   React.ComponentProps<typeof Link>;
 
@@ -79,14 +108,15 @@ function PaginationLink({
 
 type PaginationControlProps = {
   disabled?: boolean;
-} & VariantProps<typeof buttonVariants> &
+  variant?: InactiveVariant;
+} & Pick<React.ComponentProps<typeof Button>, "size"> &
   React.ComponentProps<typeof Link>;
 
 function PaginationControl({
   className,
   disabled,
   size = "md",
-  variant = "ghost",
+  variant = "outline",
   ...props
 }: PaginationControlProps) {
   return (

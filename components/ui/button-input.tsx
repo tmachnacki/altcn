@@ -36,7 +36,7 @@ const buttonInputVariants = cva(
 
           "focus-visible:outline-2 focus-visible:outline-primary",
 
-          "aria-invalid:outline-destructive/50 aria-invalid:hover:not-disabled:outline-destructive aria-invalid:focus-visible:outline-destructive aria-invalid:disabled:bg-destructive-faded aria-invalid:has-data-[placeholder=true]:text-destructive-placeholder dark:aria-invalid:bg-destructive-faded",
+          "aria-invalid:outline-destructive/80 aria-invalid:hover:not-disabled:outline-destructive aria-invalid:focus-visible:outline-destructive aria-invalid:disabled:bg-destructive-faded aria-invalid:has-data-[placeholder=true]:text-destructive-placeholder dark:aria-invalid:bg-destructive-faded",
         ],
 
         muted: [
@@ -64,7 +64,7 @@ const buttonInputVariants = cva(
 
           "focus-visible:shadow-[inset_0_-2px_0_0_var(--color-primary)]",
 
-          "aria-invalid:shadow-[inset_0_-1px_0_0_var(--color-destructive)] aria-invalid:focus-visible:shadow-[inset_0_-2px_0_0_var(--color-destructive)] aria-invalid:has-data-[placeholder=true]:text-destructive-placeholder",
+          "aria-invalid:shadow-[inset_0_-1px_0_0_--alpha(var(--color-destructive),80%)] aria-invalid:hover:not-disabled:not-focus-visible:shadow-[inset_0_-1px_0_0_var(--color-destructive)] aria-invalid:focus-visible:shadow-[inset_0_-2px_0_0_var(--color-destructive)] aria-invalid:has-data-[placeholder=true]:text-destructive-placeholder",
         ],
 
         // -- primary --
