@@ -32,6 +32,10 @@ export const componentLinks = [
     href: "/components/card",
   },
   {
+    label: "Calendar",
+    href: "/components/calendar",
+  },
+  {
     label: "Checkbox",
     href: "/components/checkbox",
   },
