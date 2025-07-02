@@ -6,14 +6,13 @@
 - [ ] Pagination Control Sizes
 - [ ] Transparent vs solid muted and faded colors
 - [ ] Select "item-aligned" positioning
-- [ ] Select Native styling
 - [ ] "vertical" orientations (tabs, navigation menu)
 - [ ] Select (Native) styling
 - [ ] Speed Dial variants
 - [ ] Tooltip variants
 - [ ] Radio and checkbox variants
 - [ ] Radio Buttons styling
-- [ ] Input-ish components invalid and placeholder styling
+- [ ] Input-ish components invalid and disabled styling
 - [ ] Try to integrate heroicons instead of lucide
 - [ ] Reduced motion
 - [ ] Tanstack links examples

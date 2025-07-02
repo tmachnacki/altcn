@@ -40,6 +40,10 @@ export const componentLinks = [
     href: "/components/checkbox",
   },
   {
+    label: "Checkbox Cards",
+    href: "/components/checkbox-cards",
+  },
+  {
     label: "Context Menu",
     href: "/components/context-menu",
   },
