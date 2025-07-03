@@ -17,12 +17,12 @@
 - [ ] Reduced motion
 - [ ] Tanstack links examples
 - [ ] Maybe restructure multiple variants props with contexts
+- [ ] Calendar/DatePicker variants
 
 ## Components
 
 - [ ] Breadcrumb
 - [ ] Button Group
-- [ ] Calendar/DatePicker
 - [ ] Charts
 - [ ] Command
 - [ ] Date & Time Picker

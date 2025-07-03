@@ -43,12 +43,12 @@ const variants = [
   "secondary-tron",
 ] as const;
 
-type Size = "xs" | "sm" | "default" | "lg";
+type Size = "xs" | "sm" | "md" | "lg";
 
 const sizesMap: Record<number, Size> = {
   1: "xs",
   2: "sm",
-  3: "default",
+  3: "md",
   4: "lg",
 };
 
@@ -93,7 +93,7 @@ export function ToggleDemo() {
           </Toggle>
           <Toggle
             aria-label="Toggle book"
-            className="data-[state=on]:[&_svg]:fill-current"
+            className="data-[state=on]:**:[svg]:fill-current"
             variant={variant as (typeof variants)[number]}
             size={sizesMap[size]}
           >

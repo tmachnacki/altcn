@@ -33,7 +33,7 @@ const inputVariants = cva(
 
           "focus-visible:outline-2 focus-visible:outline-primary",
 
-          "aria-invalid:not-disabled:outline-destructive/80 aria-invalid:file:bg-destructive-muted aria-invalid:file:text-destructive-accent-foreground aria-invalid:not-disabled:file:border-destructive/80 aria-invalid:placeholder:text-destructive-placeholder aria-invalid:hover:not-disabled:outline-destructive aria-invalid:hover:not-disabled:file:border-destructive aria-invalid:focus-visible:outline-destructive aria-invalid:focus-visible:file:border-destructive dark:aria-invalid:bg-destructive-faded aria-invalid:disabled:bg-destructive-faded",
+          "aria-invalid:not-disabled:outline-destructive aria-invalid:file:bg-destructive-muted aria-invalid:file:text-destructive-accent-foreground aria-invalid:not-disabled:file:border-destructive aria-invalid:placeholder:text-destructive-placeholder aria-invalid:disabled:bg-destructive-faded dark:aria-invalid:bg-destructive-faded",
         ],
 
         muted: [
@@ -57,7 +57,7 @@ const inputVariants = cva(
 
           "focus-visible:shadow-[inset_0_-2px_0_0_var(--color-primary)]",
 
-          "aria-invalid:shadow-[inset_0_-1px_0_0_--alpha(var(--color-destructive)/80%)] aria-invalid:file:text-destructive-muted-foreground aria-invalid:placeholder:text-destructive-placeholder aria-invalid:hover:not-disabled:not-focus-visible:shadow-[inset_0_-1px_0_0_var(--color-destructive)] aria-invalid:focus-visible:shadow-[inset_0_-2px_0_0_var(--color-destructive)]",
+          "aria-invalid:shadow-[inset_0_-1px_0_0_var(--color-destructive)] aria-invalid:file:text-destructive-muted-foreground aria-invalid:placeholder:text-destructive-placeholder aria-invalid:focus-visible:shadow-[inset_0_-2px_0_0_var(--color-destructive)]",
         ],
 
         // -- primary --

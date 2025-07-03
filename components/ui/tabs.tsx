@@ -9,11 +9,11 @@ import { cn } from "~/lib/utils";
 import { Tron } from "~/components/ui/tron";
 
 const tabsListVariants = cva(
-  "inline-flex h-10 w-fit flex-nowrap items-center justify-center rounded-lg p-(--tabs-list-padding) text-muted-foreground [--tabs-list-padding:--spacing(1)]",
+  "inline-flex w-fit flex-nowrap items-center rounded-lg p-(--tabs-list-p) text-muted-foreground [--tabs-list-p:--spacing(1)]",
   {
     variants: {
       variant: {
-        outline: "border border-border bg-transparent",
+        outline: "border border-border bg-transparent shadow-xs",
         muted: "bg-muted",
         faded: "border border-border-faded bg-faded",
         underlined: "rounded-b-none border-b border-border bg-transparent px-0",
@@ -28,7 +28,7 @@ const tabsListVariants = cva(
 
 const tabsTriggerVariants = cva(
   [
-    "relative isolate inline-flex h-full flex-1 items-center justify-center gap-1.5 rounded-md px-2.5 py-1 text-sm font-medium whitespace-nowrap text-muted-foreground select-none not-disabled:data-[state=inactive]:hover:text-subtle-foreground",
+    "relative isolate inline-flex h-8 items-center justify-center gap-1.5 rounded-md px-2.5 py-1 text-sm font-medium whitespace-nowrap text-muted-foreground select-none not-disabled:data-[state=inactive]:hover:text-subtle-foreground",
     "**:[svg]:pointer-events-none **:[svg]:shrink-0 **:[svg]:not-[[class*='size-']]:size-4",
     "disabled:pointer-events-none disabled:opacity-50",
     "outline-0 outline-offset-1 focus-visible:z-10 focus-visible:outline-2",
@@ -55,7 +55,8 @@ const tabsTriggerVariants = cva(
 
         underlined: [
           "-outline-offset-2 data-[state=active]:text-foreground",
-          "data-[state=active]:*:data-[slot=tabs-trigger-underline]:border-foreground",
+          // "data-[state=active]:*:data-[slot=tabs-trigger-underline]:border-foreground",
+          "data-[state=active]:before:bg-foreground",
         ],
 
         ghost: "data-[state=active]:text-foreground",
@@ -77,7 +78,7 @@ const tabsTriggerVariants = cva(
           "data-[state=active]:border data-[state=active]:border-border-primary-faded data-[state=active]:bg-primary-faded data-[state=active]:text-primary-muted-foreground",
 
         "primary-underlined":
-          "-outline-offset-2 data-[state=active]:text-primary data-[state=active]:*:data-[slot=tabs-trigger-underline]:border-primary",
+          "-outline-offset-2 data-[state=active]:text-primary data-[state=active]:before:bg-primary",
 
         "primary-ghost": "data-[state=active]:text-primary",
 
@@ -103,7 +104,7 @@ const tabsTriggerVariants = cva(
           "data-[state=active]:border data-[state=active]:border-border-secondary-faded data-[state=active]:bg-secondary-faded data-[state=active]:text-secondary-muted-foreground",
 
         "secondary-underlined":
-          "-outline-offset-2 data-[state=active]:text-secondary-500 data-[state=active]:*:data-[slot=tabs-trigger-underline]:border-secondary dark:data-[state=active]:text-secondary",
+          "-outline-offset-2 data-[state=active]:text-secondary-500 data-[state=active]:before:bg-secondary dark:data-[state=active]:text-secondary",
 
         "secondary-ghost":
           "data-[state=active]:text-secondary-500 dark:data-[state=active]:text-secondary",
@@ -115,6 +116,11 @@ const tabsTriggerVariants = cva(
       },
     },
     compoundVariants: [
+      {
+        variant: ["underlined", "primary-underlined", "secondary-underlined"],
+        className:
+          "before:absolute before:inset-x-0 before:-bottom-(--tabs-list-p) before:h-0.5 before:w-full before:bg-transparent before:content-[''] hover:data-[state=inactive]:before:bg-border",
+      },
       {
         variant: [
           "default",
@@ -220,17 +226,6 @@ function TabsTrigger({
       )}
       {...props}
     >
-      {variant?.includes("underlined") && (
-        <div
-          data-slot="tabs-trigger-underline"
-          aria-hidden="true"
-          role="presentation"
-          className={cn(
-            // use padding var as height to avoid flickering when hovering between trigger and underline indicator
-            "absolute inset-x-0 -bottom-(--tabs-list-padding) h-(--tabs-list-padding) w-full border-b-2 border-transparent group-not-data-disabled/tabs-trigger:group-data-[state=inactive]/tabs-trigger:group-hover/tabs-trigger:border-border"
-          )}
-        />
-      )}
       {variant?.includes("tron") && (
         <>
           <Tron

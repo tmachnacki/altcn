@@ -7,6 +7,8 @@ import {
   CheckboxCardsItem,
   CheckboxCardsItemCheckbox,
   CheckboxCardsItemContent,
+  CheckboxCardsItemDescription,
+  CheckboxCardsItemLabel,
 } from "~/components/ui/checkbox-cards";
 import { Label } from "~/components/ui/label";
 import {
@@ -19,7 +21,7 @@ import {
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
 
-const variants = ["primary", "secondary"] as const;
+const variants = ["base", "primary", "secondary"] as const;
 
 const plans = [
   {
@@ -64,7 +66,7 @@ export function CheckboxCardsDemo() {
           <legend className="sr-only">Select a plan</legend>
           <CheckboxCards
             variant={variant as (typeof variants)[number]}
-            className="w-full grid gap-3"
+            className="grid w-full gap-3"
           >
             {plans.map((plan) => (
               <CheckboxCardsItem
@@ -75,16 +77,24 @@ export function CheckboxCardsDemo() {
                   disabled={plan.id === "disabled"}
                   aria-invalid={plan.id === "invalid"}
                 />
-                <CheckboxCardsItemContent className="flex flex-col gap-2">
-                  <span className="block font-medium text-(--accent-text)">
-                    {plan.name}
-                  </span>
-                  <span className="block text-(--muted-text)">
+                <CheckboxCardsItemContent className="flex flex-col gap-1">
+                  <CheckboxCardsItemLabel>{plan.name}</CheckboxCardsItemLabel>
+                  <CheckboxCardsItemDescription>
                     {plan.description}
-                  </span>
+                  </CheckboxCardsItemDescription>
                 </CheckboxCardsItemContent>
               </CheckboxCardsItem>
             ))}
+            {/* centered */}
+            <CheckboxCardsItem
+              variant={variant as (typeof variants)[number]}
+              className="items-center"
+            >
+              <CheckboxCardsItemCheckbox />
+              <CheckboxCardsItemContent className="flex items-center">
+                <CheckboxCardsItemLabel>Centered</CheckboxCardsItemLabel>
+              </CheckboxCardsItemContent>
+            </CheckboxCardsItem>
           </CheckboxCards>
         </fieldset>
       </ComponentContainer>

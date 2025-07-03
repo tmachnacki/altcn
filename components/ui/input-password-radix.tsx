@@ -28,7 +28,7 @@ const inputPasswordContainerVariants = cva(
 
           "focus-within:outline-2 focus-within:outline-primary",
 
-          "has-aria-invalid:outline-destructive/80 has-aria-invalid:focus-within:outline-destructive has-aria-invalid:hover:not-has-disabled:not-focus-within:outline-destructive has-aria-invalid:has-disabled:bg-destructive-faded dark:has-aria-invalid:bg-destructive-faded",
+          "has-aria-invalid:outline-destructive has-aria-invalid:has-disabled:bg-destructive-faded dark:has-aria-invalid:bg-destructive-faded",
         ],
         muted: [
           "bg-muted outline-0 -outline-offset-1",
@@ -44,7 +44,7 @@ const inputPasswordContainerVariants = cva(
 
           "focus-within:shadow-[inset_0_-2px_0_0_var(--color-primary)]",
 
-          "has-aria-invalid:shadow-[inset_0_-1px_0_0_--alpha(var(--color-destructive)/80%)] has-aria-invalid:focus-within:shadow-[inset_0_-2px_0_0_var(--color-destructive)] has-aria-invalid:hover:not-has-disabled:not-focus-within:shadow-[inset_0_-1px_0_0_var(--color-destructive)]",
+          "has-aria-invalid:shadow-[inset_0_-1px_0_0_var(--color-destructive)] has-aria-invalid:focus-within:shadow-[inset_0_-2px_0_0_var(--color-destructive)]",
         ],
         "primary-muted": [
           "bg-primary-muted outline-0 -outline-offset-1 hover:not-has-disabled:not-focus-within:not-has-aria-invalid:bg-hover-primary-muted",

@@ -1,13 +1,15 @@
 "use client";
 
 import * as React from "react";
-import { UsersIcon } from "lucide-react";
 
 import { Label } from "~/components/ui/label";
 import {
   RadioCards,
-  RadioCardsIndicator,
   RadioCardsItem,
+  RadioCardsItemContent,
+  RadioCardsItemDescription,
+  RadioCardsItemLabel,
+  RadioCardsItemRadio,
 } from "~/components/ui/radio-cards";
 import {
   Select,
@@ -16,94 +18,86 @@ import {
   SelectTrigger,
   SelectValue,
 } from "~/components/ui/select";
-import { Switch } from "~/components/ui/switch";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
 
-const mailingLists = [
+const variants = ["base", "primary", "secondary"] as const;
+
+const plans = [
   {
-    id: 1,
-    title: "Newsletter",
-    description: "Last message sent an hour ago",
-    users: "621",
+    id: "premium",
+    name: "Premium",
+    description: "Advanced options for growing needs.",
   },
   {
-    id: 2,
-    title: "Existing customers",
-    description: "Last message sent 2 weeks ago",
-    users: "1200",
+    id: "deluxe",
+    name: "Deluxe",
+    description: "Top-tier features for maximum performance.",
   },
   {
-    id: 3,
-    title: "Trial users",
-    description: "Last message sent 4 days ago",
-    users: "2740",
+    id: "ultimate",
+    name: "Ultimate",
+    description: "All inclusive plan with every feature available.",
   },
   {
-    id: 4,
-    title: "Disabled list",
-    description: "Last message sent 2 days ago",
-    users: "960",
+    id: "enterprise",
+    name: "Enterprise",
+    description: "Customized solutions for large-scale projects.",
   },
   {
-    id: 5,
-    title: "Invalid list",
-    description: "Last message sent 2 days ago",
-    users: "960",
+    id: "disabled",
+    name: "Disabled",
+    description: "This is a description of a disabled plan.",
+  },
+  {
+    id: "invalid",
+    name: "Invalid",
+    description: "This is a description of an invalid plan.",
   },
 ];
 
-const radioCardsVariants = ["primary", "secondary"] as const;
-
 export function RadioCardsDemo() {
   const [variant, setVariant] = React.useState("primary");
-  const [withIndicator, setWithIndicator] = React.useState(true);
 
   return (
     <>
       <ComponentContainer>
-        <div className="flex w-full flex-col gap-12">
-          <fieldset>
-            <legend className="mb-6 block font-semibold">
-              Select a mailing list
-            </legend>
-
-            <RadioCards
-              className="grid w-full grid-cols-1 gap-3 lg:grid-cols-3"
-              defaultValue={mailingLists[3].title}
+        <fieldset className="w-full max-w-sm">
+          <legend className="sr-only">Select a plan</legend>
+          <RadioCards
+            variant={variant as (typeof variants)[number]}
+            className="grid w-full gap-3"
+          >
+            {plans.map((plan) => (
+              <RadioCardsItem
+                key={plan.id}
+                variant={variant as (typeof variants)[number]}
+              >
+                <RadioCardsItemRadio
+                  value={plan.id}
+                  disabled={plan.id === "disabled"}
+                  aria-invalid={plan.id === "invalid"}
+                />
+                <RadioCardsItemContent className="flex flex-col gap-1">
+                  <RadioCardsItemLabel>{plan.name}</RadioCardsItemLabel>
+                  <RadioCardsItemDescription>
+                    {plan.description}
+                  </RadioCardsItemDescription>
+                </RadioCardsItemContent>
+              </RadioCardsItem>
+            ))}
+            {/* centered */}
+            <RadioCardsItem
+              variant={variant as (typeof variants)[number]}
+              className="items-center"
             >
-              {mailingLists.map((mailingList) => (
-                <RadioCardsItem
-                  key={mailingList.id}
-                  variant={variant as (typeof radioCardsVariants)[number]}
-                  value={mailingList.title}
-                  aria-label={mailingList.title}
-                  aria-description={`${mailingList.description} to ${mailingList.users}`}
-                  className="min-h-36 w-full"
-                  disabled={mailingList.title === "Disabled list"}
-                  aria-invalid={mailingList.title === "Invalid list"}
-                >
-                  <div className="flex h-full min-h-0 flex-col items-start justify-start">
-                    <div className="flex-1">
-                      <h3 className="font-medium">{mailingList.title}</h3>
-                      <span className="mt-1 text-muted-foreground">
-                        {mailingList.description}
-                      </span>
-                    </div>
-                    <span className="mt-6 flex flex-none items-center gap-2 font-medium">
-                      <UsersIcon
-                        className="size-4 text-muted-foreground"
-                        aria-label="users"
-                      />
-                      {mailingList.users}
-                    </span>
-                  </div>
-                  {withIndicator && <RadioCardsIndicator />}
-                </RadioCardsItem>
-              ))}
-            </RadioCards>
-          </fieldset>
-        </div>
+              <RadioCardsItemRadio value="centered" />
+              <RadioCardsItemContent className="flex items-center">
+                <RadioCardsItemLabel>Centered</RadioCardsItemLabel>
+              </RadioCardsItemContent>
+            </RadioCardsItem>
+          </RadioCards>
+        </fieldset>
       </ComponentContainer>
       <ComponentPlayground>
         <div className="grid gap-2">
@@ -113,21 +107,13 @@ export function RadioCardsDemo() {
               <SelectValue placeholder="Select variant" />
             </SelectTrigger>
             <SelectContent>
-              {radioCardsVariants.map((variant) => (
+              {variants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
                   {variant}
                 </SelectItem>
               ))}
             </SelectContent>
           </Select>
-        </div>
-        <div className="flex items-center gap-3">
-          <Switch
-            id="radio-cards-with-indicator"
-            checked={withIndicator}
-            onCheckedChange={setWithIndicator}
-          />
-          <Label htmlFor="radio-cards-with-indicator">With indicator</Label>
         </div>
       </ComponentPlayground>
     </>

@@ -70,7 +70,7 @@ const buttonVariants = cva(
         ],
 
         "primary-tron": [
-          "bg-background bg-[image:var(--primary-tron-bg-gradient)] text-primary-muted-foreground inset-ring inset-ring-border-primary-tron",
+          "bg-background bg-[image:var(--primary-tron-bg-gradient)] text-primary-muted-foreground shadow inset-ring inset-ring-border-primary-tron",
           "hover:bg-[image:var(--hover-primary-tron-bg-gradient)] hover:inset-ring-hover-border-primary-tron",
           "[--tron-beam:var(--color-primary)] [--tron-blur:var(--color-primary-tron-blur)]",
         ],
@@ -81,7 +81,7 @@ const buttonVariants = cva(
         ],
 
         "primary-gradient": [
-          "bg-gradient-to-br from-primary-700 to-primary-500 text-primary-foreground dark:from-primary-600 dark:to-primary-400",
+          "bg-gradient-to-br from-primary-700 to-primary-500 text-primary-foreground shadow dark:from-primary-600 dark:to-primary-400",
           "hover:from-primary-700/90 hover:to-primary-500/90 dark:hover:from-primary-600/90 dark:hover:to-primary-400/90",
         ],
 
@@ -117,7 +117,7 @@ const buttonVariants = cva(
         ],
 
         "secondary-tron": [
-          "bg-background bg-[image:var(--secondary-tron-bg-gradient)] text-secondary-muted-foreground inset-ring inset-ring-border-secondary-tron",
+          "bg-background bg-[image:var(--secondary-tron-bg-gradient)] text-secondary-muted-foreground shadow inset-ring inset-ring-border-secondary-tron",
           "hover:bg-[image:var(--hover-secondary-tron-bg-gradient)] hover:inset-ring-hover-border-secondary-tron",
           "[--tron-beam:var(--color-secondary)] [--tron-blur:var(--color-secondary-tron-blur)]",
         ],
@@ -128,7 +128,7 @@ const buttonVariants = cva(
         ],
 
         "secondary-gradient": [
-          "bg-gradient-to-br from-secondary-500 to-secondary-300 text-secondary-foreground",
+          "bg-gradient-to-br from-secondary-500 to-secondary-300 text-secondary-foreground shadow",
           "hover:from-secondary-500/90 hover:to-secondary-300/90",
         ],
 
@@ -164,7 +164,7 @@ const buttonVariants = cva(
         ],
 
         "destructive-tron": [
-          "bg-background bg-[image:var(--destructive-tron-bg-gradient)] text-destructive-muted-foreground inset-ring inset-ring-border-destructive-tron",
+          "bg-background bg-[image:var(--destructive-tron-bg-gradient)] text-destructive-muted-foreground shadow inset-ring inset-ring-border-destructive-tron",
           "hover:bg-[image:var(--hover-destructive-tron-bg-gradient)] hover:inset-ring-hover-border-destructive-tron",
           "[--tron-beam:var(--color-destructive)] [--tron-blur:var(--color-destructive-tron-blur)]",
         ],
@@ -175,7 +175,7 @@ const buttonVariants = cva(
         ],
 
         "destructive-gradient": [
-          "bg-gradient-to-br from-destructive-600 to-destructive-400 text-destructive-foreground dark:from-destructive-800 dark:to-destructive-500",
+          "bg-gradient-to-br from-destructive-600 to-destructive-400 text-destructive-foreground shadow dark:from-destructive-800 dark:to-destructive-500",
           "hover:from-destructive-600/90 hover:to-destructive-400/90 dark:hover:from-destructive-800/90 dark:hover:to-destructive-500/90",
         ],
 

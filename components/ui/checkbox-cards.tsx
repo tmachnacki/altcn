@@ -11,7 +11,7 @@ import { Label } from "./label";
 
 const checkboxCardItemVariants = cva(
   [
-    "text-sm font-normal [--accent-text:var(--color-accent-foreground)] [--muted-text:var(--color-muted-foreground)]",
+    "text-sm leading-normal font-normal [--accent-text:var(--color-accent-foreground)] [--muted-text:var(--color-muted-foreground)]",
     "relative flex items-start gap-3 rounded-lg p-4 outline -outline-offset-1 outline-border",
     "hover:z-10 hover:not-has-data-[state=checked]:not-has-disabled:bg-faded",
     "has-data-[state=checked]:not-has-focus-visible:z-20",
@@ -22,6 +22,9 @@ const checkboxCardItemVariants = cva(
   {
     variants: {
       variant: {
+        base: [
+          "has-focus-visible:outline-outline has-data-[state=checked]:bg-faded has-data-[state=checked]:[--accent-text:var(--color-accent-foreground)] has-data-[state=checked]:[--muted-text:var(--color-muted-foreground)] has-data-[state=checked]:not-has-focus-visible:outline-hover-border",
+        ],
         primary: [
           "has-focus-visible:outline-primary has-data-[state=checked]:bg-primary-faded has-data-[state=checked]:[--accent-text:var(--color-primary-accent-foreground)] has-data-[state=checked]:[--muted-text:var(--color-primary-muted-foreground)] has-data-[state=checked]:not-has-focus-visible:outline-primary/50",
         ],
@@ -84,7 +87,36 @@ function CheckboxCardsItemContent({
   return (
     <div
       data-slot="checkbox-cards-item-content"
-      className={cn("flex-1 leading-4", className)}
+      className={cn("flex-1", className)}
+      {...props}
+    />
+  );
+}
+
+function CheckboxCardsItemLabel({
+  className,
+  ...props
+}: React.ComponentProps<"span">) {
+  return (
+    <span
+      data-slot="checkbox-cards-item-label"
+      className={cn(
+        "block text-sm/4 font-medium text-(--accent-text)",
+        className
+      )}
+      {...props}
+    />
+  );
+}
+
+function CheckboxCardsItemDescription({
+  className,
+  ...props
+}: React.ComponentProps<"span">) {
+  return (
+    <span
+      data-slot="checkbox-cards-item-description"
+      className={cn("block font-normal text-(--muted-text)", className)}
       {...props}
     />
   );
@@ -109,5 +141,7 @@ export {
   CheckboxCards,
   CheckboxCardsItem,
   CheckboxCardsItemContent,
+  CheckboxCardsItemLabel,
+  CheckboxCardsItemDescription,
   CheckboxCardsItemCheckbox,
 };

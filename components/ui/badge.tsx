@@ -9,7 +9,7 @@ import { Tron } from "~/components/ui/tron";
 
 const badgeVariants = cva(
   [
-    "relative isolate inline-flex h-6 w-fit shrink-0 items-center justify-center gap-1.5 rounded-md px-2 py-1 text-xs leading-none font-medium whitespace-nowrap",
+    "relative isolate inline-flex w-fit shrink-0 grow-0 items-center justify-center gap-1.5 rounded-md px-2.5 py-1 h-6 text-xs leading-none font-medium whitespace-nowrap",
     "focus-visible:outline-2 focus-visible:outline-offset-2",
     "**:[svg]:pointer-events-none **:[svg]:not-[[class*='size-']]:size-3",
   ],
@@ -484,7 +484,7 @@ function BadgeClose({ className, ...props }: React.ComponentProps<"button">) {
       type="button"
       aria-label={"Remove"}
       className={cn(
-        "relative -mr-1 inline-flex size-4 items-center justify-center rounded-sm opacity-70 -outline-offset-1 outline-current hover:bg-(--hover-badge-close-bg) hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-2",
+        "touch-target relative -mr-1 inline-flex size-4 items-center justify-center rounded-sm opacity-70 -outline-offset-1 outline-current hover:bg-(--hover-badge-close-bg) hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-1",
         className
       )}
       {...props}
