@@ -39,7 +39,10 @@ const buttonVariants = cva(
           "hover:bg-hover-faded",
         ],
 
-        ghost: ["bg-transparent text-foreground", "hover:bg-muted"],
+        ghost: [
+          "bg-transparent text-foreground",
+          "hover:bg-muted hover:text-accent-foreground",
+        ],
 
         link: ["text-primary underline-offset-4", "hover:underline"],
 
@@ -87,7 +90,7 @@ const buttonVariants = cva(
 
         "primary-ghost": [
           "text-primary-muted-foreground",
-          "hover:bg-primary-muted",
+          "hover:bg-primary-muted hover:text-primary-accent-foreground",
         ],
 
         // secondary
@@ -134,7 +137,7 @@ const buttonVariants = cva(
 
         "secondary-ghost": [
           "text-secondary-muted-foreground",
-          "hover:bg-secondary-muted",
+          "hover:bg-secondary-muted hover:text-secondary-accent-foreground",
         ],
 
         // --- destructive ---
@@ -181,7 +184,7 @@ const buttonVariants = cva(
 
         "destructive-ghost": [
           "text-destructive-muted-foreground",
-          "hover:bg-destructive-muted",
+          "hover:bg-destructive-muted hover:text-destructive-accent-foreground",
         ],
       },
       size: {
