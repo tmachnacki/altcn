@@ -74,32 +74,32 @@ type CalendarVariants = {
 
 const CalendarContext = React.createContext<CalendarVariants>({});
 
-const rangeVariants = (
-  range: DayVariants["range"] = "primary-muted",
-  position: "start" | "middle" | "end"
-) => {
-  return cn(
-    {
-      accent: "bg-muted",
-      muted: "bg-muted",
-      surface: "bg-faded",
-      faded: "bg-faded",
-      "primary-accent": "bg-primary-muted",
-      "primary-muted": "bg-primary-muted",
-      "primary-surface": "bg-primary-faded",
-      "primary-faded": "bg-primary-faded",
-      "secondary-accent": "bg-secondary-muted",
-      "secondary-muted": "bg-secondary-muted",
-      "secondary-surface": "bg-secondary-faded",
-      "secondary-faded": "bg-secondary-faded",
-    }[range],
-    {
-      start: "rounded-l-md",
-      middle: "rounded-none",
-      end: "rounded-r-md",
-    }[position]
-  );
-};
+// const rangeVariants = (
+//   range: DayVariants["range"] = "primary-muted",
+//   position: "start" | "middle" | "end"
+// ) => {
+//   return cn(
+//     {
+//       accent: "bg-muted",
+//       muted: "bg-muted",
+//       surface: "bg-faded",
+//       faded: "bg-faded",
+//       "primary-accent": "bg-primary-muted",
+//       "primary-muted": "bg-primary-muted",
+//       "primary-surface": "bg-primary-faded",
+//       "primary-faded": "bg-primary-faded",
+//       "secondary-accent": "bg-secondary-muted",
+//       "secondary-muted": "bg-secondary-muted",
+//       "secondary-surface": "bg-secondary-faded",
+//       "secondary-faded": "bg-secondary-faded",
+//     }[range],
+//     {
+//       start: "rounded-l-md",
+//       middle: "rounded-none",
+//       end: "rounded-r-md",
+//     }[position]
+//   );
+// };
 
 function Calendar({
   className,
@@ -194,22 +194,22 @@ function Calendar({
             defaultClassNames.week_number
           ),
           day: cn(
-            "group/day relative inline-flex aspect-square h-full w-full items-center justify-center overflow-visible p-0 select-none not-data-[outside=true]:text-subtle-foreground first:data-[selected=true]:rounded-l-md last:data-[selected=true]:rounded-r-md first:data-[selected=true]:*:[button]:rounded-l-md last:data-[selected=true]:*:[button]:rounded-r-md",
+            "group/day relative inline-flex aspect-square h-full w-full items-center justify-center p-0 select-none first:data-[selected=true]:rounded-l-md last:data-[selected=true]:rounded-r-md data-[selected=true]:first:*:[button]:rounded-l-md data-[selected=true]:last:*:[button]:rounded-r-md",
             defaultClassNames.day
           ),
           range_start: cn(
-            rangeVariants(variants.range, "start"),
-            // "rounded-l-md",
+            // rangeVariants(variants.range, "start"),
+            "rounded-l-md",
             defaultClassNames.range_start
           ),
           range_middle: cn(
-            rangeVariants(variants.range, "middle"),
-            // "rounded-none",
+            // rangeVariants(variants.range, "middle"),
+            "rounded-none",
             defaultClassNames.range_middle
           ),
           range_end: cn(
-            rangeVariants(variants.range, "end"),
-            // "rounded-r-md",
+            // rangeVariants(variants.range, "end"),
+            "rounded-r-md",
             defaultClassNames.range_end
           ),
           today: cn(
@@ -360,7 +360,7 @@ function CalendarDayButton({
 
         // "data-[selected-single=true]:group-not-data-[outside=true]/day:bg-primary data-[selected-single=true]:group-not-data-[outside=true]/day:text-primary-foreground",
 
-        "group-data-[outside=true]/day:pointer-events-none group-data-[outside=true]/day:border-0 group-data-[outside=true]/day:bg-transparent group-data-[outside=true]/day:text-muted-foreground/75",
+        "group-data-[outside=true]/day:pointer-events-none group-data-[outside=true]/day:border-0 group-data-[outside=true]/day:bg-transparent group-data-[outside=true]/day:bg-none group-data-[outside=true]/day:text-muted-foreground/75 group-data-[outside=true]/day:shadow-none",
         defaultClassNames.day,
         className
       )}
