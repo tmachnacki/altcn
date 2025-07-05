@@ -50,6 +50,7 @@ type DayVariants = {
   >;
   range?: Extract<
     React.ComponentProps<typeof Button>["variant"],
+    | "outline"
     | "accent"
     | "muted"
     | "surface"
@@ -67,7 +68,25 @@ type DayVariants = {
 
 type CalendarVariants = {
   variants?: {
-    nav?: React.ComponentProps<typeof Button>["variant"];
+    nav?: Extract<
+      React.ComponentProps<typeof Button>["variant"],
+      | "outline"
+      | "accent"
+      | "muted"
+      | "surface"
+      | "faded"
+      | "ghost"
+      | "primary-accent"
+      | "primary-muted"
+      | "primary-surface"
+      | "primary-faded"
+      | "primary-ghost"
+      | "secondary-accent"
+      | "secondary-muted"
+      | "secondary-surface"
+      | "secondary-faded"
+      | "secondary-ghost"
+    >;
   } & SelectVariants &
     DayVariants;
 };
@@ -150,12 +169,14 @@ function Calendar({
           ),
           button_previous: cn(
             buttonVariants({ variant: variants.nav, size: "icon-sm" }),
-            "size-7 rounded-full text-subtle-foreground hover:text-accent-foreground",
+            "size-7 rounded-full",
+            variants.nav?.includes("ghost") && "text-subtle-foreground",
             defaultClassNames.button_previous
           ),
           button_next: cn(
             buttonVariants({ variant: variants.nav, size: "icon-sm" }),
-            "size-7 rounded-full text-subtle-foreground hover:text-accent-foreground",
+            "size-7 rounded-full",
+            variants.nav?.includes("ghost") && "text-subtle-foreground",
             defaultClassNames.button_next
           ),
           month_caption: cn(
@@ -194,7 +215,11 @@ function Calendar({
             defaultClassNames.week_number
           ),
           day: cn(
-            "group/day relative inline-flex aspect-square h-full w-full items-center justify-center p-0 select-none first:data-[selected=true]:rounded-l-md last:data-[selected=true]:rounded-r-md data-[selected=true]:first:*:[button]:rounded-l-md data-[selected=true]:last:*:[button]:rounded-r-md",
+            "group/day relative inline-flex aspect-square h-full w-full items-center justify-center p-0 select-none data-[selected=true]:first:*:[button]:rounded-l-md data-[selected=true]:last:*:[button]:rounded-r-md",
+            (variants?.range?.includes("outline") ||
+              variants?.range?.includes("surface") ||
+              variants?.range?.includes("faded")) &&
+              "not-data-[outside=true]:data-[selected=true]:first:*:[button]:border-l not-data-[outside=true]:data-[selected=true]:last:*:[button]:border-r",
             defaultClassNames.day
           ),
           range_start: cn(
@@ -223,7 +248,7 @@ function Calendar({
             defaultClassNames.outside
           ),
           disabled: cn(
-            "pointer-events-none text-muted-foreground line-through opacity-50",
+            "pointer-events-none bg-transparent bg-none",
             defaultClassNames.disabled
           ),
           hidden: cn("invisible", defaultClassNames.hidden),
@@ -338,8 +363,12 @@ function CalendarDayButton({
       data-range-end={modifiers.range_end}
       data-range-middle={modifiers.range_middle}
       data-today={modifiers.today}
+      data-disabled={modifiers.disabled}
+      disabled={modifiers.disabled}
       className={cn(
         "aspect-square size-auto w-full min-w-(--cell-size) gap-0 p-0 leading-none font-normal tabular-nums outline-offset-1 focus-visible:outline-1",
+
+        "data-[disabled=true]:line-through data-[disabled=true]:not-data-[selected=true]:border-0 data-[disabled=true]:not-data-[selected=true]:bg-transparent data-[disabled=true]:not-data-[selected=true]:bg-none data-[disabled=true]:not-data-[selected=true]:text-muted-foreground data-[disabled=true]:not-data-[selected=true]:inset-ring-0",
 
         "group-data-[focused=true]/day:relative group-data-[focused=true]/day:z-10",
 
@@ -347,7 +376,7 @@ function CalendarDayButton({
 
         "not-data-[selected=true]:group-not-data-[outside=true]/day:text-subtle-foreground hover:not-data-[selected=true]:group-not-data-[outside=true]/day:text-accent-foreground",
 
-        "data-[today=true]:underline data-[today=true]:underline-offset-2",
+        // "data-[today=true]:underline data-[today=true]:underline-offset-2",
 
         "data-[range-end=true]:rounded-l-none data-[range-end=true]:rounded-r-md data-[range-end=true]:border-l-0",
         // "data-[range-end=true]:group-not-data-[outside=true]/day:bg-primary data-[range-end=true]:group-not-data-[outside=true]/day:text-primary-foreground",
@@ -360,7 +389,7 @@ function CalendarDayButton({
 
         // "data-[selected-single=true]:group-not-data-[outside=true]/day:bg-primary data-[selected-single=true]:group-not-data-[outside=true]/day:text-primary-foreground",
 
-        "group-data-[outside=true]/day:pointer-events-none group-data-[outside=true]/day:border-0 group-data-[outside=true]/day:bg-transparent group-data-[outside=true]/day:bg-none group-data-[outside=true]/day:text-muted-foreground/75 group-data-[outside=true]/day:shadow-none",
+        "group-data-[outside=true]/day:pointer-events-none group-data-[outside=true]/day:border-0 group-data-[outside=true]/day:bg-transparent group-data-[outside=true]/day:bg-none group-data-[outside=true]/day:text-muted-foreground/75 group-data-[outside=true]/day:shadow-none group-data-[outside=true]/day:inset-ring-0",
         defaultClassNames.day,
         className
       )}
