@@ -144,10 +144,10 @@ const selectItemVariants = cva(
           "data-[highlighted]:bg-primary-muted data-[highlighted]:text-primary-muted-foreground",
 
         "primary-surface":
-          "data-[highlighted]:bg-primary-faded data-[highlighted]:text-primary-accent-foreground data-[highlighted]:data-[width=default]:inset-ring data-[highlighted]:data-[width=default]:inset-ring-border-primary-faded data-[highlighted]:data-[width=full]:shadow-[inset_0_1px_0_0_var(--color-border-primary-faded),inset_0_-1px_0_0_var(--color-border-primary-faded)]",
+          "data-[highlighted]:bg-primary-faded data-[highlighted]:text-primary-accent-foreground data-[highlighted]:data-[width=default]:inset-ring data-[highlighted]:data-[width=default]:inset-ring-primary-border-faded data-[highlighted]:data-[width=full]:shadow-[inset_0_1px_0_0_var(--color-primary-border-faded),inset_0_-1px_0_0_var(--color-primary-border-faded)]",
 
         "primary-faded":
-          "data-[highlighted]:bg-primary-faded data-[highlighted]:text-primary-muted-foreground data-[highlighted]:data-[width=default]:inset-ring data-[highlighted]:data-[width=default]:inset-ring-border-primary-faded data-[highlighted]:data-[width=full]:shadow-[inset_0_1px_0_0_var(--color-border-primary-faded),inset_0_-1px_0_0_var(--color-border-primary-faded)]",
+          "data-[highlighted]:bg-primary-faded data-[highlighted]:text-primary-muted-foreground data-[highlighted]:data-[width=default]:inset-ring data-[highlighted]:data-[width=default]:inset-ring-primary-border-faded data-[highlighted]:data-[width=full]:shadow-[inset_0_1px_0_0_var(--color-primary-border-faded),inset_0_-1px_0_0_var(--color-primary-border-faded)]",
 
         // -- secondary --
         secondary:
@@ -160,10 +160,10 @@ const selectItemVariants = cva(
           "data-[highlighted]:bg-secondary-muted data-[highlighted]:text-secondary-muted-foreground",
 
         "secondary-surface":
-          "data-[highlighted]:bg-secondary-faded data-[highlighted]:text-secondary-accent-foreground data-[highlighted]:data-[width=default]:inset-ring data-[highlighted]:data-[width=default]:inset-ring-border-secondary-faded data-[highlighted]:data-[width=full]:shadow-[inset_0_1px_0_0_var(--color-border-secondary-faded),inset_0_-1px_0_0_var(--color-border-secondary-faded)]",
+          "data-[highlighted]:bg-secondary-faded data-[highlighted]:text-secondary-accent-foreground data-[highlighted]:data-[width=default]:inset-ring data-[highlighted]:data-[width=default]:inset-ring-secondary-border-faded data-[highlighted]:data-[width=full]:shadow-[inset_0_1px_0_0_var(--color-secondary-border-faded),inset_0_-1px_0_0_var(--color-secondary-border-faded)]",
 
         "secondary-faded":
-          "data-[highlighted]:bg-secondary-faded data-[highlighted]:text-secondary-muted-foreground data-[highlighted]:data-[width=default]:inset-ring data-[highlighted]:data-[width=default]:inset-ring-border-secondary-faded data-[highlighted]:data-[width=full]:shadow-[inset_0_1px_0_0_var(--color-border-secondary-faded),inset_0_-1px_0_0_var(--color-border-secondary-faded)]",
+          "data-[highlighted]:bg-secondary-faded data-[highlighted]:text-secondary-muted-foreground data-[highlighted]:data-[width=default]:inset-ring data-[highlighted]:data-[width=default]:inset-ring-secondary-border-faded data-[highlighted]:data-[width=full]:shadow-[inset_0_1px_0_0_var(--color-secondary-border-faded),inset_0_-1px_0_0_var(--color-secondary-border-faded)]",
 
         // -- destructive --
         destructive:
@@ -176,10 +176,10 @@ const selectItemVariants = cva(
           "data-[highlighted]:bg-destructive-muted data-[highlighted]:text-destructive-muted-foreground",
 
         "destructive-surface":
-          "data-[highlighted]:bg-destructive-faded data-[highlighted]:text-destructive-accent-foreground data-[highlighted]:data-[width=default]:inset-ring data-[highlighted]:data-[width=default]:inset-ring-border-destructive-faded data-[highlighted]:data-[width=full]:shadow-[inset_0_1px_0_0_var(--color-border-destructive-faded),inset_0_-1px_0_0_var(--color-border-destructive-faded)]",
+          "data-[highlighted]:data-[width=default]:inset-ring-destructive-border-faded data-[highlighted]:bg-destructive-faded data-[highlighted]:text-destructive-accent-foreground data-[highlighted]:data-[width=default]:inset-ring data-[highlighted]:data-[width=full]:shadow-[inset_0_1px_0_0_var(--color-destructive-border-faded),inset_0_-1px_0_0_var(--color-destructive-border-faded)]",
 
         "destructive-faded":
-          "data-[highlighted]:bg-destructive-faded data-[highlighted]:text-destructive-muted-foreground data-[highlighted]:data-[width=default]:inset-ring data-[highlighted]:data-[width=default]:inset-ring-border-destructive-faded data-[highlighted]:data-[width=full]:shadow-[inset_0_1px_0_0_var(--color-border-destructive-faded),inset_0_-1px_0_0_var(--color-border-destructive-faded)]",
+          "data-[highlighted]:data-[width=default]:inset-ring-destructive-border-faded data-[highlighted]:bg-destructive-faded data-[highlighted]:text-destructive-muted-foreground data-[highlighted]:data-[width=default]:inset-ring data-[highlighted]:data-[width=full]:shadow-[inset_0_1px_0_0_var(--color-destructive-border-faded),inset_0_-1px_0_0_var(--color-destructive-border-faded)]",
       },
       width: {
         default: "",

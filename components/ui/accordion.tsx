@@ -22,17 +22,17 @@ const accordionItemVariants = cva(
 
         // -- primary --
         "primary-muted":
-          "border-border-primary-faded bg-primary-muted data-[layout=split]:border-0",
+          "border-primary-border-faded bg-primary-muted data-[layout=split]:border-0",
 
         "primary-faded":
-          "border-border-primary-faded bg-primary-faded data-[layout=split]:border",
+          "border-primary-border-faded bg-primary-faded data-[layout=split]:border",
 
         // -- secondary --
         "secondary-muted":
-          "border-border-secondary-faded bg-secondary-muted data-[layout=split]:border-0",
+          "border-secondary-border-faded bg-secondary-muted data-[layout=split]:border-0",
 
         "secondary-faded":
-          "border-border-secondary-faded bg-secondary-faded data-[layout=split]:border",
+          "border-secondary-border-faded bg-secondary-faded data-[layout=split]:border",
       },
     },
     compoundVariants: [

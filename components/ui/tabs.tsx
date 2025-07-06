@@ -72,10 +72,10 @@ const tabsTriggerVariants = cva(
           "data-[state=active]:bg-primary-muted data-[state=active]:text-primary-muted-foreground",
 
         "primary-surface":
-          "data-[state=active]:border data-[state=active]:border-border-primary-faded data-[state=active]:bg-primary-faded data-[state=active]:text-primary-accent-foreground",
+          "data-[state=active]:border data-[state=active]:border-primary-border-faded data-[state=active]:bg-primary-faded data-[state=active]:text-primary-accent-foreground",
 
         "primary-faded":
-          "data-[state=active]:border data-[state=active]:border-border-primary-faded data-[state=active]:bg-primary-faded data-[state=active]:text-primary-muted-foreground",
+          "data-[state=active]:border data-[state=active]:border-primary-border-faded data-[state=active]:bg-primary-faded data-[state=active]:text-primary-muted-foreground",
 
         "primary-underlined":
           "-outline-offset-2 data-[state=active]:text-primary data-[state=active]:before:bg-primary",
@@ -83,7 +83,7 @@ const tabsTriggerVariants = cva(
         "primary-ghost": "data-[state=active]:text-primary",
 
         "primary-tron": [
-          "data-[state=active]:bg-background data-[state=active]:bg-[image:var(--primary-tron-bg-gradient)] data-[state=active]:text-primary-muted-foreground data-[state=active]:inset-ring data-[state=active]:inset-ring-border-primary-tron",
+          "data-[state=active]:bg-background data-[state=active]:bg-[image:var(--primary-tron-gradient)] data-[state=active]:text-primary-muted-foreground data-[state=active]:inset-ring data-[state=active]:inset-ring-primary-border-tron",
           "data-[state=active]:[--tron-beam:var(--color-primary)] data-[state=active]:[--tron-blur:var(--color-primary-tron-blur)]",
         ],
 
@@ -98,10 +98,10 @@ const tabsTriggerVariants = cva(
           "data-[state=active]:bg-secondary-muted data-[state=active]:text-secondary-muted-foreground",
 
         "secondary-surface":
-          "data-[state=active]:border data-[state=active]:border-border-secondary-faded data-[state=active]:bg-secondary-faded data-[state=active]:text-secondary-accent-foreground",
+          "data-[state=active]:border data-[state=active]:border-secondary-border-faded data-[state=active]:bg-secondary-faded data-[state=active]:text-secondary-accent-foreground",
 
         "secondary-faded":
-          "data-[state=active]:border data-[state=active]:border-border-secondary-faded data-[state=active]:bg-secondary-faded data-[state=active]:text-secondary-muted-foreground",
+          "data-[state=active]:border data-[state=active]:border-secondary-border-faded data-[state=active]:bg-secondary-faded data-[state=active]:text-secondary-muted-foreground",
 
         "secondary-underlined":
           "-outline-offset-2 data-[state=active]:text-secondary-500 data-[state=active]:before:bg-secondary dark:data-[state=active]:text-secondary",
@@ -110,7 +110,7 @@ const tabsTriggerVariants = cva(
           "data-[state=active]:text-secondary-500 dark:data-[state=active]:text-secondary",
 
         "secondary-tron": [
-          "data-[state=active]:bg-background data-[state=active]:bg-[image:var(--secondary-tron-bg-gradient)] data-[state=active]:text-secondary-muted-foreground data-[state=active]:inset-ring data-[state=active]:inset-ring-border-secondary-tron",
+          "data-[state=active]:inset-ring-secondary-border-tron data-[state=active]:bg-background data-[state=active]:bg-[image:var(--secondary-tron-gradient)] data-[state=active]:text-secondary-muted-foreground data-[state=active]:inset-ring",
           "data-[state=active]:[--tron-beam:var(--color-secondary)] data-[state=active]:[--tron-blur:var(--color-secondary-tron-blur)]",
         ],
       },

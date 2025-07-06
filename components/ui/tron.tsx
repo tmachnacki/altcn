@@ -18,7 +18,9 @@ export function Tron({
       data-side={side}
       className={cn(
         "absolute block h-px bg-linear-to-r from-transparent to-transparent transition-opacity duration-300 motion-reduce:transition-none",
-        type === "beam" ? "left-[10%] w-[80%]" : "left-[25%] w-[50%] blur-sm",
+        type === "beam"
+          ? "left-0.5 w-[calc(100%_-_var(--spacing)*1)]"
+          : "left-[25%] w-[50%] blur-sm",
         side === "top" ? "-top-0" : "-bottom-0",
         className
       )}

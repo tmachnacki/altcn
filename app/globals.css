@@ -62,6 +62,7 @@
   --primary-foreground: var(--color-white);
   --primary-accent-foreground: var(--color-primary-950);
   --primary-muted: var(--color-primary-100);
+  --primary-muted-new: --alpha(var(--color-primary-200) / 60%);
   --hover-primary-muted: color-mix(
     in oklab,
     var(--color-primary-100) 50%,
@@ -69,21 +70,22 @@
   );
   --primary-muted-foreground: var(--color-primary-600);
   --primary-faded: var(--color-primary-50);
+  --primary-faded-new: --alpha(var(--color-primary-100) / 50%);
   --primary-faded-solid: var(--color-primary-50);
   --hover-primary-faded: var(--color-primary-100);
-  --border-primary-faded: --alpha(var(--color-primary-600) / 15%);
-  --primary-tron-bg-gradient: linear-gradient(
+  --primary-border-faded: --alpha(var(--color-primary-600) / 15%);
+  --primary-tron-gradient: linear-gradient(
     to top,
-    --alpha(var(--color-primary) / 15%) 0%,
-    transparent 100%
+    --alpha(var(--color-primary) / 17.5%) 0%,
+    --alpha(var(--color-primary) / 5%) 100% /* transparent 100% */
   );
-  --hover-primary-tron-bg-gradient: linear-gradient(
+  --hover-primary-tron-gradient: linear-gradient(
     to bottom,
     --alpha(var(--color-primary) / 20%) 0%,
-    --alpha(var(--color-primary) / 7.5%) 100%
+    --alpha(var(--color-primary) / 5%) 100%
   );
-  --border-primary-tron: --alpha(var(--color-primary) / 30%);
-  --hover-border-primary-tron: --alpha(var(--color-primary) / 50%);
+  --primary-border-tron: --alpha(var(--color-primary) / 30%);
+  --hover-primary-border-tron: --alpha(var(--color-primary) / 50%);
   --primary-tron-blur: var(--color-purple-400);
   --primary-placeholder: --alpha(var(--color-primary-600) / 60%);
 
@@ -108,28 +110,28 @@
   );
   --secondary-faded: color-mix(
     in oklab,
-    var(--color-secondary-50) 70%,
+    var(--color-secondary-50) 80%,
     var(--color-secondary-100)
   );
   --secondary-faded-solid: color-mix(
     in oklab,
-    var(--color-secondary-50) 70%,
+    var(--color-secondary-50) 80%,
     var(--color-secondary-100)
   );
   --hover-secondary-faded: var(--color-secondary-100);
-  --border-secondary-faded: --alpha(var(--color-secondary-600) / 20%);
-  --secondary-tron-bg-gradient: linear-gradient(
+  --secondary-border-faded: --alpha(var(--color-secondary-600) / 20%);
+  --secondary-tron-gradient: linear-gradient(
     to top,
-    --alpha(var(--color-secondary) / 15%) 0%,
-    transparent 100%
+    --alpha(var(--color-secondary) / 17.5%) 0%,
+    --alpha(var(--color-secondary) / 5%) 100%
   );
-  --hover-secondary-tron-bg-gradient: linear-gradient(
+  --hover-secondary-tron-gradient: linear-gradient(
     to bottom,
     --alpha(var(--color-secondary) / 20%) 0%,
-    --alpha(var(--color-secondary) / 7.5%) 100%
+    --alpha(var(--color-secondary) / 5%) 100%
   );
-  --border-secondary-tron: --alpha(var(--color-secondary) / 30%);
-  --hover-border-secondary-tron: --alpha(var(--color-secondary) / 50%);
+  --secondary-border-tron: --alpha(var(--color-secondary) / 30%);
+  --hover-secondary-border-tron: --alpha(var(--color-secondary) / 50%);
   --secondary-tron-blur: var(--color-cyan-400);
   --secondary-placeholder: --alpha(var(--color-secondary-600) / 60%);
 
@@ -151,19 +153,19 @@
   --destructive-faded: var(--color-destructive-50);
   --destructive-faded-solid: var(--color-destructive-50);
   --hover-destructive-faded: var(--color-destructive-100);
-  --border-destructive-faded: --alpha(var(--color-destructive-600) / 12.5%);
-  --destructive-tron-bg-gradient: linear-gradient(
+  --destructive-border-faded: --alpha(var(--color-destructive-600) / 12.5%);
+  --destructive-tron-gradient: linear-gradient(
     to top,
-    --alpha(var(--color-destructive) / 15%) 0%,
-    transparent 100%
+    --alpha(var(--color-destructive) / 17.5%) 0%,
+    --alpha(var(--color-destructive) / 5%) 100%
   );
-  --hover-destructive-tron-bg-gradient: linear-gradient(
+  --hover-destructive-tron-gradient: linear-gradient(
     to bottom,
     --alpha(var(--color-destructive) / 20%) 0%,
-    --alpha(var(--color-destructive) / 7.5%) 100%
+    --alpha(var(--color-destructive) / 5%) 100%
   );
-  --border-destructive-tron: --alpha(var(--color-destructive) / 30%);
-  --hover-border-destructive-tron: --alpha(var(--color-destructive) / 50%);
+  --destructive-border-tron: --alpha(var(--color-destructive) / 30%);
+  --hover-destructive-border-tron: --alpha(var(--color-destructive) / 50%);
   --destructive-tron-blur: var(--color-pink-400);
   --destructive-placeholder: --alpha(var(--color-destructive-500) / 60%);
 
@@ -185,19 +187,19 @@
   --success-faded: var(--color-success-50);
   --success-faded-solid: var(--color-success-50);
   --hover-success-faded: var(--color-success-100);
-  --border-success-faded: --alpha(var(--color-success-600) / 20%);
-  --success-tron-bg-gradient: linear-gradient(
+  --success-border-faded: --alpha(var(--color-success-600) / 20%);
+  --success-tron-gradient: linear-gradient(
     to top,
-    --alpha(var(--color-success) / 15%) 0%,
-    transparent 100%
+    --alpha(var(--color-success) / 17.5%) 0%,
+    --alpha(var(--color-success) / 5%) 100%
   );
-  --hover-success-tron-bg-gradient: linear-gradient(
+  --hover-success-tron-gradient: linear-gradient(
     to bottom,
     --alpha(var(--color-success) / 20%) 0%,
-    --alpha(var(--color-success) / 7.5%) 100%
+    --alpha(var(--color-success) / 5%) 100%
   );
-  --border-success-tron: --alpha(var(--color-success) / 30%);
-  --hover-border-success-tron: --alpha(var(--color-success) / 50%);
+  --success-border-tron: --alpha(var(--color-success) / 30%);
+  --hover-success-border-tron: --alpha(var(--color-success) / 50%);
   --success-tron-blur: var(--color-green-400);
 
   --warning: var(--color-warning-400);
@@ -218,19 +220,19 @@
   --warning-faded: var(--color-warning-50);
   --warning-faded-solid: var(--color-warning-50);
   --hover-warning-faded: var(--color-warning-100);
-  --border-warning-faded: --alpha(var(--color-warning-600) / 25%);
-  --warning-tron-bg-gradient: linear-gradient(
+  --warning-border-faded: --alpha(var(--color-warning-600) / 25%);
+  --warning-tron-gradient: linear-gradient(
     to top,
-    --alpha(var(--color-warning) / 15%) 0%,
-    transparent 100%
+    --alpha(var(--color-warning) / 17.5%) 0%,
+    --alpha(var(--color-warning) / 5%) 100%
   );
-  --hover-warning-tron-bg-gradient: linear-gradient(
+  --hover-warning-tron-gradient: linear-gradient(
     to bottom,
     --alpha(var(--color-warning) / 20%) 0%,
-    --alpha(var(--color-warning) / 7.5%) 100%
+    --alpha(var(--color-warning) / 5%) 100%
   );
-  --border-warning-tron: --alpha(var(--color-warning) / 30%);
-  --hover-border-warning-tron: --alpha(var(--color-warning) / 50%);
+  --warning-border-tron: --alpha(var(--color-warning) / 30%);
+  --hover-warning-border-tron: --alpha(var(--color-warning) / 50%);
   --warning-tron-blur: var(--color-yellow-300);
 
   --skeleton: var(--color-base-300);
@@ -318,19 +320,20 @@
     var(--color-background)
   );
   --hover-primary-faded: var(--color-primary-950);
-  --border-primary-faded: --alpha(var(--color-primary-500) / 25%);
-  --primary-tron-bg-gradient: linear-gradient(
+  --primary-border-faded: --alpha(var(--color-primary-500) / 25%);
+  --primary-tron-gradient: linear-gradient(
     to top,
-    --alpha(var(--color-primary) / 15%) 0%,
-    transparent 100%
+    --alpha(var(--color-primary) / 17.5%) 0%,
+    --alpha(var(--color-primary) / 5%) 100%
   );
-  --hover-primary-tron-bg-gradient: linear-gradient(
+  --hover-primary-tron-gradient: linear-gradient(
     to bottom,
     --alpha(var(--color-primary) / 20%) 0%,
-    --alpha(var(--color-primary) / 7.5%) 100%
+    --alpha(var(--color-primary) / 5%) 100%
   );
-  --border-primary-tron: --alpha(var(--color-primary) / 30%);
-  --hover-border-primary-tron: --alpha(var(--color-primary) / 50%);
+  --primary-border-tron: --alpha(var(--color-primary) / 30%);
+  --hover-primary-border-tron: --alpha(var(--color-primary) / 50%);
+
   --primary-tron-blur: var(--color-purple-400);
   --primary-placeholder: --alpha(var(--color-primary-300) / 60%);
 
@@ -356,19 +359,20 @@
     var(--color-background)
   );
   --hover-secondary-faded: var(--color-secondary-950);
-  --border-secondary-faded: --alpha(var(--color-secondary-500) / 20%);
-  --secondary-tron-bg-gradient: linear-gradient(
+  --secondary-border-faded: --alpha(var(--color-secondary-500) / 20%);
+  --secondary-tron-gradient: linear-gradient(
     to top,
-    --alpha(var(--color-secondary) / 15%) 0%,
-    transparent 100%
+    --alpha(var(--color-secondary) / 17.5%) 0%,
+    --alpha(var(--color-secondary) / 5%) 100%
   );
-  --hover-secondary-tron-bg-gradient: linear-gradient(
+  --hover-secondary-tron-gradient: linear-gradient(
     to bottom,
     --alpha(var(--color-secondary) / 20%) 0%,
-    --alpha(var(--color-secondary) / 7.5%) 100%
+    --alpha(var(--color-secondary) / 5%) 100%
   );
-  --border-secondary-tron: --alpha(var(--color-secondary) / 30%);
-  --hover-border-secondary-tron: --alpha(var(--color-secondary) / 50%);
+  --secondary-border-tron: --alpha(var(--color-secondary) / 30%);
+  --hover-secondary-border-tron: --alpha(var(--color-secondary) / 50%);
+
   --secondary-tron-blur: var(--color-cyan-400);
   --secondary-placeholder: --alpha(var(--color-secondary-300) / 50%);
 
@@ -394,19 +398,19 @@
     var(--color-background)
   );
   --hover-destructive-faded: var(--color-destructive-950);
-  --border-destructive-faded: --alpha(var(--color-destructive-400) / 20%);
-  --destructive-tron-bg-gradient: linear-gradient(
+  --destructive-border-faded: --alpha(var(--color-destructive-400) / 20%);
+  --destructive-tron-gradient: linear-gradient(
     to top,
-    --alpha(var(--color-destructive) / 15%) 0%,
-    transparent 100%
+    --alpha(var(--color-destructive) / 17.5%) 0%,
+    --alpha(var(--color-destructive) / 5%) 100%
   );
-  --hover-destructive-tron-bg-gradient: linear-gradient(
+  --hover-destructive-tron-gradient: linear-gradient(
     to bottom,
     --alpha(var(--color-destructive) / 20%) 0%,
-    --alpha(var(--color-destructive) / 7.5%) 100%
+    --alpha(var(--color-destructive) / 5%) 100%
   );
-  --border-destructive-tron: --alpha(var(--color-destructive) / 30%);
-  --hover-border-destructive-tron: --alpha(var(--color-destructive) / 50%);
+  --destructive-border-tron: --alpha(var(--color-destructive) / 30%);
+  --hover-destructive-border-tron: --alpha(var(--color-destructive) / 50%);
   --destructive-tron-blur: var(--color-pink-400);
   --destructive-placeholder: --alpha(var(--color-destructive-300) / 60%);
 
@@ -432,19 +436,19 @@
     var(--color-background)
   );
   --hover-success-faded: var(--color-success-950);
-  --border-success-faded: --alpha(var(--color-success-500) / 20%);
-  --success-tron-bg-gradient: linear-gradient(
+  --success-border-faded: --alpha(var(--color-success-500) / 20%);
+  --success-tron-gradient: linear-gradient(
     to top,
-    --alpha(var(--color-success) / 15%) 0%,
-    transparent 100%
+    --alpha(var(--color-success) / 17.5%) 0%,
+    --alpha(var(--color-success) / 5%) 100%
   );
-  --hover-success-tron-bg-gradient: linear-gradient(
+  --hover-success-tron-gradient: linear-gradient(
     to bottom,
     --alpha(var(--color-success) / 20%) 0%,
-    --alpha(var(--color-success) / 7.5%) 100%
+    --alpha(var(--color-success) / 5%) 100%
   );
-  --border-success-tron: --alpha(var(--color-success) / 30%);
-  --hover-border-success-tron: --alpha(var(--color-success) / 50%);
+  --success-border-tron: --alpha(var(--color-success) / 30%);
+  --hover-success-border-tron: --alpha(var(--color-success) / 50%);
   --success-tron-blur: var(--color-green-400);
 
   --warning: var(--color-warning-400);
@@ -469,19 +473,19 @@
     var(--color-background)
   );
   --hover-warning-faded: var(--color-warning-950);
-  --border-warning-faded: --alpha(var(--color-warning-400) / 20%);
-  --warning-tron-bg-gradient: linear-gradient(
+  --warning-border-faded: --alpha(var(--color-warning-400) / 20%);
+  --warning-tron-gradient: linear-gradient(
     to top,
-    --alpha(var(--color-warning) / 15%) 0%,
-    transparent 100%
+    --alpha(var(--color-warning) / 17.5%) 0%,
+    --alpha(var(--color-warning) / 5%) 100%
   );
-  --hover-warning-tron-bg-gradient: linear-gradient(
+  --hover-warning-tron-gradient: linear-gradient(
     to bottom,
     --alpha(var(--color-warning) / 20%) 0%,
-    --alpha(var(--color-warning) / 7.5%) 100%
+    --alpha(var(--color-warning) / 5%) 100%
   );
-  --border-warning-tron: --alpha(var(--color-warning) / 30%);
-  --hover-border-warning-tron: --alpha(var(--color-warning) / 50%);
+  --warning-border-tron: --alpha(var(--color-warning) / 30%);
+  --hover-warning-border-tron: --alpha(var(--color-warning) / 50%);
   --warning-tron-blur: var(--color-yellow-300);
 
   --skeleton: var(--color-base-800);
@@ -616,9 +620,9 @@
   --color-primary-faded: var(--primary-faded);
   --color-primary-faded-solid: var(--primary-faded-solid);
   --color-hover-primary-faded: var(--hover-primary-faded);
-  --color-border-primary-faded: var(--border-primary-faded);
-  --color-border-primary-tron: var(--border-primary-tron);
-  --color-hover-border-primary-tron: var(--hover-border-primary-tron);
+  --color-primary-border-faded: var(--primary-border-faded);
+  --color-primary-border-tron: var(--primary-border-tron);
+  --color-hover-primary-border-tron: var(--hover-primary-border-tron);
   --color-primary-tron-blur: var(--primary-tron-blur);
   --color-primary-placeholder: var(--primary-placeholder);
 
@@ -632,9 +636,9 @@
   --color-secondary-faded: var(--secondary-faded);
   --color-secondary-faded-solid: var(--secondary-faded-solid);
   --color-hover-secondary-faded: var(--hover-secondary-faded);
-  --color-border-secondary-faded: var(--border-secondary-faded);
-  --color-border-secondary-tron: var(--border-secondary-tron);
-  --color-hover-border-secondary-tron: var(--hover-border-secondary-tron);
+  --color-secondary-border-faded: var(--secondary-border-faded);
+  --color-secondary-border-tron: var(--secondary-border-tron);
+  --color-hover-secondary-border-tron: var(--hover-secondary-border-tron);
   --color-secondary-tron-blur: var(--secondary-tron-blur);
   --color-secondary-placeholder: var(--secondary-placeholder);
 
@@ -648,9 +652,9 @@
   --color-destructive-faded: var(--destructive-faded);
   --color-destructive-faded-solid: var(--destructive-faded-solid);
   --color-hover-destructive-faded: var(--hover-destructive-faded);
-  --color-border-destructive-faded: var(--border-destructive-faded);
-  --color-border-destructive-tron: var(--border-destructive-tron);
-  --color-hover-border-destructive-tron: var(--hover-border-destructive-tron);
+  --color-destructive-border-faded: var(--destructive-border-faded);
+  --color-destructive-border-tron: var(--destructive-border-tron);
+  --color-hover-destructive-border-tron: var(--hover-destructive-border-tron);
   --color-destructive-tron-blur: var(--destructive-tron-blur);
   --color-destructive-placeholder: var(--destructive-placeholder);
 
@@ -664,9 +668,9 @@
   --color-success-faded: var(--success-faded);
   --color-success-faded-solid: var(--success-faded-solid);
   --color-hover-success-faded: var(--hover-success-faded);
-  --color-border-success-faded: var(--border-success-faded);
-  --color-border-success-tron: var(--border-success-tron);
-  --color-hover-border-success-tron: var(--hover-border-success-tron);
+  --color-success-border-faded: var(--success-border-faded);
+  --color-success-border-tron: var(--success-border-tron);
+  --color-hover-success-border-tron: var(--hover-success-border-tron);
   --color-success-tron-blur: var(--success-tron-blur);
 
   --color-warning: var(--warning);
@@ -679,9 +683,9 @@
   --color-warning-faded: var(--warning-faded);
   --color-warning-faded-solid: var(--warning-faded-solid);
   --color-hover-warning-faded: var(--hover-warning-faded);
-  --color-border-warning-faded: var(--border-warning-faded);
-  --color-border-warning-tron: var(--border-warning-tron);
-  --color-hover-border-warning-tron: var(--hover-border-warning-tron);
+  --color-warning-border-faded: var(--warning-border-faded);
+  --color-warning-border-tron: var(--warning-border-tron);
+  --color-hover-warning-border-tron: var(--hover-warning-border-tron);
   --color-warning-tron-blur: var(--warning-tron-blur);
 
   --color-skeleton: var(--skeleton);

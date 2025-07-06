@@ -67,7 +67,7 @@ const alertVariants = cva(
         ],
 
         "primary-faded": [
-          "border border-border-primary-faded bg-primary-faded",
+          "border border-primary-border-faded bg-primary-faded",
           "[--alert-icon-bg:var(--color-primary-muted)] [--alert-icon-text:var(--color-primary-muted-foreground)]",
           "[--hover-alert-close-bg:--alpha(var(--color-primary-500)/20%)]",
           "[--alert-close-outline:var(--color-primary)]",
@@ -91,7 +91,7 @@ const alertVariants = cva(
         ],
 
         "secondary-faded": [
-          "border border-border-secondary-faded bg-secondary-faded",
+          "border border-secondary-border-faded bg-secondary-faded",
           "[--alert-icon-bg:var(--color-secondary-muted)] [--alert-icon-text:var(--color-secondary-muted-foreground)]",
           "[--hover-alert-close-bg:--alpha(var(--color-secondary-500)/20%)]",
           "[--alert-close-outline:var(--color-secondary)]",
@@ -115,7 +115,7 @@ const alertVariants = cva(
         ],
 
         "destructive-faded": [
-          "border border-border-destructive-faded bg-destructive-faded",
+          "border border-destructive-border-faded bg-destructive-faded",
           "[--alert-icon-bg:var(--color-destructive-muted)] [--alert-icon-text:var(--color-destructive-muted-foreground)]",
           "[--hover-alert-close-bg:--alpha(var(--color-destructive-500)/20%)]",
           "[--alert-close-outline:var(--color-destructive)]",
@@ -139,7 +139,7 @@ const alertVariants = cva(
         ],
 
         "success-faded": [
-          "border border-border-success-faded bg-success-faded",
+          "border border-success-border-faded bg-success-faded",
           "[--alert-icon-bg:var(--color-success-muted)] [--alert-icon-text:var(--color-success-muted-foreground)]",
           "[--hover-alert-close-bg:--alpha(var(--color-success-500)/20%)]",
           "[--alert-close-outline:var(--color-success)]",
@@ -163,7 +163,7 @@ const alertVariants = cva(
         ],
 
         "warning-faded": [
-          "border border-border-warning-faded bg-warning-faded",
+          "border-warning-border-faded border bg-warning-faded",
           "[--alert-icon-bg:var(--color-warning-muted)] [--alert-icon-text:var(--color-warning-muted-foreground)]",
           "[--hover-alert-close-bg:--alpha(var(--color-warning-500)/20%)]",
           "[--alert-close-outline:var(--color-warning)]",
@@ -184,7 +184,7 @@ const alertVariants = cva(
         className: [
           "text-primary-accent-foreground [--alert-inset-color-bg:var(--color-primary)]",
           "[--alert-description-text:var(--color-primary-muted-foreground)]",
-          "[--alert-icon-border:var(--color-border-primary-faded)]",
+          "[--alert-icon-border:var(--color-primary-border-faded)]",
         ],
       },
       {
@@ -192,7 +192,7 @@ const alertVariants = cva(
         className: [
           "text-secondary-accent-foreground [--alert-inset-color-bg:var(--color-secondary)]",
           "[--alert-description-text:var(--color-secondary-muted-foreground)]",
-          "[--alert-icon-border:var(--color-border-secondary-faded)]",
+          "[--alert-icon-border:var(--color-secondary-border-faded)]",
         ],
       },
       {
@@ -200,7 +200,7 @@ const alertVariants = cva(
         className: [
           "text-destructive-accent-foreground [--alert-inset-color-bg:var(--color-destructive)]",
           "[--alert-description-text:var(--color-destructive-muted-foreground)]",
-          "[--alert-icon-border:var(--color-border-destructive-faded)]",
+          "[--alert-icon-border:var(--color-destructive-border-faded)]",
         ],
       },
       {
@@ -208,7 +208,7 @@ const alertVariants = cva(
         className: [
           "text-success-accent-foreground [--alert-inset-color-bg:var(--color-success)]",
           "[--alert-description-text:var(--color-success-muted-foreground)]",
-          "[--alert-icon-border:var(--color-border-success-faded)]",
+          "[--alert-icon-border:var(--color-success-border-faded)]",
         ],
       },
       {
@@ -216,7 +216,7 @@ const alertVariants = cva(
         className: [
           "text-warning-accent-foreground [--alert-inset-color-bg:var(--color-warning)]",
           "[--alert-description-text:var(--color-warning-muted-foreground)]",
-          "[--alert-icon-border:var(--color-border-warning-faded)]",
+          "[--alert-icon-border:var(--color-warning-border-faded)]",
         ],
       },
     ],

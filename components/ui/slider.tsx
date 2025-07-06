@@ -9,7 +9,7 @@ import { cn } from "~/lib/utils";
 const sliderVariants = cva(
   [
     "relative flex w-full touch-none items-center select-none data-[disabled]:opacity-50 data-[orientation=vertical]:h-full data-[orientation=vertical]:min-h-44 data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col",
-    "aria-invalid:[--slider-range-bg:var(--color-destructive)] aria-invalid:[--slider-thumb-border:var(--color-destructive)] aria-invalid:[--slider-thumb-ring:var(--color-border-destructive-faded)]",
+    "aria-invalid:[--slider-range-bg:var(--color-destructive)] aria-invalid:[--slider-thumb-border:var(--color-destructive)] aria-invalid:[--slider-thumb-ring:var(--color-destructive-border-faded)]",
   ],
   {
     variants: {
@@ -21,7 +21,7 @@ const sliderVariants = cva(
           "[--slider-track-bg:var(--color-primary-muted)] aria-invalid:[--slider-track-bg:var(--color-destructive-muted)]",
 
         "primary-faded":
-          "[--slider-track-bg:var(--color-primary-faded)] *:data-[slot=slider-track]:inset-ring-1 *:data-[slot=slider-track]:inset-ring-border-primary-faded aria-invalid:[--slider-track-bg:var(--color-destructive-faded)] aria-invalid:*:data-[slot=slider-track]:inset-ring-border-destructive-faded",
+          "aria-invalid:*:data-[slot=slider-track]:inset-ring-destructive-border-faded [--slider-track-bg:var(--color-primary-faded)] *:data-[slot=slider-track]:inset-ring-1 *:data-[slot=slider-track]:inset-ring-primary-border-faded aria-invalid:[--slider-track-bg:var(--color-destructive-faded)]",
 
         secondary:
           "[--slider-track-bg:var(--color-muted)] aria-invalid:[--slider-track-bg:var(--color-destructive-muted)]",
@@ -30,19 +30,19 @@ const sliderVariants = cva(
           "[--slider-track-bg:var(--color-secondary-muted)] aria-invalid:[--slider-track-bg:var(--color-destructive-muted)]",
 
         "secondary-faded":
-          "[--slider-track-bg:var(--color-secondary-faded)] *:data-[slot=slider-track]:inset-ring-1 *:data-[slot=slider-track]:inset-ring-border-secondary-faded aria-invalid:[--slider-track-bg:var(--color-destructive-faded)] aria-invalid:*:data-[slot=slider-track]:inset-ring-border-destructive-faded",
+          "aria-invalid:*:data-[slot=slider-track]:inset-ring-destructive-border-faded [--slider-track-bg:var(--color-secondary-faded)] *:data-[slot=slider-track]:inset-ring-1 *:data-[slot=slider-track]:inset-ring-secondary-border-faded aria-invalid:[--slider-track-bg:var(--color-destructive-faded)]",
       },
     },
     compoundVariants: [
       {
         variant: ["primary", "primary-muted", "primary-faded"],
         className:
-          "[--slider-range-bg:var(--color-primary)] [--slider-thumb-border:var(--color-primary)] [--slider-thumb-ring:var(--color-border-primary-faded)]",
+          "[--slider-range-bg:var(--color-primary)] [--slider-thumb-border:var(--color-primary)] [--slider-thumb-ring:var(--color-primary-border-faded)]",
       },
       {
         variant: ["secondary", "secondary-muted", "secondary-faded"],
         className:
-          "[--slider-range-bg:var(--color-secondary)] [--slider-thumb-border:var(--color-secondary)] [--slider-thumb-ring:var(--color-border-secondary-faded)]",
+          "[--slider-range-bg:var(--color-secondary)] [--slider-thumb-border:var(--color-secondary)] [--slider-thumb-ring:var(--color-secondary-border-faded)]",
       },
     ],
     defaultVariants: {

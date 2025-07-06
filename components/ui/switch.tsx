@@ -26,7 +26,7 @@ const switchVariants = cva(
         ],
         "primary-muted": [
           "outline-primary data-[state=checked]:bg-primary data-[state=unchecked]:bg-primary-muted",
-          "dark:data-[state=unchecked]:bg-primary-faded dark:data-[state=unchecked]:inset-ring dark:data-[state=unchecked]:inset-ring-border-primary-faded",
+          "dark:data-[state=unchecked]:bg-primary-faded dark:data-[state=unchecked]:inset-ring dark:data-[state=unchecked]:inset-ring-primary-border-faded",
         ],
 
         // -- secondary --
@@ -36,7 +36,7 @@ const switchVariants = cva(
         ],
         "secondary-muted": [
           "outline-secondary data-[state=checked]:bg-secondary data-[state=unchecked]:bg-secondary-muted",
-          "dark:data-[state=unchecked]:bg-secondary-faded dark:data-[state=unchecked]:inset-ring dark:data-[state=unchecked]:inset-ring-border-secondary-faded",
+          "dark:data-[state=unchecked]:inset-ring-secondary-border-faded dark:data-[state=unchecked]:bg-secondary-faded dark:data-[state=unchecked]:inset-ring",
         ],
       },
       thin: {

@@ -54,19 +54,19 @@ const menubarTriggerVariants = cva(
         ],
 
         "primary-surface": [
-          "data-[highlighted]:bg-primary-faded data-[highlighted]:text-primary-accent-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-primary-faded",
-          "data-[state=open]:bg-primary-faded data-[state=open]:text-primary-accent-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-border-primary-faded",
+          "data-[highlighted]:bg-primary-faded data-[highlighted]:text-primary-accent-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-primary-border-faded",
+          "data-[state=open]:bg-primary-faded data-[state=open]:text-primary-accent-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-primary-border-faded",
         ],
 
         "primary-faded": [
-          "data-[highlighted]:bg-primary-faded data-[highlighted]:text-primary-muted-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-primary-faded",
-          "data-[state=open]:bg-primary-faded data-[state=open]:text-primary-muted-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-border-primary-faded",
+          "data-[highlighted]:bg-primary-faded data-[highlighted]:text-primary-muted-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-primary-border-faded",
+          "data-[state=open]:bg-primary-faded data-[state=open]:text-primary-muted-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-primary-border-faded",
         ],
 
         "primary-tron": [
-          "data-[highlighted]:bg-background data-[highlighted]:bg-[image:var(--primary-tron-bg-gradient)] data-[highlighted]:text-primary-muted-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-primary-tron",
+          "data-[highlighted]:bg-background data-[highlighted]:bg-[image:var(--primary-tron-gradient)] data-[highlighted]:text-primary-muted-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-primary-border-tron",
           "data-[highlighted]:[--tron-beam:var(--color-primary)] data-[highlighted]:[--tron-blur:var(--primary-tron-blur)]",
-          "data-[state=open]:bg-background data-[state=open]:bg-[image:var(--primary-tron-bg-gradient)] data-[state=open]:text-primary-muted-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-border-primary-tron",
+          "data-[state=open]:bg-background data-[state=open]:bg-[image:var(--primary-tron-gradient)] data-[state=open]:text-primary-muted-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-primary-border-tron",
           "data-[state=open]:[--tron-beam:var(--color-primary)] data-[state=open]:[--tron-blur:var(--primary-tron-blur)]",
         ],
 
@@ -92,19 +92,19 @@ const menubarTriggerVariants = cva(
         ],
 
         "secondary-surface": [
-          "data-[highlighted]:bg-secondary-faded data-[highlighted]:text-secondary-accent-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-secondary-faded",
-          "data-[state=open]:bg-secondary-faded data-[state=open]:text-secondary-accent-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-border-secondary-faded",
+          "data-[highlighted]:bg-secondary-faded data-[highlighted]:text-secondary-accent-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-secondary-border-faded",
+          "data-[state=open]:bg-secondary-faded data-[state=open]:text-secondary-accent-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-secondary-border-faded",
         ],
 
         "secondary-faded": [
-          "data-[highlighted]:bg-secondary-faded data-[highlighted]:text-secondary-muted-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-secondary-faded",
-          "data-[state=open]:bg-secondary-faded data-[state=open]:text-secondary-muted-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-border-secondary-faded",
+          "data-[highlighted]:bg-secondary-faded data-[highlighted]:text-secondary-muted-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-secondary-border-faded",
+          "data-[state=open]:bg-secondary-faded data-[state=open]:text-secondary-muted-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-secondary-border-faded",
         ],
 
         "secondary-tron": [
-          "data-[highlighted]:bg-background data-[highlighted]:bg-[image:var(--secondary-tron-bg-gradient)] data-[highlighted]:text-secondary-muted-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-secondary-tron",
+          "data-[highlighted]:inset-ring-secondary-border-tron data-[highlighted]:bg-background data-[highlighted]:bg-[image:var(--secondary-tron-gradient)] data-[highlighted]:text-secondary-muted-foreground data-[highlighted]:inset-ring",
           "data-[highlighted]:[--tron-beam:var(--color-secondary)] data-[highlighted]:[--tron-blur:var(--secondary-tron-blur)]",
-          "data-[state=open]:bg-background data-[state=open]:bg-[image:var(--secondary-tron-bg-gradient)] data-[state=open]:text-secondary-muted-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-border-secondary-tron",
+          "data-[state=open]:inset-ring-secondary-border-tron data-[state=open]:bg-background data-[state=open]:bg-[image:var(--secondary-tron-gradient)] data-[state=open]:text-secondary-muted-foreground data-[state=open]:inset-ring",
           "data-[state=open]:[--tron-beam:var(--color-secondary)] data-[state=open]:[--tron-blur:var(--secondary-tron-blur)]",
         ],
 

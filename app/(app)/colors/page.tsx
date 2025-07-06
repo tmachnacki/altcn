@@ -1,11 +1,31 @@
 import { colors } from "~/lib/colors";
 
+import { Button } from "~/components/ui/button";
 import { Card, CardContent } from "~/components/ui/card";
 
 export default function Colors() {
   return (
     <main className="container py-content">
       <h1 className="text-2xl font-bold">Colors</h1>
+
+      <div className="mt-16 flex flex-col gap-8">
+        <div className="flex items-center gap-2">
+          <Button variant={"primary-muted"}>Button</Button>
+          <Button
+            variant={"primary-muted"}
+            className="bg-(--primary-muted-new) hover:bg-(--hover-primary-muted-new)"
+          >
+            Button
+          </Button>
+          <Button variant={"primary-faded"}>Button</Button>
+          <Button
+            variant={"primary-faded"}
+            className="bg-(--primary-faded-new) hover:bg-(--hover-primary-faded-new)"
+          >
+            Button
+          </Button>
+        </div>
+      </div>
 
       <div className="mt-16 flex flex-col gap-8">
         {colors.map((color) => (
@@ -17,7 +37,9 @@ export default function Colors() {
                   <div
                     className={`aspect-square overflow-hidden rounded-md border outline -outline-offset-1 outline-black/10 dark:outline-white/10 ${swatch.background}`}
                   />
-                  <p className={`text-center font-mono text-xs sm:text-sm ${color.text}`}>
+                  <p
+                    className={`text-center font-mono text-xs sm:text-sm ${color.text}`}
+                  >
                     <span className="hidden lg:block">{swatch.label}</span>
                     <span className="block lg:hidden">
                       {swatch.label.split("-").pop()}
