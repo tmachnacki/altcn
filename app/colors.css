@@ -23,6 +23,18 @@
   --color-corporate-blue-900: oklch(0.385 0.118 253.199);
   --color-corporate-blue-950: oklch(0.288 0.079 255.546);
 
+  --color-aqua-50: oklch(0.984 0.017 190);
+  --color-aqua-100: oklch(0.955 0.048 192);
+  --color-aqua-200: oklch(0.914 0.088 194);
+  --color-aqua-300: oklch(0.86 0.132 196);
+  --color-aqua-400: oklch(0.785 0.153 199);
+  --color-aqua-500: oklch(0.71 0.145 202);
+  --color-aqua-600: oklch(0.605 0.127 207);
+  --color-aqua-700: oklch(0.518 0.105 210);
+  --color-aqua-800: oklch(0.448 0.085 213);
+  --color-aqua-900: oklch(0.397 0.07 216);
+  --color-aqua-950: oklch(0.3 0.055 220);
+
   --color-mauve-50: oklch(0.984 0.002 290);
   --color-mauve-100: oklch(0.968 0.006 292);
   --color-mauve-200: oklch(0.929 0.01 294);
@@ -47,15 +59,15 @@
   --color-sage-900: oklch(0.208 0.008 166);
   --color-sage-950: oklch(0.129 0.007 167);
 
-  --color-rust-50: oklch(0.984 0.001 40);
-  --color-rust-100: oklch(0.968 0.003 42);
-  --color-rust-200: oklch(0.929 0.006 44);
-  --color-rust-300: oklch(0.869 0.01 46);
-  --color-rust-400: oklch(0.704 0.018 48);
-  --color-rust-500: oklch(0.554 0.025 50);
-  --color-rust-600: oklch(0.446 0.022 52);
-  --color-rust-700: oklch(0.372 0.02 54);
-  --color-rust-800: oklch(0.279 0.018 56);
-  --color-rust-900: oklch(0.208 0.015 58);
-  --color-rust-950: oklch(0.129 0.012 60);
+  --color-clay-50: oklch(0.984 0.001 40);
+  --color-clay-100: oklch(0.968 0.003 42);
+  --color-clay-200: oklch(0.929 0.006 44);
+  --color-clay-300: oklch(0.869 0.01 46);
+  --color-clay-400: oklch(0.704 0.018 48);
+  --color-clay-500: oklch(0.554 0.025 50);
+  --color-clay-600: oklch(0.446 0.022 52);
+  --color-clay-700: oklch(0.372 0.02 54);
+  --color-clay-800: oklch(0.279 0.018 56);
+  --color-clay-900: oklch(0.208 0.015 58);
+  --color-clay-950: oklch(0.129 0.012 60);
 }

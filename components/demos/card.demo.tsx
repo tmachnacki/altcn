@@ -20,7 +20,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "~/components/ui/select";
-import { BackgroundPattern } from "~/components/background-pattern";
+// import { BackgroundPattern } from "~/components/background-pattern";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
 
@@ -32,10 +32,10 @@ export function CardDemo() {
   return (
     <>
       <ComponentContainer className="p-0">
-        <div className="relative flex min-h-96 w-full min-w-0 flex-col items-center justify-center overflow-hidden rounded-s-lg bg-transparent p-4">
-          <div className="absolute top-0 left-0 z-0 flex size-full shrink-0 items-center justify-center overflow-hidden">
+        <div className="relative flex min-h-96 w-full min-w-0 flex-col items-center justify-center overflow-hidden rounded-s-lg bg-[url('https://picsum.photos/id/15/800/800')] bg-center p-4">
+          {/* <div className="absolute top-0 left-0 z-0 flex size-full shrink-0 items-center justify-center overflow-hidden">
             <BackgroundPattern className="shrink-0" />
-          </div>
+          </div> */}
 
           <Card
             className="relative z-10 w-full max-w-lg"

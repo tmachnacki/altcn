@@ -1,76 +1,77 @@
 export const colors = [
-  // {
-  //   name: "Red",
-  //   text: "text-red-500 dark:text-red-400",
-  //   swatches: [
-  //     {
-  //       label: "red-50",
-  //       token: "var(--color-red-50)",
-  //       value: "oklch(0.971 0.013 17.38)",
-  //       background: "bg-red-50",
-  //     },
-  //     {
-  //       label: "red-100",
-  //       token: "var(--color-red-100)",
-  //       value: "oklch(0.936 0.032 17.717)",
-  //       background: "bg-red-100",
-  //     },
-  //     {
-  //       label: "red-200",
-  //       token: "var(--color-red-200)",
-  //       value: "oklch(0.885 0.062 18.334)",
-  //       background: "bg-red-200",
-  //     },
-  //     {
-  //       label: "red-300",
-  //       token: "var(--color-red-300)",
-  //       value: "oklch(0.808 0.114 19.571)",
-  //       background: "bg-red-300",
-  //     },
-  //     {
-  //       label: "red-400",
-  //       token: "var(--color-red-400)",
-  //       value: "oklch(0.704 0.191 22.216)",
-  //       background: "bg-red-400",
-  //     },
-  //     {
-  //       label: "red-500",
-  //       token: "var(--color-red-500)",
-  //       value: "oklch(0.637 0.237 25.331)",
-  //       background: "bg-red-500",
-  //     },
-  //     {
-  //       label: "red-600",
-  //       token: "var(--color-red-600)",
-  //       value: "oklch(0.577 0.245 27.325)",
-  //       background: "bg-red-600",
-  //     },
-  //     {
-  //       label: "red-700",
-  //       token: "var(--color-red-700)",
-  //       value: "oklch(0.505 0.213 27.518)",
-  //       background: "bg-red-700",
-  //     },
-  //     {
-  //       label: "red-800",
-  //       token: "var(--color-red-800)",
-  //       value: "oklch(0.444 0.177 26.899)",
-  //       background: "bg-red-800",
-  //     },
-  //     {
-  //       label: "red-900",
-  //       token: "var(--color-red-900)",
-  //       value: "oklch(0.391 0.146 265.522)",
-  //       background: "bg-red-900",
-  //     },
-  //     {
-  //       label: "red-950",
-  //       token: "var(--color-red-950)",
-  //       value: "oklch(0.293 0.066 243.157)",
-  //       background: "bg-red-950",
-  //     },
-  //   ],
-  // },
+  {
+    name: "Red",
+    text: "text-red-500 dark:text-red-400",
+    swatches: [
+      {
+        label: "red-50",
+        token: "var(--color-red-50)",
+        value: "oklch(0.971 0.013 17.38)",
+        background: "bg-red-50",
+      },
+      {
+        label: "red-100",
+        token: "var(--color-red-100)",
+        value: "oklch(0.936 0.032 17.717)",
+        background: "bg-red-100",
+      },
+      {
+        label: "red-200",
+        token: "var(--color-red-200)",
+        value: "oklch(0.885 0.062 18.334)",
+        background: "bg-red-200",
+      },
+      {
+        label: "red-300",
+        token: "var(--color-red-300)",
+        value: "oklch(0.808 0.114 19.571)",
+        background: "bg-red-300",
+      },
+      {
+        label: "red-400",
+        token: "var(--color-red-400)",
+        value: "oklch(0.704 0.191 22.216)",
+        background: "bg-red-400",
+      },
+      {
+        label: "red-500",
+        token: "var(--color-red-500)",
+        value: "oklch(0.637 0.237 25.331)",
+        background: "bg-red-500",
+      },
+      {
+        label: "red-600",
+        token: "var(--color-red-600)",
+        value: "oklch(0.577 0.245 27.325)",
+        background: "bg-red-600",
+      },
+      {
+        label: "red-700",
+        token: "var(--color-red-700)",
+        value: "oklch(0.505 0.213 27.518)",
+        background: "bg-red-700",
+      },
+      {
+        label: "red-800",
+        token: "var(--color-red-800)",
+        value: "oklch(0.444 0.177 26.899)",
+        background: "bg-red-800",
+      },
+      {
+        label: "red-900",
+        token: "var(--color-red-900)",
+        value: "oklch(0.391 0.146 265.522)",
+        background: "bg-red-900",
+      },
+      {
+        label: "red-950",
+        token: "var(--color-red-950)",
+        value: "oklch(0.293 0.066 243.157)",
+        background: "bg-red-950",
+      },
+    ],
+  },
+
   {
     name: "Tomato",
     text: "text-tomato-500 dark:text-tomato-400",
@@ -143,150 +144,372 @@ export const colors = [
       },
     ],
   },
-  // {
-  //   name: "Orange",
-  //   text: "text-orange-500 dark:text-orange-400",
-  //   swatches: [
-  //     {
-  //       label: "orange-50",
-  //       token: "var(--color-orange-50)",
-  //       value: "oklch(0.975 0.014 45)",
-  //       background: "bg-orange-50",
-  //     },
-  //     {
-  //       label: "orange-100",
-  //       token: "var(--color-orange-100)",
-  //       value: "oklch(0.945 0.035 46)",
-  //       background: "bg-orange-100",
-  //     },
-  //     {
-  //       label: "orange-200",
-  //       token: "var(--color-orange-200)",
-  //       value: "oklch(0.893 0.069 44.5)",
-  //       background: "bg-orange-200",
-  //     },
-  //     {
-  //       label: "orange-300",
-  //       token: "var(--color-orange-300)",
-  //       value: "oklch(0.823 0.121 43)",
-  //       background: "bg-orange-300",
-  //     },
-  //     {
-  //       label: "orange-400",
-  //       token: "var(--color-orange-400)",
-  //       value: "oklch(0.727 0.187 39)",
-  //       background: "bg-orange-400",
-  //     },
-  //     {
-  //       label: "orange-500",
-  //       token: "var(--color-orange-500)",
-  //       value: "oklch(0.671 0.225 36.5)",
-  //       background: "bg-orange-500",
-  //     },
-  //     {
-  //       label: "orange-600",
-  //       token: "var(--color-orange-600)",
-  //       value: "oklch(0.612 0.234 34)",
-  //       background: "bg-orange-600",
-  //     },
-  //     {
-  //       label: "orange-700",
-  //       token: "var(--color-orange-700)",
-  //       value: "oklch(0.529 0.204 33)",
-  //       background: "bg-orange-700",
-  //     },
-  //     {
-  //       label: "orange-800",
-  //       token: "var(--color-orange-800)",
-  //       value: "oklch(0.457 0.167 32)",
-  //       background: "bg-orange-800",
-  //     },
-  //     {
-  //       label: "orange-900",
-  //       token: "var(--color-orange-900)",
-  //       value: "oklch(0.391 0.146 265.522)",
-  //       background: "bg-orange-900",
-  //     },
-  //     {
-  //       label: "orange-950",
-  //       token: "var(--color-orange-950)",
-  //       value: "oklch(0.293 0.066 243.157)",
-  //       background: "bg-orange-950",
-  //     },
-  //   ],
-  // },
-  // {
-  //   name: "Sky",
-  //   text: "text-sky-500 dark:text-sky-400",
-  //   swatches: [
-  //     {
-  //       label: "sky-50",
-  //       token: "var(--color-sky-50)",
-  //       value: "oklch(0.977 0.013 236.62)",
-  //       background: "bg-sky-50",
-  //     },
-  //     {
-  //       label: "sky-100",
-  //       token: "var(--color-sky-100)",
-  //       value: "oklch(0.951 0.026 236.824)",
-  //       background: "bg-sky-100",
-  //     },
-  //     {
-  //       label: "sky-200",
-  //       token: "var(--color-sky-200)",
-  //       value: "oklch(0.901 0.058 230.902)",
-  //       background: "bg-sky-200",
-  //     },
-  //     {
-  //       label: "sky-300",
-  //       token: "var(--color-sky-300)",
-  //       value: "oklch(0.828 0.111 230.318)",
-  //       background: "bg-sky-300",
-  //     },
-  //     {
-  //       label: "sky-400",
-  //       token: "var(--color-sky-400)",
-  //       value: "oklch(0.746 0.16 232.661)",
-  //       background: "bg-sky-400",
-  //     },
-  //     {
-  //       label: "sky-500",
-  //       token: "var(--color-sky-500)",
-  //       value: "oklch(0.685 0.169 237.323)",
-  //       background: "bg-sky-500",
-  //     },
-  //     {
-  //       label: "sky-600",
-  //       token: "var(--color-sky-600)",
-  //       value: "oklch(0.588 0.158 241.966)",
-  //       background: "bg-sky-600",
-  //     },
-  //     {
-  //       label: "sky-700",
-  //       token: "var(--color-sky-700)",
-  //       value: "oklch(0.5 0.134 242.749)",
-  //       background: "bg-sky-700",
-  //     },
-  //     {
-  //       label: "sky-800",
-  //       token: "var(--color-sky-800)",
-  //       value: "oklch(0.443 0.11 240.79)",
-  //       background: "bg-sky-800",
-  //     },
-  //     {
-  //       label: "sky-900",
-  //       token: "var(--color-sky-900)",
-  //       value: "oklch(0.391 0.09 240.876)",
-  //       background: "bg-sky-900",
-  //     },
-  //     {
-  //       label: "sky-950",
-  //       token: "var(--color-sky-950)",
-  //       value: "oklch(0.293 0.066 243.157)",
-  //       background: "bg-sky-950",
-  //     },
-  //   ],
-  // },
+
+  {
+    name: "Orange",
+    text: "text-orange-500 dark:text-orange-400",
+    swatches: [
+      {
+        label: "orange-50",
+        token: "var(--color-orange-50)",
+        value: "oklch(0.975 0.014 45)",
+        background: "bg-orange-50",
+      },
+      {
+        label: "orange-100",
+        token: "var(--color-orange-100)",
+        value: "oklch(0.945 0.035 46)",
+        background: "bg-orange-100",
+      },
+      {
+        label: "orange-200",
+        token: "var(--color-orange-200)",
+        value: "oklch(0.893 0.069 44.5)",
+        background: "bg-orange-200",
+      },
+      {
+        label: "orange-300",
+        token: "var(--color-orange-300)",
+        value: "oklch(0.823 0.121 43)",
+        background: "bg-orange-300",
+      },
+      {
+        label: "orange-400",
+        token: "var(--color-orange-400)",
+        value: "oklch(0.727 0.187 39)",
+        background: "bg-orange-400",
+      },
+      {
+        label: "orange-500",
+        token: "var(--color-orange-500)",
+        value: "oklch(0.671 0.225 36.5)",
+        background: "bg-orange-500",
+      },
+      {
+        label: "orange-600",
+        token: "var(--color-orange-600)",
+        value: "oklch(0.612 0.234 34)",
+        background: "bg-orange-600",
+      },
+      {
+        label: "orange-700",
+        token: "var(--color-orange-700)",
+        value: "oklch(0.529 0.204 33)",
+        background: "bg-orange-700",
+      },
+      {
+        label: "orange-800",
+        token: "var(--color-orange-800)",
+        value: "oklch(0.457 0.167 32)",
+        background: "bg-orange-800",
+      },
+      {
+        label: "orange-900",
+        token: "var(--color-orange-900)",
+        value: "oklch(0.391 0.146 265.522)",
+        background: "bg-orange-900",
+      },
+      {
+        label: "orange-950",
+        token: "var(--color-orange-950)",
+        value: "oklch(0.293 0.066 243.157)",
+        background: "bg-orange-950",
+      },
+    ],
+  },
+
+  {
+    name: "Teal",
+    text: "text-teal-500 dark:text-teal-400",
+    swatches: [
+      {
+        label: "teal-50",
+        token: "var(--color-teal-50)",
+        value: "oklch(0.984 0.014 180.72)",
+        background: "bg-teal-50",
+      },
+      {
+        label: "teal-100",
+        token: "var(--color-teal-100)",
+        value: "oklch(0.953 0.051 180.801)",
+        background: "bg-teal-100",
+      },
+      {
+        label: "teal-200",
+        token: "var(--color-teal-200)",
+        value: "oklch(0.91 0.096 180.426)",
+        background: "bg-teal-200",
+      },
+      {
+        label: "teal-300",
+        token: "var(--color-teal-300)",
+        value: "oklch(0.855 0.138 181.071)",
+        background: "bg-teal-300",
+      },
+      {
+        label: "teal-400",
+        token: "var(--color-teal-400)",
+        value: "oklch(0.777 0.152 181.912)",
+        background: "bg-teal-400",
+      },
+      {
+        label: "teal-500",
+        token: "var(--color-teal-500)",
+        value: "oklch(0.704 0.14 182.503)",
+        background: "bg-teal-500",
+      },
+      {
+        label: "teal-600",
+        token: "var(--color-teal-600)",
+        value: "oklch(0.6 0.118 184.704)",
+        background: "bg-teal-600",
+      },
+      {
+        label: "teal-700",
+        token: "var(--color-teal-700)",
+        value: "oklch(0.511 0.096 186.391)",
+        background: "bg-teal-700",
+      },
+      {
+        label: "teal-800",
+        token: "var(--color-teal-800)",
+        value: "oklch(0.437 0.078 188.216)",
+        background: "bg-teal-800",
+      },
+      {
+        label: "teal-900",
+        token: "var(--color-teal-900)",
+        value: "oklch(0.386 0.063 188.416)",
+        background: "bg-teal-900",
+      },
+      {
+        label: "teal-950",
+        token: "var(--color-teal-950)",
+        value: "oklch(0.277 0.046 192.524)",
+        background: "bg-teal-950",
+      },
+    ],
+  },
+
+  {
+    name: "Aqua",
+    text: "text-aqua-500 dark:text-aqua-400",
+    swatches: [
+      {
+        label: "aqua-50",
+        token: "var(--color-aqua-50)",
+        value: "oklch(0.984 0.017 185)",
+        background: "bg-aqua-50",
+      },
+      {
+        label: "aqua-100",
+        token: "var(--color-aqua-100)",
+        value: "oklch(0.955 0.048 186)",
+        background: "bg-aqua-100",
+      },
+      {
+        label: "aqua-200",
+        token: "var(--color-aqua-200)",
+        value: "oklch(0.914 0.088 187)",
+        background: "bg-aqua-200",
+      },
+      {
+        label: "aqua-300",
+        token: "var(--color-aqua-300)",
+        value: "oklch(0.86 0.132 188)",
+        background: "bg-aqua-300",
+      },
+      {
+        label: "aqua-400",
+        token: "var(--color-aqua-400)",
+        value: "oklch(0.785 0.153 189)",
+        background: "bg-aqua-400",
+      },
+      {
+        label: "aqua-500",
+        token: "var(--color-aqua-500)",
+        value: "oklch(0.71 0.145 190)",
+        background: "bg-aqua-500",
+      },
+      {
+        label: "aqua-600",
+        token: "var(--color-aqua-600)",
+        value: "oklch(0.605 0.127 191)",
+        background: "bg-aqua-600",
+      },
+      {
+        label: "aqua-700",
+        token: "var(--color-aqua-700)",
+        value: "oklch(0.518 0.105 192)",
+        background: "bg-aqua-700",
+      },
+      {
+        label: "aqua-800",
+        token: "var(--color-aqua-800)",
+        value: "oklch(0.448 0.085 193)",
+        background: "bg-aqua-800",
+      },
+      {
+        label: "aqua-900",
+        token: "var(--color-aqua-900)",
+        value: "oklch(0.397 0.07 194)",
+        background: "bg-aqua-900",
+      },
+      {
+        label: "aqua-950",
+        token: "var(--color-aqua-950)",
+        value: "oklch(0.3 0.055 195)",
+        background: "bg-aqua-950",
+      },
+    ],
+  },
+
+  {
+    name: "Cyan",
+    text: "text-cyan-500 dark:text-cyan-400",
+    swatches: [
+      {
+        label: "cyan-50",
+        token: "var(--color-cyan-50)",
+        value: "oklch(0.984 0.019 200.873)",
+        background: "bg-cyan-50",
+      },
+      {
+        label: "cyan-100",
+        token: "var(--color-cyan-100)",
+        value: "oklch(0.956 0.045 203.388)",
+        background: "bg-cyan-100",
+      },
+      {
+        label: "cyan-200",
+        token: "var(--color-cyan-200)",
+        value: "oklch(0.917 0.08 205.041)",
+        background: "bg-cyan-200",
+      },
+      {
+        label: "cyan-300",
+        token: "var(--color-cyan-300)",
+        value: "oklch(0.865 0.127 207.078)",
+        background: "bg-cyan-300",
+      },
+      {
+        label: "cyan-400",
+        token: "var(--color-cyan-400)",
+        value: "oklch(0.789 0.154 211.53)",
+        background: "bg-cyan-400",
+      },
+      {
+        label: "cyan-500",
+        token: "var(--color-cyan-500)",
+        value: "oklch(0.715 0.143 215.221)",
+        background: "bg-cyan-500",
+      },
+      {
+        label: "cyan-600",
+        token: "var(--color-cyan-600)",
+        value: "oklch(0.609 0.126 221.723)",
+        background: "bg-cyan-600",
+      },
+      {
+        label: "cyan-700",
+        token: "var(--color-cyan-700)",
+        value: "oklch(0.52 0.105 223.128)",
+        background: "bg-cyan-700",
+      },
+      {
+        label: "cyan-800",
+        token: "var(--color-cyan-800)",
+        value: "oklch(0.45 0.085 224.283)",
+        background: "bg-cyan-800",
+      },
+      {
+        label: "cyan-900",
+        token: "var(--color-cyan-900)",
+        value: "oklch(0.398 0.07 227.392)",
+        background: "bg-cyan-900",
+      },
+      {
+        label: "cyan-950",
+        token: "var(--color-cyan-950)",
+        value: "oklch(0.302 0.056 229.695)",
+        background: "bg-cyan-950",
+      },
+    ],
+  },
+
+  {
+    name: "Sky",
+    text: "text-sky-500 dark:text-sky-400",
+    swatches: [
+      {
+        label: "sky-50",
+        token: "var(--color-sky-50)",
+        value: "oklch(0.977 0.013 236.62)",
+        background: "bg-sky-50",
+      },
+      {
+        label: "sky-100",
+        token: "var(--color-sky-100)",
+        value: "oklch(0.951 0.026 236.824)",
+        background: "bg-sky-100",
+      },
+      {
+        label: "sky-200",
+        token: "var(--color-sky-200)",
+        value: "oklch(0.901 0.058 230.902)",
+        background: "bg-sky-200",
+      },
+      {
+        label: "sky-300",
+        token: "var(--color-sky-300)",
+        value: "oklch(0.828 0.111 230.318)",
+        background: "bg-sky-300",
+      },
+      {
+        label: "sky-400",
+        token: "var(--color-sky-400)",
+        value: "oklch(0.746 0.16 232.661)",
+        background: "bg-sky-400",
+      },
+      {
+        label: "sky-500",
+        token: "var(--color-sky-500)",
+        value: "oklch(0.685 0.169 237.323)",
+        background: "bg-sky-500",
+      },
+      {
+        label: "sky-600",
+        token: "var(--color-sky-600)",
+        value: "oklch(0.588 0.158 241.966)",
+        background: "bg-sky-600",
+      },
+      {
+        label: "sky-700",
+        token: "var(--color-sky-700)",
+        value: "oklch(0.5 0.134 242.749)",
+        background: "bg-sky-700",
+      },
+      {
+        label: "sky-800",
+        token: "var(--color-sky-800)",
+        value: "oklch(0.443 0.11 240.79)",
+        background: "bg-sky-800",
+      },
+      {
+        label: "sky-900",
+        token: "var(--color-sky-900)",
+        value: "oklch(0.391 0.09 240.876)",
+        background: "bg-sky-900",
+      },
+      {
+        label: "sky-950",
+        token: "var(--color-sky-950)",
+        value: "oklch(0.293 0.066 243.157)",
+        background: "bg-sky-950",
+      },
+    ],
+  },
+
   {
     name: "Corporate Blue",
     text: "text-corporate-blue-500 dark:text-corporate-blue-400",
@@ -359,222 +582,226 @@ export const colors = [
       },
     ],
   },
-  // {
-  //   name: "Blue",
-  //   text: "text-blue-500 dark:text-blue-400",
-  //   swatches: [
-  //     {
-  //       label: "blue-50",
-  //       token: "var(--color-blue-50)",
-  //       value: "oklch(0.97 0.014 254.604)",
-  //       background: "bg-blue-50",
-  //     },
-  //     {
-  //       label: "blue-100",
-  //       token: "var(--color-blue-100)",
-  //       value: "oklch(0.932 0.032 255.585)",
-  //       background: "bg-blue-100",
-  //     },
-  //     {
-  //       label: "blue-200",
-  //       token: "var(--color-blue-200)",
-  //       value: "oklch(0.882 0.059 254.128)",
-  //       background: "bg-blue-200",
-  //     },
-  //     {
-  //       label: "blue-300",
-  //       token: "var(--color-blue-300)",
-  //       value: "oklch(0.809 0.105 251.813)",
-  //       background: "bg-blue-300",
-  //     },
-  //     {
-  //       label: "blue-400",
-  //       token: "var(--color-blue-400)",
-  //       value: "oklch(0.707 0.165 254.624)",
-  //       background: "bg-blue-400",
-  //     },
-  //     {
-  //       label: "blue-500",
-  //       token: "var(--color-blue-500)",
-  //       value: "oklch(0.623 0.214 259.815)",
-  //       background: "bg-blue-500",
-  //     },
-  //     {
-  //       label: "blue-600",
-  //       token: "var(--color-blue-600)",
-  //       value: "oklch(0.546 0.245 262.881)",
-  //       background: "bg-blue-600",
-  //     },
-  //     {
-  //       label: "blue-700",
-  //       token: "var(--color-blue-700)",
-  //       value: "oklch(0.488 0.243 264.376)",
-  //       background: "bg-blue-700",
-  //     },
-  //     {
-  //       label: "blue-800",
-  //       token: "var(--color-blue-800)",
-  //       value: "oklch(0.424 0.199 265.638)",
-  //       background: "bg-blue-800",
-  //     },
-  //     {
-  //       label: "blue-900",
-  //       token: "var(--color-blue-900)",
-  //       value: "oklch(0.379 0.146 265.522)",
-  //       background: "bg-blue-900",
-  //     },
-  //     {
-  //       label: "blue-950",
-  //       token: "var(--color-blue-950)",
-  //       value: "oklch(0.282 0.091 267.935)",
-  //       background: "bg-blue-950",
-  //     },
-  //   ],
-  // },
-  // {
-  //   name: "Slate",
-  //   text: "text-slate-500 dark:text-slate-400",
-  //   swatches: [
-  //     {
-  //       label: "slate-50",
-  //       token: "var(--color-slate-50)",
-  //       value: "oklch(0.984 0.003 247.858)",
-  //       background: "bg-slate-50",
-  //     },
-  //     {
-  //       label: "slate-100",
-  //       token: "var(--color-slate-100)",
-  //       value: "oklch(0.968 0.007 247.896)",
-  //       background: "bg-slate-100",
-  //     },
-  //     {
-  //       label: "slate-200",
-  //       token: "var(--color-slate-200)",
-  //       value: "oklch(0.929 0.013 255.508)",
-  //       background: "bg-slate-200",
-  //     },
-  //     {
-  //       label: "slate-300",
-  //       token: "var(--color-slate-300)",
-  //       value: "oklch(0.869 0.022 252.894)",
-  //       background: "bg-slate-300",
-  //     },
-  //     {
-  //       label: "slate-400",
-  //       token: "var(--color-slate-400)",
-  //       value: "oklch(0.704 0.04 256.788)",
-  //       background: "bg-slate-400",
-  //     },
-  //     {
-  //       label: "slate-500",
-  //       token: "var(--color-slate-500)",
-  //       value: "oklch(0.554 0.046 257.417)",
-  //       background: "bg-slate-500",
-  //     },
-  //     {
-  //       label: "slate-600",
-  //       token: "var(--color-slate-600)",
-  //       value: "oklch(0.446 0.043 257.281)",
-  //       background: "bg-slate-600",
-  //     },
-  //     {
-  //       label: "slate-700",
-  //       token: "var(--color-slate-700)",
-  //       value: "oklch(0.372 0.044 257.287)",
-  //       background: "bg-slate-700",
-  //     },
-  //     {
-  //       label: "slate-800",
-  //       token: "var(--color-slate-800)",
-  //       value: "oklch(0.279 0.041 260.031)",
-  //       background: "bg-slate-800",
-  //     },
-  //     {
-  //       label: "slate-900",
-  //       token: "var(--color-slate-900)",
-  //       value: "oklch(0.208 0.042 265.755)",
-  //       background: "bg-slate-900",
-  //     },
-  //     {
-  //       label: "slate-950",
-  //       token: "var(--color-slate-950)",
-  //       value: "oklch(0.129 0.042 264.695)",
-  //       background: "bg-slate-950",
-  //     },
-  //   ],
-  // },
-  // {
-  //   name: "Zinc",
-  //   text: "text-zinc-500 dark:text-zinc-400",
-  //   swatches: [
-  //     {
-  //       label: "zinc-50",
-  //       token: "var(--color-zinc-50)",
-  //       value: "oklch(0.985 0 0)",
-  //       background: "bg-zinc-50",
-  //     },
-  //     {
-  //       label: "zinc-100",
-  //       token: "var(--color-zinc-100)",
-  //       value: "oklch(0.967 0.001 286.375)",
-  //       background: "bg-zinc-100",
-  //     },
-  //     {
-  //       label: "zinc-200",
-  //       token: "var(--color-zinc-200)",
-  //       value: "oklch(0.92 0.004 286.32)",
-  //       background: "bg-zinc-200",
-  //     },
-  //     {
-  //       label: "zinc-300",
-  //       token: "var(--color-zinc-300)",
-  //       value: "oklch(0.871 0.006 286.286)",
-  //       background: "bg-zinc-300",
-  //     },
-  //     {
-  //       label: "zinc-400",
-  //       token: "var(--color-zinc-400)",
-  //       value: "oklch(0.705 0.015 286.067)",
-  //       background: "bg-zinc-400",
-  //     },
-  //     {
-  //       label: "zinc-500",
-  //       token: "var(--color-zinc-500)",
-  //       value: "oklch(0.552 0.016 285.938)",
-  //       background: "bg-zinc-500",
-  //     },
-  //     {
-  //       label: "zinc-600",
-  //       token: "var(--color-zinc-600)",
-  //       value: "oklch(0.442 0.017 285.786)",
-  //       background: "bg-zinc-600",
-  //     },
-  //     {
-  //       label: "zinc-700",
-  //       token: "var(--color-zinc-700)",
-  //       value: "oklch(0.37 0.013 285.805)",
-  //       background: "bg-zinc-700",
-  //     },
-  //     {
-  //       label: "zinc-800",
-  //       token: "var(--color-zinc-800)",
-  //       value: "oklch(0.274 0.006 286.033)",
-  //       background: "bg-zinc-800",
-  //     },
-  //     {
-  //       label: "zinc-900",
-  //       token: "var(--color-zinc-900)",
-  //       value: "oklch(0.21 0.006 285.885)",
-  //       background: "bg-zinc-900",
-  //     },
-  //     {
-  //       label: "zinc-950",
-  //       token: "var(--color-zinc-950)",
-  //       value: "oklch(0.141 0.005 285.823)",
-  //       background: "bg-zinc-950",
-  //     },
-  //   ],
-  // },
+
+  {
+    name: "Blue",
+    text: "text-blue-500 dark:text-blue-400",
+    swatches: [
+      {
+        label: "blue-50",
+        token: "var(--color-blue-50)",
+        value: "oklch(0.97 0.014 254.604)",
+        background: "bg-blue-50",
+      },
+      {
+        label: "blue-100",
+        token: "var(--color-blue-100)",
+        value: "oklch(0.932 0.032 255.585)",
+        background: "bg-blue-100",
+      },
+      {
+        label: "blue-200",
+        token: "var(--color-blue-200)",
+        value: "oklch(0.882 0.059 254.128)",
+        background: "bg-blue-200",
+      },
+      {
+        label: "blue-300",
+        token: "var(--color-blue-300)",
+        value: "oklch(0.809 0.105 251.813)",
+        background: "bg-blue-300",
+      },
+      {
+        label: "blue-400",
+        token: "var(--color-blue-400)",
+        value: "oklch(0.707 0.165 254.624)",
+        background: "bg-blue-400",
+      },
+      {
+        label: "blue-500",
+        token: "var(--color-blue-500)",
+        value: "oklch(0.623 0.214 259.815)",
+        background: "bg-blue-500",
+      },
+      {
+        label: "blue-600",
+        token: "var(--color-blue-600)",
+        value: "oklch(0.546 0.245 262.881)",
+        background: "bg-blue-600",
+      },
+      {
+        label: "blue-700",
+        token: "var(--color-blue-700)",
+        value: "oklch(0.488 0.243 264.376)",
+        background: "bg-blue-700",
+      },
+      {
+        label: "blue-800",
+        token: "var(--color-blue-800)",
+        value: "oklch(0.424 0.199 265.638)",
+        background: "bg-blue-800",
+      },
+      {
+        label: "blue-900",
+        token: "var(--color-blue-900)",
+        value: "oklch(0.379 0.146 265.522)",
+        background: "bg-blue-900",
+      },
+      {
+        label: "blue-950",
+        token: "var(--color-blue-950)",
+        value: "oklch(0.282 0.091 267.935)",
+        background: "bg-blue-950",
+      },
+    ],
+  },
+
+  {
+    name: "Slate",
+    text: "text-slate-500 dark:text-slate-400",
+    swatches: [
+      {
+        label: "slate-50",
+        token: "var(--color-slate-50)",
+        value: "oklch(0.984 0.003 247.858)",
+        background: "bg-slate-50",
+      },
+      {
+        label: "slate-100",
+        token: "var(--color-slate-100)",
+        value: "oklch(0.968 0.007 247.896)",
+        background: "bg-slate-100",
+      },
+      {
+        label: "slate-200",
+        token: "var(--color-slate-200)",
+        value: "oklch(0.929 0.013 255.508)",
+        background: "bg-slate-200",
+      },
+      {
+        label: "slate-300",
+        token: "var(--color-slate-300)",
+        value: "oklch(0.869 0.022 252.894)",
+        background: "bg-slate-300",
+      },
+      {
+        label: "slate-400",
+        token: "var(--color-slate-400)",
+        value: "oklch(0.704 0.04 256.788)",
+        background: "bg-slate-400",
+      },
+      {
+        label: "slate-500",
+        token: "var(--color-slate-500)",
+        value: "oklch(0.554 0.046 257.417)",
+        background: "bg-slate-500",
+      },
+      {
+        label: "slate-600",
+        token: "var(--color-slate-600)",
+        value: "oklch(0.446 0.043 257.281)",
+        background: "bg-slate-600",
+      },
+      {
+        label: "slate-700",
+        token: "var(--color-slate-700)",
+        value: "oklch(0.372 0.044 257.287)",
+        background: "bg-slate-700",
+      },
+      {
+        label: "slate-800",
+        token: "var(--color-slate-800)",
+        value: "oklch(0.279 0.041 260.031)",
+        background: "bg-slate-800",
+      },
+      {
+        label: "slate-900",
+        token: "var(--color-slate-900)",
+        value: "oklch(0.208 0.042 265.755)",
+        background: "bg-slate-900",
+      },
+      {
+        label: "slate-950",
+        token: "var(--color-slate-950)",
+        value: "oklch(0.129 0.042 264.695)",
+        background: "bg-slate-950",
+      },
+    ],
+  },
+
+  {
+    name: "Zinc",
+    text: "text-zinc-500 dark:text-zinc-400",
+    swatches: [
+      {
+        label: "zinc-50",
+        token: "var(--color-zinc-50)",
+        value: "oklch(0.985 0 0)",
+        background: "bg-zinc-50",
+      },
+      {
+        label: "zinc-100",
+        token: "var(--color-zinc-100)",
+        value: "oklch(0.967 0.001 286.375)",
+        background: "bg-zinc-100",
+      },
+      {
+        label: "zinc-200",
+        token: "var(--color-zinc-200)",
+        value: "oklch(0.92 0.004 286.32)",
+        background: "bg-zinc-200",
+      },
+      {
+        label: "zinc-300",
+        token: "var(--color-zinc-300)",
+        value: "oklch(0.871 0.006 286.286)",
+        background: "bg-zinc-300",
+      },
+      {
+        label: "zinc-400",
+        token: "var(--color-zinc-400)",
+        value: "oklch(0.705 0.015 286.067)",
+        background: "bg-zinc-400",
+      },
+      {
+        label: "zinc-500",
+        token: "var(--color-zinc-500)",
+        value: "oklch(0.552 0.016 285.938)",
+        background: "bg-zinc-500",
+      },
+      {
+        label: "zinc-600",
+        token: "var(--color-zinc-600)",
+        value: "oklch(0.442 0.017 285.786)",
+        background: "bg-zinc-600",
+      },
+      {
+        label: "zinc-700",
+        token: "var(--color-zinc-700)",
+        value: "oklch(0.37 0.013 285.805)",
+        background: "bg-zinc-700",
+      },
+      {
+        label: "zinc-800",
+        token: "var(--color-zinc-800)",
+        value: "oklch(0.274 0.006 286.033)",
+        background: "bg-zinc-800",
+      },
+      {
+        label: "zinc-900",
+        token: "var(--color-zinc-900)",
+        value: "oklch(0.21 0.006 285.885)",
+        background: "bg-zinc-900",
+      },
+      {
+        label: "zinc-950",
+        token: "var(--color-zinc-950)",
+        value: "oklch(0.141 0.005 285.823)",
+        background: "bg-zinc-950",
+      },
+    ],
+  },
+
   {
     name: "Mauve",
     text: "text-mauve-500 dark:text-mauve-400",
@@ -647,6 +874,7 @@ export const colors = [
       },
     ],
   },
+
   {
     name: "Sage",
     text: "text-sage-500 dark:text-sage-400",
@@ -719,75 +947,76 @@ export const colors = [
       },
     ],
   },
+
   {
-    name: "Rust",
-    text: "text-rust-500 dark:text-rust-400",
+    name: "Clay",
+    text: "text-clay-500 dark:text-clay-400",
     swatches: [
       {
-        label: "rust-50",
-        token: "var(--color-rust-50)",
+        label: "clay-50",
+        token: "var(--color-clay-50)",
         value: "oklch(0.984 0.001 40.0)",
-        background: "bg-rust-50",
+        background: "bg-clay-50",
       },
       {
-        label: "rust-100",
-        token: "var(--color-rust-100)",
+        label: "clay-100",
+        token: "var(--color-clay-100)",
         value: "oklch(0.968 0.003 42.0)",
-        background: "bg-rust-100",
+        background: "bg-clay-100",
       },
       {
-        label: "rust-200",
-        token: "var(--color-rust-200)",
+        label: "clay-200",
+        token: "var(--color-clay-200)",
         value: "oklch(0.929 0.006 44.0)",
-        background: "bg-rust-200",
+        background: "bg-clay-200",
       },
       {
-        label: "rust-300",
-        token: "var(--color-rust-300)",
+        label: "clay-300",
+        token: "var(--color-clay-300)",
         value: "oklch(0.869 0.010 46.0)",
-        background: "bg-rust-300",
+        background: "bg-clay-300",
       },
       {
-        label: "rust-400",
-        token: "var(--color-rust-400)",
+        label: "clay-400",
+        token: "var(--color-clay-400)",
         value: "oklch(0.704 0.018 48.0)",
-        background: "bg-rust-400",
+        background: "bg-clay-400",
       },
       {
-        label: "rust-500",
-        token: "var(--color-rust-500)",
+        label: "clay-500",
+        token: "var(--color-clay-500)",
         value: "oklch(0.554 0.025 50.0)",
-        background: "bg-rust-500",
+        background: "bg-clay-500",
       },
       {
-        label: "rust-600",
-        token: "var(--color-rust-600)",
+        label: "clay-600",
+        token: "var(--color-clay-600)",
         value: "oklch(0.446 0.022 52.0)",
-        background: "bg-rust-600",
+        background: "bg-clay-600",
       },
       {
-        label: "rust-700",
-        token: "var(--color-rust-700)",
+        label: "clay-700",
+        token: "var(--color-clay-700)",
         value: "oklch(0.372 0.020 54.0)",
-        background: "bg-rust-700",
+        background: "bg-clay-700",
       },
       {
-        label: "rust-800",
-        token: "var(--color-rust-800)",
+        label: "clay-800",
+        token: "var(--color-clay-800)",
         value: "oklch(0.279 0.018 56.0)",
-        background: "bg-rust-800",
+        background: "bg-clay-800",
       },
       {
-        label: "rust-900",
-        token: "var(--color-rust-900)",
+        label: "clay-900",
+        token: "var(--color-clay-900)",
         value: "oklch(0.208 0.015 58.0)",
-        background: "bg-rust-900",
+        background: "bg-clay-900",
       },
       {
-        label: "rust-950",
-        token: "var(--color-rust-950)",
+        label: "clay-950",
+        token: "var(--color-clay-950)",
         value: "oklch(0.129 0.012 60.0)",
-        background: "bg-rust-950",
+        background: "bg-clay-950",
       },
     ],
   },
@@ -913,14 +1142,50 @@ export const colors = [
 // --color-sage-900: oklch(0.208 0.008 166.0);
 // --color-sage-950: oklch(0.129 0.007 167.0);
 
-// --color-rust-50: oklch(0.984 0.001 40.0);
-// --color-rust-100: oklch(0.968 0.003 42.0);
-// --color-rust-200: oklch(0.929 0.006 44.0);
-// --color-rust-300: oklch(0.869 0.010 46.0);
-// --color-rust-400: oklch(0.704 0.018 48.0);
-// --color-rust-500: oklch(0.554 0.025 50.0);
-// --color-rust-600: oklch(0.446 0.022 52.0);
-// --color-rust-700: oklch(0.372 0.020 54.0);
-// --color-rust-800: oklch(0.279 0.018 56.0);
-// --color-rust-900: oklch(0.208 0.015 58.0);
-// --color-rust-950: oklch(0.129 0.012 60.0);
+// --color-clay-50: oklch(0.984 0.001 40.0);
+// --color-clay-100: oklch(0.968 0.003 42.0);
+// --color-clay-200: oklch(0.929 0.006 44.0);
+// --color-clay-300: oklch(0.869 0.010 46.0);
+// --color-clay-400: oklch(0.704 0.018 48.0);
+// --color-clay-500: oklch(0.554 0.025 50.0);
+// --color-clay-600: oklch(0.446 0.022 52.0);
+// --color-clay-700: oklch(0.372 0.020 54.0);
+// --color-clay-800: oklch(0.279 0.018 56.0);
+// --color-clay-900: oklch(0.208 0.015 58.0);
+// --color-clay-950: oklch(0.129 0.012 60.0);
+
+// --color-teal-50: oklch(0.984 0.014 180.72);
+// --color-teal-100: oklch(0.953 0.051 180.801);
+// --color-teal-200: oklch(0.91 0.096 180.426);
+// --color-teal-300: oklch(0.855 0.138 181.071);
+// --color-teal-400: oklch(0.777 0.152 181.912);
+// --color-teal-500: oklch(0.704 0.14 182.503);
+// --color-teal-600: oklch(0.6 0.118 184.704);
+// --color-teal-700: oklch(0.511 0.096 186.391);
+// --color-teal-800: oklch(0.437 0.078 188.216);
+// --color-teal-900: oklch(0.386 0.063 188.416);
+// --color-teal-950: oklch(0.277 0.046 192.524);
+
+// --color-cyan-50: oklch(0.984 0.019 200.873);
+// --color-cyan-100: oklch(0.956 0.045 203.388);
+// --color-cyan-200: oklch(0.917 0.08 205.041);
+// --color-cyan-300: oklch(0.865 0.127 207.078);
+// --color-cyan-400: oklch(0.789 0.154 211.53);
+// --color-cyan-500: oklch(0.715 0.143 215.221);
+// --color-cyan-600: oklch(0.609 0.126 221.723);
+// --color-cyan-700: oklch(0.52 0.105 223.128);
+// --color-cyan-800: oklch(0.45 0.085 224.283);
+// --color-cyan-900: oklch(0.398 0.07 227.392);
+// --color-cyan-950: oklch(0.302 0.056 229.695);
+
+// --color-aqua-50:  oklch(0.984 0.017 190);
+// --color-aqua-100: oklch(0.955 0.048 192);
+// --color-aqua-200: oklch(0.914 0.088 194);
+// --color-aqua-300: oklch(0.86 0.132 196);
+// --color-aqua-400: oklch(0.785 0.153 199);
+// --color-aqua-500: oklch(0.71 0.145 202);
+// --color-aqua-600: oklch(0.605 0.127 207);
+// --color-aqua-700: oklch(0.518 0.105 210);
+// --color-aqua-800: oklch(0.448 0.085 213);
+// --color-aqua-900: oklch(0.397 0.07 216);
+// --color-aqua-950: oklch(0.3 0.055 220);

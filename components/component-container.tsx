@@ -11,10 +11,7 @@ export function ComponentContainer({
 }) {
   return (
     <div
-      className={cn(
-        "grid min-h-64 flex-1 flex-col place-items-center p-4",
-        className
-      )}
+      className={cn("grid min-h-64 flex-1 place-items-center p-4", className)}
     >
       {children}
     </div>

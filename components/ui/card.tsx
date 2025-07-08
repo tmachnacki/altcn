@@ -20,7 +20,7 @@ function Card({
         "rounded-lg border border-border text-card-foreground",
         variant === "solid"
           ? "bg-card shadow-md"
-          : "bg-card/50 backdrop-blur-3xl",
+          : "bg-card/65 backdrop-blur-lg",
         className
       )}
       {...props}

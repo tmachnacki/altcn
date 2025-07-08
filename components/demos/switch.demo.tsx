@@ -17,9 +17,9 @@ import { Swatch } from "~/components/swatch";
 
 const variants = [
   "primary",
-  "primary-muted",
+  // "primary-muted",
   "secondary",
-  "secondary-muted",
+  // "secondary-muted",
 ] as const;
 
 export function SwitchDemo() {

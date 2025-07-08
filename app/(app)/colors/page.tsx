@@ -40,8 +40,8 @@ export default function Colors() {
                   <p
                     className={`text-center font-mono text-xs sm:text-sm ${color.text}`}
                   >
-                    <span className="hidden lg:block">{swatch.label}</span>
-                    <span className="block lg:hidden">
+                    {/* <span className="hidden lg:block">{swatch.label}</span> */}
+                    <span className="block">
                       {swatch.label.split("-").pop()}
                     </span>
                   </p>

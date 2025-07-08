@@ -26,19 +26,21 @@
 - [ ] Charts
 - [ ] Command
 - [ ] Date & Time Picker
+- [ ] Description List
 - [ ] Drawer
 - [ ] Form (Tanstack Form)
+- [ ] Heading
 - [ ] Input Group
 - [ ] Input Search
 - [ ] Input Tags
 - [ ] Navigation Menu
 - [ ] Progress Circular
 - [ ] Rating
+- [ ] Table
 - [ ] Tab Nav (Navigation Primitive)
+- [ ] Textarea
 - [ ] Toggle Group
 - [ ] Uploader
-- [ ] Table
-- [ ] Description List
 
 ## Site
 
