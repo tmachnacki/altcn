@@ -12,39 +12,24 @@ const switchVariants = cva(
 
     "hover:not-disabled:not-aria-invalid:data-[state=unchecked]:bg-hover-muted dark:hover:not-disabled:not-aria-invalid:data-[state=unchecked]:bg-hover-faded dark:hover:not-disabled:not-aria-invalid:data-[state=unchecked]:inset-ring-hover-border",
 
+    "data-[state=unchecked]:bg-muted dark:data-[state=unchecked]:bg-faded dark:data-[state=unchecked]:inset-ring dark:data-[state=unchecked]:inset-ring-border",
+
     "focus-visible:outline-2 focus-visible:outline-offset-2",
 
-    "disabled:cursor-not-allowed disabled:opacity-50 disabled:data-[state=checked]:bg-base-500 data-[state=unchecked]:disabled:bg-muted dark:data-[state=unchecked]:disabled:bg-faded dark:data-[state=unchecked]:disabled:inset-ring dark:data-[state=unchecked]:disabled:inset-ring-border",
+    "disabled:cursor-not-allowed disabled:opacity-50 data-[state=unchecked]:disabled:bg-muted dark:data-[state=unchecked]:disabled:bg-faded dark:data-[state=unchecked]:disabled:inset-ring dark:data-[state=unchecked]:disabled:inset-ring-border",
 
-    "aria-invalid:outline-destructive aria-invalid:data-[state=checked]:bg-destructive aria-invalid:data-[state=checked]:[--switch-thumb-bg:var(--color-destructive-foreground)] aria-invalid:data-[state=unchecked]:bg-destructive-muted aria-invalid:data-[state=unchecked]:inset-ring aria-invalid:data-[state=unchecked]:inset-ring-destructive dark:aria-invalid:data-[state=unchecked]:bg-destructive-faded dark:aria-invalid:data-[state=unchecked]:inset-ring",
+    "aria-invalid:outline-destructive aria-invalid:data-[state=checked]:bg-destructive aria-invalid:data-[state=unchecked]:bg-destructive-muted aria-invalid:data-[state=unchecked]:inset-ring aria-invalid:data-[state=unchecked]:inset-ring-destructive dark:aria-invalid:data-[state=unchecked]:bg-destructive-faded dark:aria-invalid:data-[state=unchecked]:inset-ring",
   ],
   {
     variants: {
       variant: {
-        // -- primary --
-        primary: [
-          "outline-primary",
-          "data-[state=checked]:bg-primary data-[state=checked]:[--switch-thumb-bg:var(--color-primary-foreground)]",
-          "data-[state=unchecked]:bg-muted dark:data-[state=unchecked]:bg-faded dark:data-[state=unchecked]:inset-ring dark:data-[state=unchecked]:inset-ring-border",
-        ],
-        // "primary-muted": [
-        //   "outline-primary data-[state=checked]:bg-primary data-[state=unchecked]:bg-primary-muted",
-        //   "dark:data-[state=unchecked]:bg-primary-faded dark:data-[state=unchecked]:inset-ring dark:data-[state=unchecked]:inset-ring-primary-border-faded",
-        // ],
-
-        // -- secondary --
-        secondary: [
-          "outline-secondary",
-          "data-[state=checked]:bg-secondary data-[state=checked]:[--switch-thumb-bg:var(--color-secondary-foreground)]",
-          "data-[state=unchecked]:bg-muted dark:data-[state=unchecked]:bg-faded dark:data-[state=unchecked]:inset-ring dark:data-[state=unchecked]:inset-ring-border",
-        ],
-        // "secondary-muted": [
-        //   "outline-secondary data-[state=checked]:bg-secondary data-[state=unchecked]:bg-secondary-muted",
-        //   "dark:data-[state=unchecked]:inset-ring-secondary-border-faded dark:data-[state=unchecked]:bg-secondary-faded dark:data-[state=unchecked]:inset-ring",
-        // ],
+        base: ["outline-outline", "data-[state=checked]:bg-base-bg"],
+        primary: ["outline-primary", "data-[state=checked]:bg-primary"],
+        secondary: ["outline-secondary", "data-[state=checked]:bg-secondary"],
       },
-      thin: {
-        true: [
+      height: {
+        default: "",
+        thin: [
           "h-2.5 p-0 focus-visible:outline-offset-4",
           "data-[state=unchecked]:shadow-none",
         ],
@@ -52,32 +37,42 @@ const switchVariants = cva(
     },
     defaultVariants: {
       variant: "primary",
+      height: "default",
     },
   }
 );
 
-// const switchThumbVariants = cva(
-//   [
-//     "pointer-events-none block aspect-square h-full w-auto rounded-full bg-background shadow-sm transition-all duration-200 ease-in-out outline-none dark:data-[state=checked]:bg-foreground dark:data-[state=unchecked]:bg-foreground/50 dark:data-[state=unchecked]:backdrop-blur-lg",
-//   ],
-//   {
-//     variants: {
-//       variant: {
-//         primary: [
-
-//         ],
-//         secondary: [
-
-//         ]
-//       },
-//       thin: {
-//         true: [
-
-//         ],
-//       }
-//     }
-//   }
-// )
+const switchThumbVariants = cva(
+  [
+    "pointer-events-none block aspect-square h-full w-auto rounded-full bg-background shadow-sm transition-all duration-200 ease-in-out outline-none",
+    "dark:data-[state=unchecked]:bg-foreground/50 dark:data-[state=unchecked]:backdrop-blur-lg",
+    "group-aria-invalid/switch:data-[state=checked]:bg-destructive-foreground",
+  ],
+  {
+    variants: {
+      variant: {
+        base: ["data-[state=checked]:bg-base-foreground"],
+        primary: ["data-[state=checked]:bg-primary-foreground"],
+        secondary: ["data-[state=checked]:bg-secondary-foreground"],
+      },
+      height: {
+        default:
+          "data-[state=checked]:translate-x-4 data-[state=unchecked]:translate-x-0",
+        thin: [
+          "size-4 inset-ring inset-ring-border",
+          "dark:data-[state=unchecked]:data-[disabled]:bg-muted-foreground",
+          "data-[state=checked]:bg-background dark:data-[state=checked]:bg-foreground",
+          "data-[state=checked]:translate-x-[calc(--spacing(5)+1px)] data-[state=unchecked]:-translate-x-px",
+        ],
+      },
+    },
+    compoundVariants: [],
+    defaultVariants: {
+      variant: "primary",
+      height: "default",
+    },
+  }
+);
 
 type SwitchProps = React.ComponentProps<typeof SwitchPrimitive.Root> &
   VariantProps<typeof switchVariants> & {
@@ -90,16 +85,15 @@ type SwitchProps = React.ComponentProps<typeof SwitchPrimitive.Root> &
 function Switch({
   className,
   variant = "primary",
-  thin,
+  height,
   classNames,
   ...props
 }: SwitchProps) {
   return (
     <SwitchPrimitive.Root
       data-slot="switch"
-      data-thin={thin}
       className={cn(
-        switchVariants({ variant, thin }),
+        switchVariants({ variant, height }),
         "group/switch",
         classNames?.root,
         className
@@ -109,10 +103,7 @@ function Switch({
       <SwitchPrimitive.Thumb
         data-slot="switch-thumb"
         className={cn(
-          "pointer-events-none block aspect-square h-full w-auto rounded-full bg-background shadow-sm transition-all duration-200 ease-in-out outline-none dark:data-[state=checked]:bg-foreground dark:data-[state=unchecked]:bg-foreground/50 dark:data-[state=unchecked]:backdrop-blur-lg",
-          thin
-            ? "size-4 inset-ring inset-ring-border data-[state=checked]:translate-x-[calc(--spacing(5))] data-[state=unchecked]:-translate-x-0"
-            : "data-[state=checked]:translate-x-4 data-[state=unchecked]:translate-x-0",
+          switchThumbVariants({ variant, height }),
           classNames?.thumb
         )}
       />

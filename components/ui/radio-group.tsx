@@ -45,7 +45,7 @@ const radioGroupItemVariants = cva(
 
           "disabled:bg-faded disabled:text-muted-foreground disabled:shadow-none disabled:inset-ring-border",
 
-          "aria-invalid:inset-ring-destructive/80 aria-invalid:disabled:bg-destructive-faded aria-invalid:disabled:text-destructive-muted-foreground aria-invalid:data-[state=checked]:inset-ring-destructive aria-invalid:not-disabled:data-[state=checked]:bg-destructive aria-invalid:not-disabled:data-[state=checked]:text-destructive-foreground aria-invalid:hover:not-disabled:data-[state=unchecked]:inset-ring-destructive dark:aria-invalid:bg-destructive-faded",
+          "aria-invalid:inset-ring-destructive aria-invalid:disabled:bg-destructive-faded aria-invalid:disabled:text-destructive-muted-foreground aria-invalid:data-[state=checked]:inset-ring-destructive aria-invalid:not-disabled:data-[state=checked]:bg-destructive aria-invalid:not-disabled:data-[state=checked]:text-destructive-foreground dark:aria-invalid:bg-destructive-faded",
         ],
       },
       // {

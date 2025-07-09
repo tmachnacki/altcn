@@ -18,6 +18,7 @@
 - [ ] Tanstack links examples
 - [ ] Maybe restructure multiple variants props with contexts
 - [ ] Calendar/DatePicker variants
+- [ ] Tailwind Variants rewrite
 
 ## Components
 
@@ -40,6 +41,7 @@
 - [ ] Tab Nav (Navigation Primitive)
 - [ ] Textarea
 - [ ] Toggle Group
+- [ ] Toolbar
 - [ ] Uploader
 
 ## Site

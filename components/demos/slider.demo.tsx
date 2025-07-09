@@ -16,6 +16,8 @@ import { ComponentPlayground } from "~/components/component-playground";
 import { Swatch } from "~/components/swatch";
 
 const variants = [
+  "base",
+  "faded",
   "primary",
   "primary-muted",
   "primary-faded",
@@ -64,6 +66,14 @@ export function SliderDemo() {
               step={10}
               variant={variant as (typeof variants)[number]}
               orientation={orientation as (typeof orientations)[number]}
+            />
+            <Slider
+              defaultValue={[50]}
+              max={100}
+              step={1}
+              variant={variant as (typeof variants)[number]}
+              orientation={orientation as (typeof orientations)[number]}
+              disabled
             />
           </div>
 
@@ -114,6 +124,8 @@ function SliderControlled({ variant }: { variant: (typeof variants)[number] }) {
   const errorMessage = "Range must be at least 0.5";
 
   const textVariants = {
+    base: "text-muted-foreground",
+    faded: "text-muted-foreground",
     primary: "text-primary-muted-foreground",
     "primary-muted": "text-primary-muted-foreground",
     "primary-faded": "text-primary-muted-foreground",
@@ -142,11 +154,6 @@ function SliderControlled({ variant }: { variant: (typeof variants)[number] }) {
         variant={variant}
         aria-invalid={hasError}
         aria-errormessage={hasError ? errorMessage : undefined}
-        classNames={{
-          root: "group/slider",
-          range:
-            "bg-gradient-to-r from-primary via-sky-500 to-primary group-aria-invalid/slider:bg-gradient-to-r group-aria-invalid/slider:from-destructive group-aria-invalid/slider:via-pink-500 group-aria-invalid/slider:to-destructive",
-        }}
       />
       {hasError && (
         <span className="text-sm text-destructive-muted-foreground">

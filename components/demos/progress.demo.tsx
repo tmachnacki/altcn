@@ -16,6 +16,8 @@ import { ComponentPlayground } from "~/components/component-playground";
 import { Swatch } from "~/components/swatch";
 
 const variants = [
+  "base",
+  "faded",
   "primary",
   "primary-muted",
   "primary-faded",

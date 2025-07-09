@@ -11,6 +11,9 @@ const progressVariants = cva(
   {
     variants: {
       variant: {
+        base: "bg-muted",
+        faded: "bg-faded inset-ring inset-ring-border-faded",
+
         primary: "bg-muted",
         "primary-muted": "bg-primary-muted",
         "primary-faded":
@@ -19,10 +22,14 @@ const progressVariants = cva(
         secondary: "bg-muted",
         "secondary-muted": "bg-secondary-muted",
         "secondary-faded":
-          "inset-ring-secondary-border-faded bg-secondary-faded inset-ring",
+          "bg-secondary-faded inset-ring inset-ring-secondary-border-faded",
       },
     },
     compoundVariants: [
+      {
+        variant: ["base", "faded"],
+        className: "[--progress-indicator-bg:var(--color-base-bg)]",
+      },
       {
         variant: ["primary", "primary-muted", "primary-faded"],
         className: "[--progress-indicator-bg:var(--color-primary)]",

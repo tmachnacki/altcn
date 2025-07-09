@@ -8,43 +8,70 @@ import { cn } from "~/lib/utils";
 
 const sliderVariants = cva(
   [
-    "relative flex w-full touch-none items-center select-none data-[disabled]:opacity-50 data-[orientation=vertical]:h-full data-[orientation=vertical]:min-h-44 data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col",
+    "relative flex w-full touch-none items-center select-none data-[orientation=vertical]:h-full data-[orientation=vertical]:min-h-44 data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col",
+    "data-[disabled]:opacity-50 data-[disabled]:cursor-not-allowed",
     "aria-invalid:[--slider-range-bg:var(--color-destructive)] aria-invalid:[--slider-thumb-border:var(--color-destructive)] aria-invalid:[--slider-thumb-ring:var(--color-destructive-border-faded)]",
   ],
   {
     variants: {
       variant: {
-        primary:
+        base: [
           "[--slider-track-bg:var(--color-muted)] aria-invalid:[--slider-track-bg:var(--color-destructive-muted)]",
+          "[--slider-range-bg:var(--color-base-bg)]",
+          "[--slider-thumb-border:var(--color-base-bg)]",
+          "[--slider-thumb-ring:var(--color-border-faded)]",
+        ],
 
-        "primary-muted":
+        faded: [
+          "[--slider-track-bg:var(--color-faded)] [--slider-track-inset-ring:var(--color-border-faded)] aria-invalid:[--slider-track-bg:var(--color-destructive-faded)] aria-invalid:[--slider-track-inset-ring:var(--color-destructive-border-faded)]",
+          "[--slider-range-bg:var(--color-base-bg)]",
+          "[--slider-thumb-border:var(--color-base-bg)]",
+          "[--slider-thumb-ring:var(--color-border-faded)]",
+        ],
+
+        primary: [
+          "[--slider-track-bg:var(--color-muted)] aria-invalid:[--slider-track-bg:var(--color-destructive-muted)]",
+          "[--slider-range-bg:var(--color-primary)]",
+          "[--slider-thumb-border:var(--color-primary)]",
+          "[--slider-thumb-ring:var(--color-primary-border-faded)]",
+        ],
+
+        "primary-muted": [
           "[--slider-track-bg:var(--color-primary-muted)] aria-invalid:[--slider-track-bg:var(--color-destructive-muted)]",
+          "[--slider-range-bg:var(--color-primary)]",
+          "[--slider-thumb-border:var(--color-primary)]",
+          "[--slider-thumb-ring:var(--color-primary-border-faded)]",
+        ],
 
-        "primary-faded":
-          "aria-invalid:*:data-[slot=slider-track]:inset-ring-destructive-border-faded [--slider-track-bg:var(--color-primary-faded)] *:data-[slot=slider-track]:inset-ring-1 *:data-[slot=slider-track]:inset-ring-primary-border-faded aria-invalid:[--slider-track-bg:var(--color-destructive-faded)]",
+        "primary-faded": [
+          "[--slider-track-bg:var(--color-primary-faded)] [--slider-track-inset-ring:var(--color-primary-border-faded)] aria-invalid:[--slider-track-bg:var(--color-destructive-faded)] aria-invalid:[--slider-track-inset-ring:var(--color-destructive-border-faded)]",
+          "[--slider-range-bg:var(--color-primary)]",
+          "[--slider-thumb-border:var(--color-primary)]",
+          "[--slider-thumb-ring:var(--color-primary-border-faded)]",
+        ],
 
-        secondary:
+        secondary: [
           "[--slider-track-bg:var(--color-muted)] aria-invalid:[--slider-track-bg:var(--color-destructive-muted)]",
+          "[--slider-range-bg:var(--color-secondary)]",
+          "[--slider-thumb-border:var(--color-secondary)]",
+          "[--slider-thumb-ring:var(--color-secondary-border-faded)]",
+        ],
 
-        "secondary-muted":
+        "secondary-muted": [
           "[--slider-track-bg:var(--color-secondary-muted)] aria-invalid:[--slider-track-bg:var(--color-destructive-muted)]",
+          "[--slider-range-bg:var(--color-secondary)]",
+          "[--slider-thumb-border:var(--color-secondary)]",
+          "[--slider-thumb-ring:var(--color-secondary-border-faded)]",
+        ],
 
-        "secondary-faded":
-          "aria-invalid:*:data-[slot=slider-track]:inset-ring-destructive-border-faded [--slider-track-bg:var(--color-secondary-faded)] *:data-[slot=slider-track]:inset-ring-1 *:data-[slot=slider-track]:inset-ring-secondary-border-faded aria-invalid:[--slider-track-bg:var(--color-destructive-faded)]",
+        "secondary-faded": [
+          "[--slider-track-bg:var(--color-secondary-faded)] [--slider-track-inset-ring:var(--color-secondary-border-faded)] aria-invalid:[--slider-track-bg:var(--color-destructive-faded)] aria-invalid:[--slider-track-inset-ring:var(--color-destructive-border-faded)]",
+          "[--slider-range-bg:var(--color-secondary)]",
+          "[--slider-thumb-border:var(--color-secondary)]",
+          "[--slider-thumb-ring:var(--color-secondary-border-faded)]",
+        ],
       },
     },
-    compoundVariants: [
-      {
-        variant: ["primary", "primary-muted", "primary-faded"],
-        className:
-          "[--slider-range-bg:var(--color-primary)] [--slider-thumb-border:var(--color-primary)] [--slider-thumb-ring:var(--color-primary-border-faded)]",
-      },
-      {
-        variant: ["secondary", "secondary-muted", "secondary-faded"],
-        className:
-          "[--slider-range-bg:var(--color-secondary)] [--slider-thumb-border:var(--color-secondary)] [--slider-thumb-ring:var(--color-secondary-border-faded)]",
-      },
-    ],
     defaultVariants: {
       variant: "primary",
     },
@@ -98,6 +125,8 @@ function Slider({
         data-slot="slider-track"
         className={cn(
           "relative grow overflow-hidden rounded-full bg-(--slider-track-bg) data-[orientation=horizontal]:h-1.5 data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-1.5",
+          variant?.includes("faded") &&
+            "inset-ring inset-ring-(--slider-track-inset-ring)",
           classNames?.track
         )}
       >
@@ -114,7 +143,7 @@ function Slider({
           data-slot="slider-thumb"
           key={`slider-thumb-${index}`}
           className={cn(
-            "block size-4 shrink-0 rounded-full border border-(--slider-thumb-border) bg-background shadow-sm ring-0 ring-(--slider-thumb-ring) transition-shadow hover:ring-[3px] focus:ring-[3px] focus:outline-hidden disabled:pointer-events-none disabled:opacity-50",
+            "block size-4 shrink-0 rounded-full border border-(--slider-thumb-border) bg-background shadow-sm ring-0 ring-(--slider-thumb-ring) transition-shadow hover:not-data-[disabled]:ring-[3px] focus:ring-[3px] focus:outline-hidden data-[disabled]:pointer-events-none",
             classNames?.thumb
           )}
         />

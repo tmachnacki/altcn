@@ -16,15 +16,18 @@ import { ComponentPlayground } from "~/components/component-playground";
 import { Swatch } from "~/components/swatch";
 
 const variants = [
+  "base",
   "primary",
   // "primary-muted",
   "secondary",
   // "secondary-muted",
 ] as const;
 
+const heights = ["default", "thin"] as const;
+
 export function SwitchDemo() {
   const [variant, setVariant] = useState("primary");
-  const [thin, setThin] = useState(false);
+  const [height, setHeight] = useState("default");
 
   return (
     <>
@@ -37,7 +40,7 @@ export function SwitchDemo() {
             <Switch
               id={`switch-${variant}`}
               variant={variant as (typeof variants)[number]}
-              thin={thin}
+              height={height as (typeof heights)[number]}
             />
             <span>{variant}</span>
           </Label>
@@ -46,7 +49,7 @@ export function SwitchDemo() {
               id={`switch-${variant}-invalid`}
               variant={variant as (typeof variants)[number]}
               aria-invalid
-              thin={thin}
+              height={height as (typeof heights)[number]}
             />
             <Label htmlFor={`switch-${variant}-invalid`}>invalid</Label>
           </div>
@@ -55,7 +58,7 @@ export function SwitchDemo() {
               id={`switch-${variant}-disabled`}
               variant={variant as (typeof variants)[number]}
               disabled
-              thin={thin}
+              height={height as (typeof heights)[number]}
             />
             <Label htmlFor={`switch-${variant}-disabled`}>disabled</Label>
           </div>
@@ -64,7 +67,7 @@ export function SwitchDemo() {
               id={`switch-${variant}-checked-disabled`}
               variant={variant as (typeof variants)[number]}
               disabled
-              thin={thin}
+              height={height as (typeof heights)[number]}
               checked
             />
             <Label htmlFor={`switch-${variant}-checked-disabled`}>
@@ -74,7 +77,7 @@ export function SwitchDemo() {
         </div>
       </ComponentContainer>
       <ComponentPlayground>
-        <div className="flex flex-col gap-2">
+        <div className="grid gap-2">
           <Label htmlFor="switch-variant">Switch Variant</Label>
           <Select value={variant} onValueChange={setVariant}>
             <SelectTrigger id="switch-variant" className="w-full">
@@ -90,10 +93,21 @@ export function SwitchDemo() {
             </SelectContent>
           </Select>
         </div>
-        <Label htmlFor="switch-thin" className="flex items-center gap-3">
-          <Switch id="switch-thin" checked={thin} onCheckedChange={setThin} />
-          <span>Thin</span>
-        </Label>
+        <div className="grid gap-2">
+          <Label htmlFor="switch-height">Switch Height</Label>
+          <Select value={height} onValueChange={setHeight}>
+            <SelectTrigger id="switch-height" className="w-full">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              {heights.map((height) => (
+                <SelectItem key={height} value={height}>
+                  {height}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
       </ComponentPlayground>
     </>
   );

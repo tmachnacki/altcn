@@ -92,7 +92,7 @@
   --secondary: var(--color-secondary-400);
   --hover-secondary: color-mix(
     in oklab,
-    var(--color-secondary) 87.5%,
+    var(--color-secondary) 80%,
     var(--color-white)
   );
   --secondary-foreground: var(--color-secondary-950);
@@ -108,16 +108,8 @@
     var(--color-secondary-600) 50%,
     var(--color-secondary-700)
   );
-  --secondary-faded: color-mix(
-    in oklab,
-    var(--color-secondary-50) 80%,
-    var(--color-secondary-100)
-  );
-  --secondary-faded-solid: color-mix(
-    in oklab,
-    var(--color-secondary-50) 80%,
-    var(--color-secondary-100)
-  );
+  --secondary-faded: var(--color-secondary-50);
+  --secondary-faded-solid: var(--color-secondary-50);
   --hover-secondary-faded: var(--color-secondary-100);
   --secondary-border-faded: --alpha(var(--color-secondary-600) / 20%);
   --secondary-tron-gradient: linear-gradient(
@@ -274,13 +266,13 @@
   --outline: var(--color-base-300);
   --overlay: --alpha(var(--color-black) / 50%);
 
-  --base-bg: var(--color-base-600);
+  --base-bg: var(--color-base-500);
   --hover-base: color-mix(
     in oklab,
     var(--color-base-bg) 87.5%,
     var(--color-white)
   );
-  --base-foreground: var(--color-base-50);
+  --base-foreground: var(--color-white);
   /* --accent: --alpha(var(--color-base-800) / 70%); */
   --accent-foreground: var(--color-base-50);
   --subtle-foreground: var(--color-base-300);
@@ -340,7 +332,7 @@
   --secondary: var(--color-secondary-400);
   --hover-secondary: color-mix(
     in oklab,
-    var(--color-secondary) 87.5%,
+    var(--color-secondary) 80%,
     var(--color-white)
   );
   --secondary-foreground: var(--color-secondary-950);
