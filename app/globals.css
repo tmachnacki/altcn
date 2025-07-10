@@ -62,17 +62,23 @@
   --primary-foreground: var(--color-white);
   --primary-accent-foreground: var(--color-primary-950);
   --primary-muted: var(--color-primary-100);
-  --primary-muted-new: --alpha(var(--color-primary-200) / 60%);
   --hover-primary-muted: color-mix(
     in oklab,
     var(--color-primary-100) 50%,
     var(--color-primary-200)
   );
+
+  --primary-muted-new: --alpha(var(--color-primary-500) / 15%);
+  --hover-primary-muted-new: --alpha(var(--color-primary-500) / 25%);
+
   --primary-muted-foreground: var(--color-primary-600);
   --primary-faded: var(--color-primary-50);
-  --primary-faded-new: --alpha(var(--color-primary-100) / 50%);
   --primary-faded-solid: var(--color-primary-50);
   --hover-primary-faded: var(--color-primary-100);
+
+  --primary-faded-new: --alpha(var(--color-primary-400) / 10%);
+  --hover-primary-faded-new: --alpha(var(--color-primary-400) / 20%);
+
   --primary-border-faded: --alpha(var(--color-primary-600) / 15%);
   --primary-tron-gradient: linear-gradient(
     to top,
@@ -108,9 +114,17 @@
     var(--color-secondary-600) 50%,
     var(--color-secondary-700)
   );
+
+  --secondary-muted-new: --alpha(var(--color-secondary-400) / 22.5%);
+  --hover-secondary-muted-new: --alpha(var(--color-secondary-400) / 32.5%);
+
   --secondary-faded: var(--color-secondary-50);
   --secondary-faded-solid: var(--color-secondary-50);
   --hover-secondary-faded: var(--color-secondary-100);
+
+  --secondary-faded-new: --alpha(var(--color-secondary-400) / 10%);
+  --hover-secondary-faded-new: --alpha(var(--color-secondary-400) / 20%);
+
   --secondary-border-faded: --alpha(var(--color-secondary-600) / 20%);
   --secondary-tron-gradient: linear-gradient(
     to top,
@@ -141,10 +155,18 @@
     var(--color-destructive-100) 50%,
     var(--color-destructive-200)
   );
+
+  --destructive-muted-new: --alpha(var(--color-destructive-500) / 15%);
+  --hover-destructive-muted-new: --alpha(var(--color-destructive-500) / 20%);
+
   --destructive-muted-foreground: var(--color-destructive-600);
   --destructive-faded: var(--color-destructive-50);
   --destructive-faded-solid: var(--color-destructive-50);
   --hover-destructive-faded: var(--color-destructive-100);
+
+  --destructive-faded-new: --alpha(var(--color-destructive-400) / 10%);
+  --hover-destructive-faded-new: --alpha(var(--color-destructive-400) / 20%);
+
   --destructive-border-faded: --alpha(var(--color-destructive-600) / 12.5%);
   --destructive-tron-gradient: linear-gradient(
     to top,
@@ -304,6 +326,10 @@
     var(--color-primary-900) 40%,
     var(--color-primary-950)
   );
+
+  --primary-muted-new: --alpha(var(--color-primary-600) / 25%);
+  --hover-primary-muted-new: --alpha(var(--color-primary-600) / 35%);
+
   --primary-muted-foreground: var(--color-primary-300);
   --primary-faded: --alpha(var(--color-primary-950) / 50%);
   --primary-faded-solid: color-mix(
@@ -312,6 +338,10 @@
     var(--color-background)
   );
   --hover-primary-faded: var(--color-primary-950);
+
+  --primary-faded-new: --alpha(var(--color-primary-600) / 12.5%);
+  --hover-primary-faded-new: --alpha(var(--color-primary-600) / 22.5%);
+
   --primary-border-faded: --alpha(var(--color-primary-500) / 25%);
   --primary-tron-gradient: linear-gradient(
     to top,
@@ -343,6 +373,10 @@
     var(--color-secondary-900) 40%,
     var(--color-secondary-950)
   );
+
+  --secondary-muted-new: --alpha(var(--color-secondary-500) / 20%);
+  --hover-secondary-muted-new: --alpha(var(--color-secondary-500) / 25%);
+
   --secondary-muted-foreground: var(--color-secondary-300);
   --secondary-faded: --alpha(var(--color-secondary-950) / 50%);
   --secondary-faded-solid: color-mix(
@@ -351,6 +385,10 @@
     var(--color-background)
   );
   --hover-secondary-faded: var(--color-secondary-950);
+
+  --secondary-faded-new: --alpha(var(--color-secondary-500) / 10%);
+  --hover-secondary-faded-new: --alpha(var(--color-secondary-500) / 15%);
+
   --secondary-border-faded: --alpha(var(--color-secondary-500) / 20%);
   --secondary-tron-gradient: linear-gradient(
     to top,
@@ -382,6 +420,10 @@
     var(--color-destructive-900) 40%,
     var(--color-destructive-950)
   );
+
+  --destructive-muted-new: --alpha(var(--color-destructive-600) / 25%);
+  --hover-destructive-muted-new: --alpha(var(--color-destructive-600) / 30%);
+
   --destructive-muted-foreground: var(--color-destructive-300);
   --destructive-faded: --alpha(var(--color-destructive-950) / 50%);
   --destructive-faded-solid: color-mix(
@@ -390,6 +432,10 @@
     var(--color-background)
   );
   --hover-destructive-faded: var(--color-destructive-950);
+
+  --destructive-faded-new: --alpha(var(--color-destructive-500) / 10%);
+  --hover-destructive-faded-new: --alpha(var(--color-destructive-500) / 20%);
+
   --destructive-border-faded: --alpha(var(--color-destructive-400) / 20%);
   --destructive-tron-gradient: linear-gradient(
     to top,

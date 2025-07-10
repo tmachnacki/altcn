@@ -10,6 +10,24 @@ export default function Colors() {
 
       <div className="mt-16 flex flex-col gap-8">
         <div className="flex items-center gap-2">
+          <Button variant={"muted"}>Button</Button>
+          <Button
+            variant={"muted"}
+            className="bg-(--muted-new) hover:bg-(--hover-muted-new)"
+          >
+            Button
+          </Button>
+          <Button variant={"faded"} className="">
+            Button
+          </Button>
+          <Button
+            variant={"faded"}
+            className="bg-(--faded-new) hover:bg-(--hover-faded-new)"
+          >
+            Button
+          </Button>
+        </div>
+        <div className="flex items-center gap-2">
           <Button variant={"primary-muted"}>Button</Button>
           <Button
             variant={"primary-muted"}
@@ -17,10 +35,48 @@ export default function Colors() {
           >
             Button
           </Button>
-          <Button variant={"primary-faded"}>Button</Button>
+          <Button variant={"primary-faded"} className="">
+            Button
+          </Button>
           <Button
             variant={"primary-faded"}
             className="bg-(--primary-faded-new) hover:bg-(--hover-primary-faded-new)"
+          >
+            Button
+          </Button>
+        </div>
+        <div className="flex items-center gap-2">
+          <Button variant={"secondary-muted"}>Button</Button>
+          <Button
+            variant={"secondary-muted"}
+            className="bg-(--secondary-muted-new) hover:bg-(--hover-secondary-muted-new)"
+          >
+            Button
+          </Button>
+          <Button variant={"secondary-faded"} className="">
+            Button
+          </Button>
+          <Button
+            variant={"secondary-faded"}
+            className="bg-(--secondary-faded-new) hover:bg-(--hover-secondary-faded-new)"
+          >
+            Button
+          </Button>
+        </div>
+        <div className="flex items-center gap-2">
+          <Button variant={"destructive-muted"}>Button</Button>
+          <Button
+            variant={"destructive-muted"}
+            className="bg-(--destructive-muted-new) hover:bg-(--hover-destructive-muted-new)"
+          >
+            Button
+          </Button>
+          <Button variant={"destructive-faded"} className="">
+            Button
+          </Button>
+          <Button
+            variant={"destructive-faded"}
+            className="bg-(--destructive-faded-new) hover:bg-(--hover-destructive-faded-new)"
           >
             Button
           </Button>

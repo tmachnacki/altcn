@@ -82,10 +82,10 @@ const menuItemVariants = cva(
           "data-[highlighted]:bg-destructive-muted data-[highlighted]:text-destructive-muted-foreground",
         ],
         "destructive-surface": [
-          "data-[highlighted]:data-[width=default]:inset-ring-destructive-border-faded data-[highlighted]:bg-destructive-faded data-[highlighted]:text-destructive-accent-foreground data-[highlighted]:data-[width=default]:inset-ring data-[highlighted]:data-[width=full]:shadow-[inset_0_1px_0_0_var(--color-destructive-border-faded),inset_0_-1px_0_0_var(--color-destructive-border-faded)]",
+          "data-[highlighted]:bg-destructive-faded data-[highlighted]:text-destructive-accent-foreground data-[highlighted]:data-[width=default]:inset-ring data-[highlighted]:data-[width=default]:inset-ring-destructive-border-faded data-[highlighted]:data-[width=full]:shadow-[inset_0_1px_0_0_var(--color-destructive-border-faded),inset_0_-1px_0_0_var(--color-destructive-border-faded)]",
         ],
         "destructive-faded": [
-          "data-[highlighted]:data-[width=default]:inset-ring-destructive-border-faded data-[highlighted]:bg-destructive-faded data-[highlighted]:text-destructive-muted-foreground data-[highlighted]:data-[width=default]:inset-ring data-[highlighted]:data-[width=full]:shadow-[inset_0_1px_0_0_var(--color-destructive-border-faded),inset_0_-1px_0_0_var(--color-destructive-border-faded)]",
+          "data-[highlighted]:bg-destructive-faded data-[highlighted]:text-destructive-muted-foreground data-[highlighted]:data-[width=default]:inset-ring data-[highlighted]:data-[width=default]:inset-ring-destructive-border-faded data-[highlighted]:data-[width=full]:shadow-[inset_0_1px_0_0_var(--color-destructive-border-faded),inset_0_-1px_0_0_var(--color-destructive-border-faded)]",
         ],
       },
       width: {
@@ -285,7 +285,6 @@ function DropdownMenuCheckboxItem({
       <DropdownMenuPrimitive.ItemIndicator
         data-slot="dropdown-menu-checkbox-item-indicator"
         data-width={width || context.width}
-        data-item-variant={variant || context.variant}
         className={cn(
           menuItemIndicatorVariants({
             variant: indicatorVariant || context.indicatorVariant,
@@ -350,7 +349,6 @@ function DropdownMenuRadioItem({
       <DropdownMenuPrimitive.ItemIndicator
         data-slot="dropdown-menu-radio-item-indicator"
         data-width={width || context.width}
-        data-item-variant={variant || context.variant}
         className={cn(
           menuItemIndicatorVariants({
             variant: indicatorVariant || context.indicatorVariant,
