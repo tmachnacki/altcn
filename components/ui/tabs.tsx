@@ -42,7 +42,7 @@ const tabsTriggerVariants = cva(
           "data-[state=active]:shadow-[0_0_4px_0_rgba(0,0,0,0.04),0_2px_8px_0_rgba(0,0,0,0.06),0_0_2px_-1px_rgba(0,0,0,0.25)]",
         ],
 
-        base: "data-[state=active]:bg-base-bg data-[state=active]:text-base-foreground data-[state=active]:shadow-sm",
+        base: "data-[state=active]:bg-base data-[state=active]:text-base-foreground data-[state=active]:shadow-sm",
 
         outline:
           "data-[state=active]:border data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-xs",
@@ -57,6 +57,10 @@ const tabsTriggerVariants = cva(
           "-outline-offset-2 data-[state=active]:text-foreground",
           // "data-[state=active]:*:data-[slot=tabs-trigger-underline]:border-foreground",
           "data-[state=active]:before:bg-foreground",
+        ],
+
+        "base-gradient": [
+          "data-[state=active]:bg-linear-(--base-gradient) data-[state=active]:text-base-foreground",
         ],
 
         ghost: "data-[state=active]:text-foreground",
@@ -80,13 +84,16 @@ const tabsTriggerVariants = cva(
         "primary-underlined":
           "-outline-offset-2 data-[state=active]:text-primary data-[state=active]:before:bg-primary",
 
-        "primary-ghost": "data-[state=active]:text-primary",
-
         "primary-tron": [
-          "data-[state=active]:bg-background data-[state=active]:bg-[image:var(--primary-tron-gradient)] data-[state=active]:text-primary-muted-foreground data-[state=active]:inset-ring data-[state=active]:inset-ring-primary-border-tron",
+          "data-[state=active]:bg-background data-[state=active]:bg-linear-(--primary-tron-gradient) data-[state=active]:text-primary-muted-foreground data-[state=active]:inset-ring data-[state=active]:inset-ring-primary-border-tron",
           "data-[state=active]:[--tron-beam:var(--color-primary)] data-[state=active]:[--tron-blur:var(--color-primary-tron-blur)]",
         ],
 
+        "primary-gradient": [
+          "data-[state=active]:bg-linear-(--primary-gradient) data-[state=active]:text-primary-foreground",
+        ],
+
+        "primary-ghost": "data-[state=active]:text-primary",
         // -- secondary --
         secondary:
           "data-[state=active]:bg-secondary data-[state=active]:text-secondary-foreground data-[state=active]:shadow-sm",
@@ -106,13 +113,17 @@ const tabsTriggerVariants = cva(
         "secondary-underlined":
           "-outline-offset-2 data-[state=active]:text-secondary-500 data-[state=active]:before:bg-secondary dark:data-[state=active]:text-secondary",
 
-        "secondary-ghost":
-          "data-[state=active]:text-secondary-500 dark:data-[state=active]:text-secondary",
-
         "secondary-tron": [
-          "data-[state=active]:inset-ring-secondary-border-tron data-[state=active]:bg-background data-[state=active]:bg-[image:var(--secondary-tron-gradient)] data-[state=active]:text-secondary-muted-foreground data-[state=active]:inset-ring",
+          "data-[state=active]:bg-background data-[state=active]:bg-linear-(--secondary-tron-gradient) data-[state=active]:text-secondary-muted-foreground data-[state=active]:inset-ring data-[state=active]:inset-ring-secondary-border-tron",
           "data-[state=active]:[--tron-beam:var(--color-secondary)] data-[state=active]:[--tron-blur:var(--color-secondary-tron-blur)]",
         ],
+
+        "secondary-gradient": [
+          "data-[state=active]:bg-linear-(--secondary-gradient) data-[state=active]:text-secondary-foreground",
+        ],
+
+        "secondary-ghost":
+          "data-[state=active]:text-secondary-500 dark:data-[state=active]:text-secondary",
       },
     },
     compoundVariants: [
@@ -129,6 +140,7 @@ const tabsTriggerVariants = cva(
           "accent",
           "surface",
           "underlined",
+          "base-gradient",
           "ghost",
         ],
         className: "outline-outline",
@@ -141,8 +153,9 @@ const tabsTriggerVariants = cva(
           "primary-surface",
           "primary-faded",
           "primary-underlined",
-          "primary-ghost",
           "primary-tron",
+          "primary-gradient",
+          "primary-ghost",
         ],
         className: "outline-primary",
       },
@@ -154,8 +167,9 @@ const tabsTriggerVariants = cva(
           "secondary-surface",
           "secondary-faded",
           "secondary-underlined",
-          "secondary-ghost",
           "secondary-tron",
+          "secondary-gradient",
+          "secondary-ghost",
         ],
         className: "outline-secondary",
       },

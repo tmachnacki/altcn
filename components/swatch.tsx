@@ -34,10 +34,7 @@ export function Swatch({
     );
   }
 
-  const shouldUseBadge =
-    variant.includes("success") ||
-    variant.includes("warning") ||
-    variant.includes("dotted");
+  const shouldUseBadge = variant.includes("dotted");
 
   if (shouldUseBadge) {
     const _variant = variant as React.ComponentProps<typeof Badge>["variant"];

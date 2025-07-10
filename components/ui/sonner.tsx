@@ -61,7 +61,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
           actionButton: cx([
             "!cursor-default !shadow-none focus-visible:!outline-2 focus-visible:!outline-offset-2 focus-visible:!outline-outline active:!opacity-80",
 
-            "!bg-base-bg !text-base-foreground hover:!bg-base-bg/90",
+            "!bg-base !text-base-foreground hover:!bg-base/90",
 
             "group-data-[type=success]/toast:!bg-success group-data-[type=success]/toast:!text-success-foreground group-data-[type=success]/toast:hover:!bg-success/90",
 

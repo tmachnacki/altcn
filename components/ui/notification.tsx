@@ -14,7 +14,7 @@ const notificationVariants = cva(
         // -- base --
         outline: "border border-border bg-background text-foreground",
 
-        base: "bg-base-bg text-base-foreground",
+        base: "bg-base text-base-foreground",
 
         accent: "bg-muted text-accent-foreground",
 
@@ -87,10 +87,10 @@ const notificationVariants = cva(
         "warning-muted": "bg-warning-muted text-warning-muted-foreground",
 
         "warning-surface":
-          "border-warning-border-faded border bg-warning-faded text-warning-accent-foreground",
+          "border border-warning-border-faded bg-warning-faded text-warning-accent-foreground",
 
         "warning-faded":
-          "border-warning-border-faded border bg-warning-faded text-warning-muted-foreground",
+          "border border-warning-border-faded bg-warning-faded text-warning-muted-foreground",
       },
     },
     defaultVariants: {
@@ -105,12 +105,12 @@ const pingVariants = ({
   variant: VariantProps<typeof notificationVariants>["variant"];
 }) =>
   ({
-    outline: "bg-base-bg",
-    base: "bg-base-bg",
-    accent: "bg-base-bg",
-    muted: "bg-base-bg",
-    surface: "bg-base-bg",
-    faded: "bg-base-bg",
+    outline: "bg-base",
+    base: "bg-base",
+    accent: "bg-base",
+    muted: "bg-base",
+    surface: "bg-base",
+    faded: "bg-base",
     primary: "bg-primary",
     "primary-accent": "bg-primary",
     "primary-muted": "bg-primary",
@@ -169,6 +169,26 @@ function Notification({
         containerClassName
       )}
     >
+      {ping && (
+        <span
+          data-slot="notification-ping"
+          aria-hidden="true"
+          className={cn(
+            pingVariants({ variant }),
+            "absolute top-1/2 left-1/2 z-[1] size-full -translate-x-1/2 -translate-y-1/2 animate-ping rounded-full opacity-75",
+            children ? "animate-ping-sm" : "animate-ping",
+            pingClassName
+          )}
+        />
+      )}
+
+      <span
+        data-slot="notification-background"
+        className={cn(
+          "absolute top-1/2 left-1/2 z-[2] size-full -translate-x-1/2 -translate-y-1/2 rounded-full bg-background",
+          children ? "h-5 min-w-5" : "size-2.5"
+        )}
+      />
       <span
         data-slot="notification"
         className={cn(
@@ -182,19 +202,6 @@ function Notification({
       >
         {children}
       </span>
-
-      {ping && (
-        <span
-          data-slot="notification-ping"
-          aria-hidden="true"
-          className={cn(
-            pingVariants({ variant }),
-            "absolute top-1/2 left-1/2 z-[2] size-full -translate-x-1/2 -translate-y-1/2 animate-ping rounded-full opacity-75",
-            children ? "animate-ping-sm" : "animate-ping",
-            pingClassName
-          )}
-        />
-      )}
     </span>
   );
 }

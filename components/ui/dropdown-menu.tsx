@@ -28,7 +28,7 @@ const menuItemVariants = cva(
       variant: {
         // -- base --
         base: [
-          "data-[highlighted]:bg-base-bg data-[highlighted]:text-base-foreground data-[highlighted]:**:[[data-slot*='-indicator']]:text-current",
+          "data-[highlighted]:bg-base data-[highlighted]:text-base-foreground data-[highlighted]:**:[[data-slot*='-indicator']]:text-current",
         ],
         accent: [
           "data-[highlighted]:bg-muted data-[highlighted]:text-accent-foreground",

@@ -20,10 +20,10 @@ const buttonVariants = cva(
         // --- base ---
         outline: [
           "border border-border bg-background text-foreground shadow-xs",
-          "hover:border-hover-border hover:bg-faded",
+          "hover:border-hover-border hover:bg-base-50 dark:hover:bg-base-900",
         ],
 
-        base: ["bg-base-bg text-base-foreground shadow", "hover:bg-hover-base"],
+        base: ["bg-base text-base-foreground shadow", "hover:bg-hover-base"],
 
         accent: ["bg-muted text-accent-foreground", "hover:bg-hover-muted"],
 
@@ -39,12 +39,15 @@ const buttonVariants = cva(
           "hover:bg-hover-faded",
         ],
 
+        "base-gradient": [
+          "bg-linear-(--base-gradient) text-base-foreground shadow",
+          "hover:bg-linear-(--hover-base-gradient)",
+        ],
+
         ghost: [
           "bg-transparent text-foreground",
           "hover:bg-muted hover:text-accent-foreground",
         ],
-
-        link: ["text-primary underline-offset-4", "hover:underline"],
 
         // --- primary ---
         primary: [
@@ -73,8 +76,8 @@ const buttonVariants = cva(
         ],
 
         "primary-tron": [
-          "bg-background bg-[image:var(--primary-tron-gradient)] text-primary-muted-foreground shadow inset-ring inset-ring-primary-border-tron",
-          "hover:bg-[image:var(--hover-primary-tron-gradient)] hover:inset-ring-hover-primary-border-tron",
+          "bg-background bg-linear-(--primary-tron-gradient) text-primary-muted-foreground shadow inset-ring inset-ring-primary-border-tron",
+          "hover:bg-linear-(--hover-primary-tron-gradient) hover:inset-ring-hover-primary-border-tron",
           "[--tron-beam:var(--color-primary)] [--tron-blur:var(--color-primary-tron-blur)]",
         ],
 
@@ -84,8 +87,8 @@ const buttonVariants = cva(
         ],
 
         "primary-gradient": [
-          "bg-gradient-to-br from-primary-700 to-primary-500 text-primary-foreground shadow dark:from-primary-600 dark:to-primary-400",
-          "hover:from-primary-700/90 hover:to-primary-500/90 dark:hover:from-primary-600/90 dark:hover:to-primary-400/90",
+          "bg-linear-(--primary-gradient) text-primary-foreground shadow",
+          "hover:bg-linear-(--hover-primary-gradient)",
         ],
 
         "primary-ghost": [
@@ -120,8 +123,8 @@ const buttonVariants = cva(
         ],
 
         "secondary-tron": [
-          "bg-background bg-[image:var(--secondary-tron-gradient)] text-secondary-muted-foreground shadow inset-ring inset-ring-secondary-border-tron",
-          "hover:bg-[image:var(--hover-secondary-tron-gradient)] hover:inset-ring-hover-secondary-border-tron",
+          "bg-background bg-linear-(--secondary-tron-gradient) text-secondary-muted-foreground shadow inset-ring inset-ring-secondary-border-tron",
+          "hover:bg-linear-(--hover-secondary-tron-gradient) hover:inset-ring-hover-secondary-border-tron",
           "[--tron-beam:var(--color-secondary)] [--tron-blur:var(--color-secondary-tron-blur)]",
         ],
 
@@ -131,8 +134,8 @@ const buttonVariants = cva(
         ],
 
         "secondary-gradient": [
-          "bg-gradient-to-br from-secondary-500 to-secondary-300 text-secondary-foreground shadow",
-          "hover:from-secondary-500/90 hover:to-secondary-300/90",
+          "bg-linear-(--secondary-gradient) text-secondary-foreground shadow",
+          "hover:bg-linear-(--hover-secondary-gradient)",
         ],
 
         "secondary-ghost": [
@@ -167,8 +170,8 @@ const buttonVariants = cva(
         ],
 
         "destructive-tron": [
-          "inset-ring-destructive-border-tron bg-background bg-[image:var(--destructive-tron-gradient)] text-destructive-muted-foreground shadow inset-ring",
-          "hover:inset-ring-hover-destructive-border-tron hover:bg-[image:var(--hover-destructive-tron-gradient)]",
+          "bg-background bg-linear-(--destructive-tron-gradient) text-destructive-muted-foreground shadow inset-ring inset-ring-destructive-border-tron",
+          "hover:bg-linear-(--hover-destructive-tron-gradient) hover:inset-ring-hover-destructive-border-tron",
           "[--tron-beam:var(--color-destructive)] [--tron-blur:var(--color-destructive-tron-blur)]",
         ],
 
@@ -178,13 +181,107 @@ const buttonVariants = cva(
         ],
 
         "destructive-gradient": [
-          "bg-gradient-to-br from-destructive-600 to-destructive-400 text-destructive-foreground shadow dark:from-destructive-800 dark:to-destructive-500",
-          "hover:from-destructive-600/90 hover:to-destructive-400/90 dark:hover:from-destructive-800/90 dark:hover:to-destructive-500/90",
+          "bg-linear-(--destructive-gradient) text-destructive-foreground shadow",
+          "hover:bg-linear-(--hover-destructive-gradient)",
         ],
 
         "destructive-ghost": [
           "text-destructive-muted-foreground",
           "hover:bg-destructive-muted hover:text-destructive-accent-foreground",
+        ],
+
+        // --- success ---
+        success: [
+          "bg-success text-success-foreground shadow",
+          "hover:bg-hover-success",
+        ],
+
+        "success-accent": [
+          "bg-success-muted text-success-accent-foreground",
+          "hover:bg-hover-success-muted",
+        ],
+
+        "success-muted": [
+          "bg-success-muted text-success-muted-foreground",
+          "hover:bg-hover-success-muted",
+        ],
+
+        "success-surface": [
+          "border border-success-border-faded bg-success-faded text-success-accent-foreground",
+          "hover:bg-hover-success-faded",
+        ],
+
+        "success-faded": [
+          "border border-success-border-faded bg-success-faded text-success-muted-foreground",
+          "hover:bg-hover-success-faded",
+        ],
+
+        "success-tron": [
+          "bg-background bg-linear-(--success-tron-gradient) text-success-muted-foreground shadow inset-ring inset-ring-success-border-tron",
+          "hover:bg-linear-(--hover-success-tron-gradient) hover:inset-ring-hover-success-border-tron",
+          "[--tron-beam:var(--color-success)] [--tron-blur:var(--color-success-tron-blur)]",
+        ],
+
+        "success-shadow": [
+          "bg-success text-success-foreground shadow-lg shadow-success/50",
+          "hover:bg-hover-success",
+        ],
+
+        "success-gradient": [
+          "bg-linear-(--success-gradient) text-success-foreground shadow",
+          "hover:bg-linear-(--hover-success-gradient)",
+        ],
+
+        "success-ghost": [
+          "text-success-muted-foreground",
+          "hover:bg-success-muted hover:text-success-accent-foreground",
+        ],
+
+        // --- warning ---
+        warning: [
+          "bg-warning text-warning-foreground shadow",
+          "hover:bg-hover-warning",
+        ],
+
+        "warning-accent": [
+          "bg-warning-muted text-warning-accent-foreground",
+          "hover:bg-hover-warning-muted",
+        ],
+
+        "warning-muted": [
+          "bg-warning-muted text-warning-muted-foreground",
+          "hover:bg-hover-warning-muted",
+        ],
+
+        "warning-surface": [
+          "border border-warning-border-faded bg-warning-faded text-warning-accent-foreground",
+          "hover:bg-hover-warning-faded",
+        ],
+
+        "warning-faded": [
+          "border border-warning-border-faded bg-warning-faded text-warning-muted-foreground",
+          "hover:bg-hover-warning-faded",
+        ],
+
+        "warning-tron": [
+          "bg-background bg-linear-(--warning-tron-gradient) text-warning-muted-foreground shadow inset-ring inset-ring-warning-border-tron",
+          "hover:bg-linear-(--hover-warning-tron-gradient) hover:inset-ring-hover-warning-border-tron",
+          "[--tron-beam:var(--color-warning)] [--tron-blur:var(--color-warning-tron-blur)]",
+        ],
+
+        "warning-shadow": [
+          "bg-warning text-warning-foreground shadow-lg shadow-warning/50",
+          "hover:bg-hover-warning",
+        ],
+
+        "warning-gradient": [
+          "bg-linear-(--warning-gradient) text-warning-foreground shadow",
+          "hover:bg-linear-(--hover-warning-gradient)",
+        ],
+
+        "warning-ghost": [
+          "text-warning-muted-foreground",
+          "hover:bg-warning-muted hover:text-warning-accent-foreground",
         ],
       },
       size: {

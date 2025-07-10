@@ -33,23 +33,28 @@ const tabsTriggerVariants = [
   "accent",
   "surface",
   "underlined",
+  "base-gradient",
   "ghost",
+
   "primary",
   "primary-accent",
   "primary-muted",
   "primary-surface",
   "primary-faded",
   "primary-underlined",
-  "primary-ghost",
   "primary-tron",
+  "primary-gradient",
+  "primary-ghost",
+
   "secondary",
   "secondary-accent",
   "secondary-muted",
   "secondary-surface",
   "secondary-faded",
   "secondary-underlined",
-  "secondary-ghost",
   "secondary-tron",
+  "secondary-gradient",
+  "secondary-ghost",
 ] as const;
 
 export function TabsDemo() {

@@ -2,6 +2,7 @@
 
 ## Improvements
 
+- [ ] 2xs and xs sizing
 - [ ] Headless Sonner
 - [ ] Pagination Control Sizes
 - [ ] Transparent vs solid muted and faded colors

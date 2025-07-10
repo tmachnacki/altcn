@@ -39,7 +39,7 @@ const inputVariants = cva(
         muted: [
           "bg-muted text-accent-foreground -outline-offset-1 hover:not-disabled:not-focus-visible:not-aria-invalid:bg-hover-muted",
 
-          "file:bg-base-bg file:text-base-foreground",
+          "file:bg-base file:text-base-foreground",
 
           "placeholder:text-placeholder",
 
@@ -68,7 +68,7 @@ const inputVariants = cva(
 
           "placeholder:text-primary-placeholder",
 
-          "disabled:bg-muted disabled:text-accent-foreground disabled:file:bg-base-bg disabled:file:text-base-foreground disabled:placeholder:text-placeholder",
+          "disabled:bg-muted disabled:text-accent-foreground disabled:file:bg-base disabled:file:text-base-foreground disabled:placeholder:text-placeholder",
 
           "focus-visible:outline-2 focus-visible:outline-primary",
 
@@ -85,7 +85,7 @@ const inputVariants = cva(
 
           "placeholder:text-secondary-placeholder",
 
-          "disabled:bg-muted disabled:text-accent-foreground disabled:file:bg-base-bg disabled:file:text-base-foreground disabled:placeholder:text-muted-foreground",
+          "disabled:bg-muted disabled:text-accent-foreground disabled:file:bg-base disabled:file:text-base-foreground disabled:placeholder:text-muted-foreground",
 
           "focus-visible:outline-2 focus-visible:outline-secondary",
 

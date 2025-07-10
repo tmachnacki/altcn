@@ -13,7 +13,7 @@ import { WarningFilledIcon } from "~/components/icons/warning-filled";
 const alertVariants = cva(
   [
     "relative flex w-full items-start gap-x-3 overflow-hidden rounded-lg px-4 py-3 text-sm has-[[data-slot='alert-close']]:pr-12 data-[align=center]:items-center",
-    "*:[svg]:flex-none *:[svg]:text-current *:[svg]:not-[[class*='size-']]:not-[[class*='h-']]:h-[1lh] *:[svg]:not-[[class*='size-']]:not-[[class*='w-']]:w-4",
+    "*:[svg]:flex-none *:[svg]:text-current *:[svg]:not-[[class*='size-']]:h-[1lh] *:[svg]:not-[[class*='size-']]:w-4",
   ],
   {
     variants: {
@@ -27,7 +27,7 @@ const alertVariants = cva(
         ],
 
         base: [
-          "bg-base-bg text-base-foreground",
+          "bg-base text-base-foreground",
           "[--alert-inset-color-bg:var(--color-base-200)]",
           "[--alert-description-text:var(--color-base-100)]",
           "[--alert-icon-bg:--alpha(var(--color-base-50)/15%)] [--alert-icon-border:--alpha(var(--color-base-50)/20%)] [--alert-icon-text:var(--color-base-foreground)]",
@@ -37,7 +37,7 @@ const alertVariants = cva(
 
         muted: [
           "bg-muted",
-          "[--alert-icon-bg:var(--color-faded)] dark:[--alert-icon-bg:var(--color-base-800)]",
+          "[--alert-icon-bg:var(--color-base-50)] dark:[--alert-icon-bg:var(--color-muted)]",
           "[--hover-alert-close-bg:--alpha(var(--color-base-500)/20%)]",
           "[--alert-close-outline:var(--color-outline)]",
         ],
@@ -61,7 +61,7 @@ const alertVariants = cva(
 
         "primary-muted": [
           "bg-primary-muted",
-          "[--alert-icon-bg:var(--color-primary-faded)] [--alert-icon-text:var(--color-primary-500)] dark:[--alert-icon-bg:var(--color-primary-900)] dark:[--alert-icon-text:var(--color-primary-200)]",
+          "[--alert-icon-bg:var(--color-primary-50)] [--alert-icon-text:var(--color-primary-500)] dark:[--alert-icon-bg:var(--color-primary-muted)] dark:[--alert-icon-text:var(--color-primary-200)]",
           "[--hover-alert-close-bg:--alpha(var(--color-primary-500)/20%)]",
           "[--alert-close-outline:var(--color-primary)]",
         ],
@@ -85,7 +85,7 @@ const alertVariants = cva(
 
         "secondary-muted": [
           "bg-secondary-muted",
-          "[--alert-icon-bg:var(--color-secondary-faded)] [--alert-icon-text:var(--color-secondary-500)] dark:[--alert-icon-bg:var(--color-secondary-900)] dark:[--alert-icon-text:var(--color-secondary-300)]",
+          "[--alert-icon-bg:var(--color-secondary-50)] [--alert-icon-text:var(--color-secondary-500)] dark:[--alert-icon-bg:var(--color-secondary-muted)] dark:[--alert-icon-text:var(--color-secondary-300)]",
           "[--hover-alert-close-bg:--alpha(var(--color-secondary-500)/20%)]",
           "[--alert-close-outline:var(--color-secondary)]",
         ],
@@ -109,7 +109,7 @@ const alertVariants = cva(
 
         "destructive-muted": [
           "bg-destructive-muted",
-          "[--alert-icon-bg:var(--color-destructive-faded)] [--alert-icon-text:var(--color-destructive-500)] dark:[--alert-icon-bg:var(--color-destructive-900)] dark:[--alert-icon-text:var(--color-destructive-200)]",
+          "[--alert-icon-bg:var(--color-destructive-50)] [--alert-icon-text:var(--color-destructive-500)] dark:[--alert-icon-bg:var(--color-destructive-muted)] dark:[--alert-icon-text:var(--color-destructive-200)]",
           "[--hover-alert-close-bg:--alpha(var(--color-destructive-500)/20%)]",
           "[--alert-close-outline:var(--color-destructive)]",
         ],
@@ -133,7 +133,7 @@ const alertVariants = cva(
 
         "success-muted": [
           "bg-success-muted",
-          "[--alert-icon-bg:var(--color-success-faded)] [--alert-icon-text:var(--color-success-500)] dark:[--alert-icon-bg:var(--color-success-900)] dark:[--alert-icon-text:var(--color-success-200)]",
+          "[--alert-icon-bg:var(--color-success-50)] [--alert-icon-text:var(--color-success-500)] dark:[--alert-icon-bg:var(--color-success-muted)] dark:[--alert-icon-text:var(--color-success-200)]",
           "[--hover-alert-close-bg:--alpha(var(--color-success-500)/20%)]",
           "[--alert-close-outline:var(--color-success)]",
         ],
@@ -157,13 +157,13 @@ const alertVariants = cva(
 
         "warning-muted": [
           "bg-warning-muted",
-          "[--alert-icon-bg:var(--color-warning-faded)] [--alert-icon-text:var(--color-warning-500)] dark:[--alert-icon-bg:var(--color-warning-900)] dark:[--alert-icon-text:var(--color-warning-300)]",
+          "[--alert-icon-bg:var(--color-warning-50)] [--alert-icon-text:var(--color-warning-500)] dark:[--alert-icon-bg:var(--color-warning-muted)] dark:[--alert-icon-text:var(--color-warning-300)]",
           "[--hover-alert-close-bg:--alpha(var(--color-warning-500)/20%)]",
           "[--alert-close-outline:var(--color-warning)]",
         ],
 
         "warning-faded": [
-          "border-warning-border-faded border bg-warning-faded",
+          "border border-warning-border-faded bg-warning-faded",
           "[--alert-icon-bg:var(--color-warning-muted)] [--alert-icon-text:var(--color-warning-muted-foreground)]",
           "[--hover-alert-close-bg:--alpha(var(--color-warning-500)/20%)]",
           "[--alert-close-outline:var(--color-warning)]",

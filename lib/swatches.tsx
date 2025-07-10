@@ -6,6 +6,7 @@ export const swatchVariants = [
   "muted",
   "surface",
   "faded",
+  "base-gradient",
   "ghost",
   "link",
   "dotted",
@@ -53,7 +54,10 @@ export const swatchVariants = [
   "success-surface",
   "success-faded",
   "success-tron",
+  "success-shadow",
+  "success-gradient",
   "success-dotted",
+  "success-ghost",
 
   // warning
   "warning",
@@ -62,7 +66,10 @@ export const swatchVariants = [
   "warning-surface",
   "warning-faded",
   "warning-tron",
+  "warning-shadow",
+  "warning-gradient",
   "warning-dotted",
+  "warning-ghost",
 
   // input, tabs
   "underlined",

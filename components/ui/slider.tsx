@@ -17,15 +17,15 @@ const sliderVariants = cva(
       variant: {
         base: [
           "[--slider-track-bg:var(--color-muted)] aria-invalid:[--slider-track-bg:var(--color-destructive-muted)]",
-          "[--slider-range-bg:var(--color-base-bg)]",
-          "[--slider-thumb-border:var(--color-base-bg)]",
+          "[--slider-range-bg:var(--color-base)]",
+          "[--slider-thumb-border:var(--color-base)]",
           "[--slider-thumb-ring:var(--color-border-faded)]",
         ],
 
         faded: [
           "[--slider-track-bg:var(--color-faded)] [--slider-track-inset-ring:var(--color-border-faded)] aria-invalid:[--slider-track-bg:var(--color-destructive-faded)] aria-invalid:[--slider-track-inset-ring:var(--color-destructive-border-faded)]",
-          "[--slider-range-bg:var(--color-base-bg)]",
-          "[--slider-thumb-border:var(--color-base-bg)]",
+          "[--slider-range-bg:var(--color-base)]",
+          "[--slider-thumb-border:var(--color-base)]",
           "[--slider-thumb-ring:var(--color-border-faded)]",
         ],
 

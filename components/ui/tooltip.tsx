@@ -11,7 +11,7 @@ const tooltipVariants = cva("", {
     variant: {
       default:
         "bg-base-950 text-base-50 [--tooltip-arrow-bg:var(--color-base-950)] dark:bg-base-50 dark:text-base-950 dark:[--tooltip-arrow-bg:var(--color-base-50)]",
-      base: "bg-base-bg text-base-foreground [--tooltip-arrow-bg:var(--color-base-bg)]",
+      base: "bg-base text-base-foreground [--tooltip-arrow-bg:var(--color-base)]",
       primary:
         "bg-primary text-primary-foreground [--tooltip-arrow-bg:var(--color-primary)]",
       secondary:

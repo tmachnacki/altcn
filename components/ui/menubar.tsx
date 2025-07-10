@@ -22,9 +22,14 @@ const menubarTriggerVariants = cva(
     variants: {
       variant: {
         // -- base --
+        outline: [
+          "data-[highlighted]:bg-background data-[highlighted]:text-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border",
+          "data-[state=open]:bg-background data-[state=open]:text-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-border",
+        ],
+
         base: [
-          "data-[highlighted]:bg-base-bg data-[highlighted]:text-base-foreground",
-          "data-[state=open]:bg-base-bg data-[state=open]:text-base-foreground",
+          "data-[highlighted]:bg-base data-[highlighted]:text-base-foreground",
+          "data-[state=open]:bg-base data-[state=open]:text-base-foreground",
         ],
 
         accent: [
@@ -35,6 +40,11 @@ const menubarTriggerVariants = cva(
         surface: [
           "data-[highlighted]:bg-faded data-[highlighted]:text-accent-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-border-faded",
           "data-[state=open]:bg-faded data-[state=open]:text-accent-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-border-faded",
+        ],
+
+        "base-gradient": [
+          "data-[highlighted]:bg-linear-(--base-gradient) data-[highlighted]:text-base-foreground",
+          "data-[state=open]:bg-linear-(--base-gradient) data-[state=open]:text-base-foreground",
         ],
 
         // -- primary --
@@ -64,10 +74,15 @@ const menubarTriggerVariants = cva(
         ],
 
         "primary-tron": [
-          "data-[highlighted]:bg-background data-[highlighted]:bg-[image:var(--primary-tron-gradient)] data-[highlighted]:text-primary-muted-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-primary-border-tron",
+          "data-[highlighted]:bg-background data-[highlighted]:bg-linear-(--primary-tron-gradient) data-[highlighted]:text-primary-muted-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-primary-border-tron",
           "data-[highlighted]:[--tron-beam:var(--color-primary)] data-[highlighted]:[--tron-blur:var(--primary-tron-blur)]",
-          "data-[state=open]:bg-background data-[state=open]:bg-[image:var(--primary-tron-gradient)] data-[state=open]:text-primary-muted-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-primary-border-tron",
+          "data-[state=open]:bg-background data-[state=open]:bg-linear-(--primary-tron-gradient) data-[state=open]:text-primary-muted-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-primary-border-tron",
           "data-[state=open]:[--tron-beam:var(--color-primary)] data-[state=open]:[--tron-blur:var(--primary-tron-blur)]",
+        ],
+
+        "primary-gradient": [
+          "data-[highlighted]:bg-linear-(--primary-gradient) data-[highlighted]:text-primary-foreground",
+          "data-[state=open]:bg-linear-(--primary-gradient) data-[state=open]:text-primary-foreground",
         ],
 
         "primary-ghost": [
@@ -102,10 +117,15 @@ const menubarTriggerVariants = cva(
         ],
 
         "secondary-tron": [
-          "data-[highlighted]:inset-ring-secondary-border-tron data-[highlighted]:bg-background data-[highlighted]:bg-[image:var(--secondary-tron-gradient)] data-[highlighted]:text-secondary-muted-foreground data-[highlighted]:inset-ring",
+          "data-[highlighted]:bg-background data-[highlighted]:bg-linear-(--secondary-tron-gradient) data-[highlighted]:text-secondary-muted-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-secondary-border-tron",
           "data-[highlighted]:[--tron-beam:var(--color-secondary)] data-[highlighted]:[--tron-blur:var(--secondary-tron-blur)]",
-          "data-[state=open]:inset-ring-secondary-border-tron data-[state=open]:bg-background data-[state=open]:bg-[image:var(--secondary-tron-gradient)] data-[state=open]:text-secondary-muted-foreground data-[state=open]:inset-ring",
+          "data-[state=open]:bg-background data-[state=open]:bg-linear-(--secondary-tron-gradient) data-[state=open]:text-secondary-muted-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-secondary-border-tron",
           "data-[state=open]:[--tron-beam:var(--color-secondary)] data-[state=open]:[--tron-blur:var(--secondary-tron-blur)]",
+        ],
+
+        "secondary-gradient": [
+          "data-[highlighted]:bg-linear-(--secondary-gradient) data-[highlighted]:text-secondary-foreground",
+          "data-[state=open]:bg-linear-(--secondary-gradient) data-[state=open]:text-secondary-foreground",
         ],
 
         "secondary-ghost": [

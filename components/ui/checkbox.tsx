@@ -20,7 +20,7 @@ const checkBoxVariants = cva(
       variant: {
         base: [
           "outline-outline",
-          "not-data-[state=unchecked]:border-base-bg not-data-[state=unchecked]:bg-base-bg not-data-[state=unchecked]:text-base-foreground",
+          "not-data-[state=unchecked]:border-base not-data-[state=unchecked]:bg-base not-data-[state=unchecked]:text-base-foreground",
         ],
         primary: [
           "outline-primary",

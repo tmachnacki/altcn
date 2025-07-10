@@ -22,7 +22,7 @@ const toggleVariants = cva(
         outline:
           "border border-border shadow-xs hover:bg-faded hover:text-muted-foreground data-[state=on]:border-hover-border data-[state=on]:bg-faded data-[state=on]:text-accent-foreground",
 
-        base: "hover:bg-muted hover:text-muted-foreground data-[state=on]:bg-base-bg data-[state=on]:text-base-foreground",
+        base: "hover:bg-faded hover:text-muted-foreground data-[state=on]:bg-base data-[state=on]:text-base-foreground",
 
         accent:
           "hover:bg-faded hover:text-muted-foreground data-[state=on]:bg-muted data-[state=on]:text-accent-foreground",
@@ -35,6 +35,10 @@ const toggleVariants = cva(
 
         faded:
           "hover:bg-faded hover:text-muted-foreground/80 data-[state=on]:bg-faded data-[state=on]:text-muted-foreground data-[state=on]:inset-ring data-[state=on]:inset-ring-border-faded",
+
+        "base-gradient": [
+          "hover:bg-faded hover:text-muted-foreground data-[state=on]:bg-linear-(--base-gradient) data-[state=on]:text-base-foreground",
+        ],
 
         primary:
           "hover:bg-primary-faded hover:text-primary-muted-foreground data-[state=on]:bg-primary data-[state=on]:text-primary-foreground",
@@ -52,8 +56,12 @@ const toggleVariants = cva(
           "hover:bg-primary-faded hover:text-primary-muted-foreground/80 data-[state=on]:bg-primary-faded data-[state=on]:text-primary-muted-foreground data-[state=on]:inset-ring data-[state=on]:inset-ring-primary-border-faded",
 
         "primary-tron": [
-          "hover:text-primary-muted-foreground hover:inset-ring hover:inset-ring-primary-border-faded data-[state=on]:bg-background data-[state=on]:bg-[image:var(--primary-tron-gradient)] data-[state=on]:text-primary-muted-foreground data-[state=on]:inset-ring data-[state=on]:inset-ring-primary-border-tron",
+          "hover:text-primary-muted-foreground hover:inset-ring hover:inset-ring-primary-border-faded data-[state=on]:bg-background data-[state=on]:bg-linear-(--primary-tron-gradient) data-[state=on]:text-primary-muted-foreground data-[state=on]:inset-ring data-[state=on]:inset-ring-primary-border-tron",
           "[--tron-beam:var(--color-primary)] [--tron-blur:var(--color-primary-tron-blur)]",
+        ],
+
+        "primary-gradient": [
+          "hover:bg-primary-faded hover:text-primary-muted-foreground data-[state=on]:bg-linear-(--primary-gradient) data-[state=on]:text-primary-foreground",
         ],
 
         secondary:
@@ -72,8 +80,12 @@ const toggleVariants = cva(
           "hover:bg-secondary-faded hover:text-secondary-muted-foreground/80 data-[state=on]:bg-secondary-faded data-[state=on]:text-secondary-muted-foreground data-[state=on]:inset-ring data-[state=on]:inset-ring-secondary-border-faded",
 
         "secondary-tron": [
-          "data-[state=on]:inset-ring-secondary-border-tron hover:text-secondary-muted-foreground hover:inset-ring hover:inset-ring-secondary-border-faded data-[state=on]:bg-background data-[state=on]:bg-[image:var(--secondary-tron-gradient)] data-[state=on]:text-secondary-muted-foreground data-[state=on]:inset-ring",
+          "hover:text-secondary-muted-foreground hover:inset-ring hover:inset-ring-secondary-border-faded data-[state=on]:bg-background data-[state=on]:bg-linear-(--secondary-tron-gradient) data-[state=on]:text-secondary-muted-foreground data-[state=on]:inset-ring data-[state=on]:inset-ring-secondary-border-tron",
           "[--tron-beam:var(--color-secondary)] [--tron-blur:var(--color-secondary-tron-blur)]",
+        ],
+
+        "secondary-gradient": [
+          "hover:bg-secondary-faded hover:text-secondary-muted-foreground data-[state=on]:bg-linear-(--secondary-gradient) data-[state=on]:text-secondary-foreground",
         ],
       },
       size: {
@@ -85,7 +97,15 @@ const toggleVariants = cva(
     },
     compoundVariants: [
       {
-        variant: ["outline", "base", "accent", "muted", "surface", "faded"],
+        variant: [
+          "outline",
+          "base",
+          "accent",
+          "muted",
+          "surface",
+          "faded",
+          "base-gradient",
+        ],
         className: "outline-outline",
       },
       {
@@ -96,6 +116,7 @@ const toggleVariants = cva(
           "primary-surface",
           "primary-faded",
           "primary-tron",
+          "primary-gradient",
         ],
         className: "outline-primary",
       },
@@ -106,6 +127,8 @@ const toggleVariants = cva(
           "secondary-muted",
           "secondary-surface",
           "secondary-faded",
+          "secondary-tron",
+          "secondary-gradient",
         ],
         className: "outline-secondary",
       },

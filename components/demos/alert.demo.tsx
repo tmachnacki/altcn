@@ -3,7 +3,7 @@
 import * as React from "react";
 import { CheckCircle2Icon } from "lucide-react";
 
-import { sleep } from "~/lib/utils";
+import { cn, sleep } from "~/lib/utils";
 
 import {
   Alert,
@@ -28,32 +28,99 @@ import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
 import { Swatch } from "~/components/swatch";
 
+const alertVariants = [
+  "outline",
+  "base",
+  "muted",
+  "faded",
+  "primary",
+  "primary-muted",
+  "primary-faded",
+  "secondary",
+  "secondary-muted",
+  "secondary-faded",
+  "destructive",
+  "destructive-muted",
+  "destructive-faded",
+  "success",
+  "success-muted",
+  "success-faded",
+  "warning",
+  "warning-muted",
+  "warning-faded",
+] as const;
+
+const alertButtonVariant = (variant: (typeof alertVariants)[number]) => {
+  switch (variant) {
+    case "outline":
+      return "outline";
+    case "base":
+      return "outline";
+    case "muted":
+      return "muted";
+    case "faded":
+      return "faded";
+
+    case "primary":
+      return "outline";
+    case "primary-muted":
+      return "primary-muted";
+    case "primary-faded":
+      return "primary-faded";
+
+    case "secondary":
+      return "outline";
+    case "secondary-muted":
+      return "secondary-muted";
+    case "secondary-faded":
+      return "secondary-faded";
+
+    case "destructive":
+      return "outline";
+    case "destructive-muted":
+      return "destructive-muted";
+    case "destructive-faded":
+      return "destructive-faded";
+
+    case "success":
+      return "outline";
+    case "success-muted":
+      return "success-muted";
+    case "success-faded":
+      return "success-faded";
+
+    case "warning":
+      return "outline";
+    case "warning-muted":
+      return "warning-muted";
+    case "warning-faded":
+      return "warning-faded";
+  }
+};
+
+const alertButtonClassNames = (variant: (typeof alertVariants)[number]) => {
+  switch (variant) {
+    case "base":
+      return "text-accent-foreground";
+    case "primary":
+      return "text-primary-muted-foreground";
+    case "secondary":
+      return "text-secondary-muted-foreground";
+    case "destructive":
+      return "text-destructive-muted-foreground";
+    case "success":
+      return "text-success-muted-foreground";
+    case "warning":
+      return "text-warning-muted-foreground";
+    default:
+      return "";
+  }
+};
+
 export function AlertDemo() {
   const [alertVariant, setAlertVariant] = React.useState("outline");
   const [showAlertCentered, setShowAlertCentered] = React.useState(true);
   const [showAlert, setShowAlert] = React.useState(true);
-
-  const alertVariants = [
-    "outline",
-    "base",
-    "muted",
-    "faded",
-    "primary",
-    "primary-muted",
-    "primary-faded",
-    "secondary",
-    "secondary-muted",
-    "secondary-faded",
-    "destructive",
-    "destructive-muted",
-    "destructive-faded",
-    "success",
-    "success-muted",
-    "success-faded",
-    "warning",
-    "warning-muted",
-    "warning-faded",
-  ] as const;
 
   async function handleCloseAlertCentered() {
     setShowAlertCentered(false);
@@ -111,7 +178,18 @@ export function AlertDemo() {
                 FYI This one is centered with info type icon
               </AlertTitle>
             </AlertContent>
-            <Button variant={"outline"} size="sm" className="h-6">
+            <Button
+              variant={alertButtonVariant(
+                alertVariant as (typeof alertVariants)[number]
+              )}
+              size="sm"
+              className={cn(
+                "h-6",
+                alertButtonClassNames(
+                  alertVariant as (typeof alertVariants)[number]
+                )
+              )}
+            >
               Undo
             </Button>
           </Alert>
@@ -126,7 +204,18 @@ export function AlertDemo() {
                   FYI This one is centered with info type icon
                 </AlertTitle>
               </AlertContent>
-              <Button variant={"outline"} size="sm" className="h-6">
+              <Button
+                variant={alertButtonVariant(
+                  alertVariant as (typeof alertVariants)[number]
+                )}
+                size="sm"
+                className={cn(
+                  "h-6",
+                  alertButtonClassNames(
+                    alertVariant as (typeof alertVariants)[number]
+                  )
+                )}
+              >
                 Undo
               </Button>
               <AlertClose onClick={handleCloseAlertCentered} />
@@ -142,7 +231,18 @@ export function AlertDemo() {
                 Warning! This one has a description and warning type icon.
               </AlertDescription>
             </AlertContent>
-            <Button variant={"outline"} size="sm" className="h-6">
+            <Button
+              variant={alertButtonVariant(
+                alertVariant as (typeof alertVariants)[number]
+              )}
+              size="sm"
+              className={cn(
+                "h-6",
+                alertButtonClassNames(
+                  alertVariant as (typeof alertVariants)[number]
+                )
+              )}
+            >
               Dismiss
             </Button>
           </Alert>
@@ -159,7 +259,18 @@ export function AlertDemo() {
                 </ul>
               </AlertDescription>
               <AlertFooter>
-                <Button variant={"outline"} size="sm">
+                <Button
+                  variant={alertButtonVariant(
+                    alertVariant as (typeof alertVariants)[number]
+                  )}
+                  size="sm"
+                  className={cn(
+                    "h-6",
+                    alertButtonClassNames(
+                      alertVariant as (typeof alertVariants)[number]
+                    )
+                  )}
+                >
                   Details
                 </Button>
               </AlertFooter>
@@ -179,7 +290,18 @@ export function AlertDemo() {
                   </ul>
                 </AlertDescription>
                 <AlertFooter>
-                  <Button variant={"outline"} size="sm">
+                  <Button
+                    variant={alertButtonVariant(
+                      alertVariant as (typeof alertVariants)[number]
+                    )}
+                    size="sm"
+                    className={cn(
+                      "h-6",
+                      alertButtonClassNames(
+                        alertVariant as (typeof alertVariants)[number]
+                      )
+                    )}
+                  >
                     Details
                   </Button>
                 </AlertFooter>

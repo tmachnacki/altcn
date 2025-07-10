@@ -44,7 +44,7 @@ const avatarFallbackVariants = cva(
         // -- base --
         outline: "border border-border bg-background text-foreground",
 
-        base: "bg-base-bg text-base-foreground",
+        base: "bg-base text-base-foreground",
 
         accent: "bg-muted text-accent-foreground",
 
