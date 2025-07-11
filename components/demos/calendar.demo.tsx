@@ -53,6 +53,8 @@ const navVariants = [
 
 const selectedVariants = [
   "base",
+  "base-shadow",
+  "base-gradient",
   "primary",
   "primary-shadow",
   "primary-gradient",

@@ -39,6 +39,11 @@ const buttonVariants = cva(
           "hover:bg-hover-faded",
         ],
 
+        "base-shadow": [
+          "bg-base text-base-foreground shadow-lg shadow-base/50",
+          "hover:bg-hover-base",
+        ],
+
         "base-gradient": [
           "bg-linear-(--base-gradient) text-base-foreground shadow",
           "hover:bg-linear-(--hover-base-gradient)",
@@ -285,18 +290,6 @@ const buttonVariants = cva(
         ],
       },
       size: {
-        md: [
-          "h-(--size-md) px-4 py-2",
-          "has-[[data-slot='spinner']]:px-3 has-[>svg]:px-3 **:data-[slot=spinner]:not-[[class*='size-']]:size-4",
-          "**:[svg]:not-[[class*='size-']]:size-4",
-        ],
-
-        lg: [
-          "h-(--size-lg) gap-3 rounded-md px-6 py-2 text-base",
-          "has-[[data-slot='spinner']]:px-4 has-[>svg]:px-4 **:data-[slot=spinner]:not-[[class*='size-']]:size-5",
-          "**:[svg]:not-[[class*='size-']]:size-5",
-        ],
-
         sm: [
           "h-(--size-sm) rounded-md px-3 py-1.5",
           "has-[[data-slot='spinner']]:px-2.5 has-[>svg]:px-2.5 **:data-[slot=spinner]:not-[[class*='size-']]:size-4",
@@ -308,15 +301,15 @@ const buttonVariants = cva(
           "has-[[data-slot='spinner']]:px-2 has-[>svg]:px-2 **:data-[slot=spinner]:not-[[class*='size-']]:size-3.5 **:[svg]:not-[[class*='size-']]:size-3.5",
         ],
 
-        "icon-md": [
-          "size-(--size-md)",
-          "**:data-[slot=spinner]:not-[[class*='size-']]:size-4",
-          "*:[svg]:not-[[class*='size-']]:size-4",
+        md: [
+          "h-(--size-md) px-4 py-2",
+          "has-[[data-slot='spinner']]:px-3 has-[>svg]:px-3 **:data-[slot=spinner]:not-[[class*='size-']]:size-4",
+          "**:[svg]:not-[[class*='size-']]:size-4",
         ],
 
-        "icon-lg": [
-          "size-(--size-lg)",
-          "**:data-[slot=spinner]:not-[[class*='size-']]:size-5",
+        lg: [
+          "h-(--size-lg) gap-3 rounded-md px-6 py-2 text-base",
+          "has-[[data-slot='spinner']]:px-4 has-[>svg]:px-4 **:data-[slot=spinner]:not-[[class*='size-']]:size-5",
           "**:[svg]:not-[[class*='size-']]:size-5",
         ],
 
@@ -331,9 +324,34 @@ const buttonVariants = cva(
           "**:data-[slot=spinner]:not-[[class*='size-']]:size-3.5",
           "**:[svg]:not-[[class*='size-']]:size-3.5",
         ],
+
+        "icon-md": [
+          "size-(--size-md)",
+          "**:data-[slot=spinner]:not-[[class*='size-']]:size-4",
+          "*:[svg]:not-[[class*='size-']]:size-4",
+        ],
+
+        "icon-lg": [
+          "size-(--size-lg)",
+          "**:data-[slot=spinner]:not-[[class*='size-']]:size-5",
+          "**:[svg]:not-[[class*='size-']]:size-5",
+        ],
       },
     },
     compoundVariants: [
+      {
+        variant: [
+          "outline",
+          "base",
+          "accent",
+          "muted",
+          "surface",
+          "faded",
+          "base-gradient",
+          "ghost",
+        ],
+        className: "outline-outline",
+      },
       {
         variant: [
           "primary",
@@ -375,6 +393,34 @@ const buttonVariants = cva(
           "destructive-ghost",
         ],
         className: "outline-destructive",
+      },
+      {
+        variant: [
+          "success",
+          "success-accent",
+          "success-muted",
+          "success-surface",
+          "success-faded",
+          "success-tron",
+          "success-shadow",
+          "success-gradient",
+          "success-ghost",
+        ],
+        className: "outline-success",
+      },
+      {
+        variant: [
+          "warning",
+          "warning-accent",
+          "warning-muted",
+          "warning-surface",
+          "warning-faded",
+          "warning-tron",
+          "warning-shadow",
+          "warning-gradient",
+          "warning-ghost",
+        ],
+        className: "outline-warning",
       },
     ],
     defaultVariants: {

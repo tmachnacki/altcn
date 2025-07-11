@@ -45,18 +45,22 @@ const triggerSizesMap: Record<number, TriggerSize> = {
 };
 
 const itemVariants = [
+  "base",
   "accent",
   "surface",
+
   "primary",
   "primary-accent",
   "primary-muted",
   "primary-surface",
+
   "primary-faded",
   "secondary",
   "secondary-accent",
   "secondary-muted",
   "secondary-surface",
   "secondary-faded",
+
   "destructive",
   "destructive-accent",
   "destructive-muted",
@@ -65,7 +69,7 @@ const itemVariants = [
 ] as const;
 
 const indicatorVariants = [
-  "default",
+  "base",
   "primary",
   "secondary",
   "destructive",
@@ -75,12 +79,15 @@ const indicatorVariants = [
 
 const widths = ["default", "full"] as const;
 
+const positions = ["popper", "item-aligned"] as const;
+
 export function SelectDemo() {
   const [triggerVariant, setTriggerVariant] = React.useState("outline");
   const [triggerSize, setTriggerSize] = React.useState(2);
   const [itemVariant, setItemVariant] = React.useState("accent");
-  const [indicatorVariant, setIndicatorVariant] = React.useState("default");
+  const [indicatorVariant, setIndicatorVariant] = React.useState("base");
   const [width, setWidth] = React.useState("default");
+  const [position, setPosition] = React.useState("popper");
 
   return (
     <>
@@ -100,6 +107,7 @@ export function SelectDemo() {
               indicatorVariant={
                 indicatorVariant as (typeof indicatorVariants)[number]
               }
+              position={position as (typeof positions)[number]}
             >
               <SelectGroup>
                 <SelectLabel>Fruits</SelectLabel>
@@ -138,6 +146,7 @@ export function SelectDemo() {
               indicatorVariant={
                 indicatorVariant as (typeof indicatorVariants)[number]
               }
+              position={position as (typeof positions)[number]}
               className="max-h-96"
             >
               {Array.from({ length: 100 }).map((_, i) => (
@@ -168,6 +177,7 @@ export function SelectDemo() {
               indicatorVariant={
                 indicatorVariant as (typeof indicatorVariants)[number]
               }
+              position={position as (typeof positions)[number]}
             >
               <SelectItem value="line">
                 <ChartLineIcon />
@@ -210,6 +220,7 @@ export function SelectDemo() {
               indicatorVariant={
                 indicatorVariant as (typeof indicatorVariants)[number]
               }
+              position={position as (typeof positions)[number]}
             >
               <SelectItem value="line">
                 <ChartLineIcon />
@@ -251,6 +262,7 @@ export function SelectDemo() {
               indicatorVariant={
                 indicatorVariant as (typeof indicatorVariants)[number]
               }
+              position={position as (typeof positions)[number]}
             >
               <SelectItem value="line">
                 <ChartLineIcon />
@@ -355,6 +367,21 @@ export function SelectDemo() {
               {widths.map((width) => (
                 <SelectItem key={width} value={width}>
                   {width}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+        <div className="grid gap-2">
+          <Label htmlFor="content-position">Content Position</Label>
+          <Select value={position} onValueChange={setPosition}>
+            <SelectTrigger id="content-position" className="w-full">
+              <SelectValue placeholder="Select position" />
+            </SelectTrigger>
+            <SelectContent>
+              {positions.map((position) => (
+                <SelectItem key={position} value={position}>
+                  {position}
                 </SelectItem>
               ))}
             </SelectContent>

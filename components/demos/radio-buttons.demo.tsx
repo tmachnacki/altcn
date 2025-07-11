@@ -12,6 +12,7 @@ import {
   SelectValue,
 } from "~/components/ui/select";
 import { Slider } from "~/components/ui/slider";
+import { Switch } from "~/components/ui/switch";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
 
@@ -31,6 +32,7 @@ const variants = [
   "muted",
   "surface",
   "faded",
+  "base-shadow",
   "base-gradient",
   "ghost",
 
@@ -53,16 +55,6 @@ const variants = [
   "secondary-shadow",
   "secondary-gradient",
   "secondary-ghost",
-  "destructive",
-
-  "destructive-accent",
-  "destructive-muted",
-  "destructive-surface",
-  "destructive-faded",
-  "destructive-tron",
-  "destructive-shadow",
-  "destructive-gradient",
-  "destructive-ghost",
 ] as const;
 
 type Size = "xs" | "sm" | "md" | "lg";
@@ -74,10 +66,11 @@ const sizesMap: Record<number, Size> = {
 } as const;
 
 export function RadioButtonsDemo() {
-  const [activeVariant, setActiveVariant] = React.useState("primary");
-  const [inactiveVariant, setInactiveVariant] = React.useState("outline");
+  const [checkedVariant, setCheckedVariant] = React.useState("primary");
+  const [uncheckedVariant, setUncheckedVariant] = React.useState("outline");
   const [size, setSize] = React.useState(3);
   const [orientation, setOrientation] = React.useState("horizontal");
+  const [invalid, setInvalid] = React.useState(false);
 
   const [selectedOption, setSelectedOption] = React.useState(options[0].id);
 
@@ -86,7 +79,7 @@ export function RadioButtonsDemo() {
       <ComponentContainer>
         <fieldset
           aria-label="Choose a depth"
-          className="flex w-full max-w-sm flex-col gap-3"
+          className="flex w-full max-w-md flex-col gap-3"
         >
           <div className="flex items-center justify-between">
             <legend className="font-medium">How deep is your love?</legend>
@@ -96,19 +89,21 @@ export function RadioButtonsDemo() {
           </div>
 
           <RadioButtons
-            activeVariant={activeVariant as (typeof variants)[number]}
-            inactiveVariant={inactiveVariant as (typeof variants)[number]}
-            size={sizesMap[size]}
+            variants={{
+              checked: checkedVariant as (typeof variants)[number],
+              unchecked: uncheckedVariant as (typeof variants)[number],
+              size: sizesMap[size],
+            }}
             orientation={orientation as "horizontal" | "vertical"}
             value={selectedOption}
             onValueChange={setSelectedOption}
-            className="grid-cols-6 data-[orientation=vertical]:grid-cols-1"
+            className="grid grid-cols-6 data-[orientation=vertical]:grid-cols-1"
           >
             {options.map((option) => (
               <RadioButtonsItem
                 key={option.id}
                 value={option.id}
-                aria-invalid={option.id === "64ft"}
+                aria-invalid={invalid}
                 disabled={option.id === "128ft"}
                 checked={selectedOption === option.id}
               >
@@ -120,9 +115,9 @@ export function RadioButtonsDemo() {
       </ComponentContainer>
       <ComponentPlayground>
         <div className="grid gap-2">
-          <Label htmlFor="active-variant">Active variant</Label>
-          <Select value={activeVariant} onValueChange={setActiveVariant}>
-            <SelectTrigger id="active-variant" className="w-full">
+          <Label htmlFor="checked-variant">Checked variant</Label>
+          <Select value={checkedVariant} onValueChange={setCheckedVariant}>
+            <SelectTrigger id="checked-variant" className="w-full">
               <SelectValue placeholder="Select a variant" />
             </SelectTrigger>
             <SelectContent className="max-h-96">
@@ -135,9 +130,9 @@ export function RadioButtonsDemo() {
           </Select>
         </div>
         <div className="grid gap-2">
-          <Label htmlFor="inactive-variant">Inactive variant</Label>
-          <Select value={inactiveVariant} onValueChange={setInactiveVariant}>
-            <SelectTrigger id="inactive-variant" className="w-full">
+          <Label htmlFor="unchecked-variant">Unchecked variant</Label>
+          <Select value={uncheckedVariant} onValueChange={setUncheckedVariant}>
+            <SelectTrigger id="unchecked-variant" className="w-full">
               <SelectValue placeholder="Select a variant" />
             </SelectTrigger>
             <SelectContent className="max-h-96">
@@ -177,6 +172,10 @@ export function RadioButtonsDemo() {
               <SelectItem value="vertical">Vertical</SelectItem>
             </SelectContent>
           </Select>
+        </div>
+        <div className="flex items-center gap-3">
+          <Switch id="invalid" checked={invalid} onCheckedChange={setInvalid} />
+          <Label htmlFor="invalid">Invalid</Label>
         </div>
       </ComponentPlayground>
     </>

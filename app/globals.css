@@ -88,6 +88,7 @@
   );
   --primary-foreground: var(--color-white);
   --primary-placeholder: --alpha(var(--color-primary-600) / 60%);
+  --primary-popover: var(--color-primary-50);
 
   /* muted */
   --primary-muted: --alpha(var(--color-primary-500) / 15%);
@@ -96,8 +97,8 @@
   --primary-accent-foreground: var(--color-primary-950);
 
   /* faded */
-  --primary-faded: --alpha(var(--color-primary-400) / 10%);
-  --hover-primary-faded: --alpha(var(--color-primary-400) / 17.5%);
+  --primary-faded: --alpha(var(--color-primary-400) / 7.5%);
+  --hover-primary-faded: --alpha(var(--color-primary-400) / 15%);
   --primary-border-faded: --alpha(var(--color-primary-600) / 15%);
 
   /* tron */
@@ -128,6 +129,7 @@
   );
   --secondary-foreground: var(--color-secondary-950);
   --secondary-placeholder: --alpha(var(--color-secondary-600) / 60%);
+  --secondary-popover: var(--color-secondary-50);
 
   /* muted */
   --secondary-muted: --alpha(var(--color-secondary-400) / 22.5%);
@@ -140,8 +142,8 @@
   --secondary-accent-foreground: var(--color-secondary-950);
 
   /* faded */
-  --secondary-faded: --alpha(var(--color-secondary-400) / 10%);
-  --hover-secondary-faded: --alpha(var(--color-secondary-400) / 17.5%);
+  --secondary-faded: --alpha(var(--color-secondary-400) / 7.5%);
+  --hover-secondary-faded: --alpha(var(--color-secondary-400) / 15%);
   --secondary-border-faded: --alpha(var(--color-secondary-600) / 20%);
 
   /* tron */
@@ -173,6 +175,7 @@
   );
   --destructive-foreground: var(--color-white);
   --destructive-placeholder: --alpha(var(--color-destructive-500) / 60%);
+  --destructive-popover: var(--color-destructive-50);
 
   /* muted */
   --destructive-muted: --alpha(var(--color-destructive-500) / 15%);
@@ -181,8 +184,8 @@
   --destructive-accent-foreground: var(--color-destructive-950);
 
   /* faded */
-  --destructive-faded: --alpha(var(--color-destructive-400) / 10%);
-  --hover-destructive-faded: --alpha(var(--color-destructive-400) / 17.5%);
+  --destructive-faded: --alpha(var(--color-destructive-400) / 7.5%);
+  --hover-destructive-faded: --alpha(var(--color-destructive-400) / 15%);
   --destructive-border-faded: --alpha(var(--color-destructive-600) / 12.5%);
 
   /* tron */
@@ -214,6 +217,7 @@
     var(--color-white)
   );
   --success-foreground: var(--color-white);
+  --success-popover: var(--color-success-50);
 
   /* muted */
   --success-muted: --alpha(var(--color-success-500) / 17.5%);
@@ -222,8 +226,8 @@
   --success-accent-foreground: var(--color-success-950);
 
   /* faded */
-  --success-faded: --alpha(var(--color-success-400) / 12.5%);
-  --hover-success-faded: --alpha(var(--color-success-400) / 17.5%);
+  --success-faded: --alpha(var(--color-success-400) / 7.5%);
+  --hover-success-faded: --alpha(var(--color-success-400) / 15%);
   --success-border-faded: --alpha(var(--color-success-600) / 20%);
 
   /* tron */
@@ -253,6 +257,7 @@
     var(--color-white)
   );
   --warning-foreground: var(--color-warning-950);
+  --warning-popover: var(--color-warning-50);
 
   /* muted */
   --warning-muted: --alpha(var(--color-warning-400) / 25%);
@@ -265,8 +270,8 @@
   --warning-accent-foreground: var(--color-warning-950);
 
   /* faded */
-  --warning-faded: --alpha(var(--color-warning-400) / 12.5%);
-  --hover-warning-faded: --alpha(var(--color-warning-400) / 20%);
+  --warning-faded: --alpha(var(--color-warning-400) / 10%);
+  --hover-warning-faded: --alpha(var(--color-warning-400) / 17.5%);
   --warning-border-faded: --alpha(var(--color-warning-600) / 25%);
 
   /* tron */
@@ -363,6 +368,11 @@
   );
   --primary-foreground: var(--color-white);
   --primary-placeholder: --alpha(var(--color-primary-300) / 60%);
+  --primary-popover: color-mix(
+    in oklab,
+    var(--color-primary-950) 50%,
+    var(--color-base-950)
+  );
 
   /* muted */
   --primary-muted: --alpha(var(--color-primary-600) / 25%);
@@ -403,6 +413,11 @@
   );
   --secondary-foreground: var(--color-secondary-950);
   --secondary-placeholder: --alpha(var(--color-secondary-300) / 50%);
+  --secondary-popover: color-mix(
+    in oklab,
+    var(--color-secondary-950) 50%,
+    var(--color-base-950)
+  );
 
   /* muted */
   --secondary-muted: --alpha(var(--color-secondary-500) / 20%);
@@ -444,6 +459,11 @@
   );
   --destructive-foreground: var(--color-white);
   --destructive-placeholder: --alpha(var(--color-destructive-300) / 60%);
+  --destructive-popover: color-mix(
+    in oklab,
+    var(--color-destructive-950) 50%,
+    var(--color-base-950)
+  );
 
   /* muted */
   --destructive-muted: --alpha(var(--color-destructive-600) / 25%);
@@ -485,6 +505,11 @@
     var(--color-white)
   );
   --success-foreground: var(--color-white);
+  --success-popover: color-mix(
+    in oklab,
+    var(--color-success-950) 50%,
+    var(--color-base-950)
+  );
 
   /* muted */
   --success-muted: --alpha(var(--color-success-600) / 25%);
@@ -524,6 +549,11 @@
     var(--color-white)
   );
   --warning-foreground: var(--color-warning-950);
+  --warning-popover: color-mix(
+    in oklab,
+    var(--color-warning-950) 50%,
+    var(--color-base-950)
+  );
 
   /* muted */
   --warning-muted: --alpha(var(--color-warning-600) / 22.5%);
@@ -682,11 +712,12 @@
   --color-hover-faded: var(--hover-faded);
   --color-border-faded: var(--border-faded);
 
-  /* -- PRIMARY -- */
+  /** -- PRIMARY -- */
   --color-primary: var(--primary);
   --color-hover-primary: var(--hover-primary);
   --color-primary-foreground: var(--primary-foreground);
   --color-primary-placeholder: var(--primary-placeholder);
+  --color-primary-popover: var(--primary-popover);
 
   /* muted */
   --color-primary-muted: var(--primary-muted);
@@ -709,6 +740,7 @@
   --color-hover-secondary: var(--hover-secondary);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-secondary-placeholder: var(--secondary-placeholder);
+  --color-secondary-popover: var(--secondary-popover);
 
   /* muted */
   --color-secondary-muted: var(--secondary-muted);
@@ -731,6 +763,7 @@
   --color-hover-destructive: var(--hover-destructive);
   --color-destructive-foreground: var(--destructive-foreground);
   --color-destructive-placeholder: var(--destructive-placeholder);
+  --color-destructive-popover: var(--destructive-popover);
 
   /* muted */
   --color-destructive-muted: var(--destructive-muted);
@@ -752,6 +785,7 @@
   --color-success: var(--success);
   --color-hover-success: var(--hover-success);
   --color-success-foreground: var(--success-foreground);
+  --color-success-popover: var(--success-popover);
 
   /* muted */
   --color-success-muted: var(--success-muted);
@@ -773,6 +807,7 @@
   --color-warning: var(--warning);
   --color-hover-warning: var(--hover-warning);
   --color-warning-foreground: var(--warning-foreground);
+  --color-warning-popover: var(--warning-popover);
 
   /* muted */
   --color-warning-muted: var(--warning-muted);
@@ -952,4 +987,5 @@
 @utility text-base {
   font-size: var(--text-base);
   line-height: var(--tw-leading), var(--text-base--line-height);
+  color: inherit;
 }

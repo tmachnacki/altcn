@@ -118,7 +118,7 @@ const selectTriggerVariants = cva(
 
 const selectItemVariants = cva(
   [
-    "relative flex w-full flex-1 cursor-default items-center gap-2 rounded-sm py-1.5 pr-8 pl-2 text-sm outline-hidden select-none",
+    "relative flex w-full flex-1 cursor-default items-center gap-2 rounded-sm py-1.5 pr-8 pl-2 text-sm outline-hidden select-none data-[position=item-aligned]:pr-2 data-[position=item-aligned]:pl-8",
     "data-[disabled]:pointer-events-none data-[disabled]:text-muted-foreground data-[disabled]:opacity-50",
     "**:[svg]:pointer-events-none **:[svg]:shrink-0 **:[svg]:not-[[class*='size-']]:size-4 **:[svg]:not-[[class*='text-']]:text-muted-foreground data-[highlighted]:**:[svg]:not-[[class*='text-']]:text-current",
     "*:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2",
@@ -127,6 +127,8 @@ const selectItemVariants = cva(
     variants: {
       variant: {
         // -- base --
+        base: "data-[highlighted]:bg-base data-[highlighted]:text-base-foreground",
+
         accent:
           "data-[highlighted]:bg-muted data-[highlighted]:text-accent-foreground",
 
@@ -176,14 +178,14 @@ const selectItemVariants = cva(
           "data-[highlighted]:bg-destructive-muted data-[highlighted]:text-destructive-muted-foreground",
 
         "destructive-surface":
-          "data-[highlighted]:data-[width=default]:inset-ring-destructive-border-faded data-[highlighted]:bg-destructive-faded data-[highlighted]:text-destructive-accent-foreground data-[highlighted]:data-[width=default]:inset-ring data-[highlighted]:data-[width=full]:shadow-[inset_0_1px_0_0_var(--color-destructive-border-faded),inset_0_-1px_0_0_var(--color-destructive-border-faded)]",
+          "data-[highlighted]:bg-destructive-faded data-[highlighted]:text-destructive-accent-foreground data-[highlighted]:data-[width=default]:inset-ring data-[highlighted]:data-[width=default]:inset-ring-destructive-border-faded data-[highlighted]:data-[width=full]:shadow-[inset_0_1px_0_0_var(--color-destructive-border-faded),inset_0_-1px_0_0_var(--color-destructive-border-faded)]",
 
         "destructive-faded":
-          "data-[highlighted]:data-[width=default]:inset-ring-destructive-border-faded data-[highlighted]:bg-destructive-faded data-[highlighted]:text-destructive-muted-foreground data-[highlighted]:data-[width=default]:inset-ring data-[highlighted]:data-[width=full]:shadow-[inset_0_1px_0_0_var(--color-destructive-border-faded),inset_0_-1px_0_0_var(--color-destructive-border-faded)]",
+          "data-[highlighted]:bg-destructive-faded data-[highlighted]:text-destructive-muted-foreground data-[highlighted]:data-[width=default]:inset-ring data-[highlighted]:data-[width=default]:inset-ring-destructive-border-faded data-[highlighted]:data-[width=full]:shadow-[inset_0_1px_0_0_var(--color-destructive-border-faded),inset_0_-1px_0_0_var(--color-destructive-border-faded)]",
       },
       width: {
         default: "",
-        full: "-mx-1 w-[calc(100%_+_--spacing(2))] rounded-none pr-9 pl-3",
+        full: "-mx-1 w-[calc(100%_+_--spacing(2))] rounded-none pr-9 pl-3 data-[position=item-aligned]:pr-3 data-[position=item-aligned]:pl-9",
       },
     },
     compoundVariants: [
@@ -208,13 +210,13 @@ const selectItemVariants = cva(
 
 const selectItemIndicatorVariants = cva(
   [
-    "pointer-events-none absolute right-2 flex size-4 items-center justify-center",
-    "data-[width=full]:right-3",
+    "pointer-events-none absolute right-2 flex size-4 items-center justify-center data-[position=item-aligned]:left-2",
+    "data-[width=full]:right-3 data-[position=item-aligned]:data-[width=full]:left-3",
   ],
   {
     variants: {
       variant: {
-        default: "text-subtle-foreground",
+        base: "text-subtle-foreground",
         primary: "text-primary",
         secondary: "text-secondary",
         destructive: "text-destructive",
@@ -222,7 +224,7 @@ const selectItemIndicatorVariants = cva(
         warning: "text-warning",
       },
       defaultVariants: {
-        variant: "default",
+        variant: "base",
       },
     },
   }
@@ -296,7 +298,7 @@ function SelectContent({
   align = "center",
   variant = "accent",
   width = "default",
-  indicatorVariant = "default",
+  indicatorVariant = "base",
   children,
   ...props
 }: React.ComponentProps<typeof SelectPrimitive.Content> & SelectVariantsType) {
@@ -308,7 +310,7 @@ function SelectContent({
         align={align}
         sideOffset={position === "popper" ? 4 : 0}
         className={cn(
-          "relative isolate z-50 max-h-(--radix-select-content-available-height) min-w-[max(var(--radix-select-trigger-width),--spacing(32))] origin-(--radix-select-content-transform-origin) rounded-md border border-border bg-popover text-popover-foreground shadow-md",
+          "relative isolate z-50 block max-h-(--radix-select-content-available-height) min-w-[max(var(--radix-select-trigger-width),--spacing(32))] origin-(--radix-select-content-transform-origin) rounded-md border border-border bg-popover text-popover-foreground shadow-md",
           // FIXME: exit animations ain't working
           "data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
           position === "popper" && [
@@ -319,11 +321,7 @@ function SelectContent({
         {...props}
       >
         <SelectScrollUpButton />
-        <SelectPrimitive.Viewport
-          className={cn(
-            position === "popper" && "flex w-full flex-1 flex-col p-1"
-          )}
-        >
+        <SelectPrimitive.Viewport className="flex w-full flex-1 flex-col p-1">
           <SelectContext.Provider
             value={{ variant, width, indicatorVariant, position }}
           >
@@ -340,10 +338,15 @@ function SelectLabel({
   className,
   ...props
 }: React.ComponentProps<typeof SelectPrimitive.Label>) {
+  const { position } = React.useContext(SelectContext);
   return (
     <SelectPrimitive.Label
       data-slot="select-label"
-      className={cn("px-2 py-1.5 text-xs text-muted-foreground", className)}
+      data-position={position}
+      className={cn(
+        "px-2 py-1.5 text-xs text-muted-foreground data-[position=item-aligned]:pl-8",
+        className
+      )}
       {...props}
     />
   );
@@ -385,7 +388,6 @@ function SelectItem({
     >
       <SelectPrimitive.ItemIndicator
         data-slot="select-item-indicator"
-        data-item-variant={variant || context.variant}
         data-width={width || context.width}
         data-position={context.position}
         className={cn(
@@ -425,12 +427,12 @@ function SelectScrollUpButton({
     <SelectPrimitive.ScrollUpButton
       data-slot="select-scroll-up-button"
       className={cn(
-        "fixed top-px left-px z-10 flex w-[calc(100%-2px)] cursor-default items-center justify-center rounded-t-md bg-gradient-to-b from-popover to-popover/10 py-2 text-popover-foreground",
+        "flex cursor-default items-center justify-center py-1",
         className
       )}
       {...props}
     >
-      <ChevronUpIcon className="size-4 -translate-y-1" />
+      <ChevronUpIcon className="size-4" />
     </SelectPrimitive.ScrollUpButton>
   );
 }
@@ -443,12 +445,12 @@ function SelectScrollDownButton({
     <SelectPrimitive.ScrollDownButton
       data-slot="select-scroll-down-button"
       className={cn(
-        "fixed bottom-px left-px z-10 flex w-[calc(100%-2px)] cursor-default items-center justify-center rounded-b-md bg-gradient-to-t from-popover to-popover/10 py-2 text-popover-foreground",
+        "flex cursor-default items-center justify-center py-1",
         className
       )}
       {...props}
     >
-      <ChevronDownIcon className="size-4 translate-y-1" />
+      <ChevronDownIcon className="size-4" />
     </SelectPrimitive.ScrollDownButton>
   );
 }

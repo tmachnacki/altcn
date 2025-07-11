@@ -55,7 +55,6 @@ const tabsTriggerVariants = cva(
 
         underlined: [
           "-outline-offset-2 data-[state=active]:text-foreground",
-          // "data-[state=active]:*:data-[slot=tabs-trigger-underline]:border-foreground",
           "data-[state=active]:before:bg-foreground",
         ],
 

@@ -26,14 +26,15 @@ import { Swatch } from "~/components/swatch";
 
 const activeVariants = [
   "base",
+  "base-shadow",
   "base-gradient",
   "primary",
-  "primary-gradient",
   "primary-shadow",
+  "primary-gradient",
   "primary-tron",
   "secondary",
-  "secondary-gradient",
   "secondary-shadow",
+  "secondary-gradient",
   "secondary-tron",
 ] as const;
 

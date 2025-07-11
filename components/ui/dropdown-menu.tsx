@@ -121,7 +121,7 @@ const menuItemIndicatorVariants = cva(
   {
     variants: {
       variant: {
-        default: "text-subtle-foreground",
+        base: "text-subtle-foreground",
         primary: "text-primary",
         secondary: "text-secondary",
         destructive: "text-destructive",
@@ -130,7 +130,7 @@ const menuItemIndicatorVariants = cva(
       },
     },
     defaultVariants: {
-      variant: "default",
+      variant: "base",
     },
   }
 );
@@ -175,7 +175,7 @@ function DropdownMenuContent({
   sideOffset = 4,
   variant = "accent",
   width = "default",
-  indicatorVariant = "default",
+  indicatorVariant = "base",
   children,
   ...props
 }: React.ComponentProps<typeof DropdownMenuPrimitive.Content> &

@@ -25,6 +25,7 @@ const buttonVariants = [
   "muted",
   "surface",
   "faded",
+  "base-shadow",
   "base-gradient",
   "ghost",
 

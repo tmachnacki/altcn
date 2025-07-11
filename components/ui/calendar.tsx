@@ -39,6 +39,8 @@ type DayVariants = {
   selected?: Extract<
     React.ComponentProps<typeof Button>["variant"],
     | "base"
+    | "base-shadow"
+    | "base-gradient"
     | "primary"
     | "primary-shadow"
     | "primary-gradient"

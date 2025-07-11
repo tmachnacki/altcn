@@ -125,7 +125,7 @@ function ContextMenuContent({
   className,
   variant = "accent",
   width = "default",
-  indicatorVariant = "default",
+  indicatorVariant = "base",
   children,
   ...props
 }: React.ComponentProps<typeof ContextMenuPrimitive.Content> &

@@ -46,11 +46,13 @@ const itemVariants = [
   "base",
   "accent",
   "surface",
+
   "primary",
   "primary-accent",
   "primary-muted",
   "primary-surface",
   "primary-faded",
+
   "secondary",
   "secondary-accent",
   "secondary-muted",
@@ -59,7 +61,7 @@ const itemVariants = [
 ] as const;
 
 const indicatorVariants = [
-  "default",
+  "base",
   "primary",
   "secondary",
   "destructive",
@@ -79,7 +81,7 @@ const itemWidths = ["default", "full"] as const;
 
 export function ContextMenuDemo() {
   const [variant, setVariant] = React.useState("accent");
-  const [indicatorVariant, setIndicatorVariant] = React.useState("default");
+  const [indicatorVariant, setIndicatorVariant] = React.useState("base");
   const [destructiveVariant, setDestructiveVariant] =
     React.useState("destructive-muted");
   const [width, setWidth] = React.useState("default");

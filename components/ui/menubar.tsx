@@ -218,7 +218,7 @@ function MenubarContent({
   sideOffset = 8,
   variant = "accent",
   width = "default",
-  indicatorVariant = "default",
+  indicatorVariant = "base",
   children,
   ...props
 }: React.ComponentProps<typeof MenubarPrimitive.Content> & MenuContextProps) {

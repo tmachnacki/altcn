@@ -6,9 +6,9 @@ export const swatchVariants = [
   "muted",
   "surface",
   "faded",
+  "base-shadow",
   "base-gradient",
   "ghost",
-  "link",
   "dotted",
 
   // primary

@@ -265,7 +265,6 @@ export function AlertDemo() {
                   )}
                   size="sm"
                   className={cn(
-                    "h-6",
                     alertButtonClassNames(
                       alertVariant as (typeof alertVariants)[number]
                     )
@@ -296,7 +295,6 @@ export function AlertDemo() {
                     )}
                     size="sm"
                     className={cn(
-                      "h-6",
                       alertButtonClassNames(
                         alertVariant as (typeof alertVariants)[number]
                       )

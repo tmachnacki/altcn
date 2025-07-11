@@ -84,7 +84,7 @@ const itemVariants = [
 ] as const;
 
 const indicatorVariants = [
-  "default",
+  "base",
   "primary",
   "secondary",
   "destructive",
@@ -105,7 +105,7 @@ const widths = ["default", "full"] as const;
 export function MenubarDemo() {
   const [triggerVariant, setTriggerVariant] = React.useState("accent");
   const [itemVariant, setItemVariant] = React.useState("accent");
-  const [indicatorVariant, setIndicatorVariant] = React.useState("default");
+  const [indicatorVariant, setIndicatorVariant] = React.useState("base");
   const [destructiveVariant, setDestructiveVariant] =
     React.useState("destructive-muted");
   const [width, setWidth] = React.useState("default");
