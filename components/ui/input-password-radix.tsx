@@ -4,8 +4,6 @@ import { EyeIcon, EyeOffIcon } from "lucide-react";
 
 import { cn } from "~/lib/utils";
 
-// import { Button } from "~/components/ui/button";
-
 const inputPasswordContainerVariants = cva(
   [
     "relative grid w-full min-w-0 grid-cols-1 items-center rounded-md",

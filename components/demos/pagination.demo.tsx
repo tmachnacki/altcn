@@ -26,6 +26,7 @@ import { Swatch } from "~/components/swatch";
 
 const activeVariants = [
   "base",
+  "base-gradient",
   "primary",
   "primary-gradient",
   "primary-shadow",
@@ -43,7 +44,6 @@ const inactiveVariants = [
   "surface",
   "faded",
   "ghost",
-  "link",
   "primary-accent",
   "primary-muted",
   "primary-surface",
@@ -55,35 +55,6 @@ const inactiveVariants = [
   "secondary-faded",
   "secondary-ghost",
 ] as const;
-
-// const paginationLinkVariants = [
-//   "base",
-//   "outline",
-//   "accent",
-//   "muted",
-//   "surface",
-//   "faded",
-//   "ghost",
-//   "link",
-//   "primary",
-//   "primary-accent",
-//   "primary-muted",
-//   "primary-surface",
-//   "primary-faded",
-//   "primary-tron",
-//   "primary-shadow",
-//   "primary-gradient",
-//   "primary-ghost",
-//   "secondary",
-//   "secondary-accent",
-//   "secondary-muted",
-//   "secondary-surface",
-//   "secondary-faded",
-//   "secondary-tron",
-//   "secondary-shadow",
-//   "secondary-gradient",
-//   "secondary-ghost",
-// ] as const;
 
 export function PaginationDemo() {
   return (

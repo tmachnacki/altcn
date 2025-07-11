@@ -54,6 +54,8 @@ const avatarFallbackVariants = cva(
 
         faded: "border border-border-faded bg-faded text-muted-foreground",
 
+        "base-gradient": "bg-linear-(--base-gradient) text-base-foreground",
+
         // -- primary --
         primary: "bg-primary text-primary-foreground",
 
@@ -67,6 +69,9 @@ const avatarFallbackVariants = cva(
         "primary-faded":
           "border border-primary-border-faded bg-primary-faded text-primary-muted-foreground",
 
+        "primary-gradient":
+          "bg-linear-(--primary-gradient) text-primary-foreground",
+
         // -- secondary --
         secondary: "bg-secondary text-secondary-foreground",
 
@@ -76,10 +81,13 @@ const avatarFallbackVariants = cva(
         "secondary-muted": "bg-secondary-muted text-secondary-muted-foreground",
 
         "secondary-surface":
-          "border-secondary-border-faded border bg-secondary-faded text-secondary-accent-foreground",
+          "border border-secondary-border-faded bg-secondary-faded text-secondary-accent-foreground",
 
         "secondary-faded":
-          "border-secondary-border-faded border bg-secondary-faded text-secondary-muted-foreground",
+          "border border-secondary-border-faded bg-secondary-faded text-secondary-muted-foreground",
+
+        "secondary-gradient":
+          "border border-secondary-border-faded bg-linear-(--secondary-gradient) text-secondary-foreground",
       },
     },
     defaultVariants: {

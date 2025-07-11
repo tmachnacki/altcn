@@ -55,42 +55,42 @@ const alertButtonVariant = (variant: (typeof alertVariants)[number]) => {
     case "outline":
       return "outline";
     case "base":
-      return "outline";
+      return "base";
     case "muted":
       return "muted";
     case "faded":
       return "faded";
 
     case "primary":
-      return "outline";
+      return "primary";
     case "primary-muted":
       return "primary-muted";
     case "primary-faded":
       return "primary-faded";
 
     case "secondary":
-      return "outline";
+      return "secondary";
     case "secondary-muted":
       return "secondary-muted";
     case "secondary-faded":
       return "secondary-faded";
 
     case "destructive":
-      return "outline";
+      return "destructive";
     case "destructive-muted":
       return "destructive-muted";
     case "destructive-faded":
       return "destructive-faded";
 
     case "success":
-      return "outline";
+      return "success";
     case "success-muted":
       return "success-muted";
     case "success-faded":
       return "success-faded";
 
     case "warning":
-      return "outline";
+      return "warning";
     case "warning-muted":
       return "warning-muted";
     case "warning-faded":
@@ -101,17 +101,17 @@ const alertButtonVariant = (variant: (typeof alertVariants)[number]) => {
 const alertButtonClassNames = (variant: (typeof alertVariants)[number]) => {
   switch (variant) {
     case "base":
-      return "text-accent-foreground";
+      return "border border-base-foreground/50";
     case "primary":
-      return "text-primary-muted-foreground";
+      return "border border-primary-foreground/50";
     case "secondary":
-      return "text-secondary-muted-foreground";
+      return "border border-secondary-foreground/50";
     case "destructive":
-      return "text-destructive-muted-foreground";
+      return "border border-destructive-foreground/50";
     case "success":
-      return "text-success-muted-foreground";
+      return "border border-success-foreground/50";
     case "warning":
-      return "text-warning-muted-foreground";
+      return "border border-warning-foreground/50";
     default:
       return "";
   }

@@ -20,7 +20,7 @@ function Card({
         "rounded-lg border border-border text-card-foreground",
         variant === "solid"
           ? "bg-card shadow-md"
-          : "bg-card/65 backdrop-blur-lg",
+          : "bg-card/65 backdrop-blur-xl",
         className
       )}
       {...props}
@@ -32,7 +32,7 @@ function CardHeader({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="card-header"
-      className={cn("flex flex-col gap-1.5 p-6", className)}
+      className={cn("flex flex-col gap-2 p-6", className)}
       {...props}
     />
   );
@@ -43,7 +43,7 @@ function CardTitle({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="card-title"
       className={cn(
-        "text-base leading-none font-semibold tracking-tight",
+        "text-lg leading-none font-semibold tracking-tight text-card-foreground",
         className
       )}
       {...props}

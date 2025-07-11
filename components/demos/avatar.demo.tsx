@@ -22,16 +22,21 @@ const avatarFallbackVariants = [
   "muted",
   "surface",
   "faded",
+  "base-gradient",
+
   "primary",
   "primary-accent",
   "primary-muted",
   "primary-surface",
   "primary-faded",
+  "primary-gradient",
+
   "secondary",
   "secondary-accent",
   "secondary-muted",
   "secondary-surface",
   "secondary-faded",
+  "secondary-gradient",
 ] as const;
 
 export function AvatarDemo() {

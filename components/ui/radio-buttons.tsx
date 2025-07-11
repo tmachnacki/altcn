@@ -70,7 +70,11 @@ function RadioButtonsItem({
             : inactiveVariant || context.inactiveVariant
         }
         size={context.size}
-        className={cn(checked && "pointer-events-none", className)}
+        className={cn(
+          "disabled:line-through",
+          checked && "pointer-events-none",
+          className
+        )}
         aria-invalid={ariaInvalid}
       >
         {children}

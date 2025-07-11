@@ -31,8 +31,9 @@ const variants = [
   "muted",
   "surface",
   "faded",
+  "base-gradient",
   "ghost",
-  "link",
+
   "primary",
   "primary-accent",
   "primary-muted",
@@ -42,6 +43,7 @@ const variants = [
   "primary-shadow",
   "primary-gradient",
   "primary-ghost",
+
   "secondary",
   "secondary-accent",
   "secondary-muted",
@@ -52,6 +54,7 @@ const variants = [
   "secondary-gradient",
   "secondary-ghost",
   "destructive",
+
   "destructive-accent",
   "destructive-muted",
   "destructive-surface",

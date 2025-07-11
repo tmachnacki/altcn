@@ -27,6 +27,7 @@ const buttonVariants = [
   "faded",
   "base-gradient",
   "ghost",
+
   "primary",
   "primary-accent",
   "primary-muted",
@@ -36,6 +37,7 @@ const buttonVariants = [
   "primary-shadow",
   "primary-gradient",
   "primary-ghost",
+
   "secondary",
   "secondary-accent",
   "secondary-muted",
@@ -45,6 +47,7 @@ const buttonVariants = [
   "secondary-shadow",
   "secondary-gradient",
   "secondary-ghost",
+
   "destructive",
   "destructive-accent",
   "destructive-muted",
@@ -54,6 +57,7 @@ const buttonVariants = [
   "destructive-shadow",
   "destructive-gradient",
   "destructive-ghost",
+
   "success",
   "success-accent",
   "success-muted",
@@ -63,6 +67,7 @@ const buttonVariants = [
   "success-shadow",
   "success-gradient",
   "success-ghost",
+
   "warning",
   "warning-accent",
   "warning-muted",

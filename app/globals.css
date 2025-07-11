@@ -56,11 +56,7 @@
   --base: var(
     --color-base-500
   ); /* FIXME: using "base" instead of "base" to avoid conflict with "text-base" utility */
-  --hover-base: color-mix(
-    in oklab,
-    var(--color-base) 90%,
-    var(--color-white)
-  );
+  --hover-base: color-mix(in oklab, var(--color-base) 90%, var(--color-white));
   --base-foreground: var(--color-white);
   --placeholder: --alpha(var(--color-base-500) / 70%);
 
@@ -135,7 +131,7 @@
 
   /* muted */
   --secondary-muted: --alpha(var(--color-secondary-400) / 22.5%);
-  --hover-secondary-muted: --alpha(var(--color-secondary-400) / 30%);
+  --hover-secondary-muted: --alpha(var(--color-secondary-400) / 32.5%);
   --secondary-muted-foreground: color-mix(
     in oklab,
     var(--color-secondary-600) 50%,
@@ -220,23 +216,14 @@
   --success-foreground: var(--color-white);
 
   /* muted */
-  --success-muted: var(--color-success-100);
-  --hover-success-muted: color-mix(
-    in oklab,
-    var(--color-success-100) 50%,
-    var(--color-success-200)
-  );
-  --success-muted-new: --alpha(var(--color-success-500) / 17.5%);
-  --hover-success-muted-new: --alpha(var(--color-success-500) / 25%);
+  --success-muted: --alpha(var(--color-success-500) / 17.5%);
+  --hover-success-muted: --alpha(var(--color-success-500) / 25%);
   --success-muted-foreground: var(--color-success-700);
   --success-accent-foreground: var(--color-success-950);
 
   /* faded */
-  --success-faded: var(--color-success-50);
-  --success-faded-solid: var(--color-success-50);
-  --hover-success-faded: var(--color-success-100);
-  --success-faded-new: --alpha(var(--color-success-400) / 10%);
-  --hover-success-faded-new: --alpha(var(--color-success-400) / 17.5%);
+  --success-faded: --alpha(var(--color-success-400) / 12.5%);
+  --hover-success-faded: --alpha(var(--color-success-400) / 17.5%);
   --success-border-faded: --alpha(var(--color-success-600) / 20%);
 
   /* tron */
@@ -269,7 +256,7 @@
 
   /* muted */
   --warning-muted: --alpha(var(--color-warning-400) / 25%);
-  --hover-warning-muted: --alpha(var(--color-warning-400) / 32.5%);
+  --hover-warning-muted: --alpha(var(--color-warning-500) / 30%);
   --warning-muted-foreground: color-mix(
     in oklab,
     var(--color-warning-600) 50%,
@@ -279,7 +266,7 @@
 
   /* faded */
   --warning-faded: --alpha(var(--color-warning-400) / 12.5%);
-  --hover-warning-faded: --alpha(var(--color-warning-300) / 22.5%);
+  --hover-warning-faded: --alpha(var(--color-warning-400) / 20%);
   --warning-border-faded: --alpha(var(--color-warning-600) / 25%);
 
   /* tron */
@@ -344,11 +331,7 @@
 
   /** -- BASE -- */
   --base: var(--color-base-500);
-  --hover-base: color-mix(
-    in oklab,
-    var(--color-base) 90%,
-    var(--color-white)
-  );
+  --hover-base: color-mix(in oklab, var(--color-base) 90%, var(--color-white));
   --base-foreground: var(--color-white);
   --placeholder: --alpha(var(--color-base-400) / 60%);
 
@@ -453,7 +436,7 @@
     color-mix(in oklab, var(--color-secondary-200) 85%, var(--color-white)) 100%;
 
   /** -- DESTRUCTIVE -- */
-  --destructive: var(--color-destructive-600);
+  --destructive: var(--color-destructive-700);
   --hover-destructive: color-mix(
     in oklab,
     var(--color-destructive) 87.5%,
