@@ -3,95 +3,158 @@ import { colors } from "~/lib/colors";
 import { Button } from "~/components/ui/button";
 import { Card, CardContent } from "~/components/ui/card";
 
-const classNames = "h-9 w-20 font-medium";
-
 export default function Colors() {
   return (
     <main className="container py-content">
       <h1 className="text-2xl font-bold">Colors</h1>
 
-      <div className="mt-16 flex flex-col gap-6">
-        <div className="flex items-center gap-2">
-          <Button variant={"muted"} className={classNames}>
-            Text
-          </Button>
-          <Button variant={"faded"} className={classNames}>
-            Text
-          </Button>
-          <Button variant={"faded"} className={`${classNames} border-none`}>
-            Text
-          </Button>
-        </div>
-        <div className="flex items-center gap-2">
-          <Button variant={"primary-muted"} className={classNames}>
-            Text
-          </Button>
-          <Button variant={"primary-faded"} className={classNames}>
-            Text
-          </Button>
-          <Button
-            variant={"primary-faded"}
-            className={`${classNames} border-none`}
-          >
-            Text
-          </Button>
-        </div>
-        <div className="flex items-center gap-2">
-          <Button variant={"secondary-muted"} className={classNames}>
-            Text
-          </Button>
-          <Button variant={"secondary-faded"} className={classNames}>
-            Text
-          </Button>
-          <Button
-            variant={"secondary-faded"}
-            className={`${classNames} border-none`}
-          >
-            Text
-          </Button>
-        </div>
-        <div className="flex items-center gap-2">
-          <Button variant={"destructive-muted"} className={classNames}>
-            Text
-          </Button>
-          <Button variant={"destructive-faded"} className={classNames}>
-            Text
-          </Button>
-          <Button
-            variant={"destructive-faded"}
-            className={`${classNames} border-none`}
-          >
-            Text
-          </Button>
-        </div>
-        <div className="flex items-center gap-2">
-          <Button variant={"success-muted"} className={classNames}>
-            Text
-          </Button>
-          <Button variant={"success-faded"} className={classNames}>
-            Text
-          </Button>
-          <Button
-            variant={"success-faded"}
-            className={`${classNames} border-none`}
-          >
-            Text
-          </Button>
-        </div>
-        <div className="flex items-center gap-2">
-          <Button variant={"warning-muted"} className={classNames}>
-            Text
-          </Button>
-          <Button variant={"warning-faded"} className={classNames}>
-            Text
-          </Button>
-          <Button
-            variant={"warning-faded"}
-            className={`${classNames} border-none`}
-          >
-            Text
-          </Button>
-        </div>
+      <div className="mt-16 grid max-w-xs grid-cols-3 gap-x-2 gap-y-4">
+        {/* base */}
+        <Button
+          variant={"muted"}
+          className="bg-base-200/70 dark:bg-base-800/70"
+        >
+          Text
+        </Button>
+        <Button variant={"faded"} className="bg-base-50 dark:bg-faded">
+          Text
+        </Button>
+        <Button
+          variant={"faded"}
+          className={`border-none bg-base-50 dark:bg-faded`}
+        >
+          Text
+        </Button>
+        <Button variant={"muted"}>Text</Button>
+        <Button variant={"faded"}>Text</Button>
+        <Button variant={"faded"} className="border-none">
+          Text
+        </Button>
+
+        {/* primary */}
+        <Button
+          variant={"primary-muted"}
+          className="bg-primary-100 dark:bg-primary-950"
+        >
+          Text
+        </Button>
+        <Button
+          variant={"primary-faded"}
+          className="bg-primary-50 dark:bg-primary-950/50"
+        >
+          Text
+        </Button>
+        <Button
+          variant={"primary-faded"}
+          className="border-none bg-primary-50 dark:bg-primary-950/50"
+        >
+          Text
+        </Button>
+        <Button variant={"primary-muted"}>Text</Button>
+        <Button variant={"primary-faded"}>Text</Button>
+        <Button variant={"primary-faded"} className="border-none">
+          Text
+        </Button>
+
+        {/* secondary */}
+        <Button
+          variant={"secondary-muted"}
+          className="bg-secondary-100 dark:bg-secondary-950"
+        >
+          Text
+        </Button>
+        <Button
+          variant={"secondary-faded"}
+          className="bg-secondary-50 dark:bg-secondary-950/50"
+        >
+          Text
+        </Button>
+        <Button
+          variant={"secondary-faded"}
+          className={`border-none bg-secondary-50 dark:bg-secondary-950/50`}
+        >
+          Text
+        </Button>
+        <Button variant={"secondary-muted"}>Text</Button>
+        <Button variant={"secondary-faded"}>Text</Button>
+        <Button variant={"secondary-faded"} className="border-none">
+          Text
+        </Button>
+
+        {/* destructive */}
+        <Button
+          variant={"destructive-muted"}
+          className="bg-destructive-100 dark:bg-destructive-950"
+        >
+          Text
+        </Button>
+        <Button
+          variant={"destructive-faded"}
+          className="bg-destructive-50 dark:bg-destructive-950/50"
+        >
+          Text
+        </Button>
+        <Button
+          variant={"destructive-faded"}
+          className="border-none bg-destructive-50 dark:bg-destructive-950/50"
+        >
+          Text
+        </Button>
+        <Button variant={"destructive-muted"}>Text</Button>
+        <Button variant={"destructive-faded"}>Text</Button>
+        <Button variant={"destructive-faded"} className="border-none">
+          Text
+        </Button>
+
+        {/* success */}
+        <Button
+          variant={"success-muted"}
+          className="bg-success-100 dark:bg-success-950"
+        >
+          Text
+        </Button>
+        <Button
+          variant={"success-faded"}
+          className="bg-success-50 dark:bg-success-950/50"
+        >
+          Text
+        </Button>
+        <Button
+          variant={"success-faded"}
+          className="border-none bg-success-50 dark:bg-success-950/50"
+        >
+          Text
+        </Button>
+        <Button variant={"success-muted"}>Text</Button>
+        <Button variant={"success-faded"}>Text</Button>
+        <Button variant={"success-faded"} className="border-none">
+          Text
+        </Button>
+
+        {/* warning */}
+        <Button
+          variant={"warning-muted"}
+          className="bg-warning-100 dark:bg-warning-950"
+        >
+          Text
+        </Button>
+        <Button
+          variant={"warning-faded"}
+          className="bg-warning-50 dark:bg-warning-950/50"
+        >
+          Text
+        </Button>
+        <Button
+          variant={"warning-faded"}
+          className="border-none bg-warning-50 dark:bg-warning-950/50"
+        >
+          Text
+        </Button>
+        <Button variant={"warning-muted"}>Text</Button>
+        <Button variant={"warning-faded"}>Text</Button>
+        <Button variant={"warning-faded"} className="border-none">
+          Text
+        </Button>
       </div>
 
       <div className="mt-16 flex flex-col gap-8">

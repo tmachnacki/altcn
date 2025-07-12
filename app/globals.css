@@ -133,7 +133,7 @@
 
   /* muted */
   --secondary-muted: --alpha(var(--color-secondary-400) / 22.5%);
-  --hover-secondary-muted: --alpha(var(--color-secondary-400) / 32.5%);
+  --hover-secondary-muted: --alpha(var(--color-secondary-400) / 30%);
   --secondary-muted-foreground: color-mix(
     in oklab,
     var(--color-secondary-600) 50%,
@@ -142,8 +142,8 @@
   --secondary-accent-foreground: var(--color-secondary-950);
 
   /* faded */
-  --secondary-faded: --alpha(var(--color-secondary-400) / 7.5%);
-  --hover-secondary-faded: --alpha(var(--color-secondary-400) / 15%);
+  --secondary-faded: --alpha(var(--color-secondary-400) / 10%);
+  --hover-secondary-faded: --alpha(var(--color-secondary-400) / 17.5%);
   --secondary-border-faded: --alpha(var(--color-secondary-600) / 20%);
 
   /* tron */
@@ -226,7 +226,7 @@
   --success-accent-foreground: var(--color-success-950);
 
   /* faded */
-  --success-faded: --alpha(var(--color-success-400) / 7.5%);
+  --success-faded: --alpha(var(--color-success-400) / 10%);
   --hover-success-faded: --alpha(var(--color-success-400) / 15%);
   --success-border-faded: --alpha(var(--color-success-600) / 20%);
 
@@ -612,17 +612,17 @@
   --color-primary-900: var(--color-indigo-900);
   --color-primary-950: var(--color-indigo-950);
 
-  --color-secondary-50: var(--color-aqua-50);
-  --color-secondary-100: var(--color-aqua-100);
-  --color-secondary-200: var(--color-aqua-200);
-  --color-secondary-300: var(--color-aqua-300);
-  --color-secondary-400: var(--color-aqua-400);
-  --color-secondary-500: var(--color-aqua-500);
-  --color-secondary-600: var(--color-aqua-600);
-  --color-secondary-700: var(--color-aqua-700);
-  --color-secondary-800: var(--color-aqua-800);
-  --color-secondary-900: var(--color-aqua-900);
-  --color-secondary-950: var(--color-aqua-950);
+  --color-secondary-50: var(--color-teal-50);
+  --color-secondary-100: var(--color-teal-100);
+  --color-secondary-200: var(--color-teal-200);
+  --color-secondary-300: var(--color-teal-300);
+  --color-secondary-400: var(--color-teal-400);
+  --color-secondary-500: var(--color-teal-500);
+  --color-secondary-600: var(--color-teal-600);
+  --color-secondary-700: var(--color-teal-700);
+  --color-secondary-800: var(--color-teal-800);
+  --color-secondary-900: var(--color-teal-900);
+  --color-secondary-950: var(--color-teal-950);
 
   --color-destructive-50: var(--color-red-50);
   --color-destructive-100: var(--color-red-100);

@@ -57,44 +57,44 @@ const alertButtonVariant = (variant: (typeof alertVariants)[number]) => {
     case "base":
       return "base";
     case "muted":
-      return "muted";
+      return "accent";
     case "faded":
-      return "faded";
+      return "surface";
 
     case "primary":
       return "primary";
     case "primary-muted":
-      return "primary-muted";
+      return "primary-accent";
     case "primary-faded":
-      return "primary-faded";
+      return "primary-surface";
 
     case "secondary":
       return "secondary";
     case "secondary-muted":
-      return "secondary-muted";
+      return "secondary-accent";
     case "secondary-faded":
-      return "secondary-faded";
+      return "secondary-surface";
 
     case "destructive":
       return "destructive";
     case "destructive-muted":
-      return "destructive-muted";
+      return "destructive-accent";
     case "destructive-faded":
-      return "destructive-faded";
+      return "destructive-surface";
 
     case "success":
       return "success";
     case "success-muted":
-      return "success-muted";
+      return "success-accent";
     case "success-faded":
-      return "success-faded";
+      return "success-surface";
 
     case "warning":
       return "warning";
     case "warning-muted":
-      return "warning-muted";
+      return "warning-accent";
     case "warning-faded":
-      return "warning-faded";
+      return "warning-surface";
   }
 };
 
