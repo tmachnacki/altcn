@@ -86,7 +86,7 @@
     var(--color-primary) 90%,
     var(--color-white)
   );
-  --primary-foreground: var(--color-white);
+  --primary-foreground: var(--color-primary-50);
   --primary-placeholder: --alpha(var(--color-primary-600) / 60%);
   --primary-popover: var(--color-primary-50);
 
@@ -377,7 +377,11 @@
   /* muted */
   --primary-muted: --alpha(var(--color-primary-600) / 25%);
   --hover-primary-muted: --alpha(var(--color-primary-600) / 32.5%);
-  --primary-muted-foreground: var(--color-primary-300);
+  --primary-muted-foreground: color-mix(
+    in oklab,
+    var(--color-primary-200) 50%,
+    var(--color-primary-300)
+  );
   --primary-accent-foreground: var(--color-primary-50);
 
   /* faded */
@@ -457,7 +461,7 @@
     var(--color-destructive) 87.5%,
     var(--color-white)
   );
-  --destructive-foreground: var(--color-white);
+  --destructive-foreground: var(--color-destructive-50);
   --destructive-placeholder: --alpha(var(--color-destructive-300) / 60%);
   --destructive-popover: color-mix(
     in oklab,

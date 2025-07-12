@@ -18,7 +18,7 @@ import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
 import { Swatch } from "~/components/swatch";
 
-const badgeVariants = [
+const variants = [
   "outline",
   "base",
   "accent",
@@ -74,8 +74,11 @@ const badgeVariants = [
   "warning-dotted",
 ] as const;
 
+const shapes = ["box", "pill"] as const;
+
 export function BadgeDemo() {
-  const [badgeVariant, setBadgeVariant] = React.useState("outline");
+  const [variant, setVariant] = React.useState("outline");
+  const [shape, setShape] = React.useState("box");
   const [showBadge, setShowBadge] = React.useState(true);
 
   async function handleCloseBadge() {
@@ -87,44 +90,75 @@ export function BadgeDemo() {
   return (
     <>
       <ComponentContainer>
-        <div className="flex flex-wrap gap-4">
-          <Badge variant={badgeVariant as (typeof badgeVariants)[number]}>
+        <div className="flex flex-wrap gap-3">
+          <Badge
+            variant={variant as (typeof variants)[number]}
+            shape={shape as (typeof shapes)[number]}
+          >
             Badge
           </Badge>
-          <Badge variant={badgeVariant as (typeof badgeVariants)[number]}>
+          <Badge
+            variant={variant as (typeof variants)[number]}
+            shape={shape as (typeof shapes)[number]}
+          >
             <CheckIcon />
             Icon
           </Badge>
           <Badge
             asChild
-            variant={badgeVariant as (typeof badgeVariants)[number]}
+            variant={variant as (typeof variants)[number]}
+            shape={shape as (typeof shapes)[number]}
           >
             <a href="#">
               Link
               <ArrowRightIcon />
             </a>
           </Badge>
-          {showBadge && (
-            <Badge variant={badgeVariant as (typeof badgeVariants)[number]}>
-              Close
-              <BadgeClose onClick={handleCloseBadge} />
-            </Badge>
-          )}
+          <Badge
+            asChild
+            variant={variant as (typeof variants)[number]}
+            shape={shape as (typeof shapes)[number]}
+          >
+            <button>Button</button>
+          </Badge>
+          <Badge
+            variant={variant as (typeof variants)[number]}
+            shape={shape as (typeof shapes)[number]}
+            className={showBadge ? "visible" : "invisible"}
+          >
+            Close
+            <BadgeClose onClick={handleCloseBadge} />
+          </Badge>
         </div>
       </ComponentContainer>
 
       <ComponentPlayground>
         <div className="grid gap-2">
           <Label htmlFor="badge-variant">Variant</Label>
-          <Select value={badgeVariant} onValueChange={setBadgeVariant}>
+          <Select value={variant} onValueChange={setVariant}>
             <SelectTrigger id="badge-variant" className="w-full">
               <SelectValue placeholder="Select variant" />
             </SelectTrigger>
             <SelectContent className="max-h-96">
-              {badgeVariants.map((variant) => (
+              {variants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
                   <Swatch variant={variant} />
                   {variant}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+        <div className="grid gap-2">
+          <Label htmlFor="badge-shape">Shape</Label>
+          <Select value={shape} onValueChange={setShape}>
+            <SelectTrigger id="badge-shape" className="w-full">
+              <SelectValue placeholder="Select shape" />
+            </SelectTrigger>
+            <SelectContent>
+              {shapes.map((shape) => (
+                <SelectItem key={shape} value={shape}>
+                  {shape}
                 </SelectItem>
               ))}
             </SelectContent>

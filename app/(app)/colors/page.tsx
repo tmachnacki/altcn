@@ -155,6 +155,14 @@ export default function Colors() {
         <Button variant={"warning-faded"} className="border-none">
           Text
         </Button>
+
+        <Button variant={"outline"}>Text</Button>
+        <Button
+          variant={"outline"}
+          className="border-base-200 hover:border-base-300 dark:border-base-800 dark:hover:border-base-700"
+        >
+          Text
+        </Button>
       </div>
 
       <div className="mt-16 flex flex-col gap-8">

@@ -3,7 +3,7 @@
 import * as React from "react";
 import { CheckCircle2Icon } from "lucide-react";
 
-import { cn, sleep } from "~/lib/utils";
+import { sleep } from "~/lib/utils";
 
 import {
   Alert,
@@ -30,22 +30,16 @@ import { Swatch } from "~/components/swatch";
 
 const alertVariants = [
   "outline",
-  "base",
   "muted",
   "faded",
-  "primary",
   "primary-muted",
   "primary-faded",
-  "secondary",
   "secondary-muted",
   "secondary-faded",
-  "destructive",
   "destructive-muted",
   "destructive-faded",
-  "success",
   "success-muted",
   "success-faded",
-  "warning",
   "warning-muted",
   "warning-faded",
 ] as const;
@@ -54,66 +48,30 @@ const alertButtonVariant = (variant: (typeof alertVariants)[number]) => {
   switch (variant) {
     case "outline":
       return "outline";
-    case "base":
-      return "base";
     case "muted":
       return "accent";
     case "faded":
       return "surface";
-
-    case "primary":
-      return "primary";
     case "primary-muted":
       return "primary-accent";
     case "primary-faded":
       return "primary-surface";
-
-    case "secondary":
-      return "secondary";
     case "secondary-muted":
       return "secondary-accent";
     case "secondary-faded":
       return "secondary-surface";
-
-    case "destructive":
-      return "destructive";
     case "destructive-muted":
       return "destructive-accent";
     case "destructive-faded":
       return "destructive-surface";
-
-    case "success":
-      return "success";
     case "success-muted":
       return "success-accent";
     case "success-faded":
       return "success-surface";
-
-    case "warning":
-      return "warning";
     case "warning-muted":
       return "warning-accent";
     case "warning-faded":
       return "warning-surface";
-  }
-};
-
-const alertButtonClassNames = (variant: (typeof alertVariants)[number]) => {
-  switch (variant) {
-    case "base":
-      return "border border-base-foreground/50";
-    case "primary":
-      return "border border-primary-foreground/50";
-    case "secondary":
-      return "border border-secondary-foreground/50";
-    case "destructive":
-      return "border border-destructive-foreground/50";
-    case "success":
-      return "border border-success-foreground/50";
-    case "warning":
-      return "border border-warning-foreground/50";
-    default:
-      return "";
   }
 };
 
@@ -183,12 +141,7 @@ export function AlertDemo() {
                 alertVariant as (typeof alertVariants)[number]
               )}
               size="sm"
-              className={cn(
-                "h-6",
-                alertButtonClassNames(
-                  alertVariant as (typeof alertVariants)[number]
-                )
-              )}
+              className="h-6"
             >
               Undo
             </Button>
@@ -209,12 +162,7 @@ export function AlertDemo() {
                   alertVariant as (typeof alertVariants)[number]
                 )}
                 size="sm"
-                className={cn(
-                  "h-6",
-                  alertButtonClassNames(
-                    alertVariant as (typeof alertVariants)[number]
-                  )
-                )}
+                className="h-6"
               >
                 Undo
               </Button>
@@ -236,12 +184,7 @@ export function AlertDemo() {
                 alertVariant as (typeof alertVariants)[number]
               )}
               size="sm"
-              className={cn(
-                "h-6",
-                alertButtonClassNames(
-                  alertVariant as (typeof alertVariants)[number]
-                )
-              )}
+              className="h-6"
             >
               Dismiss
             </Button>
@@ -264,49 +207,40 @@ export function AlertDemo() {
                     alertVariant as (typeof alertVariants)[number]
                   )}
                   size="sm"
-                  className={cn(
-                    alertButtonClassNames(
-                      alertVariant as (typeof alertVariants)[number]
-                    )
-                  )}
                 >
                   Details
                 </Button>
               </AlertFooter>
             </AlertContent>
           </Alert>
-          {showAlert && (
-            <Alert variant={alertVariant as (typeof alertVariants)[number]}>
-              <AlertIcon type="error" />
-              <AlertContent>
-                <AlertTitle>Something went wrong!</AlertTitle>
-                <AlertDescription>
-                  <p>Please verify your billing information and try again.</p>
-                  <ul className="list-inside list-disc">
-                    <li>Check your card details</li>
-                    <li>Ensure sufficient funds</li>
-                    <li>Verify billing address</li>
-                  </ul>
-                </AlertDescription>
-                <AlertFooter>
-                  <Button
-                    variant={alertButtonVariant(
-                      alertVariant as (typeof alertVariants)[number]
-                    )}
-                    size="sm"
-                    className={cn(
-                      alertButtonClassNames(
-                        alertVariant as (typeof alertVariants)[number]
-                      )
-                    )}
-                  >
-                    Details
-                  </Button>
-                </AlertFooter>
-              </AlertContent>
-              <AlertClose onClick={handleCloseAlert} />
-            </Alert>
-          )}
+          <Alert
+            variant={alertVariant as (typeof alertVariants)[number]}
+            className={showAlert ? "visible" : "invisible"}
+          >
+            <AlertIcon type="error" />
+            <AlertContent>
+              <AlertTitle>Something went wrong!</AlertTitle>
+              <AlertDescription>
+                <p>Please verify your billing information and try again.</p>
+                <ul className="list-inside list-disc">
+                  <li>Check your card details</li>
+                  <li>Ensure sufficient funds</li>
+                  <li>Verify billing address</li>
+                </ul>
+              </AlertDescription>
+              <AlertFooter>
+                <Button
+                  variant={alertButtonVariant(
+                    alertVariant as (typeof alertVariants)[number]
+                  )}
+                  size="sm"
+                >
+                  Details
+                </Button>
+              </AlertFooter>
+            </AlertContent>
+            <AlertClose onClick={handleCloseAlert} />
+          </Alert>
         </div>
       </ComponentContainer>
       <ComponentPlayground>

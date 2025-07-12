@@ -22,150 +22,109 @@ const alertVariants = cva(
         outline: [
           "border border-border bg-background",
           "[--alert-icon-bg:var(--color-muted)]",
-          "[--hover-alert-close-bg:--alpha(var(--color-base-500)/20%)]",
+          "[--alert-icon-text:var(--color-muted-foreground)]",
+          "[--hover-alert-close-bg:var(--color-muted)]",
           "[--alert-close-outline:var(--color-outline)]",
-        ],
-
-        base: [
-          "bg-base text-base-foreground",
-          "[--alert-inset-color-bg:var(--color-base-200)]",
-          "[--alert-description-text:var(--color-base-100)]",
-          "[--alert-icon-bg:--alpha(var(--color-white)/15%)] [--alert-icon-border:--alpha(var(--color-base-50)/20%)] [--alert-icon-text:var(--color-base-foreground)]",
-          "[--hover-alert-close-bg:--alpha(var(--color-base-200)/20%)]",
-          "[--alert-close-outline:var(--color-base-foreground)]",
         ],
 
         muted: [
           "bg-muted",
           "[--alert-icon-bg:var(--color-base-50)] dark:[--alert-icon-bg:var(--color-muted)]",
-          "[--hover-alert-close-bg:--alpha(var(--color-base-500)/20%)]",
+          "[--alert-icon-text:var(--color-base-500)] dark:[--alert-icon-text:var(--color-base-300)]",
+          "[--hover-alert-close-bg:var(--color-hover-muted)]",
           "[--alert-close-outline:var(--color-outline)]",
         ],
 
         faded: [
           "border border-border-faded bg-faded",
           "[--alert-icon-bg:var(--color-muted)]",
-          "[--hover-alert-close-bg:--alpha(var(--color-base-500)/20%)]",
+          "[--alert-icon-text:var(--color-muted-foreground)]",
+          "[--hover-alert-close-bg:var(--color-muted)]",
           "[--alert-close-outline:var(--color-outline)]",
         ],
 
         // -- primary --
-        primary: [
-          "bg-primary text-primary-foreground",
-          "[--alert-inset-color-bg:var(--color-primary-200)]",
-          "[--alert-description-text:var(--color-primary-100)]",
-          "[--alert-icon-bg:--alpha(var(--color-white)/15%)] [--alert-icon-border:--alpha(var(--color-primary-50)/20%)] [--alert-icon-text:var(--color-primary-foreground)]",
-          "[--hover-alert-close-bg:--alpha(var(--color-primary-200)/20%)]",
-          "[--alert-close-outline:var(--color-primary-foreground)]",
-        ],
-
         "primary-muted": [
           "bg-primary-muted",
-          "[--alert-icon-bg:var(--color-primary-50)] [--alert-icon-text:var(--color-primary-500)] dark:[--alert-icon-bg:var(--color-primary-muted)] dark:[--alert-icon-text:var(--color-primary-200)]",
-          "[--hover-alert-close-bg:--alpha(var(--color-primary-500)/20%)]",
+          "[--alert-icon-bg:var(--color-primary-50)] dark:[--alert-icon-bg:var(--color-primary-muted)]",
+          "[--alert-icon-text:var(--color-primary-500)] dark:[--alert-icon-text:var(--color-primary-200)]",
+          "[--hover-alert-close-bg:var(--color-hover-primary-muted)]",
           "[--alert-close-outline:var(--color-primary)]",
         ],
 
         "primary-faded": [
           "border border-primary-border-faded bg-primary-faded",
-          "[--alert-icon-bg:var(--color-primary-muted)] [--alert-icon-text:var(--color-primary-muted-foreground)]",
-          "[--hover-alert-close-bg:--alpha(var(--color-primary-500)/20%)]",
+          "[--alert-icon-bg:var(--color-primary-muted)]",
+          "[--alert-icon-text:var(--color-primary-muted-foreground)]",
+          "[--hover-alert-close-bg:var(--color-primary-muted)]",
           "[--alert-close-outline:var(--color-primary)]",
         ],
 
         // -- secondary --
-        secondary: [
-          "bg-secondary text-secondary-foreground",
-          "[--alert-inset-color-bg:var(--color-secondary-600)]",
-          "[--alert-description-text:var(--color-secondary-900)]",
-          "[--alert-icon-bg:--alpha(var(--color-white)/60%)] [--alert-icon-border:--alpha(var(--color-secondary-100)/40%)] [--alert-icon-text:var(--color-secondary-600)]",
-          "[--hover-alert-close-bg:--alpha(var(--color-secondary-700)/30%)]",
-          "[--alert-close-outline:var(--color-secondary-foreground)]",
-        ],
-
         "secondary-muted": [
           "bg-secondary-muted",
-          "[--alert-icon-bg:var(--color-secondary-50)] [--alert-icon-text:var(--color-secondary-500)] dark:[--alert-icon-bg:var(--color-secondary-muted)] dark:[--alert-icon-text:var(--color-secondary-300)]",
-          "[--hover-alert-close-bg:--alpha(var(--color-secondary-500)/20%)]",
+          "[--alert-icon-bg:var(--color-secondary-50)] dark:[--alert-icon-bg:var(--color-secondary-muted)]",
+          "[--alert-icon-text:var(--color-secondary-500)] dark:[--alert-icon-text:var(--color-secondary-200)]",
+          "[--hover-alert-close-bg:var(--color-hover-secondary-muted)]",
           "[--alert-close-outline:var(--color-secondary)]",
         ],
 
         "secondary-faded": [
           "border border-secondary-border-faded bg-secondary-faded",
-          "[--alert-icon-bg:var(--color-secondary-muted)] [--alert-icon-text:var(--color-secondary-muted-foreground)]",
-          "[--hover-alert-close-bg:--alpha(var(--color-secondary-500)/20%)]",
+          "[--alert-icon-bg:var(--color-secondary-muted)]",
+          "[--alert-icon-text:var(--color-secondary-muted-foreground)]",
+          "[--hover-alert-close-bg:var(--color-secondary-muted)]",
           "[--alert-close-outline:var(--color-secondary)]",
         ],
 
         // -- destructive --
-        destructive: [
-          "bg-destructive text-destructive-foreground",
-          "[--alert-inset-color-bg:var(--color-destructive-200)] dark:[--alert-inset-color-bg:var(--color-destructive-300)]",
-          "[--alert-description-text:var(--color-destructive-100)] dark:[--alert-description-text:var(--color-destructive-200)]",
-          "[--alert-icon-bg:--alpha(var(--color-white)/20%)] [--alert-icon-border:--alpha(var(--color-destructive-50)/30%)] [--alert-icon-text:var(--color-destructive-foreground)] dark:[--alert-icon-bg:--alpha(var(--color-white)/30%)]",
-          "[--hover-alert-close-bg:--alpha(var(--color-destructive-200)/25%)]",
-          "[--alert-close-outline:var(--color-destructive-foreground)]",
-        ],
-
         "destructive-muted": [
           "bg-destructive-muted",
-          "[--alert-icon-bg:var(--color-destructive-50)] [--alert-icon-text:var(--color-destructive-500)] dark:[--alert-icon-bg:var(--color-destructive-muted)] dark:[--alert-icon-text:var(--color-destructive-200)]",
-          "[--hover-alert-close-bg:--alpha(var(--color-destructive-500)/20%)]",
+          "[--alert-icon-bg:var(--color-destructive-50)] dark:[--alert-icon-bg:var(--color-destructive-muted)]",
+          "[--alert-icon-text:var(--color-destructive-500)] dark:[--alert-icon-text:var(--color-destructive-200)]",
+          "[--hover-alert-close-bg:var(--color-hover-destructive-muted)]",
           "[--alert-close-outline:var(--color-destructive)]",
         ],
 
         "destructive-faded": [
           "border border-destructive-border-faded bg-destructive-faded",
-          "[--alert-icon-bg:var(--color-destructive-muted)] [--alert-icon-text:var(--color-destructive-muted-foreground)]",
-          "[--hover-alert-close-bg:--alpha(var(--color-destructive-500)/20%)]",
+          "[--alert-icon-bg:var(--color-destructive-muted)]",
+          "[--alert-icon-text:var(--color-destructive-muted-foreground)]",
+          "[--hover-alert-close-bg:var(--color-destructive-muted)]",
           "[--alert-close-outline:var(--color-destructive)]",
         ],
 
         // -- success --
-        success: [
-          "bg-success text-success-foreground",
-          "[--alert-inset-color-bg:var(--color-success-200)]",
-          "[--alert-description-text:var(--color-success-100)]",
-          "[--alert-icon-bg:--alpha(var(--color-white)/20%)] [--alert-icon-border:--alpha(var(--color-success-50)/25%)] [--alert-icon-text:var(--color-success-foreground)]",
-          "[--hover-alert-close-bg:--alpha(var(--color-success-200)/20%)]",
-          "[--alert-close-outline:var(--color-success-foreground)]",
-        ],
-
         "success-muted": [
           "bg-success-muted",
-          "[--alert-icon-bg:var(--color-success-50)] [--alert-icon-text:var(--color-success-600)] dark:[--alert-icon-bg:var(--color-success-muted)] dark:[--alert-icon-text:var(--color-success-200)]",
-          "[--hover-alert-close-bg:--alpha(var(--color-success-500)/20%)]",
+          "[--alert-icon-bg:var(--color-success-50)] dark:[--alert-icon-bg:var(--color-success-muted)]",
+          "[--alert-icon-text:var(--color-success-500)] dark:[--alert-icon-text:var(--color-success-200)]",
+          "[--hover-alert-close-bg:var(--color-hover-success-muted)]",
           "[--alert-close-outline:var(--color-success)]",
         ],
 
         "success-faded": [
           "border border-success-border-faded bg-success-faded",
-          "[--alert-icon-bg:var(--color-success-muted)] [--alert-icon-text:var(--color-success-muted-foreground)]",
-          "[--hover-alert-close-bg:--alpha(var(--color-success-500)/20%)]",
+          "[--alert-icon-bg:var(--color-success-muted)]",
+          "[--alert-icon-text:var(--color-success-muted-foreground)]",
+          "[--hover-alert-close-bg:var(--color-success-muted)]",
           "[--alert-close-outline:var(--color-success)]",
         ],
 
         // -- warning --
-        warning: [
-          "bg-warning text-warning-foreground",
-          "[--alert-inset-color-bg:var(--color-warning-600)]",
-          "[--alert-description-text:var(--color-warning-900)]",
-          "[--alert-icon-bg:--alpha(var(--color-white)/60%)] [--alert-icon-border:--alpha(var(--color-warning-100)/40%)] [--alert-icon-text:var(--color-warning-600)]",
-          "[--hover-alert-close-bg:--alpha(var(--color-warning-700)/25%)]",
-          "[--alert-close-outline:var(--color-warning-foreground)]",
-        ],
-
         "warning-muted": [
           "bg-warning-muted",
-          "[--alert-icon-bg:var(--color-warning-50)] [--alert-icon-text:var(--color-warning-500)] dark:[--alert-icon-bg:var(--color-warning-muted)] dark:[--alert-icon-text:var(--color-warning-300)]",
-          "[--hover-alert-close-bg:--alpha(var(--color-warning-500)/20%)]",
+          "[--alert-icon-bg:var(--color-warning-50)] dark:[--alert-icon-bg:var(--color-warning-muted)]",
+          "[--alert-icon-text:var(--color-warning-500)] dark:[--alert-icon-text:var(--color-warning-200)]",
+          "[--hover-alert-close-bg:var(--color-hover-warning-muted)]",
           "[--alert-close-outline:var(--color-warning)]",
         ],
 
         "warning-faded": [
           "border border-warning-border-faded bg-warning-faded",
-          "[--alert-icon-bg:var(--color-warning-muted)] [--alert-icon-text:var(--color-warning-muted-foreground)]",
-          "[--hover-alert-close-bg:--alpha(var(--color-warning-500)/20%)]",
+          "[--alert-icon-bg:var(--color-warning-muted)]",
+          "[--alert-icon-text:var(--color-warning-muted-foreground)]",
+          "[--hover-alert-close-bg:var(--color-warning-muted)]",
           "[--alert-close-outline:var(--color-warning)]",
         ],
       },
@@ -174,15 +133,17 @@ const alertVariants = cva(
       {
         variant: ["outline", "muted", "faded"],
         className: [
-          "text-accent-foreground [--alert-inset-color-bg:var(--color-muted-foreground)]",
+          "text-accent-foreground",
+          "[--alert-inset-color-bg:var(--color-base)]",
           "[--alert-description-text:var(--color-muted-foreground)]",
-          "[--alert-icon-border:var(--color-border-faded)] [--alert-icon-text:var(--color-muted-foreground)]",
+          "[--alert-icon-border:var(--color-border-faded)]",
         ],
       },
       {
         variant: ["primary-muted", "primary-faded"],
         className: [
-          "text-primary-accent-foreground [--alert-inset-color-bg:var(--color-primary)]",
+          "text-primary-accent-foreground",
+          "[--alert-inset-color-bg:var(--color-primary)]",
           "[--alert-description-text:var(--color-primary-muted-foreground)]",
           "[--alert-icon-border:var(--color-primary-border-faded)]",
         ],
@@ -190,7 +151,8 @@ const alertVariants = cva(
       {
         variant: ["secondary-muted", "secondary-faded"],
         className: [
-          "text-secondary-accent-foreground [--alert-inset-color-bg:var(--color-secondary)]",
+          "text-secondary-accent-foreground",
+          "[--alert-inset-color-bg:var(--color-secondary)]",
           "[--alert-description-text:var(--color-secondary-muted-foreground)]",
           "[--alert-icon-border:var(--color-secondary-border-faded)]",
         ],
@@ -198,7 +160,8 @@ const alertVariants = cva(
       {
         variant: ["destructive-muted", "destructive-faded"],
         className: [
-          "text-destructive-accent-foreground [--alert-inset-color-bg:var(--color-destructive)]",
+          "text-destructive-accent-foreground",
+          "[--alert-inset-color-bg:var(--color-destructive)]",
           "[--alert-description-text:var(--color-destructive-muted-foreground)]",
           "[--alert-icon-border:var(--color-destructive-border-faded)]",
         ],
@@ -206,7 +169,8 @@ const alertVariants = cva(
       {
         variant: ["success-muted", "success-faded"],
         className: [
-          "text-success-accent-foreground [--alert-inset-color-bg:var(--color-success)]",
+          "text-success-accent-foreground",
+          "[--alert-inset-color-bg:var(--color-success)]",
           "[--alert-description-text:var(--color-success-muted-foreground)]",
           "[--alert-icon-border:var(--color-success-border-faded)]",
         ],
@@ -214,7 +178,8 @@ const alertVariants = cva(
       {
         variant: ["warning-muted", "warning-faded"],
         className: [
-          "text-warning-accent-foreground [--alert-inset-color-bg:var(--color-warning)]",
+          "text-warning-accent-foreground",
+          "[--alert-inset-color-bg:var(--color-warning)]",
           "[--alert-description-text:var(--color-warning-muted-foreground)]",
           "[--alert-icon-border:var(--color-warning-border-faded)]",
         ],
