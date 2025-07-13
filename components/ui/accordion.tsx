@@ -8,31 +8,31 @@ import { ChevronLeftIcon } from "lucide-react";
 import { cn } from "~/lib/utils";
 
 const accordionItemVariants = cva(
-  "border-b -outline-offset-1 [--accordion-item-px:--spacing(3)] first:rounded-t-md last:rounded-b-md last:border-b-0 has-focus-visible:outline-2 data-[layout=split]:mb-2 data-[layout=split]:rounded-md data-[layout=split]:last:mb-0",
+  "border-b -outline-offset-1 [--accordion-item-px:--spacing(3)] first:rounded-t-md last:rounded-b-md last:border-b-0 has-focus-visible:outline-2 data-[spacing=split]:mb-2 data-[spacing=split]:rounded-md data-[spacing=split]:last:mb-0",
   {
     variants: {
       variant: {
         // -- base --
         outline:
-          "border-border not-data-[layout=split]:[--accordion-item-px:--spacing(0)] data-[layout=split]:border",
+          "border-border not-data-[spacing=split]:[--accordion-item-px:--spacing(0)] data-[spacing=split]:border",
 
-        muted: "border-border bg-muted data-[layout=split]:border-0",
+        muted: "border-border bg-muted data-[spacing=split]:border-0",
 
-        faded: "border-border-faded bg-faded data-[layout=split]:border",
+        faded: "border-border-faded bg-faded data-[spacing=split]:border",
 
         // -- primary --
         "primary-muted":
-          "border-primary-border-faded bg-primary-muted data-[layout=split]:border-0",
+          "border-primary-border-faded bg-primary-muted data-[spacing=split]:border-0",
 
         "primary-faded":
-          "border-primary-border-faded bg-primary-faded data-[layout=split]:border",
+          "border-primary-border-faded bg-primary-faded data-[spacing=split]:border",
 
         // -- secondary --
         "secondary-muted":
-          "border-secondary-border-faded bg-secondary-muted data-[layout=split]:border-0",
+          "border-secondary-border-faded bg-secondary-muted data-[spacing=split]:border-0",
 
         "secondary-faded":
-          "border-secondary-border-faded bg-secondary-faded data-[layout=split]:border",
+          "border-secondary-border-faded bg-secondary-faded data-[spacing=split]:border",
       },
     },
     compoundVariants: [
@@ -60,21 +60,21 @@ const accordionItemVariants = cva(
 );
 
 type AccordionContextProps = VariantProps<typeof accordionItemVariants> & {
-  layout?: "compact" | "split";
+  spacing?: "compact" | "split";
 };
 
 const AccordionContext = React.createContext<AccordionContextProps>({});
 
 function Accordion({
   variant = "outline",
-  layout = "compact",
+  spacing = "compact",
   children,
   ...props
 }: React.ComponentProps<typeof AccordionPrimitive.Root> &
   AccordionContextProps) {
   return (
     <AccordionPrimitive.Root data-slot="accordion" {...props}>
-      <AccordionContext.Provider value={{ variant, layout }}>
+      <AccordionContext.Provider value={{ variant, spacing }}>
         {children}
       </AccordionContext.Provider>
     </AccordionPrimitive.Root>
@@ -85,11 +85,11 @@ function AccordionItem({
   className,
   ...props
 }: React.ComponentProps<typeof AccordionPrimitive.Item>) {
-  const { variant, layout } = React.useContext(AccordionContext);
+  const { variant, spacing } = React.useContext(AccordionContext);
   return (
     <AccordionPrimitive.Item
       data-slot="accordion-item"
-      data-layout={layout}
+      data-spacing={spacing}
       className={cn(
         accordionItemVariants({ variant }),
         "group/accordion-item",

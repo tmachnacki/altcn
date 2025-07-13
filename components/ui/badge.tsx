@@ -9,7 +9,7 @@ import { Tron } from "~/components/ui/tron";
 
 const badgeVariants = cva(
   [
-    "relative isolate inline-flex h-6 w-fit shrink-0 grow-0 items-center justify-center gap-1.5 px-2.5 py-1 text-xs leading-none font-medium whitespace-nowrap",
+    "relative isolate inline-flex h-6 w-fit shrink-0 grow-0 items-center justify-center gap-1.5 px-2.5 py-1 text-xs font-medium whitespace-nowrap",
     "[a&]:active:opacity-80 [button&]:active:opacity-80",
     "focus-visible:outline-2 focus-visible:outline-offset-2",
     "**:[svg]:pointer-events-none **:[svg]:not-[[class*='size-']]:size-3",
@@ -479,6 +479,7 @@ function Badge({
           <Tron
             side="top"
             type="beam"
+            data-shape={shape}
             className="via-(--tron-beam) opacity-0"
           />
           <Tron
@@ -489,6 +490,7 @@ function Badge({
           <Tron
             side="bottom"
             type="beam"
+            data-shape={shape}
             className="via-(--tron-beam) opacity-100"
           />
           <Tron

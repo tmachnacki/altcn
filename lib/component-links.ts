@@ -56,6 +56,10 @@ export const componentLinks = [
     href: "/components/dropdown-menu",
   },
   {
+    label: "Heading",
+    href: "/components/heading",
+  },
+  {
     label: "Input",
     href: "/components/input",
   },

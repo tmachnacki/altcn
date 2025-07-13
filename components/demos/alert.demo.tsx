@@ -146,29 +146,30 @@ export function AlertDemo() {
               Undo
             </Button>
           </Alert>
-          {showAlertCentered && (
-            <Alert
-              align="center"
-              variant={alertVariant as (typeof alertVariants)[number]}
+
+          <Alert
+            align="center"
+            variant={alertVariant as (typeof alertVariants)[number]}
+            className={showAlertCentered ? "visible" : "invisible"}
+          >
+            <AlertIcon type="info" />
+            <AlertContent>
+              <AlertTitle>
+                FYI This one is centered with info type icon
+              </AlertTitle>
+            </AlertContent>
+            <Button
+              variant={alertButtonVariant(
+                alertVariant as (typeof alertVariants)[number]
+              )}
+              size="sm"
+              className="h-6"
             >
-              <AlertIcon type="info" />
-              <AlertContent>
-                <AlertTitle>
-                  FYI This one is centered with info type icon
-                </AlertTitle>
-              </AlertContent>
-              <Button
-                variant={alertButtonVariant(
-                  alertVariant as (typeof alertVariants)[number]
-                )}
-                size="sm"
-                className="h-6"
-              >
-                Undo
-              </Button>
-              <AlertClose onClick={handleCloseAlertCentered} />
-            </Alert>
-          )}
+              Undo
+            </Button>
+            <AlertClose onClick={handleCloseAlertCentered} />
+          </Alert>
+
           <Alert
             align="center"
             variant={alertVariant as (typeof alertVariants)[number]}

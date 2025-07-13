@@ -142,7 +142,7 @@ const inputPasswordInputVariants = cva(
 const inputPasswordToggleVariants = cva(
   [
     "touch-target col-start-1 row-start-1 mr-1 inline-flex flex-none items-center justify-center self-center justify-self-end rounded-sm -outline-offset-1 focus-visible:outline-2 active:opacity-80",
-    "peer-aria-invalid/input-password-input:text-destructive-muted-foreground peer-aria-invalid/input-password-input:outline-destructive peer-aria-invalid/input-password-input:hover:bg-destructive-500/20",
+    "peer-aria-invalid/input-password-input:text-destructive-muted-foreground peer-aria-invalid/input-password-input:outline-destructive peer-aria-invalid/input-password-input:hover:bg-destructive-muted",
     "disabled:pointer-events-none",
   ],
   {
@@ -153,14 +153,14 @@ const inputPasswordToggleVariants = cva(
         lg: "size-8 *:[svg]:size-5",
       },
       variant: {
-        outline: "text-subtle-foreground outline-outline hover:bg-base-500/20",
-        muted: "text-subtle-foreground outline-outline hover:bg-base-500/20",
+        outline: "text-subtle-foreground outline-outline hover:bg-muted",
+        muted: "text-subtle-foreground outline-outline hover:bg-muted",
         underlined:
-          "mr-0.5 text-subtle-foreground outline-outline hover:bg-base-500/20",
+          "mr-0.5 text-subtle-foreground outline-outline hover:bg-muted",
         "primary-muted":
-          "text-primary-muted-foreground outline-primary hover:bg-primary-500/20",
+          "text-primary-muted-foreground outline-primary hover:bg-primary-muted",
         "secondary-muted":
-          "text-secondary-muted-foreground outline-secondary hover:bg-secondary-500/20",
+          "text-secondary-muted-foreground outline-secondary hover:bg-secondary-muted",
       },
     },
     defaultVariants: {

@@ -30,11 +30,11 @@ const accordionVariants = [
   "secondary-faded",
 ] as const;
 
-const accordionLayouts = ["compact", "split"] as const;
+const accordionSpacings = ["compact", "split"] as const;
 
 export function AccordionDemo() {
   const [accordionVariant, setAccordionVariant] = React.useState("outline");
-  const [accordionLayout, setAccordionLayout] = React.useState("compact");
+  const [accordionSpacing, setAccordionSpacing] = React.useState("compact");
 
   return (
     <>
@@ -45,7 +45,7 @@ export function AccordionDemo() {
             collapsible
             className="w-full"
             variant={accordionVariant as (typeof accordionVariants)[number]}
-            layout={accordionLayout as (typeof accordionLayouts)[number]}
+            spacing={accordionSpacing as (typeof accordionSpacings)[number]}
           >
             <AccordionItem value="item-1">
               <AccordionTrigger>Is it accessible?</AccordionTrigger>
@@ -88,15 +88,15 @@ export function AccordionDemo() {
           </Select>
         </div>
         <div className="grid gap-2">
-          <Label htmlFor="accordion-layout">Layout</Label>
-          <Select value={accordionLayout} onValueChange={setAccordionLayout}>
-            <SelectTrigger id="accordion-layout" className="w-full">
+          <Label htmlFor="accordion-spacing">Spacing</Label>
+          <Select value={accordionSpacing} onValueChange={setAccordionSpacing}>
+            <SelectTrigger id="accordion-spacing" className="w-full">
               <SelectValue placeholder="Select variant" />
             </SelectTrigger>
             <SelectContent>
-              {accordionLayouts.map((layout) => (
-                <SelectItem key={layout} value={layout}>
-                  {layout}
+              {accordionSpacings.map((spacing) => (
+                <SelectItem key={spacing} value={spacing}>
+                  {spacing}
                 </SelectItem>
               ))}
             </SelectContent>

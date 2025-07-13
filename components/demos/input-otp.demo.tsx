@@ -36,12 +36,12 @@ const sizesMap: Record<number, Size> = {
   3: "lg",
 };
 
-const layouts = ["compact", "split"] as const;
+const spacings = ["compact", "split"] as const;
 
 export function InputOTPDemo() {
   const [variant, setVariant] = React.useState("outline");
   const [size, setSize] = React.useState(2);
-  const [layout, setLayout] = React.useState("compact");
+  const [spacing, setSpacing] = React.useState("split");
 
   return (
     <>
@@ -54,7 +54,7 @@ export function InputOTPDemo() {
               maxLength={6}
               placeholder="000000"
               variant={variant as (typeof variants)[number]}
-              layout={layout as (typeof layouts)[number]}
+              spacing={spacing as (typeof spacings)[number]}
               size={sizesMap[size]}
             >
               <InputOTPGroup>
@@ -74,7 +74,7 @@ export function InputOTPDemo() {
               maxLength={6}
               placeholder="000000"
               variant={variant as (typeof variants)[number]}
-              layout={layout as (typeof layouts)[number]}
+              spacing={spacing as (typeof spacings)[number]}
               size={sizesMap[size]}
               aria-invalid="true"
             >
@@ -94,7 +94,7 @@ export function InputOTPDemo() {
               maxLength={6}
               placeholder="000000"
               variant={variant as (typeof variants)[number]}
-              layout={layout as (typeof layouts)[number]}
+              spacing={spacing as (typeof spacings)[number]}
               size={sizesMap[size]}
               disabled
             >
@@ -114,7 +114,7 @@ export function InputOTPDemo() {
               id="separator"
               maxLength={6}
               variant={variant as (typeof variants)[number]}
-              layout={layout as (typeof layouts)[number]}
+              spacing={spacing as (typeof spacings)[number]}
               size={sizesMap[size]}
             >
               <InputOTPGroup>
@@ -167,15 +167,15 @@ export function InputOTPDemo() {
           />
         </div>
         <div className="grid gap-2">
-          <Label htmlFor="otp-layout">Layout</Label>
-          <Select value={layout} onValueChange={setLayout}>
-            <SelectTrigger id="otp-layout" className="w-full">
-              <SelectValue placeholder="Select layout" />
+          <Label htmlFor="otp-spacing">Spacing</Label>
+          <Select value={spacing} onValueChange={setSpacing}>
+            <SelectTrigger id="otp-spacing" className="w-full">
+              <SelectValue placeholder="Select spacing" />
             </SelectTrigger>
             <SelectContent>
-              {layouts.map((layout) => (
-                <SelectItem key={layout} value={layout}>
-                  {layout}
+              {spacings.map((spacing) => (
+                <SelectItem key={spacing} value={spacing}>
+                  {spacing}
                 </SelectItem>
               ))}
             </SelectContent>

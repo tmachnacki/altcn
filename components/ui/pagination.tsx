@@ -13,9 +13,9 @@ import { Button } from "~/components/ui/button";
 function Pagination({ className, ...props }: React.ComponentProps<"nav">) {
   return (
     <nav
-      role="navigation"
-      aria-label={props["aria-label"] || "pagination"}
       data-slot="pagination"
+      role="navigation"
+      aria-label={"Pagination"}
       className={cn("mx-auto flex w-full justify-center", className)}
       {...props}
     />

@@ -44,7 +44,7 @@ const switchVariants = cva(
 
 const switchThumbVariants = cva(
   [
-    "pointer-events-none block aspect-square h-full w-auto rounded-full bg-background shadow-sm transition-all duration-200 ease-in-out outline-none",
+    "pointer-events-none block rounded-full bg-background shadow-sm transition-all duration-200 ease-in-out outline-none",
     "dark:data-[state=unchecked]:bg-foreground/50 dark:data-[state=unchecked]:backdrop-blur-lg",
     "group-aria-invalid/switch:data-[state=checked]:bg-destructive-foreground",
   ],
@@ -56,8 +56,10 @@ const switchThumbVariants = cva(
         secondary: ["data-[state=checked]:bg-secondary-foreground"],
       },
       height: {
-        default:
+        default: [
+          "size-3.5",
           "data-[state=checked]:translate-x-4 data-[state=unchecked]:translate-x-0",
+        ],
         thin: [
           "size-4 inset-ring inset-ring-border",
           "dark:data-[state=unchecked]:data-[disabled]:bg-muted-foreground",

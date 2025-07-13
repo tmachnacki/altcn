@@ -2,17 +2,15 @@
 
 ## Improvements
 
+- [ ] Refactor color token conventions (foreground -> fg, background -> bg)
 - [ ] 2xs and xs sizing
 - [ ] Headless Sonner
-- [ ] Pagination Control Sizes
-- [ ] Transparent vs solid muted and faded colors
-- [ ] Select "item-aligned" positioning
-- [ ] "vertical" orientations (tabs, navigation menu)
+- [ ] Pagination sizes + variants + spacings
+- [ ] "vertical" orientations (tabs, navigation menu, toggle group)
 - [ ] Select (Native) styling
-- [ ] Speed Dial variants
+- [ ] Speed Dial
 - [ ] Tooltip variants
-- [ ] Radio and checkbox variants
-- [ ] Radio Buttons styling
+- [ ] Radio and checkbox (+ cards) variants
 - [ ] Input-ish components invalid and disabled styling
 - [ ] Try to integrate heroicons instead of lucide
 - [ ] Reduced motion
@@ -20,6 +18,10 @@
 - [ ] Maybe restructure multiple variants props with contexts
 - [ ] Calendar/DatePicker variants
 - [ ] Tailwind Variants rewrite
+- [ ] Tron variants
+- [ ] Pill shapes
+- [ ] All colors variants and css files
+- [ ] Contrast variants
 
 ## Components
 
@@ -31,7 +33,6 @@
 - [ ] Description List
 - [ ] Drawer
 - [ ] Form (Tanstack Form)
-- [ ] Heading
 - [ ] Input Group
 - [ ] Input Search
 - [ ] Input Tags

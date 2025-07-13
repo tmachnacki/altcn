@@ -8,160 +8,295 @@ export default function Colors() {
     <main className="container py-content">
       <h1 className="text-2xl font-bold">Colors</h1>
 
-      <div className="mt-16 grid max-w-xs grid-cols-3 gap-x-2 gap-y-4">
+      <div className="mt-16 grid w-full max-w-xs grid-cols-3 gap-x-2 gap-y-4">
         {/* base */}
+        <Button
+          variant={"accent"}
+          className="bg-base-200/70 dark:bg-base-800/70"
+        >
+          Accent
+        </Button>
+        <Button variant={"surface"} className="bg-base-50 dark:bg-faded">
+          Surface
+        </Button>
+        <Button
+          variant={"surface"}
+          className={`border-none bg-base-50 dark:bg-faded`}
+        >
+          Surface
+        </Button>
+        <Button variant={"accent"}>Accent</Button>
+        <Button variant={"surface"}>Surface</Button>
+        <Button variant={"surface"} className="border-none">
+          Surface
+        </Button>
         <Button
           variant={"muted"}
           className="bg-base-200/70 dark:bg-base-800/70"
         >
-          Text
+          Muted
         </Button>
         <Button variant={"faded"} className="bg-base-50 dark:bg-faded">
-          Text
+          Faded
         </Button>
         <Button
           variant={"faded"}
           className={`border-none bg-base-50 dark:bg-faded`}
         >
-          Text
+          Faded
         </Button>
-        <Button variant={"muted"}>Text</Button>
-        <Button variant={"faded"}>Text</Button>
+        <Button variant={"muted"}>Muted</Button>
+        <Button variant={"faded"}>Faded</Button>
         <Button variant={"faded"} className="border-none">
-          Text
+          Faded
         </Button>
 
         {/* primary */}
         <Button
+          variant={"primary-accent"}
+          className="bg-primary-100 dark:bg-primary-950"
+        >
+          Accent
+        </Button>
+        <Button
+          variant={"primary-surface"}
+          className="bg-primary-50 dark:bg-primary-950/50"
+        >
+          Surface
+        </Button>
+        <Button
+          variant={"primary-surface"}
+          className="border-none bg-primary-50 dark:bg-primary-950/50"
+        >
+          Surface
+        </Button>
+        <Button variant={"primary-accent"}>Accent</Button>
+        <Button variant={"primary-surface"}>Surface</Button>
+        <Button variant={"primary-surface"} className="border-none">
+          Surface
+        </Button>
+        <Button
           variant={"primary-muted"}
           className="bg-primary-100 dark:bg-primary-950"
         >
-          Text
+          Muted
         </Button>
         <Button
           variant={"primary-faded"}
           className="bg-primary-50 dark:bg-primary-950/50"
         >
-          Text
+          Faded
         </Button>
         <Button
           variant={"primary-faded"}
           className="border-none bg-primary-50 dark:bg-primary-950/50"
         >
-          Text
+          Faded
         </Button>
-        <Button variant={"primary-muted"}>Text</Button>
-        <Button variant={"primary-faded"}>Text</Button>
+        <Button variant={"primary-muted"}>Muted</Button>
+        <Button variant={"primary-faded"}>Faded</Button>
         <Button variant={"primary-faded"} className="border-none">
-          Text
+          Faded
         </Button>
 
         {/* secondary */}
         <Button
+          variant={"secondary-accent"}
+          className="bg-secondary-100 dark:bg-secondary-950"
+        >
+          Accent
+        </Button>
+        <Button
+          variant={"secondary-surface"}
+          className="bg-secondary-50 dark:bg-secondary-950/50"
+        >
+          Surface
+        </Button>
+        <Button
+          variant={"secondary-surface"}
+          className={`border-none bg-secondary-50 dark:bg-secondary-950/50`}
+        >
+          Surface
+        </Button>
+        <Button variant={"secondary-accent"}>Accent</Button>
+        <Button variant={"secondary-surface"}>Surface</Button>
+        <Button variant={"secondary-surface"} className="border-none">
+          Surface
+        </Button>
+        <Button
           variant={"secondary-muted"}
           className="bg-secondary-100 dark:bg-secondary-950"
         >
-          Text
+          Muted
         </Button>
         <Button
           variant={"secondary-faded"}
           className="bg-secondary-50 dark:bg-secondary-950/50"
         >
-          Text
+          Faded
         </Button>
         <Button
           variant={"secondary-faded"}
           className={`border-none bg-secondary-50 dark:bg-secondary-950/50`}
         >
-          Text
+          Faded
         </Button>
-        <Button variant={"secondary-muted"}>Text</Button>
-        <Button variant={"secondary-faded"}>Text</Button>
+        <Button variant={"secondary-muted"}>Muted</Button>
+        <Button variant={"secondary-faded"}>Faded</Button>
         <Button variant={"secondary-faded"} className="border-none">
-          Text
+          Faded
         </Button>
 
         {/* destructive */}
         <Button
+          variant={"destructive-accent"}
+          className="bg-destructive-100 dark:bg-destructive-950"
+        >
+          Accent
+        </Button>
+        <Button
+          variant={"destructive-surface"}
+          className="bg-destructive-50 dark:bg-destructive-950/50"
+        >
+          Surface
+        </Button>
+        <Button
+          variant={"destructive-surface"}
+          className="border-none bg-destructive-50 dark:bg-destructive-950/50"
+        >
+          Surface
+        </Button>
+        <Button variant={"destructive-accent"}>Accent</Button>
+        <Button variant={"destructive-surface"}>Surface</Button>
+        <Button variant={"destructive-surface"} className="border-none">
+          Surface
+        </Button>
+        <Button
           variant={"destructive-muted"}
           className="bg-destructive-100 dark:bg-destructive-950"
         >
-          Text
+          Muted
         </Button>
         <Button
           variant={"destructive-faded"}
           className="bg-destructive-50 dark:bg-destructive-950/50"
         >
-          Text
+          Faded
         </Button>
         <Button
           variant={"destructive-faded"}
           className="border-none bg-destructive-50 dark:bg-destructive-950/50"
         >
-          Text
+          Faded
         </Button>
-        <Button variant={"destructive-muted"}>Text</Button>
-        <Button variant={"destructive-faded"}>Text</Button>
+        <Button variant={"destructive-muted"}>Muted</Button>
+        <Button variant={"destructive-faded"}>Faded</Button>
         <Button variant={"destructive-faded"} className="border-none">
-          Text
+          Faded
         </Button>
 
         {/* success */}
         <Button
+          variant={"success-accent"}
+          className="bg-success-100 dark:bg-success-950"
+        >
+          Accent
+        </Button>
+        <Button
+          variant={"success-surface"}
+          className="bg-success-50 dark:bg-success-950/50"
+        >
+          Surface
+        </Button>
+        <Button
+          variant={"success-surface"}
+          className="border-none bg-success-50 dark:bg-success-950/50"
+        >
+          Surface
+        </Button>
+        <Button variant={"success-accent"}>Accent</Button>
+        <Button variant={"success-surface"}>Surface</Button>
+        <Button variant={"success-surface"} className="border-none">
+          Text
+        </Button>
+        <Button
           variant={"success-muted"}
           className="bg-success-100 dark:bg-success-950"
         >
-          Text
+          Muted
         </Button>
         <Button
           variant={"success-faded"}
           className="bg-success-50 dark:bg-success-950/50"
         >
-          Text
+          Faded
         </Button>
         <Button
           variant={"success-faded"}
           className="border-none bg-success-50 dark:bg-success-950/50"
         >
-          Text
+          Faded
         </Button>
-        <Button variant={"success-muted"}>Text</Button>
-        <Button variant={"success-faded"}>Text</Button>
+        <Button variant={"success-muted"}>Muted</Button>
+        <Button variant={"success-faded"}>Faded</Button>
         <Button variant={"success-faded"} className="border-none">
-          Text
+          Faded
         </Button>
 
         {/* warning */}
         <Button
+          variant={"warning-accent"}
+          className="bg-warning-100 dark:bg-warning-950"
+        >
+          Accent
+        </Button>
+        <Button
+          variant={"warning-surface"}
+          className="bg-warning-50 dark:bg-warning-950/50"
+        >
+          Surface
+        </Button>
+        <Button
+          variant={"warning-surface"}
+          className="border-none bg-warning-50 dark:bg-warning-950/50"
+        >
+          Surface
+        </Button>
+        <Button variant={"warning-accent"}>Accent</Button>
+        <Button variant={"warning-surface"}>Surface</Button>
+        <Button variant={"warning-surface"} className="border-none">
+          Surface
+        </Button>
+        <Button
           variant={"warning-muted"}
           className="bg-warning-100 dark:bg-warning-950"
         >
-          Text
+          Muted
         </Button>
         <Button
           variant={"warning-faded"}
           className="bg-warning-50 dark:bg-warning-950/50"
         >
-          Text
+          Faded
         </Button>
         <Button
           variant={"warning-faded"}
           className="border-none bg-warning-50 dark:bg-warning-950/50"
         >
-          Text
+          Faded
         </Button>
-        <Button variant={"warning-muted"}>Text</Button>
-        <Button variant={"warning-faded"}>Text</Button>
+        <Button variant={"warning-muted"}>Muted</Button>
+        <Button variant={"warning-faded"}>Faded</Button>
         <Button variant={"warning-faded"} className="border-none">
-          Text
+          Faded
         </Button>
 
-        <Button variant={"outline"}>Text</Button>
+        <Button variant={"outline"}>Outline</Button>
         <Button
           variant={"outline"}
           className="border-base-200 hover:border-base-300 dark:border-base-800 dark:hover:border-base-700"
         >
-          Text
+          Outline
         </Button>
       </div>
 
