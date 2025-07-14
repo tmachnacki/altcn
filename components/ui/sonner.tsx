@@ -49,13 +49,13 @@ const Toaster = ({ ...props }: ToasterProps) => {
 
             "!border-border !bg-popover hover:!bg-base-100 dark:hover:!bg-base-800",
 
-            "group-data-[type=success]/toast:!border-success-border-faded group-data-[type=success]/toast:!bg-success-popover group-data-[type=success]/toast:hover:!bg-success-100 dark:group-data-[type=success]/toast:hover:!bg-success-950",
+            "group-data-[type=success]/toast:!border-success-faded-border group-data-[type=success]/toast:!bg-success-popover group-data-[type=success]/toast:hover:!bg-success-100 dark:group-data-[type=success]/toast:hover:!bg-success-950",
 
-            "group-data-[type=info]/toast:!border-primary-border-faded group-data-[type=info]/toast:!bg-primary-popover group-data-[type=info]/toast:hover:!bg-primary-100 dark:group-data-[type=info]/toast:hover:!bg-primary-950",
+            "group-data-[type=info]/toast:!border-primary-faded-border group-data-[type=info]/toast:!bg-primary-popover group-data-[type=info]/toast:hover:!bg-primary-100 dark:group-data-[type=info]/toast:hover:!bg-primary-950",
 
-            "group-data-[type=warning]/toast:!border-warning-border-faded group-data-[type=warning]/toast:!bg-warning-popover group-data-[type=warning]/toast:hover:!bg-warning-100 dark:group-data-[type=warning]/toast:hover:!bg-warning-950",
+            "group-data-[type=warning]/toast:!border-warning-faded-border group-data-[type=warning]/toast:!bg-warning-popover group-data-[type=warning]/toast:hover:!bg-warning-100 dark:group-data-[type=warning]/toast:hover:!bg-warning-950",
 
-            "group-data-[type=error]/toast:!border-destructive-border-faded group-data-[type=error]/toast:!bg-destructive-popover group-data-[type=error]/toast:hover:!bg-destructive-100 dark:group-data-[type=error]/toast:hover:!bg-destructive-950",
+            "group-data-[type=error]/toast:!border-destructive-faded-border group-data-[type=error]/toast:!bg-destructive-popover group-data-[type=error]/toast:hover:!bg-destructive-100 dark:group-data-[type=error]/toast:hover:!bg-destructive-950",
           ]),
 
           actionButton: cx([
@@ -121,19 +121,19 @@ const Toaster = ({ ...props }: ToasterProps) => {
 
           "--success-bg": "var(--success-popover)",
           "--success-text": "var(--success-accent-foreground)",
-          "--success-border": "var(--success-border-faded)",
+          "--success-border": "var(--success-faded-border)",
 
           "--info-bg": "var(--primary-popover)",
           "--info-text": "var(--primary-accent-foreground)",
-          "--info-border": "var(--primary-border-faded)",
+          "--info-border": "var(--primary-faded-border)",
 
           "--warning-bg": "var(--warning-popover)",
           "--warning-text": "var(--warning-accent-foreground)",
-          "--warning-border": "var(--warning-border-faded)",
+          "--warning-border": "var(--warning-faded-border)",
 
           "--error-bg": "var(--destructive-popover)",
           "--error-text": "var(--destructive-accent-foreground)",
-          "--error-border": "var(--destructive-border-faded)",
+          "--error-border": "var(--destructive-faded-border)",
         } as React.CSSProperties
       }
       {...props}

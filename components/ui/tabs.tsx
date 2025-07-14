@@ -15,7 +15,7 @@ const tabsListVariants = cva(
       variant: {
         outline: "border border-border bg-transparent shadow-xs",
         muted: "bg-muted",
-        faded: "border border-border-faded bg-faded",
+        faded: "border border-faded-border bg-faded",
         underlined: "rounded-b-none border-b border-border bg-transparent px-0",
         ghost: "bg-transparent",
       },
@@ -51,7 +51,7 @@ const tabsTriggerVariants = cva(
           "data-[state=active]:bg-muted data-[state=active]:text-accent-foreground",
 
         surface:
-          "data-[state=active]:border data-[state=active]:border-border-faded data-[state=active]:bg-faded data-[state=active]:text-accent-foreground",
+          "data-[state=active]:border data-[state=active]:border-faded-border data-[state=active]:bg-faded data-[state=active]:text-accent-foreground",
 
         underlined: [
           "-outline-offset-2 data-[state=active]:text-foreground",
@@ -75,16 +75,16 @@ const tabsTriggerVariants = cva(
           "data-[state=active]:bg-primary-muted data-[state=active]:text-primary-muted-foreground",
 
         "primary-surface":
-          "data-[state=active]:border data-[state=active]:border-primary-border-faded data-[state=active]:bg-primary-faded data-[state=active]:text-primary-accent-foreground",
+          "data-[state=active]:border data-[state=active]:border-primary-faded-border data-[state=active]:bg-primary-faded data-[state=active]:text-primary-accent-foreground",
 
         "primary-faded":
-          "data-[state=active]:border data-[state=active]:border-primary-border-faded data-[state=active]:bg-primary-faded data-[state=active]:text-primary-muted-foreground",
+          "data-[state=active]:border data-[state=active]:border-primary-faded-border data-[state=active]:bg-primary-faded data-[state=active]:text-primary-muted-foreground",
 
         "primary-underlined":
           "-outline-offset-2 data-[state=active]:text-primary data-[state=active]:before:bg-primary",
 
         "primary-tron": [
-          "data-[state=active]:bg-background data-[state=active]:bg-linear-(--primary-tron-gradient) data-[state=active]:text-primary-muted-foreground data-[state=active]:inset-ring data-[state=active]:inset-ring-primary-border-tron",
+          "data-[state=active]:bg-background data-[state=active]:bg-linear-(--primary-tron-gradient) data-[state=active]:text-primary-muted-foreground data-[state=active]:inset-ring data-[state=active]:inset-ring-primary-tron-border",
           "data-[state=active]:[--tron-beam:var(--color-primary)] data-[state=active]:[--tron-blur:var(--color-primary-tron-blur)]",
         ],
 
@@ -104,16 +104,16 @@ const tabsTriggerVariants = cva(
           "data-[state=active]:bg-secondary-muted data-[state=active]:text-secondary-muted-foreground",
 
         "secondary-surface":
-          "data-[state=active]:border data-[state=active]:border-secondary-border-faded data-[state=active]:bg-secondary-faded data-[state=active]:text-secondary-accent-foreground",
+          "data-[state=active]:border data-[state=active]:border-secondary-faded-border data-[state=active]:bg-secondary-faded data-[state=active]:text-secondary-accent-foreground",
 
         "secondary-faded":
-          "data-[state=active]:border data-[state=active]:border-secondary-border-faded data-[state=active]:bg-secondary-faded data-[state=active]:text-secondary-muted-foreground",
+          "data-[state=active]:border data-[state=active]:border-secondary-faded-border data-[state=active]:bg-secondary-faded data-[state=active]:text-secondary-muted-foreground",
 
         "secondary-underlined":
           "-outline-offset-2 data-[state=active]:text-secondary-500 data-[state=active]:before:bg-secondary dark:data-[state=active]:text-secondary",
 
         "secondary-tron": [
-          "data-[state=active]:bg-background data-[state=active]:bg-linear-(--secondary-tron-gradient) data-[state=active]:text-secondary-muted-foreground data-[state=active]:inset-ring data-[state=active]:inset-ring-secondary-border-tron",
+          "data-[state=active]:bg-background data-[state=active]:bg-linear-(--secondary-tron-gradient) data-[state=active]:text-secondary-muted-foreground data-[state=active]:inset-ring data-[state=active]:inset-ring-secondary-tron-border",
           "data-[state=active]:[--tron-beam:var(--color-secondary)] data-[state=active]:[--tron-blur:var(--color-secondary-tron-blur)]",
         ],
 

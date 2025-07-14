@@ -1,23 +1,17 @@
 import { cn } from "~/lib/utils";
 
-// credit: https://daisyui.com/components/skeleton/
 export function Skeleton({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="skeleton"
-      aria-label={props["aria-label"] || "Loading"}
+      aria-label={"Loading"}
       className={cn(
-        "animate-skeleton-shimmer rounded-md bg-skeleton motion-reduce:animate-skeleton-shimmer-reduced-motion",
+        "[--skeleton-shimmer:var(--color-base-100)] [--skeleton:var(--color-base-300)]",
+        "dark:[--skeleton-shimmer:--alpha(var(--color-white)/15%)] dark:[--skeleton:var(--color-base-800)]",
+        "animate-skeleton-shimmer rounded-md bg-(--skeleton) motion-reduce:animate-skeleton-shimmer-reduced-motion",
+        "bg-linear-[105deg,transparent_0%,transparent_35%,var(--skeleton-shimmer)_50%,transparent_65%,transparent_100%] bg-size-[200%_auto] bg-position-[-50%] bg-no-repeat will-change-[background-position]",
         className
       )}
-      style={{
-        willChange: "background-position",
-        backgroundImage:
-          "linear-gradient(105deg, transparent 0%, transparent 35%, var(--skeleton-shimmer) 50%, transparent 65%, transparent 100%)",
-        backgroundSize: "200% auto",
-        backgroundRepeat: "no-repeat",
-        backgroundPositionX: "-50%",
-      }}
       {...props}
     />
   );

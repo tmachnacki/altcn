@@ -6,7 +6,6 @@ import {
   DayPicker,
   Dropdown,
   getDefaultClassNames,
-  type DateRange,
 } from "react-day-picker";
 import {
   ChevronDownIcon,
@@ -32,12 +31,8 @@ type SelectVariants = {
 };
 
 type DayVariants = {
-  unselected?: Extract<
-    React.ComponentProps<typeof Button>["variant"],
-    "ghost" | "primary-ghost" | "secondary-ghost"
-  >;
-  selected?: Extract<
-    React.ComponentProps<typeof Button>["variant"],
+  unselected?: "ghost" | "primary-ghost" | "secondary-ghost";
+  selected?:
     | "base"
     | "base-shadow"
     | "base-gradient"
@@ -48,10 +43,9 @@ type DayVariants = {
     | "secondary"
     | "secondary-shadow"
     | "secondary-gradient"
-    | "secondary-tron"
-  >;
-  range?: Extract<
-    React.ComponentProps<typeof Button>["variant"],
+    | "secondary-tron";
+
+  range?:
     | "outline"
     | "accent"
     | "muted"
@@ -64,14 +58,12 @@ type DayVariants = {
     | "secondary-accent"
     | "secondary-muted"
     | "secondary-surface"
-    | "secondary-faded"
-  >;
+    | "secondary-faded";
 };
 
 type CalendarVariants = {
   variants?: {
-    nav?: Extract<
-      React.ComponentProps<typeof Button>["variant"],
+    nav?:
       | "outline"
       | "accent"
       | "muted"
@@ -87,40 +79,12 @@ type CalendarVariants = {
       | "secondary-muted"
       | "secondary-surface"
       | "secondary-faded"
-      | "secondary-ghost"
-    >;
+      | "secondary-ghost";
   } & SelectVariants &
     DayVariants;
 };
 
 const CalendarContext = React.createContext<CalendarVariants>({});
-
-// const rangeVariants = (
-//   range: DayVariants["range"] = "primary-muted",
-//   position: "start" | "middle" | "end"
-// ) => {
-//   return cn(
-//     {
-//       accent: "bg-muted",
-//       muted: "bg-muted",
-//       surface: "bg-faded",
-//       faded: "bg-faded",
-//       "primary-accent": "bg-primary-muted",
-//       "primary-muted": "bg-primary-muted",
-//       "primary-surface": "bg-primary-faded",
-//       "primary-faded": "bg-primary-faded",
-//       "secondary-accent": "bg-secondary-muted",
-//       "secondary-muted": "bg-secondary-muted",
-//       "secondary-surface": "bg-secondary-faded",
-//       "secondary-faded": "bg-secondary-faded",
-//     }[range],
-//     {
-//       start: "rounded-l-md",
-//       middle: "rounded-none",
-//       end: "rounded-r-md",
-//     }[position]
-//   );
-// };
 
 function Calendar({
   className,
@@ -220,31 +184,11 @@ function Calendar({
             "not-data-[outside=true]:data-[selected=true]:first:*:[button]:border-l not-data-[outside=true]:data-[selected=true]:last:*:[button]:border-r",
           defaultClassNames.day
         ),
-        range_start: cn(
-          // rangeVariants(variants.range, "start"),
-          "rounded-l-md",
-          defaultClassNames.range_start
-        ),
-        range_middle: cn(
-          // rangeVariants(variants.range, "middle"),
-          "rounded-none",
-          defaultClassNames.range_middle
-        ),
-        range_end: cn(
-          // rangeVariants(variants.range, "end"),
-          "rounded-r-md",
-          defaultClassNames.range_end
-        ),
-        today: cn(
-          // "before:content-[''] before:absolute before:left-1/2 before:-translate-x-1/2 before:bottom-2 before:size-1 before:rounded-full before:bg-current",
-          // "underline underline-offset-4",
-          defaultClassNames.today
-        ),
-        outside: cn(
-          // "text-muted-foreground pointer-events-none",
-          "bg-transparent",
-          defaultClassNames.outside
-        ),
+        range_start: cn("rounded-l-md", defaultClassNames.range_start),
+        range_middle: cn("rounded-none", defaultClassNames.range_middle),
+        range_end: cn("rounded-r-md", defaultClassNames.range_end),
+        today: cn(defaultClassNames.today),
+        outside: cn("bg-transparent", defaultClassNames.outside),
         disabled: cn(
           "pointer-events-none bg-transparent bg-none",
           defaultClassNames.disabled
@@ -370,22 +314,13 @@ function CalendarDayButton({
 
         "group-data-[focused=true]/day:relative group-data-[focused=true]/day:z-10",
 
-        // "data-[selected=true]:outline-primary",
-
         "not-data-[selected=true]:group-not-data-[outside=true]/day:text-subtle-foreground hover:not-data-[selected=true]:group-not-data-[outside=true]/day:text-accent-foreground",
 
-        // "data-[today=true]:underline data-[today=true]:underline-offset-2",
-
         "data-[range-end=true]:rounded-l-none data-[range-end=true]:rounded-r-md data-[range-end=true]:border-l-0",
-        // "data-[range-end=true]:group-not-data-[outside=true]/day:bg-primary data-[range-end=true]:group-not-data-[outside=true]/day:text-primary-foreground",
 
         "data-[range-middle=true]:rounded-none data-[range-middle=true]:border-r-0 data-[range-middle=true]:border-l-0",
-        // "data-[range-middle=true]:group-not-data-[outside=true]/day:bg-primary-muted data-[range-middle=true]:group-not-data-[outside=true]/day:text-primary-muted-foreground hover:data-[range-middle=true]:group-not-data-[outside=true]/day:bg-hover-primary-muted hover:data-[range-middle=true]:group-not-data-[outside=true]/day:text-primary-accent-foreground",
 
         "data-[range-start=true]:rounded-l-md data-[range-start=true]:rounded-r-none data-[range-start=true]:border-r-0",
-        // "data-[range-start=true]:group-not-data-[outside=true]/day:bg-primary data-[range-start=true]:group-not-data-[outside=true]/day:text-primary-foreground",
-
-        // "data-[selected-single=true]:group-not-data-[outside=true]/day:bg-primary data-[selected-single=true]:group-not-data-[outside=true]/day:text-primary-foreground",
 
         "group-data-[outside=true]/day:pointer-events-none group-data-[outside=true]/day:border-0 group-data-[outside=true]/day:bg-transparent group-data-[outside=true]/day:bg-none group-data-[outside=true]/day:text-muted-foreground/75 group-data-[outside=true]/day:shadow-none group-data-[outside=true]/day:inset-ring-0",
         defaultClassNames.day,
@@ -443,4 +378,4 @@ function CalendarDropdown({
   );
 }
 
-export { Calendar, type DateRange };
+export { Calendar };

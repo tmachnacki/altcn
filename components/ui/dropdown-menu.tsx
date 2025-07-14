@@ -34,7 +34,7 @@ const menuItemVariants = cva(
           "data-[highlighted]:bg-muted data-[highlighted]:text-accent-foreground",
         ],
         surface: [
-          "data-[highlighted]:bg-faded data-[highlighted]:text-accent-foreground data-[highlighted]:data-[width=default]:inset-ring data-[highlighted]:data-[width=default]:inset-ring-border-faded data-[highlighted]:data-[width=full]:shadow-[inset_0_1px_0_0_var(--color-border-faded),inset_0_-1px_0_0_var(--color-border-faded)]",
+          "data-[highlighted]:bg-faded data-[highlighted]:text-accent-foreground data-[highlighted]:data-[width=default]:inset-ring data-[highlighted]:data-[width=default]:inset-ring-faded-border data-[highlighted]:data-[width=full]:shadow-[inset_0_1px_0_0_var(--color-faded-border),inset_0_-1px_0_0_var(--color-faded-border)]",
         ],
 
         // -- primary --
@@ -48,10 +48,10 @@ const menuItemVariants = cva(
           "data-[highlighted]:bg-primary-muted data-[highlighted]:text-primary-muted-foreground",
         ],
         "primary-surface": [
-          "data-[highlighted]:bg-primary-faded data-[highlighted]:text-primary-accent-foreground data-[highlighted]:data-[width=default]:inset-ring data-[highlighted]:data-[width=default]:inset-ring-primary-border-faded data-[highlighted]:data-[width=full]:shadow-[inset_0_1px_0_0_var(--color-primary-border-faded),inset_0_-1px_0_0_var(--color-primary-border-faded)]",
+          "data-[highlighted]:bg-primary-faded data-[highlighted]:text-primary-accent-foreground data-[highlighted]:data-[width=default]:inset-ring data-[highlighted]:data-[width=default]:inset-ring-primary-faded-border data-[highlighted]:data-[width=full]:shadow-[inset_0_1px_0_0_var(--color-primary-faded-border),inset_0_-1px_0_0_var(--color-primary-faded-border)]",
         ],
         "primary-faded": [
-          "data-[highlighted]:bg-primary-faded data-[highlighted]:text-primary-muted-foreground data-[highlighted]:data-[width=default]:inset-ring data-[highlighted]:data-[width=default]:inset-ring-primary-border-faded data-[highlighted]:data-[width=full]:shadow-[inset_0_1px_0_0_var(--color-primary-border-faded),inset_0_-1px_0_0_var(--color-primary-border-faded)]",
+          "data-[highlighted]:bg-primary-faded data-[highlighted]:text-primary-muted-foreground data-[highlighted]:data-[width=default]:inset-ring data-[highlighted]:data-[width=default]:inset-ring-primary-faded-border data-[highlighted]:data-[width=full]:shadow-[inset_0_1px_0_0_var(--color-primary-faded-border),inset_0_-1px_0_0_var(--color-primary-faded-border)]",
         ],
 
         // -- secondary --
@@ -65,10 +65,10 @@ const menuItemVariants = cva(
           "data-[highlighted]:bg-secondary-muted data-[highlighted]:text-secondary-muted-foreground",
         ],
         "secondary-surface": [
-          "data-[highlighted]:bg-secondary-faded data-[highlighted]:text-secondary-accent-foreground data-[highlighted]:data-[width=default]:inset-ring data-[highlighted]:data-[width=default]:inset-ring-secondary-border-faded data-[highlighted]:data-[width=full]:shadow-[inset_0_1px_0_0_var(--color-secondary-border-faded),inset_0_-1px_0_0_var(--color-secondary-border-faded)]",
+          "data-[highlighted]:bg-secondary-faded data-[highlighted]:text-secondary-accent-foreground data-[highlighted]:data-[width=default]:inset-ring data-[highlighted]:data-[width=default]:inset-ring-secondary-faded-border data-[highlighted]:data-[width=full]:shadow-[inset_0_1px_0_0_var(--color-secondary-faded-border),inset_0_-1px_0_0_var(--color-secondary-faded-border)]",
         ],
         "secondary-faded": [
-          "data-[highlighted]:bg-secondary-faded data-[highlighted]:text-secondary-muted-foreground data-[highlighted]:data-[width=default]:inset-ring data-[highlighted]:data-[width=default]:inset-ring-secondary-border-faded data-[highlighted]:data-[width=full]:shadow-[inset_0_1px_0_0_var(--color-secondary-border-faded),inset_0_-1px_0_0_var(--color-secondary-border-faded)]",
+          "data-[highlighted]:bg-secondary-faded data-[highlighted]:text-secondary-muted-foreground data-[highlighted]:data-[width=default]:inset-ring data-[highlighted]:data-[width=default]:inset-ring-secondary-faded-border data-[highlighted]:data-[width=full]:shadow-[inset_0_1px_0_0_var(--color-secondary-faded-border),inset_0_-1px_0_0_var(--color-secondary-faded-border)]",
         ],
 
         // -- destructive --
@@ -82,10 +82,10 @@ const menuItemVariants = cva(
           "data-[highlighted]:bg-destructive-muted data-[highlighted]:text-destructive-muted-foreground",
         ],
         "destructive-surface": [
-          "data-[highlighted]:bg-destructive-faded data-[highlighted]:text-destructive-accent-foreground data-[highlighted]:data-[width=default]:inset-ring data-[highlighted]:data-[width=default]:inset-ring-destructive-border-faded data-[highlighted]:data-[width=full]:shadow-[inset_0_1px_0_0_var(--color-destructive-border-faded),inset_0_-1px_0_0_var(--color-destructive-border-faded)]",
+          "data-[highlighted]:bg-destructive-faded data-[highlighted]:text-destructive-accent-foreground data-[highlighted]:data-[width=default]:inset-ring data-[highlighted]:data-[width=default]:inset-ring-destructive-faded-border data-[highlighted]:data-[width=full]:shadow-[inset_0_1px_0_0_var(--color-destructive-faded-border),inset_0_-1px_0_0_var(--color-destructive-faded-border)]",
         ],
         "destructive-faded": [
-          "data-[highlighted]:bg-destructive-faded data-[highlighted]:text-destructive-muted-foreground data-[highlighted]:data-[width=default]:inset-ring data-[highlighted]:data-[width=default]:inset-ring-destructive-border-faded data-[highlighted]:data-[width=full]:shadow-[inset_0_1px_0_0_var(--color-destructive-border-faded),inset_0_-1px_0_0_var(--color-destructive-border-faded)]",
+          "data-[highlighted]:bg-destructive-faded data-[highlighted]:text-destructive-muted-foreground data-[highlighted]:data-[width=default]:inset-ring data-[highlighted]:data-[width=default]:inset-ring-destructive-faded-border data-[highlighted]:data-[width=full]:shadow-[inset_0_1px_0_0_var(--color-destructive-faded-border),inset_0_-1px_0_0_var(--color-destructive-faded-border)]",
         ],
       },
       width: {

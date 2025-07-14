@@ -7,6 +7,7 @@ import {
   ButtonInput,
   ButtonInputIcon,
   ButtonInputValue,
+  buttonInputVariants,
 } from "~/components/ui/button-input";
 import { Label } from "~/components/ui/label";
 import {
@@ -21,16 +22,11 @@ import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
 import { Swatch } from "~/components/swatch";
 
-const buttonInputVariants = [
-  "outline",
-  "muted",
-  "underlined",
-  "primary-muted",
-  "secondary-muted",
-] as const;
+type Variant = keyof typeof buttonInputVariants.variants.variant;
+const variants = Object.keys(buttonInputVariants.variants.variant) as Variant[];
 
-type ButtonInputSize = "sm" | "md" | "lg";
-const buttonInputSizesMap: Record<number, ButtonInputSize> = {
+type Size = keyof typeof buttonInputVariants.variants.size;
+const sizesMap: Record<number, Size> = {
   1: "sm",
   2: "md",
   3: "lg",
@@ -46,8 +42,8 @@ export function ButtonInputDemo() {
         <div className="flex w-full max-w-xs flex-col gap-8 sm:max-w-sm">
           <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2">
             <ButtonInput
-              variant={variant as (typeof buttonInputVariants)[number]}
-              size={buttonInputSizesMap[size]}
+              variant={variant as Variant}
+              size={sizesMap[size]}
               className="w-full capitalize"
             >
               <ButtonInputValue>{variant}</ButtonInputValue>
@@ -55,8 +51,8 @@ export function ButtonInputDemo() {
             </ButtonInput>
 
             <ButtonInput
-              variant={variant as (typeof buttonInputVariants)[number]}
-              size={buttonInputSizesMap[size]}
+              variant={variant as Variant}
+              size={sizesMap[size]}
               className="w-full"
             >
               <ButtonInputValue>
@@ -67,8 +63,8 @@ export function ButtonInputDemo() {
             </ButtonInput>
 
             <ButtonInput
-              variant={variant as (typeof buttonInputVariants)[number]}
-              size={buttonInputSizesMap[size]}
+              variant={variant as Variant}
+              size={sizesMap[size]}
               className="w-full"
             >
               <ButtonInputValue>Custom Icon</ButtonInputValue>
@@ -78,8 +74,8 @@ export function ButtonInputDemo() {
             </ButtonInput>
 
             <ButtonInput
-              variant={variant as (typeof buttonInputVariants)[number]}
-              size={buttonInputSizesMap[size]}
+              variant={variant as Variant}
+              size={sizesMap[size]}
               className="w-full"
             >
               <ButtonInputIcon>
@@ -89,8 +85,8 @@ export function ButtonInputDemo() {
             </ButtonInput>
 
             <ButtonInput
-              variant={variant as (typeof buttonInputVariants)[number]}
-              size={buttonInputSizesMap[size]}
+              variant={variant as Variant}
+              size={sizesMap[size]}
               className="w-full"
             >
               <ButtonInputValue placeholder="Placeholder"></ButtonInputValue>
@@ -98,8 +94,8 @@ export function ButtonInputDemo() {
             </ButtonInput>
 
             <ButtonInput
-              variant={variant as (typeof buttonInputVariants)[number]}
-              size={buttonInputSizesMap[size]}
+              variant={variant as Variant}
+              size={sizesMap[size]}
               className="w-full"
             >
               <ButtonInputValue
@@ -113,8 +109,8 @@ export function ButtonInputDemo() {
             </ButtonInput>
 
             <ButtonInput
-              variant={variant as (typeof buttonInputVariants)[number]}
-              size={buttonInputSizesMap[size]}
+              variant={variant as Variant}
+              size={sizesMap[size]}
               className="w-full"
               disabled={true}
             >
@@ -124,8 +120,8 @@ export function ButtonInputDemo() {
           </div>
           <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2">
             <ButtonInput
-              variant={variant as (typeof buttonInputVariants)[number]}
-              size={buttonInputSizesMap[size]}
+              variant={variant as Variant}
+              size={sizesMap[size]}
               className="w-full"
               aria-invalid="true"
             >
@@ -134,8 +130,8 @@ export function ButtonInputDemo() {
             </ButtonInput>
 
             <ButtonInput
-              variant={variant as (typeof buttonInputVariants)[number]}
-              size={buttonInputSizesMap[size]}
+              variant={variant as Variant}
+              size={sizesMap[size]}
               className="w-full"
               aria-invalid="true"
             >
@@ -146,8 +142,8 @@ export function ButtonInputDemo() {
             </ButtonInput>
 
             <ButtonInput
-              variant={variant as (typeof buttonInputVariants)[number]}
-              size={buttonInputSizesMap[size]}
+              variant={variant as Variant}
+              size={sizesMap[size]}
               className="w-full"
               aria-invalid="true"
             >
@@ -156,8 +152,8 @@ export function ButtonInputDemo() {
             </ButtonInput>
 
             <ButtonInput
-              variant={variant as (typeof buttonInputVariants)[number]}
-              size={buttonInputSizesMap[size]}
+              variant={variant as Variant}
+              size={sizesMap[size]}
               className="w-full"
               aria-invalid="true"
               disabled={true}
@@ -176,8 +172,8 @@ export function ButtonInputDemo() {
               <SelectValue placeholder="Select a variant" />
             </SelectTrigger>
             <SelectContent>
-              {buttonInputVariants.map((variant) => (
-                <SelectItem key={variant} value={variant}>
+              {variants.map((variant) => (
+                <SelectItem key={`button-input-${variant}`} value={variant}>
                   <Swatch variant={variant} />
                   {variant}
                 </SelectItem>
@@ -187,14 +183,14 @@ export function ButtonInputDemo() {
         </div>
 
         <div className="grid gap-3">
-          <Label htmlFor="size">
+          <Label id="button-input-size">
             Size:{" "}
             <span className="font-normal text-primary-muted-foreground">
-              {buttonInputSizesMap[size]}
+              {sizesMap[size]}
             </span>
           </Label>
           <Slider
-            id="size"
+            aria-labelledby="button-input-size"
             min={1}
             max={3}
             step={1}

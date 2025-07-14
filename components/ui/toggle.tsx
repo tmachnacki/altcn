@@ -31,10 +31,10 @@ const toggleVariants = cva(
           "hover:bg-faded hover:text-muted-foreground/80 data-[state=on]:bg-muted data-[state=on]:text-muted-foreground",
 
         surface:
-          "hover:bg-faded hover:text-muted-foreground data-[state=on]:bg-faded data-[state=on]:text-accent-foreground data-[state=on]:inset-ring data-[state=on]:inset-ring-border-faded",
+          "hover:bg-faded hover:text-muted-foreground data-[state=on]:bg-faded data-[state=on]:text-accent-foreground data-[state=on]:inset-ring data-[state=on]:inset-ring-faded-border",
 
         faded:
-          "hover:bg-faded hover:text-muted-foreground/80 data-[state=on]:bg-faded data-[state=on]:text-muted-foreground data-[state=on]:inset-ring data-[state=on]:inset-ring-border-faded",
+          "hover:bg-faded hover:text-muted-foreground/80 data-[state=on]:bg-faded data-[state=on]:text-muted-foreground data-[state=on]:inset-ring data-[state=on]:inset-ring-faded-border",
 
         "base-gradient": [
           "hover:bg-faded hover:text-muted-foreground data-[state=on]:bg-linear-(--base-gradient) data-[state=on]:text-base-foreground",
@@ -50,13 +50,13 @@ const toggleVariants = cva(
           "hover:bg-primary-faded hover:text-primary-muted-foreground/80 data-[state=on]:bg-primary-muted data-[state=on]:text-primary-muted-foreground",
 
         "primary-surface":
-          "hover:bg-primary-faded hover:text-primary-muted-foreground data-[state=on]:bg-primary-faded data-[state=on]:text-primary-accent-foreground data-[state=on]:inset-ring data-[state=on]:inset-ring-primary-border-faded",
+          "hover:bg-primary-faded hover:text-primary-muted-foreground data-[state=on]:bg-primary-faded data-[state=on]:text-primary-accent-foreground data-[state=on]:inset-ring data-[state=on]:inset-ring-primary-faded-border",
 
         "primary-faded":
-          "hover:bg-primary-faded hover:text-primary-muted-foreground/80 data-[state=on]:bg-primary-faded data-[state=on]:text-primary-muted-foreground data-[state=on]:inset-ring data-[state=on]:inset-ring-primary-border-faded",
+          "hover:bg-primary-faded hover:text-primary-muted-foreground/80 data-[state=on]:bg-primary-faded data-[state=on]:text-primary-muted-foreground data-[state=on]:inset-ring data-[state=on]:inset-ring-primary-faded-border",
 
         "primary-tron": [
-          "hover:text-primary-muted-foreground hover:inset-ring hover:inset-ring-primary-border-faded data-[state=on]:bg-background data-[state=on]:bg-linear-(--primary-tron-gradient) data-[state=on]:text-primary-muted-foreground data-[state=on]:inset-ring data-[state=on]:inset-ring-primary-border-tron",
+          "hover:text-primary-muted-foreground hover:inset-ring hover:inset-ring-primary-faded-border data-[state=on]:bg-background data-[state=on]:bg-linear-(--primary-tron-gradient) data-[state=on]:text-primary-muted-foreground data-[state=on]:inset-ring data-[state=on]:inset-ring-primary-tron-border",
           "[--tron-beam:var(--color-primary)] [--tron-blur:var(--color-primary-tron-blur)]",
         ],
 
@@ -74,13 +74,13 @@ const toggleVariants = cva(
           "hover:bg-secondary-faded hover:text-secondary-muted-foreground/80 data-[state=on]:bg-secondary-muted data-[state=on]:text-secondary-muted-foreground",
 
         "secondary-surface":
-          "hover:bg-secondary-faded hover:text-secondary-muted-foreground data-[state=on]:bg-secondary-faded data-[state=on]:text-secondary-accent-foreground data-[state=on]:inset-ring data-[state=on]:inset-ring-secondary-border-faded",
+          "hover:bg-secondary-faded hover:text-secondary-muted-foreground data-[state=on]:bg-secondary-faded data-[state=on]:text-secondary-accent-foreground data-[state=on]:inset-ring data-[state=on]:inset-ring-secondary-faded-border",
 
         "secondary-faded":
-          "hover:bg-secondary-faded hover:text-secondary-muted-foreground/80 data-[state=on]:bg-secondary-faded data-[state=on]:text-secondary-muted-foreground data-[state=on]:inset-ring data-[state=on]:inset-ring-secondary-border-faded",
+          "hover:bg-secondary-faded hover:text-secondary-muted-foreground/80 data-[state=on]:bg-secondary-faded data-[state=on]:text-secondary-muted-foreground data-[state=on]:inset-ring data-[state=on]:inset-ring-secondary-faded-border",
 
         "secondary-tron": [
-          "hover:text-secondary-muted-foreground hover:inset-ring hover:inset-ring-secondary-border-faded data-[state=on]:bg-background data-[state=on]:bg-linear-(--secondary-tron-gradient) data-[state=on]:text-secondary-muted-foreground data-[state=on]:inset-ring data-[state=on]:inset-ring-secondary-border-tron",
+          "hover:text-secondary-muted-foreground hover:inset-ring hover:inset-ring-secondary-faded-border data-[state=on]:bg-background data-[state=on]:bg-linear-(--secondary-tron-gradient) data-[state=on]:text-secondary-muted-foreground data-[state=on]:inset-ring data-[state=on]:inset-ring-secondary-tron-border",
           "[--tron-beam:var(--color-secondary)] [--tron-blur:var(--color-secondary-tron-blur)]",
         ],
 

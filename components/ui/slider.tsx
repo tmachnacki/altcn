@@ -10,7 +10,7 @@ const sliderVariants = cva(
   [
     "relative flex w-full touch-none items-center select-none data-[orientation=vertical]:h-full data-[orientation=vertical]:min-h-44 data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col",
     "data-[disabled]:opacity-50 data-[disabled]:cursor-not-allowed",
-    "aria-invalid:[--slider-range-bg:var(--color-destructive)] aria-invalid:[--slider-thumb-border:var(--color-destructive)] aria-invalid:[--slider-thumb-ring:var(--color-destructive-border-faded)]",
+    "aria-invalid:[--slider-range-bg:var(--color-destructive)] aria-invalid:[--slider-thumb-border:var(--color-destructive)] aria-invalid:[--slider-thumb-ring:var(--color-destructive-faded-border)]",
   ],
   {
     variants: {
@@ -19,56 +19,56 @@ const sliderVariants = cva(
           "[--slider-track-bg:var(--color-muted)] aria-invalid:[--slider-track-bg:var(--color-destructive-muted)]",
           "[--slider-range-bg:var(--color-base)]",
           "[--slider-thumb-border:var(--color-base)]",
-          "[--slider-thumb-ring:var(--color-border-faded)]",
+          "[--slider-thumb-ring:var(--color-faded-border)]",
         ],
 
         faded: [
-          "[--slider-track-bg:var(--color-faded)] [--slider-track-inset-ring:var(--color-border-faded)] aria-invalid:[--slider-track-bg:var(--color-destructive-faded)] aria-invalid:[--slider-track-inset-ring:var(--color-destructive-border-faded)]",
+          "[--slider-track-bg:var(--color-faded)] [--slider-track-inset-ring:var(--color-faded-border)] aria-invalid:[--slider-track-bg:var(--color-destructive-faded)] aria-invalid:[--slider-track-inset-ring:var(--color-destructive-faded-border)]",
           "[--slider-range-bg:var(--color-base)]",
           "[--slider-thumb-border:var(--color-base)]",
-          "[--slider-thumb-ring:var(--color-border-faded)]",
+          "[--slider-thumb-ring:var(--color-faded-border)]",
         ],
 
         primary: [
           "[--slider-track-bg:var(--color-muted)] aria-invalid:[--slider-track-bg:var(--color-destructive-muted)]",
           "[--slider-range-bg:var(--color-primary)]",
           "[--slider-thumb-border:var(--color-primary)]",
-          "[--slider-thumb-ring:var(--color-primary-border-faded)]",
+          "[--slider-thumb-ring:var(--color-primary-faded-border)]",
         ],
 
         "primary-muted": [
           "[--slider-track-bg:var(--color-primary-muted)] aria-invalid:[--slider-track-bg:var(--color-destructive-muted)]",
           "[--slider-range-bg:var(--color-primary)]",
           "[--slider-thumb-border:var(--color-primary)]",
-          "[--slider-thumb-ring:var(--color-primary-border-faded)]",
+          "[--slider-thumb-ring:var(--color-primary-faded-border)]",
         ],
 
         "primary-faded": [
-          "[--slider-track-bg:var(--color-primary-faded)] [--slider-track-inset-ring:var(--color-primary-border-faded)] aria-invalid:[--slider-track-bg:var(--color-destructive-faded)] aria-invalid:[--slider-track-inset-ring:var(--color-destructive-border-faded)]",
+          "[--slider-track-bg:var(--color-primary-faded)] [--slider-track-inset-ring:var(--color-primary-faded-border)] aria-invalid:[--slider-track-bg:var(--color-destructive-faded)] aria-invalid:[--slider-track-inset-ring:var(--color-destructive-faded-border)]",
           "[--slider-range-bg:var(--color-primary)]",
           "[--slider-thumb-border:var(--color-primary)]",
-          "[--slider-thumb-ring:var(--color-primary-border-faded)]",
+          "[--slider-thumb-ring:var(--color-primary-faded-border)]",
         ],
 
         secondary: [
           "[--slider-track-bg:var(--color-muted)] aria-invalid:[--slider-track-bg:var(--color-destructive-muted)]",
           "[--slider-range-bg:var(--color-secondary)]",
           "[--slider-thumb-border:var(--color-secondary)]",
-          "[--slider-thumb-ring:var(--color-secondary-border-faded)]",
+          "[--slider-thumb-ring:var(--color-secondary-faded-border)]",
         ],
 
         "secondary-muted": [
           "[--slider-track-bg:var(--color-secondary-muted)] aria-invalid:[--slider-track-bg:var(--color-destructive-muted)]",
           "[--slider-range-bg:var(--color-secondary)]",
           "[--slider-thumb-border:var(--color-secondary)]",
-          "[--slider-thumb-ring:var(--color-secondary-border-faded)]",
+          "[--slider-thumb-ring:var(--color-secondary-faded-border)]",
         ],
 
         "secondary-faded": [
-          "[--slider-track-bg:var(--color-secondary-faded)] [--slider-track-inset-ring:var(--color-secondary-border-faded)] aria-invalid:[--slider-track-bg:var(--color-destructive-faded)] aria-invalid:[--slider-track-inset-ring:var(--color-destructive-border-faded)]",
+          "[--slider-track-bg:var(--color-secondary-faded)] [--slider-track-inset-ring:var(--color-secondary-faded-border)] aria-invalid:[--slider-track-bg:var(--color-destructive-faded)] aria-invalid:[--slider-track-inset-ring:var(--color-destructive-faded-border)]",
           "[--slider-range-bg:var(--color-secondary)]",
           "[--slider-thumb-border:var(--color-secondary)]",
-          "[--slider-thumb-ring:var(--color-secondary-border-faded)]",
+          "[--slider-thumb-ring:var(--color-secondary-faded-border)]",
         ],
       },
     },

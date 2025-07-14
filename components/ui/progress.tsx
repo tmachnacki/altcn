@@ -12,17 +12,17 @@ const progressVariants = cva(
     variants: {
       variant: {
         base: "bg-muted",
-        faded: "bg-faded inset-ring inset-ring-border-faded",
+        faded: "bg-faded inset-ring inset-ring-faded-border",
 
         primary: "bg-muted",
         "primary-muted": "bg-primary-muted",
         "primary-faded":
-          "bg-primary-faded inset-ring inset-ring-primary-border-faded",
+          "bg-primary-faded inset-ring inset-ring-primary-faded-border",
 
         secondary: "bg-muted",
         "secondary-muted": "bg-secondary-muted",
         "secondary-faded":
-          "bg-secondary-faded inset-ring inset-ring-secondary-border-faded",
+          "bg-secondary-faded inset-ring inset-ring-secondary-faded-border",
       },
     },
     compoundVariants: [

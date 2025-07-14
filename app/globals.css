@@ -34,9 +34,6 @@
   --outline: var(--color-base-600);
   --overlay: --alpha(var(--color-base-100) / 50%);
 
-  --skeleton: var(--color-base-300);
-  --skeleton-shimmer: var(--color-base-100);
-
   --chart-1: hsl(12 76% 61%);
   --chart-2: hsl(173 58% 39%);
   --chart-3: hsl(197 37% 24%);
@@ -59,7 +56,7 @@
   /* faded */
   --faded: --alpha(var(--color-base-400) / 10%);
   --hover-faded: --alpha(var(--color-base-400) / 17.5%);
-  --border-faded: --alpha(var(--color-base-500) / 15%);
+  --faded-border: --alpha(var(--color-base-500) / 15%);
 
   /* gradient */
   --base-gradient:
@@ -89,7 +86,7 @@
   /* faded */
   --primary-faded: --alpha(var(--color-primary-400) / 7.5%);
   --hover-primary-faded: --alpha(var(--color-primary-400) / 15%);
-  --primary-border-faded: --alpha(var(--color-primary-600) / 15%);
+  --primary-faded-border: --alpha(var(--color-primary-600) / 15%);
 
   /* tron */
   --primary-tron-gradient:
@@ -98,8 +95,8 @@
   --hover-primary-tron-gradient:
     to bottom, --alpha(var(--color-primary) / 20%) 0%,
     --alpha(var(--color-primary) / 5%) 100%;
-  --primary-border-tron: --alpha(var(--color-primary) / 30%);
-  --hover-primary-border-tron: --alpha(var(--color-primary) / 50%);
+  --primary-tron-border: --alpha(var(--color-primary) / 30%);
+  --hover-primary-tron-border: --alpha(var(--color-primary) / 50%);
   --primary-tron-blur: var(--color-purple-400);
 
   /* gradient */
@@ -134,7 +131,7 @@
   /* faded */
   --secondary-faded: --alpha(var(--color-secondary-400) / 10%);
   --hover-secondary-faded: --alpha(var(--color-secondary-400) / 17.5%);
-  --secondary-border-faded: --alpha(var(--color-secondary-600) / 20%);
+  --secondary-faded-border: --alpha(var(--color-secondary-600) / 20%);
 
   /* tron */
   --secondary-tron-gradient:
@@ -143,8 +140,8 @@
   --hover-secondary-tron-gradient:
     to bottom, --alpha(var(--color-secondary) / 20%) 0%,
     --alpha(var(--color-secondary) / 5%) 100%;
-  --secondary-border-tron: --alpha(var(--color-secondary) / 30%);
-  --hover-secondary-border-tron: --alpha(var(--color-secondary) / 50%);
+  --secondary-tron-border: --alpha(var(--color-secondary) / 30%);
+  --hover-secondary-tron-border: --alpha(var(--color-secondary) / 50%);
   --secondary-tron-blur: var(--color-cyan-400);
 
   /* gradient */
@@ -176,7 +173,7 @@
   /* faded */
   --destructive-faded: --alpha(var(--color-destructive-400) / 7.5%);
   --hover-destructive-faded: --alpha(var(--color-destructive-400) / 15%);
-  --destructive-border-faded: --alpha(var(--color-destructive-600) / 12.5%);
+  --destructive-faded-border: --alpha(var(--color-destructive-600) / 12.5%);
 
   /* tron */
   --destructive-tron-gradient:
@@ -185,8 +182,8 @@
   --hover-destructive-tron-gradient:
     to bottom, --alpha(var(--color-destructive) / 20%) 0%,
     --alpha(var(--color-destructive) / 5%) 100%;
-  --destructive-border-tron: --alpha(var(--color-destructive) / 30%);
-  --hover-destructive-border-tron: --alpha(var(--color-destructive) / 50%);
+  --destructive-tron-border: --alpha(var(--color-destructive) / 30%);
+  --hover-destructive-tron-border: --alpha(var(--color-destructive) / 50%);
   --destructive-tron-blur: var(--color-pink-400);
 
   /* gradient */
@@ -218,7 +215,7 @@
   /* faded */
   --success-faded: --alpha(var(--color-success-400) / 10%);
   --hover-success-faded: --alpha(var(--color-success-400) / 15%);
-  --success-border-faded: --alpha(var(--color-success-600) / 20%);
+  --success-faded-border: --alpha(var(--color-success-600) / 20%);
 
   /* tron */
   --success-tron-gradient:
@@ -227,8 +224,8 @@
   --hover-success-tron-gradient:
     to bottom, --alpha(var(--color-success) / 20%) 0%,
     --alpha(var(--color-success) / 5%) 100%;
-  --success-border-tron: --alpha(var(--color-success) / 30%);
-  --hover-success-border-tron: --alpha(var(--color-success) / 50%);
+  --success-tron-border: --alpha(var(--color-success) / 30%);
+  --hover-success-tron-border: --alpha(var(--color-success) / 50%);
   --success-tron-blur: var(--color-green-400);
 
   /* gradient */
@@ -262,7 +259,7 @@
   /* faded */
   --warning-faded: --alpha(var(--color-warning-400) / 10%);
   --hover-warning-faded: --alpha(var(--color-warning-400) / 17.5%);
-  --warning-border-faded: --alpha(var(--color-warning-600) / 25%);
+  --warning-faded-border: --alpha(var(--color-warning-600) / 25%);
 
   /* tron */
   --warning-tron-gradient:
@@ -271,8 +268,8 @@
   --hover-warning-tron-gradient:
     to bottom, --alpha(var(--color-warning) / 20%) 0%,
     --alpha(var(--color-warning) / 5%) 100%;
-  --warning-border-tron: --alpha(var(--color-warning) / 30%);
-  --hover-warning-border-tron: --alpha(var(--color-warning) / 50%);
+  --warning-tron-border: --alpha(var(--color-warning) / 30%);
+  --hover-warning-tron-border: --alpha(var(--color-warning) / 50%);
   --warning-tron-blur: var(--color-yellow-300);
 
   /* gradient */
@@ -306,9 +303,6 @@
   --outline: var(--color-base-300);
   --overlay: --alpha(var(--color-black) / 50%);
 
-  --skeleton: var(--color-base-800);
-  --skeleton-shimmer: --alpha(var(--color-white) / 15%);
-
   --chart-1: hsl(220 70% 50%);
   --chart-2: hsl(160 60% 45%);
   --chart-3: hsl(30 80% 55%);
@@ -339,7 +333,7 @@
   /* faded */
   --faded: --alpha(var(--color-base-500) / 10%);
   --hover-faded: --alpha(var(--color-base-500) / 17.5%);
-  --border-faded: --alpha(var(--color-base-400) / 15%);
+  --faded-border: --alpha(var(--color-base-400) / 15%);
 
   /* gradient */
   --base-gradient:
@@ -377,7 +371,7 @@
   /* faded */
   --primary-faded: --alpha(var(--color-primary-600) / 12.5%);
   --hover-primary-faded: --alpha(var(--color-primary-600) / 20%);
-  --primary-border-faded: --alpha(var(--color-primary-500) / 25%);
+  --primary-faded-border: --alpha(var(--color-primary-500) / 25%);
 
   /* tron */
   --primary-tron-gradient:
@@ -386,8 +380,8 @@
   --hover-primary-tron-gradient:
     to bottom, --alpha(var(--color-primary) / 20%) 0%,
     --alpha(var(--color-primary) / 5%) 100%;
-  --primary-border-tron: --alpha(var(--color-primary) / 30%);
-  --hover-primary-border-tron: --alpha(var(--color-primary) / 50%);
+  --primary-tron-border: --alpha(var(--color-primary) / 30%);
+  --hover-primary-tron-border: --alpha(var(--color-primary) / 50%);
   --primary-tron-blur: var(--color-purple-400);
 
   /* gradient */
@@ -422,7 +416,7 @@
   /* faded */
   --secondary-faded: --alpha(var(--color-secondary-500) / 10%);
   --hover-secondary-faded: --alpha(var(--color-secondary-500) / 15%);
-  --secondary-border-faded: --alpha(var(--color-secondary-500) / 20%);
+  --secondary-faded-border: --alpha(var(--color-secondary-500) / 20%);
 
   /* tron */
   --secondary-tron-gradient:
@@ -431,8 +425,8 @@
   --hover-secondary-tron-gradient:
     to bottom, --alpha(var(--color-secondary) / 20%) 0%,
     --alpha(var(--color-secondary) / 5%) 100%;
-  --secondary-border-tron: --alpha(var(--color-secondary) / 30%);
-  --hover-secondary-border-tron: --alpha(var(--color-secondary) / 50%);
+  --secondary-tron-border: --alpha(var(--color-secondary) / 30%);
+  --hover-secondary-tron-border: --alpha(var(--color-secondary) / 50%);
   --secondary-tron-blur: var(--color-cyan-400);
 
   /* gradient */
@@ -468,7 +462,7 @@
   /* faded */
   --destructive-faded: --alpha(var(--color-destructive-600) / 12.5%);
   --hover-destructive-faded: --alpha(var(--color-destructive-600) / 20%);
-  --destructive-border-faded: --alpha(var(--color-destructive-400) / 20%);
+  --destructive-faded-border: --alpha(var(--color-destructive-400) / 20%);
 
   /* tron */
   --destructive-tron-gradient:
@@ -477,8 +471,8 @@
   --hover-destructive-tron-gradient:
     to bottom, --alpha(var(--color-destructive) / 20%) 0%,
     --alpha(var(--color-destructive) / 5%) 100%;
-  --destructive-border-tron: --alpha(var(--color-destructive) / 30%);
-  --hover-destructive-border-tron: --alpha(var(--color-destructive) / 50%);
+  --destructive-tron-border: --alpha(var(--color-destructive) / 30%);
+  --hover-destructive-tron-border: --alpha(var(--color-destructive) / 50%);
   --destructive-tron-blur: var(--color-pink-400);
 
   /* gradient */
@@ -514,7 +508,7 @@
   /* faded */
   --success-faded: --alpha(var(--color-success-600) / 12.5%);
   --hover-success-faded: --alpha(var(--color-success-600) / 20%);
-  --success-border-faded: --alpha(var(--color-success-500) / 20%);
+  --success-faded-border: --alpha(var(--color-success-500) / 20%);
 
   /* tron */
   --success-tron-gradient:
@@ -523,8 +517,8 @@
   --hover-success-tron-gradient:
     to bottom, --alpha(var(--color-success) / 20%) 0%,
     --alpha(var(--color-success) / 5%) 100%;
-  --success-border-tron: --alpha(var(--color-success) / 30%);
-  --hover-success-border-tron: --alpha(var(--color-success) / 50%);
+  --success-tron-border: --alpha(var(--color-success) / 30%);
+  --hover-success-tron-border: --alpha(var(--color-success) / 50%);
   --success-tron-blur: var(--color-green-400);
 
   /* gradient */
@@ -558,7 +552,7 @@
   /* faded */
   --warning-faded: --alpha(var(--color-warning-600) / 12.5%);
   --hover-warning-faded: --alpha(var(--color-warning-600) / 17.5%);
-  --warning-border-faded: --alpha(var(--color-warning-400) / 20%);
+  --warning-faded-border: --alpha(var(--color-warning-400) / 20%);
 
   /* tron */
   --warning-tron-gradient:
@@ -567,8 +561,8 @@
   --hover-warning-tron-gradient:
     to bottom, --alpha(var(--color-warning) / 20%) 0%,
     --alpha(var(--color-warning) / 5%) 100%;
-  --warning-border-tron: --alpha(var(--color-warning) / 30%);
-  --hover-warning-border-tron: --alpha(var(--color-warning) / 50%);
+  --warning-tron-border: --alpha(var(--color-warning) / 30%);
+  --hover-warning-tron-border: --alpha(var(--color-warning) / 50%);
   --warning-tron-blur: var(--color-yellow-300);
 
   /* gradient */
@@ -670,9 +664,6 @@
   --color-outline: var(--outline);
   --color-overlay: var(--overlay);
 
-  --color-skeleton: var(--skeleton);
-  --color-skeleton-shimmer: var(--skeleton-shimmer);
-
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
@@ -704,7 +695,7 @@
   --color-faded: var(--faded);
   --color-faded-solid: var(--faded-solid);
   --color-hover-faded: var(--hover-faded);
-  --color-border-faded: var(--border-faded);
+  --color-faded-border: var(--faded-border);
 
   /** -- PRIMARY -- */
   --color-primary: var(--primary);
@@ -722,11 +713,11 @@
   /* faded */
   --color-primary-faded: var(--primary-faded);
   --color-hover-primary-faded: var(--hover-primary-faded);
-  --color-primary-border-faded: var(--primary-border-faded);
+  --color-primary-faded-border: var(--primary-faded-border);
 
   /* tron */
-  --color-primary-border-tron: var(--primary-border-tron);
-  --color-hover-primary-border-tron: var(--hover-primary-border-tron);
+  --color-primary-tron-border: var(--primary-tron-border);
+  --color-hover-primary-tron-border: var(--hover-primary-tron-border);
   --color-primary-tron-blur: var(--primary-tron-blur);
 
   /** -- SECONDARY -- */
@@ -745,11 +736,11 @@
   /* faded */
   --color-secondary-faded: var(--secondary-faded);
   --color-hover-secondary-faded: var(--hover-secondary-faded);
-  --color-secondary-border-faded: var(--secondary-border-faded);
+  --color-secondary-faded-border: var(--secondary-faded-border);
 
   /* tron */
-  --color-secondary-border-tron: var(--secondary-border-tron);
-  --color-hover-secondary-border-tron: var(--hover-secondary-border-tron);
+  --color-secondary-tron-border: var(--secondary-tron-border);
+  --color-hover-secondary-tron-border: var(--hover-secondary-tron-border);
   --color-secondary-tron-blur: var(--secondary-tron-blur);
 
   /** -- DESTRUCTIVE -- */
@@ -768,11 +759,11 @@
   /* faded */
   --color-destructive-faded: var(--destructive-faded);
   --color-hover-destructive-faded: var(--hover-destructive-faded);
-  --color-destructive-border-faded: var(--destructive-border-faded);
+  --color-destructive-faded-border: var(--destructive-faded-border);
 
   /* tron */
-  --color-destructive-border-tron: var(--destructive-border-tron);
-  --color-hover-destructive-border-tron: var(--hover-destructive-border-tron);
+  --color-destructive-tron-border: var(--destructive-tron-border);
+  --color-hover-destructive-tron-border: var(--hover-destructive-tron-border);
   --color-destructive-tron-blur: var(--destructive-tron-blur);
 
   /** -- SUCCESS -- */
@@ -790,11 +781,11 @@
   /* faded */
   --color-success-faded: var(--success-faded);
   --color-hover-success-faded: var(--hover-success-faded);
-  --color-success-border-faded: var(--success-border-faded);
+  --color-success-faded-border: var(--success-faded-border);
 
   /* tron */
-  --color-success-border-tron: var(--success-border-tron);
-  --color-hover-success-border-tron: var(--hover-success-border-tron);
+  --color-success-tron-border: var(--success-tron-border);
+  --color-hover-success-tron-border: var(--hover-success-tron-border);
   --color-success-tron-blur: var(--success-tron-blur);
 
   /** -- WARNING -- */
@@ -812,11 +803,11 @@
   /* faded */
   --color-warning-faded: var(--warning-faded);
   --color-hover-warning-faded: var(--hover-warning-faded);
-  --color-warning-border-faded: var(--warning-border-faded);
+  --color-warning-faded-border: var(--warning-faded-border);
 
   /* tron */
-  --color-warning-border-tron: var(--warning-border-tron);
-  --color-hover-warning-border-tron: var(--hover-warning-border-tron);
+  --color-warning-tron-border: var(--warning-tron-border);
+  --color-hover-warning-tron-border: var(--hover-warning-tron-border);
   --color-warning-tron-blur: var(--warning-tron-blur);
 
   /** -- ANIMATIONS -- */

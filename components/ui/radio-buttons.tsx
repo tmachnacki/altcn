@@ -43,12 +43,12 @@ const radioButtonsItemVariants = cva(
         ],
 
         surface: [
-          "bg-faded text-accent-foreground inset-ring inset-ring-border-faded",
+          "bg-faded text-accent-foreground inset-ring inset-ring-faded-border",
           "hover:not-disabled:not-aria-invalid:bg-hover-faded",
         ],
 
         faded: [
-          "bg-faded text-muted-foreground inset-ring inset-ring-border-faded",
+          "bg-faded text-muted-foreground inset-ring inset-ring-faded-border",
           "hover:not-disabled:not-aria-invalid:bg-hover-faded",
         ],
 
@@ -84,18 +84,18 @@ const radioButtonsItemVariants = cva(
         ],
 
         "primary-surface": [
-          "bg-primary-faded text-primary-accent-foreground inset-ring inset-ring-primary-border-faded",
+          "bg-primary-faded text-primary-accent-foreground inset-ring inset-ring-primary-faded-border",
           "hover:not-disabled:not-aria-invalid:bg-hover-primary-faded",
         ],
 
         "primary-faded": [
-          "bg-primary-faded text-primary-muted-foreground inset-ring inset-ring-primary-border-faded",
+          "bg-primary-faded text-primary-muted-foreground inset-ring inset-ring-primary-faded-border",
           "hover:not-disabled:not-aria-invalid:bg-hover-primary-faded",
         ],
 
         "primary-tron": [
-          "bg-background bg-linear-(--primary-tron-gradient) text-primary-muted-foreground shadow inset-ring inset-ring-primary-border-tron",
-          "hover:not-disabled:not-aria-invalid:bg-linear-(--hover-primary-tron-gradient) hover:not-disabled:not-aria-invalid:inset-ring-hover-primary-border-tron",
+          "bg-background bg-linear-(--primary-tron-gradient) text-primary-muted-foreground shadow inset-ring inset-ring-primary-tron-border",
+          "hover:not-disabled:not-aria-invalid:bg-linear-(--hover-primary-tron-gradient) hover:not-disabled:not-aria-invalid:inset-ring-hover-primary-tron-border",
           "[--tron-beam:var(--color-primary)] [--tron-blur:var(--color-primary-tron-blur)]",
         ],
 
@@ -131,18 +131,18 @@ const radioButtonsItemVariants = cva(
         ],
 
         "secondary-surface": [
-          "bg-secondary-faded text-secondary-accent-foreground inset-ring inset-ring-secondary-border-faded",
+          "bg-secondary-faded text-secondary-accent-foreground inset-ring inset-ring-secondary-faded-border",
           "hover:not-disabled:not-aria-invalid:bg-hover-secondary-faded",
         ],
 
         "secondary-faded": [
-          "bg-secondary-faded text-secondary-muted-foreground inset-ring inset-ring-secondary-border-faded",
+          "bg-secondary-faded text-secondary-muted-foreground inset-ring inset-ring-secondary-faded-border",
           "hover:not-disabled:not-aria-invalid:bg-hover-secondary-faded",
         ],
 
         "secondary-tron": [
-          "bg-background bg-linear-(--secondary-tron-gradient) text-secondary-muted-foreground shadow inset-ring inset-ring-secondary-border-tron",
-          "hover:not-disabled:not-aria-invalid:bg-linear-(--hover-secondary-tron-gradient) hover:not-disabled:not-aria-invalid:inset-ring-hover-secondary-border-tron",
+          "bg-background bg-linear-(--secondary-tron-gradient) text-secondary-muted-foreground shadow inset-ring inset-ring-secondary-tron-border",
+          "hover:not-disabled:not-aria-invalid:bg-linear-(--hover-secondary-tron-gradient) hover:not-disabled:not-aria-invalid:inset-ring-hover-secondary-tron-border",
           "[--tron-beam:var(--color-secondary)] [--tron-blur:var(--color-secondary-tron-blur)]",
         ],
 
@@ -270,17 +270,17 @@ const radioButtonsItemVariants = cva(
       {
         variant: ["surface", "primary-surface", "secondary-surface"],
         className:
-          "aria-invalid:bg-destructive-faded aria-invalid:text-destructive-accent-foreground aria-invalid:inset-ring-destructive-border-faded hover:not-disabled:aria-invalid:bg-hover-destructive-faded",
+          "aria-invalid:bg-destructive-faded aria-invalid:text-destructive-accent-foreground aria-invalid:inset-ring-destructive-faded-border hover:not-disabled:aria-invalid:bg-hover-destructive-faded",
       },
       {
         variant: ["faded", "primary-faded", "secondary-faded"],
         className:
-          "aria-invalid:bg-destructive-faded aria-invalid:text-destructive-muted-foreground aria-invalid:inset-ring-destructive-border-faded hover:not-disabled:aria-invalid:bg-hover-destructive-faded",
+          "aria-invalid:bg-destructive-faded aria-invalid:text-destructive-muted-foreground aria-invalid:inset-ring-destructive-faded-border hover:not-disabled:aria-invalid:bg-hover-destructive-faded",
       },
       {
         variant: ["primary-tron", "secondary-tron"],
         className:
-          "aria-invalid:bg-linear-(--destructive-tron-gradient) aria-invalid:text-destructive-muted-foreground aria-invalid:inset-ring-destructive-border-tron aria-invalid:[--tron-beam:var(--color-destructive)] aria-invalid:[--tron-blur:var(--color-destructive-tron-blur)] hover:not-disabled:aria-invalid:bg-linear-(--hover-destructive-tron-gradient) hover:not-disabled:aria-invalid:inset-ring-hover-destructive-border-tron",
+          "aria-invalid:bg-linear-(--destructive-tron-gradient) aria-invalid:text-destructive-muted-foreground aria-invalid:inset-ring-destructive-tron-border aria-invalid:[--tron-beam:var(--color-destructive)] aria-invalid:[--tron-blur:var(--color-destructive-tron-blur)] hover:not-disabled:aria-invalid:bg-linear-(--hover-destructive-tron-gradient) hover:not-disabled:aria-invalid:inset-ring-hover-destructive-tron-border",
       },
       {
         variant: ["base-shadow", "primary-shadow", "secondary-shadow"],

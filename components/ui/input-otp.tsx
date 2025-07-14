@@ -47,7 +47,7 @@ const inputOTPSlotVariants = cva(
 
           "data-[active=true]:shadow-[inset_0_0_0_2px_var(--color-primary)]",
 
-          "data-[invalid=true]:bg-destructive-muted data-[invalid=true]:text-destructive-accent-foreground data-[invalid=true]:[--inset-border:var(--color-destructive-border-faded)] data-[invalid=true]:group-not-focus-within/input-otp:group-hover/input-otp:bg-hover-destructive-muted data-[invalid=true]:data-[active=true]:shadow-[inset_0_0_0_2px_var(--color-destructive)] data-[invalid=true]:data-[placeholder]:text-destructive-placeholder",
+          "data-[invalid=true]:bg-destructive-muted data-[invalid=true]:text-destructive-accent-foreground data-[invalid=true]:[--inset-border:var(--color-destructive-faded-border)] data-[invalid=true]:group-not-focus-within/input-otp:group-hover/input-otp:bg-hover-destructive-muted data-[invalid=true]:data-[active=true]:shadow-[inset_0_0_0_2px_var(--color-destructive)] data-[invalid=true]:data-[placeholder]:text-destructive-placeholder",
 
           "data-[spacing=split]:ml-0 data-[spacing=split]:rounded-md data-[spacing=split]:shadow-none",
         ],
@@ -65,7 +65,7 @@ const inputOTPSlotVariants = cva(
         "primary-muted": [
           "-ml-px bg-primary-muted text-primary-accent-foreground group-hover/input-otp:not-data-[invalid=true]:group-not-has-disabled/input-otp:group-not-focus-within/input-otp:bg-hover-primary-muted first:ml-0 first:rounded-l-md last:rounded-r-md",
 
-          "shadow-[inset_1px_0_0_0_var(--inset-border),inset_-1px_0_0_0_var(--inset-border)] [--inset-border:var(--color-primary-border-faded)] first:shadow-[inset_-1px_0_0_0_var(--inset-border)] last:shadow-[inset_1px_0_0_0_var(--inset-border)]",
+          "shadow-[inset_1px_0_0_0_var(--inset-border),inset_-1px_0_0_0_var(--inset-border)] [--inset-border:var(--color-primary-faded-border)] first:shadow-[inset_-1px_0_0_0_var(--inset-border)] last:shadow-[inset_1px_0_0_0_var(--inset-border)]",
 
           "data-[placeholder]:text-primary-placeholder",
 
@@ -73,7 +73,7 @@ const inputOTPSlotVariants = cva(
 
           "data-[active=true]:shadow-[inset_0_0_0_2px_var(--color-primary)]",
 
-          "data-[invalid=true]:bg-destructive-muted data-[invalid=true]:text-destructive-accent-foreground data-[invalid=true]:[--inset-border:var(--color-destructive-border-faded)] data-[invalid=true]:group-not-focus-within/input-otp:group-hover/input-otp:bg-hover-destructive-muted data-[invalid=true]:data-[active=true]:shadow-[inset_0_0_0_2px_var(--color-destructive)] data-[invalid=true]:data-[placeholder]:text-destructive-placeholder",
+          "data-[invalid=true]:bg-destructive-muted data-[invalid=true]:text-destructive-accent-foreground data-[invalid=true]:[--inset-border:var(--color-destructive-faded-border)] data-[invalid=true]:group-not-focus-within/input-otp:group-hover/input-otp:bg-hover-destructive-muted data-[invalid=true]:data-[active=true]:shadow-[inset_0_0_0_2px_var(--color-destructive)] data-[invalid=true]:data-[placeholder]:text-destructive-placeholder",
 
           "data-[spacing=split]:-ml-0 data-[spacing=split]:rounded-md data-[spacing=split]:shadow-none",
         ],
@@ -81,7 +81,7 @@ const inputOTPSlotVariants = cva(
         "secondary-muted": [
           "-ml-px bg-secondary-muted text-secondary-accent-foreground group-hover/input-otp:not-data-[invalid=true]:group-not-has-disabled/input-otp:group-not-focus-within/input-otp:bg-hover-secondary-muted first:ml-0 first:rounded-l-md last:rounded-r-md",
 
-          "shadow-[inset_1px_0_0_0_var(--inset-border),inset_-1px_0_0_0_var(--inset-border)] [--inset-border:var(--color-secondary-border-faded)] first:shadow-[inset_-1px_0_0_0_var(--inset-border)] last:shadow-[inset_1px_0_0_0_var(--inset-border)]",
+          "shadow-[inset_1px_0_0_0_var(--inset-border),inset_-1px_0_0_0_var(--inset-border)] [--inset-border:var(--color-secondary-faded-border)] first:shadow-[inset_-1px_0_0_0_var(--inset-border)] last:shadow-[inset_1px_0_0_0_var(--inset-border)]",
 
           "data-[placeholder]:text-secondary-placeholder",
 
@@ -89,7 +89,7 @@ const inputOTPSlotVariants = cva(
 
           "data-[active=true]:shadow-[inset_0_0_0_2px_var(--color-secondary)]",
 
-          "data-[invalid=true]:bg-destructive-muted data-[invalid=true]:text-destructive-accent-foreground data-[invalid=true]:[--inset-border:var(--color-destructive-border-faded)] data-[invalid=true]:group-not-focus-within/input-otp:group-hover/input-otp:bg-hover-destructive-muted data-[invalid=true]:data-[active=true]:shadow-[inset_0_0_0_2px_var(--color-destructive)] data-[invalid=true]:data-[placeholder]:text-destructive-placeholder",
+          "data-[invalid=true]:bg-destructive-muted data-[invalid=true]:text-destructive-accent-foreground data-[invalid=true]:[--inset-border:var(--color-destructive-faded-border)] data-[invalid=true]:group-not-focus-within/input-otp:group-hover/input-otp:bg-hover-destructive-muted data-[invalid=true]:data-[active=true]:shadow-[inset_0_0_0_2px_var(--color-destructive)] data-[invalid=true]:data-[placeholder]:text-destructive-placeholder",
 
           "data-[spacing=split]:-ml-0 data-[spacing=split]:rounded-md data-[spacing=split]:shadow-none",
         ],

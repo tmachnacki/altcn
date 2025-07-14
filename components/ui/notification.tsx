@@ -20,9 +20,9 @@ const notificationVariants = cva(
 
         muted: "bg-muted text-muted-foreground",
 
-        surface: "border border-border-faded bg-faded text-accent-foreground",
+        surface: "border border-faded-border bg-faded text-accent-foreground",
 
-        faded: "border border-border-faded bg-faded text-muted-foreground",
+        faded: "border border-faded-border bg-faded text-muted-foreground",
 
         // -- primary --
         primary: "bg-primary text-primary-foreground",
@@ -32,10 +32,10 @@ const notificationVariants = cva(
         "primary-muted": "bg-primary-muted text-primary-muted-foreground",
 
         "primary-surface":
-          "border border-primary-border-faded bg-primary-faded text-primary-accent-foreground",
+          "border border-primary-faded-border bg-primary-faded text-primary-accent-foreground",
 
         "primary-faded":
-          "border border-primary-border-faded bg-primary-faded text-primary-muted-foreground",
+          "border border-primary-faded-border bg-primary-faded text-primary-muted-foreground",
 
         // -- secondary --
         secondary: "bg-secondary text-secondary-foreground",
@@ -46,10 +46,10 @@ const notificationVariants = cva(
         "secondary-muted": "bg-secondary-muted text-secondary-muted-foreground",
 
         "secondary-surface":
-          "border border-secondary-border-faded bg-secondary-faded text-secondary-accent-foreground",
+          "border border-secondary-faded-border bg-secondary-faded text-secondary-accent-foreground",
 
         "secondary-faded":
-          "border border-secondary-border-faded bg-secondary-faded text-secondary-muted-foreground",
+          "border border-secondary-faded-border bg-secondary-faded text-secondary-muted-foreground",
 
         // -- destructive --
         destructive: "bg-destructive text-destructive-foreground",
@@ -61,10 +61,10 @@ const notificationVariants = cva(
           "bg-destructive-muted text-destructive-muted-foreground",
 
         "destructive-surface":
-          "border border-destructive-border-faded bg-destructive-faded text-destructive-accent-foreground",
+          "border border-destructive-faded-border bg-destructive-faded text-destructive-accent-foreground",
 
         "destructive-faded":
-          "border border-destructive-border-faded bg-destructive-faded text-destructive-muted-foreground",
+          "border border-destructive-faded-border bg-destructive-faded text-destructive-muted-foreground",
 
         // -- success --
         success: "bg-success text-success-foreground",
@@ -74,10 +74,10 @@ const notificationVariants = cva(
         "success-muted": "bg-success-muted text-success-muted-foreground",
 
         "success-surface":
-          "border border-success-border-faded bg-success-faded text-success-accent-foreground",
+          "border border-success-faded-border bg-success-faded text-success-accent-foreground",
 
         "success-faded":
-          "border border-success-border-faded bg-success-faded text-success-muted-foreground",
+          "border border-success-faded-border bg-success-faded text-success-muted-foreground",
 
         // -- warning --
         warning: "bg-warning text-warning-foreground",
@@ -87,10 +87,10 @@ const notificationVariants = cva(
         "warning-muted": "bg-warning-muted text-warning-muted-foreground",
 
         "warning-surface":
-          "border border-warning-border-faded bg-warning-faded text-warning-accent-foreground",
+          "border border-warning-faded-border bg-warning-faded text-warning-accent-foreground",
 
         "warning-faded":
-          "border border-warning-border-faded bg-warning-faded text-warning-muted-foreground",
+          "border border-warning-faded-border bg-warning-faded text-warning-muted-foreground",
       },
     },
     defaultVariants: {

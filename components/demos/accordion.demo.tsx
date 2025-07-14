@@ -7,6 +7,7 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
+  accordionVariants,
 } from "~/components/ui/accordion";
 import { Label } from "~/components/ui/label";
 import {
@@ -20,21 +21,14 @@ import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
 import { Swatch } from "~/components/swatch";
 
-const accordionVariants = [
-  "outline",
-  "muted",
-  "faded",
-  "primary-muted",
-  "primary-faded",
-  "secondary-muted",
-  "secondary-faded",
-] as const;
+type Variant = keyof typeof accordionVariants.variants.variant;
+const variants = Object.keys(accordionVariants.variants.variant) as Variant[];
 
-const accordionSpacings = ["compact", "split"] as const;
+const spacings = ["compact", "split"] as const;
 
 export function AccordionDemo() {
-  const [accordionVariant, setAccordionVariant] = React.useState("outline");
-  const [accordionSpacing, setAccordionSpacing] = React.useState("compact");
+  const [variant, setVariant] = React.useState("outline");
+  const [spacing, setSpacing] = React.useState("compact");
 
   return (
     <>
@@ -44,8 +38,8 @@ export function AccordionDemo() {
             type="single"
             collapsible
             className="w-full"
-            variant={accordionVariant as (typeof accordionVariants)[number]}
-            spacing={accordionSpacing as (typeof accordionSpacings)[number]}
+            variant={variant as Variant}
+            spacing={spacing as (typeof spacings)[number]}
           >
             <AccordionItem value="item-1">
               <AccordionTrigger>Is it accessible?</AccordionTrigger>
@@ -73,13 +67,13 @@ export function AccordionDemo() {
       <ComponentPlayground>
         <div className="grid gap-2">
           <Label htmlFor="accordion-variant">Variant</Label>
-          <Select value={accordionVariant} onValueChange={setAccordionVariant}>
+          <Select value={variant} onValueChange={setVariant}>
             <SelectTrigger id="accordion-variant" className="w-full">
               <SelectValue placeholder="Select variant" />
             </SelectTrigger>
             <SelectContent>
-              {accordionVariants.map((variant) => (
-                <SelectItem key={variant} value={variant}>
+              {variants.map((variant) => (
+                <SelectItem key={`accordion-${variant}`} value={variant}>
                   <Swatch variant={variant} />
                   {variant}
                 </SelectItem>
@@ -89,13 +83,13 @@ export function AccordionDemo() {
         </div>
         <div className="grid gap-2">
           <Label htmlFor="accordion-spacing">Spacing</Label>
-          <Select value={accordionSpacing} onValueChange={setAccordionSpacing}>
+          <Select value={spacing} onValueChange={setSpacing}>
             <SelectTrigger id="accordion-spacing" className="w-full">
               <SelectValue placeholder="Select variant" />
             </SelectTrigger>
             <SelectContent>
-              {accordionSpacings.map((spacing) => (
-                <SelectItem key={spacing} value={spacing}>
+              {spacings.map((spacing) => (
+                <SelectItem key={`accordion-${spacing}`} value={spacing}>
                   {spacing}
                 </SelectItem>
               ))}

@@ -14,6 +14,7 @@ import {
   AlertIcon,
   AlertInsetColor,
   AlertTitle,
+  alertVariants,
 } from "~/components/ui/alert";
 import { Button } from "~/components/ui/button";
 import { Label } from "~/components/ui/label";
@@ -28,55 +29,42 @@ import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
 import { Swatch } from "~/components/swatch";
 
-const alertVariants = [
-  "outline",
-  "muted",
-  "faded",
-  "primary-muted",
-  "primary-faded",
-  "secondary-muted",
-  "secondary-faded",
-  "destructive-muted",
-  "destructive-faded",
-  "success-muted",
-  "success-faded",
-  "warning-muted",
-  "warning-faded",
-] as const;
+type Variant = keyof typeof alertVariants.variants.variant;
+const variants = Object.keys(alertVariants.variants.variant) as Variant[];
 
-const alertButtonVariant = (variant: (typeof alertVariants)[number]) => {
+const alertButtonVariant = (variant: Variant) => {
   switch (variant) {
     case "outline":
-      return "outline";
+      return "surface";
     case "muted":
-      return "accent";
+      return "surface";
     case "faded":
       return "surface";
     case "primary-muted":
-      return "primary-accent";
+      return "primary-surface";
     case "primary-faded":
       return "primary-surface";
     case "secondary-muted":
-      return "secondary-accent";
+      return "secondary-surface";
     case "secondary-faded":
       return "secondary-surface";
     case "destructive-muted":
-      return "destructive-accent";
+      return "destructive-surface";
     case "destructive-faded":
       return "destructive-surface";
     case "success-muted":
-      return "success-accent";
+      return "success-surface";
     case "success-faded":
       return "success-surface";
     case "warning-muted":
-      return "warning-accent";
+      return "warning-surface";
     case "warning-faded":
       return "warning-surface";
   }
 };
 
 export function AlertDemo() {
-  const [alertVariant, setAlertVariant] = React.useState("outline");
+  const [variant, setVariant] = React.useState("outline");
   const [showAlertCentered, setShowAlertCentered] = React.useState(true);
   const [showAlert, setShowAlert] = React.useState(true);
 
@@ -96,40 +84,37 @@ export function AlertDemo() {
     <>
       <ComponentContainer>
         <div className="flex w-full max-w-xl flex-col gap-4">
-          <Alert variant={alertVariant as (typeof alertVariants)[number]}>
+          <Alert variant={variant as Variant}>
             <CheckCircle2Icon />
             <AlertContent>
               <AlertTitle>Success! This is a standard alert</AlertTitle>
               <AlertDescription>
-                This is a {alertVariant} alert with default icon, title, and
+                This is a {variant} alert with default icon, title, and
                 description.
               </AlertDescription>
             </AlertContent>
           </Alert>
-          <Alert variant={alertVariant as (typeof alertVariants)[number]}>
+          <Alert variant={variant as Variant}>
             <AlertInsetColor />
             <CheckCircle2Icon />
             <AlertContent>
               <AlertTitle>Success! This one has insetColor</AlertTitle>
               <AlertDescription>
-                This is a {alertVariant} alert with insetColor.
+                This is a {variant} alert with insetColor.
               </AlertDescription>
             </AlertContent>
           </Alert>
-          <Alert variant={alertVariant as (typeof alertVariants)[number]}>
+          <Alert variant={variant as Variant}>
             <AlertIcon type="success" />
             <AlertContent>
               <AlertTitle>Success! Your changes have been saved</AlertTitle>
               <AlertDescription>
-                This is a {alertVariant} alert with success type icon, title and
+                This is a {variant} alert with success type icon, title and
                 description.
               </AlertDescription>
             </AlertContent>
           </Alert>
-          <Alert
-            align="center"
-            variant={alertVariant as (typeof alertVariants)[number]}
-          >
+          <Alert align="center" variant={variant as Variant}>
             <AlertIcon type="info" />
             <AlertContent>
               <AlertTitle>
@@ -137,9 +122,7 @@ export function AlertDemo() {
               </AlertTitle>
             </AlertContent>
             <Button
-              variant={alertButtonVariant(
-                alertVariant as (typeof alertVariants)[number]
-              )}
+              variant={alertButtonVariant(variant as Variant)}
               size="sm"
               className="h-6"
             >
@@ -149,7 +132,7 @@ export function AlertDemo() {
 
           <Alert
             align="center"
-            variant={alertVariant as (typeof alertVariants)[number]}
+            variant={variant as Variant}
             className={showAlertCentered ? "visible" : "invisible"}
           >
             <AlertIcon type="info" />
@@ -159,9 +142,7 @@ export function AlertDemo() {
               </AlertTitle>
             </AlertContent>
             <Button
-              variant={alertButtonVariant(
-                alertVariant as (typeof alertVariants)[number]
-              )}
+              variant={alertButtonVariant(variant as Variant)}
               size="sm"
               className="h-6"
             >
@@ -170,10 +151,7 @@ export function AlertDemo() {
             <AlertClose onClick={handleCloseAlertCentered} />
           </Alert>
 
-          <Alert
-            align="center"
-            variant={alertVariant as (typeof alertVariants)[number]}
-          >
+          <Alert align="center" variant={variant as Variant}>
             <AlertIcon type="warning" />
             <AlertContent>
               <AlertDescription>
@@ -181,16 +159,14 @@ export function AlertDemo() {
               </AlertDescription>
             </AlertContent>
             <Button
-              variant={alertButtonVariant(
-                alertVariant as (typeof alertVariants)[number]
-              )}
+              variant={alertButtonVariant(variant as Variant)}
               size="sm"
               className="h-6"
             >
               Dismiss
             </Button>
           </Alert>
-          <Alert variant={alertVariant as (typeof alertVariants)[number]}>
+          <Alert variant={variant as Variant}>
             <AlertIcon type="error" />
             <AlertContent>
               <AlertTitle>Something went wrong!</AlertTitle>
@@ -204,9 +180,7 @@ export function AlertDemo() {
               </AlertDescription>
               <AlertFooter>
                 <Button
-                  variant={alertButtonVariant(
-                    alertVariant as (typeof alertVariants)[number]
-                  )}
+                  variant={alertButtonVariant(variant as Variant)}
                   size="sm"
                 >
                   Details
@@ -215,7 +189,7 @@ export function AlertDemo() {
             </AlertContent>
           </Alert>
           <Alert
-            variant={alertVariant as (typeof alertVariants)[number]}
+            variant={variant as Variant}
             className={showAlert ? "visible" : "invisible"}
           >
             <AlertIcon type="error" />
@@ -231,9 +205,7 @@ export function AlertDemo() {
               </AlertDescription>
               <AlertFooter>
                 <Button
-                  variant={alertButtonVariant(
-                    alertVariant as (typeof alertVariants)[number]
-                  )}
+                  variant={alertButtonVariant(variant as Variant)}
                   size="sm"
                 >
                   Details
@@ -247,13 +219,13 @@ export function AlertDemo() {
       <ComponentPlayground>
         <div className="grid gap-2">
           <Label htmlFor="alert-variant">Variant</Label>
-          <Select value={alertVariant} onValueChange={setAlertVariant}>
+          <Select value={variant} onValueChange={setVariant}>
             <SelectTrigger id="alert-variant" className="w-full">
               <SelectValue placeholder="Select variant" />
             </SelectTrigger>
             <SelectContent>
-              {alertVariants.map((variant) => (
-                <SelectItem key={variant} value={variant}>
+              {variants.map((variant) => (
+                <SelectItem key={`alert-${variant}`} value={variant}>
                   <Swatch variant={variant} />
                   {variant}
                 </SelectItem>

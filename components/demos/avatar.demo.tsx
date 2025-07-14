@@ -2,7 +2,12 @@
 
 import * as React from "react";
 
-import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar";
+import {
+  Avatar,
+  AvatarFallback,
+  avatarFallbackVariants,
+  AvatarImage,
+} from "~/components/ui/avatar";
 import { Label } from "~/components/ui/label";
 import {
   Select,
@@ -15,66 +20,30 @@ import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
 import { Swatch } from "~/components/swatch";
 
-const avatarFallbackVariants = [
-  "outline",
-  "base",
-  "accent",
-  "muted",
-  "surface",
-  "faded",
-  "base-gradient",
-
-  "primary",
-  "primary-accent",
-  "primary-muted",
-  "primary-surface",
-  "primary-faded",
-  "primary-gradient",
-
-  "secondary",
-  "secondary-accent",
-  "secondary-muted",
-  "secondary-surface",
-  "secondary-faded",
-  "secondary-gradient",
-] as const;
+type Variant = keyof typeof avatarFallbackVariants.variants.variant;
+const variants = Object.keys(
+  avatarFallbackVariants.variants.variant
+) as Variant[];
 
 export function AvatarDemo() {
-  const [avatarFallbackVariant, setAvatarFallbackVariant] =
-    React.useState("accent");
+  const [variant, setVariant] = React.useState("accent");
 
   return (
     <>
       <ComponentContainer>
         <div className="flex items-center gap-4">
           <Avatar>
-            <AvatarFallback
-              variant={
-                avatarFallbackVariant as (typeof avatarFallbackVariants)[number]
-              }
-            >
-              TM
-            </AvatarFallback>
+            <AvatarFallback variant={variant as Variant}>TM</AvatarFallback>
           </Avatar>
           <Avatar>
-            <AvatarFallback
-              variant={
-                avatarFallbackVariant as (typeof avatarFallbackVariants)[number]
-              }
-            />
+            <AvatarFallback variant={variant as Variant} />
           </Avatar>
           <Avatar>
             <AvatarImage
               src="https://github.com/tmachnacki.png"
               alt="@tmachnacki"
             />
-            <AvatarFallback
-              variant={
-                avatarFallbackVariant as (typeof avatarFallbackVariants)[number]
-              }
-            >
-              TM
-            </AvatarFallback>
+            <AvatarFallback variant={variant as Variant}>TM</AvatarFallback>
           </Avatar>
         </div>
       </ComponentContainer>
@@ -82,16 +51,13 @@ export function AvatarDemo() {
       <ComponentPlayground>
         <div className="grid gap-2">
           <Label htmlFor="avatar-fallback-variant">Fallback Variant</Label>
-          <Select
-            value={avatarFallbackVariant}
-            onValueChange={setAvatarFallbackVariant}
-          >
+          <Select value={variant} onValueChange={setVariant}>
             <SelectTrigger id="avatar-fallback-variant" className="w-full">
               <SelectValue placeholder="Select variant" />
             </SelectTrigger>
             <SelectContent>
-              {avatarFallbackVariants.map((variant) => (
-                <SelectItem key={variant} value={variant}>
+              {variants.map((variant) => (
+                <SelectItem key={`avatar-fallback-${variant}`} value={variant}>
                   <Swatch variant={variant} />
                   {variant}
                 </SelectItem>

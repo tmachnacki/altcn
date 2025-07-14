@@ -2,8 +2,9 @@
 
 import * as React from "react";
 import { addDays } from "date-fns";
+import { type DateRange } from "react-day-picker";
 
-import { Calendar, type DateRange } from "~/components/ui/calendar";
+import { Calendar } from "~/components/ui/calendar";
 import { Label } from "~/components/ui/label";
 import {
   Select,
@@ -138,14 +139,14 @@ export function CalendarDemo() {
       </ComponentContainer>
       <ComponentPlayground>
         <div className="grid gap-2">
-          <Label htmlFor="nav-variant">Nav Variant</Label>
+          <Label htmlFor="calendar-nav-variant">Nav Variant</Label>
           <Select value={navVariant} onValueChange={setNavVariant}>
-            <SelectTrigger id="nav-variant" className="w-full">
+            <SelectTrigger id="calendar-nav-variant" className="w-full">
               <SelectValue placeholder="Select a variant" />
             </SelectTrigger>
             <SelectContent>
               {navVariants.map((variant) => (
-                <SelectItem key={variant} value={variant}>
+                <SelectItem key={`calendar-nav-${variant}`} value={variant}>
                   {variant}
                 </SelectItem>
               ))}
@@ -153,14 +154,17 @@ export function CalendarDemo() {
           </Select>
         </div>
         <div className="grid gap-2">
-          <Label htmlFor="selected-variant">Selected Variant</Label>
+          <Label htmlFor="calendar-selected-variant">Selected Variant</Label>
           <Select value={selectedVariant} onValueChange={setSelectedVariant}>
-            <SelectTrigger id="selected-variant" className="w-full">
+            <SelectTrigger id="calendar-selected-variant" className="w-full">
               <SelectValue placeholder="Select a variant" />
             </SelectTrigger>
             <SelectContent>
               {selectedVariants.map((variant) => (
-                <SelectItem key={variant} value={variant}>
+                <SelectItem
+                  key={`calendar-selected-${variant}`}
+                  value={variant}
+                >
                   {variant}
                 </SelectItem>
               ))}
@@ -168,17 +172,22 @@ export function CalendarDemo() {
           </Select>
         </div>
         <div className="grid gap-2">
-          <Label htmlFor="unselected-variant">Unselected Variant</Label>
+          <Label htmlFor="calendar-unselected-variant">
+            Unselected Variant
+          </Label>
           <Select
             value={unselectedVariant}
             onValueChange={setUnselectedVariant}
           >
-            <SelectTrigger id="unselected-variant" className="w-full">
+            <SelectTrigger id="calendar-unselected-variant" className="w-full">
               <SelectValue placeholder="Select a variant" />
             </SelectTrigger>
             <SelectContent>
               {unselectedVariants.map((variant) => (
-                <SelectItem key={variant} value={variant}>
+                <SelectItem
+                  key={`calendar-unselected-${variant}`}
+                  value={variant}
+                >
                   {variant}
                 </SelectItem>
               ))}
@@ -186,14 +195,14 @@ export function CalendarDemo() {
           </Select>
         </div>
         <div className="grid gap-2">
-          <Label htmlFor="range-variant">Range Variant</Label>
+          <Label htmlFor="calendar-range-variant">Range Variant</Label>
           <Select value={rangeVariant} onValueChange={setRangeVariant}>
-            <SelectTrigger id="range-variant" className="w-full">
+            <SelectTrigger id="calendar-range-variant" className="w-full">
               <SelectValue placeholder="Select a variant" />
             </SelectTrigger>
             <SelectContent>
               {rangeVariants.map((variant) => (
-                <SelectItem key={variant} value={variant}>
+                <SelectItem key={`calendar-range-${variant}`} value={variant}>
                   {variant}
                 </SelectItem>
               ))}

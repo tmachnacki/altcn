@@ -22,6 +22,7 @@
 - [ ] Pill shapes
 - [ ] All colors variants and css files
 - [ ] Contrast variants
+- [ ] forced colors
 
 ## Components
 
