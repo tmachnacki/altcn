@@ -18,6 +18,7 @@ import {
   SelectValue,
 } from "~/components/ui/select";
 import { Slider } from "~/components/ui/slider";
+import { Switch } from "~/components/ui/switch";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
 import { Swatch } from "~/components/swatch";
@@ -35,133 +36,91 @@ const sizesMap: Record<number, Size> = {
 export function ButtonInputDemo() {
   const [variant, setVariant] = React.useState("outline");
   const [size, setSize] = React.useState(2);
+  const [invalid, setInvalid] = React.useState(false);
+  const [disabled, setDisabled] = React.useState(false);
 
   return (
     <>
       <ComponentContainer>
-        <div className="flex w-full max-w-xs flex-col gap-8 sm:max-w-sm">
-          <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2">
-            <ButtonInput
-              variant={variant as Variant}
-              size={sizesMap[size]}
-              className="w-full capitalize"
-            >
-              <ButtonInputValue>{variant}</ButtonInputValue>
-              <ButtonInputIcon />
-            </ButtonInput>
+        <div className="grid w-full grid-cols-1 gap-4 sm:max-w-sm sm:grid-cols-2">
+          <ButtonInput
+            variant={variant as Variant}
+            size={sizesMap[size]}
+            className="w-full capitalize"
+            disabled={disabled}
+            aria-invalid={invalid}
+          >
+            <ButtonInputValue>{variant}</ButtonInputValue>
+            <ButtonInputIcon />
+          </ButtonInput>
 
-            <ButtonInput
-              variant={variant as Variant}
-              size={sizesMap[size]}
-              className="w-full"
-            >
-              <ButtonInputValue>
-                <UserIcon />
-                tmachnacki
-              </ButtonInputValue>
-              <ButtonInputIcon />
-            </ButtonInput>
+          <ButtonInput
+            variant={variant as Variant}
+            size={sizesMap[size]}
+            className="w-full"
+            disabled={disabled}
+            aria-invalid={invalid}
+          >
+            <ButtonInputValue>
+              <UserIcon />
+              tmachnacki
+            </ButtonInputValue>
+            <ButtonInputIcon />
+          </ButtonInput>
 
-            <ButtonInput
-              variant={variant as Variant}
-              size={sizesMap[size]}
-              className="w-full"
-            >
-              <ButtonInputValue>Custom Icon</ButtonInputValue>
-              <ButtonInputIcon>
-                <CalendarIcon />
-              </ButtonInputIcon>
-            </ButtonInput>
+          <ButtonInput
+            variant={variant as Variant}
+            size={sizesMap[size]}
+            className="w-full"
+            disabled={disabled}
+            aria-invalid={invalid}
+          >
+            <ButtonInputValue>Custom Icon</ButtonInputValue>
+            <ButtonInputIcon>
+              <CalendarIcon />
+            </ButtonInputIcon>
+          </ButtonInput>
 
-            <ButtonInput
-              variant={variant as Variant}
-              size={sizesMap[size]}
-              className="w-full"
-            >
-              <ButtonInputIcon>
-                <CalendarIcon />
-              </ButtonInputIcon>
-              <ButtonInputValue>Leading Icon</ButtonInputValue>
-            </ButtonInput>
+          <ButtonInput
+            variant={variant as Variant}
+            size={sizesMap[size]}
+            className="w-full"
+            disabled={disabled}
+            aria-invalid={invalid}
+          >
+            <ButtonInputIcon>
+              <CalendarIcon />
+            </ButtonInputIcon>
+            <ButtonInputValue>Leading Icon</ButtonInputValue>
+          </ButtonInput>
 
-            <ButtonInput
-              variant={variant as Variant}
-              size={sizesMap[size]}
-              className="w-full"
-            >
-              <ButtonInputValue placeholder="Placeholder"></ButtonInputValue>
-              <ButtonInputIcon />
-            </ButtonInput>
+          <ButtonInput
+            variant={variant as Variant}
+            size={sizesMap[size]}
+            className="w-full"
+            disabled={disabled}
+            aria-invalid={invalid}
+          >
+            <ButtonInputValue placeholder="Placeholder"></ButtonInputValue>
+            <ButtonInputIcon />
+          </ButtonInput>
 
-            <ButtonInput
-              variant={variant as Variant}
-              size={sizesMap[size]}
-              className="w-full"
-            >
-              <ButtonInputValue
-                placeholder={
-                  <>
-                    <UserIcon /> Select user
-                  </>
-                }
-              ></ButtonInputValue>
-              <ButtonInputIcon />
-            </ButtonInput>
-
-            <ButtonInput
-              variant={variant as Variant}
-              size={sizesMap[size]}
-              className="w-full"
-              disabled={true}
-            >
-              <ButtonInputValue>Disabled</ButtonInputValue>
-              <ButtonInputIcon />
-            </ButtonInput>
-          </div>
-          <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2">
-            <ButtonInput
-              variant={variant as Variant}
-              size={sizesMap[size]}
-              className="w-full"
-              aria-invalid="true"
-            >
-              <ButtonInputValue>Invalid</ButtonInputValue>
-              <ButtonInputIcon />
-            </ButtonInput>
-
-            <ButtonInput
-              variant={variant as Variant}
-              size={sizesMap[size]}
-              className="w-full"
-              aria-invalid="true"
-            >
-              <ButtonInputValue>
-                <UserIcon /> Invalid
-              </ButtonInputValue>
-              <ButtonInputIcon />
-            </ButtonInput>
-
-            <ButtonInput
-              variant={variant as Variant}
-              size={sizesMap[size]}
-              className="w-full"
-              aria-invalid="true"
-            >
-              <ButtonInputValue placeholder="Placeholder"></ButtonInputValue>
-              <ButtonInputIcon />
-            </ButtonInput>
-
-            <ButtonInput
-              variant={variant as Variant}
-              size={sizesMap[size]}
-              className="w-full"
-              aria-invalid="true"
-              disabled={true}
-            >
-              <ButtonInputValue>Disabled</ButtonInputValue>
-              <ButtonInputIcon />
-            </ButtonInput>
-          </div>
+          <ButtonInput
+            variant={variant as Variant}
+            size={sizesMap[size]}
+            className="w-full"
+            disabled={disabled}
+            aria-invalid={invalid}
+          >
+            <ButtonInputValue
+              placeholder={
+                <>
+                  <UserIcon /> Select user
+                </>
+              }
+            ></ButtonInputValue>
+            <ButtonInputIcon />
+          </ButtonInput>
         </div>
       </ComponentContainer>
       <ComponentPlayground>
@@ -195,8 +154,25 @@ export function ButtonInputDemo() {
             max={3}
             step={1}
             value={[size]}
-            onValueChange={(value: number[]) => setSize(value[0])}
+            onValueChange={(value) => setSize(value[0])}
           />
+        </div>
+
+        <div className="flex items-center gap-3">
+          <Switch
+            id="button-input-invalid"
+            checked={invalid}
+            onCheckedChange={setInvalid}
+          />
+          <Label htmlFor="button-input-invalid">Invalid</Label>
+        </div>
+        <div className="flex items-center gap-3">
+          <Switch
+            id="button-input-disabled"
+            checked={disabled}
+            onCheckedChange={setDisabled}
+          />
+          <Label htmlFor="button-input-disabled">Disabled</Label>
         </div>
       </ComponentPlayground>
     </>

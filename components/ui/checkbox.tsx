@@ -2,41 +2,37 @@
 
 import * as React from "react";
 import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
-import { cva, type VariantProps } from "class-variance-authority";
+import { tv, type VariantProps } from "tailwind-variants";
 import { CheckIcon, MinusIcon } from "lucide-react";
 
-import { cn } from "~/lib/utils";
-
-const checkBoxVariants = cva(
-  [
-    "peer size-4 shrink-0 rounded-sm border border-border bg-background shadow-xs dark:data-[state=unchecked]:bg-faded",
-    "hover:not-aria-invalid:not-disabled:data-[state=unchecked]:border-hover-border",
+const checkBoxVariants = tv({
+  base: [
+    "peer size-4 shrink-0 rounded-sm bg-background shadow-xs inset-ring inset-ring-border not-disabled:not-data-[state=unchecked]:inset-ring-0 dark:data-[state=unchecked]:bg-faded",
+    "hover:not-aria-invalid:not-disabled:data-[state=unchecked]:inset-ring-hover-border",
     "outline-offset-2 focus-visible:outline-2",
-    "disabled:cursor-not-allowed disabled:border-border disabled:bg-muted disabled:opacity-50 disabled:not-data-[state=unchecked]:text-muted-foreground",
-    "aria-invalid:border-destructive aria-invalid:outline-destructive aria-invalid:not-data-[state=unchecked]:bg-destructive aria-invalid:not-data-[state=unchecked]:text-destructive-foreground dark:aria-invalid:data-[state=unchecked]:bg-destructive-faded",
+    "disabled:cursor-not-allowed disabled:bg-muted disabled:opacity-50 disabled:inset-ring-border disabled:not-data-[state=unchecked]:text-muted-foreground",
+    "aria-invalid:inset-ring-destructive aria-invalid:outline-destructive aria-invalid:not-data-[state=unchecked]:bg-destructive aria-invalid:not-data-[state=unchecked]:text-destructive-foreground dark:aria-invalid:data-[state=unchecked]:bg-destructive-faded",
   ],
-  {
-    variants: {
-      variant: {
-        base: [
-          "outline-outline",
-          "not-data-[state=unchecked]:border-base not-data-[state=unchecked]:bg-base not-data-[state=unchecked]:text-base-foreground",
-        ],
-        primary: [
-          "outline-primary",
-          "not-data-[state=unchecked]:border-primary not-data-[state=unchecked]:bg-primary not-data-[state=unchecked]:text-primary-foreground",
-        ],
-        secondary: [
-          "outline-secondary",
-          "not-data-[state=unchecked]:border-secondary not-data-[state=unchecked]:bg-secondary not-data-[state=unchecked]:text-secondary-foreground",
-        ],
-      },
+  variants: {
+    variant: {
+      base: [
+        "outline-outline",
+        "not-data-[state=unchecked]:bg-base not-data-[state=unchecked]:text-base-foreground",
+      ],
+      primary: [
+        "outline-primary",
+        "not-data-[state=unchecked]:bg-primary not-data-[state=unchecked]:text-primary-foreground",
+      ],
+      secondary: [
+        "outline-secondary",
+        "not-data-[state=unchecked]:bg-secondary not-data-[state=unchecked]:text-secondary-foreground",
+      ],
     },
-    defaultVariants: {
-      variant: "primary",
-    },
-  }
-);
+  },
+  defaultVariants: {
+    variant: "primary",
+  },
+});
 
 function Checkbox({
   className,
@@ -47,7 +43,10 @@ function Checkbox({
   return (
     <CheckboxPrimitive.Root
       data-slot="checkbox"
-      className={cn(checkBoxVariants({ variant }), "group/checkbox", className)}
+      className={checkBoxVariants({
+        variant,
+        className: ["group/checkbox", className],
+      })}
       {...props}
     >
       <CheckboxPrimitive.Indicator

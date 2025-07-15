@@ -10,6 +10,7 @@
 @custom-variant dark (&:is(.dark *));
 /* for better intellisense DX */
 @custom-variant aria-invalid (&[aria-invalid="true"]);
+@custom-variant next-disabled (&:is(:has(+ .peer:disabled)));
 
 :root {
   /** -- GLOBALS -- */

@@ -11,14 +11,17 @@ import {
   SelectTrigger,
   SelectValue,
 } from "~/components/ui/select";
+import { Switch } from "~/components/ui/switch";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
 import { Swatch } from "~/components/swatch";
 
-const checkboxVariants = ["primary", "secondary"] as const;
+const checkboxVariants = ["base", "primary", "secondary"] as const;
 
 export function CheckboxDemo() {
   const [variant, setVariant] = React.useState("primary");
+  const [disabled, setDisabled] = React.useState(false);
+  const [invalid, setInvalid] = React.useState(false);
 
   return (
     <>
@@ -28,6 +31,8 @@ export function CheckboxDemo() {
             <Checkbox
               id="checkbox-terms"
               variant={variant as (typeof checkboxVariants)[number]}
+              disabled={disabled}
+              aria-invalid={invalid}
             />
             <Label htmlFor="checkbox-terms">Accept terms and conditions</Label>
           </div>
@@ -36,53 +41,28 @@ export function CheckboxDemo() {
               id="checkbox-terms-2"
               defaultChecked
               variant={variant as (typeof checkboxVariants)[number]}
+              disabled={disabled}
+              aria-invalid={invalid}
             />
-            <div className="grid gap-2">
-              <Label htmlFor="checkbox-terms-2">
-                Accept terms and conditions
-              </Label>
-              <p className="text-sm text-muted-foreground">
+            <Label htmlFor="checkbox-terms-2" className="grid gap-2">
+              <span>Accept terms and conditions</span>
+              <p className="text-sm leading-normal font-normal text-muted-foreground">
                 By clicking this checkbox, you agree to the terms and
                 conditions.
               </p>
-            </div>
+            </Label>
           </div>
           <div className="flex items-start gap-3">
             <Checkbox
               id="checkbox-indeterminate"
               checked={"indeterminate"}
               variant={variant as (typeof checkboxVariants)[number]}
+              disabled={disabled}
+              aria-invalid={invalid}
             />
             <Label htmlFor="checkbox-indeterminate">
               Indeterminate checkbox
             </Label>
-          </div>
-          <div className="flex items-start gap-3">
-            <Checkbox
-              id="checkbox-disabled-checked"
-              disabled
-              checked
-              variant={variant as (typeof checkboxVariants)[number]}
-            />
-            <Label htmlFor="checkbox-disabled-checked">
-              Disabled checked checkbox
-            </Label>
-          </div>
-          <div className="flex items-start gap-3">
-            <Checkbox
-              id="checkbox-disabled"
-              disabled
-              variant={variant as (typeof checkboxVariants)[number]}
-            />
-            <Label htmlFor="checkbox-disabled">Disabled checkbox</Label>
-          </div>
-          <div className="flex items-start gap-3">
-            <Checkbox
-              id="checkbox-invalid"
-              aria-invalid={true}
-              variant={variant as (typeof checkboxVariants)[number]}
-            />
-            <Label htmlFor="checkbox-invalid">Invalid checkbox</Label>
           </div>
         </div>
       </ComponentContainer>
@@ -103,6 +83,22 @@ export function CheckboxDemo() {
               ))}
             </SelectContent>
           </Select>
+        </div>
+        <div className="flex items-center gap-3">
+          <Switch
+            id="checkbox-invalid"
+            checked={invalid}
+            onCheckedChange={setInvalid}
+          />
+          <Label htmlFor="checkbox-invalid">Invalid</Label>
+        </div>
+        <div className="flex items-center gap-3">
+          <Switch
+            id="checkbox-disabled"
+            checked={disabled}
+            onCheckedChange={setDisabled}
+          />
+          <Label htmlFor="checkbox-disabled">Disabled</Label>
         </div>
       </ComponentPlayground>
     </>

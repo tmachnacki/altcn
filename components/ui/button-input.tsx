@@ -7,9 +7,9 @@ import { cn } from "~/lib/utils";
 const buttonInputVariants = tv({
   base: [
     "flex w-fit items-center gap-2 rounded-md whitespace-nowrap",
-    "disabled:cursor-not-allowed disabled:opacity-50",
+    "disabled:cursor-not-allowed disabled:opacity-50 disabled:**:[svg]:text-muted-foreground",
     "**:[svg]:pointer-events-none **:[svg]:shrink-0 **:[svg]:grow-0",
-    "aria-invalid:text-destructive-accent-foreground aria-invalid:[--button-input-icon-text:var(--color-destructive-muted-foreground)] aria-invalid:**:[svg]:not-[[class*='text-']]:text-destructive-muted-foreground",
+    "aria-invalid:text-destructive-accent-foreground aria-invalid:**:[svg]:not-[[class*='text-']]:text-destructive-muted-foreground",
   ],
   variants: {
     size: {
@@ -23,8 +23,6 @@ const buttonInputVariants = tv({
         "bg-background text-accent-foreground shadow-xs outline-1 -outline-offset-1 outline-border hover:not-disabled:not-focus-visible:not-aria-invalid:outline-hover-border dark:bg-faded",
 
         "**:[svg]:not-[[class*='text-']]:text-muted-foreground",
-
-        "[--button-input-icon-text:var(--color-muted-foreground)]",
 
         "has-data-[placeholder=true]:text-placeholder",
 
@@ -40,8 +38,6 @@ const buttonInputVariants = tv({
 
         "**:[svg]:not-[[class*='text-']]:text-muted-foreground",
 
-        "[--button-input-icon-text:var(--color-muted-foreground)]",
-
         "has-data-[placeholder=true]:text-placeholder",
 
         "focus-visible:outline-2 focus-visible:outline-primary",
@@ -53,8 +49,6 @@ const buttonInputVariants = tv({
         "rounded-none bg-transparent shadow-[inset_0_-1px_0_0_var(--color-border)] outline-none hover:not-disabled:not-aria-invalid:not-focus-visible:shadow-[inset_0_-1px_0_0_var(--color-hover-border)]",
 
         "**:[svg]:not-[[class*='text-']]:text-muted-foreground",
-
-        "[--button-input-icon-text:var(--color-muted-foreground)]",
 
         "has-data-[placeholder=true]:text-placeholder",
 
@@ -69,11 +63,9 @@ const buttonInputVariants = tv({
 
         "**:[svg]:not-[[class*='text-']]:text-primary-muted-foreground",
 
-        "[--button-input-icon-text:var(--color-primary-muted-foreground)]",
-
         "has-data-[placeholder=true]:text-primary-placeholder",
 
-        "disabled:**[svg]:not-[[class*='text-']]:text-muted-foreground disabled:bg-muted disabled:text-accent-foreground disabled:[--button-input-icon-text:var(--color-muted-foreground)] disabled:has-data-[placeholder=true]:text-muted-foreground",
+        "disabled:bg-muted disabled:text-accent-foreground disabled:has-data-[placeholder=true]:text-placeholder",
 
         "focus-visible:outline-2 focus-visible:outline-primary",
 
@@ -86,11 +78,9 @@ const buttonInputVariants = tv({
 
         "**:[svg]:not-[[class*='text-']]:text-secondary-muted-foreground",
 
-        "[--button-input-icon-text:var(--color-secondary-muted-foreground)]",
-
         "has-data-[placeholder=true]:text-secondary-placeholder",
 
-        "disabled:**[svg]:not-[[class*='text-']]:text-muted-foreground disabled:bg-muted disabled:text-accent-foreground disabled:[--button-input-icon-text:var(--color-muted-foreground)] disabled:has-data-[placeholder=true]:text-muted-foreground",
+        "disabled:bg-muted disabled:text-accent-foreground disabled:has-data-[placeholder=true]:text-placeholder",
 
         "focus-visible:outline-2 focus-visible:outline-secondary",
 
@@ -163,7 +153,7 @@ function ButtonInputIcon({
       data-slot="button-input-icon"
       aria-hidden="true"
       className={cn(
-        "shrink-0 grow-0 text-(--button-input-icon-text)/60",
+        "shrink-0 grow-0 opacity-60",
         !children && "first:-ml-1 last:-mr-1",
         className
       )}

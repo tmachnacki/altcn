@@ -28,12 +28,12 @@ export const componentLinks = [
     href: "/components/button-input",
   },
   {
-    label: "Card",
-    href: "/components/card",
-  },
-  {
     label: "Calendar",
     href: "/components/calendar",
+  },
+  {
+    label: "Card",
+    href: "/components/card",
   },
   {
     label: "Checkbox",
