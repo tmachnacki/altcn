@@ -2,7 +2,7 @@
 
 import * as React from "react";
 
-import { Checkbox } from "~/components/ui/checkbox";
+import { Checkbox, checkBoxVariants } from "~/components/ui/checkbox";
 import { Label } from "~/components/ui/label";
 import {
   Select,
@@ -16,7 +16,8 @@ import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
 import { Swatch } from "~/components/swatch";
 
-const checkboxVariants = ["base", "primary", "secondary"] as const;
+type Variant = keyof typeof checkBoxVariants.variants.variant;
+const variants = Object.keys(checkBoxVariants.variants.variant) as Variant[];
 
 export function CheckboxDemo() {
   const [variant, setVariant] = React.useState("primary");
@@ -29,40 +30,37 @@ export function CheckboxDemo() {
         <div className="flex flex-col gap-8">
           <div className="flex items-center gap-3">
             <Checkbox
-              id="checkbox-terms"
-              variant={variant as (typeof checkboxVariants)[number]}
+              id="cb-1"
+              variant={variant as Variant}
               disabled={disabled}
               aria-invalid={invalid}
             />
-            <Label htmlFor="checkbox-terms">Accept terms and conditions</Label>
+            <Label htmlFor="cb-1">Accept terms and conditions</Label>
           </div>
-          <div className="flex items-start gap-3">
+          <div className="group grid grid-cols-[auto_1fr] items-start gap-x-3 gap-y-2">
             <Checkbox
-              id="checkbox-terms-2"
+              id="cb-2"
               defaultChecked
-              variant={variant as (typeof checkboxVariants)[number]}
+              variant={variant as Variant}
               disabled={disabled}
               aria-invalid={invalid}
             />
-            <Label htmlFor="checkbox-terms-2" className="grid gap-2">
-              <span>Accept terms and conditions</span>
-              <p className="text-sm leading-normal font-normal text-muted-foreground">
-                By clicking this checkbox, you agree to the terms and
-                conditions.
-              </p>
+            <Label htmlFor="cb-2" className="col-start-2 row-start-1">
+              Accept terms and conditions
             </Label>
+            <p className="col-start-2 row-start-2 text-sm text-muted-foreground group-has-disabled:opacity-50">
+              By clicking this checkbox, you agree to the terms and conditions.
+            </p>
           </div>
           <div className="flex items-start gap-3">
             <Checkbox
-              id="checkbox-indeterminate"
+              id="cb-3"
               checked={"indeterminate"}
-              variant={variant as (typeof checkboxVariants)[number]}
+              variant={variant as Variant}
               disabled={disabled}
               aria-invalid={invalid}
             />
-            <Label htmlFor="checkbox-indeterminate">
-              Indeterminate checkbox
-            </Label>
+            <Label htmlFor="cb-3">Indeterminate checkbox</Label>
           </div>
         </div>
       </ComponentContainer>
@@ -75,7 +73,7 @@ export function CheckboxDemo() {
               <SelectValue placeholder="Select variant" />
             </SelectTrigger>
             <SelectContent>
-              {checkboxVariants.map((variant) => (
+              {variants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
                   <Swatch variant={variant} />
                   {variant}

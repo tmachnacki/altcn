@@ -8,7 +8,8 @@ import {
   CheckboxCardsItemCheckbox,
   CheckboxCardsItemContent,
   CheckboxCardsItemDescription,
-  CheckboxCardsItemLabel,
+  CheckboxCardsItemTitle,
+  checkboxCardsItemVariants,
 } from "~/components/ui/checkbox-cards";
 import { Label } from "~/components/ui/label";
 import {
@@ -18,10 +19,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from "~/components/ui/select";
+import { Switch } from "~/components/ui/switch";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
 
-const variants = ["base", "primary", "secondary"] as const;
+type Variant = keyof typeof checkboxCardsItemVariants.variants.variant;
+const variants = Object.keys(
+  checkboxCardsItemVariants.variants.variant
+) as Variant[];
 
 const plans = [
   {
@@ -44,20 +49,12 @@ const plans = [
     name: "Enterprise",
     description: "Customized solutions for large-scale projects.",
   },
-  {
-    id: "disabled",
-    name: "Disabled",
-    description: "This is a description of a disabled plan.",
-  },
-  {
-    id: "invalid",
-    name: "Invalid",
-    description: "This is a description of an invalid plan.",
-  },
 ];
 
 export function CheckboxCardsDemo() {
   const [variant, setVariant] = React.useState("primary");
+  const [invalid, setInvalid] = React.useState(false);
+  const [disabled, setDisabled] = React.useState(false);
 
   return (
     <>
@@ -65,20 +62,17 @@ export function CheckboxCardsDemo() {
         <fieldset className="w-full max-w-sm">
           <legend className="sr-only">Select a plan</legend>
           <CheckboxCards
-            variant={variant as (typeof variants)[number]}
+            variant={variant as Variant}
             className="grid w-full gap-3"
           >
             {plans.map((plan) => (
-              <CheckboxCardsItem
-                key={plan.id}
-                variant={variant as (typeof variants)[number]}
-              >
+              <CheckboxCardsItem key={plan.id} variant={variant as Variant}>
                 <CheckboxCardsItemCheckbox
-                  disabled={plan.id === "disabled"}
-                  aria-invalid={plan.id === "invalid"}
+                  disabled={disabled}
+                  aria-invalid={invalid}
                 />
                 <CheckboxCardsItemContent className="flex flex-col gap-1">
-                  <CheckboxCardsItemLabel>{plan.name}</CheckboxCardsItemLabel>
+                  <CheckboxCardsItemTitle>{plan.name}</CheckboxCardsItemTitle>
                   <CheckboxCardsItemDescription>
                     {plan.description}
                   </CheckboxCardsItemDescription>
@@ -87,12 +81,15 @@ export function CheckboxCardsDemo() {
             ))}
             {/* centered */}
             <CheckboxCardsItem
-              variant={variant as (typeof variants)[number]}
+              variant={variant as Variant}
               className="items-center"
             >
-              <CheckboxCardsItemCheckbox />
+              <CheckboxCardsItemCheckbox
+                disabled={disabled}
+                aria-invalid={invalid}
+              />
               <CheckboxCardsItemContent className="flex items-center">
-                <CheckboxCardsItemLabel>Centered</CheckboxCardsItemLabel>
+                <CheckboxCardsItemTitle>Centered</CheckboxCardsItemTitle>
               </CheckboxCardsItemContent>
             </CheckboxCardsItem>
           </CheckboxCards>
@@ -113,6 +110,22 @@ export function CheckboxCardsDemo() {
               ))}
             </SelectContent>
           </Select>
+        </div>
+        <div className="flex items-center gap-3">
+          <Switch
+            id="checkbox-cards-invalid"
+            checked={invalid}
+            onCheckedChange={setInvalid}
+          />
+          <Label htmlFor="checkbox-cards-invalid">Invalid</Label>
+        </div>
+        <div className="flex items-center gap-3">
+          <Switch
+            id="checkbox-cards-disabled"
+            checked={disabled}
+            onCheckedChange={setDisabled}
+          />
+          <Label htmlFor="checkbox-cards-disabled">Disabled</Label>
         </div>
       </ComponentPlayground>
     </>

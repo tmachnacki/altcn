@@ -6,8 +6,8 @@ import { cn } from "~/lib/utils";
 
 const buttonInputVariants = tv({
   base: [
-    "flex w-fit items-center gap-2 rounded-md whitespace-nowrap",
-    "disabled:cursor-not-allowed disabled:opacity-50 disabled:**:[svg]:text-muted-foreground",
+    "peer flex w-fit items-center gap-2 rounded-md whitespace-nowrap",
+    "disabled:pointer-events-none disabled:opacity-50 disabled:**:[svg]:text-muted-foreground",
     "**:[svg]:pointer-events-none **:[svg]:shrink-0 **:[svg]:grow-0",
     "aria-invalid:text-destructive-accent-foreground aria-invalid:**:[svg]:not-[[class*='text-']]:text-destructive-muted-foreground",
   ],
@@ -20,7 +20,7 @@ const buttonInputVariants = tv({
     variant: {
       // -- base --
       outline: [
-        "bg-background text-accent-foreground shadow-xs outline-1 -outline-offset-1 outline-border hover:not-disabled:not-focus-visible:not-aria-invalid:outline-hover-border dark:bg-faded",
+        "bg-background text-accent-foreground shadow-xs outline-1 -outline-offset-1 outline-border hover:not-focus-visible:not-aria-invalid:outline-hover-border dark:bg-faded",
 
         "**:[svg]:not-[[class*='text-']]:text-muted-foreground",
 
@@ -34,7 +34,7 @@ const buttonInputVariants = tv({
       ],
 
       muted: [
-        "bg-muted text-accent-foreground -outline-offset-1 hover:not-disabled:not-aria-invalid:not-focus-visible:bg-hover-muted",
+        "bg-muted text-accent-foreground -outline-offset-1 hover:not-focus-visible:not-aria-invalid:bg-hover-muted",
 
         "**:[svg]:not-[[class*='text-']]:text-muted-foreground",
 
@@ -42,11 +42,11 @@ const buttonInputVariants = tv({
 
         "focus-visible:outline-2 focus-visible:outline-primary",
 
-        "aria-invalid:bg-destructive-muted aria-invalid:outline-destructive aria-invalid:hover:not-disabled:not-focus-visible:bg-hover-destructive-muted aria-invalid:has-data-[placeholder=true]:text-destructive-placeholder",
+        "aria-invalid:bg-destructive-muted aria-invalid:outline-destructive aria-invalid:hover:not-focus-visible:bg-hover-destructive-muted aria-invalid:has-data-[placeholder=true]:text-destructive-placeholder",
       ],
 
       underlined: [
-        "rounded-none bg-transparent shadow-[inset_0_-1px_0_0_var(--color-border)] outline-none hover:not-disabled:not-aria-invalid:not-focus-visible:shadow-[inset_0_-1px_0_0_var(--color-hover-border)]",
+        "rounded-none bg-transparent shadow-[inset_0_-1px_0_0_var(--color-border)] outline-none hover:not-focus-visible:not-aria-invalid:shadow-[inset_0_-1px_0_0_var(--color-hover-border)]",
 
         "**:[svg]:not-[[class*='text-']]:text-muted-foreground",
 
@@ -59,7 +59,7 @@ const buttonInputVariants = tv({
 
       // -- primary --
       "primary-muted": [
-        "bg-primary-muted text-primary-accent-foreground -outline-offset-1 hover:not-disabled:not-aria-invalid:not-focus-visible:bg-hover-primary-muted",
+        "bg-primary-muted text-primary-accent-foreground -outline-offset-1 hover:not-focus-visible:not-aria-invalid:bg-hover-primary-muted",
 
         "**:[svg]:not-[[class*='text-']]:text-primary-muted-foreground",
 
@@ -69,12 +69,12 @@ const buttonInputVariants = tv({
 
         "focus-visible:outline-2 focus-visible:outline-primary",
 
-        "aria-invalid:bg-destructive-muted aria-invalid:outline-destructive aria-invalid:hover:not-disabled:not-focus-visible:bg-hover-destructive-muted aria-invalid:has-data-[placeholder=true]:text-destructive-placeholder",
+        "aria-invalid:bg-destructive-muted aria-invalid:outline-destructive aria-invalid:hover:not-focus-visible:bg-hover-destructive-muted aria-invalid:has-data-[placeholder=true]:text-destructive-placeholder",
       ],
 
       // -- secondary --
       "secondary-muted": [
-        "bg-secondary-muted text-secondary-accent-foreground -outline-offset-1 hover:not-disabled:not-aria-invalid:not-focus-visible:bg-hover-secondary-muted",
+        "bg-secondary-muted text-secondary-accent-foreground -outline-offset-1 hover:not-focus-visible:not-aria-invalid:bg-hover-secondary-muted",
 
         "**:[svg]:not-[[class*='text-']]:text-secondary-muted-foreground",
 
@@ -84,7 +84,7 @@ const buttonInputVariants = tv({
 
         "focus-visible:outline-2 focus-visible:outline-secondary",
 
-        "aria-invalid:bg-destructive-muted aria-invalid:outline-destructive aria-invalid:hover:not-disabled:not-focus-visible:bg-hover-destructive-muted aria-invalid:has-data-[placeholder=true]:text-destructive-placeholder",
+        "aria-invalid:bg-destructive-muted aria-invalid:outline-destructive aria-invalid:hover:not-focus-visible:bg-hover-destructive-muted aria-invalid:has-data-[placeholder=true]:text-destructive-placeholder",
       ],
     },
   },
@@ -116,7 +116,7 @@ function ButtonInput({
     <button
       data-slot="button-input"
       type="button"
-      className={buttonInputVariants({ variant, size, className })}
+      className={buttonInputVariants({ variant, size, className: ["group/button-input", className] })}
       {...props}
     />
   );
@@ -153,7 +153,7 @@ function ButtonInputIcon({
       data-slot="button-input-icon"
       aria-hidden="true"
       className={cn(
-        "shrink-0 grow-0 opacity-60",
+        "shrink-0 grow-0 opacity-60 group-hover/button-input:opacity-100 group-focus-visible/button-input:opacity-100",
         !children && "first:-ml-1 last:-mr-1",
         className
       )}

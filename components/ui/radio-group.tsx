@@ -19,7 +19,7 @@ const radioGroupItemVariants = cva(
     variants: {
       variant: {
         base: [
-          "outline-outline not-disabled:data-[state=checked]:bg-base not-disabled:data-[state=checked]:text-base-foreground not-disabled:data-[state=checked]:inset-ring-0",
+          "outline-outline not-disabled:data-[state=checked]:bg-base-bg not-disabled:data-[state=checked]:text-base-foreground not-disabled:data-[state=checked]:inset-ring-0",
         ],
         // accent: [
         //   "bg-muted outline-outline not-disabled:data-[state=checked]:text-accent-foreground",

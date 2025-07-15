@@ -11,6 +11,7 @@
 /* for better intellisense DX */
 @custom-variant aria-invalid (&[aria-invalid="true"]);
 @custom-variant next-disabled (&:is(:has(+ .peer:disabled)));
+/* @custom-variant next-has-disabled (&:is(:has(+ .peer:has(*:disabled)))); */
 
 :root {
   /** -- GLOBALS -- */
@@ -35,16 +36,10 @@
   --outline: var(--color-base-600);
   --overlay: --alpha(var(--color-base-100) / 50%);
 
-  --chart-1: hsl(12 76% 61%);
-  --chart-2: hsl(173 58% 39%);
-  --chart-3: hsl(197 37% 24%);
-  --chart-4: hsl(43 74% 66%);
-  --chart-5: hsl(27 87% 67%);
-
   /** -- BASE -- */
   /* FIXME: avoid conflict with "text-base" default utility */
-  --base: var(--color-base-500);
-  --hover-base: color-mix(in oklab, var(--color-base) 90%, var(--color-white));
+  --base-bg: var(--color-base-500);
+  --hover-base: color-mix(in oklab, var(--color-base-bg) 90%, var(--color-white));
   --base-foreground: var(--color-white);
   --placeholder: --alpha(var(--color-base-500) / 70%);
 
@@ -67,6 +62,17 @@
     color-mix(in oklab, var(--color-base-600) 90%, var(--color-white)) 0%,
     color-mix(in oklab, var(--color-base-400) 90%, var(--color-white)) 100%;
 
+  /* charts */
+  --chart-base-1: var(--color-base-900);
+  --chart-base-2: var(--color-base-700);
+  --chart-base-3: var(--color-base-500);
+  --chart-base-4: color-mix(in oklab, var(--color-base-300) 50%, var(--color-base-400));
+  --chart-base-5: color-mix(
+    in oklab,
+    var(--color-base-200) 50%,
+    var(--color-base-100)
+  );
+
   /** -- PRIMARY -- */
   --primary: var(--color-primary-600);
   --hover-primary: color-mix(
@@ -74,7 +80,7 @@
     var(--color-primary) 90%,
     var(--color-white)
   );
-  --primary-foreground: var(--color-primary-50);
+  --primary-foreground: var(--color-white);
   --primary-placeholder: --alpha(var(--color-primary-600) / 60%);
   --primary-popover: var(--color-primary-50);
 
@@ -107,6 +113,17 @@
     to bottom right,
     color-mix(in oklab, var(--color-primary-700) 90%, var(--color-white)) 0%,
     color-mix(in oklab, var(--color-primary-400) 90%, var(--color-white)) 100%;
+
+  /* charts */
+  --chart-primary-1: var(--color-primary-900);
+  --chart-primary-2: var(--color-primary-700);
+  --chart-primary-3: var(--color-primary-500);
+  --chart-primary-4: var(--color-primary-300);
+  --chart-primary-5: color-mix(
+    in oklab,
+    var(--color-primary-200) 50%,
+    var(--color-primary-100)
+  );
 
   /** -- SECONDARY -- */
   --secondary: var(--color-secondary-400);
@@ -153,6 +170,17 @@
     to bottom right,
     color-mix(in oklab, var(--color-secondary-500) 85%, var(--color-white)) 0%,
     color-mix(in oklab, var(--color-secondary-300) 85%, var(--color-white)) 100%;
+
+  /* charts */
+  --chart-secondary-1: var(--color-secondary-900);
+  --chart-secondary-2: var(--color-secondary-700);
+  --chart-secondary-3: var(--color-secondary-500);
+  --chart-secondary-4: var(--color-secondary-300);
+  --chart-secondary-5: color-mix(
+    in oklab,
+    var(--color-secondary-200) 50%,
+    var(--color-secondary-100)
+  );
 
   /** -- DESTRUCTIVE -- */
   --destructive: var(--color-destructive-500);
@@ -304,24 +332,9 @@
   --outline: var(--color-base-300);
   --overlay: --alpha(var(--color-black) / 50%);
 
-  --chart-1: hsl(220 70% 50%);
-  --chart-2: hsl(160 60% 45%);
-  --chart-3: hsl(30 80% 55%);
-  --chart-4: hsl(280 65% 60%);
-  --chart-5: hsl(340 75% 55%);
-
-  --sidebar-background: hsl(240 5.9% 10%);
-  --sidebar-foreground: hsl(240 4.8% 95.9%);
-  --sidebar-primary: hsl(224.3 76.3% 48%);
-  --sidebar-primary-foreground: hsl(0 0% 100%);
-  --sidebar-accent: hsl(240 3.7% 15.9%);
-  --sidebar-accent-foreground: hsl(240 4.8% 95.9%);
-  --sidebar-border: hsl(240 3.7% 15.9%);
-  --sidebar-ring: hsl(217.2 91.2% 59.8%);
-
   /** -- BASE -- */
-  --base: var(--color-base-500);
-  --hover-base: color-mix(in oklab, var(--color-base) 90%, var(--color-white));
+  --base-bg: var(--color-base-500);
+  --hover-base: color-mix(in oklab, var(--color-base-bg) 90%, var(--color-white));
   --base-foreground: var(--color-white);
   --placeholder: --alpha(var(--color-base-400) / 60%);
 
@@ -343,6 +356,13 @@
     to bottom right,
     color-mix(in oklab, var(--color-base-600) 90%, var(--color-white)) 0%,
     color-mix(in oklab, var(--color-base-400) 90%, var(--color-white)) 100%;
+
+  /* charts */
+  --chart-base-1: color-mix(in oklab, var(--color-base-100) 50%, var(--color-base-200));
+  --chart-base-2: color-mix(in oklab, var(--color-base-300) 50%, var(--color-base-400));
+  --chart-base-3: var(--color-base-500);
+  --chart-base-4: var(--color-base-700);
+  --chart-base-5: var(--color-base-800);
 
   /** -- PRIMARY -- */
   --primary: var(--color-primary-500);
@@ -393,6 +413,13 @@
     color-mix(in oklab, var(--color-primary-600) 90%, var(--color-white)) 0%,
     color-mix(in oklab, var(--color-primary-400) 90%, var(--color-white)) 100%;
 
+  /* charts */
+  --chart-primary-1: var(--color-primary-100);
+  --chart-primary-2: var(--color-primary-300);
+  --chart-primary-3: var(--color-primary-500);
+  --chart-primary-4: var(--color-primary-700);
+  --chart-primary-5: var(--color-primary-900);
+
   /** -- SECONDARY -- */
   --secondary: var(--color-secondary-400);
   --hover-secondary: color-mix(
@@ -438,6 +465,13 @@
     to bottom right,
     color-mix(in oklab, var(--color-secondary-500) 85%, var(--color-white)) 0%,
     color-mix(in oklab, var(--color-secondary-200) 85%, var(--color-white)) 100%;
+
+  /* charts */
+  --chart-secondary-1: var(--color-secondary-100);
+  --chart-secondary-2: var(--color-secondary-300);
+  --chart-secondary-3: var(--color-secondary-500);
+  --chart-secondary-4: var(--color-secondary-700);
+  --chart-secondary-5: var(--color-secondary-900);
 
   /** -- DESTRUCTIVE -- */
   --destructive: var(--color-destructive-700);
@@ -665,23 +699,8 @@
   --color-outline: var(--outline);
   --color-overlay: var(--overlay);
 
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-
-  --color-sidebar-background: var(--sidebar-background);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
-
   /** -- BASE -- */
-  --color-base: var(--base);
+  --color-base-bg: var(--base-bg);
   --color-hover-base: var(--hover-base);
   --color-base-foreground: var(--base-foreground);
   --color-placeholder: var(--placeholder);
@@ -697,6 +716,13 @@
   --color-faded-solid: var(--faded-solid);
   --color-hover-faded: var(--hover-faded);
   --color-faded-border: var(--faded-border);
+
+  /* charts */
+  --color-chart-base-1: var(--chart-base-1);
+  --color-chart-base-2: var(--chart-base-2);
+  --color-chart-base-3: var(--chart-base-3);
+  --color-chart-base-4: var(--chart-base-4);
+  --color-chart-base-5: var(--chart-base-5);
 
   /** -- PRIMARY -- */
   --color-primary: var(--primary);
@@ -721,6 +747,13 @@
   --color-hover-primary-tron-border: var(--hover-primary-tron-border);
   --color-primary-tron-blur: var(--primary-tron-blur);
 
+  /* charts */
+  --color-chart-primary-1: var(--chart-primary-1);
+  --color-chart-primary-2: var(--chart-primary-2);
+  --color-chart-primary-3: var(--chart-primary-3);
+  --color-chart-primary-4: var(--chart-primary-4);
+  --color-chart-primary-5: var(--chart-primary-5);
+
   /** -- SECONDARY -- */
   --color-secondary: var(--secondary);
   --color-hover-secondary: var(--hover-secondary);
@@ -743,6 +776,13 @@
   --color-secondary-tron-border: var(--secondary-tron-border);
   --color-hover-secondary-tron-border: var(--hover-secondary-tron-border);
   --color-secondary-tron-blur: var(--secondary-tron-blur);
+
+  /* charts */
+  --color-chart-secondary-1: var(--chart-secondary-1);
+  --color-chart-secondary-2: var(--chart-secondary-2);
+  --color-chart-secondary-3: var(--chart-secondary-3);
+  --color-chart-secondary-4: var(--chart-secondary-4);
+  --color-chart-secondary-5: var(--chart-secondary-5);
 
   /** -- DESTRUCTIVE -- */
   --color-destructive: var(--destructive);
@@ -967,10 +1007,4 @@
 
 @utility py-content {
   @apply py-12 md:py-16;
-}
-
-@utility text-base {
-  font-size: var(--text-base);
-  line-height: var(--tw-leading), var(--text-base--line-height);
-  color: inherit;
 }

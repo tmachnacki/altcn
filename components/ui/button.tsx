@@ -20,7 +20,7 @@ const buttonVariants = tv({
         "hover:border-hover-border hover:bg-base-50 dark:hover:bg-base-900",
       ],
 
-      base: ["bg-base text-base-foreground shadow", "hover:bg-hover-base"],
+      base: ["bg-base-bg text-base-foreground shadow", "hover:bg-hover-base"],
 
       accent: ["bg-muted text-accent-foreground", "hover:bg-hover-muted"],
 
@@ -37,7 +37,7 @@ const buttonVariants = tv({
       ],
 
       "base-shadow": [
-        "bg-base text-base-foreground shadow-lg shadow-base/50",
+        "bg-base-bg text-base-foreground shadow-lg shadow-base-bg/50",
         "hover:bg-hover-base",
       ],
 

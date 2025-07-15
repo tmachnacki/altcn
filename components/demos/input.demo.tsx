@@ -2,7 +2,7 @@
 
 import * as React from "react";
 
-import { Input } from "~/components/ui/input";
+import { Input, inputVariants } from "~/components/ui/input";
 import { Label } from "~/components/ui/label";
 import {
   Select,
@@ -12,19 +12,15 @@ import {
   SelectValue,
 } from "~/components/ui/select";
 import { Slider } from "~/components/ui/slider";
+import { Switch } from "~/components/ui/switch";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
 import { Swatch } from "~/components/swatch";
 
-const variants = [
-  "outline",
-  "muted",
-  "underlined",
-  "primary-muted",
-  "secondary-muted",
-] as const;
+type Variant = keyof typeof inputVariants.variants.variant;
+const variants = Object.keys(inputVariants.variants.variant) as Variant[];
 
-type Size = "sm" | "md" | "lg";
+type Size = keyof typeof inputVariants.variants.size;
 const sizesMap: Record<number, Size> = {
   1: "sm",
   2: "md",
@@ -34,130 +30,176 @@ const sizesMap: Record<number, Size> = {
 export function InputDemo() {
   const [variant, setVariant] = React.useState("outline");
   const [size, setSize] = React.useState(2);
+  const [invalid, setInvalid] = React.useState(false);
+  const [disabled, setDisabled] = React.useState(false);
 
   return (
     <>
       <ComponentContainer>
-        <div className="grid w-full max-w-sm gap-4">
-          <Input
-            type="email"
-            placeholder="Email"
-            variant={variant as (typeof variants)[number]}
-            size={sizesMap[size]}
-          />
-          <Input
-            type="password"
-            placeholder="Password"
-            variant={variant as (typeof variants)[number]}
-            size={sizesMap[size]}
-          />
-          <Input
-            type="number"
-            placeholder="Number"
-            variant={variant as (typeof variants)[number]}
-            size={sizesMap[size]}
-          />
-          <Input
-            type="file"
-            placeholder="File"
-            variant={variant as (typeof variants)[number]}
-            size={sizesMap[size]}
-          />
-          <Input
-            type="file"
-            placeholder="File"
-            variant={variant as (typeof variants)[number]}
-            aria-invalid="true"
-            size={sizesMap[size]}
-          />
-          <Input
-            type="file"
-            placeholder="File"
-            variant={variant as (typeof variants)[number]}
-            size={sizesMap[size]}
-            disabled
-          />
-          <Input
-            type="tel"
-            placeholder="Tel"
-            variant={variant as (typeof variants)[number]}
-            size={sizesMap[size]}
-          />
-          <Input
-            type="text"
-            placeholder="Text"
-            variant={variant as (typeof variants)[number]}
-            size={sizesMap[size]}
-          />
-          <Input
-            type="url"
-            placeholder="URL"
-            variant={variant as (typeof variants)[number]}
-            size={sizesMap[size]}
-          />
-          <Input
-            type="search"
-            placeholder="Search"
-            variant={variant as (typeof variants)[number]}
-            size={sizesMap[size]}
-          />
-          <Input
-            type="date"
-            placeholder="Date"
-            variant={variant as (typeof variants)[number]}
-            size={sizesMap[size]}
-          />
-          <Input
-            type="datetime-local"
-            placeholder="Datetime Local"
-            variant={variant as (typeof variants)[number]}
-            size={sizesMap[size]}
-          />
-          <Input
-            type="datetime-local"
-            placeholder="Datetime Local"
-            variant={variant as (typeof variants)[number]}
-            size={sizesMap[size]}
-            aria-invalid="true"
-          />
-          <Input
-            type="datetime-local"
-            placeholder="Datetime Local"
-            variant={variant as (typeof variants)[number]}
-            size={sizesMap[size]}
-            disabled
-          />
-          <Input
-            type="month"
-            placeholder="Month"
-            variant={variant as (typeof variants)[number]}
-            size={sizesMap[size]}
-          />
-          <Input
-            type="time"
-            placeholder="Time"
-            variant={variant as (typeof variants)[number]}
-            size={sizesMap[size]}
-          />
-          <Input
-            type="week"
-            placeholder="Week"
-            variant={variant as (typeof variants)[number]}
-            size={sizesMap[size]}
-          />
-          <Input
-            type="text"
-            placeholder="Error"
-            aria-invalid="true"
-            variant={variant as (typeof variants)[number]}
-            size={sizesMap[size]}
-          />
-          <Input
-            disabled
-            placeholder="Disabled"
-            variant={variant as (typeof variants)[number]}
-            size={sizesMap[size]}
-          />
+        <div className="grid w-full max-w-sm gap-6">
+          <div className="grid gap-2">
+            <Label htmlFor="email">Email</Label>
+            <Input
+              id="email"
+              name="email"
+              type="email"
+              placeholder="someone@example.com"
+              variant={variant as Variant}
+              size={sizesMap[size]}
+              aria-invalid={invalid}
+              disabled={disabled}
+            />
+          </div>
+          <div className="grid gap-2">
+            <Label htmlFor="password">Password</Label>
+            <Input
+              id="password"
+              name="password"
+              type="password"
+              placeholder="********"
+              variant={variant as Variant}
+              size={sizesMap[size]}
+              aria-invalid={invalid}
+              disabled={disabled}
+            />
+          </div>
+          <div className="grid gap-2">
+            <Label htmlFor="number">Number</Label>
+            <Input
+              id="number"
+              name="number"
+              type="number"
+              placeholder="0"
+              variant={variant as Variant}
+              size={sizesMap[size]}
+              aria-invalid={invalid}
+              disabled={disabled}
+            />
+          </div>
+          <div className="grid gap-2">
+            <Label htmlFor="file">File</Label>
+            <Input
+              id="file"
+              name="file"
+              type="file"
+              variant={variant as Variant}
+              size={sizesMap[size]}
+              aria-invalid={invalid}
+              disabled={disabled}
+            />
+          </div>
+          <div className="grid gap-2">
+            <Label htmlFor="tel">Tel</Label>
+            <Input
+              id="tel"
+              name="tel"
+              type="tel"
+              placeholder="123-456-7890"
+              variant={variant as Variant}
+              size={sizesMap[size]}
+              aria-invalid={invalid}
+              disabled={disabled}
+            />
+          </div>
+          <div className="grid gap-2">
+            <Label htmlFor="text">Text</Label>
+            <Input
+              id="text"
+              name="text"
+              type="text"
+              placeholder="Text"
+              variant={variant as Variant}
+              size={sizesMap[size]}
+              aria-invalid={invalid}
+              disabled={disabled}
+            />
+          </div>
+          <div className="grid gap-2">
+            <Label htmlFor="url">URL</Label>
+            <Input
+              id="url"
+              name="url"
+              type="url"
+              placeholder="https://example.com"
+              variant={variant as Variant}
+              size={sizesMap[size]}
+              aria-invalid={invalid}
+              disabled={disabled}
+            />
+          </div>
+          <div className="grid gap-2">
+            <Label htmlFor="search">Search</Label>
+            <Input
+              id="search"
+              name="search"
+              type="search"
+              placeholder="Search..."
+              variant={variant as Variant}
+              size={sizesMap[size]}
+              aria-invalid={invalid}
+              disabled={disabled}
+            />
+          </div>
+          <div className="grid gap-2">
+            <Label htmlFor="date">Date</Label>
+            <Input
+              id="date"
+              name="date"
+              type="date"
+              variant={variant as Variant}
+              size={sizesMap[size]}
+              aria-invalid={invalid}
+              disabled={disabled}
+            />
+          </div>
+          <div className="grid gap-2">
+            <Label htmlFor="datetime-local">Datetime Local</Label>
+            <Input
+              id="datetime-local"
+              name="datetime-local"
+              type="datetime-local"
+              variant={variant as Variant}
+              size={sizesMap[size]}
+              aria-invalid={invalid}
+              disabled={disabled}
+            />
+          </div>
+          <div className="grid gap-2">
+            <Label htmlFor="month">Month</Label>
+            <Input
+              id="month"
+              name="month"
+              type="month"
+              variant={variant as Variant}
+              size={sizesMap[size]}
+              aria-invalid={invalid}
+              disabled={disabled}
+            />
+          </div>
+          <div className="grid gap-2">
+            <Label htmlFor="time">Time</Label>
+            <Input
+              id="time"
+              name="time"
+              type="time"
+              variant={variant as Variant}
+              size={sizesMap[size]}
+              aria-invalid={invalid}
+              disabled={disabled}
+            />
+          </div>
+          <div className="grid gap-2">
+            <Label htmlFor="week">Week</Label>
+            <Input
+              id="week"
+              name="week"
+              type="week"
+              variant={variant as Variant}
+              size={sizesMap[size]}
+              aria-invalid={invalid}
+              disabled={disabled}
+            />
+          </div>
         </div>
       </ComponentContainer>
 
@@ -178,22 +220,37 @@ export function InputDemo() {
             </SelectContent>
           </Select>
         </div>
-
         <div className="grid gap-3">
-          <Label htmlFor="input-size">
+          <Label id="input-size">
             Size:{" "}
             <span className="font-normal text-primary-muted-foreground">
               {sizesMap[size]}
             </span>
           </Label>
           <Slider
-            id="input-size"
+            aria-labelledby="input-size"
             min={1}
             max={3}
             step={1}
             value={[size]}
             onValueChange={(value) => setSize(value[0])}
           />
+        </div>
+        <div className="flex items-center gap-3">
+          <Switch
+            id="input-invalid"
+            checked={invalid}
+            onCheckedChange={setInvalid}
+          />
+          <Label htmlFor="input-invalid">Invalid</Label>
+        </div>
+        <div className="flex items-center gap-3">
+          <Switch
+            id="input-disabled"
+            checked={disabled}
+            onCheckedChange={setDisabled}
+          />
+          <Label htmlFor="input-disabled">Disabled</Label>
         </div>
       </ComponentPlayground>
     </>

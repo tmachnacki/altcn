@@ -7,6 +7,7 @@ import {
   InputOTPGroup,
   InputOTPSeparator,
   InputOTPSlot,
+  inputOTPSlotVariants,
 } from "~/components/ui/input-otp";
 import { Label } from "~/components/ui/label";
 import {
@@ -17,19 +18,17 @@ import {
   SelectValue,
 } from "~/components/ui/select";
 import { Slider } from "~/components/ui/slider";
+import { Switch } from "~/components/ui/switch";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
 import { Swatch } from "~/components/swatch";
 
-const variants = [
-  "outline",
-  "muted",
-  "underlined",
-  "primary-muted",
-  "secondary-muted",
-] as const;
+type Variant = keyof typeof inputOTPSlotVariants.variants.variant;
+const variants = Object.keys(
+  inputOTPSlotVariants.variants.variant
+) as Variant[];
 
-type Size = "sm" | "md" | "lg";
+type Size = keyof typeof inputOTPSlotVariants.variants.size;
 const sizesMap: Record<number, Size> = {
   1: "sm",
   2: "md",
@@ -43,19 +42,26 @@ export function InputOTPDemo() {
   const [size, setSize] = React.useState(2);
   const [spacing, setSpacing] = React.useState("split");
 
+  const [invalid, setInvalid] = React.useState(false);
+  const [disabled, setDisabled] = React.useState(false);
+
   return (
     <>
       <ComponentContainer>
-        <div className="flex flex-col gap-4">
+        <div className="grid gap-6">
           <div className="grid gap-2">
-            <Label htmlFor="basic">Basic</Label>
+            <Label htmlFor="otp-1" disabled={disabled}>
+              Basic
+            </Label>
             <InputOTP
-              id="basic"
+              id="otp-1"
               maxLength={6}
               placeholder="000000"
-              variant={variant as (typeof variants)[number]}
+              variant={variant as Variant}
               spacing={spacing as (typeof spacings)[number]}
               size={sizesMap[size]}
+              disabled={disabled}
+              aria-invalid={invalid}
             >
               <InputOTPGroup>
                 <InputOTPSlot index={0} />
@@ -68,54 +74,17 @@ export function InputOTPDemo() {
             </InputOTP>
           </div>
           <div className="grid gap-2">
-            <Label htmlFor="invalid">Invalid</Label>
+            <Label htmlFor="otp-2" disabled={disabled}>
+              Separator
+            </Label>
             <InputOTP
-              id="invalid"
+              id="otp-2"
               maxLength={6}
-              placeholder="000000"
-              variant={variant as (typeof variants)[number]}
+              variant={variant as Variant}
               spacing={spacing as (typeof spacings)[number]}
               size={sizesMap[size]}
-              aria-invalid="true"
-            >
-              <InputOTPGroup>
-                <InputOTPSlot index={0} />
-                <InputOTPSlot index={1} />
-                <InputOTPSlot index={2} />
-                <InputOTPSlot index={3} />
-                <InputOTPSlot index={4} />
-                <InputOTPSlot index={5} />
-              </InputOTPGroup>
-            </InputOTP>
-          </div>
-          <div className="grid gap-2">
-            <Label htmlFor="disabled">Disabled</Label>
-            <InputOTP
-              maxLength={6}
-              placeholder="000000"
-              variant={variant as (typeof variants)[number]}
-              spacing={spacing as (typeof spacings)[number]}
-              size={sizesMap[size]}
-              disabled
-            >
-              <InputOTPGroup>
-                <InputOTPSlot index={0} />
-                <InputOTPSlot index={1} />
-                <InputOTPSlot index={2} />
-                <InputOTPSlot index={3} />
-                <InputOTPSlot index={4} />
-                <InputOTPSlot index={5} />
-              </InputOTPGroup>
-            </InputOTP>
-          </div>
-          <div className="grid gap-2">
-            <Label htmlFor="separator">Separator</Label>
-            <InputOTP
-              id="separator"
-              maxLength={6}
-              variant={variant as (typeof variants)[number]}
-              spacing={spacing as (typeof spacings)[number]}
-              size={sizesMap[size]}
+              disabled={disabled}
+              aria-invalid={invalid}
             >
               <InputOTPGroup>
                 <InputOTPSlot index={0} />
@@ -151,14 +120,14 @@ export function InputOTPDemo() {
           </Select>
         </div>
         <div className="grid gap-3">
-          <Label htmlFor="otp-size">
+          <Label id="otp-size">
             Size:{" "}
             <span className="font-normal text-primary-muted-foreground">
               {sizesMap[size]}
             </span>
           </Label>
           <Slider
-            id="otp-size"
+            aria-labelledby="otp-size"
             min={1}
             max={3}
             step={1}
@@ -180,6 +149,22 @@ export function InputOTPDemo() {
               ))}
             </SelectContent>
           </Select>
+        </div>
+        <div className="flex items-center gap-3">
+          <Switch
+            id="otp-invalid"
+            checked={invalid}
+            onCheckedChange={setInvalid}
+          />
+          <Label htmlFor="otp-invalid">Invalid</Label>
+        </div>
+        <div className="flex items-center gap-3">
+          <Switch
+            id="otp-disabled"
+            checked={disabled}
+            onCheckedChange={setDisabled}
+          />
+          <Label htmlFor="otp-disabled">Disabled</Label>
         </div>
       </ComponentPlayground>
     </>

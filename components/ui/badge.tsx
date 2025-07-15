@@ -26,7 +26,7 @@ const badgeVariants = tv({
       outline: "",
 
       base: [
-        "bg-base text-base-foreground",
+        "bg-base-bg text-base-foreground",
         "[a&]:hover:bg-hover-base",
         "[button&]:hover:bg-hover-base",
         "[--hover-badge-close-bg:--alpha(var(--color-base-foreground)/20%)]",
@@ -378,8 +378,8 @@ const badgeVariants = tv({
       ],
       className: [
         "bg-background text-foreground inset-ring inset-ring-border",
-        "[a&]:hover:bg-faded [a&]:hover:inset-ring-hover-border",
-        "[button&]:hover:bg-faded [button&]:hover:inset-ring-hover-border",
+        "[a&]:hover:bg-base-50 dark:[a&]:hover:bg-base-900 [a&]:hover:inset-ring-hover-border",
+        "[button&]:hover:bg-base-50 dark:[button&]:hover:bg-base-900 [button&]:hover:inset-ring-hover-border",
         "[--hover-badge-close-bg:var(--color-muted)]",
       ],
     },

@@ -300,6 +300,26 @@ export default function Colors() {
         </Button>
       </div>
 
+      <div className="mt-16 grid grid-cols-5 w-full max-w-xs gap-x-2 gap-y-4 *:h-32 *:rounded-md">
+        <div className="bg-chart-base-1"></div>
+        <div className="bg-chart-base-2"></div>
+        <div className="bg-chart-base-3"></div>
+        <div className="bg-chart-base-4"></div>
+        <div className="bg-chart-base-5"></div>
+
+        <div className="bg-chart-primary-1"></div>
+        <div className="bg-chart-primary-2"></div>
+        <div className="bg-chart-primary-3"></div>
+        <div className="bg-chart-primary-4"></div>
+        <div className="bg-chart-primary-5"></div>
+
+        <div className="bg-chart-secondary-1"></div>
+        <div className="bg-chart-secondary-2"></div>
+        <div className="bg-chart-secondary-3"></div>
+        <div className="bg-chart-secondary-4"></div>
+        <div className="bg-chart-secondary-5"></div>
+      </div>
+
       <div className="mt-16 flex flex-col gap-8">
         {colors.map((color) => (
           <div className="flex flex-col gap-2" key={color.name}>

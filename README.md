@@ -4,6 +4,7 @@
 
 - [ ] Refactor color token conventions (foreground -> fg, background -> bg)
 - [ ] 2xs and xs sizing
+- [ ] Responsive sizing
 - [ ] Headless Sonner
 - [ ] Pagination sizes + variants + spacings
 - [ ] "vertical" orientations (tabs, navigation menu, toggle group)

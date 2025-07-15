@@ -16,7 +16,7 @@ export default function ComponentsLayout({
 }) {
   return (
     <div className="relative container flex flex-1 gap-12">
-      <aside className="relative z-10 hidden h-[calc(100svh-var(--header-h))] w-full max-w-48 shrink-0 mask-[linear-gradient(#000,#000,transparent_0,#000_var(--scroll-shadow-size),#000_calc(100%_-_var(--scroll-shadow-size)),transparent)] [--scroll-shadow-size:--spacing(8)] lg:sticky lg:top-12 lg:block">
+      <aside className="relative z-10 hidden h-[calc(100vh-var(--header-h))] w-full max-w-48 shrink-0 mask-[linear-gradient(#000,#000,transparent_0,#000_var(--scroll-shadow-size),#000_calc(100%_-_var(--scroll-shadow-size)),transparent)] [--scroll-shadow-size:--spacing(8)] lg:sticky lg:top-12 lg:block">
         <ComponentNav />
       </aside>
       <main className="mx-auto flex w-full flex-1 flex-col gap-12 px-0 py-content">

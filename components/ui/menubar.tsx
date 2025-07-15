@@ -28,8 +28,8 @@ const menubarTriggerVariants = cva(
         ],
 
         base: [
-          "data-[highlighted]:bg-base data-[highlighted]:text-base-foreground",
-          "data-[state=open]:bg-base data-[state=open]:text-base-foreground",
+          "data-[highlighted]:bg-base-bg data-[highlighted]:text-base-foreground",
+          "data-[state=open]:bg-base-bg data-[state=open]:text-base-foreground",
         ],
 
         accent: [

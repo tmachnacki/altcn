@@ -9,6 +9,7 @@ import { componentLinks } from "~/lib/component-links";
 import { Button } from "~/components/ui/button";
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetTitle,
   SheetTrigger,
@@ -56,12 +57,16 @@ export function Header() {
                       {navItems.map((navItem) => {
                         return (
                           <li key={navItem.href}>
-                            <Link
-                              href={navItem.href}
-                              className={"text-base font-medium"}
-                            >
-                              {navItem.label}
-                            </Link>
+                            <SheetClose asChild>
+                              <Link
+                                href={navItem.href}
+                                className={
+                                  "text-base font-medium text-subtle-foreground"
+                                }
+                              >
+                                {navItem.label}
+                              </Link>
+                            </SheetClose>
                           </li>
                         );
                       })}
@@ -75,12 +80,16 @@ export function Header() {
                       {componentLinks.map((componentLink) => {
                         return (
                           <li key={componentLink.href}>
-                            <Link
-                              href={componentLink.href}
-                              className={"text-base font-medium"}
-                            >
-                              {componentLink.label}
-                            </Link>
+                            <SheetClose asChild>
+                              <Link
+                                href={componentLink.href}
+                                className={
+                                  "text-base font-medium text-subtle-foreground"
+                                }
+                              >
+                                {componentLink.label}
+                              </Link>
+                            </SheetClose>
                           </li>
                         );
                       })}

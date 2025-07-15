@@ -7,28 +7,92 @@ import { CheckIcon, MinusIcon } from "lucide-react";
 
 const checkBoxVariants = tv({
   base: [
-    "peer size-4 shrink-0 rounded-sm bg-background shadow-xs inset-ring inset-ring-border not-disabled:not-data-[state=unchecked]:inset-ring-0 dark:data-[state=unchecked]:bg-faded",
-    "hover:not-aria-invalid:not-disabled:data-[state=unchecked]:inset-ring-hover-border",
+    "peer size-4 shrink-0 grow-0 rounded-sm",
+
+    "hover:not-aria-invalid:data-[state=unchecked]:inset-ring-hover-border",
+
     "outline-offset-2 focus-visible:outline-2",
-    "disabled:cursor-not-allowed disabled:bg-muted disabled:opacity-50 disabled:inset-ring-border disabled:not-data-[state=unchecked]:text-muted-foreground",
-    "aria-invalid:inset-ring-destructive aria-invalid:outline-destructive aria-invalid:not-data-[state=unchecked]:bg-destructive aria-invalid:not-data-[state=unchecked]:text-destructive-foreground dark:aria-invalid:data-[state=unchecked]:bg-destructive-faded",
+
+    "disabled:pointer-events-none disabled:text-muted-foreground disabled:opacity-50",
+
+    "aria-invalid:outline-destructive aria-invalid:disabled:text-destructive-muted-foreground",
   ],
   variants: {
     variant: {
+      // -- base --
       base: [
         "outline-outline",
-        "not-data-[state=unchecked]:bg-base not-data-[state=unchecked]:text-base-foreground",
+        "text-base-foreground not-data-[state=unchecked]:bg-base-bg hover:not-data-[state=unchecked]:bg-hover-base",
       ],
+      accent: [
+        "outline-outline",
+        "bg-muted text-accent-foreground hover:bg-hover-muted",
+        "aria-invalid:text-destructive-accent-foreground",
+      ],
+      muted: [
+        "outline-outline",
+        "bg-muted text-muted-foreground hover:bg-hover-muted",
+        "aria-invalid:text-destructive-muted-foreground",
+      ],
+
+      // -- primary --
       primary: [
         "outline-primary",
-        "not-data-[state=unchecked]:bg-primary not-data-[state=unchecked]:text-primary-foreground",
+        "text-primary-foreground not-data-[state=unchecked]:bg-primary hover:not-data-[state=unchecked]:bg-hover-primary",
       ],
+      "primary-accent": [
+        "outline-primary",
+        "bg-primary-muted text-primary-accent-foreground hover:bg-hover-primary-muted",
+        "aria-invalid:text-destructive-accent-foreground",
+      ],
+      "primary-muted": [
+        "outline-primary",
+        "bg-primary-muted text-primary-muted-foreground hover:bg-hover-primary-muted",
+        "aria-invalid:text-destructive-muted-foreground",
+      ],
+
+      // -- secondary --
       secondary: [
         "outline-secondary",
-        "not-data-[state=unchecked]:bg-secondary not-data-[state=unchecked]:text-secondary-foreground",
+        "text-secondary-foreground not-data-[state=unchecked]:bg-secondary hover:not-data-[state=unchecked]:bg-hover-secondary",
+      ],
+      "secondary-accent": [
+        "outline-secondary",
+        "bg-secondary-muted text-secondary-accent-foreground hover:bg-hover-secondary-muted",
+        "aria-invalid:text-destructive-accent-foreground",
+      ],
+      "secondary-muted": [
+        "outline-secondary",
+        "bg-secondary-muted text-secondary-muted-foreground hover:bg-hover-secondary-muted",
+        "aria-invalid:text-destructive-muted-foreground",
       ],
     },
   },
+  compoundVariants: [
+    {
+      variant: ["base", "primary", "secondary"],
+      className: [
+        "bg-background shadow-xs inset-ring inset-ring-border not-disabled:not-data-[state=unchecked]:inset-ring-0 dark:data-[state=unchecked]:bg-faded",
+
+        "hover:not-aria-invalid:data-[state=unchecked]:inset-ring-hover-border",
+
+        "disabled:bg-faded disabled:shadow-none disabled:inset-ring-border",
+
+        "aria-invalid:text-destructive-foreground aria-invalid:inset-ring-destructive aria-invalid:not-data-[state=unchecked]:bg-destructive hover:aria-invalid:not-data-[state=unchecked]:bg-hover-destructive aria-invalid:disabled:bg-destructive-faded dark:aria-invalid:data-[state=unchecked]:bg-destructive-faded",
+      ],
+    },
+    {
+      variant: [
+        "accent",
+        "muted",
+        "primary-accent",
+        "primary-muted",
+        "secondary-accent",
+        "secondary-muted",
+      ],
+      className: ["disabled:bg-muted", "aria-invalid:bg-destructive-muted"],
+    },
+  ],
   defaultVariants: {
     variant: "primary",
   },
@@ -53,11 +117,11 @@ function Checkbox({
         data-slot="checkbox-indicator"
         className="flex items-center justify-center text-current"
       >
-        <CheckIcon className="block size-3.5 group-data-[state=indeterminate]/checkbox:hidden" />
-        <MinusIcon className="hidden size-3 group-data-[state=indeterminate]/checkbox:block" />
+        <CheckIcon className="block size-3.5 stroke-3 group-data-[state=indeterminate]/checkbox:hidden" />
+        <MinusIcon className="hidden size-3.5 group-data-[state=indeterminate]/checkbox:block" />
       </CheckboxPrimitive.Indicator>
     </CheckboxPrimitive.Root>
   );
 }
 
-export { Checkbox };
+export { Checkbox, checkBoxVariants };

@@ -28,7 +28,7 @@ const progressVariants = cva(
     compoundVariants: [
       {
         variant: ["base", "faded"],
-        className: "[--progress-indicator-bg:var(--color-base)]",
+        className: "[--progress-indicator-bg:var(--color-base-bg)]",
       },
       {
         variant: ["primary", "primary-muted", "primary-faded"],

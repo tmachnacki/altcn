@@ -31,7 +31,7 @@ const Heading = ({
       className={cn(
         {
           sm: "text-base sm:text-sm",
-          base: "text-lg sm:text-base sm:text-foreground",
+          base: "text-lg sm:text-base",
           lg: "text-xl sm:text-lg",
           xl: "text-2xl sm:text-xl",
           "2xl": "text-2xl",

@@ -133,7 +133,7 @@ const alertVariants = tv({
       variant: ["outline", "muted", "faded"],
       className: [
         "text-accent-foreground",
-        "[--alert-inset-color-bg:var(--color-base)]",
+        "[--alert-inset-color-bg:var(--color-base-bg)]",
         "[--alert-description-text:var(--color-muted-foreground)]",
         "[--alert-icon-border:var(--color-faded-border)]",
       ],

@@ -35,7 +35,7 @@ const variants = Object.keys(alertVariants.variants.variant) as Variant[];
 const alertButtonVariant = (variant: Variant) => {
   switch (variant) {
     case "outline":
-      return "surface";
+      return "outline";
     case "muted":
       return "surface";
     case "faded":

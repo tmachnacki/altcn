@@ -17,10 +17,10 @@ function Label({
       data-slot="label"
       data-disabled={disabled ? true : undefined}
       className={cn(
-        "flex items-center gap-2 text-sm/4 font-medium text-foreground select-none",
-        "next-disabled:cursor-not-allowed next-disabled:opacity-50",
-        "peer-disabled:cursor-not-allowed peer-disabled:opacity-50",
-        "data-[disabled=true]:cursor-not-allowed data-[disabled=true]:opacity-50",
+        "inline-block w-fit text-sm/4 font-medium text-foreground select-none",
+        "next-disabled:pointer-events-none next-disabled:opacity-50",
+        "peer-disabled:pointer-events-none peer-disabled:opacity-50",
+        "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
         "group/label",
         className
       )}

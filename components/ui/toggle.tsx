@@ -20,9 +20,9 @@ const toggleVariants = cva(
     variants: {
       variant: {
         outline:
-          "border border-border shadow-xs hover:bg-faded hover:text-muted-foreground data-[state=on]:border-hover-border data-[state=on]:bg-faded data-[state=on]:text-accent-foreground",
+          "border border-border shadow-xs hover:bg-base-50 hover:text-muted-foreground data-[state=on]:border-hover-border data-[state=on]:bg-base-50 data-[state=on]:text-accent-foreground dark:hover:bg-base-900 dark:data-[state=on]:bg-base-900",
 
-        base: "hover:bg-faded hover:text-muted-foreground data-[state=on]:bg-base data-[state=on]:text-base-foreground",
+        base: "hover:bg-faded hover:text-muted-foreground data-[state=on]:bg-base-bg data-[state=on]:text-base-foreground",
 
         accent:
           "hover:bg-faded hover:text-muted-foreground data-[state=on]:bg-muted data-[state=on]:text-accent-foreground",

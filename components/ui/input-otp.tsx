@@ -5,106 +5,105 @@ import {
   OTPInput as InputOTPPrimitive,
   OTPInputContext as InputOTPPrimitiveContext,
 } from "input-otp";
-import { cva, type VariantProps } from "class-variance-authority";
+import { tv, type VariantProps } from "tailwind-variants";
 import { MinusIcon } from "lucide-react";
 
 import { cn } from "~/lib/utils";
 
-const inputOTPSlotVariants = cva(
-  [
+const inputOTPSlotVariants = tv({
+  base: [
     "relative isolate flex items-center justify-center outline-none data-[active=true]:z-20",
-    "data-[invalid=true]:text-destructive-accent-foreground",
+    "data-[invalid]:text-destructive-accent-foreground",
     "data-[spacing=split]:last:mr-0",
   ],
-  {
-    variants: {
-      size: {
-        sm: "h-(--size-sm) w-(--size-sm) text-sm data-[spacing=split]:mr-1.5",
-        md: "h-(--size-md) w-(--size-md) text-base data-[spacing=split]:mr-2 sm:text-sm",
-        lg: "h-(--size-lg) w-(--size-lg) text-base data-[spacing=split]:mr-2.5",
-      },
-      variant: {
-        outline: [
-          "-ml-px bg-background text-foreground shadow-xs inset-ring-1 inset-ring-border group-hover/input-otp:group-not-has-disabled/input-otp:group-not-focus-within/input-otp:not-data-[invalid=true]:inset-ring-hover-border first:-ml-0 first:rounded-l-md last:rounded-r-md dark:bg-faded",
-
-          "data-[placeholder]:text-placeholder",
-
-          "group-has-disabled/input-otp:bg-faded group-has-disabled/input-otp:shadow-none",
-
-          "data-[invalid=true]:inset-ring-destructive data-[invalid=true]:data-[placeholder]:text-destructive-placeholder dark:data-[invalid=true]:bg-destructive-faded",
-
-          "data-[active=true]:inset-ring-2 data-[active=true]:inset-ring-primary",
-
-          "data-[spacing=split]:-ml-0 data-[spacing=split]:rounded-md",
-        ],
-
-        muted: [
-          "-ml-px bg-muted text-accent-foreground group-hover/input-otp:not-data-[invalid=true]:group-not-has-disabled/input-otp:group-not-focus-within/input-otp:bg-hover-muted first:ml-0 first:rounded-l-md last:rounded-r-md",
-
-          "shadow-[inset_1px_0_0_0_var(--inset-border),inset_-1px_0_0_0_var(--inset-border)] [--inset-border:var(--color-border)] first:shadow-[inset_-1px_0_0_0_var(--inset-border)] last:shadow-[inset_1px_0_0_0_var(--inset-border)]",
-
-          "data-[placeholder]:text-placeholder",
-
-          "data-[active=true]:shadow-[inset_0_0_0_2px_var(--color-primary)]",
-
-          "data-[invalid=true]:bg-destructive-muted data-[invalid=true]:text-destructive-accent-foreground data-[invalid=true]:[--inset-border:var(--color-destructive-faded-border)] data-[invalid=true]:group-not-focus-within/input-otp:group-hover/input-otp:bg-hover-destructive-muted data-[invalid=true]:data-[active=true]:shadow-[inset_0_0_0_2px_var(--color-destructive)] data-[invalid=true]:data-[placeholder]:text-destructive-placeholder",
-
-          "data-[spacing=split]:ml-0 data-[spacing=split]:rounded-md data-[spacing=split]:shadow-none",
-        ],
-
-        underlined: [
-          "mr-0.5 rounded-none bg-transparent text-foreground shadow-[inset_0_-1px_0_0_var(--color-border)] group-hover/input-otp:not-data-[invalid=true]:group-not-has-disabled/input-otp:group-not-focus-within/input-otp:shadow-[inset_0_-1px_0_0_var(--color-hover-border)] last:mr-0",
-
-          "data-[placeholder]:text-placeholder",
-
-          "data-[active=true]:shadow-[inset_0_-2px_0_0_var(--color-primary)]",
-
-          "data-[invalid=true]:shadow-[inset_0_-1px_0_0_var(--color-destructive)] data-[invalid=true]:data-[active=true]:shadow-[inset_0_-2px_0_0_var(--color-destructive)] data-[invalid=true]:data-[placeholder]:text-destructive-placeholder",
-        ],
-
-        "primary-muted": [
-          "-ml-px bg-primary-muted text-primary-accent-foreground group-hover/input-otp:not-data-[invalid=true]:group-not-has-disabled/input-otp:group-not-focus-within/input-otp:bg-hover-primary-muted first:ml-0 first:rounded-l-md last:rounded-r-md",
-
-          "shadow-[inset_1px_0_0_0_var(--inset-border),inset_-1px_0_0_0_var(--inset-border)] [--inset-border:var(--color-primary-faded-border)] first:shadow-[inset_-1px_0_0_0_var(--inset-border)] last:shadow-[inset_1px_0_0_0_var(--inset-border)]",
-
-          "data-[placeholder]:text-primary-placeholder",
-
-          "group-has-disabled/input-otp:bg-muted group-has-disabled/input-otp:text-accent-foreground group-has-disabled/input-otp:[--inset-border:var(--color-border)] group-has-disabled/input-otp:data-[placeholder]:text-placeholder",
-
-          "data-[active=true]:shadow-[inset_0_0_0_2px_var(--color-primary)]",
-
-          "data-[invalid=true]:bg-destructive-muted data-[invalid=true]:text-destructive-accent-foreground data-[invalid=true]:[--inset-border:var(--color-destructive-faded-border)] data-[invalid=true]:group-not-focus-within/input-otp:group-hover/input-otp:bg-hover-destructive-muted data-[invalid=true]:data-[active=true]:shadow-[inset_0_0_0_2px_var(--color-destructive)] data-[invalid=true]:data-[placeholder]:text-destructive-placeholder",
-
-          "data-[spacing=split]:-ml-0 data-[spacing=split]:rounded-md data-[spacing=split]:shadow-none",
-        ],
-
-        "secondary-muted": [
-          "-ml-px bg-secondary-muted text-secondary-accent-foreground group-hover/input-otp:not-data-[invalid=true]:group-not-has-disabled/input-otp:group-not-focus-within/input-otp:bg-hover-secondary-muted first:ml-0 first:rounded-l-md last:rounded-r-md",
-
-          "shadow-[inset_1px_0_0_0_var(--inset-border),inset_-1px_0_0_0_var(--inset-border)] [--inset-border:var(--color-secondary-faded-border)] first:shadow-[inset_-1px_0_0_0_var(--inset-border)] last:shadow-[inset_1px_0_0_0_var(--inset-border)]",
-
-          "data-[placeholder]:text-secondary-placeholder",
-
-          "group-has-disabled/input-otp:bg-muted group-has-disabled/input-otp:text-accent-foreground group-has-disabled/input-otp:[--shadow-border:var(--color-border)] group-has-disabled/input-otp:data-[placeholder]:text-placeholder",
-
-          "data-[active=true]:shadow-[inset_0_0_0_2px_var(--color-secondary)]",
-
-          "data-[invalid=true]:bg-destructive-muted data-[invalid=true]:text-destructive-accent-foreground data-[invalid=true]:[--inset-border:var(--color-destructive-faded-border)] data-[invalid=true]:group-not-focus-within/input-otp:group-hover/input-otp:bg-hover-destructive-muted data-[invalid=true]:data-[active=true]:shadow-[inset_0_0_0_2px_var(--color-destructive)] data-[invalid=true]:data-[placeholder]:text-destructive-placeholder",
-
-          "data-[spacing=split]:-ml-0 data-[spacing=split]:rounded-md data-[spacing=split]:shadow-none",
-        ],
-      },
+  variants: {
+    size: {
+      sm: "h-(--size-sm) w-(--size-sm) text-sm data-[spacing=split]:mr-1.5",
+      md: "h-(--size-md) w-(--size-md) text-base data-[spacing=split]:mr-2 sm:text-sm",
+      lg: "h-(--size-lg) w-(--size-lg) text-base data-[spacing=split]:mr-2.5",
     },
-    defaultVariants: {
-      variant: "outline",
+    variant: {
+      outline: [
+        "-ml-px bg-background text-foreground shadow-xs inset-ring-1 inset-ring-border group-hover/input-otp:not-data-[disabled]:group-not-focus-within/input-otp:not-data-[invalid]:inset-ring-hover-border first:-ml-0 first:rounded-l-md last:rounded-r-md dark:bg-faded",
+
+        "data-[placeholder]:text-placeholder",
+
+        "data-[disabled]:bg-faded data-[disabled]:shadow-none",
+
+        "data-[invalid]:inset-ring-destructive data-[invalid]:data-[disabled]:bg-destructive-faded data-[invalid]:data-[placeholder]:text-destructive-placeholder dark:data-[invalid]:bg-destructive-faded",
+
+        "data-[active=true]:inset-ring-2 data-[active=true]:inset-ring-primary",
+
+        "data-[spacing=split]:-ml-0 data-[spacing=split]:rounded-md",
+      ],
+
+      muted: [
+        "-ml-px bg-muted text-accent-foreground group-hover/input-otp:not-data-[disabled]:group-not-focus-within/input-otp:not-data-[invalid]:bg-hover-muted first:ml-0 first:rounded-l-md last:rounded-r-md",
+
+        "shadow-[inset_1px_0_0_0_var(--inset-border),inset_-1px_0_0_0_var(--inset-border)] [--inset-border:var(--color-border)] first:shadow-[inset_-1px_0_0_0_var(--inset-border)] last:shadow-[inset_1px_0_0_0_var(--inset-border)]",
+
+        "data-[placeholder]:text-placeholder",
+
+        "data-[active=true]:shadow-[inset_0_0_0_2px_var(--color-primary)]",
+
+        "data-[invalid]:bg-destructive-muted data-[invalid]:text-destructive-accent-foreground data-[invalid]:[--inset-border:var(--color-destructive-faded-border)] group-hover/input-otp:not-data-[disabled]:data-[invalid]:group-not-focus-within/input-otp:bg-hover-destructive-muted data-[invalid]:data-[active=true]:shadow-[inset_0_0_0_2px_var(--color-destructive)] data-[invalid]:data-[placeholder]:text-destructive-placeholder",
+
+        "data-[spacing=split]:ml-0 data-[spacing=split]:rounded-md data-[spacing=split]:not-data-[active=true]:shadow-none",
+      ],
+
+      underlined: [
+        "mr-0.5 rounded-none bg-transparent text-foreground shadow-[inset_0_-1px_0_0_var(--color-border)] group-hover/input-otp:not-data-[disabled]:group-not-focus-within/input-otp:not-data-[invalid]:shadow-[inset_0_-1px_0_0_var(--color-hover-border)] last:mr-0",
+
+        "data-[placeholder]:text-placeholder",
+
+        "data-[active=true]:shadow-[inset_0_-2px_0_0_var(--color-primary)]",
+
+        "data-[invalid]:shadow-[inset_0_-1px_0_0_var(--color-destructive)] data-[invalid]:data-[active=true]:shadow-[inset_0_-2px_0_0_var(--color-destructive)] data-[invalid]:data-[placeholder]:text-destructive-placeholder",
+      ],
+
+      "primary-muted": [
+        "-ml-px bg-primary-muted text-primary-accent-foreground group-hover/input-otp:not-data-[disabled]:group-not-focus-within/input-otp:not-data-[invalid]:bg-hover-primary-muted first:ml-0 first:rounded-l-md last:rounded-r-md",
+
+        "shadow-[inset_1px_0_0_0_var(--inset-border),inset_-1px_0_0_0_var(--inset-border)] [--inset-border:var(--color-primary-faded-border)] first:shadow-[inset_-1px_0_0_0_var(--inset-border)] last:shadow-[inset_1px_0_0_0_var(--inset-border)]",
+
+        "data-[placeholder]:text-primary-placeholder",
+
+        "data-[disabled]:bg-muted data-[disabled]:text-accent-foreground data-[disabled]:[--inset-border:var(--color-border)] data-[disabled]:data-[placeholder]:text-placeholder",
+
+        "data-[active=true]:shadow-[inset_0_0_0_2px_var(--color-primary)]",
+
+        "data-[invalid]:bg-destructive-muted data-[invalid]:text-destructive-accent-foreground data-[invalid]:[--inset-border:var(--color-destructive-faded-border)] group-hover/input-otp:not-data-[disabled]:data-[invalid]:group-not-focus-within/input-otp:bg-hover-destructive-muted data-[invalid]:data-[active=true]:shadow-[inset_0_0_0_2px_var(--color-destructive)] data-[invalid]:data-[placeholder]:text-destructive-placeholder",
+
+        "data-[spacing=split]:-ml-0 data-[spacing=split]:rounded-md data-[spacing=split]:not-data-[active=true]:shadow-none",
+      ],
+
+      "secondary-muted": [
+        "-ml-px bg-secondary-muted text-secondary-accent-foreground group-hover/input-otp:not-data-[disabled]:group-not-focus-within/input-otp:not-data-[invalid]:bg-hover-secondary-muted first:ml-0 first:rounded-l-md last:rounded-r-md",
+
+        "shadow-[inset_1px_0_0_0_var(--inset-border),inset_-1px_0_0_0_var(--inset-border)] [--inset-border:var(--color-secondary-faded-border)] first:shadow-[inset_-1px_0_0_0_var(--inset-border)] last:shadow-[inset_1px_0_0_0_var(--inset-border)]",
+
+        "data-[placeholder]:text-secondary-placeholder",
+
+        "data-[disabled]:bg-muted data-[disabled]:text-accent-foreground data-[disabled]:[--shadow-border:var(--color-border)] data-[disabled]:data-[placeholder]:text-placeholder",
+
+        "data-[active=true]:shadow-[inset_0_0_0_2px_var(--color-secondary)]",
+
+        "data-[invalid]:bg-destructive-muted data-[invalid]:text-destructive-accent-foreground data-[invalid]:[--inset-border:var(--color-destructive-faded-border)] group-hover/input-otp:not-data-[disabled]:data-[invalid]:group-not-focus-within/input-otp:bg-hover-destructive-muted data-[invalid]:data-[active=true]:shadow-[inset_0_0_0_2px_var(--color-destructive)] data-[invalid]:data-[placeholder]:text-destructive-placeholder",
+
+        "data-[spacing=split]:-ml-0 data-[spacing=split]:rounded-md data-[spacing=split]:not-data-[active=true]:shadow-none",
+      ],
     },
-  }
-);
+  },
+  defaultVariants: {
+    variant: "outline",
+  },
+});
 
 type InputOTPContextProps = {
   variant?: VariantProps<typeof inputOTPSlotVariants>["variant"];
   size?: VariantProps<typeof inputOTPSlotVariants>["size"];
   spacing?: "compact" | "split";
+  disabled?: boolean;
   ariaInvalid?: React.ComponentProps<typeof InputOTPPrimitive>["aria-invalid"];
 };
 
@@ -125,6 +124,7 @@ function InputOTP({
   size = "md",
   htmlSize,
   spacing = "split",
+  disabled,
   "aria-invalid": ariaInvalid,
   children,
   ...props
@@ -134,16 +134,19 @@ function InputOTP({
       data-slot="input-otp"
       data-spacing={spacing}
       containerClassName={cn(
-        "flex items-center gap-2 has-disabled:opacity-50",
+        "peer flex items-center gap-2 has-disabled:opacity-50",
         "group/input-otp",
         containerClassName
       )}
-      className={cn("disabled:cursor-not-allowed", className)}
+      className={className}
+      disabled={disabled}
       aria-invalid={ariaInvalid}
       size={htmlSize}
       {...props}
     >
-      <InputOTPContext.Provider value={{ variant, spacing, size, ariaInvalid }}>
+      <InputOTPContext.Provider
+        value={{ variant, spacing, size, ariaInvalid, disabled }}
+      >
         {children}
       </InputOTPContext.Provider>
     </InputOTPPrimitive>
@@ -170,7 +173,7 @@ function InputOTPSlot({
   const inputOTPPrimitiveContext = React.useContext(InputOTPPrimitiveContext);
   const { char, hasFakeCaret, isActive, placeholderChar } =
     inputOTPPrimitiveContext?.slots[index] ?? {};
-  const { variant, spacing, size, ariaInvalid } =
+  const { variant, spacing, size, ariaInvalid, disabled } =
     React.useContext(InputOTPContext);
 
   return (
@@ -179,7 +182,8 @@ function InputOTPSlot({
       data-active={isActive}
       data-spacing={spacing}
       data-placeholder={placeholderChar ? true : undefined}
-      data-invalid={ariaInvalid}
+      data-disabled={disabled ? true : undefined}
+      data-invalid={ariaInvalid ? true : undefined}
       className={cn(inputOTPSlotVariants({ variant, size }), className)}
       {...props}
     >
@@ -204,4 +208,10 @@ function InputOTPSeparator({ ...props }: React.ComponentProps<"div">) {
   );
 }
 
-export { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot };
+export {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSeparator,
+  InputOTPSlot,
+  inputOTPSlotVariants,
+};

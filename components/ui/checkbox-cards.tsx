@@ -10,12 +10,18 @@ import { Checkbox } from "~/components/ui/checkbox";
 
 const checkboxCardsItemVariants = tv({
   base: [
-    "text-sm leading-normal font-normal [--accent-text:var(--color-accent-foreground)] [--muted-text:var(--color-muted-foreground)]",
-    "relative flex items-start gap-3 rounded-lg p-4 outline -outline-offset-1 outline-border",
-    "hover:z-10 hover:not-has-data-[state=checked]:not-has-disabled:bg-faded",
+    "[--accent-text:var(--color-accent-foreground)] [--muted-text:var(--color-muted-foreground)]",
+
+    "relative flex items-start gap-3 rounded-lg p-4 outline -outline-offset-1 outline-border shadow-xs",
+
+    "hover:z-10 hover:not-has-data-[state=checked]:bg-faded",
+
     "has-data-[state=checked]:not-has-focus-visible:z-20",
-    "has-disabled:cursor-not-allowed has-disabled:opacity-50",
+
+    "has-disabled:pointer-events-none has-disabled:opacity-50 has-disabled:shadow-none has-disabled:has-data-[state=checked]:bg-faded has-disabled:has-data-[state=checked]:outline-outline/50 has-disabled:has-data-[state=checked]:[--accent-text:var(--color-accent-foreground)] has-disabled:has-data-[state=checked]:[--muted-text:var(--color-muted-foreground)]",
+
     "has-focus-visible:z-30 has-focus-visible:outline-2",
+
     "has-aria-invalid:outline-destructive/35 has-aria-invalid:has-focus-visible:outline-destructive has-aria-invalid:has-data-[state=checked]:bg-destructive-faded has-aria-invalid:has-data-[state=checked]:[--accent-text:var(--color-destructive-accent-foreground)] has-aria-invalid:has-data-[state=checked]:[--muted-text:var(--color-destructive-muted-foreground)] has-aria-invalid:has-data-[state=checked]:not-has-focus-visible:outline-destructive/50",
   ],
   variants: {
@@ -89,13 +95,13 @@ function CheckboxCardsItemContent({
   );
 }
 
-function CheckboxCardsItemLabel({
+function CheckboxCardsItemTitle({
   className,
   ...props
 }: React.ComponentProps<"span">) {
   return (
     <span
-      data-slot="checkbox-cards-item-label"
+      data-slot="checkbox-cards-item-title"
       className={cn(
         "block text-sm/4 font-medium text-(--accent-text)",
         className
@@ -127,7 +133,7 @@ function CheckboxCardsItemCheckbox({
   return (
     <Checkbox
       variant={variant || context.variant}
-      className={cn("focus-visible:outline-none", className)}
+      className={cn("focus-visible:outline-none disabled:opacity-100", className)}
       {...props}
     />
   );
@@ -137,7 +143,8 @@ export {
   CheckboxCards,
   CheckboxCardsItem,
   CheckboxCardsItemContent,
-  CheckboxCardsItemLabel,
+  CheckboxCardsItemTitle,
   CheckboxCardsItemDescription,
   CheckboxCardsItemCheckbox,
+  checkboxCardsItemVariants,
 };

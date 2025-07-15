@@ -42,7 +42,7 @@ const tabsTriggerVariants = cva(
           "data-[state=active]:shadow-[0_0_4px_0_rgba(0,0,0,0.04),0_2px_8px_0_rgba(0,0,0,0.06),0_0_2px_-1px_rgba(0,0,0,0.25)]",
         ],
 
-        base: "data-[state=active]:bg-base data-[state=active]:text-base-foreground data-[state=active]:shadow-sm",
+        base: "data-[state=active]:bg-base-bg data-[state=active]:text-base-foreground data-[state=active]:shadow-sm",
 
         outline:
           "data-[state=active]:border data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-xs",

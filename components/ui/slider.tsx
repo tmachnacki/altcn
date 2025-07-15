@@ -9,7 +9,7 @@ import { cn } from "~/lib/utils";
 const sliderVariants = cva(
   [
     "relative flex w-full touch-none items-center select-none data-[orientation=vertical]:h-full data-[orientation=vertical]:min-h-44 data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col",
-    "data-[disabled]:opacity-50 data-[disabled]:cursor-not-allowed",
+    "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
     "aria-invalid:[--slider-range-bg:var(--color-destructive)] aria-invalid:[--slider-thumb-border:var(--color-destructive)] aria-invalid:[--slider-thumb-ring:var(--color-destructive-faded-border)]",
   ],
   {
@@ -17,15 +17,15 @@ const sliderVariants = cva(
       variant: {
         base: [
           "[--slider-track-bg:var(--color-muted)] aria-invalid:[--slider-track-bg:var(--color-destructive-muted)]",
-          "[--slider-range-bg:var(--color-base)]",
-          "[--slider-thumb-border:var(--color-base)]",
+          "[--slider-range-bg:var(--color-base-bg)]",
+          "[--slider-thumb-border:var(--color-base-bg)]",
           "[--slider-thumb-ring:var(--color-faded-border)]",
         ],
 
         faded: [
           "[--slider-track-bg:var(--color-faded)] [--slider-track-inset-ring:var(--color-faded-border)] aria-invalid:[--slider-track-bg:var(--color-destructive-faded)] aria-invalid:[--slider-track-inset-ring:var(--color-destructive-faded-border)]",
-          "[--slider-range-bg:var(--color-base)]",
-          "[--slider-thumb-border:var(--color-base)]",
+          "[--slider-range-bg:var(--color-base-bg)]",
+          "[--slider-thumb-border:var(--color-base-bg)]",
           "[--slider-thumb-ring:var(--color-faded-border)]",
         ],
 

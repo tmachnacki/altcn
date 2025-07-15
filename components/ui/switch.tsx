@@ -23,7 +23,7 @@ const switchVariants = cva(
   {
     variants: {
       variant: {
-        base: ["outline-outline", "data-[state=checked]:bg-base"],
+        base: ["outline-outline", "data-[state=checked]:bg-base-bg"],
         primary: ["outline-primary", "data-[state=checked]:bg-primary"],
         secondary: ["outline-secondary", "data-[state=checked]:bg-secondary"],
       },

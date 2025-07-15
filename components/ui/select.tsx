@@ -127,7 +127,7 @@ const selectItemVariants = cva(
     variants: {
       variant: {
         // -- base --
-        base: "data-[highlighted]:bg-base data-[highlighted]:text-base-foreground",
+        base: "data-[highlighted]:bg-base-bg data-[highlighted]:text-base-foreground",
 
         accent:
           "data-[highlighted]:bg-muted data-[highlighted]:text-accent-foreground",

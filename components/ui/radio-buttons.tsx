@@ -28,7 +28,7 @@ const radioButtonsItemVariants = cva(
         ],
 
         base: [
-          "bg-base text-base-foreground shadow",
+          "bg-base-bg text-base-foreground shadow",
           "hover:not-disabled:not-aria-invalid:bg-hover-base",
         ],
 
