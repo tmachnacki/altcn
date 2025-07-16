@@ -1,7 +1,7 @@
 import * as React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 
-import { cn } from "~/lib/utils";
+// import { cn } from "~/lib/utils";
 
 const inputVariants = tv({
   base: [
@@ -74,7 +74,7 @@ const inputVariants = tv({
 
         "placeholder:text-primary-placeholder",
 
-        "disabled:file:bg-base-bg disabled:bg-muted disabled:text-accent-foreground disabled:file:text-base-foreground disabled:placeholder:text-placeholder",
+        "disabled:bg-muted disabled:text-accent-foreground disabled:file:bg-base-bg disabled:file:text-base-foreground disabled:placeholder:text-placeholder",
 
         "focus-visible:outline-2 focus-visible:outline-primary",
 
@@ -91,7 +91,7 @@ const inputVariants = tv({
 
         "placeholder:text-secondary-placeholder",
 
-        "disabled:file:bg-base-bg disabled:bg-muted disabled:text-accent-foreground disabled:file:text-base-foreground disabled:placeholder:text-muted-foreground",
+        "disabled:bg-muted disabled:text-accent-foreground disabled:file:bg-base-bg disabled:file:text-base-foreground disabled:placeholder:text-muted-foreground",
 
         "focus-visible:outline-2 focus-visible:outline-secondary",
 
@@ -153,7 +153,11 @@ function Input({
     <input
       type={type}
       data-slot="input"
-      className={cn(inputVariants({ variant, size }), className)}
+      className={inputVariants({
+        variant,
+        size,
+        className,
+      })}
       size={htmlSize}
       {...props}
     />
