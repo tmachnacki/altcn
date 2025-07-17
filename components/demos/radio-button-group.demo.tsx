@@ -3,7 +3,11 @@
 import * as React from "react";
 
 import { Label } from "~/components/ui/label";
-import { RadioButtons, RadioButtonsItem } from "~/components/ui/radio-buttons";
+import {
+  RadioButton,
+  RadioButtonGroup,
+  radioButtonVariants,
+} from "~/components/ui/radio-button-group";
 import {
   Select,
   SelectContent,
@@ -25,39 +29,10 @@ const options = [
   { id: "128ft", name: "128 ft" },
 ];
 
-const variants = [
-  "outline",
-  "base",
-  "accent",
-  "muted",
-  "surface",
-  "faded",
-  "base-shadow",
-  "base-gradient",
-  "ghost",
+type Variant = keyof typeof radioButtonVariants.variants.variant;
+const variants = Object.keys(radioButtonVariants.variants.variant) as Variant[];
 
-  "primary",
-  "primary-accent",
-  "primary-muted",
-  "primary-surface",
-  "primary-faded",
-  "primary-tron",
-  "primary-shadow",
-  "primary-gradient",
-  "primary-ghost",
-
-  "secondary",
-  "secondary-accent",
-  "secondary-muted",
-  "secondary-surface",
-  "secondary-faded",
-  "secondary-tron",
-  "secondary-shadow",
-  "secondary-gradient",
-  "secondary-ghost",
-] as const;
-
-type Size = "xs" | "sm" | "md" | "lg";
+type Size = keyof typeof radioButtonVariants.variants.size;
 const sizesMap: Record<number, Size> = {
   1: "xs",
   2: "sm",
@@ -65,14 +40,23 @@ const sizesMap: Record<number, Size> = {
   4: "lg",
 } as const;
 
-export function RadioButtonsDemo() {
-  const [checkedVariant, setCheckedVariant] = React.useState("primary");
-  const [uncheckedVariant, setUncheckedVariant] = React.useState("outline");
-  const [size, setSize] = React.useState(3);
-  const [orientation, setOrientation] = React.useState("horizontal");
+type Orientation = "horizontal" | "vertical";
+
+export function RadioButtonGroupDemo() {
+  const [checkedVariant, setCheckedVariant] =
+    React.useState<Variant>("primary");
+  const [uncheckedVariant, setUncheckedVariant] =
+    React.useState<Variant>("outline");
+  const [sizeIdx, setSizeIdx] = React.useState(3);
+  const [orientation, setOrientation] =
+    React.useState<Orientation>("horizontal");
+
   const [invalid, setInvalid] = React.useState(false);
+  const [disabled, setDisabled] = React.useState(false);
 
   const [selectedOption, setSelectedOption] = React.useState(options[0].id);
+
+  const size = sizesMap[sizeIdx];
 
   return (
     <>
@@ -87,36 +71,38 @@ export function RadioButtonsDemo() {
               More details
             </div>
           </div>
-
-          <RadioButtons
+          <RadioButtonGroup
             variants={{
-              checked: checkedVariant as (typeof variants)[number],
-              unchecked: uncheckedVariant as (typeof variants)[number],
-              size: sizesMap[size],
+              checked: checkedVariant,
+              unchecked: uncheckedVariant,
             }}
+            size={size}
             orientation={orientation as "horizontal" | "vertical"}
             value={selectedOption}
             onValueChange={setSelectedOption}
             className="grid grid-cols-6 data-[orientation=vertical]:grid-cols-1"
           >
             {options.map((option) => (
-              <RadioButtonsItem
+              <RadioButton
                 key={option.id}
                 value={option.id}
                 aria-invalid={invalid}
-                disabled={option.id === "128ft"}
+                disabled={disabled}
                 checked={selectedOption === option.id}
               >
                 {option.name}
-              </RadioButtonsItem>
+              </RadioButton>
             ))}
-          </RadioButtons>
+          </RadioButtonGroup>
         </fieldset>
       </ComponentContainer>
       <ComponentPlayground>
         <div className="grid gap-2">
           <Label htmlFor="checked-variant">Checked variant</Label>
-          <Select value={checkedVariant} onValueChange={setCheckedVariant}>
+          <Select
+            value={checkedVariant}
+            onValueChange={(value) => setCheckedVariant(value as Variant)}
+          >
             <SelectTrigger id="checked-variant" className="w-full">
               <SelectValue placeholder="Select a variant" />
             </SelectTrigger>
@@ -131,7 +117,10 @@ export function RadioButtonsDemo() {
         </div>
         <div className="grid gap-2">
           <Label htmlFor="unchecked-variant">Unchecked variant</Label>
-          <Select value={uncheckedVariant} onValueChange={setUncheckedVariant}>
+          <Select
+            value={uncheckedVariant}
+            onValueChange={(value) => setUncheckedVariant(value as Variant)}
+          >
             <SelectTrigger id="unchecked-variant" className="w-full">
               <SelectValue placeholder="Select a variant" />
             </SelectTrigger>
@@ -144,26 +133,27 @@ export function RadioButtonsDemo() {
             </SelectContent>
           </Select>
         </div>
-
         <div className="grid gap-3">
           <Label>
             Size:{" "}
             <span className="font-normal text-primary-muted-foreground">
-              {sizesMap[size]}
+              {size}
             </span>
           </Label>
           <Slider
             min={1}
             max={4}
             step={1}
-            value={[size]}
-            onValueChange={(value) => setSize(value[0])}
+            value={[sizeIdx]}
+            onValueChange={(value) => setSizeIdx(value[0])}
           />
         </div>
-
         <div className="grid gap-2">
           <Label htmlFor="radio-buttons-orientation">Orientation</Label>
-          <Select value={orientation} onValueChange={setOrientation}>
+          <Select
+            value={orientation}
+            onValueChange={(value) => setOrientation(value as Orientation)}
+          >
             <SelectTrigger id="radio-buttons-orientation" className="w-full">
               <SelectValue placeholder="Select an orientation" />
             </SelectTrigger>
@@ -174,8 +164,20 @@ export function RadioButtonsDemo() {
           </Select>
         </div>
         <div className="flex items-center gap-3">
-          <Switch id="invalid" checked={invalid} onCheckedChange={setInvalid} />
-          <Label htmlFor="invalid">Invalid</Label>
+          <Switch
+            id="radio-buttons-invalid"
+            checked={invalid}
+            onCheckedChange={setInvalid}
+          />
+          <Label htmlFor="radio-buttons-invalid">Invalid</Label>
+        </div>
+        <div className="flex items-center gap-3">
+          <Switch
+            id="radio-buttons-disabled"
+            checked={disabled}
+            onCheckedChange={setDisabled}
+          />
+          <Label htmlFor="radio-buttons-disabled">Disabled</Label>
         </div>
       </ComponentPlayground>
     </>

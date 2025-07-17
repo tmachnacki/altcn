@@ -10,7 +10,11 @@ import {
 
 import { cn } from "~/lib/utils";
 
-import { menuItemIndicatorVariants } from "~/components/ui/dropdown-menu";
+import {
+  menuContentVariants,
+  menuItemIndicatorVariants,
+  menuItemVariants,
+} from "~/components/ui/dropdown-menu";
 import { Label } from "~/components/ui/label";
 import {
   Menubar,
@@ -27,6 +31,7 @@ import {
   MenubarSubContent,
   MenubarSubTrigger,
   MenubarTrigger,
+  menubarTriggerVariants,
 } from "~/components/ui/menubar";
 import {
   Select,
@@ -39,75 +44,45 @@ import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
 import { Swatch } from "~/components/swatch";
 
-const triggerVariants = [
-  "outline",
-  "base",
-  "accent",
-  "surface",
-  "base-gradient",
+type TriggerVariant = keyof typeof menubarTriggerVariants.variants.variant;
+const triggerVariants = Object.keys(
+  menubarTriggerVariants.variants.variant
+) as TriggerVariant[];
 
-  "primary",
-  "primary-accent",
-  "primary-muted",
-  "primary-surface",
-  "primary-faded",
-  "primary-tron",
-  "primary-gradient",
-  "primary-ghost",
+type ContentVariant = keyof typeof menuContentVariants.variants.variant;
+const contentVariants = Object.keys(
+  menuContentVariants.variants.variant
+) as ContentVariant[];
 
-  "secondary",
-  "secondary-accent",
-  "secondary-muted",
-  "secondary-surface",
-  "secondary-faded",
-  "secondary-tron",
-  "secondary-gradient",
-  "secondary-ghost",
-] as const;
+type ItemVariant = keyof typeof menuItemVariants.variants.variant;
+const itemVariants = Object.keys(menuItemVariants.variants.variant).filter(
+  (variant) => !variant.includes("destructive")
+) as ItemVariant[];
 
-const itemVariants = [
-  "base",
-  "accent",
-  "surface",
+type IndicatorVariant = keyof typeof menuItemIndicatorVariants.variants.variant;
+const indicatorVariants = Object.keys(
+  menuItemIndicatorVariants.variants.variant
+) as IndicatorVariant[];
 
-  "primary",
-  "primary-accent",
-  "primary-muted",
-  "primary-surface",
-  "primary-faded",
-
-  "secondary",
-  "secondary-accent",
-  "secondary-muted",
-  "secondary-surface",
-  "secondary-faded",
-] as const;
-
-const indicatorVariants = [
-  "base",
-  "primary",
-  "secondary",
-  "destructive",
-  "success",
-  "warning",
-] as const;
-
-const destructiveItemVariants = [
-  "destructive",
-  "destructive-accent",
-  "destructive-muted",
-  "destructive-surface",
-  "destructive-faded",
-] as const;
+type DestructiveItemVariant = keyof typeof menuItemVariants.variants.variant;
+const destructiveItemVariants = Object.keys(
+  menuItemVariants.variants.variant
+).filter((variant) =>
+  variant.includes("destructive")
+) as DestructiveItemVariant[];
 
 const widths = ["default", "full"] as const;
 
 export function MenubarDemo() {
-  const [triggerVariant, setTriggerVariant] = React.useState("accent");
-  const [itemVariant, setItemVariant] = React.useState("accent");
-  const [indicatorVariant, setIndicatorVariant] = React.useState("base");
-  const [destructiveVariant, setDestructiveVariant] =
-    React.useState("destructive-muted");
+  const [triggerVariant, setTriggerVariant] =
+    React.useState<TriggerVariant>("accent");
+  const [contentVariant, setContentVariant] =
+    React.useState<ContentVariant>("solid");
+  const [itemVariant, setItemVariant] = React.useState<ItemVariant>("accent");
+  const [indicatorVariant, setIndicatorVariant] =
+    React.useState<IndicatorVariant>("base");
+  const [destructiveItemVariant, setDestructiveItemVariant] =
+    React.useState<DestructiveItemVariant>("destructive-muted");
   const [width, setWidth] = React.useState("default");
 
   const [checked, setChecked] = React.useState(true);
@@ -115,199 +90,162 @@ export function MenubarDemo() {
 
   return (
     <>
-      <ComponentContainer>
-        <Menubar>
-          <MenubarMenu>
-            <MenubarTrigger
-              variant={triggerVariant as (typeof triggerVariants)[number]}
-            >
-              File
-            </MenubarTrigger>
-            <MenubarContent
-              variant={itemVariant as (typeof itemVariants)[number]}
-              width={width as (typeof widths)[number]}
-              indicatorVariant={
-                indicatorVariant as (typeof indicatorVariants)[number]
-              }
-            >
-              <MenubarItem>
-                New Tab <MenubarShortcut>⌘T</MenubarShortcut>
-              </MenubarItem>
-              <MenubarItem>
-                New Window <MenubarShortcut>⌘N</MenubarShortcut>
-              </MenubarItem>
-              <MenubarItem disabled>New Incognito Window</MenubarItem>
-              <MenubarSeparator />
-              <MenubarSub>
-                <MenubarSubTrigger>Share</MenubarSubTrigger>
-                <MenubarSubContent>
-                  <MenubarItem>Email link</MenubarItem>
-                  <MenubarItem>Messages</MenubarItem>
-                  <MenubarItem>Notes</MenubarItem>
-                </MenubarSubContent>
-              </MenubarSub>
-              <MenubarSeparator />
-              <MenubarItem>
-                Print... <MenubarShortcut>⌘P</MenubarShortcut>
-              </MenubarItem>
-            </MenubarContent>
-          </MenubarMenu>
-          <MenubarMenu>
-            <MenubarTrigger
-              variant={triggerVariant as (typeof triggerVariants)[number]}
-            >
-              Edit
-            </MenubarTrigger>
-            <MenubarContent
-              variant={itemVariant as (typeof itemVariants)[number]}
-              width={width as (typeof widths)[number]}
-            >
-              <MenubarItem>
-                Undo <MenubarShortcut>⌘Z</MenubarShortcut>
-              </MenubarItem>
-              <MenubarItem>
-                Redo <MenubarShortcut>⇧⌘Z</MenubarShortcut>
-              </MenubarItem>
-              <MenubarSeparator />
-              <MenubarSub>
-                <MenubarSubTrigger>Find</MenubarSubTrigger>
-                <MenubarSubContent>
-                  <MenubarItem>Search the web</MenubarItem>
-                  <MenubarSeparator />
-                  <MenubarItem>Find...</MenubarItem>
-                  <MenubarItem>Find Next</MenubarItem>
-                  <MenubarItem>Find Previous</MenubarItem>
-                </MenubarSubContent>
-              </MenubarSub>
-              <MenubarSeparator />
-              <MenubarItem>Cut</MenubarItem>
-              <MenubarItem>Copy</MenubarItem>
-              <MenubarItem>Paste</MenubarItem>
-            </MenubarContent>
-          </MenubarMenu>
-          <MenubarMenu>
-            <MenubarTrigger
-              variant={triggerVariant as (typeof triggerVariants)[number]}
-            >
-              View
-            </MenubarTrigger>
-            <MenubarContent
-              variant={itemVariant as (typeof itemVariants)[number]}
-              width={width as (typeof widths)[number]}
-              indicatorVariant={
-                indicatorVariant as (typeof indicatorVariants)[number]
-              }
-            >
-              <MenubarCheckboxItem
-                checked={checked}
-                onCheckedChange={setChecked}
-                onSelect={(e) => e.preventDefault()}
-              >
-                Checkbox Indicator
-              </MenubarCheckboxItem>
-              <MenubarCheckboxItem checked disabled>
-                Disabled
-              </MenubarCheckboxItem>
-              <MenubarSeparator />
-              <MenubarItem align="inset">
-                Reload <MenubarShortcut>⌘R</MenubarShortcut>
-              </MenubarItem>
-              <MenubarItem disabled align="inset">
-                Force Reload <MenubarShortcut>⇧⌘R</MenubarShortcut>
-              </MenubarItem>
-              <MenubarSeparator />
-              <MenubarItem align="inset">Toggle Fullscreen</MenubarItem>
-              <MenubarSeparator />
-              <MenubarItem align="inset">Hide Sidebar</MenubarItem>
-            </MenubarContent>
-          </MenubarMenu>
-          <MenubarMenu>
-            <MenubarTrigger
-              variant={triggerVariant as (typeof triggerVariants)[number]}
-            >
-              Profiles
-            </MenubarTrigger>
-            <MenubarContent
-              variant={itemVariant as (typeof itemVariants)[number]}
-              width={width as (typeof widths)[number]}
-              indicatorVariant={
-                indicatorVariant as (typeof indicatorVariants)[number]
-              }
-            >
-              <MenubarRadioGroup
-                value={radioSelection}
-                onValueChange={setRadioSelection}
-              >
-                <MenubarRadioItem
-                  value="one"
-                  onSelect={(e) => e.preventDefault()}
-                >
-                  Option One
-                </MenubarRadioItem>
-                <MenubarRadioItem
-                  value="two"
-                  onSelect={(e) => e.preventDefault()}
-                >
-                  Option Two
-                </MenubarRadioItem>
-                <MenubarRadioItem
-                  value="three"
-                  onSelect={(e) => e.preventDefault()}
-                >
-                  Option Three
-                </MenubarRadioItem>
-                <MenubarRadioItem value="disabled" disabled>
-                  Disabled
-                </MenubarRadioItem>
-              </MenubarRadioGroup>
-              <MenubarSeparator />
-              <MenubarItem align="inset">Edit...</MenubarItem>
-              <MenubarSeparator />
-              <MenubarItem align="inset">Add Profile...</MenubarItem>
-            </MenubarContent>
-          </MenubarMenu>
-          <MenubarMenu>
-            <MenubarTrigger
-              variant={triggerVariant as (typeof triggerVariants)[number]}
-            >
-              More
-            </MenubarTrigger>
-            <MenubarContent
-              variant={itemVariant as (typeof itemVariants)[number]}
-              width={width as (typeof widths)[number]}
-              indicatorVariant={
-                indicatorVariant as (typeof indicatorVariants)[number]
-              }
-            >
-              <MenubarGroup>
+      <ComponentContainer className="overflow-hidden rounded-t-lg p-0 md:rounded-l-lg md:rounded-r-none">
+        <div className="relative flex h-full min-h-96 w-full min-w-0 flex-col items-center justify-center bg-[url('https://picsum.photos/id/74/800/800')] bg-center p-4">
+          <Menubar
+            variants={{
+              trigger: triggerVariant,
+              content: contentVariant,
+              item: itemVariant,
+              indicator: indicatorVariant,
+            }}
+            width={width as (typeof widths)[number]}
+          >
+            <MenubarMenu>
+              <MenubarTrigger>File</MenubarTrigger>
+              <MenubarContent>
                 <MenubarItem>
-                  <SettingsIcon />
-                  Settings
+                  New Tab <MenubarShortcut>⌘T</MenubarShortcut>
                 </MenubarItem>
                 <MenubarItem>
-                  <HelpCircleIcon />
-                  Help
+                  New Window <MenubarShortcut>⌘N</MenubarShortcut>
+                </MenubarItem>
+                <MenubarItem disabled>New Incognito Window</MenubarItem>
+                <MenubarSeparator />
+                <MenubarSub>
+                  <MenubarSubTrigger>Share</MenubarSubTrigger>
+                  <MenubarSubContent>
+                    <MenubarItem>Email link</MenubarItem>
+                    <MenubarItem>Messages</MenubarItem>
+                    <MenubarItem>Notes</MenubarItem>
+                  </MenubarSubContent>
+                </MenubarSub>
+                <MenubarSeparator />
+                <MenubarItem>
+                  Print... <MenubarShortcut>⌘P</MenubarShortcut>
+                </MenubarItem>
+              </MenubarContent>
+            </MenubarMenu>
+            <MenubarMenu>
+              <MenubarTrigger>Edit</MenubarTrigger>
+              <MenubarContent>
+                <MenubarItem>
+                  Undo <MenubarShortcut>⌘Z</MenubarShortcut>
+                </MenubarItem>
+                <MenubarItem>
+                  Redo <MenubarShortcut>⇧⌘Z</MenubarShortcut>
                 </MenubarItem>
                 <MenubarSeparator />
-                <MenubarItem
-                  variant={
-                    destructiveVariant as (typeof destructiveItemVariants)[number]
-                  }
+                <MenubarSub>
+                  <MenubarSubTrigger>Find</MenubarSubTrigger>
+                  <MenubarSubContent>
+                    <MenubarItem>Search the web</MenubarItem>
+                    <MenubarSeparator />
+                    <MenubarItem>Find...</MenubarItem>
+                    <MenubarItem>Find Next</MenubarItem>
+                    <MenubarItem>Find Previous</MenubarItem>
+                  </MenubarSubContent>
+                </MenubarSub>
+                <MenubarSeparator />
+                <MenubarItem>Cut</MenubarItem>
+                <MenubarItem>Copy</MenubarItem>
+                <MenubarItem>Paste</MenubarItem>
+              </MenubarContent>
+            </MenubarMenu>
+            <MenubarMenu>
+              <MenubarTrigger>View</MenubarTrigger>
+              <MenubarContent>
+                <MenubarCheckboxItem
+                  checked={checked}
+                  onCheckedChange={setChecked}
+                  onSelect={(e) => e.preventDefault()}
                 >
-                  <Trash2Icon />
-                  Delete
-                  <MenubarShortcut>⌘+D</MenubarShortcut>
+                  Checkbox Indicator
+                </MenubarCheckboxItem>
+                <MenubarCheckboxItem checked disabled>
+                  Disabled
+                </MenubarCheckboxItem>
+                <MenubarSeparator />
+                <MenubarItem align="inset">
+                  Reload <MenubarShortcut>⌘R</MenubarShortcut>
                 </MenubarItem>
-              </MenubarGroup>
-            </MenubarContent>
-          </MenubarMenu>
-        </Menubar>
+                <MenubarItem disabled align="inset">
+                  Force Reload <MenubarShortcut>⇧⌘R</MenubarShortcut>
+                </MenubarItem>
+                <MenubarSeparator />
+                <MenubarItem align="inset">Toggle Fullscreen</MenubarItem>
+                <MenubarSeparator />
+                <MenubarItem align="inset">Hide Sidebar</MenubarItem>
+              </MenubarContent>
+            </MenubarMenu>
+            <MenubarMenu>
+              <MenubarTrigger>Profiles</MenubarTrigger>
+              <MenubarContent>
+                <MenubarRadioGroup
+                  value={radioSelection}
+                  onValueChange={setRadioSelection}
+                >
+                  <MenubarRadioItem
+                    value="one"
+                    onSelect={(e) => e.preventDefault()}
+                  >
+                    Option One
+                  </MenubarRadioItem>
+                  <MenubarRadioItem
+                    value="two"
+                    onSelect={(e) => e.preventDefault()}
+                  >
+                    Option Two
+                  </MenubarRadioItem>
+                  <MenubarRadioItem
+                    value="three"
+                    onSelect={(e) => e.preventDefault()}
+                  >
+                    Option Three
+                  </MenubarRadioItem>
+                  <MenubarRadioItem value="disabled" disabled>
+                    Disabled
+                  </MenubarRadioItem>
+                </MenubarRadioGroup>
+                <MenubarSeparator />
+                <MenubarItem align="inset">Edit...</MenubarItem>
+                <MenubarSeparator />
+                <MenubarItem align="inset">Add Profile...</MenubarItem>
+              </MenubarContent>
+            </MenubarMenu>
+            <MenubarMenu>
+              <MenubarTrigger>More</MenubarTrigger>
+              <MenubarContent>
+                <MenubarGroup>
+                  <MenubarItem>
+                    <SettingsIcon />
+                    Settings
+                  </MenubarItem>
+                  <MenubarItem>
+                    <HelpCircleIcon />
+                    Help
+                  </MenubarItem>
+                  <MenubarSeparator />
+                  <MenubarItem variant={destructiveItemVariant}>
+                    <Trash2Icon />
+                    Delete
+                    <MenubarShortcut>⌘+D</MenubarShortcut>
+                  </MenubarItem>
+                </MenubarGroup>
+              </MenubarContent>
+            </MenubarMenu>
+          </Menubar>
+        </div>
       </ComponentContainer>
-
       <ComponentPlayground>
         <div className="grid gap-2">
           <Label htmlFor="menubar-trigger-variant">Trigger Variant</Label>
-          <Select value={triggerVariant} onValueChange={setTriggerVariant}>
+          <Select
+            value={triggerVariant}
+            onValueChange={(value) =>
+              setTriggerVariant(value as TriggerVariant)
+            }
+          >
             <SelectTrigger id="menubar-trigger-variant" className="w-full">
               <SelectValue placeholder="Select variant" />
             </SelectTrigger>
@@ -322,8 +260,31 @@ export function MenubarDemo() {
           </Select>
         </div>
         <div className="grid gap-2">
+          <Label htmlFor="menubar-content-variant">Content Variant</Label>
+          <Select
+            value={contentVariant}
+            onValueChange={(value) =>
+              setContentVariant(value as ContentVariant)
+            }
+          >
+            <SelectTrigger id="menubar-content-variant" className="w-full">
+              <SelectValue placeholder="Select variant" />
+            </SelectTrigger>
+            <SelectContent>
+              {contentVariants.map((variant) => (
+                <SelectItem key={variant} value={variant}>
+                  {variant}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+        <div className="grid gap-2">
           <Label htmlFor="item-variant">Item Variant</Label>
-          <Select value={itemVariant} onValueChange={setItemVariant}>
+          <Select
+            value={itemVariant}
+            onValueChange={(value) => setItemVariant(value as ItemVariant)}
+          >
             <SelectTrigger id="item-variant" className="w-full">
               <SelectValue placeholder="Select variant" />
             </SelectTrigger>
@@ -339,7 +300,12 @@ export function MenubarDemo() {
         </div>
         <div className="grid gap-2">
           <Label htmlFor="indicator-variant">Indicator Variant</Label>
-          <Select value={indicatorVariant} onValueChange={setIndicatorVariant}>
+          <Select
+            value={indicatorVariant}
+            onValueChange={(value) =>
+              setIndicatorVariant(value as IndicatorVariant)
+            }
+          >
             <SelectTrigger id="indicator-variant" className="w-full">
               <SelectValue placeholder="Select variant" />
             </SelectTrigger>
@@ -360,14 +326,15 @@ export function MenubarDemo() {
             </SelectContent>
           </Select>
         </div>
-
         <div className="grid gap-2">
           <Label htmlFor="menubar-destructive-variant">
             Destructive Item Variant
           </Label>
           <Select
-            value={destructiveVariant}
-            onValueChange={setDestructiveVariant}
+            value={destructiveItemVariant}
+            onValueChange={(value) =>
+              setDestructiveItemVariant(value as DestructiveItemVariant)
+            }
           >
             <SelectTrigger id="menubar-destructive-variant" className="w-full">
               <SelectValue placeholder="Select variant" />
@@ -382,10 +349,14 @@ export function MenubarDemo() {
             </SelectContent>
           </Select>
         </div>
-
         <div className="grid gap-2">
           <Label htmlFor="item-width">Item Width</Label>
-          <Select value={width} onValueChange={setWidth}>
+          <Select
+            value={width}
+            onValueChange={(value) =>
+              setWidth(value as (typeof widths)[number])
+            }
+          >
             <SelectTrigger id="item-width" className="w-full">
               <SelectValue placeholder="Select width" />
             </SelectTrigger>

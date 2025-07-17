@@ -116,7 +116,11 @@ function ButtonInput({
     <button
       data-slot="button-input"
       type="button"
-      className={buttonInputVariants({ variant, size, className: ["group/button-input", className] })}
+      className={buttonInputVariants({
+        variant,
+        size,
+        className: ["group/button-input", className],
+      })}
       {...props}
     />
   );
@@ -152,11 +156,7 @@ function ButtonInputIcon({
     <Slot
       data-slot="button-input-icon"
       aria-hidden="true"
-      className={cn(
-        "shrink-0 grow-0 opacity-60 group-hover/button-input:opacity-100 group-focus-visible/button-input:opacity-100",
-        !children && "first:-ml-1 last:-mr-1",
-        className
-      )}
+      className={cn("shrink-0 grow-0", className)}
       {...props}
     >
       {children || (
@@ -164,6 +164,7 @@ function ButtonInputIcon({
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 16 16"
           fill="currentColor"
+          className="first:-ml-1 last:-mr-1"
         >
           <path
             fillRule="evenodd"

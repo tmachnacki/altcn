@@ -40,8 +40,8 @@ export const componentLinks = [
     href: "/components/checkbox",
   },
   {
-    label: "Checkbox Cards",
-    href: "/components/checkbox-cards",
+    label: "Checkbox Card Group",
+    href: "/components/checkbox-card-group",
   },
   {
     label: "Context Menu",
@@ -96,12 +96,12 @@ export const componentLinks = [
     href: "/components/progress",
   },
   {
-    label: "Radio Buttons",
-    href: "/components/radio-buttons",
+    label: "Radio Button Group",
+    href: "/components/radio-button-group",
   },
   {
-    label: "Radio Cards",
-    href: "/components/radio-cards",
+    label: "Radio Card Group",
+    href: "/components/radio-card-group",
   },
   {
     label: "Radio Group",

@@ -34,18 +34,20 @@ const sizesMap: Record<number, Size> = {
 } as const;
 
 export function ButtonInputDemo() {
-  const [variant, setVariant] = React.useState("outline");
-  const [size, setSize] = React.useState(2);
+  const [variant, setVariant] = React.useState<Variant>("outline");
+  const [sizeIdx, setSizeIdx] = React.useState(2);
   const [invalid, setInvalid] = React.useState(false);
   const [disabled, setDisabled] = React.useState(false);
+
+  const size = sizesMap[sizeIdx];
 
   return (
     <>
       <ComponentContainer>
         <div className="grid w-full grid-cols-1 gap-4 sm:max-w-sm sm:grid-cols-2">
           <ButtonInput
-            variant={variant as Variant}
-            size={sizesMap[size]}
+            variant={variant}
+            size={size}
             className="w-full capitalize"
             disabled={disabled}
             aria-invalid={invalid}
@@ -53,10 +55,9 @@ export function ButtonInputDemo() {
             <ButtonInputValue>{variant}</ButtonInputValue>
             <ButtonInputIcon />
           </ButtonInput>
-
           <ButtonInput
-            variant={variant as Variant}
-            size={sizesMap[size]}
+            variant={variant}
+            size={size}
             className="w-full"
             disabled={disabled}
             aria-invalid={invalid}
@@ -67,10 +68,9 @@ export function ButtonInputDemo() {
             </ButtonInputValue>
             <ButtonInputIcon />
           </ButtonInput>
-
           <ButtonInput
-            variant={variant as Variant}
-            size={sizesMap[size]}
+            variant={variant}
+            size={size}
             className="w-full"
             disabled={disabled}
             aria-invalid={invalid}
@@ -80,10 +80,9 @@ export function ButtonInputDemo() {
               <CalendarIcon />
             </ButtonInputIcon>
           </ButtonInput>
-
           <ButtonInput
-            variant={variant as Variant}
-            size={sizesMap[size]}
+            variant={variant}
+            size={size}
             className="w-full"
             disabled={disabled}
             aria-invalid={invalid}
@@ -93,10 +92,9 @@ export function ButtonInputDemo() {
             </ButtonInputIcon>
             <ButtonInputValue>Leading Icon</ButtonInputValue>
           </ButtonInput>
-
           <ButtonInput
-            variant={variant as Variant}
-            size={sizesMap[size]}
+            variant={variant}
+            size={size}
             className="w-full"
             disabled={disabled}
             aria-invalid={invalid}
@@ -104,10 +102,9 @@ export function ButtonInputDemo() {
             <ButtonInputValue placeholder="Placeholder"></ButtonInputValue>
             <ButtonInputIcon />
           </ButtonInput>
-
           <ButtonInput
-            variant={variant as Variant}
-            size={sizesMap[size]}
+            variant={variant}
+            size={size}
             className="w-full"
             disabled={disabled}
             aria-invalid={invalid}
@@ -126,7 +123,10 @@ export function ButtonInputDemo() {
       <ComponentPlayground>
         <div className="grid gap-2">
           <Label htmlFor="variant">Variant</Label>
-          <Select value={variant} onValueChange={setVariant}>
+          <Select
+            value={variant}
+            onValueChange={(value) => setVariant(value as Variant)}
+          >
             <SelectTrigger id="variant" className="w-full">
               <SelectValue placeholder="Select a variant" />
             </SelectTrigger>
@@ -140,12 +140,11 @@ export function ButtonInputDemo() {
             </SelectContent>
           </Select>
         </div>
-
         <div className="grid gap-3">
           <Label id="button-input-size">
             Size:{" "}
             <span className="font-normal text-primary-muted-foreground">
-              {sizesMap[size]}
+              {size}
             </span>
           </Label>
           <Slider
@@ -153,11 +152,10 @@ export function ButtonInputDemo() {
             min={1}
             max={3}
             step={1}
-            value={[size]}
-            onValueChange={(value) => setSize(value[0])}
+            value={[sizeIdx]}
+            onValueChange={(value) => setSizeIdx(value[0])}
           />
         </div>
-
         <div className="flex items-center gap-3">
           <Switch
             id="button-input-invalid"

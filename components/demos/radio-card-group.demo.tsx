@@ -2,16 +2,16 @@
 
 import * as React from "react";
 
-import {
-  CheckboxCards,
-  CheckboxCardsItem,
-  CheckboxCardsItemCheckbox,
-  CheckboxCardsItemContent,
-  CheckboxCardsItemDescription,
-  CheckboxCardsItemLabel,
-  checkboxCardsItemVariants,
-} from "~/components/ui/checkbox-cards";
 import { Label } from "~/components/ui/label";
+import {
+  RadioCard,
+  RadioCardContent,
+  RadioCardDescription,
+  RadioCardGroup,
+  RadioCardLabel,
+  RadioCardRadio,
+  radioCardVariants,
+} from "~/components/ui/radio-card-group";
 import {
   Select,
   SelectContent,
@@ -23,10 +23,8 @@ import { Switch } from "~/components/ui/switch";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
 
-type Variant = keyof typeof checkboxCardsItemVariants.variants.variant;
-const variants = Object.keys(
-  checkboxCardsItemVariants.variants.variant
-) as Variant[];
+type Variant = keyof typeof radioCardVariants.variants.variant;
+const variants = Object.keys(radioCardVariants.variants.variant) as Variant[];
 
 const plans = [
   {
@@ -51,8 +49,8 @@ const plans = [
   },
 ];
 
-export function CheckboxCardsDemo() {
-  const [variant, setVariant] = React.useState("primary");
+export function RadioCardGroupDemo() {
+  const [variant, setVariant] = React.useState<Variant>("primary");
   const [invalid, setInvalid] = React.useState(false);
   const [disabled, setDisabled] = React.useState(false);
 
@@ -61,52 +59,49 @@ export function CheckboxCardsDemo() {
       <ComponentContainer>
         <fieldset className="w-full max-w-sm">
           <legend className="sr-only">Select a plan</legend>
-          <CheckboxCards
-            variant={variant as Variant}
-            className="grid w-full gap-3"
-          >
+          <RadioCardGroup variant={variant} className="grid w-full gap-3">
             {plans.map((plan) => (
-              <CheckboxCardsItem key={plan.id} variant={variant as Variant}>
-                <CheckboxCardsItemCheckbox
-                  disabled={disabled}
-                  aria-invalid={invalid}
+              <RadioCard key={plan.id} variant={variant}>
+                <RadioCardRadio
+                  value={plan.id}
                   aria-labelledby={`${plan.id}-label`}
                   aria-describedby={`${plan.id}-description`}
+                  disabled={disabled}
+                  aria-invalid={invalid}
                 />
-                <CheckboxCardsItemContent>
-                  <CheckboxCardsItemLabel id={`${plan.id}-label`}>
+                <RadioCardContent>
+                  <RadioCardLabel id={`${plan.id}-label`}>
                     {plan.name}
-                  </CheckboxCardsItemLabel>
-                  <CheckboxCardsItemDescription id={`${plan.id}-description`}>
+                  </RadioCardLabel>
+                  <RadioCardDescription id={`${plan.id}-description`}>
                     {plan.description}
-                  </CheckboxCardsItemDescription>
-                </CheckboxCardsItemContent>
-              </CheckboxCardsItem>
+                  </RadioCardDescription>
+                </RadioCardContent>
+              </RadioCard>
             ))}
             {/* centered */}
-            <CheckboxCardsItem
-              variant={variant as Variant}
-              className="items-center"
-            >
-              <CheckboxCardsItemCheckbox
+            <RadioCard variant={variant} className="items-center">
+              <RadioCardRadio
+                value="centered"
+                aria-labelledby="centered-label"
                 disabled={disabled}
                 aria-invalid={invalid}
-                aria-labelledby="centered-label"
               />
-              <CheckboxCardsItemContent>
-                <CheckboxCardsItemLabel id="centered-label">
-                  Centered
-                </CheckboxCardsItemLabel>
-              </CheckboxCardsItemContent>
-            </CheckboxCardsItem>
-          </CheckboxCards>
+              <RadioCardContent className="flex items-center">
+                <RadioCardLabel id="centered-label">Centered</RadioCardLabel>
+              </RadioCardContent>
+            </RadioCard>
+          </RadioCardGroup>
         </fieldset>
       </ComponentContainer>
       <ComponentPlayground>
         <div className="grid gap-2">
-          <Label htmlFor="checkbox-cards-variant">Variant</Label>
-          <Select value={variant} onValueChange={setVariant}>
-            <SelectTrigger id="checkbox-cards-variant" className="w-full">
+          <Label htmlFor="radio-cards-variant">Variant</Label>
+          <Select
+            value={variant}
+            onValueChange={(value) => setVariant(value as Variant)}
+          >
+            <SelectTrigger id="radio-cards-variant" className="w-full">
               <SelectValue placeholder="Select variant" />
             </SelectTrigger>
             <SelectContent>
@@ -120,19 +115,19 @@ export function CheckboxCardsDemo() {
         </div>
         <div className="flex items-center gap-3">
           <Switch
-            id="checkbox-cards-invalid"
+            id="radio-cards-invalid"
             checked={invalid}
             onCheckedChange={setInvalid}
           />
-          <Label htmlFor="checkbox-cards-invalid">Invalid</Label>
+          <Label htmlFor="radio-cards-invalid">Invalid</Label>
         </div>
         <div className="flex items-center gap-3">
           <Switch
-            id="checkbox-cards-disabled"
+            id="radio-cards-disabled"
             checked={disabled}
             onCheckedChange={setDisabled}
           />
-          <Label htmlFor="checkbox-cards-disabled">Disabled</Label>
+          <Label htmlFor="radio-cards-disabled">Disabled</Label>
         </div>
       </ComponentPlayground>
     </>

@@ -14,6 +14,7 @@ import {
 } from "~/components/ui/select";
 import { Slider } from "~/components/ui/slider";
 import { Spinner } from "~/components/ui/spinner";
+import { Switch } from "~/components/ui/switch";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
 import { Swatch } from "~/components/swatch";
@@ -21,76 +22,65 @@ import { Swatch } from "~/components/swatch";
 type Variant = keyof typeof buttonVariants.variants.variant;
 const variants = Object.keys(buttonVariants.variants.variant) as Variant[];
 
-type Size = "xs" | "sm" | "md" | "lg";
-type IconSize = "icon-xs" | "icon-sm" | "icon-md" | "icon-lg";
-const sizesMap: Record<number, { button: Size; icon: IconSize }> = {
-  1: { button: "xs", icon: "icon-xs" },
-  2: { button: "sm", icon: "icon-sm" },
-  3: { button: "md", icon: "icon-md" },
-  4: { button: "lg", icon: "icon-lg" },
+type Size = keyof typeof buttonVariants.variants.size;
+const sizesMap: Record<number, Size> = {
+  1: "xs",
+  2: "sm",
+  3: "md",
+  4: "lg",
+};
+const iconSizesMap: Record<number, Size> = {
+  1: "icon-xs",
+  2: "icon-sm",
+  3: "icon-md",
+  4: "icon-lg",
 };
 
 export function ButtonDemo() {
-  const [variant, setVariant] = React.useState("outline");
-  const [size, setSize] = React.useState(3);
+  const [variant, setVariant] = React.useState<Variant>("outline");
+  const [sizeIdx, setSizeIdx] = React.useState(3);
+  const [disabled, setDisabled] = React.useState(false);
+
+  const size = sizesMap[sizeIdx];
+  const iconSize = iconSizesMap[sizeIdx];
 
   return (
     <>
       <ComponentContainer>
         <div className="flex flex-col gap-8">
           <div className="flex flex-wrap items-center gap-2">
-            <Button variant={variant as Variant} size={sizesMap[size].button}>
+            <Button variant={variant} size={size} disabled={disabled}>
               Button
             </Button>
-            <Button variant={variant as Variant} size={sizesMap[size].button}>
+            <Button variant={variant} size={size} disabled={disabled}>
               Get Started <ArrowRightIcon />
             </Button>
-            <Button variant={variant as Variant} size={sizesMap[size].button}>
+            <Button variant={variant} size={size} disabled={disabled}>
               <MailIcon />
               Inbox
             </Button>
-            <Button
-              variant={variant as Variant}
-              size={sizesMap[size].button}
-              disabled
-            >
-              Disabled
-            </Button>
-            <Button
-              variant={variant as Variant}
-              size={sizesMap[size].button}
-              disabled
-            >
+            <Button variant={variant} size={size} disabled>
               <Spinner />
               Loading...
             </Button>
           </div>
           <div className="flex flex-wrap items-center gap-2">
-            <Button variant={variant as Variant} size={sizesMap[size].icon}>
+            <Button variant={variant} size={iconSize} disabled={disabled}>
               <SettingsIcon />
             </Button>
-            <Button
-              variant={variant as Variant}
-              size={sizesMap[size].icon}
-              disabled
-            >
-              <SettingsIcon />
-            </Button>
-            <Button
-              variant={variant as Variant}
-              size={sizesMap[size].icon}
-              disabled
-            >
+            <Button variant={variant} size={iconSize} disabled>
               <Spinner />
             </Button>
           </div>
         </div>
       </ComponentContainer>
-
       <ComponentPlayground>
         <div className="grid gap-2">
           <Label htmlFor="button-variant">Variant</Label>
-          <Select value={variant} onValueChange={setVariant}>
+          <Select
+            value={variant}
+            onValueChange={(value) => setVariant(value as Variant)}
+          >
             <SelectTrigger id="button-variant" className="w-full">
               <SelectValue placeholder="Select variant" />
             </SelectTrigger>
@@ -108,7 +98,7 @@ export function ButtonDemo() {
           <Label id="button-size">
             Size:{" "}
             <span className="inline-block leading-none font-normal text-primary-muted-foreground">
-              {sizesMap[size].button}, {sizesMap[size].icon}
+              {size}, {iconSize}
             </span>
           </Label>
           <Slider
@@ -116,9 +106,17 @@ export function ButtonDemo() {
             min={1}
             max={4}
             step={1}
-            value={[size]}
-            onValueChange={(value) => setSize(value[0])}
+            value={[sizeIdx]}
+            onValueChange={(value) => setSizeIdx(value[0])}
           />
+        </div>
+        <div className="flex items-center gap-3">
+          <Switch
+            id="button-disabled"
+            checked={disabled}
+            onCheckedChange={setDisabled}
+          />
+          <Label htmlFor="button-disabled">Disabled</Label>
         </div>
       </ComponentPlayground>
     </>

@@ -27,8 +27,9 @@ const variants = Object.keys(accordionVariants.variants.variant) as Variant[];
 const spacings = ["compact", "split"] as const;
 
 export function AccordionDemo() {
-  const [variant, setVariant] = React.useState("outline");
-  const [spacing, setSpacing] = React.useState("compact");
+  const [variant, setVariant] = React.useState<Variant>("outline");
+  const [spacing, setSpacing] =
+    React.useState<(typeof spacings)[number]>("compact");
 
   return (
     <>
@@ -38,8 +39,8 @@ export function AccordionDemo() {
             type="single"
             collapsible
             className="w-full"
-            variant={variant as Variant}
-            spacing={spacing as (typeof spacings)[number]}
+            variant={variant}
+            spacing={spacing}
           >
             <AccordionItem value="item-1">
               <AccordionTrigger>Is it accessible?</AccordionTrigger>
@@ -67,7 +68,10 @@ export function AccordionDemo() {
       <ComponentPlayground>
         <div className="grid gap-2">
           <Label htmlFor="accordion-variant">Variant</Label>
-          <Select value={variant} onValueChange={setVariant}>
+          <Select
+            value={variant}
+            onValueChange={(value) => setVariant(value as Variant)}
+          >
             <SelectTrigger id="accordion-variant" className="w-full">
               <SelectValue placeholder="Select variant" />
             </SelectTrigger>
@@ -83,7 +87,12 @@ export function AccordionDemo() {
         </div>
         <div className="grid gap-2">
           <Label htmlFor="accordion-spacing">Spacing</Label>
-          <Select value={spacing} onValueChange={setSpacing}>
+          <Select
+            value={spacing}
+            onValueChange={(value) =>
+              setSpacing(value as (typeof spacings)[number])
+            }
+          >
             <SelectTrigger id="accordion-spacing" className="w-full">
               <SelectValue placeholder="Select variant" />
             </SelectTrigger>

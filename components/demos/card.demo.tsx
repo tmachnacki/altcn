@@ -30,8 +30,8 @@ export function CardDemo() {
 
   return (
     <>
-      <ComponentContainer className="p-0">
-        <div className="relative flex min-h-96 w-full min-w-0 flex-col items-center justify-center overflow-hidden rounded-s-lg bg-[url('https://picsum.photos/id/15/800/800')] bg-center p-4">
+      <ComponentContainer className="overflow-hidden rounded-t-lg p-0 md:rounded-l-lg md:rounded-r-none">
+        <div className="relative flex h-full min-h-96 w-full min-w-0 flex-col items-center justify-center bg-[url('https://picsum.photos/id/74/800/800')] bg-center p-4">
           <Card
             className="relative z-10 w-full max-w-lg"
             variant={variant as (typeof cardVariants)[number]}

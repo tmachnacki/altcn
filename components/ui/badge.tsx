@@ -192,7 +192,7 @@ const badgeVariants = tv({
         "bg-destructive text-destructive-foreground",
         "[a&]:hover:bg-hover-destructive",
         "[button&]:hover:bg-hover-destructive",
-        "[--hover-badge-close-bg:--alpha(var(--color-destructive-foreground)/25%)] dark:[--hover-badge-close-bg:--alpha(var(--color-destructive-foreground)/35%)]",
+        "[--hover-badge-close-bg:--alpha(var(--color-destructive-foreground)/25%)] dark:[--hover-badge-close-bg:--alpha(var(--color-destructive-foreground)/30%)]",
       ],
 
       "destructive-accent": [
@@ -378,8 +378,8 @@ const badgeVariants = tv({
       ],
       className: [
         "bg-background text-foreground inset-ring inset-ring-border",
-        "[a&]:hover:bg-base-50 dark:[a&]:hover:bg-base-900 [a&]:hover:inset-ring-hover-border",
-        "[button&]:hover:bg-base-50 dark:[button&]:hover:bg-base-900 [button&]:hover:inset-ring-hover-border",
+        "[a&]:hover:bg-base-50 [a&]:hover:inset-ring-hover-border dark:[a&]:hover:bg-base-900",
+        "[button&]:hover:bg-base-50 [button&]:hover:inset-ring-hover-border dark:[button&]:hover:bg-base-900",
         "[--hover-badge-close-bg:var(--color-muted)]",
       ],
     },

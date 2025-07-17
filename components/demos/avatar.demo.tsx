@@ -26,7 +26,7 @@ const variants = Object.keys(
 ) as Variant[];
 
 export function AvatarDemo() {
-  const [variant, setVariant] = React.useState("accent");
+  const [variant, setVariant] = React.useState<Variant>("accent");
 
   return (
     <>
@@ -51,7 +51,10 @@ export function AvatarDemo() {
       <ComponentPlayground>
         <div className="grid gap-2">
           <Label htmlFor="avatar-fallback-variant">Fallback Variant</Label>
-          <Select value={variant} onValueChange={setVariant}>
+          <Select
+            value={variant}
+            onValueChange={(value) => setVariant(value as Variant)}
+          >
             <SelectTrigger id="avatar-fallback-variant" className="w-full">
               <SelectValue placeholder="Select variant" />
             </SelectTrigger>

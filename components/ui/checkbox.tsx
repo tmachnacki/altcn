@@ -90,7 +90,7 @@ const checkBoxVariants = tv({
         "secondary-accent",
         "secondary-muted",
       ],
-      className: ["disabled:bg-muted", "aria-invalid:bg-destructive-muted"],
+      className: ["disabled:bg-muted", "aria-invalid:bg-destructive-muted hover:aria-invalid:bg-hover-destructive-muted"],
     },
   ],
   defaultVariants: {

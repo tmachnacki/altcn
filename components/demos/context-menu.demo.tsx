@@ -29,7 +29,11 @@ import {
   ContextMenuSubTrigger,
   ContextMenuTrigger,
 } from "~/components/ui/context-menu";
-import { menuItemIndicatorVariants } from "~/components/ui/dropdown-menu";
+import {
+  menuContentVariants,
+  menuItemIndicatorVariants,
+  menuItemVariants,
+} from "~/components/ui/dropdown-menu";
 import { Label } from "~/components/ui/label";
 import {
   Select,
@@ -42,48 +46,38 @@ import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
 import { Swatch } from "~/components/swatch";
 
-const itemVariants = [
-  "base",
-  "accent",
-  "surface",
+type ContentVariant = keyof typeof menuContentVariants.variants.variant;
+const contentVariants = Object.keys(
+  menuContentVariants.variants.variant
+) as ContentVariant[];
 
-  "primary",
-  "primary-accent",
-  "primary-muted",
-  "primary-surface",
-  "primary-faded",
+type ItemVariant = keyof typeof menuItemVariants.variants.variant;
+const itemVariants = Object.keys(menuItemVariants.variants.variant).filter(
+  (variant) => !variant.includes("destructive")
+) as ItemVariant[];
 
-  "secondary",
-  "secondary-accent",
-  "secondary-muted",
-  "secondary-surface",
-  "secondary-faded",
-] as const;
+type IndicatorVariant = keyof typeof menuItemIndicatorVariants.variants.variant;
+const indicatorVariants = Object.keys(
+  menuItemIndicatorVariants.variants.variant
+) as IndicatorVariant[];
 
-const indicatorVariants = [
-  "base",
-  "primary",
-  "secondary",
-  "destructive",
-  "success",
-  "warning",
-] as const;
+type DestructiveItemVariant = keyof typeof menuItemVariants.variants.variant;
+const destructiveItemVariants = Object.keys(
+  menuItemVariants.variants.variant
+).filter((variant) =>
+  variant.includes("destructive")
+) as DestructiveItemVariant[];
 
-const destructiveItemVariants = [
-  "destructive",
-  "destructive-accent",
-  "destructive-muted",
-  "destructive-surface",
-  "destructive-faded",
-] as const;
-
-const itemWidths = ["default", "full"] as const;
+const widths = ["default", "full"] as const;
 
 export function ContextMenuDemo() {
-  const [variant, setVariant] = React.useState("accent");
-  const [indicatorVariant, setIndicatorVariant] = React.useState("base");
-  const [destructiveVariant, setDestructiveVariant] =
-    React.useState("destructive-muted");
+  const [contentVariant, setContentVariant] =
+    React.useState<ContentVariant>("solid");
+  const [itemVariant, setItemVariant] = React.useState<ItemVariant>("accent");
+  const [indicatorVariant, setIndicatorVariant] =
+    React.useState<IndicatorVariant>("base");
+  const [destructiveItemVariant, setDestructiveItemVariant] =
+    React.useState<DestructiveItemVariant>("destructive-muted");
   const [width, setWidth] = React.useState("default");
 
   const [checked, setChecked] = React.useState(true);
@@ -91,130 +85,146 @@ export function ContextMenuDemo() {
 
   return (
     <>
-      <ComponentContainer>
-        <ContextMenu>
-          <ContextMenuTrigger className="grid min-h-48 w-full max-w-xs place-items-center rounded-lg border border-dashed border-border capitalize">
-            Right Click
-          </ContextMenuTrigger>
-          <ContextMenuContent
-            variant={variant as (typeof itemVariants)[number]}
-            width={width as (typeof itemWidths)[number]}
-            indicatorVariant={
-              indicatorVariant as (typeof indicatorVariants)[number]
-            }
-          >
-            <ContextMenuGroup>
-              <ContextMenuLabel>Account</ContextMenuLabel>
-              <ContextMenuItem>
-                <BadgeCheckIcon />
-                Account
-              </ContextMenuItem>
-              <ContextMenuItem>
-                <CreditCardIcon />
-                Billing
-              </ContextMenuItem>
-              <ContextMenuItem>
-                <BellIcon />
-                Notifications
-              </ContextMenuItem>
-            </ContextMenuGroup>
-            <ContextMenuSeparator />
-            <ContextMenuGroup>
-              <ContextMenuLabel>Team</ContextMenuLabel>
-              <ContextMenuSub>
-                <ContextMenuSubTrigger>Invite users</ContextMenuSubTrigger>
-                <ContextMenuSubContent>
-                  <ContextMenuItem>
-                    <MailIcon />
-                    Email
-                    <ContextMenuShortcut>⌘+E</ContextMenuShortcut>
-                  </ContextMenuItem>
-                  <ContextMenuItem>
-                    <SendIcon />
-                    Message
-                    <ContextMenuShortcut>⌘+M</ContextMenuShortcut>
-                  </ContextMenuItem>
-                  <ContextMenuSeparator />
-                  <ContextMenuItem align="inset">More</ContextMenuItem>
-                </ContextMenuSubContent>
-              </ContextMenuSub>
-              <ContextMenuItem>
-                New Team
-                <ContextMenuShortcut>⌘+T</ContextMenuShortcut>
-              </ContextMenuItem>
-            </ContextMenuGroup>
-            <ContextMenuSeparator />
-            <ContextMenuGroup>
-              <ContextMenuLabel align="inset">Checkboxes</ContextMenuLabel>
-              <ContextMenuCheckboxItem
-                checked={checked}
-                onCheckedChange={setChecked}
-                onSelect={(e) => e.preventDefault()}
-              >
-                Checkbox Indicator
-              </ContextMenuCheckboxItem>
-              <ContextMenuCheckboxItem checked disabled>
-                Disabled
-              </ContextMenuCheckboxItem>
-            </ContextMenuGroup>
-            <ContextMenuSeparator />
-            <ContextMenuGroup>
-              <ContextMenuLabel align="inset">Radio Group</ContextMenuLabel>
-              <ContextMenuRadioGroup
-                value={radioSelection}
-                onValueChange={setRadioSelection}
-              >
-                <ContextMenuRadioItem
-                  value="one"
+      <ComponentContainer className="overflow-hidden rounded-t-lg p-0 md:rounded-l-lg md:rounded-r-none">
+        <div className="relative flex h-full min-h-96 w-full min-w-0 flex-col items-center justify-center bg-[url('https://picsum.photos/id/74/800/800')] bg-center p-4">
+          <ContextMenu>
+            <ContextMenuTrigger className="grid min-h-48 w-full max-w-xs place-items-center rounded-lg border border-dashed border-base-950/20 bg-white/5 text-base-950 capitalize backdrop-blur-md">
+              Right Click
+            </ContextMenuTrigger>
+            <ContextMenuContent
+              variants={{
+                content: contentVariant,
+                item: itemVariant,
+                indicator: indicatorVariant,
+              }}
+              width={width as (typeof widths)[number]}
+            >
+              <ContextMenuGroup>
+                <ContextMenuLabel>Account</ContextMenuLabel>
+                <ContextMenuItem>
+                  <BadgeCheckIcon />
+                  Account
+                </ContextMenuItem>
+                <ContextMenuItem>
+                  <CreditCardIcon />
+                  Billing
+                </ContextMenuItem>
+                <ContextMenuItem>
+                  <BellIcon />
+                  Notifications
+                </ContextMenuItem>
+              </ContextMenuGroup>
+              <ContextMenuSeparator />
+              <ContextMenuGroup>
+                <ContextMenuLabel>Team</ContextMenuLabel>
+                <ContextMenuSub>
+                  <ContextMenuSubTrigger>Invite users</ContextMenuSubTrigger>
+                  <ContextMenuSubContent>
+                    <ContextMenuItem>
+                      <MailIcon />
+                      Email
+                      <ContextMenuShortcut>⌘+E</ContextMenuShortcut>
+                    </ContextMenuItem>
+                    <ContextMenuItem>
+                      <SendIcon />
+                      Message
+                      <ContextMenuShortcut>⌘+M</ContextMenuShortcut>
+                    </ContextMenuItem>
+                    <ContextMenuSeparator />
+                    <ContextMenuItem align="inset">More</ContextMenuItem>
+                  </ContextMenuSubContent>
+                </ContextMenuSub>
+                <ContextMenuItem>
+                  New Team
+                  <ContextMenuShortcut>⌘+T</ContextMenuShortcut>
+                </ContextMenuItem>
+              </ContextMenuGroup>
+              <ContextMenuSeparator />
+              <ContextMenuGroup>
+                <ContextMenuLabel align="inset">Checkboxes</ContextMenuLabel>
+                <ContextMenuCheckboxItem
+                  checked={checked}
+                  onCheckedChange={setChecked}
                   onSelect={(e) => e.preventDefault()}
                 >
-                  Option 1
-                </ContextMenuRadioItem>
-                <ContextMenuRadioItem
-                  value="two"
-                  onSelect={(e) => e.preventDefault()}
-                >
-                  Option 2
-                </ContextMenuRadioItem>
-                <ContextMenuRadioItem
-                  value="disabled"
-                  disabled
-                  onSelect={(e) => e.preventDefault()}
-                >
+                  Checkbox Indicator
+                </ContextMenuCheckboxItem>
+                <ContextMenuCheckboxItem checked disabled>
                   Disabled
-                </ContextMenuRadioItem>
-              </ContextMenuRadioGroup>
-            </ContextMenuGroup>
-            <ContextMenuSeparator />
-            <ContextMenuGroup>
-              <ContextMenuItem
-                variant={
-                  destructiveVariant as (typeof destructiveItemVariants)[number]
-                }
-              >
-                <TrashIcon />
-                Destructive
-                <ContextMenuShortcut>⌘+D</ContextMenuShortcut>
-              </ContextMenuItem>
-              <ContextMenuItem
-                variant={
-                  destructiveVariant as (typeof destructiveItemVariants)[number]
-                }
-                disabled
-              >
-                <TrashIcon />
-                Destructive Disabled
-                <ContextMenuShortcut>⌘+D</ContextMenuShortcut>
-              </ContextMenuItem>
-            </ContextMenuGroup>
-          </ContextMenuContent>
-        </ContextMenu>
+                </ContextMenuCheckboxItem>
+              </ContextMenuGroup>
+              <ContextMenuSeparator />
+              <ContextMenuGroup>
+                <ContextMenuLabel align="inset">Radio Group</ContextMenuLabel>
+                <ContextMenuRadioGroup
+                  value={radioSelection}
+                  onValueChange={setRadioSelection}
+                >
+                  <ContextMenuRadioItem
+                    value="one"
+                    onSelect={(e) => e.preventDefault()}
+                  >
+                    Option 1
+                  </ContextMenuRadioItem>
+                  <ContextMenuRadioItem
+                    value="two"
+                    onSelect={(e) => e.preventDefault()}
+                  >
+                    Option 2
+                  </ContextMenuRadioItem>
+                  <ContextMenuRadioItem
+                    value="disabled"
+                    disabled
+                    onSelect={(e) => e.preventDefault()}
+                  >
+                    Disabled
+                  </ContextMenuRadioItem>
+                </ContextMenuRadioGroup>
+              </ContextMenuGroup>
+              <ContextMenuSeparator />
+              <ContextMenuGroup>
+                <ContextMenuItem variant={destructiveItemVariant}>
+                  <TrashIcon />
+                  Destructive
+                  <ContextMenuShortcut>⌘+D</ContextMenuShortcut>
+                </ContextMenuItem>
+                <ContextMenuItem variant={destructiveItemVariant} disabled>
+                  <TrashIcon />
+                  Destructive Disabled
+                  <ContextMenuShortcut>⌘+D</ContextMenuShortcut>
+                </ContextMenuItem>
+              </ContextMenuGroup>
+            </ContextMenuContent>
+          </ContextMenu>
+        </div>
       </ComponentContainer>
-
       <ComponentPlayground>
         <div className="grid gap-2">
+          <Label htmlFor="content-variant">Content Variant</Label>
+          <Select
+            value={contentVariant}
+            onValueChange={(value) =>
+              setContentVariant(value as ContentVariant)
+            }
+          >
+            <SelectTrigger id="content-variant" className="w-full">
+              <SelectValue placeholder="Select variant" />
+            </SelectTrigger>
+            <SelectContent>
+              {contentVariants.map((variant) => (
+                <SelectItem key={variant} value={variant}>
+                  {variant}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+        <div className="grid gap-2">
           <Label htmlFor="item-variant">Item Variant</Label>
-          <Select value={variant} onValueChange={setVariant}>
+          <Select
+            value={itemVariant}
+            onValueChange={(value) => setItemVariant(value as ItemVariant)}
+          >
             <SelectTrigger id="item-variant" className="w-full">
               <SelectValue placeholder="Select variant" />
             </SelectTrigger>
@@ -228,10 +238,14 @@ export function ContextMenuDemo() {
             </SelectContent>
           </Select>
         </div>
-
         <div className="grid gap-2">
           <Label htmlFor="indicator-variant">Indicator Variant</Label>
-          <Select value={indicatorVariant} onValueChange={setIndicatorVariant}>
+          <Select
+            value={indicatorVariant}
+            onValueChange={(value) =>
+              setIndicatorVariant(value as IndicatorVariant)
+            }
+          >
             <SelectTrigger id="indicator-variant" className="w-full">
               <SelectValue placeholder="Select variant" />
             </SelectTrigger>
@@ -252,14 +266,15 @@ export function ContextMenuDemo() {
             </SelectContent>
           </Select>
         </div>
-
         <div className="grid gap-2">
           <Label htmlFor="destructive-item-variant">
             Destructive Item Variant
           </Label>
           <Select
-            value={destructiveVariant}
-            onValueChange={setDestructiveVariant}
+            value={destructiveItemVariant}
+            onValueChange={(value) =>
+              setDestructiveItemVariant(value as DestructiveItemVariant)
+            }
           >
             <SelectTrigger id="destructive-item-variant" className="w-full">
               <SelectValue placeholder="Select variant" />
@@ -274,7 +289,6 @@ export function ContextMenuDemo() {
             </SelectContent>
           </Select>
         </div>
-
         <div className="grid gap-2">
           <Label htmlFor="item-width">Item Width</Label>
           <Select value={width} onValueChange={setWidth}>
@@ -282,7 +296,7 @@ export function ContextMenuDemo() {
               <SelectValue placeholder="Select width" />
             </SelectTrigger>
             <SelectContent>
-              {itemWidths.map((width) => (
+              {widths.map((width) => (
                 <SelectItem key={width} value={width}>
                   {width}
                 </SelectItem>

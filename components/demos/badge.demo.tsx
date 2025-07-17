@@ -25,8 +25,8 @@ type Shape = keyof typeof badgeVariants.variants.shape;
 const shapes = Object.keys(badgeVariants.variants.shape) as Shape[];
 
 export function BadgeDemo() {
-  const [variant, setVariant] = React.useState("outline");
-  const [shape, setShape] = React.useState("box");
+  const [variant, setVariant] = React.useState<Variant>("outline");
+  const [shape, setShape] = React.useState<Shape>("box");
   const [showBadge, setShowBadge] = React.useState(true);
 
   async function handleCloseBadge() {
@@ -39,28 +39,28 @@ export function BadgeDemo() {
     <>
       <ComponentContainer>
         <div className="flex flex-wrap gap-3">
-          <Badge variant={variant as Variant} shape={shape as Shape}>
+          <Badge variant={variant} shape={shape}>
             Badge
           </Badge>
-          <Badge variant={variant as Variant} shape={shape as Shape}>
+          <Badge variant={variant} shape={shape}>
             <CheckIcon />
             Icon
           </Badge>
-          <Badge asChild variant={variant as Variant} shape={shape as Shape}>
+          <Badge asChild variant={variant} shape={shape}>
             <a href="#">
               Link
               <ArrowRightIcon />
             </a>
           </Badge>
-          <Badge asChild variant={variant as Variant} shape={shape as Shape}>
+          <Badge asChild variant={variant} shape={shape}>
             <button>Button</button>
           </Badge>
-          <Badge asChild variant={variant as Variant} shape={shape as Shape}>
+          <Badge asChild variant={variant} shape={shape}>
             <button disabled>Disabled</button>
           </Badge>
           <Badge
-            variant={variant as Variant}
-            shape={shape as Shape}
+            variant={variant}
+            shape={shape}
             className={showBadge ? "visible" : "invisible"}
           >
             Close
@@ -72,7 +72,10 @@ export function BadgeDemo() {
       <ComponentPlayground>
         <div className="grid gap-2">
           <Label htmlFor="badge-variant">Variant</Label>
-          <Select value={variant} onValueChange={setVariant}>
+          <Select
+            value={variant}
+            onValueChange={(value) => setVariant(value as Variant)}
+          >
             <SelectTrigger id="badge-variant" className="w-full">
               <SelectValue placeholder="Select variant" />
             </SelectTrigger>
@@ -88,7 +91,10 @@ export function BadgeDemo() {
         </div>
         <div className="grid gap-2">
           <Label htmlFor="badge-shape">Shape</Label>
-          <Select value={shape} onValueChange={setShape}>
+          <Select
+            value={shape}
+            onValueChange={(value) => setShape(value as Shape)}
+          >
             <SelectTrigger id="badge-shape" className="w-full">
               <SelectValue placeholder="Select shape" />
             </SelectTrigger>

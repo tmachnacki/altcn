@@ -2,233 +2,232 @@
 
 import * as React from "react";
 import * as SelectPrimitive from "@radix-ui/react-select";
-import { cva, type VariantProps } from "class-variance-authority";
+import { tv, type VariantProps } from "tailwind-variants";
 import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from "lucide-react";
 
 import { cn } from "~/lib/utils";
 
 // TODO: adjust spacing for position="item-aligned" (i.e., not "popper")
 
-const selectTriggerVariants = cva(
-  [
-    "flex w-fit items-center justify-between gap-2 rounded-md text-sm whitespace-nowrap",
+const selectTriggerVariants = tv({
+  base: [
+    "peer flex w-fit items-center justify-between gap-2 rounded-md text-sm whitespace-nowrap",
 
-    "disabled:cursor-not-allowed disabled:opacity-50",
+    "disabled:pointer-events-none disabled:opacity-50",
 
     "**:[svg]:pointer-events-none **:[svg]:shrink-0 **:[svg]:grow-0",
 
     "*:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2",
 
-    "aria-invalid:text-destructive-accent-foreground aria-invalid:[--select-trigger-icon-text:var(--color-destructive-muted-foreground)] aria-invalid:**:[svg]:not-[[class*='text-']]:text-destructive-muted-foreground",
+    "aria-invalid:text-destructive-accent-foreground aria-invalid:**:[svg]:not-[[class*='text-']]:text-destructive-muted-foreground",
   ],
-  {
-    variants: {
-      size: {
-        sm: "h-(--size-sm) px-2.5 py-1.5 **:[svg]:not-[[class*='size-']]:size-4",
-        md: "h-(--size-md) px-3 py-2 **:[svg]:not-[[class*='size-']]:size-4",
-        lg: "h-(--size-lg) px-3.5 py-2.5 text-base **:[svg]:not-[[class*='size-']]:size-5",
-      },
-      variant: {
-        // -- base --
-        outline: [
-          "bg-background text-accent-foreground shadow-xs outline-1 -outline-offset-1 outline-border hover:not-disabled:not-aria-invalid:not-focus-visible:outline-hover-border dark:bg-faded",
-
-          "**:[svg]:not-[[class*='text-']]:text-muted-foreground",
-
-          "[--select-trigger-icon-text:var(--color-muted-foreground)]",
-
-          "data-[placeholder]:text-placeholder",
-
-          "disabled:bg-faded disabled:shadow-none",
-
-          "focus-visible:outline-2 focus-visible:outline-primary",
-
-          "aria-invalid:outline-destructive/60 aria-invalid:hover:not-disabled:outline-destructive aria-invalid:focus-visible:outline-destructive aria-invalid:disabled:bg-destructive-faded aria-invalid:data-[placeholder]:text-destructive-placeholder dark:aria-invalid:bg-destructive-faded",
-        ],
-
-        muted: [
-          "bg-muted text-accent-foreground -outline-offset-1 hover:not-disabled:not-aria-invalid:not-focus-visible:bg-hover-muted",
-
-          "**:[svg]:not-[[class*='text-']]:text-muted-foreground",
-
-          "[--select-trigger-icon-text:var(--color-muted-foreground)]",
-
-          "data-[placeholder]:text-placeholder",
-
-          "focus-visible:outline-2 focus-visible:outline-primary",
-
-          "aria-invalid:bg-destructive-muted aria-invalid:outline-destructive aria-invalid:hover:not-disabled:not-focus-visible:bg-hover-destructive-muted aria-invalid:data-[placeholder]:text-destructive-placeholder",
-        ],
-
-        underlined: [
-          "rounded-none bg-transparent shadow-[inset_0_-1px_0_0_var(--color-border)] outline-none hover:not-disabled:not-aria-invalid:not-focus-visible:shadow-[inset_0_-1px_0_0_var(--color-hover-border)]",
-
-          "**:[svg]:not-[[class*='text-']]:text-muted-foreground",
-
-          "[--select-trigger-icon-text:var(--color-muted-foreground)]",
-
-          "data-[placeholder]:text-placeholder",
-
-          "focus-visible:shadow-[inset_0_-2px_0_0_var(--color-primary)]",
-
-          "aria-invalid:shadow-[inset_0_-1px_0_0_--alpha(var(--color-destructive)/60%)] aria-invalid:hover:not-disabled:not-focus-visible:shadow-[inset_0_-1px_0_0_var(--color-destructive)] aria-invalid:focus-visible:shadow-[inset_0_-2px_0_0_var(--color-destructive)] aria-invalid:data-[placeholder]:text-destructive-placeholder",
-        ],
-
-        // -- primary --
-        "primary-muted": [
-          "bg-primary-muted text-primary-accent-foreground -outline-offset-1 hover:not-disabled:not-aria-invalid:not-focus-visible:bg-hover-primary-muted",
-
-          "**:[svg]:not-[[class*='text-']]:text-primary-muted-foreground",
-
-          "[--select-trigger-icon-text:var(--color-primary-muted-foreground)]",
-
-          "data-[placeholder]:text-primary-placeholder",
-
-          "disabled:bg-muted disabled:text-accent-foreground disabled:[--select-trigger-icon-text:var(--color-muted-foreground)] disabled:data-[placeholder]:text-placeholder disabled:**:[svg]:not-[[class*='text-']]:text-muted-foreground",
-
-          "focus-visible:outline-2 focus-visible:outline-primary",
-
-          "aria-invalid:bg-destructive-muted aria-invalid:outline-destructive aria-invalid:hover:not-disabled:not-focus-visible:bg-hover-destructive-muted aria-invalid:data-[placeholder]:text-destructive-placeholder",
-        ],
-
-        // -- secondary --
-        "secondary-muted": [
-          "bg-secondary-muted text-secondary-accent-foreground -outline-offset-1 hover:not-disabled:not-aria-invalid:not-focus-visible:bg-hover-secondary-muted",
-
-          "**:[svg]:not-[[class*='text-']]:text-secondary-muted-foreground",
-
-          "[--select-trigger-icon-text:var(--color-secondary-muted-foreground)]",
-
-          "data-[placeholder]:text-secondary-placeholder",
-
-          "disabled:bg-muted disabled:text-accent-foreground disabled:[--select-trigger-icon-text:var(--color-muted-foreground)] disabled:data-[placeholder]:text-placeholder disabled:**:[svg]:not-[[class*='text-']]:text-muted-foreground",
-
-          "focus-visible:outline-2 focus-visible:outline-secondary",
-
-          "aria-invalid:bg-destructive-muted aria-invalid:outline-destructive aria-invalid:hover:not-disabled:not-focus-visible:bg-hover-destructive-muted aria-invalid:data-[placeholder]:text-destructive-placeholder",
-        ],
-      },
+  variants: {
+    size: {
+      sm: "h-(--size-sm) px-2.5 py-1.5 **:[svg]:not-[[class*='size-']]:size-4",
+      md: "h-(--size-md) px-3 py-2 **:[svg]:not-[[class*='size-']]:size-4",
+      lg: "h-(--size-lg) px-3.5 py-2.5 text-base **:[svg]:not-[[class*='size-']]:size-5",
     },
-    defaultVariants: {
-      variant: "outline",
-      size: "md",
-    },
-  }
-);
+    variant: {
+      // -- base --
+      outline: [
+        "bg-background text-accent-foreground shadow-xs outline-1 -outline-offset-1 outline-border hover:not-focus-visible:not-aria-invalid:outline-hover-border dark:bg-faded",
 
-const selectItemVariants = cva(
-  [
+        "**:[svg]:not-[[class*='text-']]:text-muted-foreground",
+
+        "data-[placeholder]:text-placeholder",
+
+        "disabled:bg-faded disabled:shadow-none",
+
+        "focus-visible:outline-2 focus-visible:outline-primary",
+
+        "aria-invalid:outline-destructive aria-invalid:disabled:bg-destructive-faded aria-invalid:data-[placeholder]:text-destructive-placeholder dark:aria-invalid:bg-destructive-faded",
+      ],
+
+      muted: [
+        "bg-muted text-accent-foreground -outline-offset-1 hover:not-focus-visible:not-aria-invalid:bg-hover-muted",
+
+        "**:[svg]:not-[[class*='text-']]:text-muted-foreground",
+
+        "data-[placeholder]:text-placeholder",
+
+        "focus-visible:outline-2 focus-visible:outline-primary",
+
+        "aria-invalid:bg-destructive-muted aria-invalid:outline-destructive hover:aria-invalid:not-focus-visible:bg-hover-destructive-muted aria-invalid:data-[placeholder]:text-destructive-placeholder",
+      ],
+
+      underlined: [
+        "rounded-none bg-transparent shadow-[inset_0_-1px_0_0_var(--color-border)] outline-none hover:not-focus-visible:not-aria-invalid:shadow-[inset_0_-1px_0_0_var(--color-hover-border)]",
+
+        "**:[svg]:not-[[class*='text-']]:text-muted-foreground",
+
+        "data-[placeholder]:text-placeholder",
+
+        "focus-visible:shadow-[inset_0_-2px_0_0_var(--color-primary)]",
+
+        "aria-invalid:shadow-[inset_0_-1px_0_0_var(--color-destructive)] aria-invalid:focus-visible:shadow-[inset_0_-2px_0_0_var(--color-destructive)] aria-invalid:data-[placeholder]:text-destructive-placeholder",
+      ],
+
+      // -- primary --
+      "primary-muted": [
+        "bg-primary-muted text-primary-accent-foreground -outline-offset-1 hover:not-focus-visible:not-aria-invalid:bg-hover-primary-muted",
+
+        "**:[svg]:not-[[class*='text-']]:text-primary-muted-foreground",
+
+        "data-[placeholder]:text-primary-placeholder",
+
+        "disabled:bg-muted disabled:text-accent-foreground disabled:[--select-trigger-icon-text:var(--color-muted-foreground)] disabled:data-[placeholder]:text-placeholder disabled:**:[svg]:not-[[class*='text-']]:text-muted-foreground",
+
+        "focus-visible:outline-2 focus-visible:outline-primary",
+
+        "aria-invalid:bg-destructive-muted aria-invalid:outline-destructive hover:aria-invalid:not-focus-visible:bg-hover-destructive-muted aria-invalid:data-[placeholder]:text-destructive-placeholder",
+      ],
+
+      // -- secondary --
+      "secondary-muted": [
+        "bg-secondary-muted text-secondary-accent-foreground -outline-offset-1 hover:not-focus-visible:not-aria-invalid:bg-hover-secondary-muted",
+
+        "**:[svg]:not-[[class*='text-']]:text-secondary-muted-foreground",
+
+        "data-[placeholder]:text-secondary-placeholder",
+
+        "disabled:bg-muted disabled:text-accent-foreground disabled:[--select-trigger-icon-text:var(--color-muted-foreground)] disabled:data-[placeholder]:text-placeholder disabled:**:[svg]:not-[[class*='text-']]:text-muted-foreground",
+
+        "focus-visible:outline-2 focus-visible:outline-secondary",
+
+        "aria-invalid:bg-destructive-muted aria-invalid:outline-destructive hover:aria-invalid:not-focus-visible:bg-hover-destructive-muted aria-invalid:data-[placeholder]:text-destructive-placeholder",
+      ],
+    },
+  },
+  defaultVariants: {
+    variant: "outline",
+    size: "md",
+  },
+});
+
+const selectContentVariants = tv({
+  base: [
+    "relative isolate z-50 block max-h-(--radix-select-content-available-height) min-w-[max(var(--radix-select-trigger-width),--spacing(32))] origin-(--radix-select-content-transform-origin) rounded-md border border-border text-popover-foreground shadow-md",
+  ],
+  variants: {
+    variant: {
+      solid: "bg-popover",
+      translucent: "bg-popover/65 backdrop-blur-xl",
+    },
+  },
+  defaultVariants: {
+    variant: "solid",
+  },
+});
+
+const selectItemVariants = tv({
+  base: [
     "relative flex w-full flex-1 cursor-default items-center gap-2 rounded-sm py-1.5 pr-8 pl-2 text-sm outline-hidden select-none data-[position=item-aligned]:pr-2 data-[position=item-aligned]:pl-8",
     "data-[disabled]:pointer-events-none data-[disabled]:text-muted-foreground data-[disabled]:opacity-50",
     "**:[svg]:pointer-events-none **:[svg]:shrink-0 **:[svg]:not-[[class*='size-']]:size-4 **:[svg]:not-[[class*='text-']]:text-muted-foreground data-[highlighted]:**:[svg]:not-[[class*='text-']]:text-current",
     "*:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2",
   ],
-  {
-    variants: {
-      variant: {
-        // -- base --
-        base: "data-[highlighted]:bg-base-bg data-[highlighted]:text-base-foreground",
+  variants: {
+    variant: {
+      // -- base --
+      base: "data-[highlighted]:bg-base-bg data-[highlighted]:text-base-foreground",
 
-        accent:
-          "data-[highlighted]:bg-muted data-[highlighted]:text-accent-foreground",
+      accent:
+        "data-[highlighted]:bg-muted data-[highlighted]:text-accent-foreground",
 
-        surface:
-          "data-[highlighted]:bg-faded data-[highlighted]:text-accent-foreground data-[highlighted]:data-[width=default]:inset-ring data-[highlighted]:data-[width=default]:inset-ring-faded-border data-[highlighted]:data-[width=full]:shadow-[inset_0_1px_0_0_var(--color-faded-border),inset_0_-1px_0_0_var(--color-faded-border)]",
+      surface:
+        "data-[highlighted]:bg-faded data-[highlighted]:text-accent-foreground data-[highlighted]:data-[width=default]:inset-ring data-[highlighted]:data-[width=default]:inset-ring-faded-border data-[highlighted]:data-[width=full]:shadow-[inset_0_1px_0_0_var(--color-faded-border),inset_0_-1px_0_0_var(--color-faded-border)]",
 
-        // -- primary --
-        primary:
-          "data-[highlighted]:bg-primary data-[highlighted]:text-primary-foreground data-[highlighted]:**:[[data-slot*='-indicator']]:text-current",
+      // -- primary --
+      primary:
+        "data-[highlighted]:bg-primary data-[highlighted]:text-primary-foreground data-[highlighted]:**:[[data-slot*='-indicator']]:text-current",
 
-        "primary-accent":
-          "data-[highlighted]:bg-primary-muted data-[highlighted]:text-primary-accent-foreground",
+      "primary-accent":
+        "data-[highlighted]:bg-primary-muted data-[highlighted]:text-primary-accent-foreground",
 
-        "primary-muted":
-          "data-[highlighted]:bg-primary-muted data-[highlighted]:text-primary-muted-foreground",
+      "primary-muted":
+        "data-[highlighted]:bg-primary-muted data-[highlighted]:text-primary-muted-foreground",
 
-        "primary-surface":
-          "data-[highlighted]:bg-primary-faded data-[highlighted]:text-primary-accent-foreground data-[highlighted]:data-[width=default]:inset-ring data-[highlighted]:data-[width=default]:inset-ring-primary-faded-border data-[highlighted]:data-[width=full]:shadow-[inset_0_1px_0_0_var(--color-primary-faded-border),inset_0_-1px_0_0_var(--color-primary-faded-border)]",
+      "primary-surface":
+        "data-[highlighted]:bg-primary-faded data-[highlighted]:text-primary-accent-foreground data-[highlighted]:data-[width=default]:inset-ring data-[highlighted]:data-[width=default]:inset-ring-primary-faded-border data-[highlighted]:data-[width=full]:shadow-[inset_0_1px_0_0_var(--color-primary-faded-border),inset_0_-1px_0_0_var(--color-primary-faded-border)]",
 
-        "primary-faded":
-          "data-[highlighted]:bg-primary-faded data-[highlighted]:text-primary-muted-foreground data-[highlighted]:data-[width=default]:inset-ring data-[highlighted]:data-[width=default]:inset-ring-primary-faded-border data-[highlighted]:data-[width=full]:shadow-[inset_0_1px_0_0_var(--color-primary-faded-border),inset_0_-1px_0_0_var(--color-primary-faded-border)]",
+      "primary-faded":
+        "data-[highlighted]:bg-primary-faded data-[highlighted]:text-primary-muted-foreground data-[highlighted]:data-[width=default]:inset-ring data-[highlighted]:data-[width=default]:inset-ring-primary-faded-border data-[highlighted]:data-[width=full]:shadow-[inset_0_1px_0_0_var(--color-primary-faded-border),inset_0_-1px_0_0_var(--color-primary-faded-border)]",
 
-        // -- secondary --
-        secondary:
-          "data-[highlighted]:bg-secondary data-[highlighted]:text-secondary-foreground data-[highlighted]:**:[[data-slot*='-indicator']]:text-current",
+      // -- secondary --
+      secondary:
+        "data-[highlighted]:bg-secondary data-[highlighted]:text-secondary-foreground data-[highlighted]:**:[[data-slot*='-indicator']]:text-current",
 
-        "secondary-accent":
-          "data-[highlighted]:bg-secondary-muted data-[highlighted]:text-secondary-accent-foreground",
+      "secondary-accent":
+        "data-[highlighted]:bg-secondary-muted data-[highlighted]:text-secondary-accent-foreground",
 
-        "secondary-muted":
-          "data-[highlighted]:bg-secondary-muted data-[highlighted]:text-secondary-muted-foreground",
+      "secondary-muted":
+        "data-[highlighted]:bg-secondary-muted data-[highlighted]:text-secondary-muted-foreground",
 
-        "secondary-surface":
-          "data-[highlighted]:bg-secondary-faded data-[highlighted]:text-secondary-accent-foreground data-[highlighted]:data-[width=default]:inset-ring data-[highlighted]:data-[width=default]:inset-ring-secondary-faded-border data-[highlighted]:data-[width=full]:shadow-[inset_0_1px_0_0_var(--color-secondary-faded-border),inset_0_-1px_0_0_var(--color-secondary-faded-border)]",
+      "secondary-surface":
+        "data-[highlighted]:bg-secondary-faded data-[highlighted]:text-secondary-accent-foreground data-[highlighted]:data-[width=default]:inset-ring data-[highlighted]:data-[width=default]:inset-ring-secondary-faded-border data-[highlighted]:data-[width=full]:shadow-[inset_0_1px_0_0_var(--color-secondary-faded-border),inset_0_-1px_0_0_var(--color-secondary-faded-border)]",
 
-        "secondary-faded":
-          "data-[highlighted]:bg-secondary-faded data-[highlighted]:text-secondary-muted-foreground data-[highlighted]:data-[width=default]:inset-ring data-[highlighted]:data-[width=default]:inset-ring-secondary-faded-border data-[highlighted]:data-[width=full]:shadow-[inset_0_1px_0_0_var(--color-secondary-faded-border),inset_0_-1px_0_0_var(--color-secondary-faded-border)]",
+      "secondary-faded":
+        "data-[highlighted]:bg-secondary-faded data-[highlighted]:text-secondary-muted-foreground data-[highlighted]:data-[width=default]:inset-ring data-[highlighted]:data-[width=default]:inset-ring-secondary-faded-border data-[highlighted]:data-[width=full]:shadow-[inset_0_1px_0_0_var(--color-secondary-faded-border),inset_0_-1px_0_0_var(--color-secondary-faded-border)]",
 
-        // -- destructive --
-        destructive:
-          "data-[highlighted]:bg-destructive data-[highlighted]:text-destructive-foreground data-[highlighted]:**:[[data-slot*='-indicator']]:text-current",
+      // -- destructive --
+      destructive:
+        "data-[highlighted]:bg-destructive data-[highlighted]:text-destructive-foreground data-[highlighted]:**:[[data-slot*='-indicator']]:text-current",
 
-        "destructive-accent":
-          "data-[highlighted]:bg-destructive-muted data-[highlighted]:text-destructive-accent-foreground",
+      "destructive-accent":
+        "data-[highlighted]:bg-destructive-muted data-[highlighted]:text-destructive-accent-foreground",
 
-        "destructive-muted":
-          "data-[highlighted]:bg-destructive-muted data-[highlighted]:text-destructive-muted-foreground",
+      "destructive-muted":
+        "data-[highlighted]:bg-destructive-muted data-[highlighted]:text-destructive-muted-foreground",
 
-        "destructive-surface":
-          "data-[highlighted]:bg-destructive-faded data-[highlighted]:text-destructive-accent-foreground data-[highlighted]:data-[width=default]:inset-ring data-[highlighted]:data-[width=default]:inset-ring-destructive-faded-border data-[highlighted]:data-[width=full]:shadow-[inset_0_1px_0_0_var(--color-destructive-faded-border),inset_0_-1px_0_0_var(--color-destructive-faded-border)]",
+      "destructive-surface":
+        "data-[highlighted]:bg-destructive-faded data-[highlighted]:text-destructive-accent-foreground data-[highlighted]:data-[width=default]:inset-ring data-[highlighted]:data-[width=default]:inset-ring-destructive-faded-border data-[highlighted]:data-[width=full]:shadow-[inset_0_1px_0_0_var(--color-destructive-faded-border),inset_0_-1px_0_0_var(--color-destructive-faded-border)]",
 
-        "destructive-faded":
-          "data-[highlighted]:bg-destructive-faded data-[highlighted]:text-destructive-muted-foreground data-[highlighted]:data-[width=default]:inset-ring data-[highlighted]:data-[width=default]:inset-ring-destructive-faded-border data-[highlighted]:data-[width=full]:shadow-[inset_0_1px_0_0_var(--color-destructive-faded-border),inset_0_-1px_0_0_var(--color-destructive-faded-border)]",
-      },
-      width: {
-        default: "",
-        full: "-mx-1 w-[calc(100%_+_--spacing(2))] rounded-none pr-9 pl-3 data-[position=item-aligned]:pr-3 data-[position=item-aligned]:pl-9",
-      },
+      "destructive-faded":
+        "data-[highlighted]:bg-destructive-faded data-[highlighted]:text-destructive-muted-foreground data-[highlighted]:data-[width=default]:inset-ring data-[highlighted]:data-[width=default]:inset-ring-destructive-faded-border data-[highlighted]:data-[width=full]:shadow-[inset_0_1px_0_0_var(--color-destructive-faded-border),inset_0_-1px_0_0_var(--color-destructive-faded-border)]",
     },
-    compoundVariants: [
-      {
-        variant: [
-          "destructive",
-          "destructive-accent",
-          "destructive-muted",
-          "destructive-surface",
-          "destructive-faded",
-        ],
-        className:
-          "text-destructive-muted-foreground **:[svg]:not-[[class*='text-']]:text-current",
-      },
-    ],
-    defaultVariants: {
-      variant: "accent",
-      width: "default",
+    width: {
+      default: "",
+      full: "-mx-1 w-[calc(100%_+_--spacing(2))] rounded-none pr-9 pl-3 data-[position=item-aligned]:pr-3 data-[position=item-aligned]:pl-9",
     },
-  }
-);
+  },
+  compoundVariants: [
+    {
+      variant: [
+        "destructive",
+        "destructive-accent",
+        "destructive-muted",
+        "destructive-surface",
+        "destructive-faded",
+      ],
+      className:
+        "text-destructive-muted-foreground **:[svg]:not-[[class*='text-']]:text-current",
+    },
+  ],
+  defaultVariants: {
+    variant: "accent",
+    width: "default",
+  },
+});
 
-const selectItemIndicatorVariants = cva(
-  [
+const selectItemIndicatorVariants = tv({
+  base: [
     "pointer-events-none absolute right-2 flex size-4 items-center justify-center data-[position=item-aligned]:left-2",
     "data-[width=full]:right-3 data-[position=item-aligned]:data-[width=full]:left-3",
   ],
-  {
-    variants: {
-      variant: {
-        base: "text-subtle-foreground",
-        primary: "text-primary",
-        secondary: "text-secondary",
-        destructive: "text-destructive",
-        success: "text-success",
-        warning: "text-warning",
-      },
-      defaultVariants: {
-        variant: "base",
-      },
+  variants: {
+    variant: {
+      base: "text-subtle-foreground",
+      primary: "text-primary",
+      secondary: "text-secondary",
+      destructive: "text-destructive",
+      success: "text-success",
+      warning: "text-warning",
     },
-  }
-);
+    defaultVariants: {
+      variant: "base",
+    },
+  },
+});
 
 function Select({
   ...props
@@ -268,7 +267,7 @@ function SelectTrigger({
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 16 16"
           fill="currentColor"
-          className="-mr-1 text-(--select-trigger-icon-text)/60"
+          className="-mr-1"
         >
           <path
             fillRule="evenodd"
@@ -285,6 +284,7 @@ type SelectVariantsType = VariantProps<typeof selectItemVariants> & {
   indicatorVariant?: VariantProps<
     typeof selectItemIndicatorVariants
   >["variant"];
+  contentVariant?: VariantProps<typeof selectContentVariants>["variant"];
 };
 
 type SelectContextProps = SelectVariantsType &
@@ -299,6 +299,7 @@ function SelectContent({
   variant = "accent",
   width = "default",
   indicatorVariant = "base",
+  contentVariant = "solid",
   children,
   ...props
 }: React.ComponentProps<typeof SelectPrimitive.Content> & SelectVariantsType) {
@@ -310,7 +311,7 @@ function SelectContent({
         align={align}
         sideOffset={position === "popper" ? 4 : 0}
         className={cn(
-          "relative isolate z-50 block max-h-(--radix-select-content-available-height) min-w-[max(var(--radix-select-trigger-width),--spacing(32))] origin-(--radix-select-content-transform-origin) rounded-md border border-border bg-popover text-popover-foreground shadow-md",
+          selectContentVariants({ variant: contentVariant }),
           // FIXME: exit animations ain't working
           "data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
           position === "popper" && [
@@ -457,6 +458,7 @@ function SelectScrollDownButton({
 
 export {
   selectTriggerVariants,
+  selectContentVariants,
   selectItemVariants,
   selectItemIndicatorVariants,
   Select,

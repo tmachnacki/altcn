@@ -494,13 +494,13 @@
   --chart-secondary-5: var(--color-secondary-900);
 
   /** -- DESTRUCTIVE -- */
-  --destructive: var(--color-destructive-700);
+  --destructive: var(--color-destructive-600);
   --hover-destructive: color-mix(
     in oklab,
-    var(--color-destructive) 85%,
+    var(--color-destructive) 90%,
     var(--color-white)
   );
-  --destructive-foreground: var(--color-destructive-50);
+  --destructive-foreground: var(--color-white);
   --destructive-placeholder: --alpha(var(--color-destructive-300) / 60%);
   --destructive-popover: color-mix(
     in oklab,

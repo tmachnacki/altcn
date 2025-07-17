@@ -64,7 +64,7 @@ const alertButtonVariant = (variant: Variant) => {
 };
 
 export function AlertDemo() {
-  const [variant, setVariant] = React.useState("outline");
+  const [variant, setVariant] = React.useState<Variant>("outline");
   const [showAlertCentered, setShowAlertCentered] = React.useState(true);
   const [showAlert, setShowAlert] = React.useState(true);
 
@@ -84,7 +84,7 @@ export function AlertDemo() {
     <>
       <ComponentContainer>
         <div className="flex w-full max-w-xl flex-col gap-4">
-          <Alert variant={variant as Variant}>
+          <Alert variant={variant}>
             <CheckCircle2Icon />
             <AlertContent>
               <AlertTitle>Success! This is a standard alert</AlertTitle>
@@ -94,7 +94,7 @@ export function AlertDemo() {
               </AlertDescription>
             </AlertContent>
           </Alert>
-          <Alert variant={variant as Variant}>
+          <Alert variant={variant}>
             <AlertInsetColor />
             <CheckCircle2Icon />
             <AlertContent>
@@ -104,7 +104,7 @@ export function AlertDemo() {
               </AlertDescription>
             </AlertContent>
           </Alert>
-          <Alert variant={variant as Variant}>
+          <Alert variant={variant}>
             <AlertIcon type="success" />
             <AlertContent>
               <AlertTitle>Success! Your changes have been saved</AlertTitle>
@@ -114,7 +114,7 @@ export function AlertDemo() {
               </AlertDescription>
             </AlertContent>
           </Alert>
-          <Alert align="center" variant={variant as Variant}>
+          <Alert align="center" variant={variant}>
             <AlertIcon type="info" />
             <AlertContent>
               <AlertTitle>
@@ -122,7 +122,7 @@ export function AlertDemo() {
               </AlertTitle>
             </AlertContent>
             <Button
-              variant={alertButtonVariant(variant as Variant)}
+              variant={alertButtonVariant(variant)}
               size="sm"
               className="h-6"
             >
@@ -132,7 +132,7 @@ export function AlertDemo() {
 
           <Alert
             align="center"
-            variant={variant as Variant}
+            variant={variant}
             className={showAlertCentered ? "visible" : "invisible"}
           >
             <AlertIcon type="info" />
@@ -142,7 +142,7 @@ export function AlertDemo() {
               </AlertTitle>
             </AlertContent>
             <Button
-              variant={alertButtonVariant(variant as Variant)}
+              variant={alertButtonVariant(variant)}
               size="sm"
               className="h-6"
             >
@@ -151,7 +151,7 @@ export function AlertDemo() {
             <AlertClose onClick={handleCloseAlertCentered} />
           </Alert>
 
-          <Alert align="center" variant={variant as Variant}>
+          <Alert align="center" variant={variant}>
             <AlertIcon type="warning" />
             <AlertContent>
               <AlertDescription>
@@ -159,14 +159,14 @@ export function AlertDemo() {
               </AlertDescription>
             </AlertContent>
             <Button
-              variant={alertButtonVariant(variant as Variant)}
+              variant={alertButtonVariant(variant)}
               size="sm"
               className="h-6"
             >
               Dismiss
             </Button>
           </Alert>
-          <Alert variant={variant as Variant}>
+          <Alert variant={variant}>
             <AlertIcon type="error" />
             <AlertContent>
               <AlertTitle>Something went wrong!</AlertTitle>
@@ -179,17 +179,14 @@ export function AlertDemo() {
                 </ul>
               </AlertDescription>
               <AlertFooter>
-                <Button
-                  variant={alertButtonVariant(variant as Variant)}
-                  size="sm"
-                >
+                <Button variant={alertButtonVariant(variant)} size="sm">
                   Details
                 </Button>
               </AlertFooter>
             </AlertContent>
           </Alert>
           <Alert
-            variant={variant as Variant}
+            variant={variant}
             className={showAlert ? "visible" : "invisible"}
           >
             <AlertIcon type="error" />
@@ -204,10 +201,7 @@ export function AlertDemo() {
                 </ul>
               </AlertDescription>
               <AlertFooter>
-                <Button
-                  variant={alertButtonVariant(variant as Variant)}
-                  size="sm"
-                >
+                <Button variant={alertButtonVariant(variant)} size="sm">
                   Details
                 </Button>
               </AlertFooter>
@@ -219,7 +213,10 @@ export function AlertDemo() {
       <ComponentPlayground>
         <div className="grid gap-2">
           <Label htmlFor="alert-variant">Variant</Label>
-          <Select value={variant} onValueChange={setVariant}>
+          <Select
+            value={variant}
+            onValueChange={(value) => setVariant(value as Variant)}
+          >
             <SelectTrigger id="alert-variant" className="w-full">
               <SelectValue placeholder="Select variant" />
             </SelectTrigger>
