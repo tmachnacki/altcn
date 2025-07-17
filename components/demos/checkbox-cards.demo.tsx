@@ -8,7 +8,7 @@ import {
   CheckboxCardsItemCheckbox,
   CheckboxCardsItemContent,
   CheckboxCardsItemDescription,
-  CheckboxCardsItemTitle,
+  CheckboxCardsItemLabel,
   checkboxCardsItemVariants,
 } from "~/components/ui/checkbox-cards";
 import { Label } from "~/components/ui/label";
@@ -70,10 +70,14 @@ export function CheckboxCardsDemo() {
                 <CheckboxCardsItemCheckbox
                   disabled={disabled}
                   aria-invalid={invalid}
+                  aria-labelledby={`${plan.id}-label`}
+                  aria-describedby={`${plan.id}-description`}
                 />
-                <CheckboxCardsItemContent className="flex flex-col gap-1">
-                  <CheckboxCardsItemTitle>{plan.name}</CheckboxCardsItemTitle>
-                  <CheckboxCardsItemDescription>
+                <CheckboxCardsItemContent>
+                  <CheckboxCardsItemLabel id={`${plan.id}-label`}>
+                    {plan.name}
+                  </CheckboxCardsItemLabel>
+                  <CheckboxCardsItemDescription id={`${plan.id}-description`}>
                     {plan.description}
                   </CheckboxCardsItemDescription>
                 </CheckboxCardsItemContent>
@@ -87,9 +91,12 @@ export function CheckboxCardsDemo() {
               <CheckboxCardsItemCheckbox
                 disabled={disabled}
                 aria-invalid={invalid}
+                aria-labelledby="centered-label"
               />
-              <CheckboxCardsItemContent className="flex items-center">
-                <CheckboxCardsItemTitle>Centered</CheckboxCardsItemTitle>
+              <CheckboxCardsItemContent>
+                <CheckboxCardsItemLabel id="centered-label">
+                  Centered
+                </CheckboxCardsItemLabel>
               </CheckboxCardsItemContent>
             </CheckboxCardsItem>
           </CheckboxCards>
