@@ -87,7 +87,9 @@ export function SelectDemo() {
     <>
       <ComponentContainer className="overflow-hidden rounded-t-lg p-0 md:rounded-l-lg md:rounded-r-none">
         <div
-          className={`relative flex h-full min-h-96 w-full min-w-0 flex-col items-center justify-center ${contentVariant === "translucent" ? "bg-linear-to-br from-transparent to-primary/50" : ""} bg-center p-4`}
+          className={cn(
+            "relative flex h-full min-h-96 w-full min-w-0 flex-col items-center justify-center bg-center p-4"
+          )}
         >
           <div className="grid w-full max-w-xs grid-cols-1 gap-4 sm:max-w-sm sm:grid-cols-2">
             <Select>

@@ -12,97 +12,56 @@ import {
   SelectTrigger,
   SelectValue,
 } from "~/components/ui/select";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  tabsListVariants,
+  TabsTrigger,
+  tabsTriggerVariants,
+} from "~/components/ui/tabs";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
 
-// import { Swatch } from "~/components/swatch";
+type ListVariant = keyof typeof tabsListVariants.variants.variant;
+const listVariants = Object.keys(
+  tabsListVariants.variants.variant
+) as ListVariant[];
 
-const tabsListVariants = [
-  "outline",
-  "muted",
-  "faded",
-  "underlined",
-  "ghost",
-] as const;
-
-const tabsTriggerVariants = [
-  "default",
-  "base",
-  "outline",
-  "accent",
-  "surface",
-  "underlined",
-  "base-gradient",
-  "ghost",
-
-  "primary",
-  "primary-accent",
-  "primary-muted",
-  "primary-surface",
-  "primary-faded",
-  "primary-underlined",
-  "primary-tron",
-  "primary-gradient",
-  "primary-ghost",
-
-  "secondary",
-  "secondary-accent",
-  "secondary-muted",
-  "secondary-surface",
-  "secondary-faded",
-  "secondary-underlined",
-  "secondary-tron",
-  "secondary-gradient",
-  "secondary-ghost",
-] as const;
+type TriggerVariant = keyof typeof tabsTriggerVariants.variants.variant;
+const triggerVariants = Object.keys(
+  tabsTriggerVariants.variants.variant
+) as TriggerVariant[];
 
 export function TabsDemo() {
-  const [tabsListVariant, setTabsListVariant] = React.useState("muted");
-  const [tabsTriggerVariant, setTabsTriggerVariant] = React.useState("default");
+  const [listVariant, setListVariant] = React.useState<ListVariant>("muted");
+  const [triggerVariant, setTriggerVariant] =
+    React.useState<TriggerVariant>("default");
 
   return (
     <>
       <ComponentContainer>
         <Tabs defaultValue="music" className="w-full max-w-xl">
           <TabsList
-            variant={tabsListVariant as (typeof tabsListVariants)[number]}
+            variants={{
+              list: listVariant,
+              trigger: triggerVariant,
+            }}
             className="grid w-full grid-cols-4"
           >
-            <TabsTrigger
-              value="music"
-              variant={
-                tabsTriggerVariant as (typeof tabsTriggerVariants)[number]
-              }
-            >
+            <TabsTrigger value="music">
               <MusicIcon />
               Music
             </TabsTrigger>
-            <TabsTrigger
-              value="podcasts"
-              variant={
-                tabsTriggerVariant as (typeof tabsTriggerVariants)[number]
-              }
-            >
+            <TabsTrigger value="podcasts">
               <PodcastIcon />
               Podcasts
             </TabsTrigger>
-            <TabsTrigger
-              value="photos"
-              variant={
-                tabsTriggerVariant as (typeof tabsTriggerVariants)[number]
-              }
-            >
+            <TabsTrigger value="photos">
               <ImageIcon />
               Photos
             </TabsTrigger>
-            <TabsTrigger
-              value="onlyfans"
-              variant={
-                tabsTriggerVariant as (typeof tabsTriggerVariants)[number]
-              }
-              disabled
-            >
+            <TabsTrigger value="onlyfans" disabled>
               <BanIcon />
               OnlyFans
             </TabsTrigger>
@@ -172,12 +131,15 @@ export function TabsDemo() {
       <ComponentPlayground>
         <div className="grid gap-2">
           <Label htmlFor="list-variant">List Variant</Label>
-          <Select value={tabsListVariant} onValueChange={setTabsListVariant}>
+          <Select
+            value={listVariant}
+            onValueChange={(value) => setListVariant(value as ListVariant)}
+          >
             <SelectTrigger id="list-variant" className="w-full">
               <SelectValue placeholder="Select a variant" />
             </SelectTrigger>
             <SelectContent>
-              {tabsListVariants.map((variant) => (
+              {listVariants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
                   {variant}
                 </SelectItem>
@@ -188,14 +150,16 @@ export function TabsDemo() {
         <div className="grid gap-2">
           <Label htmlFor="trigger-variant">Trigger Variant</Label>
           <Select
-            value={tabsTriggerVariant}
-            onValueChange={setTabsTriggerVariant}
+            value={triggerVariant}
+            onValueChange={(value) =>
+              setTriggerVariant(value as TriggerVariant)
+            }
           >
             <SelectTrigger id="trigger-variant" className="w-full">
               <SelectValue placeholder="Select a variant" />
             </SelectTrigger>
             <SelectContent>
-              {tabsTriggerVariants.map((variant) => (
+              {triggerVariants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
                   {variant}
                 </SelectItem>

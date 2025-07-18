@@ -17,8 +17,25 @@ import {
 } from "~/components/ui/dropdown-menu";
 import { Tron } from "~/components/ui/tron";
 
+const menubarListVariants = tv({
+  base: "flex h-9 items-center gap-1 rounded-md p-1",
+  variants: {
+    variant: {
+      outline: "border border-border bg-background shadow-xs",
+      muted: "bg-muted",
+      faded: "border border-faded-border bg-faded",
+      ghost: "bg-transparent p-0",
+      translucent:
+        "border border-border bg-popover/65 shadow-xs backdrop-blur-md",
+    },
+  },
+  defaultVariants: {
+    variant: "outline",
+  },
+});
+
 const menubarTriggerVariants = tv({
-  base: "relative flex items-center rounded-sm px-2 py-1 text-sm font-medium outline-hidden select-none",
+  base: "relative flex h-full items-center rounded-sm px-2 py-1 text-sm font-medium outline-hidden select-none",
   variants: {
     variant: {
       // -- base --
@@ -143,33 +160,45 @@ type MenubarContextProps = {
   variants?: MenuContextProps["variants"] & {
     trigger?: VariantProps<typeof menubarTriggerVariants>["variant"];
   };
-  width?: VariantProps<typeof menuItemVariants>["width"];
+  width?: MenuContextProps["width"];
 };
 
 const MenubarContext = React.createContext<MenubarContextProps>({});
 
+type MenubarProps = React.ComponentProps<typeof MenubarPrimitive.Root> & {
+  variants?: MenubarContextProps["variants"] & {
+    list?: VariantProps<typeof menubarListVariants>["variant"];
+  };
+  width?: MenubarContextProps["width"];
+};
+
 function Menubar({
   className,
-  variants = {
-    trigger: "accent",
-    content: "solid",
-    item: "accent",
-    indicator: "base",
-  },
+  variants,
   width = "default",
   children,
   ...props
-}: React.ComponentProps<typeof MenubarPrimitive.Root> & MenubarContextProps) {
+}: MenubarProps) {
   return (
     <MenubarPrimitive.Root
       data-slot="menubar"
       className={cn(
-        "flex h-9 items-center gap-1 rounded-md border bg-background p-1 shadow-xs",
+        menubarListVariants({ variant: variants?.list }),
         className
       )}
       {...props}
     >
-      <MenubarContext.Provider value={{ variants, width }}>
+      <MenubarContext.Provider
+        value={{
+          variants: {
+            trigger: variants?.trigger,
+            content: variants?.content,
+            item: variants?.item,
+            indicator: variants?.indicator,
+          },
+          width,
+        }}
+      >
         {children}
       </MenubarContext.Provider>
     </MenubarPrimitive.Root>
@@ -505,5 +534,6 @@ export {
   MenubarSub,
   MenubarSubTrigger,
   MenubarSubContent,
+  menubarListVariants,
   menubarTriggerVariants,
 };

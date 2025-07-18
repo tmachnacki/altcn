@@ -22,6 +22,7 @@ import {
   MenubarContent,
   MenubarGroup,
   MenubarItem,
+  menubarListVariants,
   MenubarMenu,
   MenubarRadioGroup,
   MenubarRadioItem,
@@ -43,6 +44,11 @@ import {
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
 import { Swatch } from "~/components/swatch";
+
+type ListVariant = keyof typeof menubarListVariants.variants.variant;
+const listVariants = Object.keys(
+  menubarListVariants.variants.variant
+) as ListVariant[];
 
 type TriggerVariant = keyof typeof menubarTriggerVariants.variants.variant;
 const triggerVariants = Object.keys(
@@ -74,6 +80,7 @@ const destructiveItemVariants = Object.keys(
 const widths = ["default", "full"] as const;
 
 export function MenubarDemo() {
+  const [listVariant, setListVariant] = React.useState<ListVariant>("outline");
   const [triggerVariant, setTriggerVariant] =
     React.useState<TriggerVariant>("accent");
   const [contentVariant, setContentVariant] =
@@ -94,6 +101,7 @@ export function MenubarDemo() {
         <div className="relative flex h-full min-h-96 w-full min-w-0 flex-col items-center justify-center bg-[url('https://picsum.photos/id/74/800/800')] bg-center p-4">
           <Menubar
             variants={{
+              list: listVariant,
               trigger: triggerVariant,
               content: contentVariant,
               item: itemVariant,
@@ -238,6 +246,24 @@ export function MenubarDemo() {
         </div>
       </ComponentContainer>
       <ComponentPlayground>
+        <div className="grid gap-2">
+          <Label htmlFor="menubar-list-variant">List Variant</Label>
+          <Select
+            value={listVariant}
+            onValueChange={(value) => setListVariant(value as ListVariant)}
+          >
+            <SelectTrigger id="menubar-list-variant" className="w-full">
+              <SelectValue placeholder="Select variant" />
+            </SelectTrigger>
+            <SelectContent>
+              {listVariants.map((variant) => (
+                <SelectItem key={variant} value={variant}>
+                  {variant}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
         <div className="grid gap-2">
           <Label htmlFor="menubar-trigger-variant">Trigger Variant</Label>
           <Select

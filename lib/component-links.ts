@@ -148,6 +148,10 @@ export const componentLinks = [
     href: "/components/tabs",
   },
   {
+    label: "Tab Nav",
+    href: "/components/tab-nav",
+  },
+  {
     label: "Toggle",
     href: "/components/toggle",
   },
