@@ -30,6 +30,7 @@ import {
 } from "~/components/ui/select";
 import { Slider } from "~/components/ui/slider";
 import { Switch } from "~/components/ui/switch";
+import { BackgroundPattern } from "~/components/background-pattern";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
 import { Swatch } from "~/components/swatch";
@@ -91,7 +92,8 @@ export function SelectDemo() {
             "relative flex h-full min-h-96 w-full min-w-0 flex-col items-center justify-center bg-center p-4"
           )}
         >
-          <div className="grid w-full max-w-xs grid-cols-1 gap-4 sm:max-w-sm sm:grid-cols-2">
+          <BackgroundPattern />
+          <div className="relative grid w-full max-w-xs grid-cols-1 gap-4 rounded-lg border border-border bg-card-translucent p-4 shadow-lg backdrop-blur-card-translucent sm:max-w-sm sm:grid-cols-2">
             <Select>
               <SelectTrigger
                 className="w-full"
@@ -103,10 +105,12 @@ export function SelectDemo() {
                 <SelectValue placeholder="Select a fruit" />
               </SelectTrigger>
               <SelectContent
-                contentVariant={contentVariant}
-                variant={itemVariant}
+                variants={{
+                  content: contentVariant,
+                  item: itemVariant,
+                  indicator: indicatorVariant,
+                }}
                 width={width as (typeof widths)[number]}
-                indicatorVariant={indicatorVariant}
                 position={position as (typeof positions)[number]}
               >
                 <SelectGroup>
@@ -143,10 +147,12 @@ export function SelectDemo() {
                 <SelectValue placeholder="Large List" />
               </SelectTrigger>
               <SelectContent
-                contentVariant={contentVariant}
-                variant={itemVariant}
+                variants={{
+                  content: contentVariant,
+                  item: itemVariant,
+                  indicator: indicatorVariant,
+                }}
                 width={width as (typeof widths)[number]}
-                indicatorVariant={indicatorVariant}
                 position={position as (typeof positions)[number]}
                 className="max-h-96"
               >
@@ -175,10 +181,12 @@ export function SelectDemo() {
                 />
               </SelectTrigger>
               <SelectContent
-                contentVariant={contentVariant}
-                variant={itemVariant}
+                variants={{
+                  content: contentVariant,
+                  item: itemVariant,
+                  indicator: indicatorVariant,
+                }}
                 width={width as (typeof widths)[number]}
-                indicatorVariant={indicatorVariant}
                 position={position as (typeof positions)[number]}
               >
                 <SelectItem value="line">

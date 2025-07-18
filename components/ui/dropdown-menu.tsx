@@ -18,7 +18,7 @@ const menuContentVariants = tv({
   variants: {
     variant: {
       solid: "bg-popover",
-      translucent: "bg-popover/65 backdrop-blur-xl",
+      translucent: "bg-popover-translucent backdrop-blur-popover-translucent",
     },
   },
   defaultVariants: {

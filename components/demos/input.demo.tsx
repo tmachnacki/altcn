@@ -28,10 +28,12 @@ const sizesMap: Record<number, Size> = {
 };
 
 export function InputDemo() {
-  const [variant, setVariant] = React.useState("outline");
-  const [size, setSize] = React.useState(2);
+  const [variant, setVariant] = React.useState<Variant>("outline");
+  const [sizeIdx, setSizeIdx] = React.useState(2);
   const [invalid, setInvalid] = React.useState(false);
   const [disabled, setDisabled] = React.useState(false);
+
+  const size = sizesMap[sizeIdx];
 
   return (
     <>
@@ -44,8 +46,8 @@ export function InputDemo() {
               name="email"
               type="email"
               placeholder="someone@example.com"
-              variant={variant as Variant}
-              size={sizesMap[size]}
+              variant={variant}
+              size={size}
               aria-invalid={invalid}
               disabled={disabled}
             />
@@ -57,8 +59,8 @@ export function InputDemo() {
               name="password"
               type="password"
               placeholder="********"
-              variant={variant as Variant}
-              size={sizesMap[size]}
+              variant={variant}
+              size={size}
               aria-invalid={invalid}
               disabled={disabled}
             />
@@ -70,8 +72,8 @@ export function InputDemo() {
               name="number"
               type="number"
               placeholder="0"
-              variant={variant as Variant}
-              size={sizesMap[size]}
+              variant={variant}
+              size={size}
               aria-invalid={invalid}
               disabled={disabled}
             />
@@ -82,8 +84,8 @@ export function InputDemo() {
               id="file"
               name="file"
               type="file"
-              variant={variant as Variant}
-              size={sizesMap[size]}
+              variant={variant}
+              size={size}
               aria-invalid={invalid}
               disabled={disabled}
             />
@@ -95,8 +97,8 @@ export function InputDemo() {
               name="tel"
               type="tel"
               placeholder="123-456-7890"
-              variant={variant as Variant}
-              size={sizesMap[size]}
+              variant={variant}
+              size={size}
               aria-invalid={invalid}
               disabled={disabled}
             />
@@ -108,8 +110,8 @@ export function InputDemo() {
               name="text"
               type="text"
               placeholder="Text"
-              variant={variant as Variant}
-              size={sizesMap[size]}
+              variant={variant}
+              size={size}
               aria-invalid={invalid}
               disabled={disabled}
             />
@@ -121,8 +123,8 @@ export function InputDemo() {
               name="url"
               type="url"
               placeholder="https://example.com"
-              variant={variant as Variant}
-              size={sizesMap[size]}
+              variant={variant}
+              size={size}
               aria-invalid={invalid}
               disabled={disabled}
             />
@@ -134,8 +136,8 @@ export function InputDemo() {
               name="search"
               type="search"
               placeholder="Search..."
-              variant={variant as Variant}
-              size={sizesMap[size]}
+              variant={variant}
+              size={size}
               aria-invalid={invalid}
               disabled={disabled}
             />
@@ -146,8 +148,8 @@ export function InputDemo() {
               id="date"
               name="date"
               type="date"
-              variant={variant as Variant}
-              size={sizesMap[size]}
+              variant={variant}
+              size={size}
               aria-invalid={invalid}
               disabled={disabled}
             />
@@ -158,8 +160,8 @@ export function InputDemo() {
               id="datetime-local"
               name="datetime-local"
               type="datetime-local"
-              variant={variant as Variant}
-              size={sizesMap[size]}
+              variant={variant}
+              size={size}
               aria-invalid={invalid}
               disabled={disabled}
             />
@@ -170,8 +172,8 @@ export function InputDemo() {
               id="month"
               name="month"
               type="month"
-              variant={variant as Variant}
-              size={sizesMap[size]}
+              variant={variant}
+              size={size}
               aria-invalid={invalid}
               disabled={disabled}
             />
@@ -182,8 +184,8 @@ export function InputDemo() {
               id="time"
               name="time"
               type="time"
-              variant={variant as Variant}
-              size={sizesMap[size]}
+              variant={variant}
+              size={size}
               aria-invalid={invalid}
               disabled={disabled}
             />
@@ -194,8 +196,8 @@ export function InputDemo() {
               id="week"
               name="week"
               type="week"
-              variant={variant as Variant}
-              size={sizesMap[size]}
+              variant={variant}
+              size={size}
               aria-invalid={invalid}
               disabled={disabled}
             />
@@ -206,7 +208,10 @@ export function InputDemo() {
       <ComponentPlayground>
         <div className="grid gap-2">
           <Label htmlFor="input-variant">Variant</Label>
-          <Select value={variant} onValueChange={setVariant}>
+          <Select
+            value={variant}
+            onValueChange={(value) => setVariant(value as Variant)}
+          >
             <SelectTrigger id="input-variant" className="w-full">
               <SelectValue placeholder="Select variant" />
             </SelectTrigger>
@@ -224,7 +229,7 @@ export function InputDemo() {
           <Label id="input-size">
             Size:{" "}
             <span className="font-normal text-primary-muted-foreground">
-              {sizesMap[size]}
+              {size}
             </span>
           </Label>
           <Slider
@@ -232,8 +237,8 @@ export function InputDemo() {
             min={1}
             max={3}
             step={1}
-            value={[size]}
-            onValueChange={(value) => setSize(value[0])}
+            value={[sizeIdx]}
+            onValueChange={(value) => setSizeIdx(value[0])}
           />
         </div>
         <div className="flex items-center gap-3">

@@ -40,6 +40,9 @@ const sizesMap: Record<number, Size> = {
   4: "lg",
 } as const;
 
+type Shape = keyof typeof radioButtonVariants.variants.shape;
+const shapes = Object.keys(radioButtonVariants.variants.shape) as Shape[];
+
 type Orientation = "horizontal" | "vertical";
 
 export function RadioButtonGroupDemo() {
@@ -48,6 +51,7 @@ export function RadioButtonGroupDemo() {
   const [uncheckedVariant, setUncheckedVariant] =
     React.useState<Variant>("outline");
   const [sizeIdx, setSizeIdx] = React.useState(3);
+  const [shape, setShape] = React.useState<Shape>("box");
   const [orientation, setOrientation] =
     React.useState<Orientation>("horizontal");
 
@@ -77,6 +81,7 @@ export function RadioButtonGroupDemo() {
               unchecked: uncheckedVariant,
             }}
             size={size}
+            shape={shape}
             orientation={orientation as "horizontal" | "vertical"}
             value={selectedOption}
             onValueChange={setSelectedOption}
@@ -148,6 +153,25 @@ export function RadioButtonGroupDemo() {
             onValueChange={(value) => setSizeIdx(value[0])}
           />
         </div>
+        <div className="grid gap-2">
+          <Label htmlFor="radio-buttons-shape">Shape</Label>
+          <Select
+            value={shape}
+            onValueChange={(value) => setShape(value as Shape)}
+          >
+            <SelectTrigger id="radio-buttons-shape" className="w-full">
+              <SelectValue placeholder="Select a variant" />
+            </SelectTrigger>
+            <SelectContent>
+              {shapes.map((shape) => (
+                <SelectItem key={shape} value={shape}>
+                  {shape}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+
         <div className="grid gap-2">
           <Label htmlFor="radio-buttons-orientation">Orientation</Label>
           <Select

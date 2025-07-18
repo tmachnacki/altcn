@@ -4,12 +4,14 @@ import { cn } from "~/lib/utils";
 export function BackgroundPattern({ className }: { className?: string }) {
   return (
     <svg
-      width="1000px"
-      height="1000px"
+      aria-hidden="true"
       viewBox="0 0 2560 1920"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={cn("pointer-events-none opacity-60", className)}
+      className={cn(
+        "pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[max(100%,800px)] w-[max(100%,800px)]",
+        className
+      )}
     >
       <g>
         <path

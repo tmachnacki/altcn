@@ -118,7 +118,7 @@ function Checkbox({
         className="flex items-center justify-center text-current"
       >
         <CheckIcon className="block size-3.5 stroke-3 group-data-[state=indeterminate]/checkbox:hidden" />
-        <MinusIcon className="hidden size-3.5 group-data-[state=indeterminate]/checkbox:block" />
+        <MinusIcon className="hidden size-3.5 stroke-3 group-data-[state=indeterminate]/checkbox:block" />
       </CheckboxPrimitive.Indicator>
     </CheckboxPrimitive.Root>
   );

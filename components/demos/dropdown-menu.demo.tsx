@@ -42,6 +42,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "~/components/ui/select";
+import { BackgroundPattern } from "~/components/background-pattern";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
 import { Swatch } from "~/components/swatch";
@@ -92,7 +93,15 @@ export function DropdownMenuDemo() {
   return (
     <>
       <ComponentContainer className="overflow-hidden rounded-t-lg p-0 md:rounded-l-lg md:rounded-r-none">
-        <div className="relative flex h-full min-h-96 w-full min-w-0 flex-col items-center justify-center bg-[url('https://picsum.photos/id/74/800/800')] bg-center p-4">
+        <div
+          className={cn(
+            "relative flex h-full min-h-96 w-full min-w-0 flex-col items-center justify-center bg-center p-4",
+            side === "bottom" && "justify-start",
+            side === "top" && "justify-end",
+          )}
+        >
+          <BackgroundPattern className="size-full" />
+
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant={"outline"} className="capitalize">

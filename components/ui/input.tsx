@@ -5,7 +5,7 @@ import { cn } from "~/lib/utils";
 
 const inputVariants = tv({
   slots: {
-    input: [
+    root: [
       "peer flex w-full min-w-0 appearance-none rounded-md",
       "selection:bg-primary selection:text-primary-foreground",
       "disabled:pointer-events-none disabled:opacity-50",
@@ -16,25 +16,22 @@ const inputVariants = tv({
   variants: {
     size: {
       sm: {
-        input:
-          "h-(--size-sm) px-(--input-px) py-(--input-py) text-sm [--input-px:--spacing(2.5)] [--input-py:--spacing(1)]",
+        root: "h-(--size-sm) px-(--input-px) py-(--input-py) text-sm [--input-px:--spacing(2.5)] [--input-py:--spacing(1)]",
         file: "file:-my-(--input-py) file:-ms-(--input-px) file:me-(--input-px) file:h-(--size-sm) file:px-(--input-px)",
       },
       md: {
-        input:
-          "h-(--size-md) px-(--input-px) py-(--input-py) text-base [--input-px:--spacing(3)] [--input-py:--spacing(1)] sm:text-sm",
+        root: "h-(--size-md) px-(--input-px) py-(--input-py) text-base [--input-px:--spacing(3)] [--input-py:--spacing(1)] sm:text-sm",
         file: "file:-my-(--input-py) file:-ms-(--input-px) file:me-(--input-px) file:h-(--size-md) file:px-(--input-px)",
       },
       lg: {
-        input:
-          "h-(--size-lg) px-(--input-px) py-(--input-py) text-base [--input-px:--spacing(3.5)] [--input-py:--spacing(1.5)]",
+        root: "h-(--size-lg) px-(--input-px) py-(--input-py) text-base [--input-px:--spacing(3.5)] [--input-py:--spacing(1.5)]",
         file: "file:-my-(--input-py) file:-ms-(--input-px) file:me-(--input-px) file:h-(--size-lg) file:px-(--input-px)",
       },
     },
     variant: {
       // -- base --
       outline: {
-        input: [
+        root: [
           "bg-background text-foreground shadow-xs outline-1 -outline-offset-1 outline-border hover:not-focus-visible:not-aria-invalid:outline-hover-border dark:bg-faded",
 
           "placeholder:text-placeholder",
@@ -52,7 +49,7 @@ const inputVariants = tv({
       },
 
       muted: {
-        input: [
+        root: [
           "bg-muted text-accent-foreground -outline-offset-1 hover:not-focus-visible:not-aria-invalid:bg-hover-muted",
 
           "placeholder:text-placeholder",
@@ -68,7 +65,7 @@ const inputVariants = tv({
       },
 
       underlined: {
-        input: [
+        root: [
           "rounded-none bg-transparent px-0.5 shadow-[inset_0_-1px_0_0_var(--color-border)] outline-none hover:not-focus-visible:not-aria-invalid:shadow-[inset_0_-1px_0_0_var(--color-hover-border)]",
 
           "placeholder:text-placeholder",
@@ -85,7 +82,7 @@ const inputVariants = tv({
 
       // -- primary --
       "primary-muted": {
-        input: [
+        root: [
           "bg-primary-muted text-primary-accent-foreground -outline-offset-1 hover:not-focus-visible:not-aria-invalid:bg-hover-primary-muted",
 
           "placeholder:text-primary-placeholder",
@@ -105,7 +102,7 @@ const inputVariants = tv({
 
       // -- secondary --
       "secondary-muted": {
-        input: [
+        root: [
           "bg-secondary-muted text-secondary-accent-foreground -outline-offset-1 hover:not-focus-visible:not-aria-invalid:bg-hover-secondary-muted",
 
           "selection:bg-secondary selection:text-secondary-foreground",
@@ -160,13 +157,13 @@ function Input({
   htmlSize,
   ...props
 }: InputProps) {
-  const { input, file } = inputVariants({ variant, size });
+  const { root, file } = inputVariants({ variant, size });
   return (
     <input
       type={type}
       data-slot="input"
       size={htmlSize}
-      className={cn(input(), type === "file" && file(), className)}
+      className={cn(root(), type === "file" && file(), className)}
       {...props}
     />
   );

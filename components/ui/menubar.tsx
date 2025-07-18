@@ -18,7 +18,7 @@ import {
 import { Tron } from "~/components/ui/tron";
 
 const menubarListVariants = tv({
-  base: "flex h-9 items-center gap-1 rounded-md p-1",
+  base: "relative isolate flex items-center gap-1 rounded-md p-1",
   variants: {
     variant: {
       outline: "border border-border bg-background shadow-xs",
@@ -26,7 +26,7 @@ const menubarListVariants = tv({
       faded: "border border-faded-border bg-faded",
       ghost: "bg-transparent p-0",
       translucent:
-        "border border-border bg-popover/65 shadow-xs backdrop-blur-md",
+        "border border-border bg-card-translucent shadow-xs backdrop-blur-card-translucent",
     },
   },
   defaultVariants: {
@@ -35,7 +35,7 @@ const menubarListVariants = tv({
 });
 
 const menubarTriggerVariants = tv({
-  base: "relative flex h-full items-center rounded-sm px-2 py-1 text-sm font-medium outline-hidden select-none",
+  base: "relative flex h-7 items-center rounded-sm px-2 py-1 text-sm font-medium outline-hidden select-none",
   variants: {
     variant: {
       // -- base --

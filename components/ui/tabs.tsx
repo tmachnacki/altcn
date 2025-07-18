@@ -20,7 +20,7 @@ const tabsListVariants = tv({
       underlined: "rounded-b-none border-b border-border bg-transparent px-0",
       ghost: "bg-transparent px-0",
       translucent:
-        "border border-border bg-popover/65 shadow-xs backdrop-blur-md",
+        "border border-border bg-card-translucent shadow-xs backdrop-blur-card-translucent",
     },
   },
   defaultVariants: {

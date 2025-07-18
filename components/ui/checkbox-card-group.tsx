@@ -10,30 +10,30 @@ import { Checkbox } from "~/components/ui/checkbox";
 
 const checkboxCardVariants = tv({
   base: [
-    "[--description-text:var(--color-muted-foreground)] [--label-text:var(--color-accent-foreground)]",
+    "[--accent-text:var(--color-accent-foreground)] [--muted-text:var(--color-muted-foreground)]",
 
     "relative flex items-start gap-3 rounded-lg p-4 shadow-xs outline -outline-offset-1 outline-border",
 
-    "hover:z-10 hover:not-has-data-[state=checked]:bg-faded",
+    "hover:z-[1] hover:not-has-data-[state=checked]:bg-faded",
 
-    "has-data-[state=checked]:not-has-focus-visible:z-20",
+    "has-data-[state=checked]:not-has-focus-visible:z-[3] has-data-[state=indeterminate]:z-[2]",
 
-    "has-disabled:pointer-events-none has-disabled:opacity-50 has-disabled:shadow-none has-disabled:has-data-[state=checked]:bg-faded has-disabled:has-data-[state=checked]:outline-outline/50 has-disabled:has-data-[state=checked]:[--description-text:var(--color-muted-foreground)] has-disabled:has-data-[state=checked]:[--label-text:var(--color-accent-foreground)]",
+    "has-disabled:pointer-events-none has-disabled:opacity-50 has-disabled:shadow-none has-disabled:has-data-[state=checked]:bg-faded has-disabled:has-data-[state=checked]:outline-outline/50 has-disabled:has-data-[state=checked]:[--accent-text:var(--color-accent-foreground)] has-disabled:has-data-[state=checked]:[--muted-text:var(--color-muted-foreground)]",
 
-    "has-focus-visible:z-30 has-focus-visible:outline-2",
+    "has-focus-visible:z-[4] has-focus-visible:outline-2",
 
-    "has-aria-invalid:outline-destructive/35 has-aria-invalid:has-focus-visible:outline-destructive has-aria-invalid:has-data-[state=checked]:bg-destructive-faded has-aria-invalid:has-data-[state=checked]:[--description-text:var(--color-destructive-muted-foreground)] has-aria-invalid:has-data-[state=checked]:[--label-text:var(--color-destructive-accent-foreground)] has-aria-invalid:has-data-[state=checked]:not-has-focus-visible:outline-destructive/50 hover:has-aria-invalid:has-data-[state=checked]:bg-hover-destructive-faded",
+    "has-aria-invalid:outline-destructive/35 has-aria-invalid:has-focus-visible:outline-destructive has-aria-invalid:has-data-[state=checked]:bg-destructive-faded has-aria-invalid:has-data-[state=checked]:[--accent-text:var(--color-destructive-accent-foreground)] has-aria-invalid:has-data-[state=checked]:[--muted-text:var(--color-destructive-muted-foreground)] has-aria-invalid:has-data-[state=checked]:not-has-focus-visible:outline-destructive/50 hover:has-aria-invalid:has-data-[state=checked]:bg-hover-destructive-faded",
   ],
   variants: {
     variant: {
       base: [
-        "has-focus-visible:outline-outline has-data-[state=checked]:bg-faded has-data-[state=checked]:[--description-text:var(--color-muted-foreground)] has-data-[state=checked]:[--label-text:var(--color-accent-foreground)] has-data-[state=checked]:not-has-focus-visible:outline-outline/50 hover:has-data-[state=checked]:bg-hover-faded",
+        "has-focus-visible:outline-outline has-data-[state=checked]:bg-faded has-data-[state=checked]:[--accent-text:var(--color-accent-foreground)] has-data-[state=checked]:[--muted-text:var(--color-muted-foreground)] has-data-[state=checked]:not-has-focus-visible:outline-outline/50 hover:has-data-[state=checked]:bg-hover-faded",
       ],
       primary: [
-        "has-focus-visible:outline-primary has-data-[state=checked]:bg-primary-faded has-data-[state=checked]:[--description-text:var(--color-primary-muted-foreground)] has-data-[state=checked]:[--label-text:var(--color-primary-accent-foreground)] has-data-[state=checked]:not-has-focus-visible:outline-primary/50 hover:has-data-[state=checked]:bg-hover-primary-faded",
+        "has-focus-visible:outline-primary has-data-[state=checked]:bg-primary-faded has-data-[state=checked]:[--accent-text:var(--color-primary-accent-foreground)] has-data-[state=checked]:[--muted-text:var(--color-primary-muted-foreground)] has-data-[state=checked]:not-has-focus-visible:outline-primary/50 hover:has-data-[state=checked]:bg-hover-primary-faded",
       ],
       secondary: [
-        "has-focus-visible:outline-secondary has-data-[state=checked]:bg-secondary-faded has-data-[state=checked]:[--description-text:var(--color-secondary-muted-foreground)] has-data-[state=checked]:[--label-text:var(--color-secondary-accent-foreground)] has-data-[state=checked]:not-has-focus-visible:outline-secondary/50 hover:has-data-[state=checked]:bg-hover-secondary-faded",
+        "has-focus-visible:outline-secondary has-data-[state=checked]:bg-secondary-faded has-data-[state=checked]:[--accent-text:var(--color-secondary-accent-foreground)] has-data-[state=checked]:[--muted-text:var(--color-secondary-muted-foreground)] has-data-[state=checked]:not-has-focus-visible:outline-secondary/50 hover:has-data-[state=checked]:bg-hover-secondary-faded",
       ],
     },
   },
@@ -78,7 +78,7 @@ function CheckboxCard({
       data-slot="checkbox-card"
       className={checkboxCardVariants({
         variant: variant || context.variant,
-        className: ["group/checkbox-card-item", className],
+        className,
       })}
       {...props}
     />
@@ -106,7 +106,7 @@ function CheckboxCardLabel({
     <span
       data-slot="checkbox-card-label"
       className={cn(
-        "block text-sm/4 font-medium text-(--label-text)",
+        "block text-sm/4 font-medium text-(--accent-text)",
         className
       )}
       {...props}
@@ -121,7 +121,7 @@ function CheckboxCardDescription({
   return (
     <p
       data-slot="checkbox-card-description"
-      className={cn("block text-sm text-(--description-text)", className)}
+      className={cn("block text-sm text-(--muted-text)", className)}
       {...props}
     />
   );
@@ -135,7 +135,6 @@ function CheckboxCardCheckbox({
   const context = React.useContext(CheckboxCardGroupContext);
   return (
     <Checkbox
-      data-slot="checkbox-card-checkbox"
       variant={variant || context.variant}
       className={cn(
         "focus-visible:outline-none disabled:opacity-100",

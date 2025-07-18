@@ -20,47 +20,78 @@ type Variant = keyof typeof checkBoxVariants.variants.variant;
 const variants = Object.keys(checkBoxVariants.variants.variant) as Variant[];
 
 export function CheckboxDemo() {
-  const [variant, setVariant] = React.useState("primary");
+  const [variant, setVariant] = React.useState<Variant>("primary");
   const [disabled, setDisabled] = React.useState(false);
   const [invalid, setInvalid] = React.useState(false);
+
+  const [selected, setSelected] = React.useState<string[]>(["data"]);
 
   return (
     <>
       <ComponentContainer>
         <div className="flex flex-col gap-8">
-          <div className="flex items-center gap-3">
+          <div className="flex items-start gap-3">
             <Checkbox
-              id="cb-1"
-              variant={variant as Variant}
+              id="all"
+              name="all"
+              variant={variant}
               disabled={disabled}
               aria-invalid={invalid}
+              checked={
+                selected.length === 2
+                  ? true
+                  : selected.length > 0
+                    ? "indeterminate"
+                    : false
+              }
+              onCheckedChange={(checked) => {
+                setSelected(checked ? ["data", "terms"] : []);
+              }}
             />
-            <Label htmlFor="cb-1">Accept terms and conditions</Label>
+            <Label htmlFor="all">Select All</Label>
+          </div>
+          <div className="flex items-center gap-3">
+            <Checkbox
+              id="data"
+              name="data"
+              value="data"
+              variant={variant}
+              disabled={disabled}
+              aria-invalid={invalid}
+              checked={selected.includes("data")}
+              onCheckedChange={(checked) => {
+                setSelected((prev) =>
+                  checked
+                    ? [...prev, "data"]
+                    : prev.filter((value) => value !== "data")
+                );
+              }}
+            />
+            <Label htmlFor="data">Sell Your Data</Label>
           </div>
           <div className="group grid grid-cols-[auto_1fr] items-start gap-x-3 gap-y-2">
             <Checkbox
-              id="cb-2"
-              defaultChecked
-              variant={variant as Variant}
+              id="terms"
+              name="terms"
+              value="terms"
+              variant={variant}
               disabled={disabled}
               aria-invalid={invalid}
+              checked={selected.includes("terms")}
+              onCheckedChange={(checked) => {
+                setSelected((prev) =>
+                  checked
+                    ? [...prev, "terms"]
+                    : prev.filter((value) => value !== "terms")
+                );
+              }}
             />
-            <Label htmlFor="cb-2" className="col-start-2 row-start-1">
+            <Label htmlFor="terms" className="col-start-2 row-start-1">
               Accept terms and conditions
             </Label>
             <p className="col-start-2 row-start-2 text-sm text-muted-foreground group-has-disabled:opacity-50">
               By clicking this checkbox, you agree to the terms and conditions.
             </p>
-          </div>
-          <div className="flex items-start gap-3">
-            <Checkbox
-              id="cb-3"
-              checked={"indeterminate"}
-              variant={variant as Variant}
-              disabled={disabled}
-              aria-invalid={invalid}
-            />
-            <Label htmlFor="cb-3">Indeterminate checkbox</Label>
           </div>
         </div>
       </ComponentContainer>
@@ -68,7 +99,10 @@ export function CheckboxDemo() {
       <ComponentPlayground>
         <div className="grid gap-2">
           <Label htmlFor="checkbox-variant">Variant</Label>
-          <Select value={variant} onValueChange={setVariant}>
+          <Select
+            value={variant}
+            onValueChange={(value) => setVariant(value as Variant)}
+          >
             <SelectTrigger id="checkbox-variant" className="w-full">
               <SelectValue placeholder="Select variant" />
             </SelectTrigger>

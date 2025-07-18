@@ -11,7 +11,7 @@ import { radioVariants } from "~/components/ui/radio-group";
 
 const radioCardVariants = tv({
   base: [
-    "[--description-text:var(--color-muted-foreground)] [--label-text:var(--color-accent-foreground)]",
+    "[--accent-text:var(--color-accent-foreground)] [--muted-text:var(--color-muted-foreground)]",
 
     "relative flex items-start gap-3 rounded-lg p-4 shadow-xs outline -outline-offset-1 outline-border",
 
@@ -19,22 +19,22 @@ const radioCardVariants = tv({
 
     "has-data-[state=checked]:not-has-focus-visible:z-20",
 
-    "has-disabled:pointer-events-none has-disabled:opacity-50 has-disabled:shadow-none has-disabled:has-data-[state=checked]:bg-faded has-disabled:has-data-[state=checked]:outline-outline/50 has-disabled:has-data-[state=checked]:[--description-text:var(--color-muted-foreground)] has-disabled:has-data-[state=checked]:[--label-text:var(--color-accent-foreground)]",
+    "has-disabled:pointer-events-none has-disabled:opacity-50 has-disabled:shadow-none has-disabled:has-data-[state=checked]:bg-faded has-disabled:has-data-[state=checked]:outline-outline/50 has-disabled:has-data-[state=checked]:[--accent-text:var(--color-accent-foreground)] has-disabled:has-data-[state=checked]:[--muted-text:var(--color-muted-foreground)]",
 
     "has-focus-visible:z-30 has-focus-visible:outline-2",
 
-    "has-aria-invalid:outline-destructive/35 has-aria-invalid:has-focus-visible:outline-destructive has-aria-invalid:has-data-[state=checked]:bg-destructive-faded has-aria-invalid:has-data-[state=checked]:[--description-text:var(--color-destructive-muted-foreground)] has-aria-invalid:has-data-[state=checked]:[--label-text:var(--color-destructive-accent-foreground)] has-aria-invalid:has-data-[state=checked]:not-has-focus-visible:outline-destructive/50 hover:has-aria-invalid:has-data-[state=checked]:bg-hover-destructive-faded",
+    "has-aria-invalid:outline-destructive/35 has-aria-invalid:has-focus-visible:outline-destructive has-aria-invalid:has-data-[state=checked]:bg-destructive-faded has-aria-invalid:has-data-[state=checked]:[--accent-text:var(--color-destructive-accent-foreground)] has-aria-invalid:has-data-[state=checked]:[--muted-text:var(--color-destructive-muted-foreground)] has-aria-invalid:has-data-[state=checked]:not-has-focus-visible:outline-destructive/50 hover:has-aria-invalid:has-data-[state=checked]:bg-hover-destructive-faded",
   ],
   variants: {
     variant: {
       base: [
-        "has-focus-visible:outline-outline has-data-[state=checked]:bg-faded has-data-[state=checked]:[--description-text:var(--color-muted-foreground)] has-data-[state=checked]:[--label-text:var(--color-accent-foreground)] has-data-[state=checked]:not-has-focus-visible:outline-outline/50 hover:has-data-[state=checked]:bg-hover-faded",
+        "has-focus-visible:outline-outline has-data-[state=checked]:bg-faded has-data-[state=checked]:[--accent-text:var(--color-accent-foreground)] has-data-[state=checked]:[--muted-text:var(--color-muted-foreground)] has-data-[state=checked]:not-has-focus-visible:outline-outline/50 hover:has-data-[state=checked]:bg-hover-faded",
       ],
       primary: [
-        "has-focus-visible:outline-primary has-data-[state=checked]:bg-primary-faded has-data-[state=checked]:[--description-text:var(--color-primary-muted-foreground)] has-data-[state=checked]:[--label-text:var(--color-primary-accent-foreground)] has-data-[state=checked]:not-has-focus-visible:outline-primary/50 hover:has-data-[state=checked]:bg-hover-primary-faded",
+        "has-focus-visible:outline-primary has-data-[state=checked]:bg-primary-faded has-data-[state=checked]:[--accent-text:var(--color-primary-accent-foreground)] has-data-[state=checked]:[--muted-text:var(--color-primary-muted-foreground)] has-data-[state=checked]:not-has-focus-visible:outline-primary/50 hover:has-data-[state=checked]:bg-hover-primary-faded",
       ],
       secondary: [
-        "has-focus-visible:outline-secondary has-data-[state=checked]:bg-secondary-faded has-data-[state=checked]:[--description-text:var(--color-secondary-muted-foreground)] has-data-[state=checked]:[--label-text:var(--color-secondary-accent-foreground)] has-data-[state=checked]:not-has-focus-visible:outline-secondary/50 hover:has-data-[state=checked]:bg-hover-secondary-faded",
+        "has-focus-visible:outline-secondary has-data-[state=checked]:bg-secondary-faded has-data-[state=checked]:[--accent-text:var(--color-secondary-accent-foreground)] has-data-[state=checked]:[--muted-text:var(--color-secondary-muted-foreground)] has-data-[state=checked]:not-has-focus-visible:outline-secondary/50 hover:has-data-[state=checked]:bg-hover-secondary-faded",
       ],
     },
   },
@@ -104,7 +104,7 @@ function RadioCardLabel({ className, ...props }: React.ComponentProps<"span">) {
     <span
       data-slot="radio-card-label"
       className={cn(
-        "block text-sm/4 font-medium text-(--label-text)",
+        "block text-sm/4 font-medium text-(--accent-text)",
         className
       )}
       {...props}
@@ -119,35 +119,50 @@ function RadioCardDescription({
   return (
     <p
       data-slot="radio-card-description"
-      className={cn("block font-normal text-(--description-text)", className)}
+      className={cn("block font-normal text-(--muted-text)", className)}
       {...props}
     />
   );
 }
 
+type RadioCardRadioProps = React.ComponentProps<
+  typeof RadioGroupPrimitive.Item
+> &
+  VariantProps<typeof radioVariants> & {
+    classNames?: {
+      root?: string;
+      indicator?: string;
+    };
+  };
+
 function RadioCardRadio({
   variant,
+  classNames,
   className,
   ...props
-}: React.ComponentProps<typeof RadioGroupPrimitive.Item> &
-  VariantProps<typeof radioVariants>) {
+}: RadioCardRadioProps) {
   const context = React.useContext(RadioCardGroupContext);
+  const { root, indicator } = radioVariants({
+    variant: variant || context.variant,
+  });
 
   return (
     <RadioGroupPrimitive.Item
-      data-slot="radio-card-radio"
-      className={radioVariants({
+      data-slot="radio"
+      className={root({
         variant: variant || context.variant,
         className: [
           "focus-visible:outline-none disabled:opacity-100",
+          classNames?.root,
           className,
         ],
       })}
       {...props}
     >
-      <RadioGroupPrimitive.Indicator
+      <span
         data-slot="radio-indicator"
-        className="size-full scale-40 rounded-full bg-current"
+        role="presentation"
+        className={indicator({ className: [classNames?.indicator] })}
       />
     </RadioGroupPrimitive.Item>
   );

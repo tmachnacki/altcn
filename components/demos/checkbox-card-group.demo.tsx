@@ -28,26 +28,21 @@ const variants = Object.keys(
   checkboxCardVariants.variants.variant
 ) as Variant[];
 
-const plans = [
+const options = [
   {
-    id: "premium",
-    name: "Premium",
-    description: "Advanced options for growing needs.",
+    id: "text",
+    name: "Text",
+    description: "Spam your users' phones with text messages.",
   },
   {
-    id: "deluxe",
-    name: "Deluxe",
-    description: "Top-tier features for maximum performance.",
+    id: "email",
+    name: "Email",
+    description: "Spam your users' inboxes.",
   },
   {
-    id: "ultimate",
-    name: "Ultimate",
-    description: "All inclusive plan with every feature available.",
-  },
-  {
-    id: "enterprise",
-    name: "Enterprise",
-    description: "Customized solutions for large-scale projects.",
+    id: "pigeon",
+    name: "Carrier pigeon",
+    description: "Send your users a pigeon.",
   },
 ];
 
@@ -56,39 +51,59 @@ export function CheckboxCardGroupDemo() {
   const [invalid, setInvalid] = React.useState(false);
   const [disabled, setDisabled] = React.useState(false);
 
+  const [selected, setSelected] = React.useState<string[]>(["email"]);
+
   return (
     <>
       <ComponentContainer>
         <fieldset className="w-full max-w-sm">
           <legend className="sr-only">Select a plan</legend>
           <CheckboxCardGroup variant={variant} className="grid w-full gap-3">
-            {plans.map((plan) => (
-              <CheckboxCard key={plan.id} variant={variant}>
-                <CheckboxCardCheckbox
-                  disabled={disabled}
-                  aria-invalid={invalid}
-                />
-                <CheckboxCardContent>
-                  <CheckboxCardLabel>{plan.name}</CheckboxCardLabel>
-                  <CheckboxCardDescription>
-                    {plan.description}
-                  </CheckboxCardDescription>
-                </CheckboxCardContent>
-              </CheckboxCard>
-            ))}
-            {/* centered */}
             <CheckboxCard variant={variant} className="items-center">
               <CheckboxCardCheckbox
                 disabled={disabled}
                 aria-invalid={invalid}
-                aria-labelledby="centered-label"
+                checked={
+                  selected.length === options.length
+                    ? true
+                    : selected.length > 0
+                      ? "indeterminate"
+                      : false
+                }
+                onCheckedChange={(checked) => {
+                  if (checked) {
+                    setSelected(options.map((option) => option.id));
+                  } else {
+                    setSelected([]);
+                  }
+                }}
               />
               <CheckboxCardContent>
-                <CheckboxCardLabel id="centered-label">
-                  Centered
-                </CheckboxCardLabel>
+                <CheckboxCardLabel>Select all</CheckboxCardLabel>
               </CheckboxCardContent>
             </CheckboxCard>
+            {options.map((option) => (
+              <CheckboxCard key={option.id} variant={variant}>
+                <CheckboxCardCheckbox
+                  disabled={disabled}
+                  aria-invalid={invalid}
+                  checked={selected.includes(option.id)}
+                  onCheckedChange={(checked) => {
+                    if (checked) {
+                      setSelected([...selected, option.id]);
+                    } else {
+                      setSelected(selected.filter((id) => id !== option.id));
+                    }
+                  }}
+                />
+                <CheckboxCardContent>
+                  <CheckboxCardLabel>{option.name}</CheckboxCardLabel>
+                  <CheckboxCardDescription>
+                    {option.description}
+                  </CheckboxCardDescription>
+                </CheckboxCardContent>
+              </CheckboxCard>
+            ))}
           </CheckboxCardGroup>
         </fieldset>
       </ComponentContainer>

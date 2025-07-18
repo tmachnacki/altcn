@@ -42,6 +42,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "~/components/ui/select";
+import { BackgroundPattern } from "~/components/background-pattern";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
 import { Swatch } from "~/components/swatch";
@@ -86,9 +87,10 @@ export function ContextMenuDemo() {
   return (
     <>
       <ComponentContainer className="overflow-hidden rounded-t-lg p-0 md:rounded-l-lg md:rounded-r-none">
-        <div className="relative flex h-full min-h-96 w-full min-w-0 flex-col items-center justify-center bg-[url('https://picsum.photos/id/74/800/800')] bg-center p-4">
+        <div className="relative flex h-full min-h-96 w-full min-w-0 flex-col items-center justify-center bg-center p-4">
+          <BackgroundPattern />
           <ContextMenu>
-            <ContextMenuTrigger className="grid min-h-48 w-full max-w-xs place-items-center rounded-lg border border-dashed border-base-950/20 bg-white/5 text-base-950 capitalize backdrop-blur-md">
+            <ContextMenuTrigger className="grid min-h-48 w-full max-w-xs place-items-center rounded-lg border border-dashed border-border bg-faded text-accent-foreground capitalize backdrop-blur-md">
               Right Click
             </ContextMenuTrigger>
             <ContextMenuContent

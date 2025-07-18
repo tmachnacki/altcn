@@ -10,7 +10,8 @@ import { Tron } from "~/components/ui/tron";
 
 const radioButtonVariants = tv({
   base: [
-    "touch-target relative isolate inline-flex items-center justify-center gap-2 rounded-md text-sm font-semibold whitespace-nowrap select-none",
+    "group/radio-button",
+    "touch-target relative isolate inline-flex items-center justify-center gap-2 text-sm font-semibold whitespace-nowrap select-none",
     "active:opacity-80",
     "disabled:pointer-events-none disabled:line-through disabled:opacity-50 disabled:shadow-none",
     "outline-offset-2 focus-visible:outline-2",
@@ -18,6 +19,10 @@ const radioButtonVariants = tv({
     "**:[svg]:pointer-events-none **:[svg]:shrink-0 **:[svg]:grow-0",
   ],
   variants: {
+    shape: {
+      box: "rounded-md",
+      pill: "rounded-full",
+    },
     variant: {
       // --- base ---
       outline: [
@@ -299,6 +304,7 @@ const radioButtonVariants = tv({
     },
   ],
   defaultVariants: {
+    shape: "box",
     variant: "outline",
     size: "md",
   },
@@ -309,6 +315,7 @@ type RadioButtonGroupContextProps = {
     checked?: VariantProps<typeof radioButtonVariants>["variant"];
     unchecked?: VariantProps<typeof radioButtonVariants>["variant"];
   };
+  shape?: VariantProps<typeof radioButtonVariants>["shape"];
   size?: VariantProps<typeof radioButtonVariants>["size"];
 };
 
@@ -321,6 +328,7 @@ function RadioButtonGroup({
     checked: "primary",
     unchecked: "outline",
   },
+  shape = "box",
   size = "md",
   orientation = "horizontal",
   children,
@@ -330,17 +338,26 @@ function RadioButtonGroup({
   return (
     <RadioGroupPrimitive.Root
       data-slot="radio-button-group"
-      orientation={orientation}
       data-orientation={orientation}
-      className={cn("group/radio-button-group grid gap-2", className)}
+      orientation={orientation}
+      className={cn("grid gap-2", className)}
       {...props}
     >
-      <RadioButtonsGroupContext.Provider value={{ variants, size }}>
+      <RadioButtonsGroupContext.Provider value={{ variants, shape, size }}>
         {children}
       </RadioButtonsGroupContext.Provider>
     </RadioGroupPrimitive.Root>
   );
 }
+
+type RadioButtonProps = Omit<
+  React.ComponentProps<typeof RadioGroupPrimitive.Item>,
+  "checked"
+> &
+  Pick<RadioButtonGroupContextProps, "variants"> &
+  Required<
+    Pick<React.ComponentProps<typeof RadioGroupPrimitive.Item>, "checked">
+  >;
 
 function RadioButton({
   checked,
@@ -348,31 +365,29 @@ function RadioButton({
   className,
   children,
   ...props
-}: React.ComponentProps<typeof RadioGroupPrimitive.Item> &
-  Pick<RadioButtonGroupContextProps, "variants">) {
+}: RadioButtonProps) {
   const context = React.useContext(RadioButtonsGroupContext);
+
+  const _checkedVariant = variants?.checked || context.variants?.checked;
+  const _uncheckedVariant = variants?.unchecked || context.variants?.unchecked;
 
   return (
     <RadioGroupPrimitive.Item
       data-slot="radio-button"
       checked={checked}
       className={radioButtonVariants({
-        variant: checked
-          ? variants?.checked || context.variants?.checked
-          : variants?.unchecked || context.variants?.unchecked,
+        shape: context.shape,
+        variant: checked ? _checkedVariant : _uncheckedVariant,
         size: context.size,
-        className: ["group/radio-button", className],
+        className,
       })}
       {...props}
     >
-      {((checked &&
-        (variants?.checked?.includes("tron") ||
-          context.variants?.checked?.includes("tron"))) ||
-        (!checked &&
-          (variants?.unchecked?.includes("tron") ||
-            context.variants?.unchecked?.includes("tron")))) && (
+      {((checked && _checkedVariant?.includes("tron")) ||
+        (!checked && _uncheckedVariant?.includes("tron"))) && (
         <>
           <Tron
+            data-shape={context.shape}
             side="top"
             type="beam"
             className="via-(--tron-beam) opacity-0 group-hover/radio-button:opacity-100"
@@ -383,6 +398,7 @@ function RadioButton({
             className="via-(--tron-blur) opacity-0 group-hover/radio-button:opacity-100"
           />
           <Tron
+            data-shape={context.shape}
             side="bottom"
             type="beam"
             className="animate-in via-(--tron-beam) fade-in-0 group-hover/radio-button:opacity-0"

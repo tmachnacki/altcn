@@ -17,39 +17,16 @@ import {
   SelectValue,
 } from "~/components/ui/select";
 import { Slider } from "~/components/ui/slider";
-import { Toggle } from "~/components/ui/toggle";
+import { Switch } from "~/components/ui/switch";
+import { Toggle, toggleVariants } from "~/components/ui/toggle";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
 import { Swatch } from "~/components/swatch";
 
-const variants = [
-  "outline",
-  "base",
-  "accent",
-  "muted",
-  "surface",
-  "faded",
-  "base-gradient",
+type Variant = keyof typeof toggleVariants.variants.variant;
+const variants = Object.keys(toggleVariants.variants.variant) as Variant[];
 
-  "primary",
-  "primary-accent",
-  "primary-muted",
-  "primary-surface",
-  "primary-faded",
-  "primary-tron",
-  "primary-gradient",
-
-  "secondary",
-  "secondary-accent",
-  "secondary-muted",
-  "secondary-surface",
-  "secondary-faded",
-  "secondary-tron",
-  "secondary-gradient",
-] as const;
-
-type Size = "xs" | "sm" | "md" | "lg";
-
+type Size = keyof typeof toggleVariants.variants.size;
 const sizesMap: Record<number, Size> = {
   1: "xs",
   2: "sm",
@@ -58,8 +35,11 @@ const sizesMap: Record<number, Size> = {
 };
 
 export function ToggleDemo() {
-  const [variant, setVariant] = React.useState("primary");
-  const [size, setSize] = React.useState(3);
+  const [variant, setVariant] = React.useState<Variant>("primary");
+  const [sizeIdx, setSizeIdx] = React.useState(3);
+  const [disabled, setDisabled] = React.useState(false);
+
+  const size = sizesMap[sizeIdx];
 
   return (
     <>
@@ -67,31 +47,26 @@ export function ToggleDemo() {
         <div className="flex flex-wrap items-center gap-4">
           <Toggle
             aria-label="Toggle bold"
-            variant={variant as (typeof variants)[number]}
-            size={sizesMap[size]}
+            variant={variant}
+            size={size}
             defaultPressed
+            disabled={disabled}
           >
             <BoldIcon />
           </Toggle>
           <Toggle
             aria-label="Toggle underline"
-            variant={variant as (typeof variants)[number]}
-            size={sizesMap[size]}
+            variant={variant}
+            size={size}
+            disabled={disabled}
           >
             <UnderlineIcon />
           </Toggle>
           <Toggle
             aria-label="Toggle italic"
-            variant={variant as (typeof variants)[number]}
-            size={sizesMap[size]}
-            disabled
-          >
-            Disabled
-          </Toggle>
-          <Toggle
-            aria-label="Toggle italic"
-            variant={variant as (typeof variants)[number]}
-            size={sizesMap[size]}
+            variant={variant}
+            size={size}
+            disabled={disabled}
           >
             <ItalicIcon />
             Italic
@@ -99,8 +74,9 @@ export function ToggleDemo() {
           <Toggle
             aria-label="Toggle book"
             className="data-[state=on]:**:[svg]:fill-current"
-            variant={variant as (typeof variants)[number]}
-            size={sizesMap[size]}
+            variant={variant}
+            size={size}
+            disabled={disabled}
           >
             <BookmarkIcon />
           </Toggle>
@@ -109,7 +85,10 @@ export function ToggleDemo() {
       <ComponentPlayground>
         <div className="grid gap-2">
           <Label htmlFor="toggle-variant">Variant</Label>
-          <Select value={variant} onValueChange={setVariant}>
+          <Select
+            value={variant}
+            onValueChange={(value) => setVariant(value as Variant)}
+          >
             <SelectTrigger id="toggle-variant" className="w-full">
               <SelectValue placeholder="Select a variant" />
             </SelectTrigger>
@@ -124,20 +103,28 @@ export function ToggleDemo() {
           </Select>
         </div>
         <div className="grid gap-3">
-          <Label htmlFor="toggle-size">
+          <Label id="toggle-size">
             Size:{" "}
             <span className="font-normal text-primary-muted-foreground">
-              {sizesMap[size]}
+              {size}
             </span>
           </Label>
           <Slider
-            id="toggle-size"
+            aria-labelledby="toggle-size"
             min={1}
             max={4}
             step={1}
-            value={[size]}
-            onValueChange={(value) => setSize(value[0])}
+            value={[sizeIdx]}
+            onValueChange={(value) => setSizeIdx(value[0])}
           />
+        </div>
+        <div className="flex items-center gap-3">
+          <Switch
+            id="toggle-disabled"
+            checked={disabled}
+            onCheckedChange={setDisabled}
+          />
+          <Label htmlFor="toggle-disabled">Disabled</Label>
         </div>
       </ComponentPlayground>
     </>

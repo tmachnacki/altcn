@@ -111,7 +111,7 @@ const selectContentVariants = tv({
   variants: {
     variant: {
       solid: "bg-popover",
-      translucent: "bg-popover/65 backdrop-blur-xl",
+      translucent: "bg-popover-translucent backdrop-blur-popover-translucent",
     },
   },
   defaultVariants: {
@@ -280,14 +280,16 @@ function SelectTrigger({
   );
 }
 
-type SelectVariantsType = VariantProps<typeof selectItemVariants> & {
-  indicatorVariant?: VariantProps<
-    typeof selectItemIndicatorVariants
-  >["variant"];
-  contentVariant?: VariantProps<typeof selectContentVariants>["variant"];
+type SelectVariants = {
+  variants?: {
+    content?: VariantProps<typeof selectContentVariants>["variant"];
+    item?: VariantProps<typeof selectItemVariants>["variant"];
+    indicator?: VariantProps<typeof selectItemIndicatorVariants>["variant"];
+  };
+  width?: VariantProps<typeof selectItemVariants>["width"];
 };
 
-type SelectContextProps = SelectVariantsType &
+type SelectContextProps = SelectVariants &
   Pick<React.ComponentProps<typeof SelectPrimitive.Content>, "position">;
 
 const SelectContext = React.createContext<SelectContextProps>({});
@@ -296,13 +298,11 @@ function SelectContent({
   className,
   position = "popper",
   align = "center",
-  variant = "accent",
+  variants,
   width = "default",
-  indicatorVariant = "base",
-  contentVariant = "solid",
   children,
   ...props
-}: React.ComponentProps<typeof SelectPrimitive.Content> & SelectVariantsType) {
+}: React.ComponentProps<typeof SelectPrimitive.Content> & SelectVariants) {
   return (
     <SelectPrimitive.Portal>
       <SelectPrimitive.Content
@@ -311,7 +311,7 @@ function SelectContent({
         align={align}
         sideOffset={position === "popper" ? 4 : 0}
         className={cn(
-          selectContentVariants({ variant: contentVariant }),
+          selectContentVariants({ variant: variants?.content }),
           // FIXME: exit animations ain't working
           "data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
           position === "popper" && [
@@ -323,9 +323,7 @@ function SelectContent({
       >
         <SelectScrollUpButton />
         <SelectPrimitive.Viewport className="flex w-full flex-1 flex-col p-1">
-          <SelectContext.Provider
-            value={{ variant, width, indicatorVariant, position }}
-          >
+          <SelectContext.Provider value={{ variants, width, position }}>
             {children}
           </SelectContext.Provider>
         </SelectPrimitive.Viewport>
@@ -353,19 +351,22 @@ function SelectLabel({
   );
 }
 
-type SelectItemProps = React.ComponentProps<typeof SelectPrimitive.Item> &
-  SelectVariantsType & {
-    classNames?: {
-      item?: string;
-      indicator?: string;
-    };
+type SelectItemProps = React.ComponentProps<typeof SelectPrimitive.Item> & {
+  variants?: {
+    item?: VariantProps<typeof selectItemVariants>["variant"];
+    indicator?: VariantProps<typeof selectItemIndicatorVariants>["variant"];
   };
+  width?: VariantProps<typeof selectItemVariants>["width"];
+  classNames?: {
+    item?: string;
+    indicator?: string;
+  };
+};
 
 function SelectItem({
   className,
-  variant,
+  variants,
   width,
-  indicatorVariant,
   classNames,
   children,
   ...props
@@ -379,7 +380,7 @@ function SelectItem({
       data-position={context.position}
       className={cn(
         selectItemVariants({
-          variant: variant || context.variant,
+          variant: variants?.item || context.variants?.item,
           width: width || context.width,
         }),
         classNames?.item,
@@ -393,7 +394,7 @@ function SelectItem({
         data-position={context.position}
         className={cn(
           selectItemIndicatorVariants({
-            variant: indicatorVariant || context.indicatorVariant,
+            variant: variants?.indicator || context.variants?.indicator,
           }),
           classNames?.indicator
         )}
