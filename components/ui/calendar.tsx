@@ -7,6 +7,7 @@ import {
   Dropdown,
   getDefaultClassNames,
 } from "react-day-picker";
+import { type VariantProps } from "tailwind-variants";
 import {
   ChevronDownIcon,
   ChevronLeftIcon,
@@ -19,15 +20,23 @@ import { Button, buttonVariants } from "~/components/ui/button";
 import {
   Select,
   SelectContent,
+  selectContentVariants,
   SelectItem,
+  selectItemIndicatorVariants,
+  selectItemVariants,
   SelectTrigger,
+  selectTriggerVariants,
   SelectValue,
 } from "~/components/ui/select";
 
 type SelectVariants = {
-  selectTrigger?: React.ComponentProps<typeof SelectTrigger>["variant"];
-  selectItem?: React.ComponentProps<typeof SelectItem>["variant"];
-  selectItemWidth?: React.ComponentProps<typeof SelectItem>["width"];
+  selectTrigger?: VariantProps<typeof selectTriggerVariants>["variant"];
+  selectContent?: VariantProps<typeof selectContentVariants>["variant"];
+  selectItem?: VariantProps<typeof selectItemVariants>["variant"];
+  selectItemIndicator?: VariantProps<
+    typeof selectItemIndicatorVariants
+  >["variant"];
+  selectItemWidth?: VariantProps<typeof selectItemVariants>["width"];
 };
 
 type DayVariants = {
@@ -93,6 +102,7 @@ function Calendar({
   captionLayout = "label",
   variants = {
     nav: "ghost",
+    selectContent: "solid",
     selectTrigger: "outline",
     selectItem: "accent",
     selectItemWidth: "default",
@@ -110,7 +120,7 @@ function Calendar({
     <DayPicker
       showOutsideDays={showOutsideDays}
       className={cn(
-        "group/calendar relative isolate bg-transparent p-3 [--cell-size:var(--size-sm)] [[data-slot=card-content]_&]:bg-transparent [[data-slot=popover-content]_&]:bg-transparent",
+        "group/calendar relative isolate bg-transparent p-3 [--cell-size:var(--size-md)] [[data-slot=card-content]_&]:bg-transparent [[data-slot=popover-content]_&]:bg-transparent",
         String.raw`rtl:**:[.rdp-button\_next>svg]:rotate-180`,
         String.raw`rtl:**:[.rdp-button\_previous>svg]:rotate-180`,
         className
@@ -360,9 +370,13 @@ function CalendarDropdown({
         <SelectValue>{selected?.label}</SelectValue>
       </SelectTrigger>
       <SelectContent
-        className="max-h-96 w-24 min-w-0"
+        className="max-h-[25rem] w-24 min-w-0"
         width={variants?.selectItemWidth}
-        variant={variants?.selectItem}
+        variants={{
+          content: variants?.selectContent,
+          item: variants?.selectItem,
+          indicator: variants?.selectItemIndicator,
+        }}
       >
         {options?.map(({ value, label, disabled }, id) => (
           <SelectItem

@@ -24,7 +24,7 @@ const switchVariants = tv({
     ],
     thumb: [
       "pointer-events-none block rounded-full bg-background shadow-sm transition-all duration-200 ease-in-out outline-none",
-      "dark:data-[state=unchecked]:bg-muted-foreground",
+      "dark:data-[state=unchecked]:bg-base-400",
       "group-aria-invalid/switch:data-[state=checked]:bg-destructive-foreground",
     ],
   },

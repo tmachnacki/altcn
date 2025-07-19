@@ -38,7 +38,7 @@ function SheetOverlay({
     <SheetPrimitive.Overlay
       data-slot="sheet-overlay"
       className={cn(
-        "fixed inset-0 z-50 bg-overlay backdrop-blur-2xs",
+        "fixed inset-0 z-50 bg-overlay backdrop-blur-overlay",
         "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:fade-in-0",
         className
       )}
@@ -50,39 +50,46 @@ function SheetOverlay({
 function SheetContent({
   className,
   side = "right",
-  overlayClassName,
+  classNames,
   children,
   ...props
 }: React.ComponentProps<typeof SheetPrimitive.Content> & {
-  overlayClassName?: string;
   side?: "top" | "right" | "bottom" | "left";
+  classNames?: {
+    overlay?: string;
+    content?: string;
+    close?: string;
+  };
 }) {
   return (
     <SheetPortal>
-      <SheetOverlay className={overlayClassName} />
+      <SheetOverlay className={classNames?.overlay} />
       <SheetPrimitive.Content
         data-slot="sheet-content"
         className={cn(
           "fixed z-50 flex flex-col gap-4 bg-background text-foreground shadow-lg",
-          "transition-transform data-[state=open]:duration-500 data-[state=open]:ease-[cubic-bezier(0.32,0.72,0,1)] data-[state=closed]:duration-300 data-[state=closed]:ease will-change-transform data-[state=closed]:animate-out data-[state=open]:animate-in",
-          side === "right" &&
-            "inset-y-0 right-0 h-full w-3/4 rounded-l-lg border-l data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right sm:max-w-sm",
-          side === "left" &&
-            "inset-y-0 left-0 h-full w-3/4 rounded-r-lg border-r data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left sm:max-w-sm",
-          side === "top" &&
-            "inset-x-0 top-0 h-auto rounded-b-lg border-b data-[state=closed]:slide-out-to-top data-[state=open]:slide-in-from-top",
-          side === "bottom" &&
-            "inset-x-0 bottom-0 h-auto rounded-t-lg border-t data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom",
+          "data-[state=closed]:ease transition-transform will-change-transform data-[state=closed]:animate-out data-[state=closed]:duration-300 data-[state=open]:animate-in data-[state=open]:duration-500 data-[state=open]:ease-[cubic-bezier(0.32,0.72,0,1)]",
+          {
+            right:
+              "inset-y-0 right-0 h-full w-3/4 rounded-l-lg border-l data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right sm:max-w-sm",
+            left: "inset-y-0 left-0 h-full w-3/4 rounded-r-lg border-r data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left sm:max-w-sm",
+            top: "inset-x-0 top-0 h-auto rounded-b-lg border-b data-[state=closed]:slide-out-to-top data-[state=open]:slide-in-from-top",
+            bottom:
+              "inset-x-0 bottom-0 h-auto rounded-t-lg border-t data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom",
+          }[side],
+          classNames?.content,
           className
         )}
         {...props}
       >
         {children}
         <SheetPrimitive.Close
+          data-slot="sheet-close"
           aria-label="Close"
           className={cn(
-            buttonVariants({ variant: "ghost", size: "icon-xs" }),
-            "absolute top-2 right-2"
+            buttonVariants({ variant: "ghost", size: "icon-sm" }),
+            "absolute top-2 right-2",
+            classNames?.close
           )}
         >
           <XIcon className="size-4" />

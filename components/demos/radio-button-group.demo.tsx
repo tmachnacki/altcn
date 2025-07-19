@@ -26,7 +26,6 @@ const options = [
   { id: "16ft", name: "16 ft" },
   { id: "32ft", name: "32 ft" },
   { id: "64ft", name: "64 ft" },
-  { id: "128ft", name: "128 ft" },
 ];
 
 type Variant = keyof typeof radioButtonVariants.variants.variant;
@@ -67,7 +66,7 @@ export function RadioButtonGroupDemo() {
       <ComponentContainer>
         <fieldset
           aria-label="Choose a depth"
-          className="flex w-full max-w-md flex-col gap-3"
+          className="flex w-full max-w-sm flex-col gap-3"
         >
           <div className="flex items-center justify-between">
             <legend className="font-medium">How deep is your love?</legend>
@@ -85,7 +84,7 @@ export function RadioButtonGroupDemo() {
             orientation={orientation as "horizontal" | "vertical"}
             value={selectedOption}
             onValueChange={setSelectedOption}
-            className="grid grid-cols-6 data-[orientation=vertical]:grid-cols-1"
+            className="grid grid-cols-5 data-[orientation=vertical]:grid-cols-1"
           >
             {options.map((option) => (
               <RadioButton

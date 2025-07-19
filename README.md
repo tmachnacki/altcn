@@ -11,8 +11,6 @@
 - [ ] Select (Native) styling
 - [ ] Speed Dial
 - [ ] Tooltip variants
-- [ ] Radio and checkbox (+ cards) variants
-- [ ] Input-ish components invalid and disabled styling
 - [ ] Try to integrate heroicons instead of lucide
 - [ ] Reduced motion
 - [ ] Tanstack links examples
@@ -31,6 +29,7 @@
 - [ ] Button Group
 - [ ] Charts
 - [ ] Command
+- [ ] Combobox
 - [ ] Date & Time Picker
 - [ ] Description List
 - [ ] Drawer

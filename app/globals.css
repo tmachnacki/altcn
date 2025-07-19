@@ -36,6 +36,15 @@
   --outline: var(--color-base-600);
   --overlay: --alpha(var(--color-base-100) / 50%);
 
+  /** -- CONTRAST -- */
+  --contrast: var(--color-base-950);
+  --hover-contrast: color-mix(
+    in oklab,
+    var(--color-base-950) 90%,
+    var(--color-white)
+  );
+  --contrast-foreground: var(--color-base-50);
+
   /** -- BASE -- */
   /* FIXME: avoid conflict with "text-base" default utility */
   --base-bg: var(--color-base-500);
@@ -339,6 +348,11 @@
   --input: var(--color-zinc-800);
   --outline: var(--color-base-300);
   --overlay: --alpha(var(--color-black) / 50%);
+
+  /** -- CONTRAST -- */
+  --contrast: var(--color-base-50);
+  --hover-contrast: var(--color-base-100);
+  --contrast-foreground: var(--color-base-950);
 
   /** -- BASE -- */
   --base-bg: var(--color-base-500);
@@ -722,6 +736,7 @@
   --color-hover-border: var(--hover-border);
   --color-outline: var(--outline);
   --color-overlay: var(--overlay);
+  --blur-overlay: var(--blur-2xs);
 
   /** -- BASE -- */
   --color-base-bg: var(--base-bg);

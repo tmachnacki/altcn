@@ -11,12 +11,13 @@ import {
   Sheet,
   SheetClose,
   SheetContent,
+  SheetDescription,
   SheetTitle,
   SheetTrigger,
 } from "~/components/ui/sheet";
 import { ModeToggle } from "~/components/mode-toggle";
 
-const navItems = [
+const navPages = [
   {
     label: "Components",
     href: "/components",
@@ -42,11 +43,15 @@ export function Header() {
             </SheetTrigger>
             <SheetContent
               side="left"
-              className="overflow-y-auto lg:hidden"
-              overlayClassName="lg:hidden"
+              classNames={{
+                overlay: "lg:hidden",
+                content: "overflow-y-auto lg:hidden",
+              }}
             >
               <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
-
+              <SheetDescription className="sr-only">
+                Navigation Menu
+              </SheetDescription>
               <nav className="flex flex-1 flex-col px-6 py-12">
                 <ul className="flex flex-col gap-8">
                   <li className="flex flex-col gap-3">
@@ -54,17 +59,17 @@ export function Header() {
                       Menu
                     </div>
                     <ul className="flex flex-col gap-2">
-                      {navItems.map((navItem) => {
+                      {navPages.map((navPage) => {
                         return (
-                          <li key={navItem.href}>
+                          <li key={navPage.href}>
                             <SheetClose asChild>
                               <Link
-                                href={navItem.href}
+                                href={navPage.href}
                                 className={
                                   "text-base font-medium text-subtle-foreground"
                                 }
                               >
-                                {navItem.label}
+                                {navPage.label}
                               </Link>
                             </SheetClose>
                           </li>
@@ -109,10 +114,10 @@ export function Header() {
 
         <nav className="hidden flex-1 sm:block">
           <ul className="flex items-center justify-center gap-2">
-            {navItems.map((navItem) => {
-              const isActive = pathname.startsWith(navItem.href);
+            {navPages.map((navPage) => {
+              const isActive = pathname.startsWith(navPage.href);
               return (
-                <li key={navItem.href}>
+                <li key={navPage.href}>
                   <Button
                     asChild
                     variant={isActive ? "accent" : "ghost"}
@@ -120,10 +125,10 @@ export function Header() {
                     className={`font-medium ${isActive ? "" : "text-subtle-foreground"}`}
                   >
                     <Link
-                      href={navItem.href}
+                      href={navPage.href}
                       aria-current={isActive ? "page" : undefined}
                     >
-                      {navItem.label}
+                      {navPage.label}
                     </Link>
                   </Button>
                 </li>
