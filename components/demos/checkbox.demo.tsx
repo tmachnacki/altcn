@@ -3,6 +3,7 @@
 import * as React from "react";
 
 import { Checkbox, checkBoxVariants } from "~/components/ui/checkbox";
+import { Description } from "~/components/ui/description";
 import { Label } from "~/components/ui/label";
 import {
   Select,
@@ -14,7 +15,6 @@ import {
 import { Switch } from "~/components/ui/switch";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
-import { Swatch } from "~/components/swatch";
 
 type Variant = keyof typeof checkBoxVariants.variants.variant;
 const variants = Object.keys(checkBoxVariants.variants.variant) as Variant[];
@@ -89,9 +89,9 @@ export function CheckboxDemo() {
             <Label htmlFor="terms" className="col-start-2 row-start-1">
               Accept terms and conditions
             </Label>
-            <p className="col-start-2 row-start-2 text-sm text-muted-foreground group-has-disabled:opacity-50">
+            <Description className="col-start-2 row-start-2 group-has-disabled:opacity-50">
               By clicking this checkbox, you agree to the terms and conditions.
-            </p>
+            </Description>
           </div>
         </div>
       </ComponentContainer>
@@ -109,7 +109,6 @@ export function CheckboxDemo() {
             <SelectContent>
               {variants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
-                  <Swatch variant={variant} />
                   {variant}
                 </SelectItem>
               ))}

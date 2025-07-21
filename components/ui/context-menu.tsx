@@ -11,6 +11,7 @@ import {
   menuContentVariants,
   menuItemIndicatorVariants,
   menuItemVariants,
+  menuLabelVariants,
   menuShortcutVariants,
   type MenuContextProps,
   type MenuIndicatorItemProps,
@@ -93,7 +94,7 @@ function ContextMenuSubTrigger({
       {...props}
     >
       {children}
-      <ChevronRightIcon className="ml-auto size-4 text-current" />
+      <ChevronRightIcon className="ml-auto text-current" />
     </ContextMenuPrimitive.SubTrigger>
   );
 }
@@ -281,10 +282,7 @@ function ContextMenuLabel({
     <ContextMenuPrimitive.Label
       data-slot="context-menu-label"
       data-align={align}
-      className={cn(
-        "px-(--menu-item-px) py-1.5 text-sm font-medium text-foreground data-[align=inset]:pl-(--inset-pl)",
-        className
-      )}
+      className={menuLabelVariants({ className })}
       {...props}
     />
   );

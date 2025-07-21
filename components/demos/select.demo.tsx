@@ -33,7 +33,6 @@ import { Switch } from "~/components/ui/switch";
 import { BackgroundPattern } from "~/components/background-pattern";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
-import { Swatch } from "~/components/swatch";
 
 type TriggerVariant = keyof typeof selectTriggerVariants.variants.variant;
 const triggerVariants = Object.keys(
@@ -93,7 +92,7 @@ export function SelectDemo() {
           )}
         >
           <BackgroundPattern />
-          <div className="relative grid w-full max-w-xs grid-cols-1 gap-4 rounded-lg border border-border bg-card-translucent p-4 shadow-lg backdrop-blur-card-translucent sm:max-w-sm sm:grid-cols-2">
+          <div className="relative grid w-full max-w-xs grid-cols-1 gap-4 rounded-lg border border-border bg-card-translucent p-4 shadow-lg backdrop-blur-card-translucent sm:max-w-lg sm:grid-cols-3">
             <Select>
               <SelectTrigger
                 className="w-full"
@@ -225,7 +224,6 @@ export function SelectDemo() {
             <SelectContent>
               {triggerVariants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
-                  <Swatch variant={variant} />
                   {variant}
                 </SelectItem>
               ))}
@@ -281,7 +279,6 @@ export function SelectDemo() {
             <SelectContent>
               {itemVariants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
-                  <Swatch variant={variant} />
                   {variant}
                 </SelectItem>
               ))}

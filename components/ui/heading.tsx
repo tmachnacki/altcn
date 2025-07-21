@@ -22,9 +22,9 @@ const Heading = ({
           base: "text-lg sm:text-base",
           lg: "text-xl sm:text-lg",
           xl: "text-2xl sm:text-xl",
-          "2xl": "text-2xl",
-          "3xl": "text-3xl",
-          "4xl": "text-4xl",
+          "2xl": "text-3xl sm:text-2xl",
+          "3xl": "text-4xl sm:text-3xl",
+          "4xl": "text-5xl sm:text-4xl",
         }[size],
         "font-semibold text-foreground",
         className

@@ -45,7 +45,6 @@ import {
 import { BackgroundPattern } from "~/components/background-pattern";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
-import { Swatch } from "~/components/swatch";
 
 type ContentVariant = keyof typeof menuContentVariants.variants.variant;
 const contentVariants = Object.keys(
@@ -97,7 +96,7 @@ export function DropdownMenuDemo() {
           className={cn(
             "relative flex h-full min-h-96 w-full min-w-0 flex-col items-center justify-center bg-center p-4",
             side === "bottom" && "justify-start",
-            side === "top" && "justify-end",
+            side === "top" && "justify-end"
           )}
         >
           <BackgroundPattern className="size-full" />
@@ -251,7 +250,6 @@ export function DropdownMenuDemo() {
             <SelectContent>
               {itemVariants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
-                  <Swatch variant={variant} />
                   {variant}
                 </SelectItem>
               ))}
@@ -302,7 +300,6 @@ export function DropdownMenuDemo() {
             <SelectContent>
               {destructiveItemVariants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
-                  <Swatch variant={variant} />
                   {variant}
                 </SelectItem>
               ))}

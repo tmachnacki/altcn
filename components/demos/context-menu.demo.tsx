@@ -45,7 +45,6 @@ import {
 import { BackgroundPattern } from "~/components/background-pattern";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
-import { Swatch } from "~/components/swatch";
 
 type ContentVariant = keyof typeof menuContentVariants.variants.variant;
 const contentVariants = Object.keys(
@@ -233,7 +232,6 @@ export function ContextMenuDemo() {
             <SelectContent>
               {itemVariants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
-                  <Swatch variant={variant} />
                   {variant}
                 </SelectItem>
               ))}
@@ -284,7 +282,6 @@ export function ContextMenuDemo() {
             <SelectContent>
               {destructiveItemVariants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
-                  <Swatch variant={variant} />
                   {variant}
                 </SelectItem>
               ))}

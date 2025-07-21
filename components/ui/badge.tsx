@@ -9,12 +9,12 @@ import { Tron } from "~/components/ui/tron";
 
 const badgeVariants = tv({
   base: [
-    "relative isolate inline-flex h-6 w-fit shrink-0 grow-0 items-center justify-center gap-1.5 px-2.5 py-1 text-xs font-medium whitespace-nowrap select-none",
+    "relative isolate inline-flex h-(--size-2xs) w-fit shrink-0 grow-0 items-center justify-center gap-1.5 px-2.5 py-1 text-smaller font-medium whitespace-nowrap select-none sm:text-xs",
     "[a&]:active:opacity-80 [button&]:active:opacity-80",
     "data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[disabled]:shadow-none",
     "disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none",
     "focus-visible:outline-2 focus-visible:outline-offset-2",
-    "**:[svg]:pointer-events-none **:[svg]:not-[[class*='size-']]:size-3",
+    "**:[svg]:pointer-events-none **:[svg]:not-[[class*='size-']]:size-(--icon-xs) sm:**:[svg]:not-[[class*='size-']]:size-(--icon-2xs)",
   ],
   variants: {
     shape: {
@@ -540,7 +540,7 @@ function BadgeClose({ className, ...props }: React.ComponentProps<"button">) {
       )}
       {...props}
     >
-      <XIcon className="size-3 text-current" />
+      <XIcon className="text-current" />
     </button>
   );
 }

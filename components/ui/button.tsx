@@ -6,7 +6,7 @@ import { Tron } from "~/components/ui/tron";
 
 const buttonVariants = tv({
   base: [
-    "touch-target relative isolate inline-flex items-center justify-center gap-2 rounded-md text-sm font-semibold whitespace-nowrap select-none",
+    "touch-target relative isolate inline-flex items-center justify-center rounded-md font-semibold whitespace-nowrap select-none",
     "active:opacity-80",
     "disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none aria-disabled:pointer-events-none aria-disabled:opacity-50 aria-disabled:shadow-none",
     "outline-offset-2 focus-visible:outline-2",
@@ -287,52 +287,48 @@ const buttonVariants = tv({
       ],
     },
     size: {
-      sm: [
-        "h-(--size-sm) rounded-md px-3 py-1.5",
-        "has-[[data-slot='spinner']]:px-2.5 has-[>svg]:px-2.5 **:data-[slot=spinner]:not-[[class*='size-']]:size-4",
-        "**:[svg]:not-[[class*='size-']]:size-4",
+      "2xs": [
+        "h-(--size-xs) sm:h-(--size-2xs)",
+        "text-smaller sm:text-xs",
+        "gap-1.5 rounded-sm px-2 py-1",
       ],
 
       xs: [
-        "h-(--size-xs) gap-1.5 rounded-sm px-2 py-1 text-xs font-medium",
-        "has-[[data-slot='spinner']]:px-2 has-[>svg]:px-2 **:data-[slot=spinner]:not-[[class*='size-']]:size-3.5 **:[svg]:not-[[class*='size-']]:size-3.5",
+        "h-(--size-sm) sm:h-(--size-xs)",
+        "text-sm sm:text-smaller",
+        "gap-1.5 rounded-md px-2 py-1 sm:rounded-sm",
+      ],
+
+      sm: [
+        "h-(--size-md) sm:h-(--size-sm)",
+        "text-sm sm:text-sm",
+        "gap-2 rounded-md px-2.5 py-1.5",
       ],
 
       md: [
-        "h-(--size-md) px-4 py-2",
-        "has-[[data-slot='spinner']]:px-3 has-[>svg]:px-3 **:data-[slot=spinner]:not-[[class*='size-']]:size-4",
-        "**:[svg]:not-[[class*='size-']]:size-4",
+        "h-(--size-lg) sm:h-(--size-md)",
+        "text-base sm:text-sm",
+        "gap-2 rounded-md px-3.5 py-2",
       ],
 
       lg: [
-        "h-(--size-lg) gap-3 rounded-md px-6 py-2 text-base",
-        "has-[[data-slot='spinner']]:px-4 has-[>svg]:px-4 **:data-[slot=spinner]:not-[[class*='size-']]:size-5",
-        "**:[svg]:not-[[class*='size-']]:size-5",
+        "h-(--size-xl) sm:h-(--size-lg)",
+        "text-lg sm:text-base",
+        "gap-3 rounded-md px-4.5 py-2.5",
       ],
 
-      "icon-sm": [
-        "size-(--size-sm)",
-        "**:data-[slot=spinner]:not-[[class*='size-']]:size-4",
-        "**:[svg]:not-[[class*='size-']]:size-4",
-      ],
+      "icon-2xs": ["size(--size-xl) sm:size-(--size-2xs)", "rounded-sm"],
 
       "icon-xs": [
-        "size-(--size-xs) rounded-sm",
-        "**:data-[slot=spinner]:not-[[class*='size-']]:size-3.5",
-        "**:[svg]:not-[[class*='size-']]:size-3.5",
+        "size-(--size-sm) sm:size-(--size-xs)",
+        "rounded-md sm:rounded-sm",
       ],
 
-      "icon-md": [
-        "size-(--size-md)",
-        "**:data-[slot=spinner]:not-[[class*='size-']]:size-4",
-        "*:[svg]:not-[[class*='size-']]:size-4",
-      ],
+      "icon-sm": ["size-(--size-md) sm:size-(--size-sm)", "rounded-md"],
 
-      "icon-lg": [
-        "size-(--size-lg)",
-        "**:data-[slot=spinner]:not-[[class*='size-']]:size-5",
-        "**:[svg]:not-[[class*='size-']]:size-5",
-      ],
+      "icon-md": ["size-(--size-lg) sm:size-(--size-md)", "rounded-md"],
+
+      "icon-lg": ["size-(--size-xl) sm:size-(--size-lg)", "rounded-md"],
     },
   },
   compoundVariants: [
@@ -418,6 +414,41 @@ const buttonVariants = tv({
         "warning-ghost",
       ],
       className: "outline-warning",
+    },
+    {
+      size: ["2xs", "icon-2xs"],
+      className: [
+        "**:[svg]:not-[[class*='size-']]:size-(--icon-xs) sm:**:[svg]:not-[[class*='size-']]:size-(--icon-2xs)",
+        "**:data-[slot=spinner]:not-[[class*='size-']]:size-(--icon-xs) sm:**:data-[slot=spinner]:not-[[class*='size-']]:size-(--icon-2xs)",
+      ],
+    },
+    {
+      size: ["xs", "icon-xs"],
+      className: [
+        "**:[svg]:not-[[class*='size-']]:size-(--icon-sm) sm:**:[svg]:not-[[class*='size-']]:size-(--icon-xs)",
+        "**:data-[slot=spinner]:not-[[class*='size-']]:size-(--icon-sm) sm:**:data-[slot=spinner]:not-[[class*='size-']]:size-(--icon-xs)",
+      ],
+    },
+    {
+      size: ["sm", "icon-sm"],
+      className: [
+        "**:[svg]:not-[[class*='size-']]:size-(--icon-md) sm:**:[svg]:not-[[class*='size-']]:size-(--icon-sm)",
+        "**:data-[slot=spinner]:not-[[class*='size-']]:size-(--icon-md) sm:**:data-[slot=spinner]:not-[[class*='size-']]:size-(--icon-sm)",
+      ],
+    },
+    {
+      size: ["md", "icon-md"],
+      className: [
+        "**:[svg]:not-[[class*='size-']]:size-(--icon-lg) md:**:[svg]:not-[[class*='size-']]:size-(--icon-md)",
+        "**:data-[slot=spinner]:not-[[class*='size-']]:size-(--icon-lg) md:**:data-[slot=spinner]:not-[[class*='size-']]:size-(--icon-md)",
+      ],
+    },
+    {
+      size: ["lg", "icon-lg"],
+      className: [
+        "**:[svg]:not-[[class*='size-']]:size-(--icon-xl) lg:**:[svg]:not-[[class*='size-']]:size-(--icon-lg)",
+        "**:data-[slot=spinner]:not-[[class*='size-']]:size-(--icon-xl) lg:**:data-[slot=spinner]:not-[[class*='size-']]:size-(--icon-lg)",
+      ],
     },
   ],
   defaultVariants: {

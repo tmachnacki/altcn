@@ -6,6 +6,7 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 import { cn } from "~/lib/utils";
 
+// import { buttonVariants } from "~/components/ui/button";
 import { Tron } from "~/components/ui/tron";
 
 const radioButtonVariants = tv({
@@ -158,15 +159,15 @@ const radioButtonVariants = tv({
       ],
     },
     size: {
+      xs: [
+        "h-(--size-xs) gap-1.5 rounded-sm px-2 py-1 text-xs font-medium",
+        "has-[[data-slot='spinner']]:px-2 has-[>svg]:px-2 **:data-[slot=spinner]:not-[[class*='size-']]:size-3.5 **:[svg]:not-[[class*='size-']]:size-3.5",
+      ],
+
       sm: [
         "h-(--size-sm) rounded-md px-3 py-1.5",
         "has-[[data-slot='spinner']]:px-2.5 has-[>svg]:px-2.5 **:data-[slot=spinner]:not-[[class*='size-']]:size-4",
         "**:[svg]:not-[[class*='size-']]:size-4",
-      ],
-
-      xs: [
-        "h-(--size-xs) gap-1.5 rounded-sm px-2 py-1 text-xs font-medium",
-        "has-[[data-slot='spinner']]:px-2 has-[>svg]:px-2 **:data-[slot=spinner]:not-[[class*='size-']]:size-3.5 **:[svg]:not-[[class*='size-']]:size-3.5",
       ],
 
       md: [
@@ -375,12 +376,13 @@ function RadioButton({
     <RadioGroupPrimitive.Item
       data-slot="radio-button"
       checked={checked}
-      className={radioButtonVariants({
-        shape: context.shape,
-        variant: checked ? _checkedVariant : _uncheckedVariant,
-        size: context.size,
-        className,
-      })}
+      className={cn(
+        radioButtonVariants({
+          shape: context.shape,
+          variant: checked ? _checkedVariant : _uncheckedVariant,
+        }),
+        className
+      )}
       {...props}
     >
       {((checked && _checkedVariant?.includes("tron")) ||

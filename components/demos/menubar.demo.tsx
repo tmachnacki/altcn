@@ -44,7 +44,6 @@ import {
 import { BackgroundPattern } from "~/components/background-pattern";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
-import { Swatch } from "~/components/swatch";
 
 type ListVariant = keyof typeof menubarListVariants.variants.variant;
 const listVariants = Object.keys(
@@ -280,7 +279,6 @@ export function MenubarDemo() {
             <SelectContent>
               {triggerVariants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
-                  <Swatch variant={variant} />
                   {variant}
                 </SelectItem>
               ))}
@@ -319,7 +317,6 @@ export function MenubarDemo() {
             <SelectContent>
               {itemVariants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
-                  <Swatch variant={variant} />
                   {variant}
                 </SelectItem>
               ))}
@@ -370,7 +367,6 @@ export function MenubarDemo() {
             <SelectContent>
               {destructiveItemVariants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
-                  <Swatch variant={variant} />
                   {variant}
                 </SelectItem>
               ))}

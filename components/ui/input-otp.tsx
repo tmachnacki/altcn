@@ -18,9 +18,9 @@ const inputOTPSlotVariants = tv({
   ],
   variants: {
     size: {
-      sm: "h-(--size-sm) w-(--size-sm) text-sm data-[spacing=split]:mr-1.5",
-      md: "h-(--size-md) w-(--size-md) text-base data-[spacing=split]:mr-2 sm:text-sm",
-      lg: "h-(--size-lg) w-(--size-lg) text-base data-[spacing=split]:mr-2.5",
+      sm: "size-(--size-md) text-sm data-[spacing=split]:mr-1.5 sm:size-(--size-sm)",
+      md: "size-(--size-lg) text-base data-[spacing=split]:mr-2 sm:size-(--size-md) sm:text-sm",
+      lg: "size-(--size-xl) text-lg data-[spacing=split]:mr-2.5 sm:size-(--size-lg) sm:text-base",
     },
     variant: {
       outline: [

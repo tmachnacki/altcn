@@ -17,28 +17,29 @@ import { Spinner } from "~/components/ui/spinner";
 import { Switch } from "~/components/ui/switch";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
-import { Swatch } from "~/components/swatch";
 
 type Variant = keyof typeof buttonVariants.variants.variant;
 const variants = Object.keys(buttonVariants.variants.variant) as Variant[];
 
 type Size = keyof typeof buttonVariants.variants.size;
 const sizesMap: Record<number, Size> = {
-  1: "xs",
-  2: "sm",
-  3: "md",
-  4: "lg",
+  1: "2xs",
+  2: "xs",
+  3: "sm",
+  4: "md",
+  5: "lg",
 };
 const iconSizesMap: Record<number, Size> = {
-  1: "icon-xs",
-  2: "icon-sm",
-  3: "icon-md",
-  4: "icon-lg",
+  1: "icon-2xs",
+  2: "icon-xs",
+  3: "icon-sm",
+  4: "icon-md",
+  5: "icon-lg",
 };
 
 export function ButtonDemo() {
   const [variant, setVariant] = React.useState<Variant>("outline");
-  const [sizeIdx, setSizeIdx] = React.useState(3);
+  const [sizeIdx, setSizeIdx] = React.useState(4);
   const [disabled, setDisabled] = React.useState(false);
 
   const size = sizesMap[sizeIdx];
@@ -87,7 +88,6 @@ export function ButtonDemo() {
             <SelectContent className="max-h-96">
               {variants.map((variant) => (
                 <SelectItem key={`button-${variant}`} value={variant}>
-                  <Swatch variant={variant} />
                   {variant}
                 </SelectItem>
               ))}
@@ -104,7 +104,7 @@ export function ButtonDemo() {
           <Slider
             aria-labelledby="button-size"
             min={1}
-            max={4}
+            max={5}
             step={1}
             value={[sizeIdx]}
             onValueChange={(value) => setSizeIdx(value[0])}

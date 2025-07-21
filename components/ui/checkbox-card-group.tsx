@@ -92,7 +92,7 @@ function CheckboxCardContent({
   return (
     <div
       data-slot="checkbox-card-content"
-      className={cn("grid flex-1 gap-1.5", className)}
+      className={cn("grid flex-1 gap-2", className)}
       {...props}
     />
   );
@@ -106,7 +106,7 @@ function CheckboxCardLabel({
     <span
       data-slot="checkbox-card-label"
       className={cn(
-        "block text-sm/4 font-medium text-(--accent-text)",
+        "block text-base/4.5 font-medium text-(--accent-text) sm:text-sm/4",
         className
       )}
       {...props}
@@ -121,7 +121,10 @@ function CheckboxCardDescription({
   return (
     <p
       data-slot="checkbox-card-description"
-      className={cn("block text-sm text-(--muted-text)", className)}
+      className={cn(
+        "block text-base text-(--muted-text) sm:text-sm",
+        className
+      )}
       {...props}
     />
   );

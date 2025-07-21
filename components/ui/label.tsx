@@ -17,7 +17,7 @@ function Label({
       data-slot="label"
       data-disabled={disabled ? true : undefined}
       className={cn(
-        "inline-block w-fit text-sm/4 font-medium text-foreground select-none",
+        "inline-block w-fit text-base/4.5 font-medium text-foreground select-none sm:text-sm/4",
         "next-disabled:pointer-events-none next-disabled:opacity-50",
         "peer-disabled:pointer-events-none peer-disabled:opacity-50",
         "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",

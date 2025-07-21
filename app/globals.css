@@ -15,11 +15,19 @@
 
 :root {
   /** -- GLOBALS -- */
-  --size-xs: --spacing(6);
-  /* --size-xs: --spacing(7); */
+  --size-2xs: --spacing(6);
+  --size-xs: --spacing(7);
   --size-sm: --spacing(8);
   --size-md: --spacing(9);
   --size-lg: --spacing(10);
+  --size-xl: --spacing(11);
+
+  --icon-2xs: --spacing(3);
+  --icon-xs: --spacing(3.5);
+  --icon-sm: --spacing(4);
+  --icon-md: --spacing(4);
+  --icon-lg: --spacing(4.5);
+  --icon-xl: --spacing(5);
 
   --background: var(--color-white);
   --foreground: var(--color-base-950);
@@ -988,6 +996,8 @@
 @theme {
   --breakpoint-xs: 36rem; /* 576px */
   --blur-2xs: 2px;
+  --text-smaller: 0.8rem;
+  --text-smaller--line-height: calc(1 / 0.725);
 }
 
 @layer base {

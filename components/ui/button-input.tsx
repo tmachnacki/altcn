@@ -6,16 +6,35 @@ import { cn } from "~/lib/utils";
 
 const buttonInputVariants = tv({
   base: [
-    "peer flex w-fit items-center gap-2 rounded-md whitespace-nowrap",
+    "group/button-input",
+    "peer flex w-fit items-center rounded-md whitespace-nowrap",
     "disabled:pointer-events-none disabled:opacity-50 disabled:**:[svg]:text-muted-foreground",
     "**:[svg]:pointer-events-none **:[svg]:shrink-0 **:[svg]:grow-0",
     "aria-invalid:text-destructive-accent-foreground aria-invalid:**:[svg]:not-[[class*='text-']]:text-destructive-muted-foreground",
   ],
   variants: {
     size: {
-      sm: "h-(--size-sm) px-2.5 py-1.5 text-sm **:[svg]:not-[[class*='size-']]:size-4",
-      md: "h-(--size-md) px-3 py-2 text-base sm:text-sm **:[svg]:not-[[class*='size-']]:size-4",
-      lg: "h-(--size-lg) px-3.5 py-2.5 text-base **:[svg]:not-[[class*='size-']]:size-5",
+      sm: [
+        "[--gap:--spacing(2)]",
+        "h-(--size-md) sm:h-(--size-sm)",
+        "text-sm",
+        "gap-(--gap) px-2.5 py-1.5",
+        "**:[svg]:not-[[class*='size-']]:size-(--icon-md) sm:**:[svg]:not-[[class*='size-']]:size-(--icon-sm)",
+      ],
+      md: [
+        "[--gap:--spacing(2)]",
+        "h-(--size-lg) sm:h-(--size-md)",
+        "text-base sm:text-sm",
+        "gap-(--gap) px-3 py-2",
+        "**:[svg]:not-[[class*='size-']]:size-(--icon-lg) sm:**:[svg]:not-[[class*='size-']]:size-(--icon-md)",
+      ],
+      lg: [
+        "[--gap:--spacing(2.5)]",
+        "h-(--size-xl) sm:h-(--size-lg)",
+        "text-lg sm:text-base",
+        "gap-(--gap) px-3.5 py-2.5",
+        "**:[svg]:not-[[class*='size-']]:size-(--icon-xl) sm:**:[svg]:not-[[class*='size-']]:size-(--icon-lg)",
+      ],
     },
     variant: {
       // -- base --
@@ -46,7 +65,7 @@ const buttonInputVariants = tv({
       ],
 
       underlined: [
-        "rounded-none bg-transparent shadow-[inset_0_-1px_0_0_var(--color-border)] outline-none hover:not-focus-visible:not-aria-invalid:shadow-[inset_0_-1px_0_0_var(--color-hover-border)]",
+        "rounded-none bg-transparent px-0.5 shadow-[inset_0_-1px_0_0_var(--color-border)] outline-none hover:not-focus-visible:not-aria-invalid:shadow-[inset_0_-1px_0_0_var(--color-hover-border)]",
 
         "**:[svg]:not-[[class*='text-']]:text-muted-foreground",
 
@@ -88,18 +107,6 @@ const buttonInputVariants = tv({
       ],
     },
   },
-  compoundVariants: [
-    {
-      variant: "underlined",
-      size: ["sm", "md"],
-      className: "px-0.5",
-    },
-    {
-      variant: "underlined",
-      size: "lg",
-      className: "px-1",
-    },
-  ],
   defaultVariants: {
     variant: "outline",
     size: "md",
@@ -119,7 +126,7 @@ function ButtonInput({
       className={buttonInputVariants({
         variant,
         size,
-        className: ["group/button-input", className],
+        className,
       })}
       {...props}
     />
@@ -137,7 +144,7 @@ function ButtonInputValue({
       data-slot="button-input-value"
       data-placeholder={children ? undefined : placeholder ? true : undefined}
       className={cn(
-        "line-clamp-1 flex flex-1 items-center justify-start gap-2 truncate",
+        "line-clamp-1 flex flex-1 items-center justify-start gap-(--gap) truncate",
         className
       )}
       {...props}

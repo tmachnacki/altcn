@@ -16,7 +16,6 @@ import {
 } from "~/components/ui/select";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
-import { Swatch } from "~/components/swatch";
 
 type Variant = keyof typeof badgeVariants.variants.variant;
 const variants = Object.keys(badgeVariants.variants.variant) as Variant[];
@@ -82,7 +81,6 @@ export function BadgeDemo() {
             <SelectContent className="max-h-96">
               {variants.map((variant) => (
                 <SelectItem key={`badge-${variant}`} value={variant}>
-                  <Swatch variant={variant} />
                   {variant}
                 </SelectItem>
               ))}

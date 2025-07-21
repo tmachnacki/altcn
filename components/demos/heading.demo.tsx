@@ -39,7 +39,7 @@ export function HeadingDemo() {
           <Slider
             aria-labelledby="heading-size"
             min={1}
-            max={12}
+            max={Object.keys(sizesMap).length}
             step={1}
             value={[sizeIdx]}
             onValueChange={(value) => setSizeIdx(value[0])}

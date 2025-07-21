@@ -21,7 +21,6 @@ import { Slider } from "~/components/ui/slider";
 import { Switch } from "~/components/ui/switch";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
-import { Swatch } from "~/components/swatch";
 
 type Variant = keyof typeof buttonInputVariants.variants.variant;
 const variants = Object.keys(buttonInputVariants.variants.variant) as Variant[];
@@ -133,7 +132,6 @@ export function ButtonInputDemo() {
             <SelectContent>
               {variants.map((variant) => (
                 <SelectItem key={`button-input-${variant}`} value={variant}>
-                  <Swatch variant={variant} />
                   {variant}
                 </SelectItem>
               ))}

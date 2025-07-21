@@ -7,25 +7,44 @@ import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from "lucide-react";
 
 import { cn } from "~/lib/utils";
 
-// TODO: adjust spacing for position="item-aligned" (i.e., not "popper")
-
 const selectTriggerVariants = tv({
   base: [
-    "peer flex w-fit items-center justify-between gap-2 rounded-md text-sm whitespace-nowrap",
+    "peer flex w-fit items-center justify-between rounded-md whitespace-nowrap",
 
     "disabled:pointer-events-none disabled:opacity-50",
 
     "**:[svg]:pointer-events-none **:[svg]:shrink-0 **:[svg]:grow-0",
 
-    "*:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2",
+    "*:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center",
 
     "aria-invalid:text-destructive-accent-foreground aria-invalid:**:[svg]:not-[[class*='text-']]:text-destructive-muted-foreground",
   ],
   variants: {
     size: {
-      sm: "h-(--size-sm) px-2.5 py-1.5 **:[svg]:not-[[class*='size-']]:size-4",
-      md: "h-(--size-md) px-3 py-2 **:[svg]:not-[[class*='size-']]:size-4",
-      lg: "h-(--size-lg) px-3.5 py-2.5 text-base **:[svg]:not-[[class*='size-']]:size-5",
+      sm: [
+        "[--gap:--spacing(2)]",
+        "h-(--size-md) sm:h-(--size-sm)",
+        "text-sm",
+        "gap-(--gap) px-2.5 py-1.5",
+        "*:data-[slot=select-value]:gap-(--gap)",
+        "**:[svg]:not-[[class*='size-']]:size-(--icon-md) sm:**:[svg]:not-[[class*='size-']]:size-(--icon-sm)",
+      ],
+      md: [
+        "[--gap:--spacing(2)]",
+        "h-(--size-lg) sm:h-(--size-md)",
+        "text-base sm:text-sm",
+        "gap-(--gap) px-3 py-2",
+        "*:data-[slot=select-value]:gap-(--gap)",
+        "**:[svg]:not-[[class*='size-']]:size-(--icon-lg) sm:**:[svg]:not-[[class*='size-']]:size-(--icon-md)",
+      ],
+      lg: [
+        "[--gap:--spacing(2.5)]",
+        "h-(--size-xl) sm:h-(--size-lg)",
+        "text-lg sm:text-base",
+        "gap-(--gap) px-3.5 py-2.5",
+        "*:data-[slot=select-value]:gap-(--gap)",
+        "**:[svg]:not-[[class*='size-']]:size-(--icon-xl) sm:**:[svg]:not-[[class*='size-']]:size-(--icon-lg)",
+      ],
     },
     variant: {
       // -- base --
@@ -56,7 +75,7 @@ const selectTriggerVariants = tv({
       ],
 
       underlined: [
-        "rounded-none bg-transparent shadow-[inset_0_-1px_0_0_var(--color-border)] outline-none hover:not-focus-visible:not-aria-invalid:shadow-[inset_0_-1px_0_0_var(--color-hover-border)]",
+        "rounded-none bg-transparent px-0.5 shadow-[inset_0_-1px_0_0_var(--color-border)] outline-none hover:not-focus-visible:not-aria-invalid:shadow-[inset_0_-1px_0_0_var(--color-hover-border)]",
 
         "**:[svg]:not-[[class*='text-']]:text-muted-foreground",
 
@@ -75,7 +94,7 @@ const selectTriggerVariants = tv({
 
         "data-[placeholder]:text-primary-placeholder",
 
-        "disabled:bg-muted disabled:text-accent-foreground disabled:[--select-trigger-icon-text:var(--color-muted-foreground)] disabled:data-[placeholder]:text-placeholder disabled:**:[svg]:not-[[class*='text-']]:text-muted-foreground",
+        "disabled:bg-muted disabled:text-accent-foreground disabled:data-[placeholder]:text-placeholder disabled:**:[svg]:not-[[class*='text-']]:text-muted-foreground",
 
         "focus-visible:outline-2 focus-visible:outline-primary",
 
@@ -90,7 +109,7 @@ const selectTriggerVariants = tv({
 
         "data-[placeholder]:text-secondary-placeholder",
 
-        "disabled:bg-muted disabled:text-accent-foreground disabled:[--select-trigger-icon-text:var(--color-muted-foreground)] disabled:data-[placeholder]:text-placeholder disabled:**:[svg]:not-[[class*='text-']]:text-muted-foreground",
+        "disabled:bg-muted disabled:text-accent-foreground disabled:data-[placeholder]:text-placeholder disabled:**:[svg]:not-[[class*='text-']]:text-muted-foreground",
 
         "focus-visible:outline-2 focus-visible:outline-secondary",
 
@@ -106,7 +125,9 @@ const selectTriggerVariants = tv({
 
 const selectContentVariants = tv({
   base: [
-    "relative isolate z-50 block max-h-(--radix-select-content-available-height) min-w-[max(var(--radix-select-trigger-width),--spacing(32))] origin-(--radix-select-content-transform-origin) rounded-md border border-border text-popover-foreground shadow-md",
+    "[--inset-p:--spacing(9)] [--select-content-px:--spacing(1)] [--select-item-px:--spacing(2)] sm:[--inset-p:--spacing(8)]",
+    "relative isolate z-50 block rounded-md border border-border text-popover-foreground shadow-md",
+    "max-h-(--radix-select-content-available-height) min-w-[max(var(--radix-select-trigger-width),--spacing(32))] origin-(--radix-select-content-transform-origin)",
   ],
   variants: {
     variant: {
@@ -121,10 +142,13 @@ const selectContentVariants = tv({
 
 const selectItemVariants = tv({
   base: [
-    "relative flex w-full flex-1 cursor-default items-center gap-2 rounded-sm py-1.5 pr-8 pl-2 text-sm outline-hidden select-none data-[position=item-aligned]:pr-2 data-[position=item-aligned]:pl-8",
-    "data-[disabled]:pointer-events-none data-[disabled]:text-muted-foreground data-[disabled]:opacity-50",
-    "**:[svg]:pointer-events-none **:[svg]:shrink-0 **:[svg]:not-[[class*='size-']]:size-4 **:[svg]:not-[[class*='text-']]:text-muted-foreground data-[highlighted]:**:[svg]:not-[[class*='text-']]:text-current",
-    "*:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2",
+    "relative flex w-full flex-1 cursor-default items-center gap-2.5 rounded-sm py-1.5 pr-(--inset-p) pl-(--select-item-px) text-base outline-hidden select-none data-[position=item-aligned]:pr-(--select-item-px) data-[position=item-aligned]:pl-(--inset-p) sm:gap-2 sm:text-sm",
+
+    "data-[disabled]:pointer-events-none data-[disabled]:text-muted-foreground data-[disabled]:opacity-50 data-[disabled]:**:[[data-slot*='-indicator']]:text-muted-foreground",
+
+    "**:[svg]:pointer-events-none **:[svg]:shrink-0 **:[svg]:not-[[class*='size-']]:size-(--icon-lg) **:[svg]:not-[[class*='text-']]:text-muted-foreground data-[highlighted]:**:[svg]:not-[[class*='text-']]:text-current sm:**:[svg]:not-[[class*='size-']]:size-(--icon-md)",
+
+    "*:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2.5 sm:*:[span]:last:gap-2",
   ],
   variants: {
     variant: {
@@ -187,7 +211,7 @@ const selectItemVariants = tv({
     },
     width: {
       default: "",
-      full: "-mx-1 w-[calc(100%_+_--spacing(2))] rounded-none pr-9 pl-3 data-[position=item-aligned]:pr-3 data-[position=item-aligned]:pl-9",
+      full: "-mx-(--select-content-px) w-[calc(100%_+_(var(--select-content-px)*2))] rounded-none pr-[calc(var(--inset-p)+var(--select-content-px))] pl-[calc(var(--select-content-px)+var(--select-item-px))] data-[position=item-aligned]:pr-[calc(var(--select-content-px)+var(--select-item-px))] data-[position=item-aligned]:pl-[calc(var(--inset-p)+var(--select-content-px))]",
     },
   },
   compoundVariants: [
@@ -211,8 +235,8 @@ const selectItemVariants = tv({
 
 const selectItemIndicatorVariants = tv({
   base: [
-    "pointer-events-none absolute right-2 flex size-4 items-center justify-center data-[position=item-aligned]:left-2",
-    "data-[width=full]:right-3 data-[position=item-aligned]:data-[width=full]:left-3",
+    "pointer-events-none absolute right-(--select-item-px) inline-flex size-(--icon-lg) items-center justify-center data-[position=item-aligned]:left-(--select-item-px) sm:size-(--icon-md)",
+    "data-[width=full]:right-[calc(var(--select-content-px)+var(--select-item-px))] data-[position=item-aligned]:data-[width=full]:left-[calc(var(--select-content-px)+var(--select-item-px))]",
   ],
   variants: {
     variant: {
@@ -343,7 +367,7 @@ function SelectLabel({
       data-slot="select-label"
       data-position={position}
       className={cn(
-        "px-2 py-1.5 text-xs text-muted-foreground data-[position=item-aligned]:pl-8",
+        "px-(--select-item-px) py-1.5 text-sm sm:text-xs font-normal text-muted-foreground data-[position=item-aligned]:pl-(--inset-p)",
         className
       )}
       {...props}
@@ -399,7 +423,7 @@ function SelectItem({
           classNames?.indicator
         )}
       >
-        <CheckIcon className="size-4 text-current" />
+        <CheckIcon className="size-(--icon-lg) text-current sm:size-(--icon-md)" />
       </SelectPrimitive.ItemIndicator>
       <SelectPrimitive.ItemText className="flex-1">
         {children}
@@ -415,7 +439,10 @@ function SelectSeparator({
   return (
     <SelectPrimitive.Separator
       data-slot="select-separator"
-      className={cn("pointer-events-none -mx-1 my-1 h-px bg-border", className)}
+      className={cn(
+        "pointer-events-none -mx-(--select-content-px) my-1 h-px bg-border",
+        className
+      )}
       {...props}
     />
   );
@@ -434,7 +461,7 @@ function SelectScrollUpButton({
       )}
       {...props}
     >
-      <ChevronUpIcon className="size-4" />
+      <ChevronUpIcon className="size-(--icon-lg) sm:size-(--icon-md)" />
     </SelectPrimitive.ScrollUpButton>
   );
 }
@@ -452,7 +479,7 @@ function SelectScrollDownButton({
       )}
       {...props}
     >
-      <ChevronDownIcon className="size-4" />
+      <ChevronDownIcon className="size-(--icon-lg) sm:size-(--icon-md)" />
     </SelectPrimitive.ScrollDownButton>
   );
 }

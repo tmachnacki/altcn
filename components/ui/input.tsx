@@ -16,16 +16,16 @@ const inputVariants = tv({
   variants: {
     size: {
       sm: {
-        root: "h-(--size-sm) px-(--input-px) py-(--input-py) text-sm [--input-px:--spacing(2.5)] [--input-py:--spacing(1)]",
-        file: "file:-my-(--input-py) file:-ms-(--input-px) file:me-(--input-px) file:h-(--size-sm) file:px-(--input-px)",
+        root: "h-(--size-md) px-(--input-px) py-(--input-py) text-sm [--input-px:--spacing(2.5)] [--input-py:--spacing(1)] sm:h-(--size-sm)",
+        file: "file:-my-(--input-py) file:-ms-(--input-px) file:me-(--input-px) file:h-(--size-md) file:px-(--input-px) sm:file:h-(--size-sm)",
       },
       md: {
-        root: "h-(--size-md) px-(--input-px) py-(--input-py) text-base [--input-px:--spacing(3)] [--input-py:--spacing(1)] sm:text-sm",
-        file: "file:-my-(--input-py) file:-ms-(--input-px) file:me-(--input-px) file:h-(--size-md) file:px-(--input-px)",
+        root: "h-(--size-lg) px-(--input-px) py-(--input-py) text-base [--input-px:--spacing(3)] [--input-py:--spacing(1)] sm:h-(--size-md) sm:text-sm",
+        file: "file:-my-(--input-py) file:-ms-(--input-px) file:me-(--input-px) file:h-(--size-lg) file:px-(--input-px) sm:file:h-(--size-md)",
       },
       lg: {
-        root: "h-(--size-lg) px-(--input-px) py-(--input-py) text-base [--input-px:--spacing(3.5)] [--input-py:--spacing(1.5)]",
-        file: "file:-my-(--input-py) file:-ms-(--input-px) file:me-(--input-px) file:h-(--size-lg) file:px-(--input-px)",
+        root: "h-(--size-xl) px-(--input-px) py-(--input-py) text-lg [--input-px:--spacing(3.5)] [--input-py:--spacing(1.5)] sm:h-(--size-lg) sm:text-base",
+        file: "file:-my-(--input-py) file:-ms-(--input-px) file:me-(--input-px) file:h-(--size-xl) file:px-(--input-px) sm:file:h-(--size-lg)",
       },
     },
     variant: {

@@ -7,12 +7,9 @@ import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-react";
 
 import { cn } from "~/lib/utils";
 
-// TODO: maybe adjust subcontent offset for wide+border variants
-// TODO: maybe use visual-only inset span for wide+border variants to avoid negative margin issues
-
 const menuContentVariants = tv({
   base: [
-    "[--inset-pl:--spacing(8)] [--menu-content-px:--spacing(1)] [--menu-item-px:--spacing(2)]",
+    "[--inset-pl:--spacing(9)] [--menu-content-px:--spacing(1)] [--menu-item-px:--spacing(2)] sm:[--inset-pl:--spacing(8)]",
     "z-50 overflow-x-hidden overflow-y-auto rounded-md border px-(--menu-content-px) py-1 text-popover-foreground shadow-md",
   ],
   variants: {
@@ -23,14 +20,17 @@ const menuContentVariants = tv({
   },
   defaultVariants: {
     variant: "solid",
-  }
+  },
 });
 
 const menuItemVariants = tv({
   base: [
-    "relative flex cursor-default items-center gap-2 rounded-sm px-(--menu-item-px) py-1.5 text-sm outline-hidden select-none data-[align=inset]:pl-(--inset-pl)",
+    "relative flex cursor-default items-center gap-2.5 rounded-sm px-(--menu-item-px) py-1.5 text-base outline-hidden select-none data-[align=inset]:pl-(--inset-pl) sm:gap-2 sm:text-sm",
+
     "data-[disabled]:pointer-events-none data-[disabled]:text-muted-foreground data-[disabled]:opacity-50 data-[disabled]:**:[[data-slot*='-indicator']]:text-muted-foreground",
-    "**:[svg]:pointer-events-none **:[svg]:shrink-0 **:[svg]:not-[[class*='size-']]:size-4 **:[svg]:not-[[class*='text-']]:text-muted-foreground data-[highlighted]:**:[svg]:not-[[class*='text-']]:text-current",
+
+    "**:[svg]:pointer-events-none **:[svg]:shrink-0 **:[svg]:not-[[class*='size-']]:size-(--icon-lg) **:[svg]:not-[[class*='text-']]:text-muted-foreground data-[highlighted]:**:[svg]:not-[[class*='text-']]:text-current sm:**:[svg]:not-[[class*='size-']]:size-(--icon-md)",
+
     // for subtrigger
     "not-data-[highlighted]:data-[state=open]:bg-muted not-data-[highlighted]:data-[state=open]:text-accent-foreground",
   ],
@@ -124,7 +124,7 @@ const menuItemVariants = tv({
 
 const menuItemIndicatorVariants = tv({
   base: [
-    "pointer-events-none absolute left-(--menu-item-px) inline-flex size-4 items-center justify-center",
+    "pointer-events-none absolute left-(--menu-item-px) inline-flex size-(--icon-lg) items-center justify-center sm:size-(--icon-md)",
     "data-[width=full]:left-[calc(var(--menu-content-px)+var(--menu-item-px))]",
   ],
 
@@ -143,8 +143,12 @@ const menuItemIndicatorVariants = tv({
   },
 });
 
+const menuLabelVariants = tv({
+  base: "px-(--menu-item-px) py-1.5 text-base font-medium text-foreground data-[align=inset]:pl-(--inset-pl) sm:text-sm",
+});
+
 const menuShortcutVariants = tv({
-  base: "ml-auto text-xs font-normal tracking-widest text-current/60",
+  base: "ml-auto text-smaller leading-none font-normal tracking-widest text-current/60 sm:text-xs",
 });
 
 function DropdownMenu({
@@ -307,7 +311,7 @@ function DropdownMenuCheckboxItem({
           classNames?.indicator
         )}
       >
-        <CheckIcon className="size-4 text-current" />
+        <CheckIcon className="size-(--icon-lg) text-current sm:size-(--icon-md)" />
       </DropdownMenuPrimitive.ItemIndicator>
       {children}
     </DropdownMenuPrimitive.CheckboxItem>
@@ -362,7 +366,7 @@ function DropdownMenuRadioItem({
           classNames?.indicator
         )}
       >
-        <CircleIcon className="size-2 fill-current text-current" />
+        <CircleIcon className="size-2.5 fill-current text-current sm:size-2" />
       </DropdownMenuPrimitive.ItemIndicator>
       {children}
     </DropdownMenuPrimitive.RadioItem>
@@ -380,10 +384,7 @@ function DropdownMenuLabel({
     <DropdownMenuPrimitive.Label
       data-slot="dropdown-menu-label"
       data-align={align}
-      className={cn(
-        "px-(--menu-item-px) py-1.5 text-sm font-medium text-foreground data-[align=inset]:pl-(--inset-pl)",
-        className
-      )}
+      className={menuLabelVariants({ className })}
       {...props}
     />
   );
@@ -396,7 +397,10 @@ function DropdownMenuSeparator({
   return (
     <DropdownMenuPrimitive.Separator
       data-slot="dropdown-menu-separator"
-      className={cn("-mx-(--menu-content-px) my-1 h-px bg-border", className)}
+      className={cn(
+        "pointer-events-none -mx-(--menu-content-px) my-1 h-px bg-border",
+        className
+      )}
       {...props}
     />
   );
@@ -453,7 +457,7 @@ function DropdownMenuSubTrigger({
       {...props}
     >
       {children}
-      <ChevronRightIcon className="ml-auto size-4 text-current" />
+      <ChevronRightIcon className="ml-auto text-current" />
     </DropdownMenuPrimitive.SubTrigger>
   );
 }
@@ -485,6 +489,7 @@ export {
   menuContentVariants,
   menuItemVariants,
   menuItemIndicatorVariants,
+  menuLabelVariants,
   menuShortcutVariants,
   DropdownMenu,
   DropdownMenuPortal,

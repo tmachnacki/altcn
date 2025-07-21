@@ -11,6 +11,7 @@ import {
   menuContentVariants,
   menuItemIndicatorVariants,
   menuItemVariants,
+  menuLabelVariants,
   menuShortcutVariants,
   type MenuContextProps,
   type MenuIndicatorItemProps,
@@ -35,7 +36,11 @@ const menubarListVariants = tv({
 });
 
 const menubarTriggerVariants = tv({
-  base: "relative flex h-7 items-center rounded-sm px-2 py-1 text-sm font-medium outline-hidden select-none",
+  base: [
+    "relative flex h-7 items-center rounded-sm px-2 py-1 text-sm font-medium outline-hidden select-none",
+    "**:[svg]:pointer-events-none **:[svg]:shrink-0 **:[svg]:grow-0 **:[svg]:not-[[class*='size-']]:size-(--icon-sm) **:[svg]:not-[[class*='text-']]:text-muted-foreground",
+    "data-[highlighted]:**:[svg]:not-[[class*='text-']]:text-current data-[state=open]:**:[svg]:not-[[class*='text-']]:text-current",
+  ],
   variants: {
     variant: {
       // -- base --
@@ -103,8 +108,8 @@ const menubarTriggerVariants = tv({
       ],
 
       "primary-ghost": [
-        "data-[highlighted]:bg-transparent data-[highlighted]:text-primary",
-        "data-[state=open]:bg-transparent data-[state=open]:text-primary",
+        "data-[highlighted]:bg-transparent data-[highlighted]:text-primary-muted-foreground",
+        "data-[state=open]:bg-transparent data-[state=open]:text-primary-muted-foreground",
       ],
 
       // -- secondary --
@@ -146,8 +151,8 @@ const menubarTriggerVariants = tv({
       ],
 
       "secondary-ghost": [
-        "data-[highlighted]:bg-transparent data-[highlighted]:text-secondary-500 dark:data-[highlighted]:text-secondary",
-        "data-[state=open]:bg-transparent data-[state=open]:text-secondary-500 dark:data-[state=open]:text-secondary",
+        "data-[highlighted]:bg-transparent data-[highlighted]:text-secondary-muted-foreground",
+        "data-[state=open]:bg-transparent data-[state=open]:text-secondary-muted-foreground",
       ],
     },
   },
@@ -420,10 +425,7 @@ function MenubarLabel({
     <MenubarPrimitive.Label
       data-slot="menubar-label"
       data-align={align}
-      className={cn(
-        "px-(--menu-item-px) py-1.5 text-sm font-medium text-foreground data-[align=inset]:pl-(--inset-pl)",
-        className
-      )}
+      className={cn(menuLabelVariants(), className)}
       {...props}
     />
   );
@@ -491,7 +493,7 @@ function MenubarSubTrigger({
       {...props}
     >
       {children}
-      <ChevronRightIcon className="ml-auto size-4 text-current" />
+      <ChevronRightIcon className="ml-auto text-current" />
     </MenubarPrimitive.SubTrigger>
   );
 }

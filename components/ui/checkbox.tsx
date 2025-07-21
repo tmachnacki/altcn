@@ -7,7 +7,7 @@ import { CheckIcon, MinusIcon } from "lucide-react";
 
 const checkBoxVariants = tv({
   base: [
-    "peer size-4 shrink-0 grow-0 rounded-sm",
+    "peer touch-target size-4.5 shrink-0 grow-0 rounded-sm sm:size-4",
 
     "hover:not-aria-invalid:data-[state=unchecked]:inset-ring-hover-border",
 
@@ -90,7 +90,10 @@ const checkBoxVariants = tv({
         "secondary-accent",
         "secondary-muted",
       ],
-      className: ["disabled:bg-muted", "aria-invalid:bg-destructive-muted hover:aria-invalid:bg-hover-destructive-muted"],
+      className: [
+        "disabled:bg-muted",
+        "aria-invalid:bg-destructive-muted hover:aria-invalid:bg-hover-destructive-muted",
+      ],
     },
   ],
   defaultVariants: {
@@ -117,8 +120,8 @@ function Checkbox({
         data-slot="checkbox-indicator"
         className="flex items-center justify-center text-current"
       >
-        <CheckIcon className="block size-3.5 stroke-3 group-data-[state=indeterminate]/checkbox:hidden" />
-        <MinusIcon className="hidden size-3.5 stroke-3 group-data-[state=indeterminate]/checkbox:block" />
+        <CheckIcon className="block size-4 stroke-3 group-data-[state=indeterminate]/checkbox:hidden sm:size-3.5" />
+        <MinusIcon className="hidden size-4 stroke-3 group-data-[state=indeterminate]/checkbox:block sm:size-3.5" />
       </CheckboxPrimitive.Indicator>
     </CheckboxPrimitive.Root>
   );

@@ -12,6 +12,7 @@ const inputPasswordVariants = tv({
       "has-aria-invalid:text-destructive-accent-foreground",
     ],
     input: [
+      "peer/input-password-input",
       "all-[unset] col-start-1 row-start-1 block h-full min-h-0 w-full shrink grow appearance-none self-center rounded-none bg-transparent text-inherit outline-none",
       "pr-[calc(var(--toggle-size)+var(--input-px)+var(--input-px))] pl-(--input-px)",
       "selection:bg-primary selection:text-primary-foreground",
@@ -29,18 +30,18 @@ const inputPasswordVariants = tv({
     size: {
       sm: {
         container:
-          "h-(--size-sm) [--input-px:--spacing(2.5)] [--toggle-size:--spacing(4)]",
+          "h-(--size-md) [--input-px:--spacing(2.5)] [--toggle-size:var(--icon-md)] sm:h-(--size-sm) sm:[--toggle-size:var(--icon-sm)]",
         input: "py-1 text-sm",
       },
       md: {
         container:
-          "h-(--size-md) [--input-px:--spacing(3)] [--toggle-size:--spacing(4)]",
+          "h-(--size-lg) [--input-px:--spacing(3)] [--toggle-size:var(--icon-lg)] sm:h-(--size-md) sm:[--toggle-size:var(--icon-md)]",
         input: "py-1 text-base sm:text-sm",
       },
       lg: {
         container:
-          "h-(--size-lg) [--input-px:--spacing(3.5)] [--toggle-size:--spacing(5)]",
-        input: "py-1.5 text-base",
+          "h-(--size-xl) [--input-px:--spacing(3.5)] [--toggle-size:var(--icon-xl)] sm:h-(--size-lg) sm:[--toggle-size:var(--icon-lg)]",
+        input: "py-1.5 text-lg sm:text-base",
       },
     },
     variant: {
@@ -199,11 +200,7 @@ function InputPasswordRadix({
       >
         <InputPasswordPrimitive.Input
           data-slot="input-password-input"
-          className={cn(
-            input(),
-            "peer/input-password-input",
-            classNames?.input
-          )}
+          className={cn(input(), classNames?.input)}
           id={id}
           disabled={disabled}
           size={htmlSize}

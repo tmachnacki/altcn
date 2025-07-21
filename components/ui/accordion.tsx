@@ -11,18 +11,20 @@ const accordionVariants = tv({
   slots: {
     item: [
       "[--accordion-item-px:--spacing(3)]",
+      "group/accordion-item",
       "border-b -outline-offset-1 first:rounded-t-md last:rounded-b-md last:border-b-0 data-[spacing=split]:mb-2 data-[spacing=split]:rounded-md data-[spacing=split]:last:mb-0",
       "has-focus-visible:outline-2",
     ],
     trigger: [
-      "flex flex-1 items-start justify-between gap-4 rounded-md px-(--accordion-item-px) py-4 text-left text-sm font-medium transition-all",
-      "hover:underline",
+      "group/accordion-trigger",
+      "flex flex-1 items-start justify-between gap-4 rounded-md px-(--accordion-item-px) py-4 text-left text-base font-medium transition-all sm:text-sm",
+      "hover:underline active:underline",
       "focus-visible:outline-none",
       "disabled:pointer-events-none disabled:opacity-50",
       "motion-reduce:transition-none",
     ],
     content: [
-      "overflow-hidden text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down",
+      "overflow-hidden text-base data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down sm:text-sm",
       "motion-reduce:animate-none",
     ],
   },
@@ -108,7 +110,7 @@ function AccordionItem({
       data-spacing={spacing}
       className={accordionVariants().item({
         variant,
-        className: ["group/accordion-item", className],
+        className,
       })}
       {...props}
     />
@@ -127,12 +129,12 @@ function AccordionTrigger({
         data-slot="accordion-trigger"
         className={accordionVariants().trigger({
           variant,
-          className: ["group/accordion-trigger", className],
+          className,
         })}
         {...props}
       >
         {children}
-        <ChevronLeftIcon className="pointer-events-none size-4 shrink-0 translate-y-0.5 text-current transition-transform duration-200 group-data-[state=open]/accordion-trigger:-rotate-90 motion-reduce:transition-none" />
+        <ChevronLeftIcon className="pointer-events-none size-(--icon-lg) shrink-0 translate-y-0.5 text-current transition-transform duration-200 group-data-[state=open]/accordion-trigger:-rotate-90 motion-reduce:transition-none sm:size-(--icon-md)" />
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>
   );
