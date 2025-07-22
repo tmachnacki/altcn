@@ -18,7 +18,6 @@ import {
 } from "~/components/ui/select";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
-import { Swatch } from "~/components/swatch";
 
 type Variant = keyof typeof avatarFallbackVariants.variants.variant;
 const variants = Object.keys(
@@ -61,7 +60,6 @@ export function AvatarDemo() {
             <SelectContent>
               {variants.map((variant) => (
                 <SelectItem key={`avatar-fallback-${variant}`} value={variant}>
-                  <Swatch variant={variant} />
                   {variant}
                 </SelectItem>
               ))}

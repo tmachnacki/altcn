@@ -94,7 +94,7 @@ export function DropdownMenuDemo() {
       <ComponentContainer className="overflow-hidden rounded-t-lg p-0 md:rounded-l-lg md:rounded-r-none">
         <div
           className={cn(
-            "relative flex h-full min-h-96 w-full min-w-0 flex-col items-center justify-center bg-center p-4",
+            "relative flex h-full min-h-96 w-full min-w-0 flex-col items-center justify-center bg-center p-(--demo-gutter)",
             side === "bottom" && "justify-start",
             side === "top" && "justify-end"
           )}

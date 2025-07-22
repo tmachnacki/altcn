@@ -1,150 +1,220 @@
 import * as React from "react";
-import { cva, type VariantProps } from "class-variance-authority";
+import { tv, type VariantProps } from "tailwind-variants";
 
 import { cn } from "~/lib/utils";
 
-const notificationVariants = cva(
-  [
-    "inline-flex shrink-0 items-center justify-center gap-1 rounded-full p-1 text-xs leading-none font-normal whitespace-nowrap tabular-nums",
-    "**:[svg]:pointer-events-none **:[svg]:not-[[class*='size-']]:size-3",
-  ],
-  {
-    variants: {
-      variant: {
-        // -- base --
-        outline: "border border-border bg-background text-foreground",
+const notificationVariants = tv({
+  slots: {
+    container: [
+      "[--notification-size-empty:--spacing(2.5)] [--notification-size:--spacing(5)]",
+      "relative isolate flex rounded-full [--offset:42%] data-[position]:absolute [[data-position*='bottom']]:bottom-0 [[data-position*='bottom']]:translate-y-(--offset) [[data-position*='left']]:left-0 [[data-position*='left']]:-translate-x-(--offset) [[data-position*='right']]:right-0 [[data-position*='right']]:translate-x-(--offset) [[data-position*='top']]:top-0 [[data-position*='top']]:-translate-y-(--offset)",
+    ],
+    ping: [
+      "absolute top-1/2 left-1/2 z-[1] size-full -translate-x-1/2 -translate-y-1/2 rounded-full opacity-75",
+    ],
+    backdrop: [
+      "absolute top-1/2 left-1/2 z-[2] size-full -translate-x-1/2 -translate-y-1/2 rounded-full bg-background",
+    ],
+    notification: [
+      "relative z-[3] inline-flex size-full shrink-0 items-center justify-center gap-1 rounded-full p-1 text-xs leading-none font-normal whitespace-nowrap tabular-nums select-none",
+      "**:[svg]:pointer-events-none **:[svg]:shrink-0 **:[svg]:grow-0 **:[svg]:not-[[class*='size-']]:size-3",
+    ],
+  },
+  variants: {
+    variant: {
+      // -- base --
+      outline: {
+        notification:
+          "bg-background text-foreground inset-ring inset-ring-border",
+        ping: "bg-base-bg",
+      },
 
-        contrast: "bg-contrast text-contrast-foreground",
+      contrast: {
+        notification: "bg-contrast text-contrast-foreground",
+        ping: "bg-contrast",
+      },
 
-        base: "bg-base-bg text-base-foreground",
+      base: {
+        notification: "bg-base-bg text-base-foreground",
+        ping: "bg-base-bg",
+      },
 
-        accent: "bg-muted text-accent-foreground",
+      accent: {
+        notification: "bg-muted text-accent-foreground",
+        ping: "bg-base-bg",
+      },
 
-        muted: "bg-muted text-muted-foreground",
+      muted: {
+        notification: "bg-muted text-muted-foreground",
+        ping: "bg-base-bg",
+      },
 
-        surface: "border border-faded-border bg-faded text-accent-foreground",
+      surface: {
+        notification:
+          "bg-faded text-accent-foreground inset-ring inset-ring-faded-border",
+        ping: "bg-base-bg",
+      },
 
-        faded: "border border-faded-border bg-faded text-muted-foreground",
+      faded: {
+        notification:
+          "bg-faded text-muted-foreground inset-ring inset-ring-faded-border",
+        ping: "bg-base-bg",
+      },
 
-        // -- primary --
-        primary: "bg-primary text-primary-foreground",
+      // -- primary --
+      primary: {
+        notification: "bg-primary text-primary-foreground",
+        ping: "bg-primary",
+      },
 
-        "primary-accent": "bg-primary-muted text-primary-accent-foreground",
+      "primary-accent": {
+        notification: "bg-primary-muted text-primary-accent-foreground",
+        ping: "bg-primary",
+      },
 
-        "primary-muted": "bg-primary-muted text-primary-muted-foreground",
+      "primary-muted": {
+        notification: "bg-primary-muted text-primary-muted-foreground",
+        ping: "bg-primary",
+      },
 
-        "primary-surface":
-          "border border-primary-faded-border bg-primary-faded text-primary-accent-foreground",
+      "primary-surface": {
+        notification:
+          "bg-primary-faded text-primary-accent-foreground inset-ring inset-ring-primary-faded-border",
+        ping: "bg-primary",
+      },
 
-        "primary-faded":
-          "border border-primary-faded-border bg-primary-faded text-primary-muted-foreground",
+      "primary-faded": {
+        notification:
+          "bg-primary-faded text-primary-muted-foreground inset-ring inset-ring-primary-faded-border",
+        ping: "bg-primary",
+      },
 
-        // -- secondary --
-        secondary: "bg-secondary text-secondary-foreground",
+      // -- secondary --
+      secondary: {
+        notification: "bg-secondary text-secondary-foreground",
+        ping: "bg-secondary",
+      },
 
-        "secondary-accent":
-          "bg-secondary-muted text-secondary-accent-foreground",
+      "secondary-accent": {
+        notification: "bg-secondary-muted text-secondary-accent-foreground",
+        ping: "bg-secondary",
+      },
 
-        "secondary-muted": "bg-secondary-muted text-secondary-muted-foreground",
+      "secondary-muted": {
+        notification: "bg-secondary-muted text-secondary-muted-foreground",
+        ping: "bg-secondary",
+      },
 
-        "secondary-surface":
-          "border border-secondary-faded-border bg-secondary-faded text-secondary-accent-foreground",
+      "secondary-surface": {
+        notification:
+          "bg-secondary-faded text-secondary-accent-foreground inset-ring inset-ring-secondary-faded-border",
+        ping: "bg-secondary",
+      },
 
-        "secondary-faded":
-          "border border-secondary-faded-border bg-secondary-faded text-secondary-muted-foreground",
+      "secondary-faded": {
+        notification:
+          "bg-secondary-faded text-secondary-muted-foreground inset-ring inset-ring-secondary-faded-border",
+        ping: "bg-secondary",
+      },
 
-        // -- destructive --
-        destructive: "bg-destructive text-destructive-foreground",
+      // -- destructive --
+      destructive: {
+        notification: "bg-destructive text-destructive-foreground",
+        ping: "bg-destructive",
+      },
 
-        "destructive-accent":
-          "bg-destructive-muted text-destructive-accent-foreground",
+      "destructive-accent": {
+        notification: "bg-destructive-muted text-destructive-accent-foreground",
+        ping: "bg-destructive",
+      },
 
-        "destructive-muted":
-          "bg-destructive-muted text-destructive-muted-foreground",
+      "destructive-muted": {
+        notification: "bg-destructive-muted text-destructive-muted-foreground",
+        ping: "bg-destructive",
+      },
 
-        "destructive-surface":
-          "border border-destructive-faded-border bg-destructive-faded text-destructive-accent-foreground",
+      "destructive-surface": {
+        notification:
+          "bg-destructive-faded text-destructive-accent-foreground inset-ring inset-ring-destructive-faded-border",
+        ping: "bg-destructive",
+      },
 
-        "destructive-faded":
-          "border border-destructive-faded-border bg-destructive-faded text-destructive-muted-foreground",
+      "destructive-faded": {
+        notification:
+          "bg-destructive-faded text-destructive-muted-foreground inset-ring inset-ring-destructive-faded-border",
+        ping: "bg-destructive",
+      },
 
-        // -- success --
-        success: "bg-success text-success-foreground",
+      // -- success --
+      success: {
+        notification: "bg-success text-success-foreground",
+        ping: "bg-success",
+      },
 
-        "success-accent": "bg-success-muted text-success-accent-foreground",
+      "success-accent": {
+        notification: "bg-success-muted text-success-accent-foreground",
+        ping: "bg-success",
+      },
 
-        "success-muted": "bg-success-muted text-success-muted-foreground",
+      "success-muted": {
+        notification: "bg-success-muted text-success-muted-foreground",
+        ping: "bg-success",
+      },
 
-        "success-surface":
-          "border border-success-faded-border bg-success-faded text-success-accent-foreground",
+      "success-surface": {
+        notification:
+          "bg-success-faded text-success-accent-foreground inset-ring inset-ring-success-faded-border",
+        ping: "bg-success",
+      },
 
-        "success-faded":
-          "border border-success-faded-border bg-success-faded text-success-muted-foreground",
+      "success-faded": {
+        notification:
+          "bg-success-faded text-success-muted-foreground inset-ring inset-ring-success-faded-border",
+        ping: "bg-success",
+      },
 
-        // -- warning --
-        warning: "bg-warning text-warning-foreground",
+      // -- warning --
+      warning: {
+        notification: "bg-warning text-warning-foreground",
+        ping: "bg-warning",
+      },
 
-        "warning-accent": "bg-warning-muted text-warning-accent-foreground",
+      "warning-accent": {
+        notification: "bg-warning-muted text-warning-accent-foreground",
+        ping: "bg-warning",
+      },
 
-        "warning-muted": "bg-warning-muted text-warning-muted-foreground",
+      "warning-muted": {
+        notification: "bg-warning-muted text-warning-muted-foreground",
+        ping: "bg-warning",
+      },
 
-        "warning-surface":
-          "border border-warning-faded-border bg-warning-faded text-warning-accent-foreground",
+      "warning-surface": {
+        notification:
+          "bg-warning-faded text-warning-accent-foreground inset-ring inset-ring-warning-faded-border",
+        ping: "bg-warning",
+      },
 
-        "warning-faded":
-          "border border-warning-faded-border bg-warning-faded text-warning-muted-foreground",
+      "warning-faded": {
+        notification:
+          "bg-warning-faded text-warning-muted-foreground inset-ring inset-ring-warning-faded-border",
+        ping: "bg-warning",
       },
     },
-    defaultVariants: {
-      variant: "primary",
-    },
-  }
-);
-
-const pingVariants = ({
-  variant,
-}: {
-  variant: VariantProps<typeof notificationVariants>["variant"];
-}) =>
-  ({
-    outline: "bg-base-bg",
-    contrast: "bg-contrast",
-    base: "bg-base-bg",
-    accent: "bg-base-bg",
-    muted: "bg-base-bg",
-    surface: "bg-base-bg",
-    faded: "bg-base-bg",
-    primary: "bg-primary",
-    "primary-accent": "bg-primary",
-    "primary-muted": "bg-primary",
-    "primary-surface": "bg-primary",
-    "primary-faded": "bg-primary",
-    secondary: "bg-secondary",
-    "secondary-accent": "bg-secondary",
-    "secondary-muted": "bg-secondary",
-    "secondary-surface": "bg-secondary",
-    "secondary-faded": "bg-secondary",
-    destructive: "bg-destructive",
-    "destructive-accent": "bg-destructive",
-    "destructive-muted": "bg-destructive",
-    "destructive-surface": "bg-destructive",
-    "destructive-faded": "bg-destructive",
-    success: "bg-success",
-    "success-accent": "bg-success",
-    "success-muted": "bg-success",
-    "success-surface": "bg-success",
-    "success-faded": "bg-success",
-    warning: "bg-warning",
-    "warning-accent": "bg-warning",
-    "warning-muted": "bg-warning",
-    "warning-surface": "bg-warning",
-    "warning-faded": "bg-warning",
-  })[variant || "primary"];
+  },
+  defaultVariants: {
+    variant: "primary",
+  },
+});
 
 type NotificationProps = React.ComponentProps<"span"> &
   VariantProps<typeof notificationVariants> & {
-    containerClassName?: string;
-    pingClassName?: string;
+    classNames?: {
+      container?: string;
+      ping?: string;
+      backdrop?: string;
+      notification?: string;
+    };
     position?: "top-right" | "top-left" | "bottom-right" | "bottom-left";
     ping?: boolean;
     outlined?: boolean;
@@ -152,8 +222,7 @@ type NotificationProps = React.ComponentProps<"span"> &
 
 function Notification({
   className,
-  containerClassName,
-  pingClassName,
+  classNames,
   variant = "primary",
   position,
   ping,
@@ -161,15 +230,26 @@ function Notification({
   children,
   ...props
 }: NotificationProps) {
+  const {
+    container,
+    ping: pingVariants,
+    backdrop,
+    notification,
+  } = notificationVariants({
+    variant,
+  });
+
   return (
     <span
       data-slot="notification-container"
       data-position={position}
       className={cn(
-        "relative isolate flex rounded-full [--offset:42%] data-[position]:absolute [[data-position*='bottom']]:bottom-0 [[data-position*='bottom']]:translate-y-(--offset) [[data-position*='left']]:left-0 [[data-position*='left']]:-translate-x-(--offset) [[data-position*='right']]:right-0 [[data-position*='right']]:translate-x-(--offset) [[data-position*='top']]:top-0 [[data-position*='top']]:-translate-y-(--offset)",
-        children ? "h-5 min-w-5" : "size-2.5",
+        container(),
+        children
+          ? "h-(--notification-size) min-w-(--notification-size)"
+          : "size-(--notification-size-empty)",
         outlined && "outline-2 outline-background",
-        containerClassName
+        classNames?.container
       )}
     >
       {ping && (
@@ -177,30 +257,21 @@ function Notification({
           data-slot="notification-ping"
           aria-hidden="true"
           className={cn(
-            pingVariants({ variant }),
-            "absolute top-1/2 left-1/2 z-[1] size-full -translate-x-1/2 -translate-y-1/2 animate-ping rounded-full opacity-75",
+            pingVariants(),
             children ? "animate-ping-sm" : "animate-ping",
-            pingClassName
+            classNames?.ping
           )}
         />
       )}
 
       <span
-        data-slot="notification-background"
-        className={cn(
-          "absolute top-1/2 left-1/2 z-[2] size-full -translate-x-1/2 -translate-y-1/2 rounded-full bg-background",
-          children ? "h-5 min-w-5" : "size-2.5"
-        )}
+        data-slot="notification-backdrop"
+        aria-hidden="true"
+        className={cn(backdrop(), classNames?.backdrop)}
       />
       <span
         data-slot="notification"
-        className={cn(
-          notificationVariants({ variant }),
-          "relative z-[3]",
-          children ? "h-5 min-w-5" : "size-2.5",
-
-          className
-        )}
+        className={cn(notification(), classNames?.notification, className)}
         {...props}
       >
         {children}
@@ -209,4 +280,4 @@ function Notification({
   );
 }
 
-export { Notification };
+export { Notification, notificationVariants };

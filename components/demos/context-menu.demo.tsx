@@ -86,7 +86,7 @@ export function ContextMenuDemo() {
   return (
     <>
       <ComponentContainer className="overflow-hidden rounded-t-lg p-0 md:rounded-l-lg md:rounded-r-none">
-        <div className="relative flex h-full min-h-96 w-full min-w-0 flex-col items-center justify-center bg-center p-4">
+        <div className="relative flex h-full min-h-96 w-full min-w-0 flex-col items-center justify-center bg-center p-(--demo-gutter)">
           <BackgroundPattern />
           <ContextMenu>
             <ContextMenuTrigger className="grid min-h-48 w-full max-w-xs place-items-center rounded-lg border border-dashed border-border bg-faded text-accent-foreground capitalize backdrop-blur-md">

@@ -301,7 +301,7 @@ const buttonVariants = tv({
       xs: [
         "h-(--size-sm) sm:h-(--size-xs)",
         "text-sm sm:text-smaller",
-        "gap-1.5 rounded-md px-2 py-1 sm:rounded-sm",
+        "gap-1.5 rounded-md px-2 py-1",
       ],
 
       sm: [
@@ -319,15 +319,12 @@ const buttonVariants = tv({
       lg: [
         "h-(--size-xl) sm:h-(--size-lg)",
         "text-lg sm:text-base",
-        "gap-3 rounded-md px-4.5 py-2.5",
+        "gap-2.5 rounded-md px-4.5 py-2.5",
       ],
 
       "icon-2xs": ["size(--size-xl) sm:size-(--size-2xs)", "rounded-sm"],
 
-      "icon-xs": [
-        "size-(--size-sm) sm:size-(--size-xs)",
-        "rounded-md sm:rounded-sm",
-      ],
+      "icon-xs": ["size-(--size-sm) sm:size-(--size-xs)", "rounded-md"],
 
       "icon-sm": ["size-(--size-md) sm:size-(--size-sm)", "rounded-md"],
 

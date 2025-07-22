@@ -10,27 +10,21 @@ import {
   SelectTrigger,
   SelectValue,
 } from "~/components/ui/select";
-import { Slider } from "~/components/ui/slider";
+import { Slider, sliderVariants } from "~/components/ui/slider";
+import { Switch } from "~/components/ui/switch";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
-import { Swatch } from "~/components/swatch";
 
-const variants = [
-  "base",
-  "faded",
-  "primary",
-  "primary-muted",
-  "primary-faded",
-  "secondary",
-  "secondary-muted",
-  "secondary-faded",
-] as const;
+type Variant = keyof typeof sliderVariants.variants.variant;
+const variants = Object.keys(sliderVariants.variants.variant) as Variant[];
 
 const orientations = ["horizontal", "vertical"] as const;
 
 export function SliderDemo() {
-  const [variant, setVariant] = React.useState("primary");
+  const [variant, setVariant] = React.useState<Variant>("primary");
   const [orientation, setOrientation] = React.useState("horizontal");
+  const [invalid, setInvalid] = React.useState(false);
+  const [disabled, setDisabled] = React.useState(false);
 
   return (
     <>
@@ -43,54 +37,54 @@ export function SliderDemo() {
               defaultValue={[50]}
               max={100}
               step={1}
-              variant={variant as (typeof variants)[number]}
+              variant={variant}
               orientation={orientation as (typeof orientations)[number]}
+              aria-invalid={invalid}
+              disabled={disabled}
             />
             <Slider
               defaultValue={[50]}
               max={100}
               step={25}
-              variant={variant as (typeof variants)[number]}
+              variant={variant}
               orientation={orientation as (typeof orientations)[number]}
+              aria-invalid={invalid}
+              disabled={disabled}
             />
             <Slider
               defaultValue={[25, 50]}
               max={100}
               step={1}
-              variant={variant as (typeof variants)[number]}
+              variant={variant}
               orientation={orientation as (typeof orientations)[number]}
+              aria-invalid={invalid}
+              disabled={disabled}
             />
             <Slider
               defaultValue={[10, 20]}
               max={100}
               step={10}
-              variant={variant as (typeof variants)[number]}
+              variant={variant}
               orientation={orientation as (typeof orientations)[number]}
-            />
-            <Slider
-              defaultValue={[50]}
-              max={100}
-              step={1}
-              variant={variant as (typeof variants)[number]}
-              orientation={orientation as (typeof orientations)[number]}
-              disabled
+              aria-invalid={invalid}
+              disabled={disabled}
             />
           </div>
-
-          <SliderControlled variant={variant as (typeof variants)[number]} />
         </div>
       </ComponentContainer>
       <ComponentPlayground>
         <div className="grid gap-2">
           <Label htmlFor="slider-variant">Variant</Label>
-          <Select value={variant} onValueChange={setVariant}>
+          <Select
+            value={variant}
+            onValueChange={(value) => setVariant(value as Variant)}
+          >
             <SelectTrigger id="slider-variant" className="w-full">
               <SelectValue placeholder="Select variant" />
             </SelectTrigger>
             <SelectContent>
               {variants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
-                  <Swatch variant={variant} />
                   {variant}
                 </SelectItem>
               ))}
@@ -112,54 +106,24 @@ export function SliderDemo() {
             </SelectContent>
           </Select>
         </div>
+        <div className="flex items-center gap-3">
+          <Switch
+            id="slider-invalid"
+            checked={invalid}
+            onCheckedChange={setInvalid}
+            disabled={disabled}
+          />
+          <Label htmlFor="slider-invalid">Invalid</Label>
+        </div>
+        <div className="flex items-center gap-3">
+          <Switch
+            id="slider-disabled"
+            checked={disabled}
+            onCheckedChange={setDisabled}
+          />
+          <Label htmlFor="slider-disabled">Disabled</Label>
+        </div>
       </ComponentPlayground>
     </>
-  );
-}
-
-function SliderControlled({ variant }: { variant: (typeof variants)[number] }) {
-  const [value, setValue] = React.useState([0.3, 0.7]);
-
-  const hasError = Math.abs(value[1] - value[0]) < 0.5;
-  const errorMessage = "Range must be at least 0.5";
-
-  const textVariants = {
-    base: "text-muted-foreground",
-    faded: "text-muted-foreground",
-    primary: "text-primary-muted-foreground",
-    "primary-muted": "text-primary-muted-foreground",
-    "primary-faded": "text-primary-muted-foreground",
-    secondary: "text-secondary-muted-foreground",
-    "secondary-muted": "text-secondary-muted-foreground",
-    "secondary-faded": "text-secondary-muted-foreground",
-  }[variant];
-
-  return (
-    <div className="grid w-full gap-3">
-      <div className="flex items-center justify-between gap-2">
-        <Label htmlFor="slider-demo-temperature">Temperature</Label>
-        <span
-          className={`text-sm ${hasError ? "text-destructive-muted-foreground" : textVariants}`}
-        >
-          {value.join(", ")}
-        </span>
-      </div>
-      <Slider
-        id="slider-demo-temperature"
-        value={value}
-        onValueChange={setValue}
-        min={0}
-        max={1}
-        step={0.1}
-        variant={variant}
-        aria-invalid={hasError}
-        aria-errormessage={hasError ? errorMessage : undefined}
-      />
-      {hasError && (
-        <span className="text-sm text-destructive-muted-foreground">
-          {errorMessage}
-        </span>
-      )}
-    </div>
   );
 }

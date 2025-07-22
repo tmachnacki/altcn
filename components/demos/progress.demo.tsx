@@ -3,7 +3,7 @@
 import * as React from "react";
 
 import { Label } from "~/components/ui/label";
-import { Progress } from "~/components/ui/progress";
+import { Progress, progressVariants } from "~/components/ui/progress";
 import {
   Select,
   SelectContent,
@@ -13,21 +13,12 @@ import {
 } from "~/components/ui/select";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
-import { Swatch } from "~/components/swatch";
 
-const variants = [
-  "base",
-  "faded",
-  "primary",
-  "primary-muted",
-  "primary-faded",
-  "secondary",
-  "secondary-muted",
-  "secondary-faded",
-] as const;
+type Variant = keyof typeof progressVariants.variants.variant;
+const variants = Object.keys(progressVariants.variants.variant) as Variant[];
 
 export function ProgressDemo() {
-  const [variant, setVariant] = React.useState("primary");
+  const [variant, setVariant] = React.useState<Variant>("primary");
 
   const [progress, setProgress] = React.useState(0);
 
@@ -43,7 +34,7 @@ export function ProgressDemo() {
     <>
       <ComponentContainer>
         <Progress
-          variant={variant as (typeof variants)[number]}
+          variant={variant}
           value={progress}
           className="w-full max-w-sm"
         />
@@ -52,14 +43,16 @@ export function ProgressDemo() {
       <ComponentPlayground>
         <div className="grid gap-2">
           <Label htmlFor="progress-variant">Variant</Label>
-          <Select value={variant} onValueChange={setVariant}>
+          <Select
+            value={variant}
+            onValueChange={(value) => setVariant(value as Variant)}
+          >
             <SelectTrigger id="progress-variant" className="w-full">
               <SelectValue placeholder="Select variant" />
             </SelectTrigger>
             <SelectContent>
               {variants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
-                  <Swatch variant={variant} />
                   {variant}
                 </SelectItem>
               ))}

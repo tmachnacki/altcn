@@ -142,7 +142,10 @@ export function CalendarDemo() {
         <div className="grid gap-2">
           <Label htmlFor="calendar-nav-variant">Nav Variant</Label>
           <Select value={navVariant} onValueChange={setNavVariant}>
-            <SelectTrigger id="calendar-nav-variant" className="w-full">
+            <SelectTrigger
+              id="calendar-nav-variant"
+              className="w-full shrink grow"
+            >
               <SelectValue placeholder="Select a variant" />
             </SelectTrigger>
             <SelectContent>
@@ -157,7 +160,10 @@ export function CalendarDemo() {
         <div className="grid gap-2">
           <Label htmlFor="calendar-selected-variant">Selected Variant</Label>
           <Select value={selectedVariant} onValueChange={setSelectedVariant}>
-            <SelectTrigger id="calendar-selected-variant" className="w-full">
+            <SelectTrigger
+              id="calendar-selected-variant"
+              className="w-full shrink grow"
+            >
               <SelectValue placeholder="Select a variant" />
             </SelectTrigger>
             <SelectContent>
@@ -180,7 +186,10 @@ export function CalendarDemo() {
             value={unselectedVariant}
             onValueChange={setUnselectedVariant}
           >
-            <SelectTrigger id="calendar-unselected-variant" className="w-full">
+            <SelectTrigger
+              id="calendar-unselected-variant"
+              className="w-full shrink grow"
+            >
               <SelectValue placeholder="Select a variant" />
             </SelectTrigger>
             <SelectContent>
@@ -198,7 +207,10 @@ export function CalendarDemo() {
         <div className="grid gap-2">
           <Label htmlFor="calendar-range-variant">Range Variant</Label>
           <Select value={rangeVariant} onValueChange={setRangeVariant}>
-            <SelectTrigger id="calendar-range-variant" className="w-full">
+            <SelectTrigger
+              id="calendar-range-variant"
+              className="w-full shrink grow"
+            >
               <SelectValue placeholder="Select a variant" />
             </SelectTrigger>
             <SelectContent>

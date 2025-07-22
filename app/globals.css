@@ -48,7 +48,7 @@
   --contrast: var(--color-base-950);
   --hover-contrast: color-mix(
     in oklab,
-    var(--color-base-950) 85%,
+    var(--color-base-950) 80%,
     var(--color-white)
   );
   --contrast-foreground: var(--color-base-50);
@@ -765,7 +765,6 @@
 
   /* faded */
   --color-faded: var(--faded);
-  --color-faded-solid: var(--faded-solid);
   --color-hover-faded: var(--hover-faded);
   --color-faded-border: var(--faded-border);
 

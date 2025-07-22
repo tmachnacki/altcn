@@ -5,7 +5,10 @@ import { BellIcon, MessageCircleIcon } from "lucide-react";
 
 import { Button } from "~/components/ui/button";
 import { Label } from "~/components/ui/label";
-import { Notification } from "~/components/ui/notification";
+import {
+  Notification,
+  notificationVariants,
+} from "~/components/ui/notification";
 import {
   Select,
   SelectContent,
@@ -16,41 +19,11 @@ import {
 import { Switch } from "~/components/ui/switch";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
-import { Swatch } from "~/components/swatch";
 
-const variants = [
-  "outline",
-  "base",
-  "accent",
-  "muted",
-  "surface",
-  "faded",
-  "primary",
-  "primary-accent",
-  "primary-muted",
-  "primary-surface",
-  "primary-faded",
-  "secondary",
-  "secondary-accent",
-  "secondary-muted",
-  "secondary-surface",
-  "secondary-faded",
-  "destructive",
-  "destructive-accent",
-  "destructive-muted",
-  "destructive-surface",
-  "destructive-faded",
-  "success",
-  "success-accent",
-  "success-muted",
-  "success-surface",
-  "success-faded",
-  "warning",
-  "warning-accent",
-  "warning-muted",
-  "warning-surface",
-  "warning-faded",
-] as const;
+type Variant = keyof typeof notificationVariants.variants.variant;
+const variants = Object.keys(
+  notificationVariants.variants.variant
+) as Variant[];
 
 const positions = [
   "top-right",
@@ -60,8 +33,9 @@ const positions = [
 ] as const;
 
 export function NotificationDemo() {
-  const [variant, setVariant] = React.useState("primary");
-  const [position, setPosition] = React.useState("top-right");
+  const [variant, setVariant] = React.useState<Variant>("primary");
+  const [position, setPosition] =
+    React.useState<(typeof positions)[number]>("top-right");
 
   const [outlined, setOutlined] = React.useState(false);
   const [ping, setPing] = React.useState(false);
@@ -71,34 +45,19 @@ export function NotificationDemo() {
       <ComponentContainer>
         <div className="grid gap-8">
           <div className="flex flex-wrap items-center gap-4">
-            <Notification
-              variant={variant as (typeof variants)[number]}
-              ping={ping}
-            >
+            <Notification variant={variant} ping={ping}>
               New
             </Notification>
-            <Notification
-              variant={variant as (typeof variants)[number]}
-              ping={ping}
-            >
+            <Notification variant={variant} ping={ping}>
               7
             </Notification>
-            <Notification
-              variant={variant as (typeof variants)[number]}
-              ping={ping}
-            >
+            <Notification variant={variant} ping={ping}>
               20+
             </Notification>
-            <Notification
-              variant={variant as (typeof variants)[number]}
-              ping={ping}
-            >
+            <Notification variant={variant} ping={ping}>
               <BellIcon />
             </Notification>
-            <Notification
-              variant={variant as (typeof variants)[number]}
-              ping={ping}
-            />
+            <Notification variant={variant} ping={ping} />
           </div>
 
           <div className="flex flex-wrap items-center gap-4">
@@ -107,8 +66,8 @@ export function NotificationDemo() {
                 <MessageCircleIcon />
               </Button>
               <Notification
-                variant={variant as (typeof variants)[number]}
-                position={position as (typeof positions)[number]}
+                variant={variant}
+                position={position}
                 outlined={outlined}
                 ping={ping}
               >
@@ -120,8 +79,8 @@ export function NotificationDemo() {
                 <MessageCircleIcon />
               </Button>
               <Notification
-                variant={variant as (typeof variants)[number]}
-                position={position as (typeof positions)[number]}
+                variant={variant}
+                position={position}
                 outlined={outlined}
                 ping={ping}
               />
@@ -131,8 +90,8 @@ export function NotificationDemo() {
                 <MessageCircleIcon />
               </Button>
               <Notification
-                variant={variant as (typeof variants)[number]}
-                position={position as (typeof positions)[number]}
+                variant={variant}
+                position={position}
                 outlined={outlined}
                 ping={ping}
               >
@@ -144,8 +103,8 @@ export function NotificationDemo() {
                 <MessageCircleIcon />
               </Button>
               <Notification
-                variant={variant as (typeof variants)[number]}
-                position={position as (typeof positions)[number]}
+                variant={variant}
+                position={position}
                 outlined={outlined}
                 ping={ping}
               >
@@ -159,14 +118,16 @@ export function NotificationDemo() {
       <ComponentPlayground>
         <div className="grid gap-2">
           <Label htmlFor="notification-variant">Variant</Label>
-          <Select value={variant} onValueChange={setVariant}>
+          <Select
+            value={variant}
+            onValueChange={(value) => setVariant(value as Variant)}
+          >
             <SelectTrigger id="notification-variant" className="w-full">
               <SelectValue placeholder="Select variant" />
             </SelectTrigger>
             <SelectContent className="max-h-96">
               {variants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
-                  <Swatch variant={variant} />
                   {variant}
                 </SelectItem>
               ))}
@@ -175,7 +136,12 @@ export function NotificationDemo() {
         </div>
         <div className="grid gap-2">
           <Label htmlFor="notification-position">Position</Label>
-          <Select value={position} onValueChange={setPosition}>
+          <Select
+            value={position}
+            onValueChange={(value) =>
+              setPosition(value as (typeof positions)[number])
+            }
+          >
             <SelectTrigger id="notification-position" className="w-full">
               <SelectValue placeholder="Select position" />
             </SelectTrigger>

@@ -19,6 +19,7 @@ import {
   SelectValue,
 } from "~/components/ui/select";
 import { Switch } from "~/components/ui/switch";
+import { BackgroundPattern } from "~/components/background-pattern";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
 
@@ -34,63 +35,65 @@ export function PopoverDemo() {
 
   return (
     <>
-      <ComponentContainer>
-        <Popover>
-          <PopoverTrigger asChild>
-            <Button variant="outline">Open popover</Button>
-          </PopoverTrigger>
-          <PopoverContent
-            variant={variant as (typeof variants)[number]}
-            side={side as (typeof sides)[number]}
-            align={align as (typeof aligns)[number]}
-          >
-            <div className="grid gap-4">
-              <div className="grid gap-1.5">
-                <h4 className="leading-none font-medium">Dimensions</h4>
-                <p className="text-sm text-muted-foreground">
-                  Set the dimensions for the layer.
-                </p>
+      <ComponentContainer className="overflow-hidden rounded-t-lg p-0 md:rounded-l-lg md:rounded-r-none">
+        <div className="relative flex h-full min-h-96 w-full min-w-0 flex-col items-center justify-center bg-center p-(--demo-gutter)">
+          <BackgroundPattern />
+          <Popover>
+            <PopoverTrigger asChild>
+              <Button variant="outline">Open popover</Button>
+            </PopoverTrigger>
+            <PopoverContent
+              variant={variant as (typeof variants)[number]}
+              side={side as (typeof sides)[number]}
+              align={align as (typeof aligns)[number]}
+            >
+              <div className="grid gap-4">
+                <div className="grid gap-1.5">
+                  <h4 className="leading-none font-medium">Dimensions</h4>
+                  <p className="text-sm text-muted-foreground">
+                    Set the dimensions for the layer.
+                  </p>
+                </div>
+                <div className="grid gap-2">
+                  <div className="grid grid-cols-3 items-center gap-4">
+                    <Label htmlFor="width">Width</Label>
+                    <Input
+                      id="width"
+                      defaultValue="100%"
+                      className="col-span-2 h-8"
+                    />
+                  </div>
+                  <div className="grid grid-cols-3 items-center gap-4">
+                    <Label htmlFor="maxWidth">Max. width</Label>
+                    <Input
+                      id="maxWidth"
+                      defaultValue="300px"
+                      className="col-span-2 h-8"
+                    />
+                  </div>
+                  <div className="grid grid-cols-3 items-center gap-4">
+                    <Label htmlFor="height">Height</Label>
+                    <Input
+                      id="height"
+                      defaultValue="25px"
+                      className="col-span-2 h-8"
+                    />
+                  </div>
+                  <div className="grid grid-cols-3 items-center gap-4">
+                    <Label htmlFor="maxHeight">Max. height</Label>
+                    <Input
+                      id="maxHeight"
+                      defaultValue="none"
+                      className="col-span-2 h-8"
+                    />
+                  </div>
+                </div>
               </div>
-              <div className="grid gap-2">
-                <div className="grid grid-cols-3 items-center gap-4">
-                  <Label htmlFor="width">Width</Label>
-                  <Input
-                    id="width"
-                    defaultValue="100%"
-                    className="col-span-2 h-8"
-                  />
-                </div>
-                <div className="grid grid-cols-3 items-center gap-4">
-                  <Label htmlFor="maxWidth">Max. width</Label>
-                  <Input
-                    id="maxWidth"
-                    defaultValue="300px"
-                    className="col-span-2 h-8"
-                  />
-                </div>
-                <div className="grid grid-cols-3 items-center gap-4">
-                  <Label htmlFor="height">Height</Label>
-                  <Input
-                    id="height"
-                    defaultValue="25px"
-                    className="col-span-2 h-8"
-                  />
-                </div>
-                <div className="grid grid-cols-3 items-center gap-4">
-                  <Label htmlFor="maxHeight">Max. height</Label>
-                  <Input
-                    id="maxHeight"
-                    defaultValue="none"
-                    className="col-span-2 h-8"
-                  />
-                </div>
-              </div>
-            </div>
-            {withCloseButton && <PopoverClose />}
-          </PopoverContent>
-        </Popover>
+              {withCloseButton && <PopoverClose />}
+            </PopoverContent>
+          </Popover>
+        </div>
       </ComponentContainer>
-
       <ComponentPlayground>
         <div className="grid gap-2">
           <Label htmlFor="popover-variant">Variant</Label>
@@ -107,7 +110,6 @@ export function PopoverDemo() {
             </SelectContent>
           </Select>
         </div>
-
         <div className="grid gap-2">
           <Label htmlFor="side">Side</Label>
           <Select value={side} onValueChange={setSide}>
@@ -123,7 +125,6 @@ export function PopoverDemo() {
             </SelectContent>
           </Select>
         </div>
-
         <div className="grid gap-2">
           <Label htmlFor="align">Align</Label>
           <Select value={align} onValueChange={setAlign}>
@@ -139,7 +140,6 @@ export function PopoverDemo() {
             </SelectContent>
           </Select>
         </div>
-
         <div className="flex items-center gap-3">
           <Switch
             id="withCloseButton"
