@@ -28,15 +28,23 @@ const options = [
   { id: "64ft", name: "64 ft" },
 ];
 
-type Variant = keyof typeof radioButtonVariants.variants.variant;
-const variants = Object.keys(radioButtonVariants.variants.variant) as Variant[];
+type CheckedVariant = keyof typeof radioButtonVariants.variants.checked;
+const checkedVariants = Object.keys(
+  radioButtonVariants.variants.checked
+) as CheckedVariant[];
+
+type UncheckedVariant = keyof typeof radioButtonVariants.variants.unchecked;
+const uncheckedVariants = Object.keys(
+  radioButtonVariants.variants.unchecked
+) as UncheckedVariant[];
 
 type Size = keyof typeof radioButtonVariants.variants.size;
 const sizesMap: Record<number, Size> = {
-  1: "xs",
-  2: "sm",
-  3: "md",
-  4: "lg",
+  1: "2xs",
+  2: "xs",
+  3: "sm",
+  4: "md",
+  5: "lg",
 } as const;
 
 type Shape = keyof typeof radioButtonVariants.variants.shape;
@@ -46,18 +54,16 @@ type Orientation = "horizontal" | "vertical";
 
 export function RadioButtonGroupDemo() {
   const [checkedVariant, setCheckedVariant] =
-    React.useState<Variant>("primary");
+    React.useState<CheckedVariant>("primary");
   const [uncheckedVariant, setUncheckedVariant] =
-    React.useState<Variant>("outline");
-  const [sizeIdx, setSizeIdx] = React.useState(3);
+    React.useState<UncheckedVariant>("outline");
+  const [sizeIdx, setSizeIdx] = React.useState(4);
   const [shape, setShape] = React.useState<Shape>("box");
   const [orientation, setOrientation] =
     React.useState<Orientation>("horizontal");
 
   const [invalid, setInvalid] = React.useState(false);
   const [disabled, setDisabled] = React.useState(false);
-
-  const [selectedOption, setSelectedOption] = React.useState(options[0].id);
 
   const size = sizesMap[sizeIdx];
 
@@ -82,8 +88,6 @@ export function RadioButtonGroupDemo() {
             size={size}
             shape={shape}
             orientation={orientation as "horizontal" | "vertical"}
-            value={selectedOption}
-            onValueChange={setSelectedOption}
             className="grid grid-cols-5 data-[orientation=vertical]:grid-cols-1"
           >
             {options.map((option) => (
@@ -92,7 +96,6 @@ export function RadioButtonGroupDemo() {
                 value={option.id}
                 aria-invalid={invalid}
                 disabled={disabled}
-                checked={selectedOption === option.id}
               >
                 {option.name}
               </RadioButton>
@@ -102,16 +105,18 @@ export function RadioButtonGroupDemo() {
       </ComponentContainer>
       <ComponentPlayground>
         <div className="grid gap-2">
-          <Label htmlFor="checked-variant">Checked variant</Label>
+          <Label htmlFor="unchecked-variant">Unchecked variant</Label>
           <Select
-            value={checkedVariant}
-            onValueChange={(value) => setCheckedVariant(value as Variant)}
+            value={uncheckedVariant}
+            onValueChange={(value) =>
+              setUncheckedVariant(value as UncheckedVariant)
+            }
           >
-            <SelectTrigger id="checked-variant" className="w-full">
+            <SelectTrigger id="unchecked-variant" className="w-full">
               <SelectValue placeholder="Select a variant" />
             </SelectTrigger>
             <SelectContent className="max-h-96">
-              {variants.map((variant) => (
+              {uncheckedVariants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
                   {variant}
                 </SelectItem>
@@ -120,16 +125,18 @@ export function RadioButtonGroupDemo() {
           </Select>
         </div>
         <div className="grid gap-2">
-          <Label htmlFor="unchecked-variant">Unchecked variant</Label>
+          <Label htmlFor="checked-variant">Checked variant</Label>
           <Select
-            value={uncheckedVariant}
-            onValueChange={(value) => setUncheckedVariant(value as Variant)}
+            value={checkedVariant}
+            onValueChange={(value) =>
+              setCheckedVariant(value as CheckedVariant)
+            }
           >
-            <SelectTrigger id="unchecked-variant" className="w-full">
+            <SelectTrigger id="checked-variant" className="w-full">
               <SelectValue placeholder="Select a variant" />
             </SelectTrigger>
             <SelectContent className="max-h-96">
-              {variants.map((variant) => (
+              {checkedVariants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
                   {variant}
                 </SelectItem>
@@ -146,7 +153,7 @@ export function RadioButtonGroupDemo() {
           </Label>
           <Slider
             min={1}
-            max={4}
+            max={Object.keys(sizesMap).length}
             step={1}
             value={[sizeIdx]}
             onValueChange={(value) => setSizeIdx(value[0])}
@@ -170,7 +177,6 @@ export function RadioButtonGroupDemo() {
             </SelectContent>
           </Select>
         </div>
-
         <div className="grid gap-2">
           <Label htmlFor="radio-buttons-orientation">Orientation</Label>
           <Select

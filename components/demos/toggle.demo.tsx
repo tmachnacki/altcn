@@ -21,7 +21,6 @@ import { Switch } from "~/components/ui/switch";
 import { Toggle, toggleVariants } from "~/components/ui/toggle";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
-import { Swatch } from "~/components/swatch";
 
 type Variant = keyof typeof toggleVariants.variants.variant;
 const variants = Object.keys(toggleVariants.variants.variant) as Variant[];
@@ -95,7 +94,6 @@ export function ToggleDemo() {
             <SelectContent>
               {variants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
-                  <Swatch variant={variant} />
                   {variant}
                 </SelectItem>
               ))}

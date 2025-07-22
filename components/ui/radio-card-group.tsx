@@ -93,7 +93,7 @@ function RadioCardContent({
   return (
     <div
       data-slot="radio-card-content"
-      className={cn("grid flex-1 gap-1.5", className)}
+      className={cn("grid flex-1 gap-2", className)}
       {...props}
     />
   );
@@ -104,7 +104,7 @@ function RadioCardLabel({ className, ...props }: React.ComponentProps<"span">) {
     <span
       data-slot="radio-card-label"
       className={cn(
-        "block text-sm/4 font-medium text-(--accent-text)",
+        "block text-base/4.5 font-medium text-(--accent-text) sm:text-sm/4",
         className
       )}
       {...props}
@@ -119,7 +119,10 @@ function RadioCardDescription({
   return (
     <p
       data-slot="radio-card-description"
-      className={cn("block font-normal text-(--muted-text)", className)}
+      className={cn(
+        "block text-base font-normal text-(--muted-text) sm:text-sm",
+        className
+      )}
       {...props}
     />
   );
@@ -150,7 +153,6 @@ function RadioCardRadio({
     <RadioGroupPrimitive.Item
       data-slot="radio"
       className={root({
-        variant: variant || context.variant,
         className: [
           "focus-visible:outline-none disabled:opacity-100",
           classNames?.root,
@@ -162,7 +164,7 @@ function RadioCardRadio({
       <span
         data-slot="radio-indicator"
         role="presentation"
-        className={indicator({ className: [classNames?.indicator] })}
+        className={indicator({ className: classNames?.indicator })}
       />
     </RadioGroupPrimitive.Item>
   );

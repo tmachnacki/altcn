@@ -48,7 +48,7 @@
   --contrast: var(--color-base-950);
   --hover-contrast: color-mix(
     in oklab,
-    var(--color-base-950) 90%,
+    var(--color-base-950) 85%,
     var(--color-white)
   );
   --contrast-foreground: var(--color-base-50);
@@ -359,7 +359,7 @@
 
   /** -- CONTRAST -- */
   --contrast: var(--color-base-50);
-  --hover-contrast: var(--color-base-100);
+  --hover-contrast: var(--color-base-200);
   --contrast-foreground: var(--color-base-950);
 
   /** -- BASE -- */
@@ -746,6 +746,11 @@
   --color-overlay: var(--overlay);
   --blur-overlay: var(--blur-2xs);
 
+  /** -- CONTRAST -- */
+  --color-contrast: var(--contrast);
+  --color-hover-contrast: var(--hover-contrast);
+  --color-contrast-foreground: var(--contrast-foreground);
+
   /** -- BASE -- */
   --color-base-bg: var(--base-bg);
   --color-hover-base: var(--hover-base);
@@ -996,7 +1001,7 @@
 @theme {
   --breakpoint-xs: 36rem; /* 576px */
   --blur-2xs: 2px;
-  --text-smaller: 0.8rem;
+  --text-smaller: 0.8rem; /* ~ 12.8px */
   --text-smaller--line-height: calc(1 / 0.725);
 }
 

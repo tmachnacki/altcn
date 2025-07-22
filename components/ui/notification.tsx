@@ -14,6 +14,8 @@ const notificationVariants = cva(
         // -- base --
         outline: "border border-border bg-background text-foreground",
 
+        contrast: "bg-contrast text-contrast-foreground",
+
         base: "bg-base-bg text-base-foreground",
 
         accent: "bg-muted text-accent-foreground",
@@ -106,6 +108,7 @@ const pingVariants = ({
 }) =>
   ({
     outline: "bg-base-bg",
+    contrast: "bg-contrast",
     base: "bg-base-bg",
     accent: "bg-base-bg",
     muted: "bg-base-bg",

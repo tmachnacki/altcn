@@ -20,6 +20,10 @@ const checkBoxVariants = tv({
   variants: {
     variant: {
       // -- base --
+      contrast: [
+        "outline-outline",
+        "text-contrast-foreground not-data-[state=unchecked]:bg-contrast hover:not-data-[state=unchecked]:bg-hover-contrast",
+      ],
       base: [
         "outline-outline",
         "text-base-foreground not-data-[state=unchecked]:bg-base-bg hover:not-data-[state=unchecked]:bg-hover-base",
@@ -70,7 +74,7 @@ const checkBoxVariants = tv({
   },
   compoundVariants: [
     {
-      variant: ["base", "primary", "secondary"],
+      variant: ["base", "primary", "secondary", "contrast"],
       className: [
         "bg-background shadow-xs inset-ring inset-ring-border not-disabled:not-data-[state=unchecked]:inset-ring-0 dark:data-[state=unchecked]:bg-faded",
 

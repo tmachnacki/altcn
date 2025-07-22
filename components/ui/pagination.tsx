@@ -40,6 +40,7 @@ function PaginationItem({ ...props }: React.ComponentProps<"li">) {
 }
 
 type ActiveVariant =
+  | "contrast"
   | "base"
   | "base-shadow"
   | "base-gradient"

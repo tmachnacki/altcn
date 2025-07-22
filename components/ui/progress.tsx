@@ -11,6 +11,7 @@ const progressVariants = cva(
   {
     variants: {
       variant: {
+        contrast: "bg-contrast [--progress-indicator-bg:var(--color-contrast)]",
         base: "bg-muted",
         faded: "bg-faded inset-ring inset-ring-faded-border",
 

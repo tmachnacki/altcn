@@ -20,6 +20,9 @@ const toggleVariants = tv({
       outline:
         "border border-border shadow-xs hover:bg-base-50 hover:text-muted-foreground data-[state=on]:border-hover-border data-[state=on]:bg-base-50 data-[state=on]:text-accent-foreground dark:hover:bg-base-900 dark:data-[state=on]:bg-base-900",
 
+      contrast:
+        "hover:bg-faded hover:text-muted-foreground data-[state=on]:bg-contrast data-[state=on]:text-contrast-foreground",
+
       base: "hover:bg-faded hover:text-muted-foreground data-[state=on]:bg-base-bg data-[state=on]:text-base-foreground",
 
       accent:

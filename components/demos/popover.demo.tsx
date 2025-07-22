@@ -22,10 +22,12 @@ import { Switch } from "~/components/ui/switch";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
 
+const variants = ["solid", "translucent"] as const;
 const sides = ["top", "right", "bottom", "left"] as const;
 const aligns = ["start", "center", "end"] as const;
 
 export function PopoverDemo() {
+  const [variant, setVariant] = React.useState("solid");
   const [side, setSide] = React.useState("bottom");
   const [align, setAlign] = React.useState("center");
   const [withCloseButton, setWithCloseButton] = React.useState(false);
@@ -38,6 +40,7 @@ export function PopoverDemo() {
             <Button variant="outline">Open popover</Button>
           </PopoverTrigger>
           <PopoverContent
+            variant={variant as (typeof variants)[number]}
             side={side as (typeof sides)[number]}
             align={align as (typeof aligns)[number]}
           >
@@ -89,6 +92,22 @@ export function PopoverDemo() {
       </ComponentContainer>
 
       <ComponentPlayground>
+        <div className="grid gap-2">
+          <Label htmlFor="popover-variant">Variant</Label>
+          <Select value={variant} onValueChange={setVariant}>
+            <SelectTrigger id="popover-variant" className="w-full">
+              <SelectValue placeholder="Select variant" />
+            </SelectTrigger>
+            <SelectContent>
+              {variants.map((variant) => (
+                <SelectItem key={variant} value={variant}>
+                  {variant}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+
         <div className="grid gap-2">
           <Label htmlFor="side">Side</Label>
           <Select value={side} onValueChange={setSide}>

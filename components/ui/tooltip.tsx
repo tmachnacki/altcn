@@ -9,8 +9,8 @@ import { cn } from "~/lib/utils";
 const tooltipVariants = cva("", {
   variants: {
     variant: {
-      default:
-        "bg-base-950 text-base-50 [--tooltip-arrow-bg:var(--color-base-950)] dark:bg-base-50 dark:text-base-950 dark:[--tooltip-arrow-bg:var(--color-base-50)]",
+      contrast:
+        "bg-contrast text-contrast-foreground [--tooltip-arrow-bg:var(--color-contrast)]",
       base: "bg-base-bg text-base-foreground [--tooltip-arrow-bg:var(--color-base-bg)]",
       primary:
         "bg-primary text-primary-foreground [--tooltip-arrow-bg:var(--color-primary)]",
@@ -21,7 +21,7 @@ const tooltipVariants = cva("", {
     },
   },
   defaultVariants: {
-    variant: "default",
+    variant: "contrast",
   },
 });
 
@@ -53,7 +53,7 @@ function TooltipTrigger({
 function TooltipContent({
   className,
   sideOffset = 0,
-  variant = "default",
+  variant = "contrast",
   children,
   ...props
 }: React.ComponentProps<typeof TooltipPrimitive.Content> &

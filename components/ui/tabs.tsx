@@ -43,6 +43,10 @@ const tabsTriggerVariants = tv({
         "data-[state=active]:shadow-[0_0_4px_0_rgba(0,0,0,0.04),0_2px_8px_0_rgba(0,0,0,0.06),0_0_2px_-1px_rgba(0,0,0,0.25)]",
       ],
 
+      contrast: [
+        "data-[state=active]:bg-contrast data-[state=active]:text-contrast-foreground",
+      ],
+
       base: "data-[state=active]:bg-base-bg data-[state=active]:text-base-foreground data-[state=active]:shadow-sm",
 
       outline:

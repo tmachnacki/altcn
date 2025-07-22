@@ -43,7 +43,7 @@ export function TooltipDemo() {
                 default
               </Button>
             </TooltipTrigger>
-            <TooltipContent variant="default">
+            <TooltipContent variant="contrast">
               <p>Add to library</p>
             </TooltipContent>
           </Tooltip>

@@ -49,6 +49,11 @@ const menubarTriggerVariants = tv({
         "data-[state=open]:bg-background data-[state=open]:text-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-border",
       ],
 
+      contrast: [
+        "data-[highlighted]:bg-contrast data-[highlighted]:text-contrast-foreground",
+        "data-[state=open]:bg-contrast data-[state=open]:text-contrast-foreground",
+      ],
+
       base: [
         "data-[highlighted]:bg-base-bg data-[highlighted]:text-base-foreground",
         "data-[state=open]:bg-base-bg data-[state=open]:text-base-foreground",

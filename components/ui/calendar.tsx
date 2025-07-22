@@ -42,6 +42,7 @@ type SelectVariants = {
 type DayVariants = {
   unselected?: "ghost" | "primary-ghost" | "secondary-ghost";
   selected?:
+    | "contrast"
     | "base"
     | "base-shadow"
     | "base-gradient"
@@ -318,7 +319,7 @@ function CalendarDayButton({
       data-disabled={modifiers.disabled}
       disabled={modifiers.disabled}
       className={cn(
-        "aspect-square size-auto w-full min-w-(--cell-size) gap-0 p-0 leading-none font-normal tabular-nums outline-offset-1 focus-visible:outline-1",
+        "aspect-square size-auto w-full gap-0 p-0 leading-none font-normal tabular-nums outline-offset-1 focus-visible:outline-1",
 
         "data-[disabled=true]:line-through data-[disabled=true]:not-data-[selected=true]:border-0 data-[disabled=true]:not-data-[selected=true]:bg-transparent data-[disabled=true]:not-data-[selected=true]:bg-none data-[disabled=true]:not-data-[selected=true]:text-muted-foreground data-[disabled=true]:not-data-[selected=true]:inset-ring-0",
 

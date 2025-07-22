@@ -11,13 +11,13 @@ const radioVariants = tv({
     root: [
       "group/radio peer",
 
-      "inline-flex size-4 shrink-0 grow-0 items-center justify-center rounded-full",
+      "inline-flex size-4.5 shrink-0 grow-0 items-center justify-center rounded-full sm:size-4",
 
       "hover:not-aria-invalid:data-[state=unchecked]:inset-ring-hover-border",
 
       "outline-offset-2 focus-visible:outline-2",
 
-      "disabled:pointer-events-none disabled:data-[state=checked]:text-muted-foreground disabled:opacity-50",
+      "disabled:pointer-events-none disabled:opacity-50 disabled:data-[state=checked]:text-muted-foreground",
 
       "aria-invalid:text-destructive-accent-foreground/15 aria-invalid:outline-destructive aria-invalid:disabled:data-[state=checked]:text-destructive-muted-foreground",
     ],
@@ -29,6 +29,12 @@ const radioVariants = tv({
   variants: {
     variant: {
       // -- base --
+      contrast: {
+        root: [
+          "outline-outline",
+          "data-[state=checked]:bg-contrast data-[state=checked]:text-contrast-foreground hover:data-[state=checked]:bg-hover-contrast",
+        ],
+      },
       base: {
         root: [
           "outline-outline",
@@ -97,7 +103,7 @@ const radioVariants = tv({
   },
   compoundVariants: [
     {
-      variant: ["base", "primary", "secondary"],
+      variant: ["base", "primary", "secondary", "contrast"],
       className: {
         root: [
           "bg-background text-foreground/15 shadow-xs inset-ring inset-ring-border not-disabled:data-[state=checked]:inset-ring-0 dark:data-[state=unchecked]:bg-faded",

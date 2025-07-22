@@ -17,9 +17,9 @@ function Card({
     <Comp
       data-slot="card"
       className={cn(
-        "rounded-lg border border-border text-card-foreground",
+        "rounded-lg border border-border text-card-foreground shadow-md",
         variant === "solid"
-          ? "bg-card shadow-md"
+          ? "bg-card"
           : "bg-card-translucent backdrop-blur-card-translucent",
         className
       )}

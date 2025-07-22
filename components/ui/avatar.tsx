@@ -43,6 +43,8 @@ const avatarFallbackVariants = tv({
       // -- base --
       outline: "border border-border bg-background text-foreground",
 
+      contrast: "bg-contrast text-contrast-foreground",
+
       base: "bg-base-bg text-base-foreground",
 
       accent: "bg-muted text-accent-foreground",

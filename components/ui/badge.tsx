@@ -25,6 +25,13 @@ const badgeVariants = tv({
       // -- base --
       outline: "",
 
+      contrast: [
+        "bg-contrast text-contrast-foreground",
+        "[a&]:hover:bg-hover-contrast",
+        "[button&]:hover:bg-hover-contrast",
+        "[--hover-badge-close-bg:--alpha(var(--color-contrast-foreground)/20%)]",
+      ],
+
       base: [
         "bg-base-bg text-base-foreground",
         "[a&]:hover:bg-hover-base",
@@ -382,6 +389,24 @@ const badgeVariants = tv({
         "[button&]:hover:bg-base-50 [button&]:hover:inset-ring-hover-border dark:[button&]:hover:bg-base-900",
         "[--hover-badge-close-bg:var(--color-muted)]",
       ],
+    },
+    {
+      variant: [
+        "outline",
+        "contrast",
+        "base",
+        "accent",
+        "muted",
+        "surface",
+        "faded",
+        "dotted",
+        "primary-dotted",
+        "secondary-dotted",
+        "destructive-dotted",
+        "success-dotted",
+        "warning-dotted",
+      ],
+      className: ["outline-outline"],
     },
     {
       variant: [

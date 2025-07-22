@@ -13,7 +13,6 @@ import {
 import { Switch, switchVariants } from "~/components/ui/switch";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
-import { Swatch } from "~/components/swatch";
 
 type Variant = keyof typeof switchVariants.variants.variant;
 const variants = Object.keys(switchVariants.variants.variant) as Variant[];
@@ -56,7 +55,6 @@ export function SwitchDemo() {
             <SelectContent>
               {variants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
-                  <Swatch variant={variant} />
                   {variant}
                 </SelectItem>
               ))}

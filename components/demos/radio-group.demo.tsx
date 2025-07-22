@@ -14,7 +14,6 @@ import {
 import { Switch } from "~/components/ui/switch";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
-import { Swatch } from "~/components/swatch";
 
 type Variant = keyof typeof radioVariants.variants.variant;
 const variants = Object.keys(radioVariants.variants.variant) as Variant[];
@@ -69,7 +68,6 @@ export function RadioGroupDemo() {
             <SelectContent>
               {variants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
-                  <Swatch variant={variant} />
                   {variant}
                 </SelectItem>
               ))}

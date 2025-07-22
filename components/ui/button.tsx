@@ -20,6 +20,11 @@ const buttonVariants = tv({
         "hover:border-hover-border hover:bg-base-50 dark:hover:bg-base-900",
       ],
 
+      contrast: [
+        "bg-contrast text-contrast-foreground shadow",
+        "hover:bg-hover-contrast",
+      ],
+
       base: ["bg-base-bg text-base-foreground shadow", "hover:bg-hover-base"],
 
       accent: ["bg-muted text-accent-foreground", "hover:bg-hover-muted"],
@@ -335,6 +340,7 @@ const buttonVariants = tv({
     {
       variant: [
         "outline",
+        "contrast",
         "base",
         "accent",
         "muted",

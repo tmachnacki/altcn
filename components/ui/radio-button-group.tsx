@@ -6,15 +6,15 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 import { cn } from "~/lib/utils";
 
-// import { buttonVariants } from "~/components/ui/button";
+import { buttonVariants } from "~/components/ui/button";
 import { Tron } from "~/components/ui/tron";
 
 const radioButtonVariants = tv({
   base: [
     "group/radio-button",
-    "touch-target relative isolate inline-flex items-center justify-center gap-2 text-sm font-semibold whitespace-nowrap select-none",
+    "touch-target relative isolate inline-flex items-center justify-center font-semibold whitespace-nowrap select-none",
     "active:opacity-80",
-    "disabled:pointer-events-none disabled:line-through disabled:opacity-50 disabled:shadow-none",
+    "disabled:pointer-events-none disabled:line-through disabled:opacity-50 disabled:data-[state=checked]:shadow-none disabled:data-[state=unchecked]:shadow-none",
     "outline-offset-2 focus-visible:outline-2",
     "aria-invalid:outline-destructive",
     "**:[svg]:pointer-events-none **:[svg]:shrink-0 **:[svg]:grow-0",
@@ -24,194 +24,271 @@ const radioButtonVariants = tv({
       box: "rounded-md",
       pill: "rounded-full",
     },
-    variant: {
+    unchecked: {
       // --- base ---
       outline: [
-        "bg-background text-foreground shadow-xs inset-ring inset-ring-border",
-        "hover:bg-base-50 hover:inset-ring-hover-border dark:hover:bg-base-900",
-        "disabled:text-muted-foreground",
-        "aria-invalid:inset-ring-destructive/50",
+        "data-[state=unchecked]:bg-background data-[state=unchecked]:text-foreground data-[state=unchecked]:shadow-xs data-[state=unchecked]:inset-ring data-[state=unchecked]:inset-ring-border",
+        "hover:data-[state=unchecked]:bg-base-50 hover:data-[state=unchecked]:inset-ring-hover-border dark:hover:data-[state=unchecked]:bg-base-900",
+        "disabled:data-[state=unchecked]:text-muted-foreground",
+        "aria-invalid:data-[state=unchecked]:inset-ring-destructive/50",
       ],
 
-      base: ["bg-base-bg text-base-foreground shadow", "hover:bg-hover-base"],
+      accent: [
+        "data-[state=unchecked]:bg-muted data-[state=unchecked]:text-accent-foreground",
+        "hover:data-[state=unchecked]:bg-hover-muted",
+      ],
 
-      accent: ["bg-muted text-accent-foreground", "hover:bg-hover-muted"],
-
-      muted: ["bg-muted text-muted-foreground", "hover:bg-hover-muted"],
+      muted: [
+        "data-[state=unchecked]:bg-muted data-[state=unchecked]:text-muted-foreground",
+        "hover:data-[state=unchecked]:bg-hover-muted",
+      ],
 
       surface: [
-        "bg-faded text-accent-foreground inset-ring inset-ring-faded-border",
-        "hover:bg-hover-faded",
+        "data-[state=unchecked]:bg-faded data-[state=unchecked]:text-accent-foreground data-[state=unchecked]:inset-ring data-[state=unchecked]:inset-ring-faded-border",
+        "hover:data-[state=unchecked]:bg-hover-faded",
       ],
 
       faded: [
-        "bg-faded text-muted-foreground inset-ring inset-ring-faded-border",
-        "hover:bg-hover-faded",
+        "data-[state=unchecked]:bg-faded data-[state=unchecked]:text-muted-foreground data-[state=unchecked]:inset-ring data-[state=unchecked]:inset-ring-faded-border",
+        "hover:data-[state=unchecked]:bg-hover-faded",
       ],
 
       "base-shadow": [
-        "bg-base shadow-base/50 text-base-foreground shadow-lg",
-        "hover:bg-hover-base",
+        "data-[state=unchecked]:bg-base data-[state=unchecked]:shadow-base/50 data-[state=unchecked]:text-base-foreground data-[state=unchecked]:shadow-lg",
+        "hover:data-[state=unchecked]:bg-hover-base",
       ],
 
       "base-gradient": [
-        "bg-linear-(--base-gradient) text-base-foreground shadow",
-        "hover:bg-linear-(--hover-base-gradient)",
+        "data-[state=unchecked]:bg-linear-(--base-gradient) data-[state=unchecked]:text-base-foreground data-[state=unchecked]:shadow",
+        "hover:data-[state=unchecked]:bg-linear-(--hover-base-gradient)",
       ],
 
       ghost: [
-        "bg-transparent text-foreground",
-        "hover:bg-muted hover:text-accent-foreground",
+        "data-[state=unchecked]:bg-transparent data-[state=unchecked]:text-foreground",
+        "hover:data-[state=unchecked]:bg-muted hover:data-[state=unchecked]:text-accent-foreground",
+      ],
+
+      // --- primary ---
+      "primary-accent": [
+        "data-[state=unchecked]:bg-primary-muted data-[state=unchecked]:text-primary-accent-foreground",
+        "hover:data-[state=unchecked]:bg-hover-primary-muted",
+      ],
+
+      "primary-muted": [
+        "data-[state=unchecked]:bg-primary-muted data-[state=unchecked]:text-primary-muted-foreground",
+        "hover:data-[state=unchecked]:bg-hover-primary-muted",
+      ],
+
+      "primary-surface": [
+        "data-[state=unchecked]:bg-primary-faded data-[state=unchecked]:text-primary-accent-foreground data-[state=unchecked]:inset-ring data-[state=unchecked]:inset-ring-primary-faded-border",
+        "hover:data-[state=unchecked]:bg-hover-primary-faded",
+      ],
+
+      "primary-faded": [
+        "data-[state=unchecked]:bg-primary-faded data-[state=unchecked]:text-primary-muted-foreground data-[state=unchecked]:inset-ring data-[state=unchecked]:inset-ring-primary-faded-border",
+        "hover:data-[state=unchecked]:bg-hover-primary-faded",
+      ],
+
+      "primary-tron": [
+        "data-[state=unchecked]:bg-background data-[state=unchecked]:bg-linear-(--primary-tron-gradient) data-[state=unchecked]:text-primary-muted-foreground data-[state=unchecked]:shadow data-[state=unchecked]:inset-ring data-[state=unchecked]:inset-ring-primary-tron-border",
+        "hover:data-[state=unchecked]:bg-linear-(--hover-primary-tron-gradient) hover:data-[state=unchecked]:inset-ring-hover-primary-tron-border",
+        "[--tron-beam:var(--color-primary)] [--tron-blur:var(--color-primary-tron-blur)]",
+      ],
+
+      "primary-ghost": [
+        "data-[state=unchecked]:text-primary-muted-foreground",
+        "hover:data-[state=unchecked]:bg-primary-muted hover:data-[state=unchecked]:text-primary-accent-foreground",
+      ],
+
+      // secondary
+      "secondary-accent": [
+        "data-[state=unchecked]:bg-secondary-muted data-[state=unchecked]:text-secondary-accent-foreground",
+        "hover:data-[state=unchecked]:bg-hover-secondary-muted",
+      ],
+
+      "secondary-muted": [
+        "data-[state=unchecked]:bg-secondary-muted data-[state=unchecked]:text-secondary-muted-foreground",
+        "hover:data-[state=unchecked]:bg-hover-secondary-muted",
+      ],
+
+      "secondary-surface": [
+        "data-[state=unchecked]:bg-secondary-faded data-[state=unchecked]:text-secondary-accent-foreground data-[state=unchecked]:inset-ring data-[state=unchecked]:inset-ring-secondary-faded-border",
+        "hover:data-[state=unchecked]:bg-hover-secondary-faded",
+      ],
+
+      "secondary-faded": [
+        "data-[state=unchecked]:bg-secondary-faded data-[state=unchecked]:text-secondary-muted-foreground data-[state=unchecked]:inset-ring data-[state=unchecked]:inset-ring-secondary-faded-border",
+        "hover:data-[state=unchecked]:bg-hover-secondary-faded",
+      ],
+
+      "secondary-tron": [
+        "data-[state=unchecked]:bg-background data-[state=unchecked]:bg-linear-(--secondary-tron-gradient) data-[state=unchecked]:text-secondary-muted-foreground data-[state=unchecked]:shadow data-[state=unchecked]:inset-ring data-[state=unchecked]:inset-ring-secondary-tron-border",
+        "hover:data-[state=unchecked]:bg-linear-(--hover-secondary-tron-gradient) hover:data-[state=unchecked]:inset-ring-hover-secondary-tron-border",
+        "[--tron-beam:var(--color-secondary)] [--tron-blur:var(--color-secondary-tron-blur)]",
+      ],
+
+      "secondary-ghost": [
+        "data-[state=unchecked]:text-secondary-muted-foreground",
+        "hover:data-[state=unchecked]:bg-secondary-muted hover:data-[state=unchecked]:text-secondary-accent-foreground",
+      ],
+    },
+    checked: {
+      outline: [
+        "data-[state=checked]:bg-background data-[state=checked]:text-foreground data-[state=checked]:shadow-xs data-[state=checked]:inset-ring data-[state=checked]:inset-ring-border",
+        "hover:data-[state=checked]:bg-base-50 hover:data-[state=checked]:inset-ring-hover-border dark:hover:data-[state=checked]:bg-base-900",
+        "disabled:data-[state=checked]:text-muted-foreground",
+        "aria-invalid:data-[state=checked]:inset-ring-destructive/50",
+      ],
+
+      contrast: [
+        "data-[state=checked]:bg-contrast data-[state=checked]:text-contrast-foreground",
+        "hover:data-[state=checked]:bg-hover-contrast",
+      ],
+
+      base: [
+        "data-[state=checked]:bg-base-bg data-[state=checked]:text-base-foreground data-[state=checked]:shadow",
+        "hover:data-[state=checked]:bg-hover-base",
+      ],
+
+      accent: [
+        "data-[state=checked]:bg-muted data-[state=checked]:text-accent-foreground",
+        "hover:data-[state=checked]:bg-hover-muted",
+      ],
+
+      muted: [
+        "data-[state=checked]:bg-muted data-[state=checked]:text-muted-foreground",
+        "hover:data-[state=checked]:bg-hover-muted",
+      ],
+
+      surface: [
+        "data-[state=checked]:bg-faded data-[state=checked]:text-accent-foreground data-[state=checked]:inset-ring data-[state=checked]:inset-ring-faded-border",
+        "hover:data-[state=checked]:bg-hover-faded",
+      ],
+
+      faded: [
+        "data-[state=checked]:bg-faded data-[state=checked]:text-muted-foreground data-[state=checked]:inset-ring data-[state=checked]:inset-ring-faded-border",
+        "hover:data-[state=checked]:bg-hover-faded",
+      ],
+
+      "base-shadow": [
+        "data-[state=checked]:bg-base data-[state=checked]:shadow-base/50 data-[state=checked]:text-base-foreground data-[state=checked]:shadow-lg",
+        "hover:data-[state=checked]:bg-hover-base",
+      ],
+
+      "base-gradient": [
+        "data-[state=checked]:bg-linear-(--base-gradient) data-[state=checked]:text-base-foreground data-[state=checked]:shadow",
+        "hover:data-[state=checked]:bg-linear-(--hover-base-gradient)",
       ],
 
       // --- primary ---
       primary: [
-        "bg-primary text-primary-foreground shadow",
-        "hover:bg-hover-primary",
+        "data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground data-[state=checked]:shadow",
+        "hover:data-[state=checked]:bg-hover-primary",
       ],
 
       "primary-accent": [
-        "bg-primary-muted text-primary-accent-foreground",
-        "hover:bg-hover-primary-muted",
+        "data-[state=checked]:bg-primary-muted data-[state=checked]:text-primary-accent-foreground",
+        "hover:data-[state=checked]:bg-hover-primary-muted",
       ],
 
       "primary-muted": [
-        "bg-primary-muted text-primary-muted-foreground",
-        "hover:bg-hover-primary-muted",
+        "data-[state=checked]:bg-primary-muted data-[state=checked]:text-primary-muted-foreground",
+        "hover:data-[state=checked]:bg-hover-primary-muted",
       ],
 
       "primary-surface": [
-        "bg-primary-faded text-primary-accent-foreground inset-ring inset-ring-primary-faded-border",
-        "hover:bg-hover-primary-faded",
+        "data-[state=checked]:bg-primary-faded data-[state=checked]:text-primary-accent-foreground data-[state=checked]:inset-ring data-[state=checked]:inset-ring-primary-faded-border",
+        "hover:data-[state=checked]:bg-hover-primary-faded",
       ],
 
       "primary-faded": [
-        "bg-primary-faded text-primary-muted-foreground inset-ring inset-ring-primary-faded-border",
-        "hover:bg-hover-primary-faded",
+        "data-[state=checked]:bg-primary-faded data-[state=checked]:text-primary-muted-foreground data-[state=checked]:inset-ring data-[state=checked]:inset-ring-primary-faded-border",
+        "hover:data-[state=checked]:bg-hover-primary-faded",
       ],
 
       "primary-tron": [
-        "bg-background bg-linear-(--primary-tron-gradient) text-primary-muted-foreground shadow inset-ring inset-ring-primary-tron-border",
-        "hover:bg-linear-(--hover-primary-tron-gradient) hover:inset-ring-hover-primary-tron-border",
+        "data-[state=checked]:bg-background data-[state=checked]:bg-linear-(--primary-tron-gradient) data-[state=checked]:text-primary-muted-foreground data-[state=checked]:shadow data-[state=checked]:inset-ring data-[state=checked]:inset-ring-primary-tron-border",
+        "hover:data-[state=checked]:bg-linear-(--hover-primary-tron-gradient) hover:data-[state=checked]:inset-ring-hover-primary-tron-border",
         "[--tron-beam:var(--color-primary)] [--tron-blur:var(--color-primary-tron-blur)]",
       ],
 
       "primary-shadow": [
-        "bg-primary text-primary-foreground shadow-lg shadow-primary/50",
-        "hover:bg-hover-primary",
+        "data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground data-[state=checked]:shadow-lg data-[state=checked]:shadow-primary/50",
+        "hover:data-[state=checked]:bg-hover-primary",
       ],
 
       "primary-gradient": [
-        "bg-linear-(--primary-gradient) text-primary-foreground shadow",
-        "hover:bg-linear-(--hover-primary-gradient)",
-      ],
-
-      "primary-ghost": [
-        "text-primary-muted-foreground",
-        "hover:bg-primary-muted hover:text-primary-accent-foreground",
+        "data-[state=checked]:bg-linear-(--primary-gradient) data-[state=checked]:text-primary-foreground data-[state=checked]:shadow",
+        "hover:data-[state=checked]:bg-linear-(--hover-primary-gradient)",
       ],
 
       // secondary
       secondary: [
-        "bg-secondary text-secondary-foreground shadow",
-        "hover:bg-hover-secondary",
+        "data-[state=checked]:bg-secondary data-[state=checked]:text-secondary-foreground data-[state=checked]:shadow",
+        "hover:data-[state=checked]:bg-hover-secondary",
       ],
 
       "secondary-accent": [
-        "bg-secondary-muted text-secondary-accent-foreground",
-        "hover:bg-hover-secondary-muted",
+        "data-[state=checked]:bg-secondary-muted data-[state=checked]:text-secondary-accent-foreground",
+        "hover:data-[state=checked]:bg-hover-secondary-muted",
       ],
 
       "secondary-muted": [
-        "bg-secondary-muted text-secondary-muted-foreground",
-        "hover:bg-hover-secondary-muted",
+        "data-[state=checked]:bg-secondary-muted data-[state=checked]:text-secondary-muted-foreground",
+        "hover:data-[state=checked]:bg-hover-secondary-muted",
       ],
 
       "secondary-surface": [
-        "bg-secondary-faded text-secondary-accent-foreground inset-ring inset-ring-secondary-faded-border",
-        "hover:bg-hover-secondary-faded",
+        "data-[state=checked]:bg-secondary-faded data-[state=checked]:text-secondary-accent-foreground data-[state=checked]:inset-ring data-[state=checked]:inset-ring-secondary-faded-border",
+        "hover:data-[state=checked]:bg-hover-secondary-faded",
       ],
 
       "secondary-faded": [
-        "bg-secondary-faded text-secondary-muted-foreground inset-ring inset-ring-secondary-faded-border",
-        "hover:bg-hover-secondary-faded",
+        "data-[state=checked]:bg-secondary-faded data-[state=checked]:text-secondary-muted-foreground data-[state=checked]:inset-ring data-[state=checked]:inset-ring-secondary-faded-border",
+        "hover:data-[state=checked]:bg-hover-secondary-faded",
       ],
 
       "secondary-tron": [
-        "bg-background bg-linear-(--secondary-tron-gradient) text-secondary-muted-foreground shadow inset-ring inset-ring-secondary-tron-border",
-        "hover:bg-linear-(--hover-secondary-tron-gradient) hover:inset-ring-hover-secondary-tron-border",
+        "data-[state=checked]:bg-background data-[state=checked]:bg-linear-(--secondary-tron-gradient) data-[state=checked]:text-secondary-muted-foreground data-[state=checked]:shadow data-[state=checked]:inset-ring data-[state=checked]:inset-ring-secondary-tron-border",
+        "hover:data-[state=checked]:bg-linear-(--hover-secondary-tron-gradient) hover:data-[state=checked]:inset-ring-hover-secondary-tron-border",
         "[--tron-beam:var(--color-secondary)] [--tron-blur:var(--color-secondary-tron-blur)]",
       ],
 
       "secondary-shadow": [
-        "bg-secondary text-secondary-foreground shadow-lg shadow-secondary/50",
-        "hover:bg-hover-secondary",
+        "data-[state=checked]:bg-secondary data-[state=checked]:text-secondary-foreground data-[state=checked]:shadow-lg data-[state=checked]:shadow-secondary/50",
+        "hover:data-[state=checked]:bg-hover-secondary",
       ],
 
       "secondary-gradient": [
-        "bg-linear-(--secondary-gradient) text-secondary-foreground shadow",
-        "hover:bg-linear-(--hover-secondary-gradient)",
-      ],
-
-      "secondary-ghost": [
-        "text-secondary-muted-foreground",
-        "hover:bg-secondary-muted hover:text-secondary-accent-foreground",
+        "data-[state=checked]:bg-linear-(--secondary-gradient) data-[state=checked]:text-secondary-foreground data-[state=checked]:shadow",
+        "hover:data-[state=checked]:bg-linear-(--hover-secondary-gradient)",
       ],
     },
+
     size: {
-      xs: [
-        "h-(--size-xs) gap-1.5 rounded-sm px-2 py-1 text-xs font-medium",
-        "has-[[data-slot='spinner']]:px-2 has-[>svg]:px-2 **:data-[slot=spinner]:not-[[class*='size-']]:size-3.5 **:[svg]:not-[[class*='size-']]:size-3.5",
-      ],
+      "2xs": buttonVariants.variants.size["2xs"],
 
-      sm: [
-        "h-(--size-sm) rounded-md px-3 py-1.5",
-        "has-[[data-slot='spinner']]:px-2.5 has-[>svg]:px-2.5 **:data-[slot=spinner]:not-[[class*='size-']]:size-4",
-        "**:[svg]:not-[[class*='size-']]:size-4",
-      ],
+      xs: buttonVariants.variants.size["xs"],
 
-      md: [
-        "h-(--size-md) px-4 py-2",
-        "has-[[data-slot='spinner']]:px-3 has-[>svg]:px-3 **:data-[slot=spinner]:not-[[class*='size-']]:size-4",
-        "**:[svg]:not-[[class*='size-']]:size-4",
-      ],
+      sm: buttonVariants.variants.size["sm"],
 
-      lg: [
-        "h-(--size-lg) gap-3 rounded-md px-6 py-2 text-base",
-        "has-[[data-slot='spinner']]:px-4 has-[>svg]:px-4 **:data-[slot=spinner]:not-[[class*='size-']]:size-5",
-        "**:[svg]:not-[[class*='size-']]:size-5",
-      ],
+      md: buttonVariants.variants.size["md"],
 
-      "icon-sm": [
-        "size-(--size-sm)",
-        "**:data-[slot=spinner]:not-[[class*='size-']]:size-4",
-        "**:[svg]:not-[[class*='size-']]:size-4",
-      ],
+      lg: buttonVariants.variants.size["lg"],
 
-      "icon-xs": [
-        "size-(--size-xs) rounded-sm",
-        "**:data-[slot=spinner]:not-[[class*='size-']]:size-3.5",
-        "**:[svg]:not-[[class*='size-']]:size-3.5",
-      ],
+      "icon-xs": buttonVariants.variants.size["icon-xs"],
 
-      "icon-md": [
-        "size-(--size-md)",
-        "**:data-[slot=spinner]:not-[[class*='size-']]:size-4",
-        "*:[svg]:not-[[class*='size-']]:size-4",
-      ],
+      "icon-sm": buttonVariants.variants.size["icon-sm"],
 
-      "icon-lg": [
-        "size-(--size-lg)",
-        "**:data-[slot=spinner]:not-[[class*='size-']]:size-5",
-        "**:[svg]:not-[[class*='size-']]:size-5",
-      ],
+      "icon-md": buttonVariants.variants.size["icon-md"],
+
+      "icon-lg": buttonVariants.variants.size["icon-lg"],
     },
   },
   compoundVariants: [
     {
-      variant: [
+      unchecked: [
         "outline",
-        "base",
         "accent",
         "muted",
         "surface",
@@ -219,10 +296,80 @@ const radioButtonVariants = tv({
         "base-gradient",
         "ghost",
       ],
-      className: "outline-outline",
+      className: "data-[state=unchecked]:outline-outline",
     },
     {
-      variant: [
+      unchecked: [
+        "primary-accent",
+        "primary-muted",
+        "primary-surface",
+        "primary-faded",
+        "primary-tron",
+        "primary-ghost",
+      ],
+      className: "data-[state=unchecked]:outline-primary",
+    },
+    {
+      unchecked: [
+        "secondary-accent",
+        "secondary-muted",
+        "secondary-surface",
+        "secondary-faded",
+        "secondary-tron",
+        "secondary-ghost",
+      ],
+      className: "data-[state=unchecked]:outline-secondary",
+    },
+    {
+      unchecked: ["accent", "primary-accent", "secondary-accent"],
+      className: [
+        "aria-invalid:data-[state=unchecked]:bg-destructive-muted aria-invalid:data-[state=unchecked]:text-destructive-accent-foreground hover:aria-invalid:data-[state=unchecked]:bg-hover-destructive-muted",
+      ],
+    },
+    {
+      unchecked: ["muted", "primary-muted", "secondary-muted"],
+      className: [
+        "aria-invalid:data-[state=unchecked]:bg-destructive-muted aria-invalid:data-[state=unchecked]:text-destructive-muted-foreground hover:aria-invalid:data-[state=unchecked]:bg-hover-destructive-muted",
+      ],
+    },
+    {
+      unchecked: ["surface", "primary-surface", "secondary-surface"],
+      className: [
+        "aria-invalid:bg-destructive-faded aria-invalid:text-destructive-accent-foreground aria-invalid:inset-ring-destructive-faded-border hover:aria-invalid:bg-hover-destructive-faded",
+      ],
+    },
+    {
+      unchecked: ["faded", "primary-faded", "secondary-faded"],
+      className: [
+        "aria-invalid:bg-destructive-faded aria-invalid:text-destructive-muted-foreground aria-invalid:inset-ring-destructive-faded-border hover:aria-invalid:bg-hover-destructive-faded",
+      ],
+    },
+    {
+      unchecked: ["primary-tron", "secondary-tron"],
+      className: [
+        "aria-invalid:bg-linear-(--destructive-tron-gradient) aria-invalid:text-destructive-muted-foreground aria-invalid:inset-ring-destructive-tron-border aria-invalid:[--tron-beam:var(--color-destructive)] aria-invalid:[--tron-blur:var(--color-destructive-tron-blur)] hover:aria-invalid:bg-linear-(--hover-destructive-tron-gradient) hover:aria-invalid:inset-ring-hover-destructive-tron-border",
+      ],
+    },
+    {
+      unchecked: ["ghost", "primary-ghost", "secondary-ghost"],
+      className: [
+        "aria-invalid:text-destructive-muted-foreground hover:aria-invalid:bg-destructive-muted hover:aria-invalid:text-destructive-accent-foreground",
+      ],
+    },
+    {
+      checked: [
+        "outline",
+        "base",
+        "accent",
+        "muted",
+        "surface",
+        "faded",
+        "base-gradient",
+      ],
+      className: "data-[state=checked]:outline-outline",
+    },
+    {
+      checked: [
         "primary",
         "primary-accent",
         "primary-muted",
@@ -231,12 +378,11 @@ const radioButtonVariants = tv({
         "primary-tron",
         "primary-shadow",
         "primary-gradient",
-        "primary-ghost",
       ],
-      className: "outline-primary",
+      className: "data-[state=checked]:outline-primary",
     },
     {
-      variant: [
+      checked: [
         "secondary",
         "secondary-accent",
         "secondary-muted",
@@ -245,76 +391,70 @@ const radioButtonVariants = tv({
         "secondary-tron",
         "secondary-shadow",
         "secondary-gradient",
-        "secondary-ghost",
       ],
-      className: "outline-secondary",
+      className: "data-[state=checked]:outline-secondary",
     },
     {
-      variant: ["base", "primary", "secondary"],
+      checked: ["base", "primary", "secondary", "contrast"],
       className: [
-        "aria-invalid:bg-destructive aria-invalid:text-destructive-foreground hover:aria-invalid:bg-hover-destructive",
-      ],
-    },
-    {
-      variant: ["accent", "primary-accent", "secondary-accent"],
-      className: [
-        "aria-invalid:bg-destructive-muted aria-invalid:text-destructive-accent-foreground hover:aria-invalid:bg-hover-destructive-muted",
+        "aria-invalid:data-[state=checked]:bg-destructive aria-invalid:data-[state=checked]:text-destructive-foreground hover:aria-invalid:data-[state=checked]:bg-hover-destructive",
       ],
     },
     {
-      variant: ["muted", "primary-muted", "secondary-muted"],
+      checked: ["accent", "primary-accent", "secondary-accent"],
       className: [
-        "aria-invalid:bg-destructive-muted aria-invalid:text-destructive-muted-foreground hover:aria-invalid:bg-hover-destructive-muted",
+        "aria-invalid:data-[state=checked]:bg-destructive-muted aria-invalid:data-[state=checked]:text-destructive-accent-foreground hover:aria-invalid:data-[state=checked]:bg-hover-destructive-muted",
       ],
     },
     {
-      variant: ["surface", "primary-surface", "secondary-surface"],
+      checked: ["muted", "primary-muted", "secondary-muted"],
       className: [
-        "aria-invalid:bg-destructive-faded aria-invalid:text-destructive-accent-foreground aria-invalid:inset-ring-destructive-faded-border hover:aria-invalid:bg-hover-destructive-faded",
+        "aria-invalid:data-[state=checked]:bg-destructive-muted aria-invalid:data-[state=checked]:text-destructive-muted-foreground hover:aria-invalid:data-[state=checked]:bg-hover-destructive-muted",
       ],
     },
     {
-      variant: ["faded", "primary-faded", "secondary-faded"],
+      checked: ["surface", "primary-surface", "secondary-surface"],
       className: [
-        "aria-invalid:bg-destructive-faded aria-invalid:text-destructive-muted-foreground aria-invalid:inset-ring-destructive-faded-border hover:aria-invalid:bg-hover-destructive-faded",
+        "aria-invalid:data-[state=checked]:bg-destructive-faded aria-invalid:data-[state=checked]:text-destructive-accent-foreground aria-invalid:data-[state=checked]:inset-ring-destructive-faded-border hover:aria-invalid:data-[state=checked]:bg-hover-destructive-faded",
       ],
     },
     {
-      variant: ["primary-tron", "secondary-tron"],
+      checked: ["faded", "primary-faded", "secondary-faded"],
       className: [
-        "aria-invalid:bg-linear-(--destructive-tron-gradient) aria-invalid:text-destructive-muted-foreground aria-invalid:inset-ring-destructive-tron-border aria-invalid:[--tron-beam:var(--color-destructive)] aria-invalid:[--tron-blur:var(--color-destructive-tron-blur)] hover:aria-invalid:bg-linear-(--hover-destructive-tron-gradient) hover:aria-invalid:inset-ring-hover-destructive-tron-border",
+        "aria-invalid:data-[state=checked]:bg-destructive-faded aria-invalid:data-[state=checked]:text-destructive-muted-foreground aria-invalid:data-[state=checked]:inset-ring-destructive-faded-border hover:aria-invalid:data-[state=checked]:bg-hover-destructive-faded",
       ],
     },
     {
-      variant: ["base-shadow", "primary-shadow", "secondary-shadow"],
+      checked: ["primary-tron", "secondary-tron"],
       className: [
-        "aria-invalid:bg-destructive aria-invalid:text-destructive-foreground aria-invalid:shadow-destructive/50 hover:aria-invalid:bg-hover-destructive",
+        "aria-invalid:data-[state=checked]:bg-linear-(--destructive-tron-gradient) aria-invalid:data-[state=checked]:text-destructive-muted-foreground aria-invalid:data-[state=checked]:inset-ring-destructive-tron-border aria-invalid:data-[state=checked]:[--tron-beam:var(--color-destructive)] aria-invalid:data-[state=checked]:[--tron-blur:var(--color-destructive-tron-blur)] hover:aria-invalid:data-[state=checked]:bg-linear-(--hover-destructive-tron-gradient) hover:aria-invalid:data-[state=checked]:inset-ring-hover-destructive-tron-border",
       ],
     },
     {
-      variant: ["base-gradient", "primary-gradient", "secondary-gradient"],
+      checked: ["base-shadow", "primary-shadow", "secondary-shadow"],
       className: [
-        "aria-invalid:bg-linear-(--destructive-gradient) aria-invalid:text-destructive-foreground hover:aria-invalid:bg-linear-(--hover-destructive-gradient)",
+        "aria-invalid:data-[state=checked]:bg-destructive aria-invalid:data-[state=checked]:text-destructive-foreground aria-invalid:data-[state=checked]:shadow-destructive/50 hover:aria-invalid:data-[state=checked]:bg-hover-destructive",
       ],
     },
     {
-      variant: ["ghost", "primary-ghost", "secondary-ghost"],
+      checked: ["base-gradient", "primary-gradient", "secondary-gradient"],
       className: [
-        "aria-invalid:text-destructive-muted-foreground hover:aria-invalid:bg-destructive-muted hover:aria-invalid:text-destructive-accent-foreground",
+        "aria-invalid:data-[state=checked]:bg-linear-(--destructive-gradient) aria-invalid:data-[state=checked]:text-destructive-foreground hover:aria-invalid:data-[state=checked]:bg-linear-(--hover-destructive-gradient)",
       ],
     },
   ],
   defaultVariants: {
     shape: "box",
-    variant: "outline",
+    unchecked: "outline",
+    checked: "primary",
     size: "md",
   },
 });
 
 type RadioButtonGroupContextProps = {
   variants?: {
-    checked?: VariantProps<typeof radioButtonVariants>["variant"];
-    unchecked?: VariantProps<typeof radioButtonVariants>["variant"];
+    unchecked?: VariantProps<typeof radioButtonVariants>["unchecked"];
+    checked?: VariantProps<typeof radioButtonVariants>["checked"];
   };
   shape?: VariantProps<typeof radioButtonVariants>["shape"];
   size?: VariantProps<typeof radioButtonVariants>["size"];
@@ -326,8 +466,8 @@ const RadioButtonsGroupContext =
 function RadioButtonGroup({
   className,
   variants = {
-    checked: "primary",
     unchecked: "outline",
+    checked: "primary",
   },
   shape = "box",
   size = "md",
@@ -351,17 +491,10 @@ function RadioButtonGroup({
   );
 }
 
-type RadioButtonProps = Omit<
-  React.ComponentProps<typeof RadioGroupPrimitive.Item>,
-  "checked"
-> &
-  Pick<RadioButtonGroupContextProps, "variants"> &
-  Required<
-    Pick<React.ComponentProps<typeof RadioGroupPrimitive.Item>, "checked">
-  >;
+type RadioButtonProps = React.ComponentProps<typeof RadioGroupPrimitive.Item> &
+  Pick<RadioButtonGroupContextProps, "variants">;
 
 function RadioButton({
-  checked,
   variants,
   className,
   children,
@@ -369,46 +502,72 @@ function RadioButton({
 }: RadioButtonProps) {
   const context = React.useContext(RadioButtonsGroupContext);
 
-  const _checkedVariant = variants?.checked || context.variants?.checked;
-  const _uncheckedVariant = variants?.unchecked || context.variants?.unchecked;
+  const _unchecked = variants?.unchecked || context.variants?.unchecked;
+  const _checked = variants?.checked || context.variants?.checked;
 
   return (
     <RadioGroupPrimitive.Item
       data-slot="radio-button"
-      checked={checked}
       className={cn(
         radioButtonVariants({
           shape: context.shape,
-          variant: checked ? _checkedVariant : _uncheckedVariant,
+          unchecked: _unchecked,
+          checked: _checked,
+          size: context.size,
         }),
         className
       )}
       {...props}
     >
-      {((checked && _checkedVariant?.includes("tron")) ||
-        (!checked && _uncheckedVariant?.includes("tron"))) && (
+      {_checked?.includes("tron") && (
         <>
           <Tron
             data-shape={context.shape}
             side="top"
             type="beam"
-            className="via-(--tron-beam) opacity-0 group-hover/radio-button:opacity-100"
+            className="hidden via-(--tron-beam) opacity-0 group-hover/radio-button:opacity-100 group-data-[state=checked]/radio-button:block"
           />
           <Tron
             side="top"
             type="blur"
-            className="via-(--tron-blur) opacity-0 group-hover/radio-button:opacity-100"
+            className="hidden via-(--tron-blur) opacity-0 group-hover/radio-button:opacity-100 group-data-[state=checked]/radio-button:block"
           />
           <Tron
             data-shape={context.shape}
             side="bottom"
             type="beam"
-            className="animate-in via-(--tron-beam) fade-in-0 group-hover/radio-button:opacity-0"
+            className="hidden via-(--tron-beam) opacity-100 group-hover/radio-button:opacity-0 group-data-[state=checked]/radio-button:block"
           />
           <Tron
             side="bottom"
             type="blur"
-            className="animate-in via-(--tron-blur) fade-in-0 group-hover/radio-button:opacity-0"
+            className="hidden via-(--tron-blur) opacity-100 group-hover/radio-button:opacity-0 group-data-[state=checked]/radio-button:block"
+          />
+        </>
+      )}
+      {_unchecked?.includes("tron") && (
+        <>
+          <Tron
+            data-shape={context.shape}
+            side="top"
+            type="beam"
+            className="block via-(--tron-beam) opacity-0 group-hover/radio-button:opacity-100 group-data-[state=checked]/radio-button:hidden"
+          />
+          <Tron
+            side="top"
+            type="blur"
+            className="block via-(--tron-blur) opacity-0 group-hover/radio-button:opacity-100 group-data-[state=checked]/radio-button:hidden"
+          />
+          <Tron
+            data-shape={context.shape}
+            side="bottom"
+            type="beam"
+            className="block via-(--tron-beam) opacity-100 group-hover/radio-button:opacity-0 group-data-[state=checked]/radio-button:hidden"
+          />
+          <Tron
+            side="bottom"
+            type="blur"
+            className="block via-(--tron-blur) opacity-100 group-hover/radio-button:opacity-0 group-data-[state=checked]/radio-button:hidden"
           />
         </>
       )}

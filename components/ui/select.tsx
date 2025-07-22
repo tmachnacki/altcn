@@ -153,6 +153,10 @@ const selectItemVariants = tv({
   variants: {
     variant: {
       // -- base --
+      contrast: [
+        "data-[highlighted]:bg-contrast data-[highlighted]:text-contrast-foreground",
+      ],
+
       base: "data-[highlighted]:bg-base-bg data-[highlighted]:text-base-foreground",
 
       accent:
@@ -367,7 +371,7 @@ function SelectLabel({
       data-slot="select-label"
       data-position={position}
       className={cn(
-        "px-(--select-item-px) py-1.5 text-sm sm:text-xs font-normal text-muted-foreground data-[position=item-aligned]:pl-(--inset-p)",
+        "px-(--select-item-px) py-1.5 text-sm font-normal text-muted-foreground data-[position=item-aligned]:pl-(--inset-p) sm:text-xs",
         className
       )}
       {...props}

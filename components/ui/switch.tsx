@@ -10,7 +10,7 @@ const switchVariants = tv({
   slots: {
     root: [
       "peer group/switch",
-      "relative isolate inline-flex h-5 w-9 shrink-0 items-center rounded-full p-[3px] transition-colors duration-200 ease-in-out data-[state=unchecked]:inset-shadow-sm dark:data-[state=unchecked]:shadow-none",
+      "relative isolate inline-flex h-6 w-10 shrink-0 items-center rounded-full p-[3px] transition-colors duration-200 ease-in-out data-[state=unchecked]:inset-shadow-sm sm:h-5 sm:w-9 dark:data-[state=unchecked]:shadow-none",
 
       "hover:not-aria-invalid:data-[state=unchecked]:bg-hover-muted dark:hover:not-aria-invalid:data-[state=unchecked]:bg-hover-faded dark:hover:not-aria-invalid:data-[state=unchecked]:inset-ring-hover-border",
 
@@ -30,6 +30,14 @@ const switchVariants = tv({
   },
   variants: {
     variant: {
+      contrast: {
+        root: [
+          "outline-outline",
+          "data-[state=checked]:bg-contrast",
+          "hover:data-[state=checked]:bg-hover-contrast",
+        ],
+        thumb: ["data-[state=checked]:bg-contrast-foreground"],
+      },
       base: {
         root: [
           "outline-outline",
@@ -59,18 +67,18 @@ const switchVariants = tv({
       default: {
         root: "",
         thumb: [
-          "size-3.5",
+          "size-4.5 sm:size-3.5",
           "data-[state=checked]:translate-x-4 data-[state=unchecked]:translate-x-0",
           "data-[state=checked]:data-[disabled]:bg-background dark:data-[state=checked]:data-[disabled]:bg-foreground",
         ],
       },
       thin: {
         root: [
-          "h-2.5 p-0 focus-visible:outline-offset-4",
+          "h-3 p-0 focus-visible:outline-offset-4 sm:h-2.5",
           "data-[state=unchecked]:shadow-none",
         ],
         thumb: [
-          "size-4 inset-ring inset-ring-border",
+          "size-5 inset-ring inset-ring-border sm:size-4",
           "data-[state=checked]:bg-background dark:data-[state=checked]:bg-foreground",
           "data-[state=checked]:translate-x-[calc(--spacing(5)+1px)] data-[state=unchecked]:-translate-x-px",
         ],

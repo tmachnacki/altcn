@@ -19,7 +19,6 @@ import {
 } from "~/components/ui/select";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
-import { Swatch } from "~/components/swatch";
 
 type Variant = keyof typeof accordionVariants.variants.variant;
 const variants = Object.keys(accordionVariants.variants.variant) as Variant[];
@@ -78,7 +77,6 @@ export function AccordionDemo() {
             <SelectContent>
               {variants.map((variant) => (
                 <SelectItem key={`accordion-${variant}`} value={variant}>
-                  <Swatch variant={variant} />
                   {variant}
                 </SelectItem>
               ))}
