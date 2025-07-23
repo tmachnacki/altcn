@@ -8,11 +8,11 @@ import { Slider } from "~/components/ui/slider";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
 
-type HeadingSize = "sm" | "base" | "lg" | "xl" | "2xl" | "3xl" | "4xl";
+type HeadingSize = "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl";
 
 const sizesMap: Record<number, HeadingSize> = {
   1: "sm",
-  2: "base",
+  2: "md",
   3: "lg",
   4: "xl",
   5: "2xl",

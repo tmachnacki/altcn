@@ -172,7 +172,7 @@ function Slider({
           data-slot="slider-thumb"
           key={`slider-thumb-${index}`}
           className={cn(
-            "block size-5 shrink-0 rounded-full border border-(--slider-thumb-border) bg-background shadow-sm ring-0 ring-(--slider-thumb-ring) transition-shadow hover:ring-4 focus:ring-4 focus:outline-hidden data-[disabled]:pointer-events-none data-[disabled]:bg-base-200 sm:size-4 dark:data-[disabled]:bg-base-800",
+            "block size-5 shrink-0 rounded-full border border-(--slider-thumb-border) bg-background shadow-sm ring-0 ring-(--slider-thumb-ring) transition-shadow hover:ring-4 focus:ring-4 focus:outline-hidden data-[disabled]:pointer-events-none data-[disabled]:bg-base-200 sm:size-4 sm:hover:ring-[3px] sm:focus:ring-4 dark:data-[disabled]:bg-base-800",
             classNames?.thumb
           )}
         />

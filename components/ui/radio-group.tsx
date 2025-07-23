@@ -9,7 +9,7 @@ import { cn } from "~/lib/utils";
 const radioVariants = tv({
   slots: {
     root: [
-      "group/radio peer",
+      "group/radio peer touch-target",
 
       "inline-flex size-4.5 shrink-0 grow-0 items-center justify-center rounded-full sm:size-4",
 

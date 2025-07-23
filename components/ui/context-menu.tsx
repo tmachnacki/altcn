@@ -12,6 +12,7 @@ import {
   menuItemIndicatorVariants,
   menuItemVariants,
   menuLabelVariants,
+  menuSeparatorVariants,
   menuShortcutVariants,
   type MenuContextProps,
   type MenuIndicatorItemProps,
@@ -219,10 +220,11 @@ function ContextMenuCheckboxItem({
         data-width={width || context.width}
         className={menuItemIndicatorVariants({
           variant: variants?.indicator || context.variants?.indicator,
+          type: "checkbox",
           className: classNames?.indicator,
         })}
       >
-        <CheckIcon className="size-4 text-current" />
+        <CheckIcon className="text-current" />
       </ContextMenuPrimitive.ItemIndicator>
       {children}
     </ContextMenuPrimitive.CheckboxItem>
@@ -261,10 +263,11 @@ function ContextMenuRadioItem({
         data-width={width || context.width}
         className={menuItemIndicatorVariants({
           variant: variants?.indicator || context.variants?.indicator,
+          type: "radio",
           className: classNames?.indicator,
         })}
       >
-        <CircleIcon className="size-2 fill-current text-current" />
+        <CircleIcon className="fill-current text-current" />
       </ContextMenuPrimitive.ItemIndicator>
       {children}
     </ContextMenuPrimitive.RadioItem>
@@ -295,7 +298,7 @@ function ContextMenuSeparator({
   return (
     <ContextMenuPrimitive.Separator
       data-slot="context-menu-separator"
-      className={cn("-mx-(--menu-item-px) my-1 h-px bg-border", className)}
+      className={menuSeparatorVariants({ className })}
       {...props}
     />
   );
@@ -308,7 +311,7 @@ function ContextMenuShortcut({
   return (
     <span
       data-slot="context-menu-shortcut"
-      className={cn(menuShortcutVariants(), className)}
+      className={menuShortcutVariants({ className })}
       {...props}
     />
   );

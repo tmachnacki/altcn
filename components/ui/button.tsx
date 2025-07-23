@@ -83,7 +83,7 @@ const buttonVariants = tv({
       ],
 
       "primary-tron": [
-        "bg-background bg-linear-(--primary-tron-gradient) text-primary-muted-foreground shadow inset-ring inset-ring-primary-tron-border",
+        "bg-background bg-linear-(--primary-tron-gradient) text-primary-accent-foreground shadow-xs inset-ring inset-ring-primary-tron-border",
         "hover:bg-linear-(--hover-primary-tron-gradient) hover:inset-ring-hover-primary-tron-border",
         "[--tron-beam:var(--color-primary)] [--tron-blur:var(--color-primary-tron-blur)]",
       ],
@@ -130,7 +130,7 @@ const buttonVariants = tv({
       ],
 
       "secondary-tron": [
-        "bg-background bg-linear-(--secondary-tron-gradient) text-secondary-muted-foreground shadow inset-ring inset-ring-secondary-tron-border",
+        "bg-background bg-linear-(--secondary-tron-gradient) text-secondary-accent-foreground shadow-xs inset-ring inset-ring-secondary-tron-border",
         "hover:bg-linear-(--hover-secondary-tron-gradient) hover:inset-ring-hover-secondary-tron-border",
         "[--tron-beam:var(--color-secondary)] [--tron-blur:var(--color-secondary-tron-blur)]",
       ],
@@ -177,7 +177,7 @@ const buttonVariants = tv({
       ],
 
       "destructive-tron": [
-        "bg-background bg-linear-(--destructive-tron-gradient) text-destructive-muted-foreground shadow inset-ring inset-ring-destructive-tron-border",
+        "bg-background bg-linear-(--destructive-tron-gradient) text-destructive-accent-foreground shadow-xs inset-ring inset-ring-destructive-tron-border",
         "hover:bg-linear-(--hover-destructive-tron-gradient) hover:inset-ring-hover-destructive-tron-border",
         "[--tron-beam:var(--color-destructive)] [--tron-blur:var(--color-destructive-tron-blur)]",
       ],
@@ -224,7 +224,7 @@ const buttonVariants = tv({
       ],
 
       "success-tron": [
-        "bg-background bg-linear-(--success-tron-gradient) text-success-muted-foreground shadow inset-ring inset-ring-success-tron-border",
+        "bg-background bg-linear-(--success-tron-gradient) text-success-accent-foreground shadow-xs inset-ring inset-ring-success-tron-border",
         "hover:bg-linear-(--hover-success-tron-gradient) hover:inset-ring-hover-success-tron-border",
         "[--tron-beam:var(--color-success)] [--tron-blur:var(--color-success-tron-blur)]",
       ],
@@ -271,7 +271,7 @@ const buttonVariants = tv({
       ],
 
       "warning-tron": [
-        "bg-background bg-linear-(--warning-tron-gradient) text-warning-muted-foreground shadow inset-ring inset-ring-warning-tron-border",
+        "bg-background bg-linear-(--warning-tron-gradient) text-warning-accent-foreground shadow-xs inset-ring inset-ring-warning-tron-border",
         "hover:bg-linear-(--hover-warning-tron-gradient) hover:inset-ring-hover-warning-tron-border",
         "[--tron-beam:var(--color-warning)] [--tron-blur:var(--color-warning-tron-blur)]",
       ],
@@ -419,7 +419,7 @@ const buttonVariants = tv({
     {
       size: ["sm", "icon-sm"],
       className: [
-        "text-sm sm:text-sm",
+        "text-sm",
         "rounded-md",
         "**:[svg]:not-[[class*='size-']]:size-(--icon-md) sm:**:[svg]:not-[[class*='size-']]:size-(--icon-sm)",
         "**:data-[slot=spinner]:not-[[class*='size-']]:size-(--icon-md) sm:**:data-[slot=spinner]:not-[[class*='size-']]:size-(--icon-sm)",

@@ -7,7 +7,8 @@ import { CheckIcon, MinusIcon } from "lucide-react";
 
 const checkBoxVariants = tv({
   base: [
-    "peer touch-target size-4.5 shrink-0 grow-0 rounded-sm sm:size-4",
+    "peer group/checkbox touch-target",
+    "size-4.5 shrink-0 grow-0 rounded-sm sm:size-4",
 
     "hover:not-aria-invalid:data-[state=unchecked]:inset-ring-hover-border",
 
@@ -116,7 +117,7 @@ function Checkbox({
       data-slot="checkbox"
       className={checkBoxVariants({
         variant,
-        className: ["group/checkbox", className],
+        className,
       })}
       {...props}
     >

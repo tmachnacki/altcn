@@ -429,7 +429,6 @@ function CalendarDayButton({
 
         _variant?.includes("tron") && "group-data-[outside=true]/day:*:[[data-slot*='tron-']]:hidden",
 
-
         defaultClassNames.day,
         className
       )}

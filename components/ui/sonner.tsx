@@ -20,7 +20,6 @@ const Toaster = ({ ...props }: ToasterProps) => {
     <Sonner
       theme={theme as ToasterProps["theme"]}
       closeButton
-      duration={Infinity}
       position="bottom-right"
       richColors
       toastOptions={{

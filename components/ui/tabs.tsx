@@ -99,7 +99,7 @@ const tabsTriggerVariants = tv({
         "-outline-offset-2 data-[state=active]:text-primary-muted-foreground data-[state=active]:before:border-primary",
 
       "primary-tron": [
-        "data-[state=active]:bg-background data-[state=active]:bg-linear-(--primary-tron-gradient) data-[state=active]:text-primary-muted-foreground data-[state=active]:inset-ring data-[state=active]:inset-ring-primary-tron-border",
+        "data-[state=active]:bg-background data-[state=active]:bg-linear-(--primary-tron-gradient) data-[state=active]:text-primary-accent-foreground data-[state=active]:inset-ring data-[state=active]:inset-ring-primary-tron-border",
         "data-[state=active]:[--tron-beam:var(--color-primary)] data-[state=active]:[--tron-blur:var(--color-primary-tron-blur)]",
       ],
 
@@ -128,7 +128,7 @@ const tabsTriggerVariants = tv({
         "-outline-offset-2 data-[state=active]:text-secondary-muted-foreground data-[state=active]:before:border-secondary",
 
       "secondary-tron": [
-        "data-[state=active]:bg-background data-[state=active]:bg-linear-(--secondary-tron-gradient) data-[state=active]:text-secondary-muted-foreground data-[state=active]:inset-ring data-[state=active]:inset-ring-secondary-tron-border",
+        "data-[state=active]:bg-background data-[state=active]:bg-linear-(--secondary-tron-gradient) data-[state=active]:text-secondary-accent-foreground data-[state=active]:inset-ring data-[state=active]:inset-ring-secondary-tron-border",
         "data-[state=active]:[--tron-beam:var(--color-secondary)] data-[state=active]:[--tron-blur:var(--color-secondary-tron-blur)]",
       ],
 

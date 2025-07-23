@@ -1,106 +1,112 @@
-import { InfoIcon } from "lucide-react";
+"use client";
+
+import * as React from "react";
 
 import { Button } from "~/components/ui/button";
+import { Label } from "~/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "~/components/ui/select";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
+  tooltipVariants,
 } from "~/components/ui/tooltip";
+import { BackgroundPattern } from "~/components/background-pattern";
 import { ComponentContainer } from "~/components/component-container";
+import { ComponentPlayground } from "~/components/component-playground";
+
+type Variant = keyof typeof tooltipVariants.variants.variant;
+const variants = Object.keys(tooltipVariants.variants.variant) as Variant[];
+
+const sides = ["top", "right", "bottom", "left"] as const;
+
+const tooltipButtonVariants = (variant: Variant) => {
+  switch (variant) {
+    case "popover":
+      return "outline";
+    case "contrast":
+      return "contrast";
+    case "base":
+      return "base";
+    case "primary":
+      return "primary";
+    case "secondary":
+      return "secondary";
+    case "destructive":
+      return "destructive";
+    case "translucent":
+      return "outline";
+  }
+};
 
 export function TooltipDemo() {
+  const [variant, setVariant] = React.useState<Variant>("contrast");
+  const [side, setSide] = React.useState("top");
+
   return (
-    <ComponentContainer>
-      <div className="grid gap-8">
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <Button variant="outline">Hover</Button>
-          </TooltipTrigger>
-          <TooltipContent>
-            <p>Add to library</p>
-          </TooltipContent>
-        </Tooltip>
-        <div className="flex flex-wrap gap-2">
-          {["top", "right", "bottom", "left"].map((side) => (
-            <Tooltip key={`tooltip-${side}`}>
-              <TooltipTrigger asChild>
-                <Button variant="outline" className="capitalize">
-                  {side}
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent
-                side={side as "top" | "right" | "bottom" | "left"}
+    <>
+      <ComponentContainer className="overflow-hidden rounded-t-lg p-0 md:rounded-l-lg md:rounded-r-none">
+        <div className="relative flex h-full min-h-96 w-full min-w-0 flex-col items-center justify-center bg-center p-(--demo-gutter)">
+          {variant === "translucent" && <BackgroundPattern />}
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                variant={tooltipButtonVariants(variant)}
+                className="capitalize"
               >
-                <p>Add to library</p>
-              </TooltipContent>
-            </Tooltip>
-          ))}
-        </div>
-        <div className="flex flex-wrap gap-2">
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Button className="bg-base-950 text-base-50 capitalize hover:not-disabled:not-aria-disabled:bg-base-800 dark:bg-base-50 dark:text-base-950 dark:hover:not-disabled:not-aria-disabled:bg-base-200">
-                default
+                {variant}
               </Button>
             </TooltipTrigger>
-            <TooltipContent variant="contrast">
-              <p>Add to library</p>
-            </TooltipContent>
-          </Tooltip>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Button variant="base" className="capitalize">
-                base
-              </Button>
-            </TooltipTrigger>
-            <TooltipContent variant="base">
-              <p>Add to library</p>
-            </TooltipContent>
-          </Tooltip>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Button variant="primary" className="capitalize">
-                primary
-              </Button>
-            </TooltipTrigger>
-            <TooltipContent variant="primary">
-              <p>Add to library</p>
-            </TooltipContent>
-          </Tooltip>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Button variant="secondary" className="capitalize">
-                secondary
-              </Button>
-            </TooltipTrigger>
-            <TooltipContent variant="secondary">
-              <p>Add to library</p>
-            </TooltipContent>
-          </Tooltip>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Button variant="destructive" className="capitalize">
-                destructive
-              </Button>
-            </TooltipTrigger>
-            <TooltipContent variant="destructive">
-              <p>Add to library</p>
+            <TooltipContent
+              variant={variant}
+              side={side as (typeof sides)[number]}
+            >
+              <p>This is a {variant} tooltip</p>
             </TooltipContent>
           </Tooltip>
         </div>
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <Button variant="ghost" size="icon-md">
-              <InfoIcon />
-              <span className="sr-only">Info</span>
-            </Button>
-          </TooltipTrigger>
-          <TooltipContent>
-            To learn more about how this works, check out the docs. If you have
-            any questions, please reach out to us.
-          </TooltipContent>
-        </Tooltip>
-      </div>
-    </ComponentContainer>
+      </ComponentContainer>
+      <ComponentPlayground>
+        <div className="grid gap-2">
+          <Label htmlFor="tooltip-variant">Variant</Label>
+          <Select
+            value={variant}
+            onValueChange={(value) => setVariant(value as Variant)}
+          >
+            <SelectTrigger id="tooltip-variant" className="w-full">
+              <SelectValue placeholder="Select a variant" />
+            </SelectTrigger>
+            <SelectContent>
+              {variants.map((variant) => (
+                <SelectItem key={variant} value={variant}>
+                  {variant}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+        <div className="grid gap-2">
+          <Label htmlFor="tooltip-side">Side</Label>
+          <Select value={side} onValueChange={setSide}>
+            <SelectTrigger id="tooltip-side" className="w-full">
+              <SelectValue placeholder="Select a side" />
+            </SelectTrigger>
+            <SelectContent>
+              {sides.map((side) => (
+                <SelectItem key={side} value={side}>
+                  {side}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+      </ComponentPlayground>
+    </>
   );
 }

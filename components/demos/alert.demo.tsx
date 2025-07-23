@@ -7,6 +7,7 @@ import { sleep } from "~/lib/utils";
 
 import {
   Alert,
+  AlertAction,
   AlertClose,
   AlertContent,
   AlertDescription,
@@ -16,7 +17,6 @@ import {
   AlertTitle,
   alertVariants,
 } from "~/components/ui/alert";
-import { Button } from "~/components/ui/button";
 import { Label } from "~/components/ui/label";
 import {
   Select,
@@ -27,12 +27,11 @@ import {
 } from "~/components/ui/select";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
-import { Swatch } from "~/components/swatch";
 
 type Variant = keyof typeof alertVariants.variants.variant;
 const variants = Object.keys(alertVariants.variants.variant) as Variant[];
 
-const alertButtonVariant = (variant: Variant) => {
+const alertActionVariant = (variant: Variant) => {
   switch (variant) {
     case "outline":
       return "outline";
@@ -44,21 +43,31 @@ const alertButtonVariant = (variant: Variant) => {
       return "primary-surface";
     case "primary-faded":
       return "primary-surface";
+    case "primary-tron":
+      return "primary-surface";
     case "secondary-muted":
       return "secondary-surface";
     case "secondary-faded":
+      return "secondary-surface";
+    case "secondary-tron":
       return "secondary-surface";
     case "destructive-muted":
       return "destructive-surface";
     case "destructive-faded":
       return "destructive-surface";
+    case "destructive-tron":
+      return "destructive-surface";
     case "success-muted":
       return "success-surface";
     case "success-faded":
       return "success-surface";
+    case "success-tron":
+      return "success-surface";
     case "warning-muted":
       return "warning-surface";
     case "warning-faded":
+      return "warning-surface";
+    case "warning-tron":
       return "warning-surface";
   }
 };
@@ -121,13 +130,9 @@ export function AlertDemo() {
                 FYI This one is centered with info type icon
               </AlertTitle>
             </AlertContent>
-            <Button
-              variant={alertButtonVariant(variant)}
-              size="sm"
-              className="h-6"
-            >
+            <AlertAction variant={alertActionVariant(variant)}>
               Undo
-            </Button>
+            </AlertAction>
           </Alert>
 
           <Alert
@@ -141,13 +146,9 @@ export function AlertDemo() {
                 FYI This one is centered with info type icon
               </AlertTitle>
             </AlertContent>
-            <Button
-              variant={alertButtonVariant(variant)}
-              size="sm"
-              className="h-6"
-            >
+            <AlertAction variant={alertActionVariant(variant)}>
               Undo
-            </Button>
+            </AlertAction>
             <AlertClose onClick={handleCloseAlertCentered} />
           </Alert>
 
@@ -158,13 +159,9 @@ export function AlertDemo() {
                 Warning! This one has a description and warning type icon.
               </AlertDescription>
             </AlertContent>
-            <Button
-              variant={alertButtonVariant(variant)}
-              size="sm"
-              className="h-6"
-            >
+            <AlertAction variant={alertActionVariant(variant)}>
               Dismiss
-            </Button>
+            </AlertAction>
           </Alert>
           <Alert variant={variant}>
             <AlertIcon type="error" />
@@ -179,9 +176,9 @@ export function AlertDemo() {
                 </ul>
               </AlertDescription>
               <AlertFooter>
-                <Button variant={alertButtonVariant(variant)} size="sm">
+                <AlertAction variant={alertActionVariant(variant)}>
                   Details
-                </Button>
+                </AlertAction>
               </AlertFooter>
             </AlertContent>
           </Alert>
@@ -201,9 +198,9 @@ export function AlertDemo() {
                 </ul>
               </AlertDescription>
               <AlertFooter>
-                <Button variant={alertButtonVariant(variant)} size="sm">
+                <AlertAction variant={alertActionVariant(variant)}>
                   Details
-                </Button>
+                </AlertAction>
               </AlertFooter>
             </AlertContent>
             <AlertClose onClick={handleCloseAlert} />
@@ -223,7 +220,6 @@ export function AlertDemo() {
             <SelectContent>
               {variants.map((variant) => (
                 <SelectItem key={`alert-${variant}`} value={variant}>
-                  <Swatch variant={variant} />
                   {variant}
                 </SelectItem>
               ))}

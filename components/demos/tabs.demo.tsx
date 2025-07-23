@@ -51,7 +51,7 @@ export function TabsDemo() {
           {listVariant === "translucent" && <BackgroundPattern />}
           <Tabs
             defaultValue="music"
-            className="relative w-full"
+            className="relative w-full max-w-lg"
             orientation={orientation as (typeof orientations)[number]}
           >
             <TabsList
@@ -68,7 +68,11 @@ export function TabsDemo() {
                 <PodcastIcon />
                 Podcasts
               </TabsTrigger>
-              <TabsTrigger value="photos" disabled={disabled}>
+              <TabsTrigger
+                value="photos"
+                disabled={disabled}
+                className="hidden sm:inline-flex"
+              >
                 <ImageIcon />
                 Photos
               </TabsTrigger>
@@ -103,25 +107,10 @@ export function TabsDemo() {
                 </CardContent>
               </Card>
             </TabsContent>
-            <TabsContent value="photos">
+            <TabsContent value="photos" className="hidden sm:block">
               <Card>
                 <CardHeader>
                   <CardTitle>Photos</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Maxime asperiores possimus quo aspernatur nostrum odio
-                    consequuntur facilis aliquam sint at, aut labore quam
-                    dolorum minima beatae dolore impedit perspiciatis explicabo.
-                  </p>
-                </CardContent>
-              </Card>
-            </TabsContent>
-            <TabsContent value="onlyfans">
-              <Card>
-                <CardHeader>
-                  <CardTitle>OnlyFans</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p>

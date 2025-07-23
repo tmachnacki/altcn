@@ -22,7 +22,6 @@ import {
 } from "~/components/ui/select";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
-import { Swatch } from "~/components/swatch";
 
 const activeVariants = [
   "base",
@@ -167,7 +166,6 @@ export function PaginationWithParams() {
             <SelectContent className="max-h-96">
               {activeVariants.map((variant) => (
                 <SelectItem key={`active-${variant}`} value={variant}>
-                  <Swatch variant={variant} />
                   {variant}
                 </SelectItem>
               ))}
@@ -183,7 +181,6 @@ export function PaginationWithParams() {
             <SelectContent className="max-h-96">
               {inactiveVariants.map((variant) => (
                 <SelectItem key={`inactive-${variant}`} value={variant}>
-                  <Swatch variant={variant} />
                   {variant}
                 </SelectItem>
               ))}
@@ -199,7 +196,6 @@ export function PaginationWithParams() {
             <SelectContent className="max-h-96">
               {inactiveVariants.map((variant) => (
                 <SelectItem key={`control-${variant}`} value={variant}>
-                  <Swatch variant={variant} />
                   {variant}
                 </SelectItem>
               ))}

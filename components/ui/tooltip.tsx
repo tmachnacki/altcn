@@ -2,22 +2,46 @@
 
 import * as React from "react";
 import * as TooltipPrimitive from "@radix-ui/react-tooltip";
-import { cva, type VariantProps } from "class-variance-authority";
+import { tv, type VariantProps } from "tailwind-variants";
 
-import { cn } from "~/lib/utils";
-
-const tooltipVariants = cva("", {
+const tooltipVariants = tv({
+  slots: {
+    root: [
+      "relative isolate z-60 w-fit max-w-xs origin-(--radix-tooltip-content-transform-origin) rounded-md px-3 py-1.5 text-smaller text-balance shadow-lg select-none sm:text-xs",
+      "animate-in fade-in-0 zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95",
+    ],
+    arrow: "",
+  },
   variants: {
     variant: {
-      contrast:
-        "bg-contrast text-contrast-foreground [--tooltip-arrow-bg:var(--color-contrast)]",
-      base: "bg-base-bg text-base-foreground [--tooltip-arrow-bg:var(--color-base-bg)]",
-      primary:
-        "bg-primary text-primary-foreground [--tooltip-arrow-bg:var(--color-primary)]",
-      secondary:
-        "bg-secondary text-secondary-foreground [--tooltip-arrow-bg:var(--color-secondary)]",
-      destructive:
-        "bg-destructive text-destructive-foreground [--tooltip-arrow-bg:var(--color-destructive)]",
+      popover: {
+        root: "border border-border bg-popover text-popover-foreground",
+        arrow: "fill-popover stroke-border stroke-2",
+      },
+      contrast: {
+        root: "bg-contrast text-contrast-foreground",
+        arrow: "fill-contrast",
+      },
+      base: {
+        root: "bg-base-bg text-base-foreground",
+        arrow: "fill-base-bg",
+      },
+      primary: {
+        root: "bg-primary text-primary-foreground",
+        arrow: "fill-primary",
+      },
+      secondary: {
+        root: "bg-secondary text-secondary-foreground",
+        arrow: "fill-secondary",
+      },
+      destructive: {
+        root: "bg-destructive text-destructive-foreground",
+        arrow: "fill-destructive",
+      },
+      translucent: {
+        root: "border border-border bg-popover-translucent text-popover-foreground backdrop-blur-popover-translucent",
+        arrow: "fill-popover-translucent stroke-border stroke-2",
+      },
     },
   },
   defaultVariants: {
@@ -25,6 +49,7 @@ const tooltipVariants = cva("", {
   },
 });
 
+// could wrap in a context to provide variant to rest of app, but changing default variant is probably good enough
 function TooltipProvider({
   delayDuration = 300,
   ...props
@@ -52,33 +77,32 @@ function TooltipTrigger({
 
 function TooltipContent({
   className,
-  sideOffset = 0,
+  sideOffset = 4,
   variant = "contrast",
   children,
   ...props
 }: React.ComponentProps<typeof TooltipPrimitive.Content> &
   VariantProps<typeof tooltipVariants>) {
+  const { root, arrow } = tooltipVariants({ variant });
   return (
     <TooltipPrimitive.Portal>
       <TooltipPrimitive.Content
         data-slot="tooltip-content"
         sideOffset={sideOffset}
-        className={cn(
-          "z-60 w-fit max-w-xs origin-(--radix-tooltip-content-transform-origin) rounded-md px-3 py-1.5 text-xs text-balance shadow-lg",
-          "animate-in fade-in-0 zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95",
-          tooltipVariants({ variant }),
-          className
-        )}
+        className={root({ className })}
         {...props}
       >
         {children}
-        <TooltipPrimitive.Arrow
-          data-slot="tooltip-arrow"
-          className="z-50 size-2.5 translate-y-[calc(-50%_-_2px)] rotate-45 rounded-[2px] bg-(--tooltip-arrow-bg) fill-(--tooltip-arrow-bg)"
-        />
+        <TooltipPrimitive.Arrow data-slot="tooltip-arrow" className={arrow()} />
       </TooltipPrimitive.Content>
     </TooltipPrimitive.Portal>
   );
 }
 
-export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider };
+export {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+  TooltipProvider,
+  tooltipVariants,
+};

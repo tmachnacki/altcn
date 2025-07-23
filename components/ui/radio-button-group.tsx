@@ -53,16 +53,6 @@ const radioButtonVariants = tv({
         "hover:data-[state=unchecked]:bg-hover-faded",
       ],
 
-      "base-shadow": [
-        "data-[state=unchecked]:bg-base data-[state=unchecked]:shadow-base/50 data-[state=unchecked]:text-base-foreground data-[state=unchecked]:shadow-lg",
-        "hover:data-[state=unchecked]:bg-hover-base",
-      ],
-
-      "base-gradient": [
-        "data-[state=unchecked]:bg-linear-(--base-gradient) data-[state=unchecked]:text-base-foreground data-[state=unchecked]:shadow",
-        "hover:data-[state=unchecked]:bg-linear-(--hover-base-gradient)",
-      ],
-
       ghost: [
         "data-[state=unchecked]:bg-transparent data-[state=unchecked]:text-foreground",
         "hover:data-[state=unchecked]:bg-muted hover:data-[state=unchecked]:text-accent-foreground",
@@ -90,7 +80,7 @@ const radioButtonVariants = tv({
       ],
 
       "primary-tron": [
-        "data-[state=unchecked]:bg-background data-[state=unchecked]:bg-linear-(--primary-tron-gradient) data-[state=unchecked]:text-primary-muted-foreground data-[state=unchecked]:shadow data-[state=unchecked]:inset-ring data-[state=unchecked]:inset-ring-primary-tron-border",
+        "data-[state=unchecked]:bg-background data-[state=unchecked]:bg-linear-(--primary-tron-gradient) data-[state=unchecked]:text-primary-accent-foreground data-[state=unchecked]:shadow data-[state=unchecked]:inset-ring data-[state=unchecked]:inset-ring-primary-tron-border",
         "hover:data-[state=unchecked]:bg-linear-(--hover-primary-tron-gradient) hover:data-[state=unchecked]:inset-ring-hover-primary-tron-border",
         "[--tron-beam:var(--color-primary)] [--tron-blur:var(--color-primary-tron-blur)]",
       ],
@@ -122,7 +112,7 @@ const radioButtonVariants = tv({
       ],
 
       "secondary-tron": [
-        "data-[state=unchecked]:bg-background data-[state=unchecked]:bg-linear-(--secondary-tron-gradient) data-[state=unchecked]:text-secondary-muted-foreground data-[state=unchecked]:shadow data-[state=unchecked]:inset-ring data-[state=unchecked]:inset-ring-secondary-tron-border",
+        "data-[state=unchecked]:bg-background data-[state=unchecked]:bg-linear-(--secondary-tron-gradient) data-[state=unchecked]:text-secondary-accent-foreground data-[state=unchecked]:shadow data-[state=unchecked]:inset-ring data-[state=unchecked]:inset-ring-secondary-tron-border",
         "hover:data-[state=unchecked]:bg-linear-(--hover-secondary-tron-gradient) hover:data-[state=unchecked]:inset-ring-hover-secondary-tron-border",
         "[--tron-beam:var(--color-secondary)] [--tron-blur:var(--color-secondary-tron-blur)]",
       ],
@@ -171,7 +161,7 @@ const radioButtonVariants = tv({
       ],
 
       "base-shadow": [
-        "data-[state=checked]:bg-base data-[state=checked]:shadow-base/50 data-[state=checked]:text-base-foreground data-[state=checked]:shadow-lg",
+        "data-[state=checked]:shadow-base-bg/50 data-[state=checked]:bg-base-bg data-[state=checked]:text-base-foreground data-[state=checked]:shadow-lg",
         "hover:data-[state=checked]:bg-hover-base",
       ],
 
@@ -207,7 +197,7 @@ const radioButtonVariants = tv({
       ],
 
       "primary-tron": [
-        "data-[state=checked]:bg-background data-[state=checked]:bg-linear-(--primary-tron-gradient) data-[state=checked]:text-primary-muted-foreground data-[state=checked]:shadow data-[state=checked]:inset-ring data-[state=checked]:inset-ring-primary-tron-border",
+        "data-[state=checked]:bg-background data-[state=checked]:bg-linear-(--primary-tron-gradient) data-[state=checked]:text-primary-accent-foreground data-[state=checked]:shadow data-[state=checked]:inset-ring data-[state=checked]:inset-ring-primary-tron-border",
         "hover:data-[state=checked]:bg-linear-(--hover-primary-tron-gradient) hover:data-[state=checked]:inset-ring-hover-primary-tron-border",
         "[--tron-beam:var(--color-primary)] [--tron-blur:var(--color-primary-tron-blur)]",
       ],
@@ -249,7 +239,7 @@ const radioButtonVariants = tv({
       ],
 
       "secondary-tron": [
-        "data-[state=checked]:bg-background data-[state=checked]:bg-linear-(--secondary-tron-gradient) data-[state=checked]:text-secondary-muted-foreground data-[state=checked]:shadow data-[state=checked]:inset-ring data-[state=checked]:inset-ring-secondary-tron-border",
+        "data-[state=checked]:bg-background data-[state=checked]:bg-linear-(--secondary-tron-gradient) data-[state=checked]:text-secondary-accent-foreground data-[state=checked]:shadow data-[state=checked]:inset-ring data-[state=checked]:inset-ring-secondary-tron-border",
         "hover:data-[state=checked]:bg-linear-(--hover-secondary-tron-gradient) hover:data-[state=checked]:inset-ring-hover-secondary-tron-border",
         "[--tron-beam:var(--color-secondary)] [--tron-blur:var(--color-secondary-tron-blur)]",
       ],
@@ -287,15 +277,7 @@ const radioButtonVariants = tv({
   },
   compoundVariants: [
     {
-      unchecked: [
-        "outline",
-        "accent",
-        "muted",
-        "surface",
-        "faded",
-        "base-gradient",
-        "ghost",
-      ],
+      unchecked: ["outline", "accent", "muted", "surface", "faded", "ghost"],
       className: "data-[state=unchecked]:outline-outline",
     },
     {
@@ -347,7 +329,7 @@ const radioButtonVariants = tv({
     {
       unchecked: ["primary-tron", "secondary-tron"],
       className: [
-        "aria-invalid:bg-linear-(--destructive-tron-gradient) aria-invalid:text-destructive-muted-foreground aria-invalid:inset-ring-destructive-tron-border aria-invalid:[--tron-beam:var(--color-destructive)] aria-invalid:[--tron-blur:var(--color-destructive-tron-blur)] hover:aria-invalid:bg-linear-(--hover-destructive-tron-gradient) hover:aria-invalid:inset-ring-hover-destructive-tron-border",
+        "aria-invalid:bg-linear-(--destructive-tron-gradient) aria-invalid:text-destructive-accent-foreground aria-invalid:inset-ring-destructive-tron-border aria-invalid:[--tron-beam:var(--color-destructive)] aria-invalid:[--tron-blur:var(--color-destructive-tron-blur)] hover:aria-invalid:bg-linear-(--hover-destructive-tron-gradient) hover:aria-invalid:inset-ring-hover-destructive-tron-border",
       ],
     },
     {
@@ -364,6 +346,7 @@ const radioButtonVariants = tv({
         "muted",
         "surface",
         "faded",
+        "base-shadow",
         "base-gradient",
       ],
       className: "data-[state=checked]:outline-outline",
@@ -427,7 +410,7 @@ const radioButtonVariants = tv({
     {
       checked: ["primary-tron", "secondary-tron"],
       className: [
-        "aria-invalid:data-[state=checked]:bg-linear-(--destructive-tron-gradient) aria-invalid:data-[state=checked]:text-destructive-muted-foreground aria-invalid:data-[state=checked]:inset-ring-destructive-tron-border aria-invalid:data-[state=checked]:[--tron-beam:var(--color-destructive)] aria-invalid:data-[state=checked]:[--tron-blur:var(--color-destructive-tron-blur)] hover:aria-invalid:data-[state=checked]:bg-linear-(--hover-destructive-tron-gradient) hover:aria-invalid:data-[state=checked]:inset-ring-hover-destructive-tron-border",
+        "aria-invalid:data-[state=checked]:bg-linear-(--destructive-tron-gradient) aria-invalid:data-[state=checked]:text-destructive-accent-foreground aria-invalid:data-[state=checked]:inset-ring-destructive-tron-border aria-invalid:data-[state=checked]:[--tron-beam:var(--color-destructive)] aria-invalid:data-[state=checked]:[--tron-blur:var(--color-destructive-tron-blur)] hover:aria-invalid:data-[state=checked]:bg-linear-(--hover-destructive-tron-gradient) hover:aria-invalid:data-[state=checked]:inset-ring-hover-destructive-tron-border",
       ],
     },
     {

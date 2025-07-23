@@ -123,7 +123,7 @@
   --hover-primary-tron-gradient:
     to bottom, --alpha(var(--color-primary) / 20%) 0%,
     --alpha(var(--color-primary) / 5%) 100%;
-  --primary-tron-border: --alpha(var(--color-primary) / 30%);
+  --primary-tron-border: --alpha(var(--color-primary) / 35%);
   --hover-primary-tron-border: --alpha(var(--color-primary) / 50%);
   --primary-tron-blur: var(--color-purple-400);
 
@@ -179,7 +179,7 @@
   --hover-secondary-tron-gradient:
     to bottom, --alpha(var(--color-secondary) / 20%) 0%,
     --alpha(var(--color-secondary) / 5%) 100%;
-  --secondary-tron-border: --alpha(var(--color-secondary) / 30%);
+  --secondary-tron-border: --alpha(var(--color-secondary) / 35%);
   --hover-secondary-tron-border: --alpha(var(--color-secondary) / 50%);
   --secondary-tron-blur: var(--color-cyan-400);
 
@@ -232,7 +232,7 @@
   --hover-destructive-tron-gradient:
     to bottom, --alpha(var(--color-destructive) / 20%) 0%,
     --alpha(var(--color-destructive) / 5%) 100%;
-  --destructive-tron-border: --alpha(var(--color-destructive) / 30%);
+  --destructive-tron-border: --alpha(var(--color-destructive) / 35%);
   --hover-destructive-tron-border: --alpha(var(--color-destructive) / 50%);
   --destructive-tron-blur: var(--color-pink-400);
 
@@ -274,7 +274,7 @@
   --hover-success-tron-gradient:
     to bottom, --alpha(var(--color-success) / 20%) 0%,
     --alpha(var(--color-success) / 5%) 100%;
-  --success-tron-border: --alpha(var(--color-success) / 30%);
+  --success-tron-border: --alpha(var(--color-success) / 35%);
   --hover-success-tron-border: --alpha(var(--color-success) / 50%);
   --success-tron-blur: var(--color-green-400);
 
@@ -318,7 +318,7 @@
   --hover-warning-tron-gradient:
     to bottom, --alpha(var(--color-warning) / 20%) 0%,
     --alpha(var(--color-warning) / 5%) 100%;
-  --warning-tron-border: --alpha(var(--color-warning) / 30%);
+  --warning-tron-border: --alpha(var(--color-warning) / 35%);
   --hover-warning-tron-border: --alpha(var(--color-warning) / 50%);
   --warning-tron-blur: var(--color-yellow-300);
 
@@ -439,7 +439,7 @@
   --hover-primary-tron-gradient:
     to bottom, --alpha(var(--color-primary) / 20%) 0%,
     --alpha(var(--color-primary) / 5%) 100%;
-  --primary-tron-border: --alpha(var(--color-primary) / 30%);
+  --primary-tron-border: --alpha(var(--color-primary) / 35%);
   --hover-primary-tron-border: --alpha(var(--color-primary) / 50%);
   --primary-tron-blur: var(--color-purple-400);
 
@@ -491,7 +491,7 @@
   --hover-secondary-tron-gradient:
     to bottom, --alpha(var(--color-secondary) / 20%) 0%,
     --alpha(var(--color-secondary) / 5%) 100%;
-  --secondary-tron-border: --alpha(var(--color-secondary) / 30%);
+  --secondary-tron-border: --alpha(var(--color-secondary) / 35%);
   --hover-secondary-tron-border: --alpha(var(--color-secondary) / 50%);
   --secondary-tron-blur: var(--color-cyan-400);
 
@@ -544,7 +544,7 @@
   --hover-destructive-tron-gradient:
     to bottom, --alpha(var(--color-destructive) / 20%) 0%,
     --alpha(var(--color-destructive) / 5%) 100%;
-  --destructive-tron-border: --alpha(var(--color-destructive) / 30%);
+  --destructive-tron-border: --alpha(var(--color-destructive) / 35%);
   --hover-destructive-tron-border: --alpha(var(--color-destructive) / 50%);
   --destructive-tron-blur: var(--color-pink-400);
 
@@ -590,7 +590,7 @@
   --hover-success-tron-gradient:
     to bottom, --alpha(var(--color-success) / 20%) 0%,
     --alpha(var(--color-success) / 5%) 100%;
-  --success-tron-border: --alpha(var(--color-success) / 30%);
+  --success-tron-border: --alpha(var(--color-success) / 35%);
   --hover-success-tron-border: --alpha(var(--color-success) / 50%);
   --success-tron-blur: var(--color-green-400);
 
@@ -634,7 +634,7 @@
   --hover-warning-tron-gradient:
     to bottom, --alpha(var(--color-warning) / 20%) 0%,
     --alpha(var(--color-warning) / 5%) 100%;
-  --warning-tron-border: --alpha(var(--color-warning) / 30%);
+  --warning-tron-border: --alpha(var(--color-warning) / 35%);
   --hover-warning-tron-border: --alpha(var(--color-warning) / 50%);
   --warning-tron-blur: var(--color-yellow-300);
 

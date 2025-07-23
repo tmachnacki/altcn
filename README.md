@@ -14,10 +14,10 @@
 - [ ] Try to integrate heroicons instead of lucide
 - [ ] Reduced motion
 - [ ] Tanstack links examples
-- [ ] Maybe restructure multiple variants props with contexts
+- [ ] Move variant contexts to top-level (root) of components
 - [ ] Calendar/DatePicker variants
 - [ ] Tailwind Variants rewrite
-- [ ] Tron variants
+- [ ] More/Better Tron variants (inputs)
 - [ ] Pill shapes
 - [ ] All colors variants and css files
 - [ ] Contrast variants
@@ -41,8 +41,6 @@
 - [ ] Progress Circular
 - [ ] Rating
 - [ ] Table
-- [ ] Tab Nav (Navigation Primitive)
-- [ ] Textarea
 - [ ] Toggle Group
 - [ ] Toolbar
 - [ ] Uploader

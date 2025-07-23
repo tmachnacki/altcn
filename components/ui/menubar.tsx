@@ -12,13 +12,14 @@ import {
   menuItemIndicatorVariants,
   menuItemVariants,
   menuLabelVariants,
+  menuSeparatorVariants,
   menuShortcutVariants,
   type MenuContextProps,
   type MenuIndicatorItemProps,
 } from "~/components/ui/dropdown-menu";
 import { Tron } from "~/components/ui/tron";
 
-const menubarListVariants = tv({
+const menubarBarVariants = tv({
   base: "relative isolate flex items-center gap-1 rounded-md p-1",
   variants: {
     variant: {
@@ -37,6 +38,7 @@ const menubarListVariants = tv({
 
 const menubarTriggerVariants = tv({
   base: [
+    "group/menubar-trigger",
     "relative flex h-7 items-center rounded-sm px-2 py-1 text-sm font-medium outline-hidden select-none",
     "**:[svg]:pointer-events-none **:[svg]:shrink-0 **:[svg]:grow-0 **:[svg]:not-[[class*='size-']]:size-(--icon-sm) **:[svg]:not-[[class*='text-']]:text-muted-foreground",
     "data-[highlighted]:**:[svg]:not-[[class*='text-']]:text-current data-[state=open]:**:[svg]:not-[[class*='text-']]:text-current",
@@ -101,10 +103,10 @@ const menubarTriggerVariants = tv({
       ],
 
       "primary-tron": [
-        "data-[highlighted]:bg-background data-[highlighted]:bg-linear-(--primary-tron-gradient) data-[highlighted]:text-primary-muted-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-primary-tron-border",
-        "data-[highlighted]:[--tron-beam:var(--color-primary)] data-[highlighted]:[--tron-blur:var(--primary-tron-blur)]",
-        "data-[state=open]:bg-background data-[state=open]:bg-linear-(--primary-tron-gradient) data-[state=open]:text-primary-muted-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-primary-tron-border",
-        "data-[state=open]:[--tron-beam:var(--color-primary)] data-[state=open]:[--tron-blur:var(--primary-tron-blur)]",
+        "data-[highlighted]:bg-background data-[highlighted]:bg-linear-(--primary-tron-gradient) data-[highlighted]:text-primary-accent-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-primary-tron-border",
+        "data-[highlighted]:[--tron-beam:var(--color-primary)] data-[highlighted]:[--tron-blur:var(--color-primary-tron-blur)]",
+        "data-[state=open]:bg-background data-[state=open]:bg-linear-(--primary-tron-gradient) data-[state=open]:text-primary-accent-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-primary-tron-border",
+        "data-[state=open]:[--tron-beam:var(--color-primary)] data-[state=open]:[--tron-blur:var(--color-primary-tron-blur)]",
       ],
 
       "primary-gradient": [
@@ -144,10 +146,10 @@ const menubarTriggerVariants = tv({
       ],
 
       "secondary-tron": [
-        "data-[highlighted]:bg-background data-[highlighted]:bg-linear-(--secondary-tron-gradient) data-[highlighted]:text-secondary-muted-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-secondary-tron-border",
-        "data-[highlighted]:[--tron-beam:var(--color-secondary)] data-[highlighted]:[--tron-blur:var(--secondary-tron-blur)]",
-        "data-[state=open]:bg-background data-[state=open]:bg-linear-(--secondary-tron-gradient) data-[state=open]:text-secondary-muted-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-secondary-tron-border",
-        "data-[state=open]:[--tron-beam:var(--color-secondary)] data-[state=open]:[--tron-blur:var(--secondary-tron-blur)]",
+        "data-[highlighted]:bg-background data-[highlighted]:bg-linear-(--secondary-tron-gradient) data-[highlighted]:text-secondary-accent-foreground data-[highlighted]:inset-ring data-[highlighted]:inset-ring-secondary-tron-border",
+        "data-[highlighted]:[--tron-beam:var(--color-secondary)] data-[highlighted]:[--tron-blur:var(--color-secondary-tron-blur)]",
+        "data-[state=open]:bg-background data-[state=open]:bg-linear-(--secondary-tron-gradient) data-[state=open]:text-secondary-accent-foreground data-[state=open]:inset-ring data-[state=open]:inset-ring-secondary-tron-border",
+        "data-[state=open]:[--tron-beam:var(--color-secondary)] data-[state=open]:[--tron-blur:var(--color-secondary-tron-blur)]",
       ],
 
       "secondary-gradient": [
@@ -177,7 +179,7 @@ const MenubarContext = React.createContext<MenubarContextProps>({});
 
 type MenubarProps = React.ComponentProps<typeof MenubarPrimitive.Root> & {
   variants?: MenubarContextProps["variants"] & {
-    list?: VariantProps<typeof menubarListVariants>["variant"];
+    bar?: VariantProps<typeof menubarBarVariants>["variant"];
   };
   width?: MenubarContextProps["width"];
 };
@@ -192,10 +194,7 @@ function Menubar({
   return (
     <MenubarPrimitive.Root
       data-slot="menubar"
-      className={cn(
-        menubarListVariants({ variant: variants?.list }),
-        className
-      )}
+      className={cn(menubarBarVariants({ variant: variants?.bar }), className)}
       {...props}
     >
       <MenubarContext.Provider
@@ -241,17 +240,18 @@ function MenubarTrigger({
 }: React.ComponentProps<typeof MenubarPrimitive.Trigger> &
   VariantProps<typeof menubarTriggerVariants>) {
   const context = React.useContext(MenubarContext);
+  const _variant = variant || context.variants?.trigger;
 
   return (
     <MenubarPrimitive.Trigger
       data-slot="menubar-trigger"
       className={menubarTriggerVariants({
-        variant: variant || context.variants?.trigger,
-        className: ["group/menubar-trigger", className],
+        variant: _variant,
+        className,
       })}
       {...props}
     >
-      {variant?.includes("tron") && (
+      {_variant?.includes("tron") && (
         <>
           <Tron
             side="bottom"
@@ -359,10 +359,11 @@ function MenubarCheckboxItem({
         data-width={width || context.width}
         className={menuItemIndicatorVariants({
           variant: variants?.indicator || context.variants?.indicator,
+          type: "checkbox",
           className: classNames?.indicator,
         })}
       >
-        <CheckIcon className="size-4 text-current" />
+        <CheckIcon className="text-current" />
       </MenubarPrimitive.ItemIndicator>
       {children}
     </MenubarPrimitive.CheckboxItem>
@@ -409,10 +410,11 @@ function MenubarRadioItem({
         data-width={width || context.width}
         className={menuItemIndicatorVariants({
           variant: variants?.indicator || context.variants?.indicator,
+          type: "radio",
           className: classNames?.indicator,
         })}
       >
-        <CircleIcon className="size-2 fill-current text-current" />
+        <CircleIcon className="fill-current text-current" />
       </MenubarPrimitive.ItemIndicator>
       {children}
     </MenubarPrimitive.RadioItem>
@@ -443,7 +445,7 @@ function MenubarSeparator({
   return (
     <MenubarPrimitive.Separator
       data-slot="menubar-separator"
-      className={cn("-mx-(--menu-content-px) my-1 h-px bg-border", className)}
+      className={menuSeparatorVariants({ className })}
       {...props}
     />
   );
@@ -456,7 +458,7 @@ function MenubarShortcut({
   return (
     <span
       data-slot="menubar-shortcut"
-      className={cn(menuShortcutVariants(), className)}
+      className={menuShortcutVariants({ className })}
       {...props}
     />
   );
@@ -541,6 +543,6 @@ export {
   MenubarSub,
   MenubarSubTrigger,
   MenubarSubContent,
-  menubarListVariants,
+  menubarBarVariants,
   menubarTriggerVariants,
 };

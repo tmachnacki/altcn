@@ -9,7 +9,7 @@ import { cn } from "~/lib/utils";
 
 const menuContentVariants = tv({
   base: [
-    "[--inset-pl:--spacing(9)] [--menu-content-px:--spacing(1)] [--menu-item-px:--spacing(2)] sm:[--inset-pl:--spacing(8)]",
+    "[--inset-p:--spacing(9)] [--menu-content-px:--spacing(1)] [--menu-item-px:--spacing(2)] sm:[--inset-p:--spacing(8)]",
     "z-50 overflow-x-hidden overflow-y-auto rounded-md border px-(--menu-content-px) py-1 text-popover-foreground shadow-md",
   ],
   variants: {
@@ -25,11 +25,11 @@ const menuContentVariants = tv({
 
 const menuItemVariants = tv({
   base: [
-    "relative flex cursor-default items-center gap-2.5 rounded-sm px-(--menu-item-px) py-1.5 text-base outline-hidden select-none data-[align=inset]:pl-(--inset-pl) sm:gap-2 sm:text-sm",
+    "relative flex cursor-default items-center gap-2.5 rounded-sm px-(--menu-item-px) py-1.5 text-base outline-hidden select-none data-[align=inset]:pl-(--inset-p) sm:gap-2 sm:text-sm",
 
     "data-[disabled]:pointer-events-none data-[disabled]:text-muted-foreground data-[disabled]:opacity-50 data-[disabled]:**:[[data-slot*='-indicator']]:text-muted-foreground",
 
-    "**:[svg]:pointer-events-none **:[svg]:shrink-0 **:[svg]:not-[[class*='size-']]:size-(--icon-lg) **:[svg]:not-[[class*='text-']]:text-muted-foreground data-[highlighted]:**:[svg]:not-[[class*='text-']]:text-current sm:**:[svg]:not-[[class*='size-']]:size-(--icon-md)",
+    "*:[svg]:pointer-events-none *:[svg]:shrink-0 *:[svg]:not-[[class*='size-']]:size-(--icon-lg) *:[svg]:not-[[class*='text-']]:text-muted-foreground data-[highlighted]:*:[svg]:not-[[class*='text-']]:text-current sm:*:[svg]:not-[[class*='size-']]:size-(--icon-md)",
 
     // for subtrigger
     "not-data-[highlighted]:data-[state=open]:bg-muted not-data-[highlighted]:data-[state=open]:text-accent-foreground",
@@ -105,7 +105,7 @@ const menuItemVariants = tv({
     },
     width: {
       default: "",
-      full: "-mx-(--menu-content-px) rounded-none px-[calc(var(--menu-content-px)+var(--menu-item-px))] data-[align=inset]:pl-[calc(var(--menu-content-px)+var(--inset-pl))]",
+      full: "-mx-(--menu-content-px) rounded-none px-[calc(var(--menu-content-px)+var(--menu-item-px))] data-[align=inset]:pl-[calc(var(--menu-content-px)+var(--inset-p))]",
     },
   },
   compoundVariants: [
@@ -142,18 +142,29 @@ const menuItemIndicatorVariants = tv({
       success: "text-success",
       warning: "text-warning",
     },
+    type: {
+      checkbox:
+        "*:[svg]:not-[[class*='size-']]:size-(--icon-lg) sm:*:[svg]:not-[[class*='size-']]:size-(--icon-md)",
+      radio:
+        "*:[svg]:not-[[class*='size-']]:size-[calc(var(--spacing)*2.5)] sm:*:[svg]:not-[[class*='size-']]:size-[calc(var(--spacing)*2)]",
+    },
   },
   defaultVariants: {
     variant: "base",
+    type: "checkbox",
   },
 });
 
 const menuLabelVariants = tv({
-  base: "px-(--menu-item-px) py-1.5 text-base font-medium text-foreground data-[align=inset]:pl-(--inset-pl) sm:text-sm",
+  base: "px-(--menu-item-px) py-1.5 text-base font-medium text-popover-foreground data-[align=inset]:pl-(--inset-p) sm:text-sm",
 });
 
 const menuShortcutVariants = tv({
   base: "ml-auto text-smaller leading-none font-normal tracking-widest text-current/60 sm:text-xs",
+});
+
+const menuSeparatorVariants = tv({
+  base: "pointer-events-none -mx-(--menu-content-px) my-1 h-px bg-border",
 });
 
 function DropdownMenu({
@@ -309,14 +320,13 @@ function DropdownMenuCheckboxItem({
       <DropdownMenuPrimitive.ItemIndicator
         data-slot="dropdown-menu-checkbox-item-indicator"
         data-width={width || context.width}
-        className={cn(
-          menuItemIndicatorVariants({
-            variant: variants?.indicator || context.variants?.indicator,
-          }),
-          classNames?.indicator
-        )}
+        className={menuItemIndicatorVariants({
+          variant: variants?.indicator || context.variants?.indicator,
+          type: "checkbox",
+          className: classNames?.indicator,
+        })}
       >
-        <CheckIcon className="size-(--icon-lg) text-current sm:size-(--icon-md)" />
+        <CheckIcon className="text-current" />
       </DropdownMenuPrimitive.ItemIndicator>
       {children}
     </DropdownMenuPrimitive.CheckboxItem>
@@ -364,14 +374,13 @@ function DropdownMenuRadioItem({
       <DropdownMenuPrimitive.ItemIndicator
         data-slot="dropdown-menu-radio-item-indicator"
         data-width={width || context.width}
-        className={cn(
-          menuItemIndicatorVariants({
-            variant: variants?.indicator || context.variants?.indicator,
-          }),
-          classNames?.indicator
-        )}
+        className={menuItemIndicatorVariants({
+          variant: variants?.indicator || context.variants?.indicator,
+          type: "radio",
+          className: classNames?.indicator,
+        })}
       >
-        <CircleIcon className="size-2.5 fill-current text-current sm:size-2" />
+        <CircleIcon className="fill-current text-current" />
       </DropdownMenuPrimitive.ItemIndicator>
       {children}
     </DropdownMenuPrimitive.RadioItem>
@@ -402,10 +411,7 @@ function DropdownMenuSeparator({
   return (
     <DropdownMenuPrimitive.Separator
       data-slot="dropdown-menu-separator"
-      className={cn(
-        "pointer-events-none -mx-(--menu-content-px) my-1 h-px bg-border",
-        className
-      )}
+      className={menuSeparatorVariants({ className })}
       {...props}
     />
   );
@@ -418,7 +424,7 @@ function DropdownMenuShortcut({
   return (
     <span
       data-slot="dropdown-menu-shortcut"
-      className={cn(menuShortcutVariants(), className)}
+      className={menuShortcutVariants({ className })}
       {...props}
     />
   );
@@ -452,13 +458,11 @@ function DropdownMenuSubTrigger({
       data-slot="dropdown-menu-sub-trigger"
       data-align={align}
       data-width={width || context.width}
-      className={cn(
-        menuItemVariants({
-          variant: variant || context.variants?.item,
-          width: width || context.width,
-        }),
-        className
-      )}
+      className={menuItemVariants({
+        variant: variant || context.variants?.item,
+        width: width || context.width,
+        className,
+      })}
       {...props}
     >
       {children}
@@ -496,6 +500,7 @@ export {
   menuItemIndicatorVariants,
   menuLabelVariants,
   menuShortcutVariants,
+  menuSeparatorVariants,
   DropdownMenu,
   DropdownMenuPortal,
   DropdownMenuTrigger,

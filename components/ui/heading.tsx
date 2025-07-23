@@ -4,7 +4,7 @@ type HeadingProps = React.ComponentProps<
   "h1" | "h2" | "h3" | "h4" | "h5" | "h6"
 > & {
   level?: 1 | 2 | 3 | 4 | 5 | 6;
-  size?: "sm" | "base" | "lg" | "xl" | "2xl" | "3xl" | "4xl";
+  size?: "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl";
 };
 
 const Heading = ({
@@ -19,7 +19,7 @@ const Heading = ({
       className={cn(
         {
           sm: "text-base sm:text-sm",
-          base: "text-lg sm:text-base",
+          md: "text-lg sm:text-base",
           lg: "text-xl sm:text-lg",
           xl: "text-2xl sm:text-xl",
           "2xl": "text-3xl sm:text-2xl",

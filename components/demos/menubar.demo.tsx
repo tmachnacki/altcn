@@ -18,11 +18,11 @@ import {
 import { Label } from "~/components/ui/label";
 import {
   Menubar,
+  menubarBarVariants,
   MenubarCheckboxItem,
   MenubarContent,
   MenubarGroup,
   MenubarItem,
-  menubarListVariants,
   MenubarMenu,
   MenubarRadioGroup,
   MenubarRadioItem,
@@ -45,10 +45,10 @@ import { BackgroundPattern } from "~/components/background-pattern";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
 
-type ListVariant = keyof typeof menubarListVariants.variants.variant;
-const listVariants = Object.keys(
-  menubarListVariants.variants.variant
-) as ListVariant[];
+type BarVariant = keyof typeof menubarBarVariants.variants.variant;
+const barVariants = Object.keys(
+  menubarBarVariants.variants.variant
+) as BarVariant[];
 
 type TriggerVariant = keyof typeof menubarTriggerVariants.variants.variant;
 const triggerVariants = Object.keys(
@@ -80,7 +80,7 @@ const destructiveItemVariants = Object.keys(
 const widths = ["default", "full"] as const;
 
 export function MenubarDemo() {
-  const [listVariant, setListVariant] = React.useState<ListVariant>("outline");
+  const [barVariant, setBarVariant] = React.useState<BarVariant>("outline");
   const [triggerVariant, setTriggerVariant] =
     React.useState<TriggerVariant>("accent");
   const [contentVariant, setContentVariant] =
@@ -102,7 +102,7 @@ export function MenubarDemo() {
           <BackgroundPattern />
           <Menubar
             variants={{
-              list: listVariant,
+              bar: barVariant,
               trigger: triggerVariant,
               content: contentVariant,
               item: itemVariant,
@@ -248,16 +248,16 @@ export function MenubarDemo() {
       </ComponentContainer>
       <ComponentPlayground>
         <div className="grid gap-2">
-          <Label htmlFor="menubar-list-variant">List Variant</Label>
+          <Label htmlFor="menubar-bar-variant">Bar Variant</Label>
           <Select
-            value={listVariant}
-            onValueChange={(value) => setListVariant(value as ListVariant)}
+            value={barVariant}
+            onValueChange={(value) => setBarVariant(value as BarVariant)}
           >
-            <SelectTrigger id="menubar-list-variant" className="w-full">
+            <SelectTrigger id="menubar-bar-variant" className="w-full">
               <SelectValue placeholder="Select variant" />
             </SelectTrigger>
             <SelectContent>
-              {listVariants.map((variant) => (
+              {barVariants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
                   {variant}
                 </SelectItem>

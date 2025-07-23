@@ -57,7 +57,7 @@ const toggleVariants = tv({
         "hover:bg-primary-faded hover:text-primary-muted-foreground/80 data-[state=on]:bg-primary-faded data-[state=on]:text-primary-muted-foreground data-[state=on]:inset-ring data-[state=on]:inset-ring-primary-faded-border",
 
       "primary-tron": [
-        "hover:text-primary-muted-foreground hover:inset-ring hover:inset-ring-primary-faded-border data-[state=on]:bg-background data-[state=on]:bg-linear-(--primary-tron-gradient) data-[state=on]:text-primary-muted-foreground data-[state=on]:inset-ring data-[state=on]:inset-ring-primary-tron-border",
+        "hover:text-primary-muted-foreground hover:inset-ring hover:inset-ring-primary-faded-border data-[state=on]:bg-background data-[state=on]:bg-linear-(--primary-tron-gradient) data-[state=on]:text-primary-accent-foreground data-[state=on]:inset-ring data-[state=on]:inset-ring-primary-tron-border",
         "[--tron-beam:var(--color-primary)] [--tron-blur:var(--color-primary-tron-blur)]",
       ],
 
@@ -81,7 +81,7 @@ const toggleVariants = tv({
         "hover:bg-secondary-faded hover:text-secondary-muted-foreground/80 data-[state=on]:bg-secondary-faded data-[state=on]:text-secondary-muted-foreground data-[state=on]:inset-ring data-[state=on]:inset-ring-secondary-faded-border",
 
       "secondary-tron": [
-        "hover:text-secondary-muted-foreground hover:inset-ring hover:inset-ring-secondary-faded-border data-[state=on]:bg-background data-[state=on]:bg-linear-(--secondary-tron-gradient) data-[state=on]:text-secondary-muted-foreground data-[state=on]:inset-ring data-[state=on]:inset-ring-secondary-tron-border",
+        "hover:text-secondary-muted-foreground hover:inset-ring hover:inset-ring-secondary-faded-border data-[state=on]:bg-background data-[state=on]:bg-linear-(--secondary-tron-gradient) data-[state=on]:text-secondary-accent-foreground data-[state=on]:inset-ring data-[state=on]:inset-ring-secondary-tron-border",
         "[--tron-beam:var(--color-secondary)] [--tron-blur:var(--color-secondary-tron-blur)]",
       ],
 
@@ -99,7 +99,7 @@ const toggleVariants = tv({
         "**:[svg]:not-[[class*='size-']]:size-(--icon-sm) sm:**:[svg]:not-[[class*='size-']]:size-(--icon-xs)",
       ],
       sm: [
-        "h-(--size-md) min-w-(--size-md) gap-2 rounded-md px-1.5 text-sm sm:h-(--size-sm) sm:min-w-(--size-sm) sm:text-sm",
+        "h-(--size-md) min-w-(--size-md) gap-2 rounded-md px-1.5 text-sm sm:h-(--size-sm) sm:min-w-(--size-sm)",
         "**:[svg]:not-[[class*='size-']]:size-(--icon-md) sm:**:[svg]:not-[[class*='size-']]:size-(--icon-sm)",
       ],
       md: [

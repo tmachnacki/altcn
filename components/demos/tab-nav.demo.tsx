@@ -2,7 +2,9 @@
 
 import * as React from "react";
 import { useSearchParams } from "next/navigation";
-import { BanIcon, ImageIcon, MusicIcon, PodcastIcon } from "lucide-react";
+import { ImageIcon, MusicIcon, PodcastIcon } from "lucide-react";
+
+import { cn } from "~/lib/utils";
 
 import { Label } from "~/components/ui/label";
 import {
@@ -12,6 +14,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "~/components/ui/select";
+import { Switch } from "~/components/ui/switch";
 import {
   TabNav,
   TabNavItem,
@@ -19,6 +22,7 @@ import {
   TabNavList,
 } from "~/components/ui/tab-nav";
 import { tabsListVariants, tabsTriggerVariants } from "~/components/ui/tabs";
+import { BackgroundPattern } from "~/components/background-pattern";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
 
@@ -31,6 +35,8 @@ type LinkVariant = keyof typeof tabsTriggerVariants.variants.variant;
 const linkVariants = Object.keys(
   tabsTriggerVariants.variants.variant
 ) as LinkVariant[];
+
+const orientations = ["horizontal", "vertical"] as const;
 
 export function TabNavDemo() {
   return (
@@ -45,52 +51,66 @@ function TabNavWithParams() {
     React.useState<ListVariant>("underlined");
   const [linkVariant, setLinkVariant] =
     React.useState<LinkVariant>("primary-underlined");
+  const [orientation, setOrientation] = React.useState("horizontal");
+  const [disabled, setDisabled] = React.useState(false);
 
   const page = useSearchParams().get("page") ?? "music";
 
   return (
     <>
-      <ComponentContainer>
-        <TabNav className="w-full max-w-md">
-          <TabNavList
-            variants={{ list: listVariant, link: linkVariant }}
-            className="grid w-full grid-cols-4"
+      <ComponentContainer className="overflow-hidden rounded-t-lg p-0 md:rounded-l-lg md:rounded-r-none">
+        <div className="relative flex h-full min-h-96 w-full min-w-0 flex-col items-center justify-start bg-center p-(--demo-gutter)">
+          {listVariant === "translucent" && <BackgroundPattern />}
+          <div
+            className={cn(
+              "relative flex w-full gap-4 max-w-lg",
+              orientation === "horizontal" ? "flex-col" : "flex-row"
+            )}
           >
-            <TabNavItem>
-              <TabNavLink
-                href="/components/tab-nav?page=music"
-                isActive={page === "music"}
+            <TabNav
+              className={cn(orientation === "horizontal" ? "w-full" : "w-fit")}
+            >
+              <TabNavList
+                variants={{ list: listVariant, link: linkVariant }}
+                orientation={orientation as "horizontal" | "vertical"}
               >
-                <MusicIcon />
-                Music
-              </TabNavLink>
-            </TabNavItem>
-            <TabNavItem>
-              <TabNavLink
-                href="/components/tab-nav?page=podcasts"
-                isActive={page === "podcasts"}
-              >
-                <PodcastIcon />
-                Podcasts
-              </TabNavLink>
-            </TabNavItem>
-            <TabNavItem>
-              <TabNavLink
-                href="/components/tab-nav?page=photos"
-                isActive={page === "photos"}
-              >
-                <ImageIcon />
-                Photos
-              </TabNavLink>
-            </TabNavItem>
-            <TabNavItem>
-              <TabNavLink href="/components/tab-nav?page=onlyfans" disabled>
-                <BanIcon />
-                OnlyFans
-              </TabNavLink>
-            </TabNavItem>
-          </TabNavList>
-        </TabNav>
+                <TabNavItem>
+                  <TabNavLink
+                    href="/components/tab-nav?page=music"
+                    isActive={page === "music"}
+                    disabled={disabled}
+                  >
+                    <MusicIcon />
+                    Music
+                  </TabNavLink>
+                </TabNavItem>
+                <TabNavItem>
+                  <TabNavLink
+                    href="/components/tab-nav?page=podcasts"
+                    isActive={page === "podcasts"}
+                    disabled={disabled}
+                  >
+                    <PodcastIcon />
+                    Podcasts
+                  </TabNavLink>
+                </TabNavItem>
+                <TabNavItem>
+                  <TabNavLink
+                    href="/components/tab-nav?page=photos"
+                    isActive={page === "photos"}
+                    disabled={disabled}
+                  >
+                    <ImageIcon />
+                    Photos
+                  </TabNavLink>
+                </TabNavItem>
+              </TabNavList>
+            </TabNav>
+            <div className="flex-1">
+              <h2 className="text-2xl font-semibold capitalize">{page}</h2>
+            </div>
+          </div>
+        </div>
       </ComponentContainer>
       <ComponentPlayground>
         <div className="grid gap-2">
@@ -128,6 +148,29 @@ function TabNavWithParams() {
               ))}
             </SelectContent>
           </Select>
+        </div>
+        <div className="grid gap-2">
+          <Label htmlFor="tab-nav-orientation">Orientation</Label>
+          <Select value={orientation} onValueChange={setOrientation}>
+            <SelectTrigger id="tab-nav-orientation" className="w-full">
+              <SelectValue placeholder="Select orientation" />
+            </SelectTrigger>
+            <SelectContent>
+              {orientations.map((orientation) => (
+                <SelectItem key={orientation} value={orientation}>
+                  {orientation}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+        <div className="flex items-center gap-3">
+          <Switch
+            id="links-disabled"
+            checked={disabled}
+            onCheckedChange={setDisabled}
+          />
+          <Label htmlFor="links-disabled">Disabled</Label>
         </div>
       </ComponentPlayground>
     </>

@@ -11,7 +11,12 @@ import { Tron } from "~/components/ui/tron";
 
 function TabNav({ className, ...props }: React.ComponentProps<"nav">) {
   return (
-    <nav data-slot="tab-nav" className={cn("w-fit", className)} {...props} />
+    <nav
+      data-slot="tab-nav"
+      role="navigation"
+      className={cn("w-fit", className)}
+      {...props}
+    />
   );
 }
 
@@ -20,6 +25,7 @@ type TabNavListContextProps = {
     list?: VariantProps<typeof tabsListVariants>["variant"];
     link?: VariantProps<typeof tabsTriggerVariants>["variant"];
   };
+  orientation?: "horizontal" | "vertical";
 };
 
 const TabNavListContext = React.createContext<TabNavListContextProps>({});
@@ -27,12 +33,14 @@ const TabNavListContext = React.createContext<TabNavListContextProps>({});
 function TabNavList({
   className,
   variants,
+  orientation = "horizontal",
   ...props
 }: React.ComponentProps<"ul"> & TabNavListContextProps) {
   return (
-    <TabNavListContext.Provider value={{ variants }}>
+    <TabNavListContext.Provider value={{ variants, orientation }}>
       <ul
         data-slot="tab-nav-list"
+        data-orientation={orientation}
         className={cn(tabsListVariants({ variant: variants?.list }), className)}
         {...props}
       />
@@ -64,7 +72,7 @@ function TabNavLink({
   children,
   ...props
 }: TabNavLinkProps) {
-  const { variants } = React.useContext(TabNavListContext);
+  const { variants, orientation } = React.useContext(TabNavListContext);
   const _variant = variant || variants?.link;
 
   return (
@@ -72,6 +80,7 @@ function TabNavLink({
       data-slot="tab-nav-link"
       data-state={isActive ? "active" : "inactive"}
       data-disabled={disabled ? "true" : undefined}
+      data-orientation={orientation}
       aria-current={isActive ? "page" : undefined}
       aria-disabled={disabled}
       tabIndex={disabled ? -1 : 0}

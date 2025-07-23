@@ -5,6 +5,8 @@ import { XIcon } from "lucide-react";
 
 import { cn } from "~/lib/utils";
 
+import { Button } from "~/components/ui/button";
+import { Tron } from "~/components/ui/tron";
 import { ErrorFilledIcon } from "~/components/icons/error-filled";
 import { InfoFilledIcon } from "~/components/icons/info-filled";
 import { SuccessFilledIcon } from "~/components/icons/success-filled";
@@ -12,34 +14,38 @@ import { WarningFilledIcon } from "~/components/icons/warning-filled";
 
 const alertVariants = tv({
   base: [
-    "relative flex w-full items-start gap-x-3 overflow-hidden rounded-lg px-4 py-3 text-sm has-[[data-slot='alert-close']]:pr-12 data-[align=center]:items-center",
-    "*:[svg]:flex-none *:[svg]:text-current *:[svg]:not-[[class*='size-']]:h-[1lh] *:[svg]:not-[[class*='size-']]:w-4",
+    "[--alert-p:--spacing(4)] [--alert-title-height:--spacing(6)] has-[[data-slot='alert-close']]:[--alert-close-offset:--spacing(2.5)] sm:[--alert-title-height:--spacing(5)]",
+    "group/alert",
+    "relative isolate flex w-full items-start gap-x-3 rounded-lg p-(--alert-p)",
+    "has-[[data-slot='alert-close']]:pr-[calc(var(--size-md)+var(--alert-close-offset)+(var(--spacing)*3))] sm:has-[[data-slot='alert-close']]:pr-[calc(var(--size-sm)+var(--alert-close-offset)+(var(--spacing)*3))]",
+    "data-[align=center]:items-center data-[align=center]:has-[[data-slot='alert-close']]:pr-[calc(var(--size-md)+var(--alert-p)+(var(--spacing)*2))] sm:data-[align=center]:has-[[data-slot='alert-close']]:pr-[calc(var(--size-sm)+var(--alert-p)+(var(--spacing)*2))]",
+    "*:[svg]:pointer-events-none *:[svg]:h-(--alert-title-height) *:[svg]:w-(--icon-lg) *:[svg]:flex-none *:[svg]:text-current sm:*:[svg]:w-(--icon-md)",
   ],
   variants: {
     variant: {
       // -- base --
       outline: [
-        "border border-border bg-background",
+        "border border-border bg-background shadow-xs",
         "[--alert-icon-bg:var(--color-muted)]",
         "[--alert-icon-text:var(--color-muted-foreground)]",
-        "[--hover-alert-close-bg:var(--color-muted)]",
-        "[--alert-close-outline:var(--color-outline)]",
+        "has-[[data-slot='alert-close']]:[--hover-alert-close-bg:var(--color-muted)]",
+        "has-[[data-slot='alert-close']]:[--alert-close-outline:var(--color-outline)]",
       ],
 
       muted: [
         "bg-muted",
         "[--alert-icon-bg:var(--color-base-50)] dark:[--alert-icon-bg:var(--color-muted)]",
         "[--alert-icon-text:var(--color-base-500)] dark:[--alert-icon-text:var(--color-base-300)]",
-        "[--hover-alert-close-bg:var(--color-hover-muted)]",
-        "[--alert-close-outline:var(--color-outline)]",
+        "has-[[data-slot='alert-close']]:[--hover-alert-close-bg:var(--color-hover-muted)]",
+        "has-[[data-slot='alert-close']]:[--alert-close-outline:var(--color-outline)]",
       ],
 
       faded: [
         "border border-faded-border bg-faded",
         "[--alert-icon-bg:var(--color-muted)]",
         "[--alert-icon-text:var(--color-muted-foreground)]",
-        "[--hover-alert-close-bg:var(--color-muted)]",
-        "[--alert-close-outline:var(--color-outline)]",
+        "has-[[data-slot='alert-close']]:[--hover-alert-close-bg:var(--color-muted)]",
+        "has-[[data-slot='alert-close']]:[--alert-close-outline:var(--color-outline)]",
       ],
 
       // -- primary --
@@ -47,16 +53,25 @@ const alertVariants = tv({
         "bg-primary-muted",
         "[--alert-icon-bg:var(--color-primary-50)] dark:[--alert-icon-bg:var(--color-primary-muted)]",
         "[--alert-icon-text:var(--color-primary-500)] dark:[--alert-icon-text:var(--color-primary-200)]",
-        "[--hover-alert-close-bg:var(--color-hover-primary-muted)]",
-        "[--alert-close-outline:var(--color-primary)]",
+        "has-[[data-slot='alert-close']]:[--hover-alert-close-bg:var(--color-hover-primary-muted)]",
+        "has-[[data-slot='alert-close']]:[--alert-close-outline:var(--color-primary)]",
       ],
 
       "primary-faded": [
         "border border-primary-faded-border bg-primary-faded",
         "[--alert-icon-bg:var(--color-primary-muted)]",
         "[--alert-icon-text:var(--color-primary-muted-foreground)]",
-        "[--hover-alert-close-bg:var(--color-primary-muted)]",
-        "[--alert-close-outline:var(--color-primary)]",
+        "has-[[data-slot='alert-close']]:[--hover-alert-close-bg:var(--color-primary-muted)]",
+        "has-[[data-slot='alert-close']]:[--alert-close-outline:var(--color-primary)]",
+      ],
+
+      "primary-tron": [
+        "bg-background bg-linear-(--primary-tron-gradient) shadow-xs inset-ring inset-ring-(--primary-tron-border)",
+        "[--tron-beam:var(--color-primary)] [--tron-blur:var(--color-primary-tron-blur)]",
+        "[--alert-icon-bg:var(--color-primary-muted)]",
+        "[--alert-icon-text:var(--color-primary-muted-foreground)]",
+        "has-[[data-slot='alert-close']]:[--hover-alert-close-bg:var(--color-hover-primary-muted)]",
+        "has-[[data-slot='alert-close']]:[--alert-close-outline:var(--color-primary)]",
       ],
 
       // -- secondary --
@@ -76,6 +91,15 @@ const alertVariants = tv({
         "[--alert-close-outline:var(--color-secondary)]",
       ],
 
+      "secondary-tron": [
+        "bg-background bg-linear-(--secondary-tron-gradient) shadow-xs inset-ring inset-ring-(--secondary-tron-border)",
+        "[--tron-beam:var(--color-secondary)] [--tron-blur:var(--color-secondary-tron-blur)]",
+        "[--alert-icon-bg:var(--color-secondary-muted)]",
+        "[--alert-icon-text:var(--color-secondary-muted-foreground)]",
+        "has-[[data-slot='alert-close']]:[--hover-alert-close-bg:var(--color-hover-secondary-muted)]",
+        "has-[[data-slot='alert-close']]:[--alert-close-outline:var(--color-secondary)]",
+      ],
+
       // -- destructive --
       "destructive-muted": [
         "bg-destructive-muted",
@@ -91,6 +115,15 @@ const alertVariants = tv({
         "[--alert-icon-text:var(--color-destructive-muted-foreground)]",
         "[--hover-alert-close-bg:var(--color-destructive-muted)]",
         "[--alert-close-outline:var(--color-destructive)]",
+      ],
+
+      "destructive-tron": [
+        "bg-background bg-linear-(--destructive-tron-gradient) shadow-xs inset-ring inset-ring-(--destructive-tron-border)",
+        "[--tron-beam:var(--color-destructive)] [--tron-blur:var(--color-destructive-tron-blur)]",
+        "[--alert-icon-bg:var(--color-destructive-muted)]",
+        "[--alert-icon-text:var(--color-destructive-muted-foreground)]",
+        "has-[[data-slot='alert-close']]:[--hover-alert-close-bg:var(--color-hover-destructive-muted)]",
+        "has-[[data-slot='alert-close']]:[--alert-close-outline:var(--color-destructive)]",
       ],
 
       // -- success --
@@ -110,6 +143,15 @@ const alertVariants = tv({
         "[--alert-close-outline:var(--color-success)]",
       ],
 
+      "success-tron": [
+        "bg-background bg-linear-(--success-tron-gradient) shadow-xs inset-ring inset-ring-(--success-tron-border)",
+        "[--tron-beam:var(--color-success)] [--tron-blur:var(--color-success-tron-blur)]",
+        "[--alert-icon-bg:var(--color-success-muted)]",
+        "[--alert-icon-text:var(--color-success-muted-foreground)]",
+        "has-[[data-slot='alert-close']]:[--hover-alert-close-bg:var(--color-hover-success-muted)]",
+        "has-[[data-slot='alert-close']]:[--alert-close-outline:var(--color-success)]",
+      ],
+
       // -- warning --
       "warning-muted": [
         "bg-warning-muted",
@@ -126,6 +168,15 @@ const alertVariants = tv({
         "[--hover-alert-close-bg:var(--color-warning-muted)]",
         "[--alert-close-outline:var(--color-warning)]",
       ],
+
+      "warning-tron": [
+        "bg-background bg-linear-(--warning-tron-gradient) shadow-xs inset-ring inset-ring-(--warning-tron-border)",
+        "[--tron-beam:var(--color-warning)] [--tron-blur:var(--color-warning-tron-blur)]",
+        "[--alert-icon-bg:var(--color-warning-muted)]",
+        "[--alert-icon-text:var(--color-warning-muted-foreground)]",
+        "has-[[data-slot='alert-close']]:[--hover-alert-close-bg:var(--color-hover-warning-muted)]",
+        "has-[[data-slot='alert-close']]:[--alert-close-outline:var(--color-warning)]",
+      ],
     },
   },
   compoundVariants: [
@@ -139,7 +190,7 @@ const alertVariants = tv({
       ],
     },
     {
-      variant: ["primary-muted", "primary-faded"],
+      variant: ["primary-muted", "primary-faded", "primary-tron"],
       className: [
         "text-primary-accent-foreground",
         "[--alert-inset-color-bg:var(--color-primary)]",
@@ -148,7 +199,7 @@ const alertVariants = tv({
       ],
     },
     {
-      variant: ["secondary-muted", "secondary-faded"],
+      variant: ["secondary-muted", "secondary-faded", "secondary-tron"],
       className: [
         "text-secondary-accent-foreground",
         "[--alert-inset-color-bg:var(--color-secondary)]",
@@ -157,7 +208,7 @@ const alertVariants = tv({
       ],
     },
     {
-      variant: ["destructive-muted", "destructive-faded"],
+      variant: ["destructive-muted", "destructive-faded", "destructive-tron"],
       className: [
         "text-destructive-accent-foreground",
         "[--alert-inset-color-bg:var(--color-destructive)]",
@@ -166,7 +217,7 @@ const alertVariants = tv({
       ],
     },
     {
-      variant: ["success-muted", "success-faded"],
+      variant: ["success-muted", "success-faded", "success-tron"],
       className: [
         "text-success-accent-foreground",
         "[--alert-inset-color-bg:var(--color-success)]",
@@ -175,7 +226,7 @@ const alertVariants = tv({
       ],
     },
     {
-      variant: ["warning-muted", "warning-faded"],
+      variant: ["warning-muted", "warning-faded", "warning-tron"],
       className: [
         "text-warning-accent-foreground",
         "[--alert-inset-color-bg:var(--color-warning)]",
@@ -208,10 +259,24 @@ function Alert({
       data-align={align}
       className={alertVariants({
         variant,
-        className: ["group/alert", className],
+        className,
       })}
       {...props}
     >
+      {variant?.includes("tron") && (
+        <>
+          <Tron
+            side="bottom"
+            type="beam"
+            className="via-(--tron-beam) opacity-100"
+          />
+          <Tron
+            side="bottom"
+            type="blur"
+            className="via-(--tron-blur) opacity-100"
+          />
+        </>
+      )}
       {children}
     </div>
   );
@@ -251,7 +316,7 @@ function AlertIcon({ className, type, children, ...props }: AlertIconProps) {
         "inline-flex size-8 flex-none items-center justify-center rounded-full bg-(--alert-icon-bg) shadow-sm inset-ring inset-ring-(--alert-icon-border) **:[svg]:shrink-0",
         type
           ? "text-(--alert-icon-text) **:[svg]:not-[[class*='size-']]:size-5"
-          : "**:[svg]:text-current **:[svg]:not-[[class*='size-']]:size-4",
+          : "**:[svg]:text-current **:[svg]:not-[[class*='size-']]:size-(--icon-lg) sm:**:[svg]:not-[[class*='size-']]:size-(--icon-md)",
         className
       )}
       {...props}
@@ -272,7 +337,7 @@ function AlertContent({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="alert-content"
-      className={cn("flex flex-1 flex-col gap-0.5 text-sm", className)}
+      className={cn("flex flex-1 flex-col gap-0.5", className)}
       {...props}
     />
   );
@@ -291,7 +356,7 @@ function AlertTitle({
     <Comp
       data-slot="alert-title"
       className={cn(
-        "line-clamp-1 min-h-4 font-medium tracking-tight",
+        "line-clamp-1 text-base/(--alert-title-height) font-medium tracking-tight sm:text-sm/(--alert-title-height)",
         className
       )}
       {...props}
@@ -325,25 +390,38 @@ function AlertFooter({ className, ...props }: React.ComponentProps<"div">) {
   );
 }
 
+function AlertAction({
+  variant = "outline",
+  size = "sm",
+  ...props
+}: React.ComponentProps<typeof Button>) {
+  return (
+    <Button data-slot="alert-action" variant={variant} size={size} {...props} />
+  );
+}
+
 function AlertClose({ className, ...props }: React.ComponentProps<"button">) {
   return (
-    <button
+    <Button
       data-slot="alert-close"
       type="button"
       aria-label={"Dismiss"}
+      variant="ghost"
+      size="icon-sm"
       className={cn(
-        "absolute top-2.5 right-2.5 inline-flex size-6 items-center justify-center rounded-sm text-(--alert-description-text) opacity-70 outline-(--alert-close-outline) group-data-[align=center]/alert:top-1/2 group-data-[align=center]/alert:right-4 group-data-[align=center]/alert:-translate-y-1/2 hover:bg-(--hover-alert-close-bg) hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-2",
+        "absolute top-(--alert-close-offset) right-(--alert-close-offset) text-(--alert-description-text) opacity-70 outline-(--alert-close-outline) group-data-[align=center]/alert:top-1/2 group-data-[align=center]/alert:right-(--alert-p) group-data-[align=center]/alert:-translate-y-1/2 hover:bg-(--hover-alert-close-bg) hover:text-(--alert-description-text) hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-2",
         className
       )}
       {...props}
     >
-      <XIcon className="size-4" />
-    </button>
+      <XIcon />
+    </Button>
   );
 }
 
 export {
   Alert,
+  AlertAction,
   AlertClose,
   AlertContent,
   AlertIcon,

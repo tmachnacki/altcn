@@ -52,6 +52,10 @@ export const componentLinks = [
     href: "/components/dialog",
   },
   {
+    label: "Drawer",
+    href: "/components/drawer",
+  },
+  {
     label: "Dropdown Menu",
     href: "/components/dropdown-menu",
   },
@@ -146,6 +150,10 @@ export const componentLinks = [
   {
     label: "Tab Nav",
     href: "/components/tab-nav",
+  },
+  {
+    label: "Textarea",
+    href: "/components/textarea",
   },
   {
     label: "Toggle",

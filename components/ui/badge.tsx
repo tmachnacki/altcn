@@ -113,7 +113,7 @@ const badgeVariants = tv({
       ],
 
       "primary-tron": [
-        "bg-background bg-linear-(--primary-tron-gradient) text-primary-muted-foreground inset-ring inset-ring-primary-tron-border",
+        "bg-background bg-linear-(--primary-tron-gradient) text-primary-accent-foreground inset-ring inset-ring-primary-tron-border",
 
         "[--tron-beam:var(--color-primary)] [--tron-blur:var(--color-primary-tron-blur)]",
 
@@ -172,7 +172,7 @@ const badgeVariants = tv({
       ],
 
       "secondary-tron": [
-        "bg-background bg-linear-(--secondary-tron-gradient) text-secondary-muted-foreground inset-ring inset-ring-secondary-tron-border",
+        "bg-background bg-linear-(--secondary-tron-gradient) text-secondary-accent-foreground inset-ring inset-ring-secondary-tron-border",
 
         "[--tron-beam:var(--color-secondary)] [--tron-blur:var(--color-secondary-tron-blur)]",
 
@@ -231,7 +231,7 @@ const badgeVariants = tv({
       ],
 
       "destructive-tron": [
-        "bg-background bg-linear-(--destructive-tron-gradient) text-destructive-muted-foreground inset-ring inset-ring-destructive-tron-border",
+        "bg-background bg-linear-(--destructive-tron-gradient) text-destructive-accent-foreground inset-ring inset-ring-destructive-tron-border",
 
         "[--tron-beam:var(--color-destructive)] [--tron-blur:var(--color-destructive-tron-blur)]",
 
@@ -290,7 +290,7 @@ const badgeVariants = tv({
       ],
 
       "success-tron": [
-        "bg-background bg-linear-(--success-tron-gradient) text-success-muted-foreground inset-ring inset-ring-success-tron-border",
+        "bg-background bg-linear-(--success-tron-gradient) text-success-accent-foreground inset-ring inset-ring-success-tron-border",
 
         "[--tron-beam:var(--color-success)] [--tron-blur:var(--color-success-tron-blur)]",
 
@@ -349,7 +349,7 @@ const badgeVariants = tv({
       ],
 
       "warning-tron": [
-        "bg-background bg-linear-(--warning-tron-gradient) text-warning-muted-foreground inset-ring inset-ring-warning-tron-border",
+        "bg-background bg-linear-(--warning-tron-gradient) text-warning-accent-foreground inset-ring inset-ring-warning-tron-border",
 
         "[--tron-beam:var(--color-warning)] [--tron-blur:var(--color-warning-tron-blur)]",
 
