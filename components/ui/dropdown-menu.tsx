@@ -37,6 +37,11 @@ const menuItemVariants = tv({
   variants: {
     variant: {
       // -- base --
+      contrast: {
+        root: [
+          "data-[highlighted]:bg-contrast data-[highlighted]:text-contrast-foreground data-[highlighted]:**:[[data-slot*='-indicator']]:text-current",
+        ],
+      },
       base: [
         "data-[highlighted]:bg-base-bg data-[highlighted]:text-base-foreground data-[highlighted]:**:[[data-slot*='-indicator']]:text-current",
       ],

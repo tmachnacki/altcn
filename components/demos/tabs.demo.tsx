@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { BanIcon, ImageIcon, MusicIcon, PodcastIcon } from "lucide-react";
+import { ImageIcon, MusicIcon, PodcastIcon } from "lucide-react";
 
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import { Label } from "~/components/ui/label";
@@ -12,6 +12,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "~/components/ui/select";
+import { Switch } from "~/components/ui/switch";
 import {
   Tabs,
   TabsContent,
@@ -20,6 +21,7 @@ import {
   TabsTrigger,
   tabsTriggerVariants,
 } from "~/components/ui/tabs";
+import { BackgroundPattern } from "~/components/background-pattern";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
 
@@ -33,100 +35,106 @@ const triggerVariants = Object.keys(
   tabsTriggerVariants.variants.variant
 ) as TriggerVariant[];
 
+const orientations = ["horizontal", "vertical"] as const;
+
 export function TabsDemo() {
   const [listVariant, setListVariant] = React.useState<ListVariant>("muted");
   const [triggerVariant, setTriggerVariant] =
     React.useState<TriggerVariant>("default");
+  const [orientation, setOrientation] = React.useState("horizontal");
+  const [disabled, setDisabled] = React.useState(false);
 
   return (
     <>
-      <ComponentContainer>
-        <Tabs defaultValue="music" className="w-full max-w-xl">
-          <TabsList
-            variants={{
-              list: listVariant,
-              trigger: triggerVariant,
-            }}
-            className="grid w-full grid-cols-4"
+      <ComponentContainer className="overflow-hidden rounded-t-lg p-0 md:rounded-l-lg md:rounded-r-none">
+        <div className="relative flex h-full min-h-96 w-full min-w-0 flex-col items-center justify-center bg-center p-(--demo-gutter)">
+          {listVariant === "translucent" && <BackgroundPattern />}
+          <Tabs
+            defaultValue="music"
+            className="relative w-full"
+            orientation={orientation as (typeof orientations)[number]}
           >
-            <TabsTrigger value="music">
-              <MusicIcon />
-              Music
-            </TabsTrigger>
-            <TabsTrigger value="podcasts">
-              <PodcastIcon />
-              Podcasts
-            </TabsTrigger>
-            <TabsTrigger value="photos">
-              <ImageIcon />
-              Photos
-            </TabsTrigger>
-            <TabsTrigger value="onlyfans" disabled>
-              <BanIcon />
-              OnlyFans
-            </TabsTrigger>
-          </TabsList>
-          <TabsContent value="music">
-            <Card>
-              <CardHeader>
-                <CardTitle>Music</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Maxime asperiores possimus quo aspernatur nostrum odio
-                  consequuntur facilis aliquam sint at, aut labore quam dolorum
-                  minima beatae dolore impedit perspiciatis explicabo.
-                </p>
-              </CardContent>
-            </Card>
-          </TabsContent>
-          <TabsContent value="podcasts">
-            <Card>
-              <CardHeader>
-                <CardTitle>Podcasts</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Maxime asperiores possimus quo aspernatur nostrum odio
-                  consequuntur facilis aliquam sint at, aut labore quam dolorum
-                  minima beatae dolore impedit perspiciatis explicabo.
-                </p>
-              </CardContent>
-            </Card>
-          </TabsContent>
-          <TabsContent value="photos">
-            <Card>
-              <CardHeader>
-                <CardTitle>Photos</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Maxime asperiores possimus quo aspernatur nostrum odio
-                  consequuntur facilis aliquam sint at, aut labore quam dolorum
-                  minima beatae dolore impedit perspiciatis explicabo.
-                </p>
-              </CardContent>
-            </Card>
-          </TabsContent>
-          <TabsContent value="onlyfans">
-            <Card>
-              <CardHeader>
-                <CardTitle>OnlyFans</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Maxime asperiores possimus quo aspernatur nostrum odio
-                  consequuntur facilis aliquam sint at, aut labore quam dolorum
-                  minima beatae dolore impedit perspiciatis explicabo.
-                </p>
-              </CardContent>
-            </Card>
-          </TabsContent>
-        </Tabs>
+            <TabsList
+              variants={{
+                list: listVariant,
+                trigger: triggerVariant,
+              }}
+            >
+              <TabsTrigger value="music" disabled={disabled}>
+                <MusicIcon />
+                Music
+              </TabsTrigger>
+              <TabsTrigger value="podcasts" disabled={disabled}>
+                <PodcastIcon />
+                Podcasts
+              </TabsTrigger>
+              <TabsTrigger value="photos" disabled={disabled}>
+                <ImageIcon />
+                Photos
+              </TabsTrigger>
+            </TabsList>
+            <TabsContent value="music">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Music</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Maxime asperiores possimus quo aspernatur nostrum odio
+                    consequuntur facilis aliquam sint at, aut labore quam
+                    dolorum minima beatae dolore impedit perspiciatis explicabo.
+                  </p>
+                </CardContent>
+              </Card>
+            </TabsContent>
+            <TabsContent value="podcasts">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Podcasts</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Maxime asperiores possimus quo aspernatur nostrum odio
+                    consequuntur facilis aliquam sint at, aut labore quam
+                    dolorum minima beatae dolore impedit perspiciatis explicabo.
+                  </p>
+                </CardContent>
+              </Card>
+            </TabsContent>
+            <TabsContent value="photos">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Photos</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Maxime asperiores possimus quo aspernatur nostrum odio
+                    consequuntur facilis aliquam sint at, aut labore quam
+                    dolorum minima beatae dolore impedit perspiciatis explicabo.
+                  </p>
+                </CardContent>
+              </Card>
+            </TabsContent>
+            <TabsContent value="onlyfans">
+              <Card>
+                <CardHeader>
+                  <CardTitle>OnlyFans</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Maxime asperiores possimus quo aspernatur nostrum odio
+                    consequuntur facilis aliquam sint at, aut labore quam
+                    dolorum minima beatae dolore impedit perspiciatis explicabo.
+                  </p>
+                </CardContent>
+              </Card>
+            </TabsContent>
+          </Tabs>
+        </div>
       </ComponentContainer>
       <ComponentPlayground>
         <div className="grid gap-2">
@@ -166,6 +174,29 @@ export function TabsDemo() {
               ))}
             </SelectContent>
           </Select>
+        </div>
+        <div className="grid gap-2">
+          <Label htmlFor="tabs-orientation">Orientation</Label>
+          <Select value={orientation} onValueChange={setOrientation}>
+            <SelectTrigger id="tabs-orientation" className="w-full">
+              <SelectValue placeholder="Select a variant" />
+            </SelectTrigger>
+            <SelectContent>
+              {orientations.map((orientation) => (
+                <SelectItem key={orientation} value={orientation}>
+                  {orientation}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+        <div className="flex items-center gap-3">
+          <Switch
+            checked={disabled}
+            onCheckedChange={setDisabled}
+            id="tabs-disabled"
+          />
+          <Label htmlFor="tabs-disabled">Disabled</Label>
         </div>
       </ComponentPlayground>
     </>

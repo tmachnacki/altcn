@@ -1,11 +1,7 @@
 @import "tailwindcss";
 @import "./colors.css";
 
-/* FIXME: using temporary patch until tailwindcss-animate is updated for v4 support */
-/* https://github.com/Wombosvideo/tw-animate-css */
 @import "tw-animate-css";
-
-/* @plugin "tailwindcss-animate"; */
 
 @custom-variant dark (&:is(.dark *));
 /* for better intellisense DX */

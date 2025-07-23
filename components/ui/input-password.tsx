@@ -1,121 +1,223 @@
-"use client";
-
-import * as React from "react";
+import * as InputPasswordPrimitive from "@radix-ui/react-password-toggle-field";
+import { tv, type VariantProps } from "tailwind-variants";
 import { EyeIcon, EyeOffIcon } from "lucide-react";
 
 import { cn } from "~/lib/utils";
 
-import { Button } from "~/components/ui/button";
-import { Input } from "~/components/ui/input";
+const inputPasswordVariants = tv({
+  slots: {
+    container: [
+      "relative grid w-full min-w-0 grid-cols-1 items-center rounded-md",
+      "has-disabled:pointer-events-none has-disabled:opacity-50",
+      "has-aria-invalid:text-destructive-accent-foreground",
+    ],
+    input: [
+      "peer/input-password-input",
+      "all-[unset] col-start-1 row-start-1 block h-full min-h-0 w-full shrink grow appearance-none self-center rounded-none bg-transparent text-inherit outline-none",
+      "pr-[calc(var(--toggle-size)+var(--input-px)+var(--input-px))] pl-(--input-px)",
+      "selection:bg-primary selection:text-primary-foreground",
+      "aria-invalid:selection:bg-destructive aria-invalid:selection:text-destructive-foreground",
+    ],
+    toggle: [
+      "touch-target col-start-1 row-start-1 mr-1 inline-flex shrink-0 grow-0 items-center justify-center self-center justify-self-end rounded-sm -outline-offset-1 focus-visible:outline-2 active:opacity-80",
+      "mr-(--input-px) size-(--toggle-size) *:[svg]:size-(--toggle-size)",
+      "disabled:pointer-events-none",
+      "peer-disabled/input-password-input:pointer-events-none peer-disabled/input-password-input:text-muted-foreground",
+      "peer-aria-invalid/input-password-input:text-destructive-muted-foreground peer-aria-invalid/input-password-input:outline-destructive peer-aria-invalid/input-password-input:hover:text-destructive-accent-foreground",
+    ],
+  },
+  variants: {
+    size: {
+      sm: {
+        container:
+          "h-(--size-md) [--input-px:--spacing(2.5)] [--toggle-size:var(--icon-md)] sm:h-(--size-sm) sm:[--toggle-size:var(--icon-sm)]",
+        input: "py-1 text-sm",
+      },
+      md: {
+        container:
+          "h-(--size-lg) [--input-px:--spacing(3)] [--toggle-size:var(--icon-lg)] sm:h-(--size-md) sm:[--toggle-size:var(--icon-md)]",
+        input: "py-1 text-base sm:text-sm",
+      },
+      lg: {
+        container:
+          "h-(--size-xl) [--input-px:--spacing(3.5)] [--toggle-size:var(--icon-xl)] sm:h-(--size-lg) sm:[--toggle-size:var(--icon-lg)]",
+        input: "py-1.5 text-lg sm:text-base",
+      },
+    },
+    variant: {
+      outline: {
+        container: [
+          "bg-background text-foreground shadow-xs outline-1 -outline-offset-1 outline-border dark:bg-faded",
+          "hover:not-focus-within:not-has-aria-invalid:outline-hover-border",
+          "has-disabled:bg-faded has-disabled:shadow-none",
+          "focus-within:outline-2 focus-within:outline-primary",
+          "has-aria-invalid:outline-destructive has-aria-invalid:has-disabled:bg-destructive-faded dark:has-aria-invalid:bg-destructive-faded",
+        ],
+        input: [
+          "placeholder:text-placeholder",
+          "aria-invalid:placeholder:text-destructive-placeholder",
+        ],
+        toggle: "text-muted-foreground outline-outline hover:text-foreground",
+      },
+      muted: {
+        container: [
+          "bg-muted text-accent-foreground outline-0 -outline-offset-1",
+          "hover:not-focus-within:not-has-aria-invalid:bg-hover-muted",
+          "outline-primary focus-within:outline-2",
+          "has-aria-invalid:bg-destructive-muted has-aria-invalid:outline-destructive has-aria-invalid:hover:not-has-disabled:not-focus-within:bg-hover-destructive-muted",
+        ],
+        input: [
+          "placeholder:text-placeholder",
+          "aria-invalid:placeholder:text-destructive-placeholder",
+        ],
+        toggle:
+          "text-muted-foreground outline-outline hover:text-accent-foreground",
+      },
+      underlined: {
+        container: [
+          "rounded-none bg-transparent text-foreground shadow-[inset_0_-1px_0_0_var(--color-border)] outline-none hover:not-focus-within:not-has-aria-invalid:shadow-[inset_0_-1px_0_0_var(--color-hover-border)]",
+          "focus-within:shadow-[inset_0_-2px_0_0_var(--color-primary)]",
+          "has-aria-invalid:shadow-[inset_0_-1px_0_0_var(--color-destructive)] has-aria-invalid:focus-within:shadow-[inset_0_-2px_0_0_var(--color-destructive)]",
+        ],
+        input: [
+          "placeholder:text-placeholder",
+          "aria-invalid:placeholder:text-destructive-placeholder",
+        ],
+        toggle: "text-muted-foreground outline-outline hover:text-foreground",
+      },
+      "primary-muted": {
+        container: [
+          "bg-primary-muted text-primary-accent-foreground outline-0 -outline-offset-1 hover:not-focus-within:not-has-aria-invalid:bg-hover-primary-muted",
+          "has-disabled:bg-muted has-disabled:text-accent-foreground",
+          "outline-primary focus-within:outline-2",
+          "has-aria-invalid:bg-destructive-muted has-aria-invalid:focus-within:outline-destructive has-aria-invalid:hover:not-has-disabled:not-focus-within:bg-hover-destructive-muted",
+        ],
+        input: [
+          "disabled:placeholder:text-placeholder",
+          "placeholder:text-primary-placeholder",
+          "aria-invalid:placeholder:text-destructive-placeholder",
+        ],
+        toggle:
+          "text-primary-muted-foreground outline-primary hover:text-primary-accent-foreground",
+      },
+      "secondary-muted": {
+        container: [
+          "bg-secondary-muted text-secondary-accent-foreground outline-0 -outline-offset-1 hover:not-focus-within:not-has-aria-invalid:bg-hover-secondary-muted",
+          "has-disabled:bg-muted has-disabled:text-accent-foreground",
+          "outline-secondary focus-within:outline-2",
+          "has-aria-invalid:bg-destructive-muted has-aria-invalid:focus-within:outline-destructive has-aria-invalid:hover:not-has-disabled:not-focus-within:bg-hover-destructive-muted",
+        ],
+        input: [
+          "selection:bg-secondary selection:text-secondary-foreground",
+          "disabled:placeholder:text-placeholder",
+          "placeholder:text-secondary-placeholder",
+          "aria-invalid:placeholder:text-destructive-placeholder",
+        ],
+        toggle:
+          "text-secondary-muted-foreground outline-secondary hover:text-secondary-accent-foreground",
+      },
+    },
+  },
+  compoundVariants: [
+    {
+      size: "sm",
+      variant: "underlined",
+      className: {
+        container: "[--input-px:--spacing(0.5)]",
+        input:
+          "pr-[calc(var(--toggle-size)+var(--input-px)+(var(--spacing)*2.5))]",
+      },
+    },
+    {
+      size: "md",
+      variant: "underlined",
+      className: {
+        container: "[--input-px:--spacing(0.5)]",
+        input:
+          "pr-[calc(var(--toggle-size)+var(--input-px)+(var(--spacing)*3))]",
+      },
+    },
+    {
+      size: "lg",
+      variant: "underlined",
+      className: {
+        container: "[--input-px:--spacing(0.5)]",
+        input:
+          "pr-[calc(var(--toggle-size)+var(--input-px)+(var(--spacing)*3.5))]",
+      },
+    },
+  ],
+  defaultVariants: {
+    size: "md",
+    variant: "outline",
+  },
+});
 
 type InputPasswordProps = Omit<
-  React.ComponentProps<typeof Input>,
-  "type" | "autoComplete"
-> & {
-  autoComplete?: "current-password" | "new-password" | "off";
-  classNames?: {
-    container?: string;
-    input?: string;
-    toggle?: string;
+  React.ComponentProps<typeof InputPasswordPrimitive.Input>,
+  "size"
+> &
+  VariantProps<typeof inputPasswordVariants> & {
+    classNames?: {
+      container?: string;
+      input?: string;
+      toggle?: string;
+    };
+    htmlSize?: number;
+
+    // PasswordToggleField.Root props
+    id?: string;
+    visible?: boolean;
+    defaultVisible?: boolean;
+    onVisibilityChange?: (visible: boolean) => void; // typo in radix package: prop is named "onVisiblityChange"
   };
-};
 
 function InputPassword({
-  className,
   size = "md",
   variant = "outline",
-  classNames,
-  autoComplete,
   disabled,
+  htmlSize,
   id,
+  visible,
+  defaultVisible,
+  onVisibilityChange,
+  className,
+  classNames,
   ...props
 }: InputPasswordProps) {
-  const [showPassword, setShowPassword] = React.useState(false);
-  const _id = React.useId();
+  const { container, input, toggle } = inputPasswordVariants({ size, variant });
   return (
-    <div
-      data-slot="input-password-container"
-      className={cn("relative", classNames?.container)}
+    <InputPasswordPrimitive.Root
+      data-slot="input-password"
+      id={id}
+      visible={visible}
+      defaultVisible={defaultVisible}
+      onVisiblityChange={onVisibilityChange}
     >
-      <Input
-        data-slot="input-password-input"
-        id={id ?? _id}
-        type={showPassword ? "text" : "password"}
-        variant={variant}
-        size={size}
-        autoComplete={autoComplete}
-        disabled={disabled}
-        className={cn(
-          { md: "pr-9", sm: "pr-8", lg: "pr-10" }[size || "md"],
-          "[&::-ms-reveal]:pointer-events-none [&::-ms-reveal]:invisible [&::-ms-reveal]:hidden",
-          "[&::-ms-clear]:pointer-events-none [&::-ms-clear]:invisible [&::-ms-clear]:hidden",
-          "peer/input-password-input",
-          classNames?.input,
-          className
-        )}
-        {...props}
-      />
-
-      <Button
-        data-slot="input-password-toggle"
-        type="button"
-        onClick={() => setShowPassword((prev) => !prev)}
-        disabled={disabled}
-        aria-controls={id ?? _id}
-        variant={"ghost"}
-        className={cn(
-          "absolute top-1/2 right-1 -translate-y-1/2 rounded-sm bg-transparent outline-offset-0",
-          "peer-aria-invalid/input-password-input:text-destructive-muted-foreground peer-aria-invalid/input-password-input:outline-destructive peer-aria-invalid/input-password-input:hover:bg-destructive-500/20",
-          "disabled:pointer-events-none disabled:text-muted-foreground",
-          {
-            md: "size-7",
-            sm: "size-6",
-            lg: "size-8",
-          }[size || "md"],
-          {
-            outline:
-              "text-subtle-foreground outline-outline hover:bg-base-500/20",
-            muted:
-              "text-subtle-foreground outline-outline hover:bg-base-500/20",
-            underlined:
-              "text-subtle-foreground outline-outline hover:bg-base-500/20",
-            "primary-muted":
-              "text-primary-muted-foreground outline-primary hover:bg-primary-500/20",
-            "secondary-muted":
-              "text-secondary-muted-foreground outline-secondary hover:bg-secondary-500/20",
-          }[variant || "outline"],
-          classNames?.toggle
-        )}
+      <div
+        data-slot="input-password-container"
+        className={cn(container(), classNames?.container, className)}
       >
-        {showPassword ? (
-          <EyeOffIcon
-            aria-hidden="true"
-            className={cn(
-              {
-                md: "size-4",
-                sm: "size-4",
-                lg: "size-5",
-              }[size || "md"]
-            )}
+        <InputPasswordPrimitive.Input
+          data-slot="input-password-input"
+          className={cn(input(), classNames?.input)}
+          id={id}
+          disabled={disabled}
+          size={htmlSize}
+          {...props}
+        />
+        <InputPasswordPrimitive.Toggle
+          data-slot="input-password-toggle"
+          className={cn(toggle(), classNames?.toggle)}
+        >
+          <InputPasswordPrimitive.Icon
+            visible={<EyeOffIcon aria-hidden="true" />}
+            hidden={<EyeIcon aria-hidden="true" />}
           />
-        ) : (
-          <EyeIcon
-            aria-hidden="true"
-            className={cn(
-              {
-                md: "size-4",
-                sm: "size-4",
-                lg: "size-5",
-              }[size || "md"]
-            )}
-          />
-        )}
-        <span className="sr-only">
-          {showPassword ? "Hide password" : "Show password"}
-        </span>
-      </Button>
-    </div>
+        </InputPasswordPrimitive.Toggle>
+      </div>
+    </InputPasswordPrimitive.Root>
   );
 }
 
-export { InputPassword };
+export { InputPassword, inputPasswordVariants };

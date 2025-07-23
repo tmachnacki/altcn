@@ -9,7 +9,7 @@ import { Tron } from "~/components/ui/tron";
 const toggleVariants = tv({
   base: [
     "group/toggle",
-    "relative inline-flex items-center justify-center gap-2 rounded-md bg-transparent font-medium whitespace-nowrap text-subtle-foreground",
+    "relative inline-flex items-center justify-center bg-transparent font-medium whitespace-nowrap text-subtle-foreground",
     "active:opacity-80",
     "disabled:pointer-events-none disabled:text-muted-foreground disabled:opacity-50",
     "focus-visible:outline-2 focus-visible:outline-offset-2",
@@ -90,10 +90,26 @@ const toggleVariants = tv({
       ],
     },
     size: {
-      xs: "h-(--size-xs) min-w-(--size-xs) gap-1.5 rounded-sm px-1 text-xs **:[svg]:not-[[class*='size-']]:size-3.5",
-      sm: "h-(--size-sm) min-w-(--size-sm) px-1.5 text-sm **:[svg]:not-[[class*='size-']]:size-4",
-      md: "h-(--size-md) min-w-(--size-md) px-2 text-sm **:[svg]:not-[[class*='size-']]:size-4",
-      lg: "h-(--size-lg) min-w-(--size-lg) px-2.5 text-base **:[svg]:not-[[class*='size-']]:size-5",
+      "2xs": [
+        "h-(--size-xs) min-w-(--size-xs) gap-1.5 rounded-sm px-1 text-smaller sm:h-(--size-2xs) sm:min-w-(--size-2xs) sm:text-xs",
+        "**:[svg]:not-[[class*='size-']]:size-(--icon-xs) sm:**:[svg]:not-[[class*='size-']]:size-(--icon-2xs)",
+      ],
+      xs: [
+        "h-(--size-sm) min-w-(--size-sm) gap-1.5 rounded-md px-1 text-sm sm:h-(--size-xs) sm:min-w-(--size-xs) sm:text-smaller",
+        "**:[svg]:not-[[class*='size-']]:size-(--icon-sm) sm:**:[svg]:not-[[class*='size-']]:size-(--icon-xs)",
+      ],
+      sm: [
+        "h-(--size-md) min-w-(--size-md) gap-2 rounded-md px-1.5 text-sm sm:h-(--size-sm) sm:min-w-(--size-sm) sm:text-sm",
+        "**:[svg]:not-[[class*='size-']]:size-(--icon-md) sm:**:[svg]:not-[[class*='size-']]:size-(--icon-sm)",
+      ],
+      md: [
+        "h-(--size-lg) min-w-(--size-lg) gap-2 rounded-md px-2 text-base sm:h-(--size-md) sm:min-w-(--size-md) sm:text-sm",
+        "**:[svg]:not-[[class*='size-']]:size-(--icon-lg) sm:**:[svg]:not-[[class*='size-']]:size-(--icon-md)",
+      ],
+      lg: [
+        "h-(--size-xl) min-w-(--size-xl) gap-2.5 rounded-md px-2.5 text-lg sm:h-(--size-lg) sm:min-w-(--size-lg) sm:text-base",
+        "**:[svg]:not-[[class*='size-']]:size-(--icon-xl) sm:**:[svg]:not-[[class*='size-']]:size-(--icon-lg)",
+      ],
     },
   },
   compoundVariants: [

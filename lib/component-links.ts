@@ -67,13 +67,9 @@ export const componentLinks = [
     label: "Input OTP",
     href: "/components/input-otp",
   },
-  // {
-  //   label: "Input Password",
-  //   href: "/components/input-password",
-  // },
   {
     label: "Input Password",
-    href: "/components/input-password-radix",
+    href: "/components/input-password",
   },
   {
     label: "Menubar",

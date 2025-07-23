@@ -108,7 +108,7 @@ function SpeedDialContent({
   contentVariant = "ghost",
   variant = "outline",
   tooltipSide = "left",
-  tooltipVariant = "default",
+  tooltipVariant = "contrast",
   children,
   ...props
 }: React.ComponentProps<typeof DropdownMenuPrimitive.Content> &

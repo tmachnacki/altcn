@@ -10,15 +10,22 @@ import { Tron } from "~/components/ui/tron";
 
 const tabsListVariants = tv({
   base: [
-    "inline-flex w-fit flex-nowrap items-center rounded-lg p-(--tabs-list-p) text-muted-foreground [--tabs-list-p:--spacing(1)]",
+    "[--tabs-list-p:--spacing(1)]",
+    "flex h-fit w-full flex-nowrap items-center gap-1 rounded-lg p-(--tabs-list-p) text-muted-foreground",
+    "data-[orientation=horizontal]:flex-row data-[orientation=vertical]:w-fit data-[orientation=vertical]:flex-col data-[orientation=vertical]:items-start",
   ],
   variants: {
     variant: {
       outline: "border border-border bg-transparent shadow-xs",
       muted: "bg-muted",
       faded: "border border-faded-border bg-faded",
-      underlined: "rounded-b-none border-b border-border bg-transparent px-0",
-      ghost: "bg-transparent px-0",
+      underlined: [
+        "border-border bg-transparent",
+        "data-[orientation=horizontal]:rounded-b-none data-[orientation=horizontal]:border-b data-[orientation=horizontal]:px-0",
+        "data-[orientation=vertical]:rounded-l-none data-[orientation=vertical]:border-l data-[orientation=vertical]:py-0",
+      ],
+      ghost:
+        "bg-transparent data-[orientation=horizontal]:px-0 data-[orientation=vertical]:py-0",
       translucent:
         "border border-border bg-card-translucent shadow-xs backdrop-blur-card-translucent",
     },
@@ -30,10 +37,13 @@ const tabsListVariants = tv({
 
 const tabsTriggerVariants = tv({
   base: [
-    "relative isolate inline-flex h-8 items-center justify-center gap-1.5 rounded-md px-2.5 py-1 text-sm font-medium whitespace-nowrap text-muted-foreground select-none data-[state=inactive]:hover:text-subtle-foreground",
-    "**:[svg]:pointer-events-none **:[svg]:shrink-0 **:[svg]:not-[[class*='size-']]:size-4",
-    "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+    "relative isolate inline-flex h-(--size-md) flex-1 items-center justify-center gap-2 rounded-md px-3 py-1 text-base font-medium whitespace-nowrap text-muted-foreground select-none data-[state=inactive]:hover:text-subtle-foreground sm:h-(--size-sm) sm:gap-1.5 sm:px-2.5 sm:text-sm",
+    "data-[orientation=vertical]:w-full data-[orientation=vertical]:flex-none data-[orientation=vertical]:justify-start",
     "outline-0 outline-offset-1 focus-visible:z-10 focus-visible:outline-2",
+
+    "**:[svg]:pointer-events-none **:[svg]:shrink-0 **:[svg]:grow-0 **:[svg]:not-[[class*='size-']]:size-(--icon-lg) sm:**:[svg]:not-[[class*='size-']]:size-(--icon-md)",
+
+    "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
   ],
   variants: {
     variant: {
@@ -50,17 +60,17 @@ const tabsTriggerVariants = tv({
       base: "data-[state=active]:bg-base-bg data-[state=active]:text-base-foreground data-[state=active]:shadow-sm",
 
       outline:
-        "data-[state=active]:border data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-xs",
+        "data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-xs data-[state=active]:inset-ring data-[state=active]:inset-ring-border",
 
       accent:
         "data-[state=active]:bg-muted data-[state=active]:text-accent-foreground",
 
       surface:
-        "data-[state=active]:border data-[state=active]:border-faded-border data-[state=active]:bg-faded data-[state=active]:text-accent-foreground",
+        "data-[state=active]:bg-faded data-[state=active]:text-accent-foreground data-[state=active]:inset-ring data-[state=active]:inset-ring-faded-border",
 
       underlined: [
         "-outline-offset-2 data-[state=active]:text-foreground",
-        "data-[state=active]:before:bg-foreground",
+        "data-[state=active]:before:border-foreground",
       ],
 
       "base-gradient": [
@@ -80,13 +90,13 @@ const tabsTriggerVariants = tv({
         "data-[state=active]:bg-primary-muted data-[state=active]:text-primary-muted-foreground",
 
       "primary-surface":
-        "data-[state=active]:border data-[state=active]:border-primary-faded-border data-[state=active]:bg-primary-faded data-[state=active]:text-primary-accent-foreground",
+        "data-[state=active]:bg-primary-faded data-[state=active]:text-primary-accent-foreground data-[state=active]:inset-ring data-[state=active]:inset-ring-primary-faded-border",
 
       "primary-faded":
-        "data-[state=active]:border data-[state=active]:border-primary-faded-border data-[state=active]:bg-primary-faded data-[state=active]:text-primary-muted-foreground",
+        "data-[state=active]:bg-primary-faded data-[state=active]:text-primary-muted-foreground data-[state=active]:inset-ring data-[state=active]:inset-ring-primary-faded-border",
 
       "primary-underlined":
-        "-outline-offset-2 data-[state=active]:text-primary-muted-foreground data-[state=active]:before:bg-primary",
+        "-outline-offset-2 data-[state=active]:text-primary-muted-foreground data-[state=active]:before:border-primary",
 
       "primary-tron": [
         "data-[state=active]:bg-background data-[state=active]:bg-linear-(--primary-tron-gradient) data-[state=active]:text-primary-muted-foreground data-[state=active]:inset-ring data-[state=active]:inset-ring-primary-tron-border",
@@ -109,13 +119,13 @@ const tabsTriggerVariants = tv({
         "data-[state=active]:bg-secondary-muted data-[state=active]:text-secondary-muted-foreground",
 
       "secondary-surface":
-        "data-[state=active]:border data-[state=active]:border-secondary-faded-border data-[state=active]:bg-secondary-faded data-[state=active]:text-secondary-accent-foreground",
+        "data-[state=active]:bg-secondary-faded data-[state=active]:text-secondary-accent-foreground data-[state=active]:inset-ring data-[state=active]:inset-ring-secondary-faded-border",
 
       "secondary-faded":
-        "data-[state=active]:border data-[state=active]:border-secondary-faded-border data-[state=active]:bg-secondary-faded data-[state=active]:text-secondary-muted-foreground",
+        "data-[state=active]:bg-secondary-faded data-[state=active]:text-secondary-muted-foreground data-[state=active]:inset-ring data-[state=active]:inset-ring-secondary-faded-border",
 
       "secondary-underlined":
-        "-outline-offset-2 data-[state=active]:text-secondary-muted-foreground data-[state=active]:before:bg-secondary",
+        "-outline-offset-2 data-[state=active]:text-secondary-muted-foreground data-[state=active]:before:border-secondary",
 
       "secondary-tron": [
         "data-[state=active]:bg-background data-[state=active]:bg-linear-(--secondary-tron-gradient) data-[state=active]:text-secondary-muted-foreground data-[state=active]:inset-ring data-[state=active]:inset-ring-secondary-tron-border",
@@ -132,8 +142,11 @@ const tabsTriggerVariants = tv({
   compoundVariants: [
     {
       variant: ["underlined", "primary-underlined", "secondary-underlined"],
-      className:
-        "before:absolute before:inset-x-0 before:-bottom-(--tabs-list-p) before:h-0.5 before:w-full before:bg-transparent before:content-[''] hover:data-[state=inactive]:before:bg-border",
+      className: [
+        "before:absolute before:border-transparent hover:data-[state=inactive]:before:border-border",
+        "data-[orientation=horizontal]:before:inset-x-0 data-[orientation=horizontal]:before:-bottom-(--tabs-list-p) data-[orientation=horizontal]:before:h-(--tabs-list-p) data-[orientation=horizontal]:before:w-full data-[orientation=horizontal]:before:border-b-2",
+        "data-[orientation=vertical]:before:inset-y-0 data-[orientation=vertical]:before:-left-(--tabs-list-p) data-[orientation=vertical]:before:h-full data-[orientation=vertical]:before:w-(--tabs-list-p) data-[orientation=vertical]:before:border-l-2",
+      ],
     },
     {
       variant: [
@@ -189,7 +202,10 @@ function Tabs({
   return (
     <TabsPrimitive.Root
       data-slot="tabs"
-      className={cn("flex flex-col gap-2", className)}
+      className={cn(
+        "flex gap-4 data-[orientation=horizontal]:flex-col data-[orientation=vertical]:flex-row",
+        className
+      )}
       {...props}
     />
   );

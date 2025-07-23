@@ -27,15 +27,16 @@ const variants = Object.keys(toggleVariants.variants.variant) as Variant[];
 
 type Size = keyof typeof toggleVariants.variants.size;
 const sizesMap: Record<number, Size> = {
-  1: "xs",
-  2: "sm",
-  3: "md",
-  4: "lg",
+  1: "2xs",
+  2: "xs",
+  3: "sm",
+  4: "md",
+  5: "lg",
 };
 
 export function ToggleDemo() {
   const [variant, setVariant] = React.useState<Variant>("primary");
-  const [sizeIdx, setSizeIdx] = React.useState(3);
+  const [sizeIdx, setSizeIdx] = React.useState(4);
   const [disabled, setDisabled] = React.useState(false);
 
   const size = sizesMap[sizeIdx];
@@ -110,7 +111,7 @@ export function ToggleDemo() {
           <Slider
             aria-labelledby="toggle-size"
             min={1}
-            max={4}
+            max={Object.keys(sizesMap).length}
             step={1}
             value={[sizeIdx]}
             onValueChange={(value) => setSizeIdx(value[0])}
