@@ -24,8 +24,8 @@ export default function RootLayout({
       <body
         className={cn(
           "bg-background text-sm text-foreground antialiased [--header-h:--spacing(12)]",
-          fontSans,
-          fontMono
+          fontSans.variable,
+          fontMono.variable
         )}
       >
         <ThemeProvider

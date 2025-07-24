@@ -14,9 +14,13 @@ const tooltipVariants = tv({
   },
   variants: {
     variant: {
-      popover: {
+      solid: {
         root: "border border-border bg-popover text-popover-foreground",
         arrow: "fill-popover stroke-border stroke-2",
+      },
+      translucent: {
+        root: "border border-border bg-popover-translucent text-popover-foreground backdrop-blur-popover-translucent",
+        arrow: "fill-popover-translucent stroke-border stroke-2",
       },
       contrast: {
         root: "bg-contrast text-contrast-foreground",
@@ -37,10 +41,6 @@ const tooltipVariants = tv({
       destructive: {
         root: "bg-destructive text-destructive-foreground",
         arrow: "fill-destructive",
-      },
-      translucent: {
-        root: "border border-border bg-popover-translucent text-popover-foreground backdrop-blur-popover-translucent",
-        arrow: "fill-popover-translucent stroke-border stroke-2",
       },
     },
   },
@@ -75,25 +75,38 @@ function TooltipTrigger({
   return <TooltipPrimitive.Trigger data-slot="tooltip-trigger" {...props} />;
 }
 
+type TooltipContentProps = React.ComponentProps<
+  typeof TooltipPrimitive.Content
+> &
+  VariantProps<typeof tooltipVariants> & {
+    classNames?: {
+      root?: string;
+      arrow?: string;
+    };
+  };
+
 function TooltipContent({
   className,
   sideOffset = 4,
   variant = "contrast",
+  classNames,
   children,
   ...props
-}: React.ComponentProps<typeof TooltipPrimitive.Content> &
-  VariantProps<typeof tooltipVariants>) {
+}: TooltipContentProps) {
   const { root, arrow } = tooltipVariants({ variant });
   return (
     <TooltipPrimitive.Portal>
       <TooltipPrimitive.Content
         data-slot="tooltip-content"
         sideOffset={sideOffset}
-        className={root({ className })}
+        className={root({ className: [classNames?.root, className] })}
         {...props}
       >
         {children}
-        <TooltipPrimitive.Arrow data-slot="tooltip-arrow" className={arrow()} />
+        <TooltipPrimitive.Arrow
+          data-slot="tooltip-arrow"
+          className={arrow({ className: classNames?.arrow })}
+        />
       </TooltipPrimitive.Content>
     </TooltipPrimitive.Portal>
   );

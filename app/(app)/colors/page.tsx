@@ -1,11 +1,11 @@
 import { colors } from "~/lib/colors";
 
 import { Button } from "~/components/ui/button";
-import { Card, CardContent } from "~/components/ui/card";
+import { Card, CardBody } from "~/components/ui/card";
 
 export default function Colors() {
   return (
-    <main className="container py-content">
+    <main className="py-content container">
       <h1 className="text-2xl font-bold">Colors</h1>
 
       <div className="mt-16 grid w-full max-w-xs grid-cols-3 gap-x-2 gap-y-4">
@@ -300,7 +300,7 @@ export default function Colors() {
         </Button>
       </div>
 
-      <div className="mt-16 grid grid-cols-5 w-full max-w-xs gap-x-2 gap-y-4 *:h-32 *:rounded-md">
+      <div className="mt-16 grid w-full max-w-xs grid-cols-5 gap-x-2 gap-y-4 *:h-32 *:rounded-md">
         <div className="bg-chart-base-1"></div>
         <div className="bg-chart-base-2"></div>
         <div className="bg-chart-base-3"></div>
@@ -344,7 +344,7 @@ export default function Colors() {
           </div>
         ))}
         <Card className="max-w-xl">
-          <CardContent className="p-6">
+          <CardBody>
             <div className="flex flex-col gap-2 text-accent-foreground">
               <h2 className="text-sm font-medium">Accent Foreground</h2>
               <p className="w-full text-sm">
@@ -357,11 +357,11 @@ export default function Colors() {
                 modi fugit accusantium aut quisquam ducimus et eum!
               </p>
             </div>
-          </CardContent>
+          </CardBody>
         </Card>
 
         <Card className="max-w-xl">
-          <CardContent className="p-6">
+          <CardBody>
             <div className="flex flex-col gap-2 text-subtle-foreground hover:text-accent-foreground">
               <h2 className="text-sm font-medium">Subtle Foreground</h2>
               <p className="w-full text-sm">
@@ -374,11 +374,11 @@ export default function Colors() {
                 modi fugit accusantium aut quisquam ducimus et eum!
               </p>
             </div>
-          </CardContent>
+          </CardBody>
         </Card>
 
         <Card className="max-w-xl">
-          <CardContent className="p-6">
+          <CardBody>
             <div className="flex flex-col gap-2 text-muted-foreground hover:text-accent-foreground">
               <h2 className="text-sm font-medium">Muted Foreground</h2>
               <p className="w-full text-sm">
@@ -391,7 +391,7 @@ export default function Colors() {
                 modi fugit accusantium aut quisquam ducimus et eum!
               </p>
             </div>
-          </CardContent>
+          </CardBody>
         </Card>
       </div>
     </main>

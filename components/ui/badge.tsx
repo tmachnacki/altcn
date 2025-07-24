@@ -9,7 +9,8 @@ import { Tron } from "~/components/ui/tron";
 
 const badgeVariants = tv({
   base: [
-    "relative isolate inline-flex h-(--size-2xs) w-fit shrink-0 grow-0 items-center justify-center gap-1.5 px-2.5 py-1 text-smaller font-medium whitespace-nowrap select-none sm:text-xs",
+    "group/badge",
+    "relative isolate inline-flex h-[calc(var(--size-2xs)+(var(--spacing)*0.5))] w-fit shrink-0 grow-0 items-center justify-center gap-1.5 px-2 py-1 text-smaller font-medium whitespace-nowrap select-none sm:h-(--size-2xs) sm:text-xs",
     "[a&]:active:opacity-80 [button&]:active:opacity-80",
     "data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[disabled]:shadow-none",
     "disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none",
@@ -31,6 +32,8 @@ const badgeVariants = tv({
         "[button&]:hover:bg-hover-contrast",
         "[--hover-badge-close-bg:--alpha(var(--color-contrast-foreground)/20%)]",
       ],
+
+      "contrast-dotted": "[--badge-dot-text:var(--color-contrast)]",
 
       base: [
         "bg-base-bg text-base-foreground",
@@ -376,6 +379,7 @@ const badgeVariants = tv({
     {
       variant: [
         "outline",
+        "contrast-dotted",
         "dotted",
         "primary-dotted",
         "secondary-dotted",
@@ -394,6 +398,7 @@ const badgeVariants = tv({
       variant: [
         "outline",
         "contrast",
+        "contrast-dotted",
         "base",
         "accent",
         "muted",
@@ -500,7 +505,7 @@ function Badge({
       className={badgeVariants({
         variant,
         shape,
-        className: ["group/badge", className],
+        className,
       })}
       {...props}
     >
@@ -542,7 +547,7 @@ function BadgeDot({ className, ...props }: React.ComponentProps<"svg">) {
       data-slot="badge-dot"
       aria-hidden="true"
       className={cn(
-        "size-1.5 shrink-0 fill-current stroke-current text-(--badge-dot-text)",
+        "size-2 shrink-0 fill-current stroke-current text-(--badge-dot-text) sm:size-1.5",
         className
       )}
       {...props}
@@ -557,7 +562,7 @@ function BadgeClose({ className, ...props }: React.ComponentProps<"button">) {
       type="button"
       aria-label={"Remove"}
       className={cn(
-        "touch-target relative -mr-1.5 inline-flex size-4 items-center justify-center rounded-sm opacity-70 -outline-offset-1 outline-current group-data-[shape=pill]/badge:rounded-full",
+        "touch-target relative -mr-1 inline-flex size-4.5 items-center justify-center rounded-sm opacity-70 -outline-offset-1 outline-current group-data-[shape=pill]/badge:rounded-full sm:size-4",
         "hover:bg-(--hover-badge-close-bg) hover:opacity-100",
         "active:opacity-80",
         "focus-visible:opacity-100 focus-visible:outline-1",

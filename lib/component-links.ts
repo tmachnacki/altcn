@@ -160,6 +160,10 @@ export const componentLinks = [
     href: "/components/toggle",
   },
   {
+    label: "Toggle Group",
+    href: "/components/toggle-group",
+  },
+  {
     label: "Tooltip",
     href: "/components/tooltip",
   },

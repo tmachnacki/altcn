@@ -5,7 +5,7 @@ import * as React from "react";
 import { Button } from "~/components/ui/button";
 import {
   Card,
-  CardContent,
+  CardBody,
   CardDescription,
   CardFooter,
   CardHeader,
@@ -45,7 +45,7 @@ export function CardDemo() {
                 Enter your details below to sign in to your account
               </CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardBody>
               <form>
                 <div className="flex flex-col gap-6">
                   <div className="grid gap-2">
@@ -76,7 +76,7 @@ export function CardDemo() {
                   </div>
                 </div>
               </form>
-            </CardContent>
+            </CardBody>
             <CardFooter className="flex flex-col-reverse items-center justify-end gap-2 sm:flex-row">
               <Button
                 variant="primary-muted"

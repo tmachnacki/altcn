@@ -3,7 +3,7 @@
 import * as React from "react";
 import { ImageIcon, MusicIcon, PodcastIcon } from "lucide-react";
 
-import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
+import { Card, CardBody, CardHeader, CardTitle } from "~/components/ui/card";
 import { Label } from "~/components/ui/label";
 import {
   Select,
@@ -82,14 +82,14 @@ export function TabsDemo() {
                 <CardHeader>
                   <CardTitle>Music</CardTitle>
                 </CardHeader>
-                <CardContent>
+                <CardBody>
                   <p>
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                     Maxime asperiores possimus quo aspernatur nostrum odio
                     consequuntur facilis aliquam sint at, aut labore quam
                     dolorum minima beatae dolore impedit perspiciatis explicabo.
                   </p>
-                </CardContent>
+                </CardBody>
               </Card>
             </TabsContent>
             <TabsContent value="podcasts">
@@ -97,14 +97,14 @@ export function TabsDemo() {
                 <CardHeader>
                   <CardTitle>Podcasts</CardTitle>
                 </CardHeader>
-                <CardContent>
+                <CardBody>
                   <p>
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                     Maxime asperiores possimus quo aspernatur nostrum odio
                     consequuntur facilis aliquam sint at, aut labore quam
                     dolorum minima beatae dolore impedit perspiciatis explicabo.
                   </p>
-                </CardContent>
+                </CardBody>
               </Card>
             </TabsContent>
             <TabsContent value="photos" className="hidden sm:block">
@@ -112,14 +112,14 @@ export function TabsDemo() {
                 <CardHeader>
                   <CardTitle>Photos</CardTitle>
                 </CardHeader>
-                <CardContent>
+                <CardBody>
                   <p>
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                     Maxime asperiores possimus quo aspernatur nostrum odio
                     consequuntur facilis aliquam sint at, aut labore quam
                     dolorum minima beatae dolore impedit perspiciatis explicabo.
                   </p>
-                </CardContent>
+                </CardBody>
               </Card>
             </TabsContent>
           </Tabs>

@@ -28,7 +28,7 @@ const sides = ["top", "right", "bottom", "left"] as const;
 
 const tooltipButtonVariants = (variant: Variant) => {
   switch (variant) {
-    case "popover":
+    case "solid":
       return "outline";
     case "contrast":
       return "contrast";

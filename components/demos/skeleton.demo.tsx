@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader } from "~/components/ui/card";
+import { Card, CardBody, CardHeader } from "~/components/ui/card";
 import { Skeleton } from "~/components/ui/skeleton";
 import { ComponentContainer } from "~/components/component-container";
 
@@ -20,9 +20,9 @@ export function SkeletonDemo() {
                 <Skeleton className="h-4 w-2/3" />
                 <Skeleton className="h-4 w-1/2" />
               </CardHeader>
-              <CardContent>
+              <CardBody>
                 <Skeleton className="aspect-square w-full" />
-              </CardContent>
+              </CardBody>
             </Card>
           ))}
         </div>

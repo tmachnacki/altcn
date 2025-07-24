@@ -28,7 +28,7 @@ export function BadgeDemo() {
   const [shape, setShape] = React.useState<Shape>("box");
   const [showBadge, setShowBadge] = React.useState(true);
 
-  async function handleCloseBadge() {
+  async function onClose() {
     setShowBadge(false);
     await sleep(2000);
     setShowBadge(true);
@@ -37,7 +37,7 @@ export function BadgeDemo() {
   return (
     <>
       <ComponentContainer>
-        <div className="flex flex-wrap gap-3">
+        <div className="flex flex-wrap gap-2">
           <Badge variant={variant} shape={shape}>
             Badge
           </Badge>
@@ -63,7 +63,7 @@ export function BadgeDemo() {
             className={showBadge ? "visible" : "invisible"}
           >
             Close
-            <BadgeClose onClick={handleCloseBadge} />
+            <BadgeClose onClick={onClose} />
           </Badge>
         </div>
       </ComponentContainer>

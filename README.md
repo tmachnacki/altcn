@@ -15,13 +15,14 @@
 - [ ] Reduced motion
 - [ ] Tanstack links examples
 - [ ] Move variant contexts to top-level (root) of components
-- [ ] Calendar/DatePicker variants
+- [ ] Default context variant values
 - [ ] Tailwind Variants rewrite
 - [ ] More/Better Tron variants (inputs)
 - [ ] Pill shapes
 - [ ] All colors variants and css files
 - [ ] Contrast variants
 - [ ] forced colors
+- [ ] CSS var names
 
 ## Components
 

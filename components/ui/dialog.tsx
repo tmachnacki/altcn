@@ -56,8 +56,8 @@ function DialogContent({
   ...props
 }: React.ComponentProps<typeof DialogPrimitive.Content> & {
   classNames?: {
+    root?: string;
     overlay?: string;
-    content?: string;
     close?: string;
   };
 }) {
@@ -67,9 +67,10 @@ function DialogContent({
       <DialogPrimitive.Content
         data-slot="dialog-content"
         className={cn(
-          "fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border bg-background p-6 text-foreground shadow-lg sm:max-w-lg",
+          "[--dialog-gap:--spacing(6)] [--dialog-p:--spacing(6)]",
+          "fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-(--dialog-gap) rounded-lg border bg-background p-(--dialog-p) text-foreground shadow-lg sm:max-w-lg",
           "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:duration-300 data-[state=open]:ease-out data-[state=open]:fade-in-0 data-[state=open]:slide-in-from-bottom-2",
-          classNames?.content,
+          classNames?.root,
           className
         )}
         {...props}
@@ -94,7 +95,17 @@ function DialogHeader({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="dialog-header"
-      className={cn("flex flex-col gap-2 text-center sm:text-left", className)}
+      className={cn("flex flex-col gap-3 text-center sm:text-left", className)}
+      {...props}
+    />
+  );
+}
+
+function DialogBody({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="dialog-body"
+      className={cn("text-base text-foreground sm:text-sm", className)}
       {...props}
     />
   );
@@ -121,7 +132,7 @@ function DialogTitle({
     <DialogPrimitive.Title
       data-slot="dialog-title"
       className={cn(
-        "text-lg leading-none font-semibold sm:text-base",
+        "text-lg leading-none font-semibold text-balance text-foreground sm:text-base",
         className
       )}
       {...props}
@@ -136,7 +147,10 @@ function DialogDescription({
   return (
     <DialogPrimitive.Description
       data-slot="dialog-description"
-      className={cn("text-base text-muted-foreground sm:text-sm", className)}
+      className={cn(
+        "text-base text-pretty text-muted-foreground sm:text-sm",
+        className
+      )}
       {...props}
     />
   );
@@ -144,6 +158,7 @@ function DialogDescription({
 
 export {
   Dialog,
+  DialogBody,
   DialogClose,
   DialogContent,
   DialogDescription,

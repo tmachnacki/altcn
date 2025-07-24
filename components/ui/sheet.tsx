@@ -56,8 +56,8 @@ function SheetContent({
 }: React.ComponentProps<typeof SheetPrimitive.Content> & {
   side?: "top" | "right" | "bottom" | "left";
   classNames?: {
+    root?: string;
     overlay?: string;
-    content?: string;
     close?: string;
   };
 }) {
@@ -67,7 +67,8 @@ function SheetContent({
       <SheetPrimitive.Content
         data-slot="sheet-content"
         className={cn(
-          "fixed z-50 flex flex-col gap-4 bg-background text-foreground shadow-lg",
+          "[--sheet-gap:--spacing(6)] [--sheet-p:--spacing(4)]",
+          "fixed z-50 flex flex-col gap-(--sheet-gap) bg-background p-(--sheet-p) text-foreground shadow-lg",
           "data-[state=closed]:ease transition-transform will-change-transform data-[state=closed]:animate-out data-[state=closed]:duration-300 data-[state=open]:animate-in data-[state=open]:duration-500 data-[state=open]:ease-[cubic-bezier(0.32,0.72,0,1)]",
           {
             right:
@@ -77,7 +78,7 @@ function SheetContent({
             bottom:
               "inset-x-0 bottom-0 h-auto rounded-t-lg border-t data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom",
           }[side],
-          classNames?.content,
+          classNames?.root,
           className
         )}
         {...props}
@@ -103,7 +104,17 @@ function SheetHeader({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="sheet-header"
-      className={cn("flex flex-col gap-1.5 p-4", className)}
+      className={cn("flex flex-col gap-3", className)}
+      {...props}
+    />
+  );
+}
+
+function SheetBody({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="sheet-body"
+      className={cn("text-base text-foreground sm:text-sm", className)}
       {...props}
     />
   );
@@ -113,7 +124,7 @@ function SheetFooter({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="sheet-footer"
-      className={cn("mt-auto flex flex-col gap-2 p-4", className)}
+      className={cn("mt-auto flex flex-col gap-2", className)}
       {...props}
     />
   );
@@ -126,7 +137,10 @@ function SheetTitle({
   return (
     <SheetPrimitive.Title
       data-slot="sheet-title"
-      className={cn("text-lg font-semibold text-foreground", className)}
+      className={cn(
+        "text-lg font-semibold text-balance text-foreground sm:text-base",
+        className
+      )}
       {...props}
     />
   );
@@ -139,7 +153,10 @@ function SheetDescription({
   return (
     <SheetPrimitive.Description
       data-slot="sheet-description"
-      className={cn("text-sm text-muted-foreground", className)}
+      className={cn(
+        "text-base text-pretty text-muted-foreground sm:text-sm",
+        className
+      )}
       {...props}
     />
   );
@@ -151,6 +168,7 @@ export {
   SheetClose,
   SheetContent,
   SheetHeader,
+  SheetBody,
   SheetFooter,
   SheetTitle,
   SheetDescription,
