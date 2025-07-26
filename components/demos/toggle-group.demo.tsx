@@ -30,9 +30,12 @@ const sizesMap: Record<number, Size> = {
   5: "lg",
 };
 
+const spacings = ["compact", "split"] as const;
+
 export function ToggleGroupDemo() {
   const [variant, setVariant] = React.useState<Variant>("primary");
   const [sizeIdx, setSizeIdx] = React.useState(4);
+  const [spacing, setSpacing] = React.useState("split");
   const [disabled, setDisabled] = React.useState(false);
 
   const size = sizesMap[sizeIdx];
@@ -40,38 +43,26 @@ export function ToggleGroupDemo() {
   return (
     <>
       <ComponentContainer>
-        <div className="flex flex-wrap items-center gap-4">
-          <ToggleGroup
-            variant={variant}
-            size={size}
-            type="multiple"
-            defaultValue={["bold"]}
-            aria-label="Text formatting"
-          >
-            <ToggleGroupItem
-              aria-label="Toggle bold"
-              value="bold"
-              disabled={disabled}
-            >
-              <BoldIcon />
-            </ToggleGroupItem>
-            <ToggleGroupItem
-              aria-label="Toggle underline"
-              value="underline"
-              disabled={disabled}
-            >
-              <UnderlineIcon />
-            </ToggleGroupItem>
-            <ToggleGroupItem
-              aria-label="Toggle italic"
-              value="italic"
-              disabled={disabled}
-            >
-              <ItalicIcon />
-              Italic
-            </ToggleGroupItem>
-          </ToggleGroup>
-        </div>
+        <ToggleGroup
+          variant={variant}
+          size={size}
+          type="multiple"
+          defaultValue={["bold"]}
+          aria-label="Text formatting"
+          spacing={spacing as (typeof spacings)[number]}
+          disabled={disabled}
+        >
+          <ToggleGroupItem aria-label="Toggle bold" value="bold">
+            <BoldIcon />
+          </ToggleGroupItem>
+          <ToggleGroupItem aria-label="Toggle underline" value="underline">
+            <UnderlineIcon />
+          </ToggleGroupItem>
+          <ToggleGroupItem aria-label="Toggle italic" value="italic">
+            <ItalicIcon />
+            Italic
+          </ToggleGroupItem>
+        </ToggleGroup>
       </ComponentContainer>
       <ComponentPlayground>
         <div className="grid gap-2">
@@ -107,6 +98,21 @@ export function ToggleGroupDemo() {
             value={[sizeIdx]}
             onValueChange={(value) => setSizeIdx(value[0])}
           />
+        </div>
+        <div className="grid gap-2">
+          <Label htmlFor="toggle-spacing">Spacing</Label>
+          <Select value={spacing} onValueChange={setSpacing}>
+            <SelectTrigger id="toggle-spacing" className="w-full">
+              <SelectValue placeholder="Select a spacing" />
+            </SelectTrigger>
+            <SelectContent>
+              {spacings.map((spacing) => (
+                <SelectItem key={spacing} value={spacing}>
+                  {spacing}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </div>
         <div className="flex items-center gap-3">
           <Switch

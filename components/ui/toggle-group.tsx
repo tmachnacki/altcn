@@ -9,31 +9,46 @@ import { cn } from "~/lib/utils";
 import { toggleVariants } from "~/components/ui/toggle";
 import { Tron } from "~/components/ui/tron";
 
-const ToggleGroupContext = React.createContext<
-  VariantProps<typeof toggleVariants>
->({
-  size: "md",
-  variant: "primary",
-});
+// const toggleGroupItemVariants = ({
+//   variant,
+//   size,
+// }: VariantProps<typeof toggleVariants>) => cn(
+//   ""
+// );
+
+type ToggleGroupContextProps = VariantProps<typeof toggleVariants> & {
+  spacing?: "compact" | "split";
+};
+
+const ToggleGroupContext = React.createContext<ToggleGroupContextProps>({});
 
 function ToggleGroup({
   className,
-  variant,
-  size,
+  variant = "accent",
+  size = "md",
+  spacing = "split",
   children,
   ...props
 }: React.ComponentProps<typeof ToggleGroupPrimitive.Root> &
-  VariantProps<typeof toggleVariants>) {
+  ToggleGroupContextProps) {
   return (
     <ToggleGroupPrimitive.Root
       data-slot="toggle-group"
       className={cn(
-        "group/toggle-group flex w-fit items-center gap-1",
+        "group/toggle-group relative isolate flex items-center",
+        spacing === "split" &&
+          {
+            "2xs": "gap-0.5",
+            xs: "gap-1",
+            sm: "gap-1",
+            md: "gap-1",
+            lg: "gap-1.5",
+          }[size || "md"],
         className
       )}
       {...props}
     >
-      <ToggleGroupContext.Provider value={{ variant, size }}>
+      <ToggleGroupContext.Provider value={{ variant, size, spacing }}>
         {children}
       </ToggleGroupContext.Provider>
     </ToggleGroupPrimitive.Root>
@@ -54,6 +69,7 @@ function ToggleGroupItem({
   return (
     <ToggleGroupPrimitive.Item
       data-slot="toggle-group-item"
+      data-spacing={context.spacing}
       className={cn(
         toggleVariants({
           variant: _variant,
@@ -64,7 +80,7 @@ function ToggleGroupItem({
       )}
       {...props}
     >
-      {variant?.includes("tron") && (
+      {_variant?.includes("tron") && (
         <>
           <Tron
             type="beam"

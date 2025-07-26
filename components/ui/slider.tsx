@@ -8,7 +8,7 @@ import { cn } from "~/lib/utils";
 
 const sliderVariants = tv({
   base: [
-    "relative flex w-full touch-none items-center select-none data-[orientation=vertical]:h-full data-[orientation=vertical]:min-h-44 data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col",
+    "peer touch-target relative flex w-full touch-none items-center select-none data-[orientation=vertical]:h-full data-[orientation=vertical]:min-h-44 data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col",
     "data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[disabled]:[--slider-range-bg:var(--color-base-bg)] data-[disabled]:[--slider-thumb-border:var(--color-base-bg)] data-[disabled]:[--slider-thumb-ring:var(--color-faded-border)]",
     "aria-invalid:[--slider-range-bg:var(--color-destructive)] aria-invalid:[--slider-thumb-border:var(--color-destructive)] aria-invalid:[--slider-thumb-ring:var(--color-destructive-faded-border)]",
   ],

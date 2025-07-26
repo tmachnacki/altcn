@@ -45,7 +45,7 @@ export function Header() {
               side="left"
               classNames={{
                 overlay: "lg:hidden",
-                content: "overflow-y-auto lg:hidden",
+                root: "overflow-y-auto lg:hidden",
               }}
             >
               <SheetTitle className="sr-only">Navigation Menu</SheetTitle>

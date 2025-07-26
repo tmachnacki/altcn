@@ -41,7 +41,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "~/components/ui/select";
-import { BackgroundPattern } from "~/components/background-pattern";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
 
@@ -97,154 +96,154 @@ export function MenubarDemo() {
 
   return (
     <>
-      <ComponentContainer className="overflow-hidden rounded-t-lg p-0 md:rounded-l-lg md:rounded-r-none">
-        <div className="relative flex h-full min-h-96 w-full min-w-0 flex-col items-center justify-start bg-center p-(--demo-gutter)">
-          <BackgroundPattern />
-          <Menubar
-            variants={{
-              bar: barVariant,
-              trigger: triggerVariant,
-              content: contentVariant,
-              item: itemVariant,
-              indicator: indicatorVariant,
-            }}
-            width={width as (typeof widths)[number]}
-          >
-            <MenubarMenu>
-              <MenubarTrigger>File</MenubarTrigger>
-              <MenubarContent>
-                <MenubarItem>
-                  New Tab <MenubarShortcut>⌘T</MenubarShortcut>
-                </MenubarItem>
-                <MenubarItem>
-                  New Window <MenubarShortcut>⌘N</MenubarShortcut>
-                </MenubarItem>
-                <MenubarItem disabled>New Incognito Window</MenubarItem>
-                <MenubarSeparator />
-                <MenubarSub>
-                  <MenubarSubTrigger>Share</MenubarSubTrigger>
-                  <MenubarSubContent>
-                    <MenubarItem>Email link</MenubarItem>
-                    <MenubarItem>Messages</MenubarItem>
-                    <MenubarItem>Notes</MenubarItem>
-                  </MenubarSubContent>
-                </MenubarSub>
-                <MenubarSeparator />
-                <MenubarItem>
-                  Print... <MenubarShortcut>⌘P</MenubarShortcut>
-                </MenubarItem>
-              </MenubarContent>
-            </MenubarMenu>
-            <MenubarMenu>
-              <MenubarTrigger>Edit</MenubarTrigger>
-              <MenubarContent>
-                <MenubarItem>
-                  Undo <MenubarShortcut>⌘Z</MenubarShortcut>
-                </MenubarItem>
-                <MenubarItem>
-                  Redo <MenubarShortcut>⇧⌘Z</MenubarShortcut>
-                </MenubarItem>
-                <MenubarSeparator />
-                <MenubarSub>
-                  <MenubarSubTrigger>Find</MenubarSubTrigger>
-                  <MenubarSubContent>
-                    <MenubarItem>Search the web</MenubarItem>
-                    <MenubarSeparator />
-                    <MenubarItem>Find...</MenubarItem>
-                    <MenubarItem>Find Next</MenubarItem>
-                    <MenubarItem>Find Previous</MenubarItem>
-                  </MenubarSubContent>
-                </MenubarSub>
-                <MenubarSeparator />
-                <MenubarItem>Cut</MenubarItem>
-                <MenubarItem>Copy</MenubarItem>
-                <MenubarItem>Paste</MenubarItem>
-              </MenubarContent>
-            </MenubarMenu>
-            <MenubarMenu>
-              <MenubarTrigger>View</MenubarTrigger>
-              <MenubarContent>
-                <MenubarCheckboxItem
-                  checked={checked}
-                  onCheckedChange={setChecked}
+      <ComponentContainer
+        withBackground={true}
+        className="flex flex-col items-center justify-start"
+      >
+        <Menubar
+          variants={{
+            bar: barVariant,
+            trigger: triggerVariant,
+            content: contentVariant,
+            item: itemVariant,
+            indicator: indicatorVariant,
+          }}
+          width={width as (typeof widths)[number]}
+        >
+          <MenubarMenu>
+            <MenubarTrigger>File</MenubarTrigger>
+            <MenubarContent>
+              <MenubarItem>
+                New Tab <MenubarShortcut>⌘T</MenubarShortcut>
+              </MenubarItem>
+              <MenubarItem>
+                New Window <MenubarShortcut>⌘N</MenubarShortcut>
+              </MenubarItem>
+              <MenubarItem disabled>New Incognito Window</MenubarItem>
+              <MenubarSeparator />
+              <MenubarSub>
+                <MenubarSubTrigger>Share</MenubarSubTrigger>
+                <MenubarSubContent>
+                  <MenubarItem>Email link</MenubarItem>
+                  <MenubarItem>Messages</MenubarItem>
+                  <MenubarItem>Notes</MenubarItem>
+                </MenubarSubContent>
+              </MenubarSub>
+              <MenubarSeparator />
+              <MenubarItem>
+                Print... <MenubarShortcut>⌘P</MenubarShortcut>
+              </MenubarItem>
+            </MenubarContent>
+          </MenubarMenu>
+          <MenubarMenu>
+            <MenubarTrigger>Edit</MenubarTrigger>
+            <MenubarContent>
+              <MenubarItem>
+                Undo <MenubarShortcut>⌘Z</MenubarShortcut>
+              </MenubarItem>
+              <MenubarItem>
+                Redo <MenubarShortcut>⇧⌘Z</MenubarShortcut>
+              </MenubarItem>
+              <MenubarSeparator />
+              <MenubarSub>
+                <MenubarSubTrigger>Find</MenubarSubTrigger>
+                <MenubarSubContent>
+                  <MenubarItem>Search the web</MenubarItem>
+                  <MenubarSeparator />
+                  <MenubarItem>Find...</MenubarItem>
+                  <MenubarItem>Find Next</MenubarItem>
+                  <MenubarItem>Find Previous</MenubarItem>
+                </MenubarSubContent>
+              </MenubarSub>
+              <MenubarSeparator />
+              <MenubarItem>Cut</MenubarItem>
+              <MenubarItem>Copy</MenubarItem>
+              <MenubarItem>Paste</MenubarItem>
+            </MenubarContent>
+          </MenubarMenu>
+          <MenubarMenu>
+            <MenubarTrigger>View</MenubarTrigger>
+            <MenubarContent>
+              <MenubarCheckboxItem
+                checked={checked}
+                onCheckedChange={setChecked}
+                onSelect={(e) => e.preventDefault()}
+              >
+                Checkbox Indicator
+              </MenubarCheckboxItem>
+              <MenubarCheckboxItem checked disabled>
+                Disabled
+              </MenubarCheckboxItem>
+              <MenubarSeparator />
+              <MenubarItem align="inset">
+                Reload <MenubarShortcut>⌘R</MenubarShortcut>
+              </MenubarItem>
+              <MenubarItem disabled align="inset">
+                Force Reload <MenubarShortcut>⇧⌘R</MenubarShortcut>
+              </MenubarItem>
+              <MenubarSeparator />
+              <MenubarItem align="inset">Toggle Fullscreen</MenubarItem>
+              <MenubarSeparator />
+              <MenubarItem align="inset">Hide Sidebar</MenubarItem>
+            </MenubarContent>
+          </MenubarMenu>
+          <MenubarMenu>
+            <MenubarTrigger>Profiles</MenubarTrigger>
+            <MenubarContent>
+              <MenubarRadioGroup
+                value={radioSelection}
+                onValueChange={setRadioSelection}
+              >
+                <MenubarRadioItem
+                  value="one"
                   onSelect={(e) => e.preventDefault()}
                 >
-                  Checkbox Indicator
-                </MenubarCheckboxItem>
-                <MenubarCheckboxItem checked disabled>
-                  Disabled
-                </MenubarCheckboxItem>
-                <MenubarSeparator />
-                <MenubarItem align="inset">
-                  Reload <MenubarShortcut>⌘R</MenubarShortcut>
-                </MenubarItem>
-                <MenubarItem disabled align="inset">
-                  Force Reload <MenubarShortcut>⇧⌘R</MenubarShortcut>
-                </MenubarItem>
-                <MenubarSeparator />
-                <MenubarItem align="inset">Toggle Fullscreen</MenubarItem>
-                <MenubarSeparator />
-                <MenubarItem align="inset">Hide Sidebar</MenubarItem>
-              </MenubarContent>
-            </MenubarMenu>
-            <MenubarMenu>
-              <MenubarTrigger>Profiles</MenubarTrigger>
-              <MenubarContent>
-                <MenubarRadioGroup
-                  value={radioSelection}
-                  onValueChange={setRadioSelection}
+                  Option One
+                </MenubarRadioItem>
+                <MenubarRadioItem
+                  value="two"
+                  onSelect={(e) => e.preventDefault()}
                 >
-                  <MenubarRadioItem
-                    value="one"
-                    onSelect={(e) => e.preventDefault()}
-                  >
-                    Option One
-                  </MenubarRadioItem>
-                  <MenubarRadioItem
-                    value="two"
-                    onSelect={(e) => e.preventDefault()}
-                  >
-                    Option Two
-                  </MenubarRadioItem>
-                  <MenubarRadioItem
-                    value="three"
-                    onSelect={(e) => e.preventDefault()}
-                  >
-                    Option Three
-                  </MenubarRadioItem>
-                  <MenubarRadioItem value="disabled" disabled>
-                    Disabled
-                  </MenubarRadioItem>
-                </MenubarRadioGroup>
+                  Option Two
+                </MenubarRadioItem>
+                <MenubarRadioItem
+                  value="three"
+                  onSelect={(e) => e.preventDefault()}
+                >
+                  Option Three
+                </MenubarRadioItem>
+                <MenubarRadioItem value="disabled" disabled>
+                  Disabled
+                </MenubarRadioItem>
+              </MenubarRadioGroup>
+              <MenubarSeparator />
+              <MenubarItem align="inset">Edit...</MenubarItem>
+              <MenubarSeparator />
+              <MenubarItem align="inset">Add Profile...</MenubarItem>
+            </MenubarContent>
+          </MenubarMenu>
+          <MenubarMenu>
+            <MenubarTrigger>More</MenubarTrigger>
+            <MenubarContent>
+              <MenubarGroup>
+                <MenubarItem>
+                  <SettingsIcon />
+                  Settings
+                </MenubarItem>
+                <MenubarItem>
+                  <HelpCircleIcon />
+                  Help
+                </MenubarItem>
                 <MenubarSeparator />
-                <MenubarItem align="inset">Edit...</MenubarItem>
-                <MenubarSeparator />
-                <MenubarItem align="inset">Add Profile...</MenubarItem>
-              </MenubarContent>
-            </MenubarMenu>
-            <MenubarMenu>
-              <MenubarTrigger>More</MenubarTrigger>
-              <MenubarContent>
-                <MenubarGroup>
-                  <MenubarItem>
-                    <SettingsIcon />
-                    Settings
-                  </MenubarItem>
-                  <MenubarItem>
-                    <HelpCircleIcon />
-                    Help
-                  </MenubarItem>
-                  <MenubarSeparator />
-                  <MenubarItem variant={destructiveItemVariant}>
-                    <Trash2Icon />
-                    Delete
-                    <MenubarShortcut>⌘+D</MenubarShortcut>
-                  </MenubarItem>
-                </MenubarGroup>
-              </MenubarContent>
-            </MenubarMenu>
-          </Menubar>
-        </div>
+                <MenubarItem variant={destructiveItemVariant}>
+                  <Trash2Icon />
+                  Delete
+                  <MenubarShortcut>⌘+D</MenubarShortcut>
+                </MenubarItem>
+              </MenubarGroup>
+            </MenubarContent>
+          </MenubarMenu>
+        </Menubar>
       </ComponentContainer>
       <ComponentPlayground>
         <div className="grid gap-2">

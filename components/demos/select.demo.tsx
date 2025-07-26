@@ -30,7 +30,6 @@ import {
 } from "~/components/ui/select";
 import { Slider } from "~/components/ui/slider";
 import { Switch } from "~/components/ui/switch";
-import { BackgroundPattern } from "~/components/background-pattern";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
 
@@ -85,128 +84,121 @@ export function SelectDemo() {
 
   return (
     <>
-      <ComponentContainer className="overflow-hidden rounded-t-lg p-0 md:rounded-l-lg md:rounded-r-none">
-        <div
-          className={cn(
-            "relative flex h-full min-h-96 w-full min-w-0 flex-col items-center justify-center bg-center p-4"
-          )}
-        >
-          <BackgroundPattern />
-          <div className="relative grid w-full max-w-xs grid-cols-1 gap-4 rounded-lg border border-border bg-card-translucent p-4 shadow-lg backdrop-blur-card-translucent sm:max-w-lg sm:grid-cols-3">
-            <Select>
-              <SelectTrigger
-                className="w-full"
-                variant={triggerVariant}
-                size={triggerSize}
-                disabled={disabled}
-                aria-invalid={invalid}
-              >
-                <SelectValue placeholder="Select a fruit" />
-              </SelectTrigger>
-              <SelectContent
-                variants={{
-                  content: contentVariant,
-                  item: itemVariant,
-                  indicator: indicatorVariant,
-                }}
-                width={width as (typeof widths)[number]}
-                position={position as (typeof positions)[number]}
-              >
-                <SelectGroup>
-                  <SelectLabel>Fruits</SelectLabel>
-                  <SelectItem value="apple">Apple</SelectItem>
-                  <SelectItem value="banana">Banana</SelectItem>
-                  <SelectItem value="blueberry">Blueberry</SelectItem>
-                  <SelectItem value="grapes" disabled>
-                    Grapes
-                  </SelectItem>
-                  <SelectItem value="pineapple">Pineapple</SelectItem>
-                </SelectGroup>
-                <SelectSeparator />
-                <SelectGroup>
-                  <SelectLabel>Vegetables</SelectLabel>
-                  <SelectItem value="carrot">Carrot</SelectItem>
-                  <SelectItem value="broccoli">Broccoli</SelectItem>
-                  <SelectItem value="onion">Onion</SelectItem>
-                  <SelectItem value="spinach" disabled>
-                    Spinach
-                  </SelectItem>
-                  <SelectItem value="peas">Peas</SelectItem>
-                </SelectGroup>
-              </SelectContent>
-            </Select>
-            <Select>
-              <SelectTrigger
-                className="w-full"
-                variant={triggerVariant}
-                size={triggerSize}
-                disabled={disabled}
-                aria-invalid={invalid}
-              >
-                <SelectValue placeholder="Large List" />
-              </SelectTrigger>
-              <SelectContent
-                variants={{
-                  content: contentVariant,
-                  item: itemVariant,
-                  indicator: indicatorVariant,
-                }}
-                width={width as (typeof widths)[number]}
-                position={position as (typeof positions)[number]}
-                className="max-h-96"
-              >
-                {Array.from({ length: 100 }).map((_, i) => (
-                  <SelectItem key={i} value={`item-${i}`}>
-                    Item {i}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-            <Select>
-              <SelectTrigger
-                className="w-full"
-                variant={triggerVariant}
-                size={triggerSize}
-                disabled={disabled}
-                aria-invalid={invalid}
-              >
-                <SelectValue
-                  placeholder={
-                    <>
-                      <CircleDashed />
-                      With Icon
-                    </>
-                  }
-                />
-              </SelectTrigger>
-              <SelectContent
-                variants={{
-                  content: contentVariant,
-                  item: itemVariant,
-                  indicator: indicatorVariant,
-                }}
-                width={width as (typeof widths)[number]}
-                position={position as (typeof positions)[number]}
-              >
-                <SelectItem value="line">
-                  <ChartLineIcon />
-                  Line
+      <ComponentContainer withBackground={true}>
+        <div className="relative grid w-full max-w-xs grid-cols-1 gap-4 rounded-lg border border-border bg-card-translucent p-4 shadow-lg backdrop-blur-card-translucent sm:max-w-lg sm:grid-cols-3">
+          <Select>
+            <SelectTrigger
+              className="w-full"
+              variant={triggerVariant}
+              size={triggerSize}
+              disabled={disabled}
+              aria-invalid={invalid}
+            >
+              <SelectValue placeholder="Select a fruit" />
+            </SelectTrigger>
+            <SelectContent
+              variants={{
+                content: contentVariant,
+                item: itemVariant,
+                indicator: indicatorVariant,
+              }}
+              width={width as (typeof widths)[number]}
+              position={position as (typeof positions)[number]}
+            >
+              <SelectGroup>
+                <SelectLabel>Fruits</SelectLabel>
+                <SelectItem value="apple">Apple</SelectItem>
+                <SelectItem value="banana">Banana</SelectItem>
+                <SelectItem value="blueberry">Blueberry</SelectItem>
+                <SelectItem value="grapes" disabled>
+                  Grapes
                 </SelectItem>
-                <SelectItem value="bar">
-                  <ChartBarIcon />
-                  Bar
+                <SelectItem value="pineapple">Pineapple</SelectItem>
+              </SelectGroup>
+              <SelectSeparator />
+              <SelectGroup>
+                <SelectLabel>Vegetables</SelectLabel>
+                <SelectItem value="carrot">Carrot</SelectItem>
+                <SelectItem value="broccoli">Broccoli</SelectItem>
+                <SelectItem value="onion">Onion</SelectItem>
+                <SelectItem value="spinach" disabled>
+                  Spinach
                 </SelectItem>
-                <SelectItem value="pie">
-                  <ChartPieIcon />
-                  Pie
+                <SelectItem value="peas">Peas</SelectItem>
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+          <Select>
+            <SelectTrigger
+              className="w-full"
+              variant={triggerVariant}
+              size={triggerSize}
+              disabled={disabled}
+              aria-invalid={invalid}
+            >
+              <SelectValue placeholder="Large List" />
+            </SelectTrigger>
+            <SelectContent
+              variants={{
+                content: contentVariant,
+                item: itemVariant,
+                indicator: indicatorVariant,
+              }}
+              width={width as (typeof widths)[number]}
+              position={position as (typeof positions)[number]}
+              className="max-h-96"
+            >
+              {Array.from({ length: 100 }).map((_, i) => (
+                <SelectItem key={i} value={`item-${i}`}>
+                  Item {i}
                 </SelectItem>
-                <SelectItem value="disabled" disabled>
-                  <BanIcon />
-                  Disabled
-                </SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
+              ))}
+            </SelectContent>
+          </Select>
+          <Select>
+            <SelectTrigger
+              className="w-full"
+              variant={triggerVariant}
+              size={triggerSize}
+              disabled={disabled}
+              aria-invalid={invalid}
+            >
+              <SelectValue
+                placeholder={
+                  <>
+                    <CircleDashed />
+                    With Icon
+                  </>
+                }
+              />
+            </SelectTrigger>
+            <SelectContent
+              variants={{
+                content: contentVariant,
+                item: itemVariant,
+                indicator: indicatorVariant,
+              }}
+              width={width as (typeof widths)[number]}
+              position={position as (typeof positions)[number]}
+            >
+              <SelectItem value="line">
+                <ChartLineIcon />
+                Line
+              </SelectItem>
+              <SelectItem value="bar">
+                <ChartBarIcon />
+                Bar
+              </SelectItem>
+              <SelectItem value="pie">
+                <ChartPieIcon />
+                Pie
+              </SelectItem>
+              <SelectItem value="disabled" disabled>
+                <BanIcon />
+                Disabled
+              </SelectItem>
+            </SelectContent>
+          </Select>
         </div>
       </ComponentContainer>
       <ComponentPlayground>

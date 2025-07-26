@@ -40,7 +40,7 @@ export function AlertDialogDemo() {
             </AlertDialogFooter>
           </AlertDialogContent>
         </AlertDialog>
-        <AlertDialog>
+        {/* <AlertDialog>
           <AlertDialogTrigger asChild>
             <Button variant="destructive">Translucent Dialog</Button>
           </AlertDialogTrigger>
@@ -59,7 +59,7 @@ export function AlertDialogDemo() {
               </AlertDialogAction>
             </AlertDialogFooter>
           </AlertDialogContent>
-        </AlertDialog>
+        </AlertDialog> */}
       </div>
     </ComponentContainer>
   );

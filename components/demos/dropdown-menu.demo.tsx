@@ -42,7 +42,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "~/components/ui/select";
-import { BackgroundPattern } from "~/components/background-pattern";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
 
@@ -91,132 +90,128 @@ export function DropdownMenuDemo() {
 
   return (
     <>
-      <ComponentContainer className="overflow-hidden rounded-t-lg p-0 md:rounded-l-lg md:rounded-r-none">
-        <div
-          className={cn(
-            "relative flex h-full min-h-96 w-full min-w-0 flex-col items-center justify-center bg-center p-(--demo-gutter)",
-            side === "bottom" && "justify-start",
-            side === "top" && "justify-end"
-          )}
-        >
-          <BackgroundPattern className="size-full" />
-
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant={"outline"} className="capitalize">
-                Open <ChevronDownIcon />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent
-              variants={{
-                content: contentVariant,
-                item: itemVariant,
-                indicator: indicatorVariant,
-              }}
-              width={width as (typeof widths)[number]}
-              align={align as (typeof aligns)[number]}
-              side={side as (typeof sides)[number]}
-            >
-              <DropdownMenuGroup>
-                <DropdownMenuLabel>Account</DropdownMenuLabel>
-                <DropdownMenuItem>
-                  <BadgeCheckIcon />
-                  Account
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <CreditCardIcon />
-                  Billing
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <BellIcon />
-                  Notifications
-                </DropdownMenuItem>
-              </DropdownMenuGroup>
-              <DropdownMenuSeparator />
-              <DropdownMenuGroup>
-                <DropdownMenuLabel>Team</DropdownMenuLabel>
-                <DropdownMenuSub>
-                  <DropdownMenuSubTrigger>Invite users</DropdownMenuSubTrigger>
-                  <DropdownMenuSubContent>
-                    <DropdownMenuItem>
-                      <MailIcon />
-                      Email
-                      <DropdownMenuShortcut>⌘+E</DropdownMenuShortcut>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem>
-                      <SendIcon />
-                      Message
-                      <DropdownMenuShortcut>⌘+M</DropdownMenuShortcut>
-                    </DropdownMenuItem>
-                    <DropdownMenuSeparator />
-                    <DropdownMenuItem align="inset">More</DropdownMenuItem>
-                  </DropdownMenuSubContent>
-                </DropdownMenuSub>
-                <DropdownMenuItem>
-                  New Team
-                  <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
-                </DropdownMenuItem>
-              </DropdownMenuGroup>
-              <DropdownMenuSeparator />
-              <DropdownMenuGroup>
-                <DropdownMenuLabel align="inset">Checkboxes</DropdownMenuLabel>
-                <DropdownMenuCheckboxItem
-                  checked={checked}
-                  onCheckedChange={setChecked}
+      <ComponentContainer
+        withBackground={true}
+        className={cn(
+          "flex flex-col items-center justify-center",
+          side === "bottom" && "justify-start",
+          side === "top" && "justify-end"
+        )}
+      >
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant={"outline"} className="capitalize">
+              Open <ChevronDownIcon />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent
+            variants={{
+              content: contentVariant,
+              item: itemVariant,
+              indicator: indicatorVariant,
+            }}
+            width={width as (typeof widths)[number]}
+            align={align as (typeof aligns)[number]}
+            side={side as (typeof sides)[number]}
+          >
+            <DropdownMenuGroup>
+              <DropdownMenuLabel>Account</DropdownMenuLabel>
+              <DropdownMenuItem>
+                <BadgeCheckIcon />
+                Account
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <CreditCardIcon />
+                Billing
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <BellIcon />
+                Notifications
+              </DropdownMenuItem>
+            </DropdownMenuGroup>
+            <DropdownMenuSeparator />
+            <DropdownMenuGroup>
+              <DropdownMenuLabel>Team</DropdownMenuLabel>
+              <DropdownMenuSub>
+                <DropdownMenuSubTrigger>Invite users</DropdownMenuSubTrigger>
+                <DropdownMenuSubContent>
+                  <DropdownMenuItem>
+                    <MailIcon />
+                    Email
+                    <DropdownMenuShortcut>⌘+E</DropdownMenuShortcut>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <SendIcon />
+                    Message
+                    <DropdownMenuShortcut>⌘+M</DropdownMenuShortcut>
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem align="inset">More</DropdownMenuItem>
+                </DropdownMenuSubContent>
+              </DropdownMenuSub>
+              <DropdownMenuItem>
+                New Team
+                <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
+              </DropdownMenuItem>
+            </DropdownMenuGroup>
+            <DropdownMenuSeparator />
+            <DropdownMenuGroup>
+              <DropdownMenuLabel align="inset">Checkboxes</DropdownMenuLabel>
+              <DropdownMenuCheckboxItem
+                checked={checked}
+                onCheckedChange={setChecked}
+                onSelect={(e) => e.preventDefault()}
+              >
+                Checkbox Indicator
+              </DropdownMenuCheckboxItem>
+              <DropdownMenuCheckboxItem checked disabled>
+                Disabled
+              </DropdownMenuCheckboxItem>
+            </DropdownMenuGroup>
+            <DropdownMenuSeparator />
+            <DropdownMenuGroup>
+              <DropdownMenuLabel align="inset">Radio Group</DropdownMenuLabel>
+              <DropdownMenuRadioGroup
+                value={radioSelection}
+                onValueChange={setRadioSelection}
+              >
+                <DropdownMenuRadioItem
+                  value="one"
                   onSelect={(e) => e.preventDefault()}
                 >
-                  Checkbox Indicator
-                </DropdownMenuCheckboxItem>
-                <DropdownMenuCheckboxItem checked disabled>
-                  Disabled
-                </DropdownMenuCheckboxItem>
-              </DropdownMenuGroup>
-              <DropdownMenuSeparator />
-              <DropdownMenuGroup>
-                <DropdownMenuLabel align="inset">Radio Group</DropdownMenuLabel>
-                <DropdownMenuRadioGroup
-                  value={radioSelection}
-                  onValueChange={setRadioSelection}
+                  Option 1
+                </DropdownMenuRadioItem>
+                <DropdownMenuRadioItem
+                  value="two"
+                  onSelect={(e) => e.preventDefault()}
                 >
-                  <DropdownMenuRadioItem
-                    value="one"
-                    onSelect={(e) => e.preventDefault()}
-                  >
-                    Option 1
-                  </DropdownMenuRadioItem>
-                  <DropdownMenuRadioItem
-                    value="two"
-                    onSelect={(e) => e.preventDefault()}
-                  >
-                    Option 2
-                  </DropdownMenuRadioItem>
-                  <DropdownMenuRadioItem
-                    value="disabled"
-                    disabled
-                    onSelect={(e) => e.preventDefault()}
-                  >
-                    Disabled
-                  </DropdownMenuRadioItem>
-                </DropdownMenuRadioGroup>
-              </DropdownMenuGroup>
-              <DropdownMenuSeparator />
-              <DropdownMenuGroup>
-                <DropdownMenuItem variant={destructiveItemVariant}>
-                  <TrashIcon />
-                  Destructive
-                  <DropdownMenuShortcut>⌘+D</DropdownMenuShortcut>
-                </DropdownMenuItem>
-                <DropdownMenuItem variant={destructiveItemVariant} disabled>
-                  <TrashIcon />
-                  Destructive Disabled
-                  <DropdownMenuShortcut>⌘+D</DropdownMenuShortcut>
-                </DropdownMenuItem>
-              </DropdownMenuGroup>
-            </DropdownMenuContent>
-          </DropdownMenu>
-        </div>
+                  Option 2
+                </DropdownMenuRadioItem>
+                <DropdownMenuRadioItem
+                  value="disabled"
+                  disabled
+                  onSelect={(e) => e.preventDefault()}
+                >
+                  Disabled
+                </DropdownMenuRadioItem>
+              </DropdownMenuRadioGroup>
+            </DropdownMenuGroup>
+            <DropdownMenuSeparator />
+            <DropdownMenuGroup>
+              <DropdownMenuItem variant={destructiveItemVariant}>
+                <TrashIcon />
+                Destructive
+                <DropdownMenuShortcut>⌘+D</DropdownMenuShortcut>
+              </DropdownMenuItem>
+              <DropdownMenuItem variant={destructiveItemVariant} disabled>
+                <TrashIcon />
+                Destructive Disabled
+                <DropdownMenuShortcut>⌘+D</DropdownMenuShortcut>
+              </DropdownMenuItem>
+            </DropdownMenuGroup>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </ComponentContainer>
-
       <ComponentPlayground>
         <div className="grid gap-2">
           <Label htmlFor="content-variant">Content Variant</Label>

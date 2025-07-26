@@ -11,7 +11,7 @@ const toggleVariants = tv({
     "group/toggle",
     "relative inline-flex items-center justify-center bg-transparent font-medium whitespace-nowrap text-subtle-foreground",
     "active:opacity-80",
-    "disabled:pointer-events-none disabled:text-muted-foreground disabled:opacity-50",
+    "data-[disabled]:pointer-events-none data-[disabled]:text-muted-foreground data-[disabled]:opacity-50",
     "focus-visible:outline-2 focus-visible:outline-offset-2",
     "**:[svg]:pointer-events-none **:[svg]:shrink-0",
   ],
@@ -158,8 +158,8 @@ const toggleVariants = tv({
 
 function Toggle({
   className,
-  variant,
-  size,
+  variant = "accent",
+  size = "md",
   children,
   ...props
 }: React.ComponentProps<typeof TogglePrimitive.Root> &

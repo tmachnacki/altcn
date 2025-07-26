@@ -48,12 +48,10 @@ function AlertDialogOverlay({
 }
 
 function AlertDialogContent({
-  variant = "solid",
   className,
   classNames,
   ...props
 }: React.ComponentProps<typeof AlertDialogPrimitive.Content> & {
-  variant?: "solid" | "translucent";
   classNames?: {
     root?: string;
     overlay?: string;
@@ -61,18 +59,14 @@ function AlertDialogContent({
 }) {
   return (
     <AlertDialogPortal>
-      {variant === "solid" && (
-        <AlertDialogOverlay className={classNames?.overlay} />
-      )}
+      <AlertDialogOverlay className={classNames?.overlay} />
+
       <AlertDialogPrimitive.Content
         data-slot="alert-dialog-content"
         className={cn(
           "[--alert-dialog-gap:--spacing(6)] [--alert-dialog-p:--spacing(6)]",
-          "fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-(--alert-dialog-gap) rounded-lg border p-(--alert-dialog-p) text-foreground shadow-lg sm:max-w-lg",
+          "fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-(--alert-dialog-gap) rounded-lg border bg-background p-(--alert-dialog-p) text-foreground shadow-lg sm:max-w-lg",
           "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-[97.5%] data-[state=open]:animate-in data-[state=open]:duration-300 data-[state=open]:ease-out data-[state=open]:fade-in-0 data-[state=open]:slide-in-from-bottom-2",
-          variant === "solid"
-            ? "bg-background"
-            : "bg-card-translucent backdrop-blur-card-translucent",
           classNames?.root,
           className
         )}

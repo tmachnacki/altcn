@@ -146,7 +146,7 @@ function InputOTP({
       data-spacing={spacing}
       containerClassName={cn(
         "peer group/input-otp",
-        "flex items-center gap-2 has-disabled:opacity-50 w-fit",
+        "flex w-fit items-center gap-2 has-disabled:opacity-50",
         containerClassName
       )}
       className={className}
@@ -170,12 +170,13 @@ function InputOTPGroup({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="input-otp-group"
       className={cn(
-        "flex items-center w-fit",
-        {
-          sm: spacing === "split" && "gap-1.5",
-          md: spacing === "split" && "gap-2",
-          lg: spacing === "split" && "gap-2.5",
-        }[size || "md"],
+        "flex w-fit items-center",
+        spacing === "split" &&
+          {
+            sm: "gap-1.5",
+            md: "gap-2",
+            lg: "gap-2.5",
+          }[size || "md"],
         className
       )}
       {...props}

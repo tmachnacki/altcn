@@ -22,7 +22,6 @@ import {
   TabNavList,
 } from "~/components/ui/tab-nav";
 import { tabsListVariants, tabsTriggerVariants } from "~/components/ui/tabs";
-import { BackgroundPattern } from "~/components/background-pattern";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
 
@@ -58,57 +57,54 @@ function TabNavWithParams() {
 
   return (
     <>
-      <ComponentContainer className="overflow-hidden rounded-t-lg p-0 md:rounded-l-lg md:rounded-r-none">
-        <div className="relative flex h-full min-h-96 w-full min-w-0 flex-col items-center justify-start bg-center p-(--demo-gutter)">
-          {listVariant === "translucent" && <BackgroundPattern />}
-          <div
-            className={cn(
-              "relative flex w-full gap-4 max-w-lg",
-              orientation === "horizontal" ? "flex-col" : "flex-row"
-            )}
+      <ComponentContainer withBackground={listVariant === "translucent"}>
+        <div
+          className={cn(
+            "relative flex w-full max-w-lg gap-4",
+            orientation === "horizontal" ? "flex-col" : "flex-row"
+          )}
+        >
+          <TabNav
+            className={cn(orientation === "horizontal" ? "w-full" : "w-fit")}
           >
-            <TabNav
-              className={cn(orientation === "horizontal" ? "w-full" : "w-fit")}
+            <TabNavList
+              variants={{ list: listVariant, link: linkVariant }}
+              orientation={orientation as "horizontal" | "vertical"}
             >
-              <TabNavList
-                variants={{ list: listVariant, link: linkVariant }}
-                orientation={orientation as "horizontal" | "vertical"}
-              >
-                <TabNavItem>
-                  <TabNavLink
-                    href="/components/tab-nav?page=music"
-                    isActive={page === "music"}
-                    disabled={disabled}
-                  >
-                    <MusicIcon />
-                    Music
-                  </TabNavLink>
-                </TabNavItem>
-                <TabNavItem>
-                  <TabNavLink
-                    href="/components/tab-nav?page=podcasts"
-                    isActive={page === "podcasts"}
-                    disabled={disabled}
-                  >
-                    <PodcastIcon />
-                    Podcasts
-                  </TabNavLink>
-                </TabNavItem>
-                <TabNavItem>
-                  <TabNavLink
-                    href="/components/tab-nav?page=photos"
-                    isActive={page === "photos"}
-                    disabled={disabled}
-                  >
-                    <ImageIcon />
-                    Photos
-                  </TabNavLink>
-                </TabNavItem>
-              </TabNavList>
-            </TabNav>
-            <div className="flex-1">
-              <h2 className="text-2xl font-semibold capitalize">{page}</h2>
-            </div>
+              <TabNavItem>
+                <TabNavLink
+                  href="/components/tab-nav?page=music"
+                  isActive={page === "music"}
+                  disabled={disabled}
+                >
+                  <MusicIcon />
+                  Music
+                </TabNavLink>
+              </TabNavItem>
+              <TabNavItem>
+                <TabNavLink
+                  href="/components/tab-nav?page=podcasts"
+                  isActive={page === "podcasts"}
+                  disabled={disabled}
+                >
+                  <PodcastIcon />
+                  Podcasts
+                </TabNavLink>
+              </TabNavItem>
+              <TabNavItem>
+                <TabNavLink
+                  href="/components/tab-nav?page=photos"
+                  isActive={page === "photos"}
+                  disabled={disabled}
+                >
+                  <ImageIcon />
+                  Photos
+                </TabNavLink>
+              </TabNavItem>
+            </TabNavList>
+          </TabNav>
+          <div className="flex-1">
+            <h2 className="text-2xl font-semibold capitalize">{page}</h2>
           </div>
         </div>
       </ComponentContainer>

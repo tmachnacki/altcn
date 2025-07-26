@@ -17,7 +17,6 @@ import {
   TooltipTrigger,
   tooltipVariants,
 } from "~/components/ui/tooltip";
-import { BackgroundPattern } from "~/components/background-pattern";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
 
@@ -51,26 +50,23 @@ export function TooltipDemo() {
 
   return (
     <>
-      <ComponentContainer className="overflow-hidden rounded-t-lg p-0 md:rounded-l-lg md:rounded-r-none">
-        <div className="relative flex h-full min-h-96 w-full min-w-0 flex-col items-center justify-center bg-center p-(--demo-gutter)">
-          {variant === "translucent" && <BackgroundPattern />}
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Button
-                variant={tooltipButtonVariants(variant)}
-                className="capitalize"
-              >
-                {variant}
-              </Button>
-            </TooltipTrigger>
-            <TooltipContent
-              variant={variant}
-              side={side as (typeof sides)[number]}
+      <ComponentContainer withBackground={variant === "translucent"}>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button
+              variant={tooltipButtonVariants(variant)}
+              className="capitalize"
             >
-              <p>This is a {variant} tooltip</p>
-            </TooltipContent>
-          </Tooltip>
-        </div>
+              {variant}
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent
+            variant={variant}
+            side={side as (typeof sides)[number]}
+          >
+            <p>This is a {variant} tooltip</p>
+          </TooltipContent>
+        </Tooltip>
       </ComponentContainer>
       <ComponentPlayground>
         <div className="grid gap-2">
