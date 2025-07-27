@@ -3,7 +3,7 @@
 ## Improvements
 
 - [ ] Refactor color token conventions (foreground -> fg, background -> bg)
-- [ ] 2xs and xs sizing
+- [ ] Maybe export default variants objects
 - [ ] Responsive sizing
 - [ ] Headless Sonner
 - [ ] Pagination sizes + variants + spacings

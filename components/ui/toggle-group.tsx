@@ -2,19 +2,93 @@
 
 import * as React from "react";
 import * as ToggleGroupPrimitive from "@radix-ui/react-toggle-group";
-import { type VariantProps } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 import { cn } from "~/lib/utils";
 
 import { toggleVariants } from "~/components/ui/toggle";
 import { Tron } from "~/components/ui/tron";
 
-// const toggleGroupItemVariants = ({
-//   variant,
-//   size,
-// }: VariantProps<typeof toggleVariants>) => cn(
-//   ""
-// );
+const compactToggleGroupItemVariants = tv({
+  base: [
+    "[--inset-border:transparent]",
+    "hover:z-10 focus:z-20 focus-visible:-outline-offset-0",
+    "not-first:-ml-px not-first:rounded-l-none not-last:rounded-r-none",
+    "data-[state=on]:shadow-[inset_1px_0_0_0_var(--inset-border),inset_-1px_0_0_0_var(--inset-border)]",
+    "data-[state=on]:first:shadow-[inset_-1px_0_0_0_var(--inset-border)]",
+    "data-[state=on]:last:shadow-[inset_1px_0_0_0_var(--inset-border)]",
+  ],
+  variants: {
+    size: {
+      "2xs":
+        "not-first:min-w-calc[(var(--size-xs)+1px)] sm:not-first:min-w-calc[(var(--size-2xs)+1px)]",
+      xs: "not-first:min-w-calc[(var(--size-sm)+1px)] sm:not-first:min-w-calc[(var(--size-xs)+1px)]",
+      sm: "not-first:min-w-calc[(var(--size-md)+1px)] sm:not-first:min-w-calc[(var(--size-sm)+1px)]",
+      md: "not-first:min-w-calc[(var(--size-lg)+1px)] sm:not-first:min-w-calc[(var(--size-md)+1px)]",
+      lg: "not-first:min-w-calc[(var(--size-xl)+1px)] sm:not-first:min-w-calc[(var(--size-lg)+1px)]",
+    },
+    variant: {
+      outline: "",
+      contrast:
+        "outline-muted-foreground [--inset-border:--alpha(var(--color-contrast-foreground)/20%)]",
+
+      base: "[--inset-border:--alpha(var(--color-base-foreground)/20%)]",
+
+      accent: "[--inset-border:var(--color-faded-border)]",
+
+      muted: "[--inset-border:var(--color-faded-border)]",
+
+      surface: "[--inset-border:var(--color-faded-border)]",
+
+      faded: "[--inset-border:var(--color-faded-border)]",
+
+      "base-gradient":
+        "[--inset-border:--alpha(var(--color-base-foreground)/20%)]",
+
+      primary:
+        "outline-primary-accent-foreground [--inset-border:--alpha(var(--color-primary-200)/20%)]",
+
+      "primary-accent": "[--inset-border:var(--color-primary-faded-border)]",
+
+      "primary-muted":
+        "[--inset-border:--alpha(var(--color-primary-foreground)/20%)]",
+
+      "primary-surface": "[--inset-border:var(--color-primary-faded-border)]",
+
+      "primary-faded":
+        "[--inset-border:--alpha(var(--color-primary-foreground)/20%)]",
+
+      "primary-tron": "[--inset-border:var(--color-primary-tron-border)]",
+
+      "primary-gradient":
+        "outline-primary-accent-foreground [--inset-border:--alpha(var(--color-primary-foreground)/20%)]",
+
+      secondary:
+        "outline-secondary-accent-foreground [--inset-border:--alpha(var(--color-secondary-foreground)/20%)]",
+
+      "secondary-accent":
+        "[--inset-border:var(--color-secondary-faded-border)]",
+
+      "secondary-muted":
+        "[--inset-border:--alpha(var(--color-secondary-foreground)/20%)]",
+
+      "secondary-surface":
+        "[--inset-border:var(--color-secondary-faded-border)]",
+
+      "secondary-faded":
+        "[--inset-border:--alpha(var(--color-secondary-foreground)/20%)]",
+
+      "secondary-tron": "[--inset-border:var(--color-secondary-tron-border)]",
+
+      "secondary-gradient":
+        "outline-secondary-accent-foreground [--inset-border:--alpha(var(--color-secondary-foreground)/20%)]",
+    },
+  },
+  defaultVariants: {
+    variant: "accent",
+    size: "md",
+  },
+});
 
 type ToggleGroupContextProps = VariantProps<typeof toggleVariants> & {
   spacing?: "compact" | "split";
@@ -39,10 +113,10 @@ function ToggleGroup({
         spacing === "split" &&
           {
             "2xs": "gap-0.5",
-            xs: "gap-1",
-            sm: "gap-1",
-            md: "gap-1",
-            lg: "gap-1.5",
+            xs: "gap-0.5",
+            sm: "gap-[calc(var(--spacing)*0.75)]",
+            md: "gap-1 sm:gap-[calc(var(--spacing)*0.75)]",
+            lg: "gap-1",
           }[size || "md"],
         className
       )}
@@ -75,6 +149,11 @@ function ToggleGroupItem({
           variant: _variant,
           size: size || context.size,
         }),
+        context.spacing === "compact" &&
+          compactToggleGroupItemVariants({
+            variant: _variant,
+            size: size || context.size,
+          }),
         "group/toggle-group-item",
         className
       )}
