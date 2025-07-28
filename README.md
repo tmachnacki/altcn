@@ -23,6 +23,7 @@
 - [ ] Contrast variants
 - [ ] forced colors
 - [ ] CSS var names
+- [ ] Refactor borders/inset-ring/outline to be consistent, adjust inset border radius
 
 ## Components
 

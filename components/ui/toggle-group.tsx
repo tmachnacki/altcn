@@ -12,38 +12,25 @@ import { Tron } from "~/components/ui/tron";
 const compactToggleGroupItemVariants = tv({
   base: [
     "[--inset-border:transparent]",
-    "[--inset-border-l:inset_1px_0_0_0_var(--inset-border)]",
-    "[--inset-border-x:inset_1px_0_0_0_var(--inset-border),inset_-1px_0_0_0_var(--inset-border)]",
-    "[--inset-border-r:inset_-1px_0_0_0_var(--inset-border)]",
 
     "focus-visible:-outline-offset-1",
 
     "not-first:-ml-px not-first:rounded-l-none not-last:rounded-r-none",
 
     // apply pseudo border-l when on and prev is on
-    "data-[state=on]:[&:is(:where([data-state='on'])_+_*)]:shadow-[var(--inset-border-l)]",
-
-    // apply pseudo border-r when on and next is on
-    // "data-[state=on]:[&:is(:has(+_[data-state='on']))]:shadow-[var(--inset-border-r)]",
-
-    // apply pseudo border-x when on and prev and next are on
-    // "data-[state=on]:[&:is(:where([data-state='on'])_+_*)]:[&:is(:has(+_[data-state='on']))]:shadow-[var(--inset-border-x)]",
+    "data-[state=on]:[&:is(:where([data-state='on'])_+_*)]:shadow-[inset_1px_0_0_0_var(--inset-border)]",
   ],
   variants: {
-    size: {
-      "2xs":
-        "not-first:min-w-calc[(var(--size-xs)+1px)] sm:not-first:min-w-calc[(var(--size-2xs)+1px)]",
-      xs: "not-first:min-w-calc[(var(--size-sm)+1px)] sm:not-first:min-w-calc[(var(--size-xs)+1px)]",
-      sm: "not-first:min-w-calc[(var(--size-md)+1px)] sm:not-first:min-w-calc[(var(--size-sm)+1px)]",
-      md: "not-first:min-w-calc[(var(--size-lg)+1px)] sm:not-first:min-w-calc[(var(--size-md)+1px)]",
-      lg: "not-first:min-w-calc[(var(--size-xl)+1px)] sm:not-first:min-w-calc[(var(--size-lg)+1px)]",
-    },
     variant: {
-      outline: "",
+      outline: [
+        "border-none",
+        "inset-ring inset-ring-border-solid data-[state=on]:inset-ring-hover-border-solid",
+        "shadow-none"
+      ],
       contrast:
         "outline-muted-foreground [--inset-border:--alpha(var(--color-contrast-foreground)/30%)]",
 
-      base: "[--inset-border:--alpha(var(--color-base-foreground)/20%)]",
+      base: "outline-accent-foreground [--inset-border:--alpha(var(--color-base-foreground)/20%)]",
 
       accent: "[--inset-border:var(--color-faded-border)]",
 
@@ -116,6 +103,7 @@ function ToggleGroup({
       data-slot="toggle-group"
       className={cn(
         "group/toggle-group relative isolate flex items-center",
+        variant === "outline" && "shadow-xs rounded-md",
         spacing === "split" &&
           {
             "2xs": "gap-0.5",
@@ -158,7 +146,6 @@ function ToggleGroupItem({
         context.spacing === "compact" &&
           compactToggleGroupItemVariants({
             variant: _variant,
-            size: size || context.size,
           }),
         "group/toggle-group-item",
         className

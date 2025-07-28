@@ -16,7 +16,7 @@ import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
 
 type Variant = keyof typeof sliderVariants.variants.variant;
-const variants = Object.keys(sliderVariants.variants.variant) as Variant[];
+const rangeVariants = Object.keys(sliderVariants.variants.variant) as Variant[];
 
 const orientations = ["horizontal", "vertical"] as const;
 
@@ -83,7 +83,7 @@ export function SliderDemo() {
               <SelectValue placeholder="Select variant" />
             </SelectTrigger>
             <SelectContent>
-              {variants.map((variant) => (
+              {rangeVariants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
                   {variant}
                 </SelectItem>
@@ -111,7 +111,6 @@ export function SliderDemo() {
             id="slider-invalid"
             checked={invalid}
             onCheckedChange={setInvalid}
-            disabled={disabled}
           />
           <Label htmlFor="slider-invalid">Invalid</Label>
         </div>

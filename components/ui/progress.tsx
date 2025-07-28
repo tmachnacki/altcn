@@ -6,9 +6,8 @@ import { tv, VariantProps } from "tailwind-variants";
 
 const progressVariants = tv({
   slots: {
-    root: "relative h-3 sm:h-2 w-full overflow-hidden rounded-full",
-    indicator:
-      "h-full w-full flex-1 bg-(--progress-indicator-bg) transition-all",
+    root: "relative h-3 w-full overflow-hidden rounded-full sm:h-2",
+    indicator: "h-full w-full flex-1 transition-all",
   },
   variants: {
     variant: {
@@ -25,7 +24,6 @@ const progressVariants = tv({
         root: "bg-muted",
         indicator: "bg-base-bg",
       },
-
       faded: {
         root: "bg-faded inset-ring inset-ring-faded-border",
         indicator: "bg-base-bg",
@@ -43,6 +41,10 @@ const progressVariants = tv({
         root: "bg-primary-faded inset-ring inset-ring-primary-faded-border",
         indicator: "bg-primary",
       },
+      "primary-base-faded": {
+        root: "bg-faded inset-ring inset-ring-faded-border",
+        indicator: "bg-primary",
+      },
 
       secondary: {
         root: "bg-muted",
@@ -54,6 +56,10 @@ const progressVariants = tv({
       },
       "secondary-faded": {
         root: "bg-secondary-faded inset-ring inset-ring-secondary-faded-border",
+        indicator: "bg-secondary",
+      },
+      "secondary-base-faded": {
+        root: "bg-faded inset-ring inset-ring-faded-border",
         indicator: "bg-secondary",
       },
 
@@ -69,6 +75,10 @@ const progressVariants = tv({
         root: "bg-destructive-faded inset-ring inset-ring-destructive-faded-border",
         indicator: "bg-destructive",
       },
+      "destructive-base-faded": {
+        root: "bg-faded inset-ring inset-ring-faded-border",
+        indicator: "bg-destructive",
+      },
 
       success: {
         root: "bg-muted",
@@ -82,6 +92,10 @@ const progressVariants = tv({
         root: "bg-success-faded inset-ring inset-ring-success-faded-border",
         indicator: "bg-success",
       },
+      "success-base-faded": {
+        root: "bg-faded inset-ring inset-ring-faded-border",
+        indicator: "bg-success",
+      },
 
       warning: {
         root: "bg-muted",
@@ -93,6 +107,10 @@ const progressVariants = tv({
       },
       "warning-faded": {
         root: "bg-warning-faded inset-ring inset-ring-warning-faded-border",
+        indicator: "bg-warning",
+      },
+      "warning-base-faded": {
+        root: "bg-faded inset-ring inset-ring-faded-border",
         indicator: "bg-warning",
       },
     },

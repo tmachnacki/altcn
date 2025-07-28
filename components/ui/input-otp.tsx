@@ -12,8 +12,9 @@ import { cn } from "~/lib/utils";
 
 const inputOTPSlotVariants = tv({
   base: [
-    "relative isolate flex items-center justify-center outline-none hover:data-[active=false]:z-10 data-[active=true]:z-20",
-    "data-[invalid]:text-destructive-accent-foreground",
+    "relative isolate flex items-center justify-center hover:data-[active=false]:z-10 data-[active=true]:z-20",
+    "data-[active=true]:outline-2 data-[active=true]:-outline-offset-1",
+    "data-[invalid]:text-destructive-accent-foreground data-[invalid]:data-[active=true]:outline-destructive",
   ],
   variants: {
     size: {
@@ -36,9 +37,9 @@ const inputOTPSlotVariants = tv({
     },
     variant: {
       outline: [
-        "bg-background text-foreground shadow-xs inset-ring inset-ring-border group-hover/input-otp:not-data-[disabled]:group-not-focus-within/input-otp:not-data-[invalid]:inset-ring-hover-border dark:bg-faded",
+        "bg-background text-foreground shadow-xs inset-ring inset-ring-border-solid group-hover/input-otp:not-data-[disabled]:group-not-focus-within/input-otp:not-data-[invalid]:inset-ring-hover-border-solid dark:bg-faded",
 
-        "data-[active=true]:inset-ring-2 data-[active=true]:inset-ring-primary",
+        "data-[active=true]:outline-primary",
 
         "data-[placeholder]:text-placeholder",
 
@@ -50,15 +51,15 @@ const inputOTPSlotVariants = tv({
       muted: [
         "bg-muted text-accent-foreground group-hover/input-otp:not-data-[disabled]:group-not-focus-within/input-otp:not-data-[invalid]:bg-hover-muted",
 
-        "data-[active=true]:shadow-[inset_0_0_0_2px_var(--color-primary)]",
+        "data-[active=true]:outline-primary",
 
         "data-[placeholder]:text-placeholder",
 
-        "data-[invalid]:bg-destructive-muted data-[invalid]:text-destructive-accent-foreground group-hover/input-otp:not-data-[disabled]:data-[invalid]:group-not-focus-within/input-otp:bg-hover-destructive-muted data-[invalid]:data-[active=true]:shadow-[inset_0_0_0_2px_var(--color-destructive)] data-[invalid]:data-[placeholder]:text-destructive-placeholder",
+        "data-[invalid]:bg-destructive-muted data-[invalid]:text-destructive-accent-foreground group-hover/input-otp:not-data-[disabled]:data-[invalid]:group-not-focus-within/input-otp:bg-hover-destructive-muted data-[invalid]:data-[placeholder]:text-destructive-placeholder",
       ],
 
       underlined: [
-        "mr-0.5 rounded-none bg-transparent text-foreground shadow-[inset_0_-1px_0_0_var(--color-border)] group-hover/input-otp:not-data-[disabled]:group-not-focus-within/input-otp:not-data-[invalid]:shadow-[inset_0_-1px_0_0_var(--color-hover-border)] last:mr-0 data-[spacing=split]:mr-0",
+        "rounded-none bg-transparent text-foreground shadow-[inset_0_-1px_0_0_var(--color-border)] outline-none group-hover/input-otp:not-data-[disabled]:group-not-focus-within/input-otp:not-data-[invalid]:shadow-[inset_0_-1px_0_0_var(--color-hover-border)]",
 
         "data-[active=true]:shadow-[inset_0_-2px_0_0_var(--color-primary)]",
 
@@ -70,48 +71,29 @@ const inputOTPSlotVariants = tv({
       "primary-muted": [
         "bg-primary-muted text-primary-accent-foreground group-hover/input-otp:not-data-[disabled]:group-not-focus-within/input-otp:not-data-[invalid]:bg-hover-primary-muted",
 
+        "data-[active=true]:outline-primary",
+
         "data-[placeholder]:text-primary-placeholder",
 
         "data-[disabled]:bg-muted data-[disabled]:text-accent-foreground data-[disabled]:data-[placeholder]:text-placeholder",
 
-        "data-[active=true]:shadow-[inset_0_0_0_2px_var(--color-primary)]",
-
-        "data-[invalid]:bg-destructive-muted data-[invalid]:text-destructive-accent-foreground group-hover/input-otp:not-data-[disabled]:data-[invalid]:group-not-focus-within/input-otp:bg-hover-destructive-muted data-[invalid]:data-[active=true]:shadow-[inset_0_0_0_2px_var(--color-destructive)] data-[invalid]:data-[placeholder]:text-destructive-placeholder",
+        "data-[invalid]:bg-destructive-muted data-[invalid]:text-destructive-accent-foreground group-hover/input-otp:not-data-[disabled]:data-[invalid]:group-not-focus-within/input-otp:bg-hover-destructive-muted data-[invalid]:data-[placeholder]:text-destructive-placeholder",
       ],
 
       "secondary-muted": [
         "bg-secondary-muted text-secondary-accent-foreground group-hover/input-otp:not-data-[disabled]:group-not-focus-within/input-otp:not-data-[invalid]:bg-hover-secondary-muted",
 
+        "data-[active=true]:outline-secondary",
+
         "data-[placeholder]:text-secondary-placeholder",
 
         "data-[disabled]:bg-muted data-[disabled]:text-accent-foreground data-[disabled]:data-[placeholder]:text-placeholder",
 
-        "data-[active=true]:shadow-[inset_0_0_0_2px_var(--color-secondary)]",
-
-        "data-[invalid]:bg-destructive-muted data-[invalid]:text-destructive-accent-foreground group-hover/input-otp:not-data-[disabled]:data-[invalid]:group-not-focus-within/input-otp:bg-hover-destructive-muted data-[invalid]:data-[active=true]:shadow-[inset_0_0_0_2px_var(--color-destructive)] data-[invalid]:data-[placeholder]:text-destructive-placeholder",
+        "data-[invalid]:bg-destructive-muted data-[invalid]:text-destructive-accent-foreground group-hover/input-otp:not-data-[disabled]:data-[invalid]:group-not-focus-within/input-otp:bg-hover-destructive-muted data-[invalid]:data-[placeholder]:text-destructive-placeholder",
       ],
     },
   },
   compoundVariants: [
-    {
-      size: "sm",
-      spacing: "compact",
-      className:
-        "not-first:w-[calc(var(--size-md)+1px)] sm:not-first:w-[calc(var(--size-sm)+1px)]",
-    },
-    {
-      size: "md",
-      spacing: "compact",
-      className:
-        "not-first:w-[calc(var(--size-lg)+1px)] sm:not-first:w-[calc(var(--size-md)+1px)]",
-    },
-    {
-      size: "lg",
-      spacing: "compact",
-      className:
-        "not-first:w-[calc(var(--size-xl)+1px)] sm:not-first:w-[calc(var(--size-lg)+1px)]",
-    },
-    //
     {
       variant: "muted",
       spacing: "compact",
@@ -241,7 +223,6 @@ function InputOTPSlot({
     <div
       data-slot="input-otp-slot"
       data-active={isActive}
-      // data-spacing={spacing}
       data-placeholder={placeholderChar ? true : undefined}
       data-disabled={disabled ? true : undefined}
       data-invalid={
@@ -266,10 +247,27 @@ function InputOTPSlot({
   );
 }
 
-function InputOTPSeparator({ ...props }: React.ComponentProps<"div">) {
+function InputOTPSeparator({
+  className,
+  ...props
+}: React.ComponentProps<"div">) {
+  const { size } = React.useContext(InputOTPContext);
   return (
-    <div data-slot="input-otp-separator" role="separator" {...props}>
-      <MinusIcon className="text-muted-foreground" />
+    <div
+      data-slot="input-otp-separator"
+      role="separator"
+      className={cn(
+        "text-muted-foreground",
+        {
+          sm: "size-(--icon-md) sm:size-(--icon-sm)",
+          md: "size-(--icon-lg) sm:size-(--icon-md)",
+          lg: "size-(--icon-xl) sm:size-(--icon-lg)",
+        }[size || "md"],
+        className
+      )}
+      {...props}
+    >
+      <MinusIcon className="size-full" />
     </div>
   );
 }

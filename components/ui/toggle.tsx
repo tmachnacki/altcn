@@ -12,7 +12,7 @@ const toggleVariants = tv({
     "relative inline-flex items-center justify-center bg-transparent font-medium whitespace-nowrap text-subtle-foreground",
     "active:opacity-80",
     "data-[disabled]:pointer-events-none data-[disabled]:text-muted-foreground data-[disabled]:opacity-50",
-    "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:z-20",
+    "focus-visible:z-20 focus-visible:outline-2 focus-visible:outline-offset-1",
     "**:[svg]:pointer-events-none **:[svg]:shrink-0",
   ],
   variants: {

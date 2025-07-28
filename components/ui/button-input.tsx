@@ -15,24 +15,24 @@ const buttonInputVariants = tv({
   variants: {
     size: {
       sm: [
-        "[--gap:--spacing(2)]",
+        "[--button-input-gap:--spacing(2)]",
         "h-(--size-md) sm:h-(--size-sm)",
         "text-sm",
-        "gap-(--gap) px-2.5 py-1.5",
+        "gap-(--button-input-gap) px-2.5 py-1.5",
         "**:[svg]:not-[[class*='size-']]:size-(--icon-md) sm:**:[svg]:not-[[class*='size-']]:size-(--icon-sm)",
       ],
       md: [
-        "[--gap:--spacing(2)]",
+        "[--button-input-gap:--spacing(2)]",
         "h-(--size-lg) sm:h-(--size-md)",
         "text-base sm:text-sm",
-        "gap-(--gap) px-3 py-2",
+        "gap-(--button-input-gap) px-3 py-2",
         "**:[svg]:not-[[class*='size-']]:size-(--icon-lg) sm:**:[svg]:not-[[class*='size-']]:size-(--icon-md)",
       ],
       lg: [
-        "[--gap:--spacing(2.5)]",
+        "[--button-input-gap:--spacing(2.5)]",
         "h-(--size-xl) sm:h-(--size-lg)",
         "text-lg sm:text-base",
-        "gap-(--gap) px-3.5 py-2.5",
+        "gap-(--button-input-gap) px-3.5 py-2.5",
         "**:[svg]:not-[[class*='size-']]:size-(--icon-xl) sm:**:[svg]:not-[[class*='size-']]:size-(--icon-lg)",
       ],
     },
@@ -144,7 +144,7 @@ function ButtonInputValue({
       data-slot="button-input-value"
       data-placeholder={children ? undefined : placeholder ? true : undefined}
       className={cn(
-        "line-clamp-1 flex flex-1 items-center justify-start gap-(--gap) truncate",
+        "line-clamp-1 flex flex-1 items-center justify-start gap-(--button-input-gap) truncate",
         className
       )}
       {...props}

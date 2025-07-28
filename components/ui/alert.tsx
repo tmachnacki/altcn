@@ -7,19 +7,18 @@ import { cn } from "~/lib/utils";
 
 import { Button } from "~/components/ui/button";
 import { Tron } from "~/components/ui/tron";
-import { ErrorFilledIcon } from "~/components/icons/error-filled";
-import { InfoFilledIcon } from "~/components/icons/info-filled";
-import { SuccessFilledIcon } from "~/components/icons/success-filled";
-import { WarningFilledIcon } from "~/components/icons/warning-filled";
 
 const alertVariants = tv({
   base: [
-    "[--alert-p:--spacing(4)] [--alert-title-height:--spacing(6)] has-[[data-slot='alert-close']]:[--alert-close-offset:--spacing(2.5)] sm:[--alert-title-height:--spacing(5)]",
+    "[--alert-close-offset:--spacing(2.5)] [--alert-p:--spacing(4)] [--alert-title-h:--spacing(6)] sm:[--alert-title-h:--spacing(5)]",
     "group/alert",
-    "relative isolate flex w-full items-start gap-x-3 rounded-lg p-(--alert-p)",
+    "relative isolate flex w-full items-start gap-x-3 rounded-lg p-(--alert-p) text-(--alert-accent-text)",
+
     "has-[[data-slot='alert-close']]:pr-[calc(var(--size-md)+var(--alert-close-offset)+(var(--spacing)*3))] sm:has-[[data-slot='alert-close']]:pr-[calc(var(--size-sm)+var(--alert-close-offset)+(var(--spacing)*3))]",
+
     "data-[align=center]:items-center data-[align=center]:has-[[data-slot='alert-close']]:pr-[calc(var(--size-md)+var(--alert-p)+(var(--spacing)*2))] sm:data-[align=center]:has-[[data-slot='alert-close']]:pr-[calc(var(--size-sm)+var(--alert-p)+(var(--spacing)*2))]",
-    "*:[svg]:pointer-events-none *:[svg]:h-(--alert-title-height) *:[svg]:w-(--icon-lg) *:[svg]:flex-none *:[svg]:text-current sm:*:[svg]:w-(--icon-md)",
+
+    "*:[svg]:pointer-events-none *:[svg]:h-(--alert-title-h) *:[svg]:w-(--icon-lg) *:[svg]:flex-none *:[svg]:text-(--alert-accent-text) sm:*:[svg]:w-(--icon-md)",
   ],
   variants: {
     variant: {
@@ -28,24 +27,24 @@ const alertVariants = tv({
         "border border-border bg-background shadow-xs",
         "[--alert-icon-bg:var(--color-muted)]",
         "[--alert-icon-text:var(--color-muted-foreground)]",
-        "has-[[data-slot='alert-close']]:[--hover-alert-close-bg:var(--color-muted)]",
-        "has-[[data-slot='alert-close']]:[--alert-close-outline:var(--color-outline)]",
+        "[--hover-alert-close-bg:var(--color-muted)]",
+        "[--alert-close-outline:var(--color-outline)]",
       ],
 
       muted: [
         "bg-muted",
         "[--alert-icon-bg:var(--color-base-50)] dark:[--alert-icon-bg:var(--color-muted)]",
         "[--alert-icon-text:var(--color-base-500)] dark:[--alert-icon-text:var(--color-base-300)]",
-        "has-[[data-slot='alert-close']]:[--hover-alert-close-bg:var(--color-hover-muted)]",
-        "has-[[data-slot='alert-close']]:[--alert-close-outline:var(--color-outline)]",
+        "[--hover-alert-close-bg:var(--color-hover-muted)]",
+        "[--alert-close-outline:var(--color-outline)]",
       ],
 
       faded: [
         "border border-faded-border bg-faded",
         "[--alert-icon-bg:var(--color-muted)]",
         "[--alert-icon-text:var(--color-muted-foreground)]",
-        "has-[[data-slot='alert-close']]:[--hover-alert-close-bg:var(--color-muted)]",
-        "has-[[data-slot='alert-close']]:[--alert-close-outline:var(--color-outline)]",
+        "[--hover-alert-close-bg:var(--color-muted)]",
+        "[--alert-close-outline:var(--color-outline)]",
       ],
 
       // -- primary --
@@ -53,16 +52,16 @@ const alertVariants = tv({
         "bg-primary-muted",
         "[--alert-icon-bg:var(--color-primary-50)] dark:[--alert-icon-bg:var(--color-primary-muted)]",
         "[--alert-icon-text:var(--color-primary-500)] dark:[--alert-icon-text:var(--color-primary-200)]",
-        "has-[[data-slot='alert-close']]:[--hover-alert-close-bg:var(--color-hover-primary-muted)]",
-        "has-[[data-slot='alert-close']]:[--alert-close-outline:var(--color-primary)]",
+        "[--hover-alert-close-bg:var(--color-hover-primary-muted)]",
+        "[--alert-close-outline:var(--color-primary)]",
       ],
 
       "primary-faded": [
         "border border-primary-faded-border bg-primary-faded",
         "[--alert-icon-bg:var(--color-primary-muted)]",
         "[--alert-icon-text:var(--color-primary-muted-foreground)]",
-        "has-[[data-slot='alert-close']]:[--hover-alert-close-bg:var(--color-primary-muted)]",
-        "has-[[data-slot='alert-close']]:[--alert-close-outline:var(--color-primary)]",
+        "[--hover-alert-close-bg:var(--color-primary-muted)]",
+        "[--alert-close-outline:var(--color-primary)]",
       ],
 
       "primary-tron": [
@@ -70,8 +69,8 @@ const alertVariants = tv({
         "[--tron-beam:var(--color-primary)] [--tron-blur:var(--color-primary-tron-blur)]",
         "[--alert-icon-bg:var(--color-primary-muted)]",
         "[--alert-icon-text:var(--color-primary-muted-foreground)]",
-        "has-[[data-slot='alert-close']]:[--hover-alert-close-bg:var(--color-hover-primary-muted)]",
-        "has-[[data-slot='alert-close']]:[--alert-close-outline:var(--color-primary)]",
+        "[--hover-alert-close-bg:var(--color-hover-primary-muted)]",
+        "[--alert-close-outline:var(--color-primary)]",
       ],
 
       // -- secondary --
@@ -96,8 +95,8 @@ const alertVariants = tv({
         "[--tron-beam:var(--color-secondary)] [--tron-blur:var(--color-secondary-tron-blur)]",
         "[--alert-icon-bg:var(--color-secondary-muted)]",
         "[--alert-icon-text:var(--color-secondary-muted-foreground)]",
-        "has-[[data-slot='alert-close']]:[--hover-alert-close-bg:var(--color-hover-secondary-muted)]",
-        "has-[[data-slot='alert-close']]:[--alert-close-outline:var(--color-secondary)]",
+        "[--hover-alert-close-bg:var(--color-hover-secondary-muted)]",
+        "[--alert-close-outline:var(--color-secondary)]",
       ],
 
       // -- destructive --
@@ -122,8 +121,8 @@ const alertVariants = tv({
         "[--tron-beam:var(--color-destructive)] [--tron-blur:var(--color-destructive-tron-blur)]",
         "[--alert-icon-bg:var(--color-destructive-muted)]",
         "[--alert-icon-text:var(--color-destructive-muted-foreground)]",
-        "has-[[data-slot='alert-close']]:[--hover-alert-close-bg:var(--color-hover-destructive-muted)]",
-        "has-[[data-slot='alert-close']]:[--alert-close-outline:var(--color-destructive)]",
+        "[--hover-alert-close-bg:var(--color-hover-destructive-muted)]",
+        "[--alert-close-outline:var(--color-destructive)]",
       ],
 
       // -- success --
@@ -148,8 +147,8 @@ const alertVariants = tv({
         "[--tron-beam:var(--color-success)] [--tron-blur:var(--color-success-tron-blur)]",
         "[--alert-icon-bg:var(--color-success-muted)]",
         "[--alert-icon-text:var(--color-success-muted-foreground)]",
-        "has-[[data-slot='alert-close']]:[--hover-alert-close-bg:var(--color-hover-success-muted)]",
-        "has-[[data-slot='alert-close']]:[--alert-close-outline:var(--color-success)]",
+        "[--hover-alert-close-bg:var(--color-hover-success-muted)]",
+        "[--alert-close-outline:var(--color-success)]",
       ],
 
       // -- warning --
@@ -174,8 +173,8 @@ const alertVariants = tv({
         "[--tron-beam:var(--color-warning)] [--tron-blur:var(--color-warning-tron-blur)]",
         "[--alert-icon-bg:var(--color-warning-muted)]",
         "[--alert-icon-text:var(--color-warning-muted-foreground)]",
-        "has-[[data-slot='alert-close']]:[--hover-alert-close-bg:var(--color-hover-warning-muted)]",
-        "has-[[data-slot='alert-close']]:[--alert-close-outline:var(--color-warning)]",
+        "[--hover-alert-close-bg:var(--color-hover-warning-muted)]",
+        "[--alert-close-outline:var(--color-warning)]",
       ],
     },
   },
@@ -183,54 +182,54 @@ const alertVariants = tv({
     {
       variant: ["outline", "muted", "faded"],
       className: [
-        "text-accent-foreground",
+        "[--alert-accent-text:var(--color-accent-foreground)]",
         "[--alert-inset-color-bg:var(--color-base-bg)]",
-        "[--alert-description-text:var(--color-muted-foreground)]",
+        "[--alert-muted-text:var(--color-muted-foreground)]",
         "[--alert-icon-border:var(--color-faded-border)]",
       ],
     },
     {
       variant: ["primary-muted", "primary-faded", "primary-tron"],
       className: [
-        "text-primary-accent-foreground",
+        "[--alert-accent-text:var(--color-primary-accent-foreground)]",
         "[--alert-inset-color-bg:var(--color-primary)]",
-        "[--alert-description-text:var(--color-primary-muted-foreground)]",
+        "[--alert-muted-text:var(--color-primary-muted-foreground)]",
         "[--alert-icon-border:var(--color-primary-faded-border)]",
       ],
     },
     {
       variant: ["secondary-muted", "secondary-faded", "secondary-tron"],
       className: [
-        "text-secondary-accent-foreground",
+        "[--alert-accent-text:var(--color-secondary-accent-foreground)]",
         "[--alert-inset-color-bg:var(--color-secondary)]",
-        "[--alert-description-text:var(--color-secondary-muted-foreground)]",
+        "[--alert-muted-text:var(--color-secondary-muted-foreground)]",
         "[--alert-icon-border:var(--color-secondary-faded-border)]",
       ],
     },
     {
       variant: ["destructive-muted", "destructive-faded", "destructive-tron"],
       className: [
-        "text-destructive-accent-foreground",
+        "[--alert-accent-text:var(--color-destructive-accent-foreground)]",
         "[--alert-inset-color-bg:var(--color-destructive)]",
-        "[--alert-description-text:var(--color-destructive-muted-foreground)]",
+        "[--alert-muted-text:var(--color-destructive-muted-foreground)]",
         "[--alert-icon-border:var(--color-destructive-faded-border)]",
       ],
     },
     {
       variant: ["success-muted", "success-faded", "success-tron"],
       className: [
-        "text-success-accent-foreground",
+        "[--alert-accent-text:var(--color-success-accent-foreground)]",
         "[--alert-inset-color-bg:var(--color-success)]",
-        "[--alert-description-text:var(--color-success-muted-foreground)]",
+        "[--alert-muted-text:var(--color-success-muted-foreground)]",
         "[--alert-icon-border:var(--color-success-faded-border)]",
       ],
     },
     {
       variant: ["warning-muted", "warning-faded", "warning-tron"],
       className: [
-        "text-warning-accent-foreground",
+        "[--alert-accent-text:var(--color-warning-accent-foreground)]",
         "[--alert-inset-color-bg:var(--color-warning)]",
-        "[--alert-description-text:var(--color-warning-muted-foreground)]",
+        "[--alert-muted-text:var(--color-warning-muted-foreground)]",
         "[--alert-icon-border:var(--color-warning-faded-border)]",
       ],
     },
@@ -316,17 +315,65 @@ function AlertIcon({ className, type, children, ...props }: AlertIconProps) {
         "inline-flex size-8 flex-none items-center justify-center rounded-full bg-(--alert-icon-bg) shadow-sm inset-ring inset-ring-(--alert-icon-border) **:[svg]:shrink-0",
         type
           ? "text-(--alert-icon-text) **:[svg]:not-[[class*='size-']]:size-5"
-          : "**:[svg]:text-current **:[svg]:not-[[class*='size-']]:size-(--icon-lg) sm:**:[svg]:not-[[class*='size-']]:size-(--icon-md)",
+          : "**:[svg]:text-(--alert-accent-text) **:[svg]:not-[[class*='size-']]:size-(--icon-lg) sm:**:[svg]:not-[[class*='size-']]:size-(--icon-md)",
         className
       )}
       {...props}
     >
+      {/* Feel free to replace filled icons; these are from tabler */}
       {type
         ? {
-            info: <InfoFilledIcon />,
-            error: <ErrorFilledIcon />,
-            success: <SuccessFilledIcon />,
-            warning: <WarningFilledIcon />,
+            info: (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M12 2c5.523 0 10 4.477 10 10a10 10 0 0 1 -19.995 .324l-.005 -.324l.004 -.28c.148 -5.393 4.566 -9.72 9.996 -9.72zm0 9h-1l-.117 .007a1 1 0 0 0 0 1.986l.117 .007v3l.007 .117a1 1 0 0 0 .876 .876l.117 .007h1l.117 -.007a1 1 0 0 0 .876 -.876l.007 -.117l-.007 -.117a1 1 0 0 0 -.764 -.857l-.112 -.02l-.117 -.006v-3l-.007 -.117a1 1 0 0 0 -.876 -.876l-.117 -.007zm.01 -3l-.127 .007a1 1 0 0 0 0 1.986l.117 .007l.127 -.007a1 1 0 0 0 0 -1.986l-.117 -.007z" />
+              </svg>
+            ),
+
+            error: (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M12 2c5.523 0 10 4.477 10 10a10 10 0 0 1 -19.995 .324l-.005 -.324l.004 -.28c.148 -5.393 4.566 -9.72 9.996 -9.72zm.01 13l-.127 .007a1 1 0 0 0 0 1.986l.117 .007l.127 -.007a1 1 0 0 0 0 -1.986l-.117 -.007zm-.01 -8a1 1 0 0 0 -.993 .883l-.007 .117v4l.007 .117a1 1 0 0 0 1.986 0l.007 -.117v-4l-.007 -.117a1 1 0 0 0 -.993 -.883z" />
+              </svg>
+            ),
+
+            success: (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.293 5.953a1 1 0 0 0 -1.32 -.083l-.094 .083l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.403 1.403l.083 .094l2 2l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z" />
+              </svg>
+            ),
+
+            warning: (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M12 1.67c.955 0 1.845 .467 2.39 1.247l.105 .16l8.114 13.548a2.914 2.914 0 0 1 -2.307 4.363l-.195 .008h-16.225a2.914 2.914 0 0 1 -2.582 -4.2l.099 -.185l8.11 -13.538a2.914 2.914 0 0 1 2.491 -1.403zm.01 13.33l-.127 .007a1 1 0 0 0 0 1.986l.117 .007l.127 -.007a1 1 0 0 0 0 -1.986l-.117 -.007zm-.01 -7a1 1 0 0 0 -.993 .883l-.007 .117v4l.007 .117a1 1 0 0 0 1.986 0l.007 -.117v-4l-.007 -.117a1 1 0 0 0 -.993 -.883z" />
+              </svg>
+            ),
           }[type]
         : children}
     </span>
@@ -337,7 +384,7 @@ function AlertContent({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="alert-content"
-      className={cn("flex flex-1 flex-col gap-0.5", className)}
+      className={cn("flex flex-1 flex-col gap-1", className)}
       {...props}
     />
   );
@@ -356,7 +403,7 @@ function AlertTitle({
     <Comp
       data-slot="alert-title"
       className={cn(
-        "line-clamp-1 text-base/(--alert-title-height) font-medium tracking-tight sm:text-sm/(--alert-title-height)",
+        "line-clamp-1 text-base/(--alert-title-h) font-medium tracking-tight text-(--alert-accent-text) sm:text-sm/(--alert-title-h)",
         className
       )}
       {...props}
@@ -372,7 +419,7 @@ function AlertDescription({
     <div
       data-slot="alert-description"
       className={cn(
-        "grid justify-items-start gap-1 text-sm text-(--alert-description-text) **:[p]:leading-relaxed",
+        "grid justify-items-start gap-1 text-sm text-(--alert-muted-text) **:[p]:leading-relaxed",
         className
       )}
       {...props}
@@ -400,7 +447,10 @@ function AlertAction({
   );
 }
 
-function AlertClose({ className, ...props }: React.ComponentProps<"button">) {
+function AlertClose({
+  className,
+  ...props
+}: React.ComponentProps<typeof Button>) {
   return (
     <Button
       data-slot="alert-close"
@@ -409,7 +459,7 @@ function AlertClose({ className, ...props }: React.ComponentProps<"button">) {
       variant="ghost"
       size="icon-sm"
       className={cn(
-        "absolute top-(--alert-close-offset) right-(--alert-close-offset) text-(--alert-description-text) opacity-70 outline-(--alert-close-outline) group-data-[align=center]/alert:top-1/2 group-data-[align=center]/alert:right-(--alert-p) group-data-[align=center]/alert:-translate-y-1/2 hover:bg-(--hover-alert-close-bg) hover:text-(--alert-description-text) hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-2",
+        "absolute top-(--alert-close-offset) right-(--alert-close-offset) text-(--alert-muted-text) opacity-70 outline-(--alert-close-outline) group-data-[align=center]/alert:top-1/2 group-data-[align=center]/alert:right-(--alert-p) group-data-[align=center]/alert:-translate-y-1/2 hover:bg-(--hover-alert-close-bg) hover:text-(--alert-muted-text) hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-2",
         className
       )}
       {...props}
