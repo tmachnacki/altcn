@@ -1,7 +1,12 @@
 "use client";
 
 import * as React from "react";
-import { BoldIcon, ItalicIcon, UnderlineIcon } from "lucide-react";
+import {
+  BoldIcon,
+  ItalicIcon,
+  StrikethroughIcon,
+  UnderlineIcon,
+} from "lucide-react";
 
 import { Label } from "~/components/ui/label";
 import {
@@ -60,7 +65,12 @@ export function ToggleGroupDemo() {
           </ToggleGroupItem>
           <ToggleGroupItem aria-label="Toggle italic" value="italic">
             <ItalicIcon />
-            Italic
+          </ToggleGroupItem>
+          <ToggleGroupItem
+            aria-label="Toggle strikethrough"
+            value="strikethrough"
+          >
+            <StrikethroughIcon />
           </ToggleGroupItem>
         </ToggleGroup>
       </ComponentContainer>

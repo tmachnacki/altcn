@@ -12,11 +12,22 @@ import { Tron } from "~/components/ui/tron";
 const compactToggleGroupItemVariants = tv({
   base: [
     "[--inset-border:transparent]",
-    "hover:z-10 focus:z-20 focus-visible:-outline-offset-0",
+    "[--inset-border-l:inset_1px_0_0_0_var(--inset-border)]",
+    "[--inset-border-x:inset_1px_0_0_0_var(--inset-border),inset_-1px_0_0_0_var(--inset-border)]",
+    "[--inset-border-r:inset_-1px_0_0_0_var(--inset-border)]",
+
+    "focus-visible:-outline-offset-1",
+
     "not-first:-ml-px not-first:rounded-l-none not-last:rounded-r-none",
-    "data-[state=on]:shadow-[inset_1px_0_0_0_var(--inset-border),inset_-1px_0_0_0_var(--inset-border)]",
-    "data-[state=on]:first:shadow-[inset_-1px_0_0_0_var(--inset-border)]",
-    "data-[state=on]:last:shadow-[inset_1px_0_0_0_var(--inset-border)]",
+
+    // apply pseudo border-l when on and prev is on
+    "data-[state=on]:[&:is(:where([data-state='on'])_+_*)]:shadow-[var(--inset-border-l)]",
+
+    // apply pseudo border-r when on and next is on
+    // "data-[state=on]:[&:is(:has(+_[data-state='on']))]:shadow-[var(--inset-border-r)]",
+
+    // apply pseudo border-x when on and prev and next are on
+    // "data-[state=on]:[&:is(:where([data-state='on'])_+_*)]:[&:is(:has(+_[data-state='on']))]:shadow-[var(--inset-border-x)]",
   ],
   variants: {
     size: {
@@ -30,7 +41,7 @@ const compactToggleGroupItemVariants = tv({
     variant: {
       outline: "",
       contrast:
-        "outline-muted-foreground [--inset-border:--alpha(var(--color-contrast-foreground)/20%)]",
+        "outline-muted-foreground [--inset-border:--alpha(var(--color-contrast-foreground)/30%)]",
 
       base: "[--inset-border:--alpha(var(--color-base-foreground)/20%)]",
 
@@ -38,50 +49,45 @@ const compactToggleGroupItemVariants = tv({
 
       muted: "[--inset-border:var(--color-faded-border)]",
 
-      surface: "[--inset-border:var(--color-faded-border)]",
+      surface: "[--inset-border:transparent]",
 
-      faded: "[--inset-border:var(--color-faded-border)]",
+      faded: "[--inset-border:transparent]",
 
       "base-gradient":
-        "[--inset-border:--alpha(var(--color-base-foreground)/20%)]",
+        "[--inset-border:--alpha(var(--color-base-foreground)/30%)]",
 
       primary:
-        "outline-primary-accent-foreground [--inset-border:--alpha(var(--color-primary-200)/20%)]",
+        "outline-primary-accent-foreground [--inset-border:--alpha(var(--color-primary-200)/30%)]",
 
       "primary-accent": "[--inset-border:var(--color-primary-faded-border)]",
 
-      "primary-muted":
-        "[--inset-border:--alpha(var(--color-primary-foreground)/20%)]",
+      "primary-muted": "[--inset-border:var(--color-primary-faded-border)]",
 
-      "primary-surface": "[--inset-border:var(--color-primary-faded-border)]",
+      "primary-surface": "[--inset-border:transparent]",
 
-      "primary-faded":
-        "[--inset-border:--alpha(var(--color-primary-foreground)/20%)]",
+      "primary-faded": "[--inset-border:transparent]",
 
-      "primary-tron": "[--inset-border:var(--color-primary-tron-border)]",
+      "primary-tron": "[--inset-border:transparent]",
 
       "primary-gradient":
-        "outline-primary-accent-foreground [--inset-border:--alpha(var(--color-primary-foreground)/20%)]",
+        "outline-primary-accent-foreground [--inset-border:--alpha(var(--color-primary-foreground)/30%)]",
 
       secondary:
-        "outline-secondary-accent-foreground [--inset-border:--alpha(var(--color-secondary-foreground)/20%)]",
+        "outline-secondary-accent-foreground [--inset-border:--alpha(var(--color-secondary-foreground)/30%)]",
 
       "secondary-accent":
         "[--inset-border:var(--color-secondary-faded-border)]",
 
-      "secondary-muted":
-        "[--inset-border:--alpha(var(--color-secondary-foreground)/20%)]",
+      "secondary-muted": "[--inset-border:var(--color-secondary-faded-border)]",
 
-      "secondary-surface":
-        "[--inset-border:var(--color-secondary-faded-border)]",
+      "secondary-surface": "[--inset-border:transparent]",
 
-      "secondary-faded":
-        "[--inset-border:--alpha(var(--color-secondary-foreground)/20%)]",
+      "secondary-faded": "[--inset-border:transparent]",
 
-      "secondary-tron": "[--inset-border:var(--color-secondary-tron-border)]",
+      "secondary-tron": "[--inset-border:transparent]",
 
       "secondary-gradient":
-        "outline-secondary-accent-foreground [--inset-border:--alpha(var(--color-secondary-foreground)/20%)]",
+        "outline-secondary-accent-foreground [--inset-border:--alpha(var(--color-secondary-foreground)/30%)]",
     },
   },
   defaultVariants: {

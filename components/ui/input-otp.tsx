@@ -14,110 +14,139 @@ const inputOTPSlotVariants = tv({
   base: [
     "relative isolate flex items-center justify-center outline-none hover:data-[active=false]:z-10 data-[active=true]:z-20",
     "data-[invalid]:text-destructive-accent-foreground",
-    "data-[spacing=split]:last:mr-0",
   ],
   variants: {
     size: {
       sm: [
         "text-sm",
         "h-(--size-md) w-(--size-md) sm:h-(--size-sm) sm:w-(--size-sm)",
-        "data-[spacing=compact]:not-first:w-[calc(var(--size-md)+1px) sm:data-[spacing=compact]:not-first:w-[calc(var(--size-sm)+1px)]]",
       ],
       md: [
         "text-base sm:text-sm",
         "h-(--size-lg) w-(--size-lg) sm:h-(--size-md) sm:w-(--size-md)",
-        "data-[spacing=compact]:not-first:w-[calc(var(--size-lg)+1px)] sm:data-[spacing=compact]:not-first:w-[calc(var(--size-md)+1px)]",
       ],
       lg: [
         "text-lg sm:text-base",
         "h-(--size-xl) w-(--size-xl) sm:h-(--size-lg) sm:w-(--size-lg)",
-        "data-[spacing=compact]:not-first:w-[calc(var(--size-xl)+1px)] sm:data-[spacing=compact]:not-first:w-[calc(var(--size-lg)+1px)]",
       ],
+    },
+    spacing: {
+      compact: "not-first:-ml-px first:rounded-l-md last:rounded-r-md",
+      split: "rounded-md",
     },
     variant: {
       outline: [
-        // border + shadow moved to group with compact spacing
-        "bg-background text-foreground not-first:-ml-px first:rounded-l-md last:rounded-r-md dark:bg-faded",
-        "data-[spacing=split]:-ml-0 data-[spacing=split]:rounded-md data-[spacing=split]:shadow-xs data-[spacing=split]:inset-ring data-[spacing=split]:inset-ring-border",
-        "data-[spacing=split]:group-hover/input-otp:not-data-[disabled]:group-not-focus-within/input-otp:not-data-[invalid]:inset-ring-hover-border",
+        "bg-background text-foreground shadow-xs inset-ring inset-ring-border group-hover/input-otp:not-data-[disabled]:group-not-focus-within/input-otp:not-data-[invalid]:inset-ring-hover-border dark:bg-faded",
 
-        "data-[spacing=compact]:[--inset-border:--alpha(var(--color-border)/50%)]",
-        "data-[spacing=compact]:shadow-[inset_1px_0_0_0_var(--inset-border),inset_-1px_0_0_0_var(--inset-border)] data-[spacing=compact]:first:shadow-[inset_-1px_0_0_0_var(--inset-border)] data-[spacing=compact]:last:shadow-[inset_1px_0_0_0_var(--inset-border)]",
+        "data-[active=true]:inset-ring-2 data-[active=true]:inset-ring-primary",
 
         "data-[placeholder]:text-placeholder",
 
         "data-[disabled]:bg-faded data-[disabled]:shadow-none",
 
-        "data-[spacing=compact]:data-[invalid]:[--inset-border:var(--color-destructive)]",
-        "data-[spacing=split]:data-[invalid]:inset-ring-destructive",
-        "data-[invalid]:data-[disabled]:bg-destructive-faded data-[invalid]:data-[placeholder]:text-destructive-placeholder dark:data-[invalid]:bg-destructive-faded",
-
-        "data-[active=true]:inset-ring-2 data-[active=true]:inset-ring-primary",
+        "data-[invalid]:inset-ring-destructive data-[invalid]:data-[disabled]:bg-destructive-faded data-[invalid]:data-[placeholder]:text-destructive-placeholder dark:data-[invalid]:bg-destructive-faded",
       ],
 
       muted: [
-        "bg-muted text-accent-foreground not-first:-ml-px group-hover/input-otp:not-data-[disabled]:group-not-focus-within/input-otp:not-data-[invalid]:bg-hover-muted first:rounded-l-md last:rounded-r-md",
-
-        "[--inset-border:var(--color-faded-border)]",
-        "shadow-[inset_1px_0_0_0_var(--inset-border),inset_-1px_0_0_0_var(--inset-border)] first:shadow-[inset_-1px_0_0_0_var(--inset-border)] last:shadow-[inset_1px_0_0_0_var(--inset-border)]",
-
-        "data-[placeholder]:text-placeholder",
+        "bg-muted text-accent-foreground group-hover/input-otp:not-data-[disabled]:group-not-focus-within/input-otp:not-data-[invalid]:bg-hover-muted",
 
         "data-[active=true]:shadow-[inset_0_0_0_2px_var(--color-primary)]",
 
-        "data-[invalid]:[--inset-border:var(--color-destructive-faded-border)]",
-        "data-[invalid]:bg-destructive-muted data-[invalid]:text-destructive-accent-foreground group-hover/input-otp:not-data-[disabled]:data-[invalid]:group-not-focus-within/input-otp:bg-hover-destructive-muted data-[invalid]:data-[active=true]:shadow-[inset_0_0_0_2px_var(--color-destructive)] data-[invalid]:data-[placeholder]:text-destructive-placeholder",
+        "data-[placeholder]:text-placeholder",
 
-        "data-[spacing=split]:ml-0 data-[spacing=split]:rounded-md data-[spacing=split]:not-data-[active=true]:shadow-none",
+        "data-[invalid]:bg-destructive-muted data-[invalid]:text-destructive-accent-foreground group-hover/input-otp:not-data-[disabled]:data-[invalid]:group-not-focus-within/input-otp:bg-hover-destructive-muted data-[invalid]:data-[active=true]:shadow-[inset_0_0_0_2px_var(--color-destructive)] data-[invalid]:data-[placeholder]:text-destructive-placeholder",
       ],
 
       underlined: [
         "mr-0.5 rounded-none bg-transparent text-foreground shadow-[inset_0_-1px_0_0_var(--color-border)] group-hover/input-otp:not-data-[disabled]:group-not-focus-within/input-otp:not-data-[invalid]:shadow-[inset_0_-1px_0_0_var(--color-hover-border)] last:mr-0 data-[spacing=split]:mr-0",
 
-        "data-[placeholder]:text-placeholder",
-
         "data-[active=true]:shadow-[inset_0_-2px_0_0_var(--color-primary)]",
+
+        "data-[placeholder]:text-placeholder",
 
         "data-[invalid]:shadow-[inset_0_-1px_0_0_var(--color-destructive)] data-[invalid]:data-[active=true]:shadow-[inset_0_-2px_0_0_var(--color-destructive)] data-[invalid]:data-[placeholder]:text-destructive-placeholder",
       ],
 
       "primary-muted": [
-        "bg-primary-muted text-primary-accent-foreground not-first:-ml-px group-hover/input-otp:not-data-[disabled]:group-not-focus-within/input-otp:not-data-[invalid]:bg-hover-primary-muted first:rounded-l-md last:rounded-r-md",
-
-        "[--inset-border:var(--color-primary-faded-border)]",
-        "shadow-[inset_1px_0_0_0_var(--inset-border),inset_-1px_0_0_0_var(--inset-border)] first:shadow-[inset_-1px_0_0_0_var(--inset-border)] last:shadow-[inset_1px_0_0_0_var(--inset-border)]",
+        "bg-primary-muted text-primary-accent-foreground group-hover/input-otp:not-data-[disabled]:group-not-focus-within/input-otp:not-data-[invalid]:bg-hover-primary-muted",
 
         "data-[placeholder]:text-primary-placeholder",
 
-        "data-[disabled]:bg-muted data-[disabled]:text-accent-foreground data-[disabled]:[--inset-border:var(--color-border)] data-[disabled]:data-[placeholder]:text-placeholder",
+        "data-[disabled]:bg-muted data-[disabled]:text-accent-foreground data-[disabled]:data-[placeholder]:text-placeholder",
 
         "data-[active=true]:shadow-[inset_0_0_0_2px_var(--color-primary)]",
 
-        "data-[invalid]:[--inset-border:var(--color-destructive-faded-border)]",
         "data-[invalid]:bg-destructive-muted data-[invalid]:text-destructive-accent-foreground group-hover/input-otp:not-data-[disabled]:data-[invalid]:group-not-focus-within/input-otp:bg-hover-destructive-muted data-[invalid]:data-[active=true]:shadow-[inset_0_0_0_2px_var(--color-destructive)] data-[invalid]:data-[placeholder]:text-destructive-placeholder",
-
-        "data-[spacing=split]:-ml-0 data-[spacing=split]:rounded-md data-[spacing=split]:not-data-[active=true]:shadow-none",
       ],
 
       "secondary-muted": [
-        "bg-secondary-muted text-secondary-accent-foreground not-first:-ml-px group-hover/input-otp:not-data-[disabled]:group-not-focus-within/input-otp:not-data-[invalid]:bg-hover-secondary-muted first:rounded-l-md last:rounded-r-md",
-
-        "[--inset-border:var(--color-secondary-faded-border)]",
-        "shadow-[inset_1px_0_0_0_var(--inset-border),inset_-1px_0_0_0_var(--inset-border)] first:shadow-[inset_-1px_0_0_0_var(--inset-border)] last:shadow-[inset_1px_0_0_0_var(--inset-border)]",
+        "bg-secondary-muted text-secondary-accent-foreground group-hover/input-otp:not-data-[disabled]:group-not-focus-within/input-otp:not-data-[invalid]:bg-hover-secondary-muted",
 
         "data-[placeholder]:text-secondary-placeholder",
 
-        "data-[disabled]:bg-muted data-[disabled]:text-accent-foreground data-[disabled]:[--inset-border:var(--color-border)] data-[disabled]:data-[placeholder]:text-placeholder",
+        "data-[disabled]:bg-muted data-[disabled]:text-accent-foreground data-[disabled]:data-[placeholder]:text-placeholder",
 
         "data-[active=true]:shadow-[inset_0_0_0_2px_var(--color-secondary)]",
 
-        "data-[invalid]:[--inset-border:var(--color-destructive-faded-border)]",
         "data-[invalid]:bg-destructive-muted data-[invalid]:text-destructive-accent-foreground group-hover/input-otp:not-data-[disabled]:data-[invalid]:group-not-focus-within/input-otp:bg-hover-destructive-muted data-[invalid]:data-[active=true]:shadow-[inset_0_0_0_2px_var(--color-destructive)] data-[invalid]:data-[placeholder]:text-destructive-placeholder",
-
-        "data-[spacing=split]:-ml-0 data-[spacing=split]:rounded-md data-[spacing=split]:not-data-[active=true]:shadow-none",
       ],
     },
   },
+  compoundVariants: [
+    {
+      size: "sm",
+      spacing: "compact",
+      className:
+        "not-first:w-[calc(var(--size-md)+1px)] sm:not-first:w-[calc(var(--size-sm)+1px)]",
+    },
+    {
+      size: "md",
+      spacing: "compact",
+      className:
+        "not-first:w-[calc(var(--size-lg)+1px)] sm:not-first:w-[calc(var(--size-md)+1px)]",
+    },
+    {
+      size: "lg",
+      spacing: "compact",
+      className:
+        "not-first:w-[calc(var(--size-xl)+1px)] sm:not-first:w-[calc(var(--size-lg)+1px)]",
+    },
+    //
+    {
+      variant: "muted",
+      spacing: "compact",
+      className: [
+        "[--inset-border:--alpha(var(--color-faded-border)/50%)]",
+        "shadow-[inset_1px_0_0_0_var(--inset-border),inset_-1px_0_0_0_var(--inset-border)] first:shadow-[inset_-1px_0_0_0_var(--inset-border)] last:shadow-[inset_1px_0_0_0_var(--inset-border)]",
+        "data-[invalid]:[--inset-border:var(--color-destructive-faded-border)]",
+      ],
+    },
+    {
+      variant: "underlined",
+      spacing: "compact",
+      className: "not-last:mr-0.5",
+    },
+    {
+      variant: "primary-muted",
+      spacing: "compact",
+      className: [
+        "[--inset-border:--alpha(var(--color-primary-faded-border)/50%)]",
+        "shadow-[inset_1px_0_0_0_var(--inset-border),inset_-1px_0_0_0_var(--inset-border)] first:shadow-[inset_-1px_0_0_0_var(--inset-border)] last:shadow-[inset_1px_0_0_0_var(--inset-border)]",
+        "data-[disabled]:[--inset-border:var(--color-faded-border)]",
+        "data-[invalid]:[--inset-border:var(--color-destructive-faded-border)]",
+      ],
+    },
+    {
+      variant: "secondary-muted",
+      spacing: "compact",
+      className: [
+        "[--inset-border:--alpha(var(--color-secondary-faded-border)/50%)]",
+        "shadow-[inset_1px_0_0_0_var(--inset-border),inset_-1px_0_0_0_var(--inset-border)] first:shadow-[inset_-1px_0_0_0_var(--inset-border)] last:shadow-[inset_1px_0_0_0_var(--inset-border)]",
+        "data-[disabled]:[--inset-border:var(--color-faded-border)]",
+        "data-[invalid]:[--inset-border:var(--color-destructive-faded-border)]",
+      ],
+    },
+  ],
   defaultVariants: {
     variant: "outline",
     size: "md",
@@ -155,7 +184,6 @@ function InputOTP({
   return (
     <InputOTPPrimitive
       data-slot="input-otp"
-      data-spacing={spacing}
       containerClassName={cn(
         "peer group/input-otp",
         "flex w-fit items-center gap-2 has-disabled:opacity-50",
@@ -177,19 +205,12 @@ function InputOTP({
 }
 
 function InputOTPGroup({ className, ...props }: React.ComponentProps<"div">) {
-  const { variant, spacing, size, ariaInvalid } =
-    React.useContext(InputOTPContext);
+  const { spacing, size } = React.useContext(InputOTPContext);
   return (
     <div
       data-slot="input-otp-group"
-      data-invalid={
-        ariaInvalid === "true" || ariaInvalid === true ? true : undefined
-      }
       className={cn(
-        "flex w-fit items-center",
-        variant === "outline" &&
-          spacing === "compact" &&
-          "rounded-md shadow-xs inset-ring inset-ring-border data-[invalid]:inset-ring-destructive",
+        "relative isolate flex w-fit items-center",
         spacing === "split" &&
           {
             sm: "gap-1.5",
@@ -220,13 +241,16 @@ function InputOTPSlot({
     <div
       data-slot="input-otp-slot"
       data-active={isActive}
-      data-spacing={spacing}
+      // data-spacing={spacing}
       data-placeholder={placeholderChar ? true : undefined}
       data-disabled={disabled ? true : undefined}
       data-invalid={
         ariaInvalid === "true" || ariaInvalid === true ? true : undefined
       }
-      className={cn(inputOTPSlotVariants({ variant, size }), className)}
+      className={cn(
+        inputOTPSlotVariants({ variant, size, spacing }),
+        className
+      )}
       {...props}
     >
       {(!isActive && placeholderChar) || char}
