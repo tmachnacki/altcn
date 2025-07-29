@@ -11,7 +11,7 @@ const radioVariants = tv({
     root: [
       "group/radio peer touch-target",
 
-      "inline-flex size-4.5 shrink-0 grow-0 items-center justify-center rounded-full sm:size-4",
+      "relative size-4.5 shrink-0 grow-0 items-center justify-center rounded-full sm:size-4",
 
       "hover:not-aria-invalid:data-[state=unchecked]:inset-ring-hover-border",
 
@@ -22,7 +22,7 @@ const radioVariants = tv({
       "aria-invalid:text-destructive-accent-foreground/15 aria-invalid:outline-destructive aria-invalid:disabled:data-[state=checked]:text-destructive-muted-foreground",
     ],
     indicator: [
-      "block size-full scale-40 rounded-full bg-current opacity-0",
+      "absolute top-1/2 left-1/2 block size-full -translate-x-1/2 -translate-y-1/2 scale-40 rounded-full bg-current opacity-0",
       "group-hover/radio:group-not-data-[state=checked]/radio:opacity-100 group-data-[state=checked]/radio:opacity-100",
     ],
   },

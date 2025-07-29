@@ -123,10 +123,10 @@ function Checkbox({
     >
       <CheckboxPrimitive.Indicator
         data-slot="checkbox-indicator"
-        className="flex items-center justify-center text-current"
+        className="relative size-full"
       >
-        <CheckIcon className="block size-4 stroke-3 group-data-[state=indeterminate]/checkbox:hidden sm:size-3.5" />
-        <MinusIcon className="hidden size-4 stroke-3 group-data-[state=indeterminate]/checkbox:block sm:size-3.5" />
+        <CheckIcon className="absolute top-1/2 left-1/2 hidden size-4 -translate-x-1/2 -translate-y-1/2 stroke-3 group-data-[state=checked]/checkbox:inline-block sm:size-3.5" />
+        <MinusIcon className="absolute top-1/2 left-1/2 hidden size-4 -translate-x-1/2 -translate-y-1/2 stroke-3 group-data-[state=indeterminate]/checkbox:inline-block sm:size-3.5" />
       </CheckboxPrimitive.Indicator>
     </CheckboxPrimitive.Root>
   );

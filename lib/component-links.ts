@@ -144,6 +144,10 @@ export const componentLinks = [
     href: "/components/switch",
   },
   {
+    label: "Table",
+    href: "/components/table",
+  },
+  {
     label: "Tabs",
     href: "/components/tabs",
   },
