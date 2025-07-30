@@ -51,7 +51,7 @@ function Table({
           <table
             data-slot="table"
             className={cn(
-              "min-w-full caption-bottom text-left text-sm/5 text-foreground",
+              "min-w-full caption-bottom text-left text-sm text-foreground",
               classNames?.root,
               className
             )}

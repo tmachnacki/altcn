@@ -2,6 +2,7 @@
 
 ## Improvements
 
+- [ ] Fix text-smaller twmerge issue
 - [ ] Refactor color token conventions (foreground -> fg, background -> bg)
 - [ ] Maybe export default variants objects
 - [ ] Responsive sizing
@@ -24,17 +25,16 @@
 - [ ] forced colors
 - [ ] CSS var names
 - [ ] Refactor borders/inset-ring/outline to be consistent, adjust inset border radius
+- [ ] Upgrade charts to recharts v3
 
 ## Components
 
 - [ ] Breadcrumb
 - [ ] Button Group
-- [ ] Charts
 - [ ] Command
 - [ ] Combobox
 - [ ] Date & Time Picker
 - [ ] Description List
-- [ ] Drawer
 - [ ] Form (Tanstack Form)
 - [ ] Input Group
 - [ ] Input Search

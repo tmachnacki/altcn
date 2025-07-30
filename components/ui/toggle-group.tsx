@@ -25,7 +25,7 @@ const compactToggleGroupItemVariants = tv({
       outline: [
         "border-none",
         "inset-ring inset-ring-border-solid data-[state=on]:inset-ring-hover-border-solid",
-        "shadow-none"
+        "shadow-none",
       ],
       contrast:
         "outline-muted-foreground [--inset-border:--alpha(var(--color-contrast-foreground)/30%)]",
@@ -83,6 +83,24 @@ const compactToggleGroupItemVariants = tv({
   },
 });
 
+const toggleGroupVariants = ({
+  variant,
+  spacing,
+  size,
+}: ToggleGroupContextProps) =>
+  cn(
+    "group/toggle-group relative isolate flex items-center",
+    variant === "outline" && spacing === "compact" && "rounded-md shadow-xs",
+    spacing === "split" &&
+      {
+        "2xs": "gap-0.5",
+        xs: "gap-0.5",
+        sm: "gap-[calc(var(--spacing)*0.75)]",
+        md: "gap-1 sm:gap-[calc(var(--spacing)*0.75)]",
+        lg: "gap-1",
+      }[size || "md"]
+  );
+
 type ToggleGroupContextProps = VariantProps<typeof toggleVariants> & {
   spacing?: "compact" | "split";
 };
@@ -101,19 +119,7 @@ function ToggleGroup({
   return (
     <ToggleGroupPrimitive.Root
       data-slot="toggle-group"
-      className={cn(
-        "group/toggle-group relative isolate flex items-center",
-        variant === "outline" && "shadow-xs rounded-md",
-        spacing === "split" &&
-          {
-            "2xs": "gap-0.5",
-            xs: "gap-0.5",
-            sm: "gap-[calc(var(--spacing)*0.75)]",
-            md: "gap-1 sm:gap-[calc(var(--spacing)*0.75)]",
-            lg: "gap-1",
-          }[size || "md"],
-        className
-      )}
+      className={cn(toggleGroupVariants({ variant, size, spacing }), className)}
       {...props}
     >
       <ToggleGroupContext.Provider value={{ variant, size, spacing }}>
@@ -171,4 +177,10 @@ function ToggleGroupItem({
   );
 }
 
-export { ToggleGroup, ToggleGroupItem };
+export {
+  type ToggleGroupContextProps,
+  ToggleGroup,
+  ToggleGroupItem,
+  compactToggleGroupItemVariants,
+  toggleGroupVariants,
+};

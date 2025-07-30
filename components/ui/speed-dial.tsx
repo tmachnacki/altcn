@@ -14,12 +14,17 @@ import {
 
 const speedDialContentVariants = cva(
   [
-    "z-50 h-fit max-h-(--radix-dropdown-menu-content-available-height) w-fit origin-(--radix-dropdown-menu-content-transform-origin) overflow-y-auto rounded-full p-2",
+    "relative isolate z-50 h-fit max-h-(--radix-dropdown-menu-content-available-height) w-fit origin-(--radix-dropdown-menu-content-transform-origin) overflow-visible rounded-full p-2",
 
     "flex items-center justify-center gap-3 data-[side=bottom]:flex-col data-[side=left]:flex-row-reverse data-[side=right]:flex-row data-[side=top]:flex-col-reverse",
 
     "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:fade-in-0",
     // "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2"
+    "after:absolute after:-z-[1] after:h-(--radix-dropdown-menu-trigger-height) after:w-(--radix-dropdown-menu-trigger-width) after:bg-red-500/25",
+    "data-[side=bottom]:after:top-0 data-[side=bottom]:after:left-1/2 data-[side=bottom]:after:-translate-x-1/2 data-[side=bottom]:after:-translate-y-[calc(var(--speed-dial-content-offset)+(var(--radix-dropdown-menu-trigger-height)/2))]",
+    "data-[side=top]:after:bottom-0 data-[side=top]:after:left-1/2 data-[side=top]:after:-translate-x-1/2 data-[side=top]:after:translate-y-[calc(var(--speed-dial-content-offset)+(var(--radix-dropdown-menu-trigger-height)/2))]",
+    "data-[side=right]:after:top-1/2 data-[side=right]:after:left-0 data-[side=right]:after:-translate-x-[calc(var(--speed-dial-content-offset)+(var(--radix-dropdown-menu-trigger-width)/2))] data-[side=right]:after:-translate-y-1/2",
+    "data-[side=left]:after:top-1/2 data-[side=left]:after:right-0 data-[side=left]:after:translate-x-[calc(var(--speed-dial-content-offset)+(var(--radix-dropdown-menu-trigger-width)/2))] data-[side=left]:after:-translate-y-1/2",
   ],
   {
     variants: {
@@ -27,7 +32,7 @@ const speedDialContentVariants = cva(
         ghost: "bg-transparent",
         solid: "border border-border bg-popover shadow-lg",
         translucent:
-          "border border-border bg-popover/50 shadow-lg backdrop-blur-2xl",
+          "border border-border bg-popover-translucent shadow-lg backdrop-blur-popover-translucent",
       },
     },
     defaultVariants: {
@@ -125,6 +130,11 @@ function SpeedDialContent({
           "group/speed-dial-content",
           className
         )}
+        style={
+          {
+            "--speed-dial-content-offset": `${sideOffset}px`,
+          } as React.CSSProperties
+        }
         {...props}
       >
         <SpeedDialContext.Provider
