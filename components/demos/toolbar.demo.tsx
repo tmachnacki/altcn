@@ -6,12 +6,21 @@ import {
   AlignLeftIcon,
   AlignRightIcon,
   BoldIcon,
+  ChevronDownIcon,
+  DownloadIcon,
+  ExternalLinkIcon,
   ItalicIcon,
   StrikethroughIcon,
   UnderlineIcon,
 } from "lucide-react";
 
 import { Button } from "~/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "~/components/ui/dropdown-menu";
 import { Label } from "~/components/ui/label";
 import {
   Select,
@@ -60,7 +69,7 @@ export function ToolbarDemo() {
   const [barVariant, setBarVariant] = React.useState<BarVariant>("solid");
   const [toggleItemVariant, setToggleItemVariant] =
     React.useState<ToggleItemVariant>("primary");
-  const [sizeIdx, setSizeIdx] = React.useState(2);
+  const [sizeIdx, setSizeIdx] = React.useState(3);
   const [spacing, setSpacing] = React.useState("split");
   const [disabled, setDisabled] = React.useState(false);
 
@@ -69,59 +78,85 @@ export function ToolbarDemo() {
   return (
     <>
       <ComponentContainer withBackground={barVariant === "translucent"}>
-        <Toolbar variant={barVariant} className="w-full">
-          <ToolbarToggleGroup
-            type="multiple"
-            variant={toggleItemVariant}
-            size={size}
-            spacing={spacing as (typeof spacings)[number]}
-          >
-            <ToolbarToggleItem aria-label="Toggle bold" value="bold">
-              <BoldIcon />
-            </ToolbarToggleItem>
-            <ToolbarToggleItem aria-label="Toggle underline" value="underline">
-              <UnderlineIcon />
-            </ToolbarToggleItem>
-            <ToolbarToggleItem aria-label="Toggle italic" value="italic">
-              <ItalicIcon />
-            </ToolbarToggleItem>
-            <ToolbarToggleItem
-              aria-label="Toggle strikethrough"
-              value="strikethrough"
+        <DropdownMenu>
+          <Toolbar variant={barVariant} className="w-full">
+            <ToolbarToggleGroup
+              type="multiple"
+              variant={toggleItemVariant}
+              size={size}
+              spacing={spacing as (typeof spacings)[number]}
             >
-              <StrikethroughIcon />
-            </ToolbarToggleItem>
-          </ToolbarToggleGroup>
-          <ToolbarSeparator />
-          <ToolbarToggleGroup
-            type="single"
-            variant={toggleItemVariant}
-            size={size}
-            spacing={spacing as (typeof spacings)[number]}
-          >
-            <ToolbarToggleItem aria-label="Toggle align left" value="left">
-              <AlignLeftIcon />
-            </ToolbarToggleItem>
-            <ToolbarToggleItem aria-label="Toggle align center" value="center">
-              <AlignCenterIcon />
-            </ToolbarToggleItem>
-            <ToolbarToggleItem aria-label="Toggle align right" value="right">
-              <AlignRightIcon />
-            </ToolbarToggleItem>
-          </ToolbarToggleGroup>
-          <ToolbarSeparator />
-          <ToolbarLink
-            href="#"
-            className="text-sm text-muted-foreground hover:text-primary"
-          >
-            Edited 2 hours ago
-          </ToolbarLink>
-          <ToolbarButton asChild>
-            <Button variant={toggleItemVariant} size={size} className="ml-auto">
-              Share
-            </Button>
-          </ToolbarButton>
-        </Toolbar>
+              <ToolbarToggleItem aria-label="Toggle bold" value="bold">
+                <BoldIcon />
+              </ToolbarToggleItem>
+              <ToolbarToggleItem
+                aria-label="Toggle underline"
+                value="underline"
+              >
+                <UnderlineIcon />
+              </ToolbarToggleItem>
+              <ToolbarToggleItem aria-label="Toggle italic" value="italic">
+                <ItalicIcon />
+              </ToolbarToggleItem>
+              <ToolbarToggleItem
+                aria-label="Toggle strikethrough"
+                value="strikethrough"
+              >
+                <StrikethroughIcon />
+              </ToolbarToggleItem>
+            </ToolbarToggleGroup>
+            <ToolbarSeparator />
+            <ToolbarToggleGroup
+              type="single"
+              variant={toggleItemVariant}
+              size={size}
+              spacing={spacing as (typeof spacings)[number]}
+            >
+              <ToolbarToggleItem aria-label="Toggle align left" value="left">
+                <AlignLeftIcon />
+              </ToolbarToggleItem>
+              <ToolbarToggleItem
+                aria-label="Toggle align center"
+                value="center"
+              >
+                <AlignCenterIcon />
+              </ToolbarToggleItem>
+              <ToolbarToggleItem aria-label="Toggle align right" value="right">
+                <AlignRightIcon />
+              </ToolbarToggleItem>
+            </ToolbarToggleGroup>
+            <ToolbarSeparator />
+            <ToolbarLink
+              size={size}
+              href="#"
+              className="text-muted-foreground hover:text-primary"
+            >
+              Edited 2 hours ago
+            </ToolbarLink>
+            <DropdownMenuTrigger asChild>
+              <ToolbarButton asChild>
+                <Button
+                  variant={toggleItemVariant}
+                  size={size}
+                  className="ml-auto"
+                >
+                  Share
+                  <ChevronDownIcon />
+                </Button>
+              </ToolbarButton>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuItem>
+                <ExternalLinkIcon />
+                Copy link
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <DownloadIcon />
+                Download
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </Toolbar>
+        </DropdownMenu>
       </ComponentContainer>
       <ComponentPlayground>
         <div className="grid gap-2">

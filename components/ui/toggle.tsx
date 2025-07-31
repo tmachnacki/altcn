@@ -13,12 +13,12 @@ const toggleVariants = tv({
     "active:opacity-80",
     "data-[disabled]:pointer-events-none data-[disabled]:text-muted-foreground data-[disabled]:opacity-50",
     "focus-visible:z-20 focus-visible:outline-2 focus-visible:outline-offset-1 data-[state=on]:not-focus-visible:z-10",
-    "**:[svg]:pointer-events-none **:[svg]:shrink-0",
+    "**:[svg]:pointer-events-none **:[svg]:shrink-0 **:[svg]:grow-0 **:[svg]:not-[[class*='mx-']]:-mx-0.5",
   ],
   variants: {
     variant: {
       outline:
-        "border border-border shadow-xs hover:bg-base-50 hover:text-muted-foreground data-[state=on]:border-hover-border data-[state=on]:bg-base-50 data-[state=on]:text-accent-foreground dark:hover:bg-base-900 dark:data-[state=on]:bg-base-900",
+        "border border-border bg-transparent shadow-xs hover:bg-faded hover:text-muted-foreground data-[state=on]:border-hover-border data-[state=on]:bg-muted data-[state=on]:text-accent-foreground",
 
       contrast:
         "hover:bg-faded hover:text-muted-foreground data-[state=on]:bg-contrast data-[state=on]:text-contrast-foreground",
@@ -91,24 +91,24 @@ const toggleVariants = tv({
     },
     size: {
       "2xs": [
-        "h-(--size-xs) min-w-(--size-xs) gap-1.5 rounded-sm px-1 text-smaller sm:h-(--size-2xs) sm:min-w-(--size-2xs) sm:text-xs",
-        "**:[svg]:not-[[class*='size-']]:size-(--icon-xs) sm:**:[svg]:not-[[class*='size-']]:size-(--icon-2xs)",
+        "h-size-xs min-w-size-xs gap-1.5 rounded-sm px-1 text-[0.8rem]/4.5 sm:h-size-2xs sm:min-w-size-2xs sm:text-xs",
+        "**:[svg]:not-[[class*='size-']]:size-icon-xs sm:**:[svg]:not-[[class*='size-']]:size-icon-2xs",
       ],
       xs: [
-        "h-(--size-sm) min-w-(--size-sm) gap-1.5 rounded-md px-1.5 text-sm sm:h-(--size-xs) sm:min-w-(--size-xs) sm:text-smaller",
-        "**:[svg]:not-[[class*='size-']]:size-(--icon-sm) sm:**:[svg]:not-[[class*='size-']]:size-(--icon-xs)",
+        "h-size-sm min-w-size-sm gap-1.5 rounded-md px-1.5 text-sm sm:h-size-xs sm:min-w-size-xs sm:rounded-sm sm:text-[0.8rem]/4.5",
+        "**:[svg]:not-[[class*='size-']]:size-icon-sm sm:**:[svg]:not-[[class*='size-']]:size-icon-xs",
       ],
       sm: [
-        "h-(--size-md) min-w-(--size-md) gap-2 rounded-md px-1.5 text-sm sm:h-(--size-sm) sm:min-w-(--size-sm)",
-        "**:[svg]:not-[[class*='size-']]:size-(--icon-md) sm:**:[svg]:not-[[class*='size-']]:size-(--icon-sm)",
+        "h-size-md min-w-size-md gap-2 rounded-md px-1.5 text-sm sm:h-size-sm sm:min-w-size-sm",
+        "**:[svg]:not-[[class*='size-']]:size-icon-md sm:**:[svg]:not-[[class*='size-']]:size-icon-sm",
       ],
       md: [
-        "h-(--size-lg) min-w-(--size-lg) gap-2 rounded-md px-2 text-base sm:h-(--size-md) sm:min-w-(--size-md) sm:text-sm",
-        "**:[svg]:not-[[class*='size-']]:size-(--icon-lg) sm:**:[svg]:not-[[class*='size-']]:size-(--icon-md)",
+        "h-size-lg min-w-size-lg gap-2 rounded-md px-2 text-base sm:h-size-md sm:min-w-size-md sm:text-sm",
+        "**:[svg]:not-[[class*='size-']]:size-icon-lg sm:**:[svg]:not-[[class*='size-']]:size-icon-md",
       ],
       lg: [
-        "h-(--size-xl) min-w-(--size-xl) gap-2.5 rounded-md px-2.5 text-lg sm:h-(--size-lg) sm:min-w-(--size-lg) sm:text-base",
-        "**:[svg]:not-[[class*='size-']]:size-(--icon-xl) sm:**:[svg]:not-[[class*='size-']]:size-(--icon-lg)",
+        "h-size-xl min-w-size-xl gap-2.5 rounded-md px-2.5 text-lg sm:h-size-lg sm:min-w-size-lg sm:text-base",
+        "**:[svg]:not-[[class*='size-']]:size-icon-xl sm:**:[svg]:not-[[class*='size-']]:size-icon-lg",
       ],
     },
   },

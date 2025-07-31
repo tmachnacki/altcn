@@ -19,7 +19,7 @@ function Card({
       className={cn(
         "[--card-gap:--spacing(6)] [--card-p:--spacing(6)]",
         "group/card",
-        "flex flex-col gap-(--card-gap) rounded-lg border border-border p-(--card-p) text-card-foreground shadow-md",
+        "flex flex-col gap-(--card-gap) rounded-lg border border-border text-card-foreground shadow-md",
         variant === "solid"
           ? "bg-card"
           : "bg-card-translucent backdrop-blur-card-translucent",
@@ -34,7 +34,10 @@ function CardHeader({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="card-header"
-      className={cn("flex flex-col gap-3", className)}
+      className={cn(
+        "flex flex-col gap-3 px-(--card-p) pt-(--card-p)",
+        className
+      )}
       {...props}
     />
   );
@@ -70,7 +73,10 @@ function CardBody({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="card-body"
-      className={cn("text-base text-card-foreground sm:text-sm", className)}
+      className={cn(
+        "px-(--card-p) text-base text-card-foreground first:pt-(--card-p) last:pb-(--card-p) sm:text-sm",
+        className
+      )}
       {...props}
     />
   );
@@ -80,7 +86,7 @@ function CardFooter({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="card-footer"
-      className={cn("flex items-center", className)}
+      className={cn("flex items-center px-(--card-p) pb-(--card-p)", className)}
       {...props}
     />
   );

@@ -159,7 +159,7 @@ const menuLabelVariants = tv({
 });
 
 const menuShortcutVariants = tv({
-  base: "ml-auto text-smaller leading-none font-normal tracking-widest text-current/60 sm:text-xs",
+  base: "ml-auto text-[0.8rem]/4.5 leading-none font-normal tracking-widest text-current/60 sm:text-xs",
 });
 
 const menuSeparatorVariants = tv({

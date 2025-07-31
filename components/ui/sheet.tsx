@@ -68,7 +68,7 @@ function SheetContent({
         data-slot="sheet-content"
         className={cn(
           "[--sheet-gap:--spacing(6)] [--sheet-p:--spacing(4)]",
-          "fixed z-50 flex flex-col gap-(--sheet-gap) bg-background p-(--sheet-p) text-foreground shadow-lg",
+          "fixed z-50 flex flex-col gap-(--sheet-gap) bg-background text-foreground shadow-lg",
           "data-[state=closed]:ease transition-transform will-change-transform data-[state=closed]:animate-out data-[state=closed]:duration-300 data-[state=open]:animate-in data-[state=open]:duration-500 data-[state=open]:ease-[cubic-bezier(0.32,0.72,0,1)]",
           {
             right:
@@ -104,7 +104,10 @@ function SheetHeader({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="sheet-header"
-      className={cn("flex flex-col gap-3", className)}
+      className={cn(
+        "flex flex-col gap-3 px-(--sheet-p) pt-(--sheet-p)",
+        className
+      )}
       {...props}
     />
   );
@@ -114,7 +117,10 @@ function SheetBody({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="sheet-body"
-      className={cn("text-base text-foreground sm:text-sm", className)}
+      className={cn(
+        "px-(--sheet-p) text-base text-foreground first:pt-(--sheet-p) last:pb-(--sheet-p) sm:text-sm",
+        className
+      )}
       {...props}
     />
   );
@@ -124,7 +130,10 @@ function SheetFooter({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="sheet-footer"
-      className={cn("mt-auto flex flex-col gap-2", className)}
+      className={cn(
+        "mt-auto flex flex-col gap-2 px-(--sheet-p) pb-(--sheet-p)",
+        className
+      )}
       {...props}
     />
   );

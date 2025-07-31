@@ -15,7 +15,11 @@ import {
 import { Tron } from "~/components/ui/tron";
 
 const toolbarVariants = tv({
-  base: "flex items-center rounded-md p-2.5 data-[orientation=horizontal]:min-w-max data-[orientation=horizontal]:flex-row data-[orientation=vertical]:min-h-max data-[orientation=vertical]:flex-col",
+  base: [
+    "flex items-center gap-2.5 rounded-md p-2.5",
+    "data-[orientation=horizontal]:h-fit data-[orientation=horizontal]:min-w-max data-[orientation=horizontal]:flex-row",
+    "data-[orientation=vertical]:min-h-max data-[orientation=vertical]:w-fit data-[orientation=vertical]:flex-col",
+  ],
   variants: {
     variant: {
       solid: "border border-border bg-card shadow",
@@ -51,9 +55,27 @@ function ToolbarButton({
 }
 
 function ToolbarLink({
+  size = "md",
+  className,
   ...props
-}: React.ComponentProps<typeof ToolbarPrimitive.Link>) {
-  return <ToolbarPrimitive.Link data-slot="toolbar-link" {...props} />;
+}: React.ComponentProps<typeof ToolbarPrimitive.Link> &
+  Pick<VariantProps<typeof toggleVariants>, "size">) {
+  return (
+    <ToolbarPrimitive.Link
+      data-slot="toolbar-link"
+      className={cn(
+        {
+          "2xs": "text-[0.8rem]/4.5 sm:text-xs",
+          xs: "text-sm sm:text-[0.8rem]/4.5",
+          sm: "text-sm",
+          md: "text-base sm:text-sm",
+          lg: "text-lg sm:text-base",
+        }[size],
+        className
+      )}
+      {...props}
+    />
+  );
 }
 
 const ToolbarToggleGroupContext = React.createContext<ToggleGroupContextProps>(
@@ -138,9 +160,9 @@ function ToolbarSeparator({
     <ToolbarPrimitive.Separator
       data-slot="toolbar-separator"
       className={cn(
-        "shrink-0 grow-0 bg-border",
-        "data-[orientation=vertical]:mx-2.5 data-[orientation=vertical]:h-full data-[orientation=vertical]:w-px",
-        "data-[orientation=horizontal]:my-2.5 data-[orientation=horizontal]:h-px data-[orientation=horizontal]:w-full",
+        "block self-stretch bg-border",
+        "data-[orientation=vertical]:w-px",
+        "data-[orientation=horizontal]:h-px",
         className
       )}
       {...props}
