@@ -161,7 +161,7 @@ const radioButtonVariants = tv({
       ],
 
       "base-shadow": [
-        "data-[state=checked]:shadow-base-bg/50 data-[state=checked]:bg-base-bg data-[state=checked]:text-base-foreground data-[state=checked]:shadow-lg",
+        "data-[state=checked]:bg-base-bg data-[state=checked]:text-base-foreground data-[state=checked]:shadow-lg data-[state=checked]:shadow-base-bg/50",
         "hover:data-[state=checked]:bg-hover-base",
       ],
 

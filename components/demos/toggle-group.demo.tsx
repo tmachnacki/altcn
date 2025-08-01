@@ -2,6 +2,9 @@
 
 import * as React from "react";
 import {
+  AlignCenterIcon,
+  AlignLeftIcon,
+  AlignRightIcon,
   BoldIcon,
   ItalicIcon,
   StrikethroughIcon,
@@ -48,31 +51,52 @@ export function ToggleGroupDemo() {
   return (
     <>
       <ComponentContainer>
-        <ToggleGroup
-          variant={variant}
-          size={size}
-          type="multiple"
-          defaultValue={["bold"]}
-          aria-label="Text formatting"
-          spacing={spacing as (typeof spacings)[number]}
-          disabled={disabled}
-        >
-          <ToggleGroupItem aria-label="Toggle bold" value="bold">
-            <BoldIcon />
-          </ToggleGroupItem>
-          <ToggleGroupItem aria-label="Toggle underline" value="underline">
-            <UnderlineIcon />
-          </ToggleGroupItem>
-          <ToggleGroupItem aria-label="Toggle italic" value="italic">
-            <ItalicIcon />
-          </ToggleGroupItem>
-          <ToggleGroupItem
-            aria-label="Toggle strikethrough"
-            value="strikethrough"
+        <div className="grid gap-4">
+          <ToggleGroup
+            variant={variant}
+            size={size}
+            type={"multiple"}
+            defaultValue={["bold"]}
+            aria-label="Text formatting"
+            spacing={spacing as (typeof spacings)[number]}
+            disabled={disabled}
           >
-            <StrikethroughIcon />
-          </ToggleGroupItem>
-        </ToggleGroup>
+            <ToggleGroupItem aria-label="Toggle bold" value="bold">
+              <BoldIcon />
+            </ToggleGroupItem>
+            <ToggleGroupItem aria-label="Toggle underline" value="underline">
+              <UnderlineIcon />
+            </ToggleGroupItem>
+            <ToggleGroupItem aria-label="Toggle italic" value="italic">
+              <ItalicIcon />
+            </ToggleGroupItem>
+            <ToggleGroupItem
+              aria-label="Toggle strikethrough"
+              value="strikethrough"
+            >
+              <StrikethroughIcon />
+            </ToggleGroupItem>
+          </ToggleGroup>
+          <ToggleGroup
+            variant={variant}
+            size={size}
+            type={"single"}
+            defaultValue={"left"}
+            aria-label="Text alignment"
+            spacing={spacing as (typeof spacings)[number]}
+            disabled={disabled}
+          >
+            <ToggleGroupItem aria-label="Toggle left" value="left">
+              <AlignLeftIcon />
+            </ToggleGroupItem>
+            <ToggleGroupItem aria-label="Toggle center" value="center">
+              <AlignCenterIcon />
+            </ToggleGroupItem>
+            <ToggleGroupItem aria-label="Toggle right" value="right">
+              <AlignRightIcon />
+            </ToggleGroupItem>
+          </ToggleGroup>
+        </div>
       </ComponentContainer>
       <ComponentPlayground>
         <div className="grid gap-2">

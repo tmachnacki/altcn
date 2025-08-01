@@ -10,11 +10,11 @@ import { Tron } from "~/components/ui/tron";
 const badgeVariants = tv({
   base: [
     "group/badge",
-    "relative isolate inline-flex h-[calc(var(--size-2xs)+(var(--spacing)*0.5))] w-fit shrink-0 grow-0 items-center justify-center gap-1.5 px-2 py-1 text-[0.8rem]/4.5 font-medium whitespace-nowrap select-none sm:h-(--size-2xs) sm:text-xs",
+    "relative isolate inline-flex h-[calc(var(--size-2xs)+(var(--spacing)*0.5))] w-fit shrink-0 grow-0 items-center justify-center gap-1.5 px-2 py-1 text-[0.8rem]/4.5 font-medium whitespace-nowrap select-none sm:h-(--size-2xs) sm:text-xs/4",
     "[a&]:active:opacity-80 [button&]:active:opacity-80",
     "data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[disabled]:shadow-none",
     "disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none",
-    "focus-visible:outline-2 focus-visible:outline-offset-2",
+    "focus-visible:outline-2 focus-visible:outline-offset-1",
     "**:[svg]:pointer-events-none **:[svg]:not-[[class*='size-']]:size-(--icon-xs) sm:**:[svg]:not-[[class*='size-']]:size-(--icon-2xs)",
   ],
   variants: {
@@ -501,7 +501,7 @@ function Badge({
     <Comp
       data-slot="badge"
       data-shape={shape}
-      data-disabled={disabled ? true : undefined}
+      data-disabled={disabled || undefined}
       className={badgeVariants({
         variant,
         shape,
@@ -547,7 +547,7 @@ function BadgeDot({ className, ...props }: React.ComponentProps<"svg">) {
       data-slot="badge-dot"
       aria-hidden="true"
       className={cn(
-        "size-2 shrink-0 fill-current stroke-current text-(--badge-dot-text) sm:size-1.5",
+        "size-2 shrink-0 grow-0 fill-current stroke-current text-(--badge-dot-text) sm:size-1.5",
         className
       )}
       {...props}

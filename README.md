@@ -5,19 +5,14 @@
 - [ ] Fix text-smaller twmerge issue
 - [ ] Refactor color token conventions (foreground -> fg, background -> bg)
 - [ ] Maybe export default variants objects
-- [ ] Responsive sizing
-- [ ] Headless Sonner
+- [ ] Headless Sonner?
 - [ ] Pagination sizes + variants + spacings
-- [ ] "vertical" orientations (tabs, navigation menu, toggle group)
-- [ ] Select (Native) styling
 - [ ] Speed Dial
-- [ ] Tooltip variants
 - [ ] Try to integrate heroicons instead of lucide
 - [ ] Reduced motion
 - [ ] Tanstack links examples
 - [ ] Move variant contexts to top-level (root) of components
 - [ ] Default context variant values
-- [ ] Tailwind Variants rewrite
 - [ ] More/Better Tron variants (inputs)
 - [ ] Pill shapes
 - [ ] All colors variants and css files
@@ -33,7 +28,7 @@
 - [ ] Button Group
 - [ ] Command
 - [ ] Combobox
-- [ ] Date & Time Picker
+- [ ] Date & Time Fields
 - [ ] Description List
 - [ ] Form (Tanstack Form)
 - [ ] Input Group
@@ -43,8 +38,7 @@
 - [ ] Progress Circular
 - [ ] Rating
 - [ ] Table
-- [ ] Toggle Group
-- [ ] Toolbar
+- [ ] Tag Group
 - [ ] Uploader
 
 ## Site
