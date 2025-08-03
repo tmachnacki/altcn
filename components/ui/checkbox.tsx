@@ -8,7 +8,7 @@ import { CheckIcon, MinusIcon } from "lucide-react";
 const checkBoxVariants = tv({
   base: [
     "peer group/checkbox touch-target",
-    "size-4.5 shrink-0 grow-0 rounded-sm sm:size-4",
+    "inline-flex size-4.5 shrink-0 grow-0 items-center justify-center rounded-sm sm:size-4",
 
     "hover:not-aria-invalid:data-[state=unchecked]:inset-ring-hover-border",
 
@@ -123,7 +123,7 @@ function Checkbox({
     >
       <CheckboxPrimitive.Indicator
         data-slot="checkbox-indicator"
-        className="relative size-full"
+        className="relative inline-flex size-full items-center justify-center overflow-hidden"
       >
         <CheckIcon className="absolute top-1/2 left-1/2 hidden size-4 -translate-x-1/2 -translate-y-1/2 stroke-3 group-data-[state=checked]/checkbox:inline-block sm:size-3.5" />
         <MinusIcon className="absolute top-1/2 left-1/2 hidden size-4 -translate-x-1/2 -translate-y-1/2 stroke-3 group-data-[state=indeterminate]/checkbox:inline-block sm:size-3.5" />

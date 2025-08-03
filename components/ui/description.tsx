@@ -7,7 +7,7 @@ function Description({ className, ...props }: React.ComponentProps<"p">) {
     <p
       data-slot="description"
       className={cn(
-        "block text-base text-muted-foreground sm:text-sm",
+        "block text-base text-pretty text-muted-foreground sm:text-sm",
         className
       )}
       {...props}

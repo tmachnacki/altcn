@@ -48,6 +48,10 @@ export const componentLinks = [
     href: "/components/context-menu",
   },
   {
+    label: "Description List",
+    href: "/components/description-list",
+  },
+  {
     label: "Dialog",
     href: "/components/dialog",
   },

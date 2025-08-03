@@ -11,7 +11,9 @@ const inputVariants = tv({
       "disabled:pointer-events-none disabled:opacity-50",
       "aria-invalid:text-destructive-accent-foreground aria-invalid:selection:bg-destructive aria-invalid:selection:text-destructive-foreground",
     ],
-    file: ["file:inline-flex file:items-center file:font-medium"],
+    file: [
+      "file:inline-flex file:items-center file:rounded-l-md file:font-medium",
+    ],
   },
   variants: {
     size: {

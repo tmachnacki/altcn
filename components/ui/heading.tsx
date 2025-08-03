@@ -26,7 +26,7 @@ const Heading = ({
           "3xl": "text-4xl sm:text-3xl",
           "4xl": "text-5xl sm:text-4xl",
         }[size],
-        "font-semibold text-foreground",
+        "font-semibold text-balance text-foreground",
         className
       )}
       {...props}

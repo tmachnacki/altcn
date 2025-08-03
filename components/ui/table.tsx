@@ -1,14 +1,6 @@
-"use client";
-
 import * as React from "react";
 
 import { cn } from "~/lib/utils";
-
-type TableContextProps = {
-  bleed?: boolean;
-};
-
-const TableContext = React.createContext<TableContextProps>({});
 
 type TableProps = React.ComponentProps<"table"> & {
   bleed?: boolean;
@@ -19,54 +11,48 @@ type TableProps = React.ComponentProps<"table"> & {
   };
 };
 
-function Table({
-  className,
-  bleed,
-  gutter = 2,
-  classNames,
-  ...props
-}: TableProps) {
+function Table({ className, bleed, gutter, classNames, ...props }: TableProps) {
   return (
-    <TableContext.Provider value={{ bleed }}>
+    <div
+      data-slot="table-container"
+      className={cn(
+        "relative -mx-(--table-gutter) w-full overflow-x-auto whitespace-nowrap",
+        classNames?.container
+      )}
+      style={
+        gutter && !classNames?.container?.includes("--table-gutter")
+          ? ({
+              "--table-gutter": `calc(var(--spacing)*${gutter})`,
+            } as React.CSSProperties)
+          : undefined
+      }
+    >
       <div
-        data-slot="table-container"
         className={cn(
-          "relative -mx-(--table-gutter) w-full overflow-x-auto whitespace-nowrap",
-          classNames?.container
+          "inline-block min-w-full align-middle",
+          !bleed && "sm:px-(--table-gutter)"
         )}
-        style={
-          !classNames?.container?.includes("--table-gutter")
-            ? ({
-                "--table-gutter": `calc(var(--spacing)*${gutter})`,
-              } as React.CSSProperties)
-            : undefined
-        }
       >
-        <div
+        <table
+          data-slot="table"
+          data-bleed={bleed ? "true" : undefined}
           className={cn(
-            "inline-block min-w-full align-middle",
-            !bleed && "sm:px-(--table-gutter)"
+            "group/table",
+            "min-w-full caption-bottom text-left text-sm text-foreground",
+            classNames?.root,
+            className
           )}
-        >
-          <table
-            data-slot="table"
-            className={cn(
-              "min-w-full caption-bottom text-left text-sm text-foreground",
-              classNames?.root,
-              className
-            )}
-            {...props}
-          />
-        </div>
+          {...props}
+        />
       </div>
-    </TableContext.Provider>
+    </div>
   );
 }
 
 function TableHead({ className, ...props }: React.ComponentProps<"thead">) {
   return (
     <thead
-      data-slot="table-header"
+      data-slot="table-head"
       className={cn("[&_tr]:border-b", className)}
       {...props}
     />
@@ -110,16 +96,13 @@ function TableRow({ className, ...props }: React.ComponentProps<"tr">) {
 }
 
 function TableHeader({ className, ...props }: React.ComponentProps<"th">) {
-  const { bleed } = React.useContext(TableContext);
   return (
     <th
-      data-slot="table-head"
+      data-slot="table-header"
       className={cn(
-        "h-10 px-4 text-left align-middle font-medium whitespace-nowrap text-subtle-foreground",
+        "h-10 px-4 text-left align-middle font-medium whitespace-nowrap text-subtle-foreground first:pl-2 last:pr-2",
+        "group-data-[bleed]/table:first:pl-(--table-gutter,--spacing(2)) group-data-[bleed]/table:last:pr-(--table-gutter,--spacing(2))",
         "has-[[role='checkbox']]:w-0 has-[[role='checkbox']]:pr-0 *:[[role='checkbox']]:translate-y-0.5",
-        bleed
-          ? "first:pl-(--table-gutter) last:pr-(--table-gutter)"
-          : "first:pl-2 last:pr-2",
         className
       )}
       {...props}
@@ -128,16 +111,13 @@ function TableHeader({ className, ...props }: React.ComponentProps<"th">) {
 }
 
 function TableCell({ className, ...props }: React.ComponentProps<"td">) {
-  const { bleed } = React.useContext(TableContext);
   return (
     <td
       data-slot="table-cell"
       className={cn(
-        "px-4 py-4 align-middle whitespace-nowrap",
+        "px-4 py-4 align-middle whitespace-nowrap first:pl-2 last:pr-2",
+        "group-data-[bleed]/table:first:pl-(--table-gutter,--spacing(2)) group-data-[bleed]/table:last:pr-(--table-gutter,--spacing(2))",
         "has-[[role='checkbox']]:w-0 has-[[role='checkbox']]:pr-0 *:[[role='checkbox']]:translate-y-0.5",
-        bleed
-          ? "first:pl-(--table-gutter) last:pr-(--table-gutter)"
-          : "first:pl-2 last:pr-2",
         className
       )}
       {...props}

@@ -10,7 +10,7 @@ const switchVariants = tv({
   slots: {
     root: [
       "peer group/switch touch-target",
-      "relative isolate inline-flex h-6 w-10 shrink-0 items-center rounded-full p-[3px] transition-colors duration-200 ease-in-out data-[state=unchecked]:inset-shadow-sm sm:h-5 sm:w-9 dark:data-[state=unchecked]:shadow-none",
+      "relative isolate inline-flex h-6 w-10 shrink-0 items-center rounded-full p-[calc(var(--spacing)*0.75)] transition-colors duration-200 ease-in-out data-[state=unchecked]:inset-shadow-sm sm:h-5 sm:w-9 dark:data-[state=unchecked]:shadow-none",
 
       "hover:not-aria-invalid:data-[state=unchecked]:bg-hover-muted dark:hover:not-aria-invalid:data-[state=unchecked]:bg-hover-faded dark:hover:not-aria-invalid:data-[state=unchecked]:inset-ring-hover-border",
 

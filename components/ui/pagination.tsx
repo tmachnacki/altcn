@@ -1,3 +1,5 @@
+"use client";
+
 import * as React from "react";
 import Link from "next/link";
 import {
@@ -8,17 +10,71 @@ import {
 
 import { cn } from "~/lib/utils";
 
-import { Button } from "~/components/ui/button";
+import { Button, buttonVariants } from "~/components/ui/button";
 
-function Pagination({ className, ...props }: React.ComponentProps<"nav">) {
+type ActiveVariant = keyof Omit<
+  typeof buttonVariants.variants.variant,
+  "ghost" | "primary-ghost" | "secondary-ghost"
+>;
+
+type InactiveVariant = keyof Pick<
+  typeof buttonVariants.variants.variant,
+  | "outline"
+  | "accent"
+  | "muted"
+  | "surface"
+  | "faded"
+  | "ghost"
+  | "primary-accent"
+  | "primary-muted"
+  | "primary-surface"
+  | "primary-faded"
+  | "primary-ghost"
+  | "secondary-accent"
+  | "secondary-muted"
+  | "secondary-surface"
+  | "secondary-faded"
+  | "secondary-ghost"
+>;
+
+type PaginationContextProps = {
+  variants?: {
+    active?: ActiveVariant;
+    inactive?: InactiveVariant;
+    control?: InactiveVariant;
+  };
+  size?: keyof typeof buttonVariants.variants.size;
+};
+
+const PaginationContext = React.createContext<PaginationContextProps>({
+  variants: {
+    active: "outline",
+    inactive: "ghost",
+    control: "ghost",
+  },
+  size: "icon-md",
+});
+
+function Pagination({
+  variants = {
+    active: "outline",
+    inactive: "ghost",
+    control: "ghost",
+  },
+  size = "icon-md",
+  className,
+  ...props
+}: React.ComponentProps<"nav"> & PaginationContextProps) {
   return (
-    <nav
-      data-slot="pagination"
-      role="navigation"
-      aria-label={"Pagination"}
-      className={cn("mx-auto flex w-full justify-center", className)}
-      {...props}
-    />
+    <PaginationContext.Provider value={{ variants, size }}>
+      <nav
+        data-slot="pagination"
+        role="navigation"
+        aria-label={"Pagination"}
+        className={cn("mx-auto flex w-full justify-center", className)}
+        {...props}
+      />
+    </PaginationContext.Provider>
   );
 }
 
@@ -39,67 +95,39 @@ function PaginationItem({ ...props }: React.ComponentProps<"li">) {
   return <li data-slot="pagination-item" {...props} />;
 }
 
-type ActiveVariant =
-  | "contrast"
-  | "base"
-  | "base-shadow"
-  | "base-gradient"
-  | "primary"
-  | "primary-shadow"
-  | "primary-gradient"
-  | "primary-tron"
-  | "secondary"
-  | "secondary-gradient"
-  | "secondary-shadow"
-  | "secondary-tron";
-
-type InactiveVariant =
-  | "outline"
-  | "accent"
-  | "muted"
-  | "surface"
-  | "faded"
-  | "ghost"
-  | "primary-accent"
-  | "primary-muted"
-  | "primary-surface"
-  | "primary-faded"
-  | "primary-ghost"
-  | "secondary-accent"
-  | "secondary-muted"
-  | "secondary-surface"
-  | "secondary-faded"
-  | "secondary-ghost";
-
-type PaginationLinkProps = {
+type PaginationLinkProps = React.ComponentProps<typeof Link> & {
   disabled?: boolean;
-  isActive?: boolean;
-  activeVariant?: ActiveVariant;
-  inactiveVariant?: InactiveVariant;
-} & Pick<React.ComponentProps<typeof Button>, "size"> &
-  React.ComponentProps<typeof Link>;
+  active?: boolean;
+  variants?: {
+    active?: ActiveVariant;
+    inactive?: InactiveVariant;
+  };
+  size?: keyof typeof buttonVariants.variants.size;
+};
 
 function PaginationLink({
   className,
   disabled,
-  isActive,
-  size = "icon-md",
-  activeVariant = "primary",
-  inactiveVariant = "outline",
+  active,
+  variants,
+  size,
   ...props
 }: PaginationLinkProps) {
+  const context = React.useContext(PaginationContext);
+  const _activeVariant = variants?.active || context.variants?.active;
+  const _inactiveVariant = variants?.inactive || context.variants?.inactive;
   return (
     <Button
       asChild
       disabled={disabled}
-      size={size}
-      variant={isActive ? activeVariant : inactiveVariant}
+      size={size || context.size}
+      variant={active ? _activeVariant : _inactiveVariant}
       className={className}
     >
       <Link
         data-slot="pagination-link"
-        data-state={isActive ? "active" : "inactive"}
-        aria-current={isActive ? "page" : undefined}
+        data-state={active ? "active" : "inactive"}
+        aria-current={active ? "page" : undefined}
         aria-disabled={disabled}
         tabIndex={disabled ? -1 : 0}
         {...props}
@@ -108,25 +136,26 @@ function PaginationLink({
   );
 }
 
-type PaginationControlProps = {
+type PaginationControlProps = React.ComponentProps<typeof Link> & {
   disabled?: boolean;
   variant?: InactiveVariant;
-} & Pick<React.ComponentProps<typeof Button>, "size"> &
-  React.ComponentProps<typeof Link>;
+  size?: keyof typeof buttonVariants.variants.size;
+};
 
 function PaginationControl({
   className,
   disabled,
-  size = "md",
-  variant = "outline",
+  variant,
+  size,
   ...props
 }: PaginationControlProps) {
+  const context = React.useContext(PaginationContext);
   return (
     <Button
       asChild
       disabled={disabled}
-      size={size}
-      variant={variant}
+      size={size || context.size}
+      variant={variant || context.variants?.control}
       className={className}
     >
       <Link aria-disabled={disabled} tabIndex={disabled ? -1 : 0} {...props} />
@@ -135,31 +164,21 @@ function PaginationControl({
 }
 
 function PaginationPrevious({
-  className,
   ...props
 }: React.ComponentProps<typeof PaginationControl>) {
   return (
-    <PaginationControl
-      aria-label="Go to previous page"
-      className={cn("gap-1 px-2.5 sm:pl-2.5", className)}
-      {...props}
-    >
-      <ChevronLeftIcon />
+    <PaginationControl aria-label="Go to previous page" {...props}>
+      <ChevronLeftIcon aria-hidden="true" />
       <span className="hidden sm:block">Previous</span>
     </PaginationControl>
   );
 }
 
 function PaginationNext({
-  className,
   ...props
 }: React.ComponentProps<typeof PaginationControl>) {
   return (
-    <PaginationControl
-      aria-label="Go to next page"
-      className={cn("gap-1 px-2.5 sm:pr-2.5", className)}
-      {...props}
-    >
+    <PaginationControl aria-label="Go to next page" {...props}>
       <span className="hidden sm:block">Next</span>
       <ChevronRightIcon />
     </PaginationControl>
@@ -170,11 +189,16 @@ function PaginationEllipsis({
   className,
   ...props
 }: React.ComponentProps<"span">) {
+  const context = React.useContext(PaginationContext);
   return (
     <span
       aria-hidden
       data-slot="pagination-ellipsis"
-      className={cn("flex size-9 items-center justify-center", className)}
+      className={cn(
+        buttonVariants.variants.size[context.size || "icon-md"],
+        "flex items-center justify-center",
+        className
+      )}
       {...props}
     >
       <MoreHorizontalIcon className="size-4" />

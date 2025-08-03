@@ -3,6 +3,7 @@
 import * as React from "react";
 import { useSearchParams } from "next/navigation";
 
+import { buttonVariants } from "~/components/ui/button";
 import { Label } from "~/components/ui/label";
 import {
   Pagination,
@@ -23,19 +24,13 @@ import {
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
 
-const activeVariants = [
-  "base",
-  "base-shadow",
-  "base-gradient",
-  "primary",
-  "primary-shadow",
-  "primary-gradient",
-  "primary-tron",
-  "secondary",
-  "secondary-shadow",
-  "secondary-gradient",
-  "secondary-tron",
-] as const;
+type ActiveVariant = keyof Omit<
+  typeof buttonVariants.variants.variant,
+  "ghost" | "primary-ghost" | "secondary-ghost"
+>;
+const activeVariants = Object.keys(buttonVariants.variants.variant).filter(
+  (variant) => !variant.includes("ghost")
+) as ActiveVariant[];
 
 const inactiveVariants = [
   "outline",
@@ -65,32 +60,35 @@ export function PaginationDemo() {
 }
 
 export function PaginationWithParams() {
-  const [activeVariant, setActiveVariant] = React.useState("primary");
-  const [inactiveVariant, setInactiveVariant] = React.useState("outline");
-  const [controlVariant, setControlVariant] = React.useState("outline");
+  const [activeVariant, setActiveVariant] = React.useState("outline");
+  const [inactiveVariant, setInactiveVariant] = React.useState("ghost");
+  const [controlVariant, setControlVariant] = React.useState("ghost");
 
   const page = useSearchParams().get("page") ?? "1";
 
   return (
     <>
       <ComponentContainer>
-        <Pagination>
+        <Pagination
+          size="icon-md"
+          variants={{
+            active: activeVariant as (typeof activeVariants)[number],
+            inactive: inactiveVariant as (typeof inactiveVariants)[number],
+            control: controlVariant as (typeof inactiveVariants)[number],
+          }}
+        >
           <PaginationContent>
             <PaginationItem>
               <PaginationPrevious
                 href={`/components/pagination?page=${Number(page) - 1}`}
                 disabled={page === "1"}
-                variant={controlVariant as (typeof inactiveVariants)[number]}
+                size="md"
               />
             </PaginationItem>
             <PaginationItem>
               <PaginationLink
                 href={`/components/pagination?page=1`}
-                isActive={page === "1"}
-                activeVariant={activeVariant as (typeof activeVariants)[number]}
-                inactiveVariant={
-                  inactiveVariant as (typeof inactiveVariants)[number]
-                }
+                active={page === "1"}
               >
                 1
               </PaginationLink>
@@ -98,11 +96,7 @@ export function PaginationWithParams() {
             <PaginationItem>
               <PaginationLink
                 href={`/components/pagination?page=2`}
-                isActive={page === "2"}
-                activeVariant={activeVariant as (typeof activeVariants)[number]}
-                inactiveVariant={
-                  inactiveVariant as (typeof inactiveVariants)[number]
-                }
+                active={page === "2"}
               >
                 2
               </PaginationLink>
@@ -110,11 +104,7 @@ export function PaginationWithParams() {
             <PaginationItem>
               <PaginationLink
                 href={`/components/pagination?page=3`}
-                isActive={page === "3"}
-                activeVariant={activeVariant as (typeof activeVariants)[number]}
-                inactiveVariant={
-                  inactiveVariant as (typeof inactiveVariants)[number]
-                }
+                active={page === "3"}
               >
                 3
               </PaginationLink>
@@ -122,11 +112,7 @@ export function PaginationWithParams() {
             <PaginationItem>
               <PaginationLink
                 href={`/components/pagination?page=4`}
-                isActive={page === "4"}
-                activeVariant={activeVariant as (typeof activeVariants)[number]}
-                inactiveVariant={
-                  inactiveVariant as (typeof inactiveVariants)[number]
-                }
+                active={page === "4"}
               >
                 4
               </PaginationLink>
@@ -137,11 +123,7 @@ export function PaginationWithParams() {
             <PaginationItem>
               <PaginationLink
                 href={`/components/pagination?page=10`}
-                isActive={page === "10"}
-                activeVariant={activeVariant as (typeof activeVariants)[number]}
-                inactiveVariant={
-                  inactiveVariant as (typeof inactiveVariants)[number]
-                }
+                active={page === "10"}
               >
                 10
               </PaginationLink>
@@ -150,7 +132,7 @@ export function PaginationWithParams() {
               <PaginationNext
                 href={`/components/pagination?page=${Number(page) + 1}`}
                 disabled={page === "10"}
-                variant={controlVariant as (typeof inactiveVariants)[number]}
+                size="md"
               />
             </PaginationItem>
           </PaginationContent>

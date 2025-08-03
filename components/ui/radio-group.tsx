@@ -11,7 +11,7 @@ const radioVariants = tv({
     root: [
       "group/radio peer touch-target",
 
-      "relative size-4.5 shrink-0 grow-0 items-center justify-center rounded-full sm:size-4",
+      "relative inline-flex size-4.5 shrink-0 grow-0 items-center justify-center rounded-full sm:size-4",
 
       "hover:not-aria-invalid:data-[state=unchecked]:inset-ring-hover-border",
 
