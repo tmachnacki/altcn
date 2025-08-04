@@ -15,7 +15,7 @@ const compactToggleGroupItemVariants = tv({
 
     "focus-visible:-outline-offset-1",
 
-    "not-first:-ml-px not-first:rounded-l-none not-last:rounded-r-none",
+    "not-first:rounded-l-none not-last:rounded-r-none",
 
     // apply pseudo border-l when on and prev is on
     "data-[state=on]:[&:is(:where([data-state='on'])_+_*)]:shadow-[inset_1px_0_0_0_var(--inset-border)]",
@@ -91,6 +91,7 @@ const toggleGroupVariants = ({
   cn(
     "group/toggle-group relative isolate flex items-center",
     variant === "outline" && spacing === "compact" && "rounded-md shadow-xs",
+    spacing === "compact" && "-space-x-px",
     spacing === "split" &&
       {
         "2xs": "gap-0.5",

@@ -84,8 +84,8 @@ const buttonVariants = tv({
       ],
 
       "primary-tron": [
-        "bg-background bg-linear-(--primary-tron-gradient) text-primary-accent-foreground shadow-xs inset-ring inset-ring-primary-tron-border",
-        "hover:bg-linear-(--hover-primary-tron-gradient) hover:inset-ring-hover-primary-tron-border",
+        "border border-primary-tron-border bg-background bg-linear-(--primary-tron-gradient) text-primary-accent-foreground shadow-xs",
+        "hover:border-hover-primary-tron-border hover:bg-linear-(--hover-primary-tron-gradient)",
         "[--tron-beam:var(--color-primary)] [--tron-blur:var(--color-primary-tron-blur)]",
       ],
 
@@ -131,8 +131,8 @@ const buttonVariants = tv({
       ],
 
       "secondary-tron": [
-        "bg-background bg-linear-(--secondary-tron-gradient) text-secondary-accent-foreground shadow-xs inset-ring inset-ring-secondary-tron-border",
-        "hover:bg-linear-(--hover-secondary-tron-gradient) hover:inset-ring-hover-secondary-tron-border",
+        "border border-secondary-tron-border bg-background bg-linear-(--secondary-tron-gradient) text-secondary-accent-foreground shadow-xs",
+        "hover:border-hover-secondary-tron-border hover:bg-linear-(--hover-secondary-tron-gradient)",
         "[--tron-beam:var(--color-secondary)] [--tron-blur:var(--color-secondary-tron-blur)]",
       ],
 
@@ -178,8 +178,8 @@ const buttonVariants = tv({
       ],
 
       "destructive-tron": [
-        "bg-background bg-linear-(--destructive-tron-gradient) text-destructive-accent-foreground shadow-xs inset-ring inset-ring-destructive-tron-border",
-        "hover:bg-linear-(--hover-destructive-tron-gradient) hover:inset-ring-hover-destructive-tron-border",
+        "border border-destructive-tron-border bg-background bg-linear-(--destructive-tron-gradient) text-destructive-accent-foreground shadow-xs",
+        "hover:border-hover-destructive-tron-border hover:bg-linear-(--hover-destructive-tron-gradient)",
         "[--tron-beam:var(--color-destructive)] [--tron-blur:var(--color-destructive-tron-blur)]",
       ],
 
@@ -225,8 +225,8 @@ const buttonVariants = tv({
       ],
 
       "success-tron": [
-        "bg-background bg-linear-(--success-tron-gradient) text-success-accent-foreground shadow-xs inset-ring inset-ring-success-tron-border",
-        "hover:bg-linear-(--hover-success-tron-gradient) hover:inset-ring-hover-success-tron-border",
+        "border border-success-tron-border bg-background bg-linear-(--success-tron-gradient) text-success-accent-foreground shadow-xs",
+        "hover:border-hover-success-tron-border hover:bg-linear-(--hover-success-tron-gradient)",
         "[--tron-beam:var(--color-success)] [--tron-blur:var(--color-success-tron-blur)]",
       ],
 
@@ -272,8 +272,8 @@ const buttonVariants = tv({
       ],
 
       "warning-tron": [
-        "bg-background bg-linear-(--warning-tron-gradient) text-warning-accent-foreground shadow-xs inset-ring inset-ring-warning-tron-border",
-        "hover:bg-linear-(--hover-warning-tron-gradient) hover:inset-ring-hover-warning-tron-border",
+        "border border-warning-tron-border bg-background bg-linear-(--warning-tron-gradient) text-warning-accent-foreground shadow-xs",
+        "hover:border-hover-warning-tron-border hover:bg-linear-(--hover-warning-tron-gradient)",
         "[--tron-beam:var(--color-warning)] [--tron-blur:var(--color-warning-tron-blur)]",
       ],
 
@@ -480,21 +480,25 @@ function Button({
           <Tron
             side="top"
             type="beam"
+            border="outer"
             className="via-(--tron-beam) opacity-0 group-hover/button:opacity-100"
           />
           <Tron
             side="top"
             type="blur"
+            border="outer"
             className="via-(--tron-blur) opacity-0 group-hover/button:opacity-100"
           />
           <Tron
             side="bottom"
             type="beam"
+            border="outer"
             className="via-(--tron-beam) opacity-100 group-hover/button:opacity-0"
           />
           <Tron
             side="bottom"
             type="blur"
+            border="outer"
             className="via-(--tron-blur) opacity-100 group-hover/button:opacity-0"
           />
         </>

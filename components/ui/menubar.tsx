@@ -256,11 +256,13 @@ function MenubarTrigger({
           <Tron
             side="bottom"
             type="beam"
+            border="inset"
             className="via-(--tron-beam) opacity-0 group-data-[highlighted]/menubar-trigger:opacity-100 group-data-[state=open]/menubar-trigger:opacity-100"
           />
           <Tron
             side="bottom"
             type="blur"
+            border="inset"
             className="via-(--tron-blur) opacity-0 group-data-[highlighted]/menubar-trigger:opacity-100 group-data-[state=open]/menubar-trigger:opacity-100"
           />
         </>

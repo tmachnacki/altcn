@@ -515,22 +515,26 @@ function Badge({
             side="top"
             type="beam"
             data-shape={shape}
+            border="inset"
             className="via-(--tron-beam) opacity-0"
           />
           <Tron
             side="top"
             type="blur"
+            border="inset"
             className="via-(--tron-blur) opacity-0"
           />
           <Tron
             side="bottom"
             type="beam"
             data-shape={shape}
+            border="inset"
             className="via-(--tron-beam) opacity-100"
           />
           <Tron
             side="bottom"
             type="blur"
+            border="inset"
             className="via-(--tron-blur) opacity-100"
           />
         </>

@@ -58,7 +58,7 @@ export function CheckboxCardGroupDemo() {
       <ComponentContainer>
         <fieldset className="w-full max-w-sm">
           <legend className="sr-only">Select a plan</legend>
-          <CheckboxCardGroup variant={variant} className="grid w-full gap-3">
+          <CheckboxCardGroup variant={variant} className="grid w-full -space-y-px *:rounded-none *:first:rounded-t-lg *:last:rounded-b-lg *:shadow-none">
             <CheckboxCard variant={variant} className="items-center">
               <CheckboxCardCheckbox
                 disabled={disabled}

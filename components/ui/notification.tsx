@@ -6,8 +6,12 @@ import { cn } from "~/lib/utils";
 const notificationVariants = tv({
   slots: {
     container: [
-      "[--notification-size-empty:--spacing(2.5)] [--notification-size:--spacing(5)]",
-      "relative isolate flex rounded-full [--offset:42%] data-[position]:absolute [[data-position*='bottom']]:bottom-0 [[data-position*='bottom']]:translate-y-(--offset) [[data-position*='left']]:left-0 [[data-position*='left']]:-translate-x-(--offset) [[data-position*='right']]:right-0 [[data-position*='right']]:translate-x-(--offset) [[data-position*='top']]:top-0 [[data-position*='top']]:-translate-y-(--offset)",
+      "[--notification-size-empty:--spacing(2)] [--notification-size:--spacing(5)]",
+      "relative isolate inline-flex shrink-0 grow-0 items-center justify-center rounded-full [--offset:5%] data-[position]:absolute",
+      "[[data-position*='bottom']]:bottom-(--offset) [[data-position*='bottom']]:translate-y-1/2",
+      "[[data-position*='left']]:left-(--offset) [[data-position*='left']]:-translate-x-1/2",
+      "[[data-position*='right']]:right-(--offset) [[data-position*='right']]:translate-x-1/2",
+      "[[data-position*='top']]:top-(--offset) [[data-position*='top']]:-translate-y-1/2",
     ],
     ping: [
       "absolute top-1/2 left-1/2 z-[1] size-full -translate-x-1/2 -translate-y-1/2 rounded-full opacity-75",
@@ -17,7 +21,7 @@ const notificationVariants = tv({
     ],
     notification: [
       "relative z-[3] inline-flex size-full shrink-0 items-center justify-center gap-1 rounded-full p-1 text-xs leading-none font-normal whitespace-nowrap tabular-nums select-none",
-      "**:[svg]:pointer-events-none **:[svg]:shrink-0 **:[svg]:grow-0 **:[svg]:not-[[class*='size-']]:size-3",
+      "**:[svg]:pointer-events-none **:[svg]:-mx-0.5 **:[svg]:shrink-0 **:[svg]:grow-0 **:[svg]:not-[[class*='size-']]:size-3",
     ],
   },
   variants: {
@@ -220,6 +224,7 @@ type NotificationProps = React.ComponentProps<"span"> &
     outlined?: boolean;
   };
 
+// TODO: Use role="status" when used to reflect dynamic indicator (i.e., user's audio input device is online or offline)
 function Notification({
   className,
   classNames,

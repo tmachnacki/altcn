@@ -455,10 +455,10 @@
   /* tron */
   --primary-tron-gradient:
     to top, --alpha(var(--color-primary) / 17.5%) 0%,
-    --alpha(var(--color-primary) / 5%) min(4rem, 100%);
+    --alpha(var(--color-primary) / 5%) min(var(--spacing-size-xl), 100%);
   --hover-primary-tron-gradient:
     to bottom, --alpha(var(--color-primary) / 20%) 0%,
-    --alpha(var(--color-primary) / 5%) min(4rem, 100%);
+    --alpha(var(--color-primary) / 5%) min(var(--spacing-size-xl), 100%);
   --primary-tron-border: --alpha(var(--color-primary) / 35%);
   --hover-primary-tron-border: --alpha(var(--color-primary) / 50%);
   --primary-tron-blur: var(--color-purple-400);

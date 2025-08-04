@@ -175,11 +175,13 @@ function Toggle({
           <Tron
             type="beam"
             side="bottom"
+            border="inset"
             className="via-(--tron-beam) opacity-0 group-data-[state=on]/toggle:opacity-100"
           />
           <Tron
             type="blur"
             side="bottom"
+            border="inset"
             className="via-(--tron-blur) opacity-0 group-data-[state=on]/toggle:opacity-100"
           />
         </>
