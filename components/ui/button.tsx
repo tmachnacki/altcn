@@ -6,8 +6,8 @@ import { Tron } from "~/components/ui/tron";
 
 const buttonVariants = tv({
   base: [
-    "group/button",
-    "touch-target relative isolate inline-flex items-center justify-center rounded-md font-semibold whitespace-nowrap select-none",
+    "group/button touch-target",
+    "relative isolate inline-flex items-center justify-center rounded-md font-semibold whitespace-nowrap select-none",
     "active:opacity-80",
     "disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none aria-disabled:pointer-events-none aria-disabled:opacity-50 aria-disabled:shadow-none",
     "outline-offset-2 focus-visible:outline-2",

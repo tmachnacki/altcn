@@ -6,7 +6,8 @@ import { cn } from "~/lib/utils";
 const inputVariants = tv({
   slots: {
     root: [
-      "peer flex w-full min-w-0 appearance-none rounded-md",
+      "peer",
+      "flex w-full min-w-0 appearance-none rounded-md",
       "selection:bg-primary selection:text-primary-foreground",
       "disabled:pointer-events-none disabled:opacity-50",
       "aria-invalid:text-destructive-accent-foreground aria-invalid:selection:bg-destructive aria-invalid:selection:text-destructive-foreground",

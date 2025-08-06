@@ -44,6 +44,11 @@ const options = [
     name: "Carrier pigeon",
     description: "Send your users a pigeon.",
   },
+  {
+    id: "telegram",
+    name: "Telegram",
+    description: "Send your users a telegram.",
+  },
 ];
 
 export function CheckboxCardGroupDemo() {
@@ -55,10 +60,10 @@ export function CheckboxCardGroupDemo() {
 
   return (
     <>
-      <ComponentContainer>
+      <ComponentContainer className="gap-8">
         <fieldset className="w-full max-w-sm">
           <legend className="sr-only">Select a plan</legend>
-          <CheckboxCardGroup variant={variant} className="grid w-full -space-y-px *:rounded-none *:first:rounded-t-lg *:last:rounded-b-lg *:shadow-none">
+          <CheckboxCardGroup variant={variant} className="grid w-full gap-2">
             <CheckboxCard variant={variant} className="items-center">
               <CheckboxCardCheckbox
                 disabled={disabled}
@@ -82,6 +87,36 @@ export function CheckboxCardGroupDemo() {
                 <CheckboxCardLabel>Select all</CheckboxCardLabel>
               </CheckboxCardContent>
             </CheckboxCard>
+            {options.map((option) => (
+              <CheckboxCard key={option.id} variant={variant}>
+                <CheckboxCardCheckbox
+                  disabled={disabled}
+                  aria-invalid={invalid}
+                  checked={selected.includes(option.id)}
+                  onCheckedChange={(checked) => {
+                    if (checked) {
+                      setSelected([...selected, option.id]);
+                    } else {
+                      setSelected(selected.filter((id) => id !== option.id));
+                    }
+                  }}
+                />
+                <CheckboxCardContent>
+                  <CheckboxCardLabel>{option.name}</CheckboxCardLabel>
+                  <CheckboxCardDescription>
+                    {option.description}
+                  </CheckboxCardDescription>
+                </CheckboxCardContent>
+              </CheckboxCard>
+            ))}
+          </CheckboxCardGroup>
+        </fieldset>
+        <fieldset className="w-full max-w-sm">
+          <legend className="sr-only">Select a plan</legend>
+          <CheckboxCardGroup
+            variant={variant}
+            className="grid w-full -space-y-px shadow-xs *:rounded-none *:shadow-none *:first:rounded-t-lg *:last:rounded-b-lg"
+          >
             {options.map((option) => (
               <CheckboxCard key={option.id} variant={variant}>
                 <CheckboxCardCheckbox

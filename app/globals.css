@@ -7,6 +7,7 @@
 /* for better intellisense DX */
 @custom-variant aria-invalid (&[aria-invalid="true"]);
 @custom-variant next-disabled (&:is(:has(+ .peer:disabled)));
+@custom-variant next-data-disabled (&:is(:has(+ .peer[data-disabled="true"])));
 /* @custom-variant next-has-disabled (&:is(:has(+ .peer:has(*:disabled)))); */
 
 :root {

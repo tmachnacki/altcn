@@ -6,8 +6,8 @@ import { cn } from "~/lib/utils";
 
 const buttonInputVariants = tv({
   base: [
-    "group/button-input",
-    "peer flex w-fit items-center rounded-md whitespace-nowrap",
+    "peer group/button-input",
+    "flex w-fit items-center rounded-md whitespace-nowrap",
     "disabled:pointer-events-none disabled:opacity-50 disabled:**:[svg]:text-muted-foreground",
     "**:[svg]:pointer-events-none **:[svg]:shrink-0 **:[svg]:grow-0",
     "aria-invalid:text-destructive-accent-foreground aria-invalid:**:[svg]:not-[[class*='text-']]:text-destructive-muted-foreground",

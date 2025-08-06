@@ -2,24 +2,24 @@ import * as InputPasswordPrimitive from "@radix-ui/react-password-toggle-field";
 import { tv, type VariantProps } from "tailwind-variants";
 import { EyeIcon, EyeOffIcon } from "lucide-react";
 
-import { cn } from "~/lib/utils";
-
 const inputPasswordVariants = tv({
   slots: {
     container: [
+      "peer",
       "relative grid w-full min-w-0 grid-cols-1 items-center rounded-md",
       "has-disabled:pointer-events-none has-disabled:opacity-50",
       "has-aria-invalid:text-destructive-accent-foreground",
     ],
     input: [
       "peer/input-password-input",
-      "all-[unset] col-start-1 row-start-1 block h-full min-h-0 w-full shrink grow appearance-none self-center rounded-none bg-transparent text-inherit outline-none",
+      "col-start-1 row-start-1 block h-full min-h-0 w-full shrink grow appearance-none self-center rounded-none bg-transparent text-inherit outline-none",
       "pr-[calc(var(--toggle-size)+var(--input-px)+var(--input-px))] pl-(--input-px)",
       "selection:bg-primary selection:text-primary-foreground",
       "aria-invalid:selection:bg-destructive aria-invalid:selection:text-destructive-foreground",
     ],
     toggle: [
-      "touch-target col-start-1 row-start-1 mr-1 inline-flex shrink-0 grow-0 items-center justify-center self-center justify-self-end rounded-sm -outline-offset-1 focus-visible:outline-2 active:opacity-80",
+      "touch-target",
+      "col-start-1 row-start-1 mr-1 inline-flex shrink-0 grow-0 items-center justify-center self-center justify-self-end rounded-sm -outline-offset-1 focus-visible:outline-2 active:opacity-80",
       "mr-(--input-px) size-(--toggle-size) *:[svg]:size-(--toggle-size)",
       "disabled:pointer-events-none",
       "peer-disabled/input-password-input:pointer-events-none peer-disabled/input-password-input:text-muted-foreground",
@@ -196,11 +196,12 @@ function InputPassword({
     >
       <div
         data-slot="input-password-container"
-        className={cn(container(), classNames?.container, className)}
+        data-disabled={disabled ? true : undefined}
+        className={container({ className: [classNames?.container, className] })}
       >
         <InputPasswordPrimitive.Input
           data-slot="input-password-input"
-          className={cn(input(), classNames?.input)}
+          className={input({ className: [classNames?.input, className] })}
           id={id}
           disabled={disabled}
           size={htmlSize}
@@ -208,7 +209,7 @@ function InputPassword({
         />
         <InputPasswordPrimitive.Toggle
           data-slot="input-password-toggle"
-          className={cn(toggle(), classNames?.toggle)}
+          className={toggle({ className: [classNames?.toggle, className] })}
         >
           <InputPasswordPrimitive.Icon
             visible={<EyeOffIcon aria-hidden="true" />}

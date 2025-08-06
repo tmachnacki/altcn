@@ -9,7 +9,8 @@ import { cn } from "~/lib/utils";
 
 const selectTriggerVariants = tv({
   base: [
-    "peer flex w-fit items-center justify-between rounded-md whitespace-nowrap",
+    "peer",
+    "flex w-fit items-center justify-between rounded-md whitespace-nowrap",
 
     "disabled:pointer-events-none disabled:opacity-50",
 
