@@ -2,10 +2,11 @@
 
 import * as React from "react";
 
+import { checkBoxVariants } from "~/components/ui/checkbox";
 import {
   CheckboxCard,
   CheckboxCardCheckbox,
-  CheckboxCardContent,
+  // CheckboxCardContent,
   CheckboxCardDescription,
   CheckboxCardGroup,
   CheckboxCardLabel,
@@ -23,10 +24,15 @@ import { Switch } from "~/components/ui/switch";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
 
-type Variant = keyof typeof checkboxCardVariants.variants.variant;
-const variants = Object.keys(
+type CardVariant = keyof typeof checkboxCardVariants.variants.variant;
+const cardVariants = Object.keys(
   checkboxCardVariants.variants.variant
-) as Variant[];
+) as CardVariant[];
+
+type CheckboxVariant = keyof typeof checkBoxVariants.variants.variant;
+const checkboxVariants = Object.keys(
+  checkBoxVariants.variants.variant
+) as CheckboxVariant[];
 
 const options = [
   {
@@ -52,7 +58,9 @@ const options = [
 ];
 
 export function CheckboxCardGroupDemo() {
-  const [variant, setVariant] = React.useState<Variant>("primary");
+  const [cardVariant, setCardVariant] = React.useState<CardVariant>("primary");
+  const [checkboxVariant, setCheckboxVariant] =
+    React.useState<CheckboxVariant>("primary");
   const [invalid, setInvalid] = React.useState(false);
   const [disabled, setDisabled] = React.useState(false);
 
@@ -63,8 +71,11 @@ export function CheckboxCardGroupDemo() {
       <ComponentContainer className="gap-8">
         <fieldset className="w-full max-w-sm">
           <legend className="sr-only">Select a plan</legend>
-          <CheckboxCardGroup variant={variant} className="grid w-full gap-2">
-            <CheckboxCard variant={variant} className="items-center">
+          <CheckboxCardGroup
+            variants={{ card: cardVariant, checkbox: checkboxVariant }}
+            className="grid w-full gap-2"
+          >
+            <CheckboxCard className="items-center">
               <CheckboxCardCheckbox
                 disabled={disabled}
                 aria-invalid={invalid}
@@ -82,13 +93,12 @@ export function CheckboxCardGroupDemo() {
                     setSelected([]);
                   }
                 }}
+                className="sr-only"
               />
-              <CheckboxCardContent>
-                <CheckboxCardLabel>Select all</CheckboxCardLabel>
-              </CheckboxCardContent>
+              <CheckboxCardLabel>Select all</CheckboxCardLabel>
             </CheckboxCard>
             {options.map((option) => (
-              <CheckboxCard key={option.id} variant={variant}>
+              <CheckboxCard key={option.id}>
                 <CheckboxCardCheckbox
                   disabled={disabled}
                   aria-invalid={invalid}
@@ -101,24 +111,22 @@ export function CheckboxCardGroupDemo() {
                     }
                   }}
                 />
-                <CheckboxCardContent>
-                  <CheckboxCardLabel>{option.name}</CheckboxCardLabel>
-                  <CheckboxCardDescription>
-                    {option.description}
-                  </CheckboxCardDescription>
-                </CheckboxCardContent>
+                <CheckboxCardLabel>{option.name}</CheckboxCardLabel>
+                <CheckboxCardDescription>
+                  {option.description}
+                </CheckboxCardDescription>
               </CheckboxCard>
             ))}
           </CheckboxCardGroup>
         </fieldset>
-        <fieldset className="w-full max-w-sm">
+        <fieldset className="w-full">
           <legend className="sr-only">Select a plan</legend>
           <CheckboxCardGroup
-            variant={variant}
-            className="grid w-full -space-y-px shadow-xs *:rounded-none *:shadow-none *:first:rounded-t-lg *:last:rounded-b-lg"
+            variants={{ card: cardVariant, checkbox: checkboxVariant }}
+            className="grid w-full grid-cols-2 rounded-lg shadow-xs *:rounded-none *:shadow-none *:first:rounded-tl-lg *:last:rounded-br-lg *:even:-ml-px *:nth-[2]:rounded-tr-lg *:nth-[3]:rounded-bl-lg *:nth-last-[-n+2]:-mt-px"
           >
             {options.map((option) => (
-              <CheckboxCard key={option.id} variant={variant}>
+              <CheckboxCard key={option.id}>
                 <CheckboxCardCheckbox
                   disabled={disabled}
                   aria-invalid={invalid}
@@ -131,12 +139,10 @@ export function CheckboxCardGroupDemo() {
                     }
                   }}
                 />
-                <CheckboxCardContent>
-                  <CheckboxCardLabel>{option.name}</CheckboxCardLabel>
-                  <CheckboxCardDescription>
-                    {option.description}
-                  </CheckboxCardDescription>
-                </CheckboxCardContent>
+                <CheckboxCardLabel>{option.name}</CheckboxCardLabel>
+                <CheckboxCardDescription>
+                  {option.description}
+                </CheckboxCardDescription>
               </CheckboxCard>
             ))}
           </CheckboxCardGroup>
@@ -144,16 +150,36 @@ export function CheckboxCardGroupDemo() {
       </ComponentContainer>
       <ComponentPlayground>
         <div className="grid gap-2">
-          <Label htmlFor="checkbox-cards-variant">Variant</Label>
+          <Label htmlFor="card-variant">Card Variant</Label>
           <Select
-            value={variant}
-            onValueChange={(value) => setVariant(value as Variant)}
+            value={cardVariant}
+            onValueChange={(value) => setCardVariant(value as CardVariant)}
           >
-            <SelectTrigger id="checkbox-cards-variant" className="w-full">
+            <SelectTrigger id="card-variant" className="w-full">
               <SelectValue placeholder="Select variant" />
             </SelectTrigger>
             <SelectContent>
-              {variants.map((variant) => (
+              {cardVariants.map((variant) => (
+                <SelectItem key={variant} value={variant}>
+                  {variant}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+        <div className="grid gap-2">
+          <Label htmlFor="checkbox-variant">Checkbox Variant</Label>
+          <Select
+            value={checkboxVariant}
+            onValueChange={(value) =>
+              setCheckboxVariant(value as CheckboxVariant)
+            }
+          >
+            <SelectTrigger id="checkbox-variant" className="w-full">
+              <SelectValue placeholder="Select variant" />
+            </SelectTrigger>
+            <SelectContent>
+              {checkboxVariants.map((variant) => (
                 <SelectItem key={variant} value={variant}>
                   {variant}
                 </SelectItem>

@@ -130,10 +130,10 @@
   /* tron */
   --primary-tron-gradient:
     to top, --alpha(var(--color-primary) / 17.5%) 0%,
-    --alpha(var(--color-primary) / 5%) 100%;
+    --alpha(var(--color-primary) / 5%) min(var(--spacing-size-xl), 100%);
   --hover-primary-tron-gradient:
     to bottom, --alpha(var(--color-primary) / 20%) 0%,
-    --alpha(var(--color-primary) / 5%) 100%;
+    --alpha(var(--color-primary) / 5%) min(var(--spacing-size-xl), 100%);
   --primary-tron-border: --alpha(var(--color-primary) / 35%);
   --hover-primary-tron-border: --alpha(var(--color-primary) / 50%);
   --primary-tron-blur: var(--color-purple-400);
@@ -186,10 +186,10 @@
   /* tron */
   --secondary-tron-gradient:
     to top, --alpha(var(--color-secondary) / 17.5%) 0%,
-    --alpha(var(--color-secondary) / 5%) 100%;
+    --alpha(var(--color-secondary) / 5%) min(var(--spacing-size-xl), 100%);
   --hover-secondary-tron-gradient:
     to bottom, --alpha(var(--color-secondary) / 20%) 0%,
-    --alpha(var(--color-secondary) / 5%) 100%;
+    --alpha(var(--color-secondary) / 5%) min(var(--spacing-size-xl), 100%);
   --secondary-tron-border: --alpha(var(--color-secondary) / 35%);
   --hover-secondary-tron-border: --alpha(var(--color-secondary) / 50%);
   --secondary-tron-blur: var(--color-cyan-400);
@@ -239,10 +239,10 @@
   /* tron */
   --destructive-tron-gradient:
     to top, --alpha(var(--color-destructive) / 17.5%) 0%,
-    --alpha(var(--color-destructive) / 5%) 100%;
+    --alpha(var(--color-destructive) / 5%) min(var(--spacing-size-xl), 100%);
   --hover-destructive-tron-gradient:
     to bottom, --alpha(var(--color-destructive) / 20%) 0%,
-    --alpha(var(--color-destructive) / 5%) 100%;
+    --alpha(var(--color-destructive) / 5%) min(var(--spacing-size-xl), 100%);
   --destructive-tron-border: --alpha(var(--color-destructive) / 35%);
   --hover-destructive-tron-border: --alpha(var(--color-destructive) / 50%);
   --destructive-tron-blur: var(--color-pink-400);
@@ -281,10 +281,10 @@
   /* tron */
   --success-tron-gradient:
     to top, --alpha(var(--color-success) / 17.5%) 0%,
-    --alpha(var(--color-success) / 5%) 100%;
+    --alpha(var(--color-success) / 5%) min(var(--spacing-size-xl), 100%);
   --hover-success-tron-gradient:
     to bottom, --alpha(var(--color-success) / 20%) 0%,
-    --alpha(var(--color-success) / 5%) 100%;
+    --alpha(var(--color-success) / 5%) min(var(--spacing-size-xl), 100%);
   --success-tron-border: --alpha(var(--color-success) / 35%);
   --hover-success-tron-border: --alpha(var(--color-success) / 50%);
   --success-tron-blur: var(--color-green-400);
@@ -325,10 +325,10 @@
   /* tron */
   --warning-tron-gradient:
     to top, --alpha(var(--color-warning) / 17.5%) 0%,
-    --alpha(var(--color-warning) / 5%) 100%;
+    --alpha(var(--color-warning) / 5%) min(var(--spacing-size-xl), 100%);
   --hover-warning-tron-gradient:
     to bottom, --alpha(var(--color-warning) / 20%) 0%,
-    --alpha(var(--color-warning) / 5%) 100%;
+    --alpha(var(--color-warning) / 5%) min(var(--spacing-size-xl), 100%);
   --warning-tron-border: --alpha(var(--color-warning) / 35%);
   --hover-warning-tron-border: --alpha(var(--color-warning) / 50%);
   --warning-tron-blur: var(--color-yellow-300);
@@ -508,10 +508,10 @@
   /* tron */
   --secondary-tron-gradient:
     to top, --alpha(var(--color-secondary) / 17.5%) 0%,
-    --alpha(var(--color-secondary) / 5%) 100%;
+    --alpha(var(--color-secondary) / 5%) min(var(--spacing-size-xl), 100%);
   --hover-secondary-tron-gradient:
     to bottom, --alpha(var(--color-secondary) / 20%) 0%,
-    --alpha(var(--color-secondary) / 5%) 100%;
+    --alpha(var(--color-secondary) / 5%) min(var(--spacing-size-xl), 100%);
   --secondary-tron-border: --alpha(var(--color-secondary) / 35%);
   --hover-secondary-tron-border: --alpha(var(--color-secondary) / 50%);
   --secondary-tron-blur: var(--color-cyan-400);
@@ -561,10 +561,10 @@
   /* tron */
   --destructive-tron-gradient:
     to top, --alpha(var(--color-destructive) / 17.5%) 0%,
-    --alpha(var(--color-destructive) / 5%) 100%;
+    --alpha(var(--color-destructive) / 5%) min(var(--spacing-size-xl), 100%);
   --hover-destructive-tron-gradient:
     to bottom, --alpha(var(--color-destructive) / 20%) 0%,
-    --alpha(var(--color-destructive) / 5%) 100%;
+    --alpha(var(--color-destructive) / 5%) min(var(--spacing-size-xl), 100%);
   --destructive-tron-border: --alpha(var(--color-destructive) / 35%);
   --hover-destructive-tron-border: --alpha(var(--color-destructive) / 50%);
   --destructive-tron-blur: var(--color-pink-400);
@@ -607,10 +607,10 @@
   /* tron */
   --success-tron-gradient:
     to top, --alpha(var(--color-success) / 17.5%) 0%,
-    --alpha(var(--color-success) / 5%) 100%;
+    --alpha(var(--color-success) / 5%) min(var(--spacing-size-xl), 100%);
   --hover-success-tron-gradient:
     to bottom, --alpha(var(--color-success) / 20%) 0%,
-    --alpha(var(--color-success) / 5%) 100%;
+    --alpha(var(--color-success) / 5%) min(var(--spacing-size-xl), 100%);
   --success-tron-border: --alpha(var(--color-success) / 35%);
   --hover-success-tron-border: --alpha(var(--color-success) / 50%);
   --success-tron-blur: var(--color-green-400);
@@ -651,10 +651,10 @@
   /* tron */
   --warning-tron-gradient:
     to top, --alpha(var(--color-warning) / 17.5%) 0%,
-    --alpha(var(--color-warning) / 5%) 100%;
+    --alpha(var(--color-warning) / 5%) min(var(--spacing-size-xl), 100%);
   --hover-warning-tron-gradient:
     to bottom, --alpha(var(--color-warning) / 20%) 0%,
-    --alpha(var(--color-warning) / 5%) 100%;
+    --alpha(var(--color-warning) / 5%) min(var(--spacing-size-xl), 100%);
   --warning-tron-border: --alpha(var(--color-warning) / 35%);
   --hover-warning-tron-border: --alpha(var(--color-warning) / 50%);
   --warning-tron-blur: var(--color-yellow-300);
