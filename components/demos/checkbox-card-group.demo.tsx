@@ -123,7 +123,7 @@ export function CheckboxCardGroupDemo() {
           <legend className="sr-only">Select a plan</legend>
           <CheckboxCardGroup
             variants={{ card: cardVariant, checkbox: checkboxVariant }}
-            className="grid w-full grid-cols-2 rounded-lg shadow-xs *:rounded-none *:shadow-none *:first:rounded-tl-lg *:last:rounded-br-lg *:even:-ml-px *:nth-[2]:rounded-tr-lg *:nth-[3]:rounded-bl-lg *:nth-last-[-n+2]:-mt-px"
+            className="grid w-full grid-cols-2 rounded-lg shadow-xs *:rounded-none *:shadow-none *:first:rounded-tl-lg *:last:rounded-br-lg *:even:-ml-px *:nth-[-n+2]:-mb-px *:nth-[2]:rounded-tr-lg *:nth-[3]:rounded-bl-lg"
           >
             {options.map((option) => (
               <CheckboxCard key={option.id}>
