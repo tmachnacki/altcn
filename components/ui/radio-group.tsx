@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
+import { RadioGroup as RadioGroupPrimitive } from "radix-ui";
 import { tv, type VariantProps } from "tailwind-variants";
 
 import { cn } from "~/lib/utils";

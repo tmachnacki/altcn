@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Slot, Slottable } from "@radix-ui/react-slot";
+import { Slot as SlotPrimitive, Slottable } from "radix-ui";
 import { tv, type VariantProps } from "tailwind-variants";
 
 import { Tron } from "~/components/ui/tron";
@@ -463,7 +463,7 @@ function Button({
     asChild?: boolean;
     empty?: boolean;
   }) {
-  const Comp = asChild ? Slot : "button";
+  const Comp = asChild ? SlotPrimitive.Slot : "button";
 
   return (
     <Comp

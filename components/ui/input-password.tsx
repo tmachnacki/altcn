@@ -1,4 +1,4 @@
-import * as InputPasswordPrimitive from "@radix-ui/react-password-toggle-field";
+import { unstable_PasswordToggleField as InputPasswordPrimitive } from "radix-ui";
 import { tv, type VariantProps } from "tailwind-variants";
 import { EyeIcon, EyeOffIcon } from "lucide-react";
 

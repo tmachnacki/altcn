@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Slot, Slottable } from "@radix-ui/react-slot";
+import { Slot as SlotPrimitive, Slottable } from "radix-ui";
 import { tv, type VariantProps } from "tailwind-variants";
 import { CircleIcon, XIcon } from "lucide-react";
 
@@ -495,7 +495,7 @@ function Badge({
     disabled?: boolean;
   }) {
   // render as button or link
-  const Comp = asChild ? Slot : "span";
+  const Comp = asChild ? SlotPrimitive.Slot : "span";
 
   return (
     <Comp

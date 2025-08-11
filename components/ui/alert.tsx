@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Slot } from "@radix-ui/react-slot";
+import { Slot as SlotPrimitive } from "radix-ui";
 import { tv, type VariantProps } from "tailwind-variants";
 import { XIcon } from "lucide-react";
 
@@ -398,7 +398,7 @@ function AlertTitle({
   asChild?: boolean;
 }) {
   // use to render as semantic heading element (h2, h3, h4, h5, h6)
-  const Comp = asChild ? Slot : "div";
+  const Comp = asChild ? SlotPrimitive.Slot : "div";
   return (
     <Comp
       data-slot="alert-title"

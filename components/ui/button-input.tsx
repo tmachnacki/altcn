@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Slot } from "@radix-ui/react-slot";
+import { Slot as SlotPrimitive } from "radix-ui";
 import { tv, type VariantProps } from "tailwind-variants";
 
 import { cn } from "~/lib/utils";
@@ -158,9 +158,9 @@ function ButtonInputIcon({
   className,
   children,
   ...props
-}: React.ComponentProps<typeof Slot>) {
+}: React.ComponentProps<typeof SlotPrimitive.Slot>) {
   return (
-    <Slot
+    <SlotPrimitive.Slot
       data-slot="button-input-icon"
       aria-hidden="true"
       className={cn("shrink-0 grow-0", className)}
@@ -180,7 +180,7 @@ function ButtonInputIcon({
           />
         </svg>
       )}
-    </Slot>
+    </SlotPrimitive.Slot>
   );
 }
 

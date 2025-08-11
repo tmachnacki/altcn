@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import * as ToolbarPrimitive from "@radix-ui/react-toolbar";
+import { Toolbar as ToolbarPrimitive } from "radix-ui";
 import { tv, type VariantProps } from "tailwind-variants";
 
 import { cn } from "~/lib/utils";

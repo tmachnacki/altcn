@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
+import { Checkbox as CheckboxPrimitive } from "radix-ui";
 import { tv, type VariantProps } from "tailwind-variants";
 import { CheckIcon, MinusIcon } from "lucide-react";
 
