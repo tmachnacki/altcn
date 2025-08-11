@@ -23,14 +23,14 @@ const variants = Object.keys(buttonVariants.variants.variant) as Variant[];
 
 type Size = keyof typeof buttonVariants.variants.size;
 const sizesMap: Record<number, Size> = {
-  1: "2xs",
+  // 1: "2xs",
   2: "xs",
   3: "sm",
   4: "md",
   5: "lg",
 };
 const iconSizesMap: Record<number, Size> = {
-  1: "icon-2xs",
+  // 1: "icon-2xs",
   2: "icon-xs",
   3: "icon-sm",
   4: "icon-md",
@@ -103,7 +103,7 @@ export function ButtonDemo() {
           </Label>
           <Slider
             aria-labelledby="button-size"
-            min={1}
+            min={2}
             max={5}
             step={1}
             value={[sizeIdx]}

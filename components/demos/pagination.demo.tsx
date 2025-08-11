@@ -7,12 +7,13 @@ import { buttonVariants } from "~/components/ui/button";
 import { Label } from "~/components/ui/label";
 import {
   Pagination,
-  PaginationContent,
   PaginationEllipsis,
   PaginationItem,
   PaginationLink,
+  PaginationList,
   PaginationNext,
   PaginationPrevious,
+  paginationSizeVariants,
 } from "~/components/ui/pagination";
 import {
   Select,
@@ -21,6 +22,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "~/components/ui/select";
+import { Slider } from "~/components/ui/slider";
 import { ComponentContainer } from "~/components/component-container";
 import { ComponentPlayground } from "~/components/component-playground";
 
@@ -51,6 +53,16 @@ const inactiveVariants = [
   "secondary-ghost",
 ] as const;
 
+type Size = keyof typeof paginationSizeVariants.variants.size;
+
+const sizesMap: Record<number, Size> = {
+  // 1: "2xs",
+  2: "xs",
+  3: "sm",
+  4: "md",
+  5: "lg",
+};
+
 export function PaginationDemo() {
   return (
     <React.Suspense fallback={null}>
@@ -63,6 +75,9 @@ export function PaginationWithParams() {
   const [activeVariant, setActiveVariant] = React.useState("outline");
   const [inactiveVariant, setInactiveVariant] = React.useState("ghost");
   const [controlVariant, setControlVariant] = React.useState("ghost");
+  const [sizeIdx, setSizeIdx] = React.useState(4);
+
+  const size = sizesMap[sizeIdx];
 
   const page = useSearchParams().get("page") ?? "1";
 
@@ -70,21 +85,19 @@ export function PaginationWithParams() {
     <>
       <ComponentContainer>
         <Pagination
-          size="icon-md"
+          size={size}
           variants={{
             active: activeVariant as (typeof activeVariants)[number],
             inactive: inactiveVariant as (typeof inactiveVariants)[number],
             control: controlVariant as (typeof inactiveVariants)[number],
           }}
+          className="justify-between"
         >
-          <PaginationContent>
-            <PaginationItem>
-              <PaginationPrevious
-                href={`/components/pagination?page=${Number(page) - 1}`}
-                disabled={page === "1"}
-                size="md"
-              />
-            </PaginationItem>
+          <PaginationPrevious
+            href={`/components/pagination?page=${Number(page) - 1}`}
+            disabled={page === "1"}
+          />
+          <PaginationList>
             <PaginationItem>
               <PaginationLink
                 href={`/components/pagination?page=1`}
@@ -128,14 +141,11 @@ export function PaginationWithParams() {
                 10
               </PaginationLink>
             </PaginationItem>
-            <PaginationItem>
-              <PaginationNext
-                href={`/components/pagination?page=${Number(page) + 1}`}
-                disabled={page === "10"}
-                size="md"
-              />
-            </PaginationItem>
-          </PaginationContent>
+          </PaginationList>
+          <PaginationNext
+            href={`/components/pagination?page=${Number(page) + 1}`}
+            disabled={page === "10"}
+          />
         </Pagination>
       </ComponentContainer>
       <ComponentPlayground>
@@ -183,6 +193,22 @@ export function PaginationWithParams() {
               ))}
             </SelectContent>
           </Select>
+        </div>
+        <div className="grid gap-3">
+          <Label id="pagination-size">
+            Size:{" "}
+            <span className="inline-block leading-none font-normal text-primary-muted-foreground">
+              {size}
+            </span>
+          </Label>
+          <Slider
+            aria-labelledby="pagination-size"
+            min={2}
+            max={5}
+            step={1}
+            value={[sizeIdx]}
+            onValueChange={(value) => setSizeIdx(value[0])}
+          />
         </div>
       </ComponentPlayground>
     </>

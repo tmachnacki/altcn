@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Slot as SlotPrimitive, Slottable } from "radix-ui";
+import { Slot as SlotPrimitive } from "radix-ui";
 import { tv, type VariantProps } from "tailwind-variants";
 import { CircleIcon, XIcon } from "lucide-react";
 
@@ -540,7 +540,7 @@ function Badge({
         </>
       )}
       {variant?.includes("dotted") && <BadgeDot />}
-      <Slottable>{children}</Slottable>
+      <SlotPrimitive.Slottable>{children}</SlotPrimitive.Slottable>
     </Comp>
   );
 }

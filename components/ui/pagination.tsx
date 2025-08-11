@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
+import { tv, type VariantProps } from "tailwind-variants";
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
@@ -11,6 +12,21 @@ import {
 import { cn } from "~/lib/utils";
 
 import { Button, buttonVariants } from "~/components/ui/button";
+
+const paginationSizeVariants = tv({
+  variants: {
+    size: {
+      // "2xs": "h-size-xs min-w-size-xs px-1.5 sm:h-size-2xs sm:min-w-size-2xs",
+      xs: "h-size-sm min-w-size-sm gap-1 px-2 sm:h-size-xs sm:min-w-size-xs",
+      sm: "h-size-md min-w-size-md gap-1.5 px-2 sm:h-size-sm sm:min-w-size-sm",
+      md: "h-size-lg min-w-size-lg gap-1.5 px-2.5 sm:h-size-md sm:min-w-size-md",
+      lg: "h-size-xl min-w-size-xl gap-2 px-3 sm:h-size-lg sm:min-w-size-lg",
+    },
+  },
+  defaultVariants: {
+    size: "md",
+  },
+});
 
 type ActiveVariant = keyof Omit<
   typeof buttonVariants.variants.variant,
@@ -37,13 +53,12 @@ type InactiveVariant = keyof Pick<
   | "secondary-ghost"
 >;
 
-type PaginationContextProps = {
+type PaginationContextProps = VariantProps<typeof paginationSizeVariants> & {
   variants?: {
     active?: ActiveVariant;
     inactive?: InactiveVariant;
     control?: InactiveVariant;
   };
-  size?: keyof typeof buttonVariants.variants.size;
 };
 
 const PaginationContext = React.createContext<PaginationContextProps>({
@@ -52,7 +67,7 @@ const PaginationContext = React.createContext<PaginationContextProps>({
     inactive: "ghost",
     control: "ghost",
   },
-  size: "icon-md",
+  size: "md",
 });
 
 function Pagination({
@@ -61,7 +76,7 @@ function Pagination({
     inactive: "ghost",
     control: "ghost",
   },
-  size = "icon-md",
+  size = "md",
   className,
   ...props
 }: React.ComponentProps<"nav"> & PaginationContextProps) {
@@ -71,21 +86,31 @@ function Pagination({
         data-slot="pagination"
         role="navigation"
         aria-label={"Pagination"}
-        className={cn("mx-auto flex w-full justify-center", className)}
+        className={cn(
+          {
+            // "2xs": "[--pagination-gap:--spacing(0.5)]",
+            xs: "[--pagination-gap:--spacing(0.75)]",
+            sm: "[--pagination-gap:--spacing(1)]",
+            md: "[--pagination-gap:--spacing(1)]",
+            lg: "[--pagination-gap:--spacing(1.5)]",
+          }[size || "md"],
+          "mx-auto flex w-full justify-center gap-(--pagination-gap)",
+          className
+        )}
         {...props}
       />
     </PaginationContext.Provider>
   );
 }
 
-function PaginationContent({
-  className,
-  ...props
-}: React.ComponentProps<"ul">) {
+function PaginationList({ className, ...props }: React.ComponentProps<"ul">) {
   return (
     <ul
-      data-slot="pagination-content"
-      className={cn("flex flex-row items-center gap-1", className)}
+      data-slot="pagination-list"
+      className={cn(
+        "flex flex-row items-center gap-(--pagination-gap)",
+        className
+      )}
       {...props}
     />
   );
@@ -102,7 +127,6 @@ type PaginationLinkProps = React.ComponentProps<typeof Link> & {
     active?: ActiveVariant;
     inactive?: InactiveVariant;
   };
-  size?: keyof typeof buttonVariants.variants.size;
 };
 
 function PaginationLink({
@@ -110,7 +134,6 @@ function PaginationLink({
   disabled,
   active,
   variants,
-  size,
   ...props
 }: PaginationLinkProps) {
   const context = React.useContext(PaginationContext);
@@ -120,9 +143,9 @@ function PaginationLink({
     <Button
       asChild
       disabled={disabled}
-      size={size || context.size}
+      size={context.size}
       variant={active ? _activeVariant : _inactiveVariant}
-      className={className}
+      className={cn(paginationSizeVariants({ size: context.size }), className)}
     >
       <Link
         data-slot="pagination-link"
@@ -139,14 +162,12 @@ function PaginationLink({
 type PaginationControlProps = React.ComponentProps<typeof Link> & {
   disabled?: boolean;
   variant?: InactiveVariant;
-  size?: keyof typeof buttonVariants.variants.size;
 };
 
 function PaginationControl({
   className,
   disabled,
   variant,
-  size,
   ...props
 }: PaginationControlProps) {
   const context = React.useContext(PaginationContext);
@@ -154,9 +175,9 @@ function PaginationControl({
     <Button
       asChild
       disabled={disabled}
-      size={size || context.size}
+      size={context.size}
       variant={variant || context.variants?.control}
-      className={className}
+      className={cn(paginationSizeVariants({ size: context.size }), className)}
     >
       <Link aria-disabled={disabled} tabIndex={disabled ? -1 : 0} {...props} />
     </Button>
@@ -168,7 +189,7 @@ function PaginationPrevious({
 }: React.ComponentProps<typeof PaginationControl>) {
   return (
     <PaginationControl aria-label="Go to previous page" {...props}>
-      <ChevronLeftIcon aria-hidden="true" />
+      <ChevronLeftIcon />
       <span className="hidden sm:block">Previous</span>
     </PaginationControl>
   );
@@ -191,28 +212,31 @@ function PaginationEllipsis({
 }: React.ComponentProps<"span">) {
   const context = React.useContext(PaginationContext);
   return (
-    <span
-      aria-hidden
-      data-slot="pagination-ellipsis"
-      className={cn(
-        buttonVariants.variants.size[context.size || "icon-md"],
-        "flex items-center justify-center",
-        className
-      )}
-      {...props}
-    >
-      <MoreHorizontalIcon className="size-4" />
-      <span className="sr-only">More pages</span>
-    </span>
+    <Button asChild variant="ghost">
+      <span
+        role="presentation"
+        data-slot="pagination-ellipsis"
+        className={cn(
+          paginationSizeVariants({ size: context.size }),
+          "pointer-events-none",
+          className
+        )}
+        {...props}
+      >
+        <MoreHorizontalIcon aria-hidden="true" />
+        <span className="sr-only">More pages</span>
+      </span>
+    </Button>
   );
 }
 
 export {
   Pagination,
-  PaginationContent,
+  PaginationList,
   PaginationLink,
   PaginationItem,
   PaginationPrevious,
   PaginationNext,
   PaginationEllipsis,
+  paginationSizeVariants,
 };

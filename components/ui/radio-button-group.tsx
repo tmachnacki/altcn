@@ -256,7 +256,7 @@ const radioButtonVariants = tv({
     },
 
     size: {
-      "2xs": buttonVariants.variants.size["2xs"],
+      // "2xs": buttonVariants.variants.size["2xs"],
 
       xs: buttonVariants.variants.size["xs"],
 

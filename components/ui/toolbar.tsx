@@ -65,7 +65,7 @@ function ToolbarLink({
       data-slot="toolbar-link"
       className={cn(
         {
-          "2xs": "text-[0.8rem]/4.5 sm:text-xs",
+          // "2xs": "text-[0.8rem]/4.5 sm:text-xs",
           xs: "text-sm sm:text-[0.8rem]/4.5",
           sm: "text-sm",
           md: "text-base sm:text-sm",

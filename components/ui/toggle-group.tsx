@@ -94,7 +94,7 @@ const toggleGroupVariants = ({
     spacing === "compact" && "-space-x-px",
     spacing === "split" &&
       {
-        "2xs": "gap-0.5",
+        // "2xs": "gap-0.5",
         xs: "gap-0.5",
         sm: "gap-[calc(var(--spacing)*0.75)]",
         md: "gap-1 sm:gap-[calc(var(--spacing)*0.75)]",

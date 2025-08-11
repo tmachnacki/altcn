@@ -31,7 +31,7 @@ const variants = Object.keys(toggleVariants.variants.variant) as Variant[];
 
 type Size = keyof typeof toggleVariants.variants.size;
 const sizesMap: Record<number, Size> = {
-  1: "2xs",
+  // 1: "2xs",
   2: "xs",
   3: "sm",
   4: "md",
@@ -126,7 +126,7 @@ export function ToggleGroupDemo() {
           </Label>
           <Slider
             aria-labelledby="toggle-size"
-            min={1}
+            min={2}
             max={Object.keys(sizesMap).length}
             step={1}
             value={[sizeIdx]}

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Slot as SlotPrimitive, Slottable } from "radix-ui";
+import { Slot as SlotPrimitive } from "radix-ui";
 import { tv, type VariantProps } from "tailwind-variants";
 
 import { Tron } from "~/components/ui/tron";
@@ -293,7 +293,7 @@ const buttonVariants = tv({
       ],
     },
     size: {
-      "2xs": ["h-size-xs sm:h-size-2xs", "gap-1.5 px-2 py-1"],
+      // "2xs": ["h-size-xs sm:h-size-2xs", "gap-1.5 px-2 py-1"],
 
       xs: ["h-size-sm sm:h-size-xs", "gap-1.5 px-2 py-1"],
 
@@ -399,15 +399,15 @@ const buttonVariants = tv({
       ],
       className: "outline-warning",
     },
-    {
-      size: ["2xs", "icon-2xs"],
-      className: [
-        "text-[0.8rem]/4.5 sm:text-xs",
-        "rounded-sm",
-        "**:[svg]:not-[[class*='size-']]:size-icon-xs sm:**:[svg]:not-[[class*='size-']]:size-icon-2xs",
-        "**:data-[slot=spinner]:not-[[class*='size-']]:size-icon-xs sm:**:data-[slot=spinner]:not-[[class*='size-']]:size-icon-2xs",
-      ],
-    },
+    // {
+    //   size: ["2xs", "icon-2xs"],
+    //   className: [
+    //     "text-[0.8rem]/4.5 sm:text-xs",
+    //     "rounded-sm",
+    //     "**:[svg]:not-[[class*='size-']]:size-icon-xs sm:**:[svg]:not-[[class*='size-']]:size-icon-2xs",
+    //     "**:data-[slot=spinner]:not-[[class*='size-']]:size-icon-xs sm:**:data-[slot=spinner]:not-[[class*='size-']]:size-icon-2xs",
+    //   ],
+    // },
     {
       size: ["xs", "icon-xs"],
       className: [
@@ -503,7 +503,7 @@ function Button({
           />
         </>
       )}
-      <Slottable>{children}</Slottable>
+      <SlotPrimitive.Slottable>{children}</SlotPrimitive.Slottable>
     </Comp>
   );
 }
