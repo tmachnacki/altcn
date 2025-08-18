@@ -10,12 +10,12 @@ import { Tron } from "~/components/ui/tron";
 const badgeVariants = tv({
   base: [
     "group/badge [a&]:touch-target [button&]:touch-target",
-    "relative isolate inline-flex h-[calc(var(--size-2xs)+(var(--spacing)*0.5))] w-fit shrink-0 grow-0 items-center justify-center gap-1.5 px-2 py-1 text-[0.8rem] leading-none font-medium whitespace-nowrap select-none sm:h-(--size-2xs) sm:text-xs",
+    "relative isolate inline-flex h-6.5 w-fit shrink-0 grow-0 items-center justify-center gap-1.5 px-2 py-1 text-[0.8rem] leading-none font-medium whitespace-nowrap select-none sm:h-6 sm:text-xs",
     "[a&]:active:opacity-80 [button&]:active:opacity-80",
     "data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[disabled]:shadow-none",
     "disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none",
     "focus-visible:outline-2 focus-visible:outline-offset-1",
-    "**:[svg]:pointer-events-none **:[svg]:not-[[class*='size-']]:size-(--icon-xs) sm:**:[svg]:not-[[class*='size-']]:size-(--icon-2xs)",
+    "**:[svg]:pointer-events-none **:[svg]:not-[[class*='size-']]:size-(--icon-xs) sm:**:[svg]:not-[[class*='size-']]:size-3",
   ],
   variants: {
     shape: {

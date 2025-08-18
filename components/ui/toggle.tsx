@@ -95,7 +95,7 @@ const toggleVariants = tv({
       //   "**:[svg]:not-[[class*='size-']]:size-icon-xs sm:**:[svg]:not-[[class*='size-']]:size-icon-2xs",
       // ],
       xs: [
-        "h-size-sm min-w-size-sm gap-1.5 rounded-md px-1.5 text-sm sm:h-size-xs sm:min-w-size-xs sm:rounded-sm sm:text-[0.8rem]/4.5",
+        "h-size-sm min-w-size-sm gap-1.5 rounded-md px-1.5 text-[0.8rem]/4.5 sm:h-size-xs sm:min-w-size-xs sm:rounded-sm sm:text-xs",
         "**:[svg]:not-[[class*='size-']]:size-icon-sm sm:**:[svg]:not-[[class*='size-']]:size-icon-xs",
       ],
       sm: [

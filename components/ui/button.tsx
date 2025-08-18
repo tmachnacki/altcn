@@ -411,8 +411,8 @@ const buttonVariants = tv({
     {
       size: ["xs", "icon-xs"],
       className: [
-        "text-sm sm:text-[0.8rem]/4.5",
-        "rounded-md sm:rounded-sm",
+        "text-[0.8rem]/4.5 sm:text-xs",
+        "rounded-md",
         "**:[svg]:not-[[class*='size-']]:size-icon-sm sm:**:[svg]:not-[[class*='size-']]:size-icon-xs",
         "**:data-[slot=spinner]:not-[[class*='size-']]:size-icon-sm sm:**:data-[slot=spinner]:not-[[class*='size-']]:size-icon-xs",
       ],
