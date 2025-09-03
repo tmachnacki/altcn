@@ -40,7 +40,7 @@ const uncheckedVariants = Object.keys(
 
 type Size = keyof typeof radioButtonVariants.variants.size;
 const sizesMap: Record<number, Size> = {
-  1: "2xs",
+  // 1: "2xs",
   2: "xs",
   3: "sm",
   4: "md",
@@ -152,7 +152,7 @@ export function RadioButtonGroupDemo() {
             </span>
           </Label>
           <Slider
-            min={1}
+            min={2}
             max={Object.keys(sizesMap).length}
             step={1}
             value={[sizeIdx]}

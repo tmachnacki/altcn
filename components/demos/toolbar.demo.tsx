@@ -56,7 +56,7 @@ const toggleItemVariants = Object.keys(
 
 type Size = keyof typeof toggleVariants.variants.size;
 const sizesMap: Record<number, Size> = {
-  1: "2xs",
+  // 1: "2xs",
   2: "xs",
   3: "sm",
   4: "md",
