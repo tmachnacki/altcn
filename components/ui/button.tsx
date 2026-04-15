@@ -431,8 +431,8 @@ const buttonVariants = tv({
       className: [
         "text-base sm:text-sm",
         "rounded-md",
-        "**:[svg]:not-[[class*='size-']]:size-icon-lg md:**:[svg]:not-[[class*='size-']]:size-icon-md",
-        "**:data-[slot=spinner]:not-[[class*='size-']]:size-icon-lg md:**:data-[slot=spinner]:not-[[class*='size-']]:size-icon-md",
+        "**:[svg]:not-[[class*='size-']]:size-icon-lg sm:**:[svg]:not-[[class*='size-']]:size-icon-md",
+        "**:data-[slot=spinner]:not-[[class*='size-']]:size-icon-lg sm:**:data-[slot=spinner]:not-[[class*='size-']]:size-icon-md",
       ],
     },
     {
@@ -440,8 +440,8 @@ const buttonVariants = tv({
       className: [
         "text-lg sm:text-base",
         "rounded-md",
-        "**:[svg]:not-[[class*='size-']]:size-icon-xl lg:**:[svg]:not-[[class*='size-']]:size-icon-lg",
-        "**:data-[slot=spinner]:not-[[class*='size-']]:size-icon-xl lg:**:data-[slot=spinner]:not-[[class*='size-']]:size-icon-lg",
+        "**:[svg]:not-[[class*='size-']]:size-icon-xl sm:**:[svg]:not-[[class*='size-']]:size-icon-lg",
+        "**:data-[slot=spinner]:not-[[class*='size-']]:size-icon-xl sm:**:data-[slot=spinner]:not-[[class*='size-']]:size-icon-lg",
       ],
     },
   ],

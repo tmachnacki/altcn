@@ -46,28 +46,28 @@ const badgeVariants = tv({
         "bg-muted text-accent-foreground",
         "[a&]:hover:bg-hover-muted",
         "[button&]:hover:bg-hover-muted",
-        "[--hover-badge-close-bg:var(--color-hover-muted))]",
+        "[--hover-badge-close-bg:var(--color-hover-muted)]",
       ],
 
       muted: [
         "bg-muted text-muted-foreground",
         "[a&]:hover:bg-hover-muted",
         "[button&]:hover:bg-hover-muted",
-        "[--hover-badge-close-bg:var(--color-hover-muted))]",
+        "[--hover-badge-close-bg:var(--color-hover-muted)]",
       ],
 
       surface: [
         "bg-faded text-accent-foreground inset-ring inset-ring-faded-border",
         "[a&]:hover:bg-hover-faded",
         "[button&]:hover:bg-hover-faded",
-        "[--hover-badge-close-bg:var(--color-muted))]",
+        "[--hover-badge-close-bg:var(--color-muted)]",
       ],
 
       faded: [
         "bg-faded text-muted-foreground inset-ring inset-ring-faded-border",
         "[a&]:hover:bg-hover-faded",
         "[button&]:hover:bg-hover-faded",
-        "[--hover-badge-close-bg:var(--color-muted))]",
+        "[--hover-badge-close-bg:var(--color-muted)]",
       ],
 
       "base-gradient": [
@@ -91,28 +91,28 @@ const badgeVariants = tv({
         "bg-primary-muted text-primary-accent-foreground",
         "[a&]:hover:bg-hover-primary-muted",
         "[button&]:hover:bg-hover-primary-muted",
-        "[--hover-badge-close-bg:var(--color-hover-primary-muted))]",
+        "[--hover-badge-close-bg:var(--color-hover-primary-muted)]",
       ],
 
       "primary-muted": [
         "bg-primary-muted text-primary-muted-foreground",
         "[a&]:hover:bg-hover-primary-muted",
         "[button&]:hover:bg-hover-primary-muted",
-        "[--hover-badge-close-bg:var(--color-hover-primary-muted))]",
+        "[--hover-badge-close-bg:var(--color-hover-primary-muted)]",
       ],
 
       "primary-surface": [
         "bg-primary-faded text-primary-accent-foreground inset-ring inset-ring-primary-faded-border",
         "[a&]:hover:bg-hover-primary-faded",
         "[button&]:hover:bg-hover-primary-faded",
-        "[--hover-badge-close-bg:var(--color-primary-muted))]",
+        "[--hover-badge-close-bg:var(--color-primary-muted)]",
       ],
 
       "primary-faded": [
         "bg-primary-faded text-primary-muted-foreground inset-ring inset-ring-primary-faded-border",
         "[a&]:hover:bg-hover-primary-faded",
         "[button&]:hover:bg-hover-primary-faded",
-        "[--hover-badge-close-bg:var(--color-primary-muted))]",
+        "[--hover-badge-close-bg:var(--color-primary-muted)]",
       ],
 
       "primary-tron": [
@@ -126,7 +126,7 @@ const badgeVariants = tv({
         "[button&]:hover:bg-linear-(--hover-primary-tron-gradient) [button&]:hover:inset-ring-hover-primary-tron-border",
         "[button&]:hover:*:data-[slot=tron-beam]:data-[side=bottom]:opacity-0 [button&]:hover:*:data-[slot=tron-beam]:data-[side=top]:opacity-100 [button&]:hover:*:data-[slot=tron-blur]:data-[side=bottom]:opacity-0 [button&]:hover:*:data-[slot=tron-blur]:data-[side=top]:opacity-100",
 
-        "[--hover-badge-close-bg:var(--color-primary-muted))]",
+        "[--hover-badge-close-bg:var(--color-primary-muted)]",
       ],
 
       "primary-gradient": [
@@ -150,28 +150,28 @@ const badgeVariants = tv({
         "bg-secondary-muted text-secondary-accent-foreground",
         "[a&]:hover:bg-hover-secondary-muted",
         "[button&]:hover:bg-hover-secondary-muted",
-        "[--hover-badge-close-bg:var(--color-hover-secondary-muted))]",
+        "[--hover-badge-close-bg:var(--color-hover-secondary-muted)]",
       ],
 
       "secondary-muted": [
         "bg-secondary-muted text-secondary-muted-foreground",
         "[a&]:hover:bg-hover-secondary-muted",
         "[button&]:hover:bg-hover-secondary-muted",
-        "[--hover-badge-close-bg:var(--color-hover-secondary-muted))]",
+        "[--hover-badge-close-bg:var(--color-hover-secondary-muted)]",
       ],
 
       "secondary-surface": [
         "bg-secondary-faded text-secondary-accent-foreground inset-ring inset-ring-secondary-faded-border",
         "[a&]:hover:bg-hover-secondary-faded",
         "[button&]:hover:bg-hover-secondary-faded",
-        "[--hover-badge-close-bg:var(--color-secondary-muted))]",
+        "[--hover-badge-close-bg:var(--color-secondary-muted)]",
       ],
 
       "secondary-faded": [
         "bg-secondary-faded text-secondary-muted-foreground inset-ring inset-ring-secondary-faded-border",
         "[a&]:hover:bg-hover-secondary-faded",
         "[button&]:hover:bg-hover-secondary-faded",
-        "[--hover-badge-close-bg:var(--color-secondary-muted))]",
+        "[--hover-badge-close-bg:var(--color-secondary-muted)]",
       ],
 
       "secondary-tron": [
@@ -185,7 +185,7 @@ const badgeVariants = tv({
         "[button&]:hover:bg-linear-(--hover-secondary-tron-gradient) [button&]:hover:inset-ring-hover-secondary-tron-border",
         "[button&]:hover:*:data-[slot=tron-beam]:data-[side=bottom]:opacity-0 [button&]:hover:*:data-[slot=tron-beam]:data-[side=top]:opacity-100 [button&]:hover:*:data-[slot=tron-blur]:data-[side=bottom]:opacity-0 [button&]:hover:*:data-[slot=tron-blur]:data-[side=top]:opacity-100",
 
-        "[--hover-badge-close-bg:var(--color-secondary-muted))]",
+        "[--hover-badge-close-bg:var(--color-secondary-muted)]",
       ],
 
       "secondary-gradient": [
@@ -209,14 +209,14 @@ const badgeVariants = tv({
         "bg-destructive-muted text-destructive-accent-foreground",
         "[a&]:hover:bg-hover-destructive-muted",
         "[button&]:hover:bg-hover-destructive-muted",
-        "[--hover-badge-close-bg:var(--color-hover-destructive-muted))]",
+        "[--hover-badge-close-bg:var(--color-hover-destructive-muted)]",
       ],
 
       "destructive-muted": [
         "bg-destructive-muted text-destructive-muted-foreground",
         "[a&]:hover:bg-hover-destructive-muted",
         "[button&]:hover:bg-hover-destructive-muted",
-        "[--hover-badge-close-bg:var(--color-hover-destructive-muted))]",
+        "[--hover-badge-close-bg:var(--color-hover-destructive-muted)]",
       ],
 
       "destructive-surface": [

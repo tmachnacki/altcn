@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { AlertDialog as AlertDialogPrimitive } from "radix-ui";
-import { type VariantProps } from "class-variance-authority";
+import { type VariantProps } from "tailwind-variants";
 
 import { cn } from "~/lib/utils";
 

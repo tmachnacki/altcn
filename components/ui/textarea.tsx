@@ -1,5 +1,5 @@
 import * as React from "react";
-import { VariantProps } from "class-variance-authority";
+import { VariantProps } from "tailwind-variants";
 
 import { cn } from "~/lib/utils";
 
